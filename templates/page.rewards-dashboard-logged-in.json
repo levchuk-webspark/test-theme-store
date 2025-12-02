@@ -1,1 +1,356 @@
-{"sections":{"e190c6c2-169a-4e32-b7e3-d15938bcde1d":{"type":"index__rich-text","settings":{"is_h1_title":true,"title":"<span class=\"ambit-black-text\">Longevity<\/span> <span class=\"romie-regular-italic-text\">Rewards<\/span>","heading_font":"open_sans_n4","heading_alignment":"left","heading_size":50,"text":"","text_font":"open_sans_n4","text_alignment":"left","text_size":14,"columns":2,"button_label":"","button_link":"","button_style":"button--primary","button_alignment":"center","heading_color":"rgba(0,0,0,0)","text_color":"rgba(0,0,0,0)","background":"rgba(0,0,0,0)","gradient":"rgba(0,0,0,0)","gradient_rotation":180,"width":"standard","padding_top":20,"padding_bottom":0,"padding_left":0,"padding_right":0,"animation":"none","mobile_title":"","mobile_heading_size":29,"mobile_text":"","mobile_alignment":"none","padding_top_mobile":20,"padding_bottom_mobile":0,"css_class":"rewards-dashboards-heading","custom_css":""}},"a7880be4-b755-40f9-9639-c97eba95b517":{"type":"index__image-with-text-overlay","settings":{"image":"shopify:\/\/shop_images\/8f31b58f7d17e8140900ed2f4f3fcd5d.jpg","desktop_image_height":360,"use_image_aspect_ratio":false,"image_opacity":1,"image-border-radius":12,"background_image_color":"rgba(0,0,0,0)","mobile_image_height":230,"link":"","pretext":"","is_h1_title":false,"title":"","subtitle":"","pretext_color":"#000000","heading_color":"#000000","subheading_color":"#000000","text_alignment":"center","text_horizontal_position":"left","text_vertical_position":"middle","text_width":50,"background_color":"rgba(0,0,0,0)","background_opacity":0,"border_color":"#ffffff","border_width":0,"button_1":"","button_1_link":"https:\/\/youthandearth.com\/account\/register","button_1_style":"button--primary","button_2":"","button_2_link":"","button_2_style":"button--secondary","width":"standard","padding_top":0,"padding_bottom":0,"padding_left":0,"padding_right":0,"animation":"none","mobile_text_below_image":false,"mobile_preheading":"","mobile_heading":"","mobile_subheading":"","pretext_color_mobile":"rgba(0,0,0,0)","heading_color_mobile":"rgba(0,0,0,0)","subheading_color_mobile":"rgba(0,0,0,0)","text_alignment_mobile":"same_as_desktop","padding_top_mobile":0,"padding_bottom_mobile":0,"css_class":"","custom_css":""}},"0e55ac26-cb26-4c0b-bdef-cb69efe74c75":{"type":"loyalty-page-logged-in","settings":{"heading_text_color":"#f7f5f1","heading_background_color":"#284734","background_color_approved":"#78be20","tire_image_link_1":"https:\/\/cdn.shopify.com\/s\/files\/1\/0469\/8905\/0019\/files\/Tire-three.png?v=1717655238","tire_background_color_1":"#cd7f32","tire_text_color_1":"#704215","purchase_rule_background_color_1":"#9c6025","purchase_rule_text_color_1":"#efddcb","tire_image_link_2":"https:\/\/cdn.shopify.com\/s\/files\/1\/0469\/8905\/0019\/files\/Tire-two.png?v=1717655238","tire_background_color_2":"#c0c0c0","tire_text_color_2":"#6f6565","purchase_rule_background_color_2":"#959595","purchase_rule_text_color_2":"#eceae7","tire_image_link_3":"https:\/\/cdn.shopify.com\/s\/files\/1\/0469\/8905\/0019\/files\/Tire-one.png?v=1717655238","tire_background_color_3":"#ffc000","tire_text_color_3":"#997407","purchase_rule_background_color_3":"#c49300","purchase_rule_text_color_3":"#f9eac1","url_make_purchase":"https:\/\/cdn.shopify.com\/s\/files\/1\/0469\/8905\/0019\/files\/make-a-purchase.png?v=1717677540","url_create_account":"https:\/\/cdn.shopify.com\/s\/files\/1\/0469\/8905\/0019\/files\/create-an-account.png?v=1717677540","url_visit":"https:\/\/cdn.shopify.com\/s\/files\/1\/0469\/8905\/0019\/files\/visit.png?v=1717677654","url_refer_friends":"https:\/\/cdn.shopify.com\/s\/files\/1\/0469\/8905\/0019\/files\/refer-friends.png?v=1717677540","url_mailing_list":"https:\/\/cdn.shopify.com\/s\/files\/1\/0469\/8905\/0019\/files\/sign-up-mailing.png?v=1717677540","url_like_facebook":"https:\/\/cdn.shopify.com\/s\/files\/1\/0469\/8905\/0019\/files\/like-facebook.png?v=1717677539","url_follow_insta":"https:\/\/cdn.shopify.com\/s\/files\/1\/0469\/8905\/0019\/files\/follow-instagram.png?v=1717677540","url_follow_x":"https:\/\/cdn.shopify.com\/s\/files\/1\/0469\/8905\/0019\/files\/follow_tik-tok.svg?v=1725530057","url_happy_birthday":"https:\/\/cdn.shopify.com\/s\/files\/1\/0469\/8905\/0019\/files\/happy-birthday.png?v=1717677540","url_leave_review":"https:\/\/cdn.shopify.com\/s\/files\/1\/0469\/8905\/0019\/files\/leave-a-review.png?v=1717677540","url_redemption":"https:\/\/cdn.shopify.com\/s\/files\/1\/0469\/8905\/0019\/files\/Redemption.svg?v=1741018137","url_gift_1":"https:\/\/cdn.shopify.com\/s\/files\/1\/0469\/8905\/0019\/files\/gift-5.png?v=1717677540","url_gift_2":"https:\/\/cdn.shopify.com\/s\/files\/1\/0469\/8905\/0019\/files\/gift-10.png?v=1717764826","url_gift_3":"https:\/\/cdn.shopify.com\/s\/files\/1\/0469\/8905\/0019\/files\/gift-20.png?v=1717677540","url_gift_4":"https:\/\/cdn.shopify.com\/s\/files\/1\/0469\/8905\/0019\/files\/donate-2.png?v=1718094155","claimed_reward":"https:\/\/cdn.shopify.com\/s\/files\/1\/0469\/8905\/0019\/files\/Redemption.svg?v=1741018137","action_button_background":"#284734","action_button_text":"#f7f5f1","action_button_border":"#284734","action_button_background_hover":"#78be20","action_button_text_hover":"#f7f5f1","action_button_border_hover":"#78be20","action_button_background_completed":"#78be20","action_button_text_completed":"#284734","action_button_border_completed":"#78be20"}},"9d720465-214d-4315-a9ea-5666ee19f197":{"type":"index__rich-text","settings":{"is_h1_title":false,"title":"Frequently asked questions","heading_font":"open_sans_n4","heading_alignment":"center","heading_size":50,"text":"","text_font":"open_sans_n4","text_alignment":"left","text_size":14,"columns":2,"button_label":"","button_link":"","button_style":"button--primary","button_alignment":"center","heading_color":"rgba(0,0,0,0)","text_color":"rgba(0,0,0,0)","background":"rgba(0,0,0,0)","gradient":"rgba(0,0,0,0)","gradient_rotation":180,"width":"wide","padding_top":20,"padding_bottom":0,"padding_left":0,"padding_right":0,"animation":"none","mobile_title":"","mobile_heading_size":29,"mobile_text":"","mobile_alignment":"none","padding_top_mobile":20,"padding_bottom_mobile":0,"css_class":"","custom_css":""}},"925e30c9-3e1b-494b-b051-656e7da297b5":{"type":"index__faq","blocks":{"template--16815701426389__4d8ff25c-8549-4153-a528-c106e7f02fb6-content-1":{"type":"content","settings":{"title":"WHAT IS LONGEVITY REWARDS","answer":"<p>Longevity Rewards is a Youth & Earth loyalty program to show our appreciation for being a loyal customer. For every purchase on our site you will be rewarded points which you can convert into a discount via the checkout slider or redeem as gift cards at checkout. Activities such as Likes and Follows on our social media platforms can also earn you points as well as referrals and adding your birthday via the Loyalty page.<\/p>"}},"template--16815701426389__4d8ff25c-8549-4153-a528-c106e7f02fb6-content-2":{"type":"content","settings":{"title":"WHO IS ELIGIBLE TO JOIN?","answer":"<p>The Longevity Rewards is a free loyalty program open to all above the age of majority according to your country of origin with a valid email address. If you have an existing account you will automatically become a member of the Longevity Rewards program. Please refer to the <a href=\"https:\/\/youthandearth.com\/pages\/longevity-rewards-terms-and-conditions\">Terms and Conditions <\/a>if you are under the age of majority in relation to consent.<\/p>"}},"template--16815701426389__4d8ff25c-8549-4153-a528-c106e7f02fb6-content-3":{"type":"content","settings":{"title":"HOW DO I JOIN THE LOYALTY PROGRAM?","answer":"<p>We like to keep things simple, just click the link JOIN and you’ll be taken to the signup page where you can fill in the required fields. There is also a JOIN NOW button above the FAQ section. We will welcome you with 250 points!<\/p>"}},"template--16815701426389__4d8ff25c-8549-4153-a528-c106e7f02fb6-content-4":{"type":"content","settings":{"title":"HOW DO I EARN MY POINTS?","answer":"<p>With Longevity Rewards a member earns a minimum of 4 points for every £1 spent online on the Youth & Earth site. You can convert every 100 points that you accumulate into £1 which you can use as discounts or gift cards on future purchases.<\/p><p>Earn more points by::<\/p><p>❖ Creating an account (250 points)<br\/>❖ Sharing your Birthday (750\/1000\/1250 points - depending on your tier)<br\/>❖ Referring a friend (800\/100\/1200 points - depending on your tier)<br\/>❖ Giving us Likes on Twitter and Instagram (50 points)<br\/>❖ Following us on Facebook (50 points)<br\/>❖ Joining the Youth & Earth mailing list ( 100 points)<br\/>❖ Writing a product review (250 points)<\/p>"}},"template--16815701426389__4d8ff25c-8549-4153-a528-c106e7f02fb6-content-5":{"type":"content","settings":{"title":"HOW DO I USE MY POINTS?","answer":"<p>❖ You can redeem your points at checkout, using the checkout point slider or via the loyalty page to receive discounts.<br\/>❖ You can convert points into gift cards to use on your purchases.<br\/>❖ Or alternatively, you can show your support and choose to donate an amount to the Alzheimer’s Society. You may donate as many times as you wish in increments of 500 points. (Alzheimer’s Society gift card for 500 points is equal to £5 donation. )<\/p>"}},"template--16815701426389__4d8ff25c-8549-4153-a528-c106e7f02fb6-content-6":{"type":"content","settings":{"title":"DO MY POINTS EXPIRE?","answer":"<p>Yes, please note that your points do expire if you have not placed an order within the past 12 months. Unredeemed points will expire 12 months after your last order on our website, so we encourage you to redeem them often.<\/p>"}},"0f731a4a-9eeb-48c8-923f-55005cdda799":{"type":"content","settings":{"title":"WHERE CAN I FIND MY POINT BALANCE?","answer":"<p>You can view your available and pending points juts below your name when you are logged in.<\/p>"}},"75f04117-339c-4894-9dc8-5f8b5ef64eed":{"type":"content","settings":{"title":"CAN I USE MY POINTS WITH A DISCOUNT CODE?","answer":"<p>No, you cannot use points with discount codes, however points can be used with gift cards. Redeem a gift card or multiple gift cards to use with your points to receive further discounts on your purchase.<\/p>"}},"f1d06437-0d0d-446b-a07d-fdc4986a91d9":{"type":"content","settings":{"title":"HOW LONG DOES IT TAKE TO RECEIVE MY POINTS?","answer":"<p>❖ Points are awarded immediately upon completing activities such as Likes, Follows, creating an account, or joining the mailing list.<br\/>❖ Points are added after a 30-day grace period for purchases<br\/>❖ Points for referrals are allocated when the referred individual makes an eligible purchase of £40 or more on our site.<br\/>❖ Points for sharing your birthday via the loyalty page will be awarded to you on your birthday.<br\/>❖ Points for writing a product review will be awarded to you at the end of that week. Please note points will be awarded for not more than one review per calendar week.<\/p>"}},"0e67fd5d-82d5-439d-88fc-bfd56e13b9e7":{"type":"content","settings":{"title":"DO PURCHASES MADE PRIOR TO ME JOINING THE LONGEVITY REWARDS COUNT TOWARDS MY POINT EARNINGS?","answer":"<p>If you have opened an e-mail or placed an order in the last 3 months prior to the launch of the loyalty program, you will receive the points for your purchases in the last 12 months.<\/p>"}},"6e984e1c-58e7-4e6b-9ccd-554b1de5209d":{"type":"content","settings":{"title":"DO I RECEIVE SHIPPING BENEFITS?","answer":"<p>Shipping benefits are available to you when you reach the SILVER BRANCH (+2500 pts) or GOLDEN TREE (+5000 pts) tier. ❖ Silver Branch tier customers will receive a discount of £5 on shipping for economy & premium\/express. Free shipping will apply if the cost is below £5 for your country. ❖ Golden Tree tier customers will receive free economy & premium\/express shipping.<\/p>"}},"545dee19-3a25-42dd-8e26-fe83e5bd8315":{"type":"content","settings":{"title":"HOW DO I ACHIEVE GOLDEN TREE TIER TO ACQUIRE FREE PREMIUM\/EXPRESS SHIPPING?","answer":"<p>To achieve the Golden Tree tier you will need to accumulate 5000 points. Points can also be accumulated on purchases; for sharing your birthday; activities on social media platforms; for friend referrals and reviews. (Please refer to HOW DO I EARN MY POINTS?)<\/p>"}},"cdf2a02e-898e-4f63-a389-ba45958e16ec":{"type":"content","settings":{"title":"CAN I USE THE POINTS REDEMPTION AGAINST A SUBSCRIPTION?","answer":"<p>Unfortunately not, the checkout point slider will not work on orders that include subscriptions. You can however convert your points to gift cards via the loyalty page and use them to attain further discounts on your subscription orders. However, please note that gift cards work only on the initial subscription order, renewals do not receive discounts due to gift cards.<\/p>"}},"b3c07793-04bc-4ac3-bec3-f152109d1019":{"type":"content","settings":{"title":"CAN I GIVE MY LONGEVITY REWARDS DISCOUNT CODE TO SOMEONE ELSE?","answer":"<p>Longevity Rewards discount codes are not transferable and may not be sold, transferred or assigned to anyone else. Attempts to transfer the code may invalidate your Longevity Rewards.<\/p>"}},"c7423ae4-1e55-49f9-8a9b-2a504a574816":{"type":"content","settings":{"title":"ARE MY REWARDS REFUNDABLE OR EXCHANGEABLE?","answer":"<p>Unfortunately, Longevity Rewards. i.e. points\/discount codes or gift vouchers, may not be returned or exchanged for points or cash, for another product, gift cards or other discounts. Longevity Rewards points accumulated may only be used by you at checkout, using the checkout slider or via the loyalty page to convert to gift cards to use on your purchases. Alternatively, you can choose to donate an amount to the Alzheimer’s society..<\/p>"}},"8be38c3f-b8a7-4738-9c0b-01da2e45fdcf":{"type":"content","settings":{"title":"I CAN’T FIND THE ANSWERS TO MY QUESTIONS?","answer":"<p>Still looking for answers? You may find them in our <a href=\"https:\/\/youthandearth.com\/pages\/longevity-rewards-terms-and-conditions\">T&C’s<\/a>  or if you are still unable to find answers to your questions, please contact us via <a href=\"mailto:support@youthandearth.com\">support@youthandearth.com<\/a>.<\/p>"}}},"block_order":["template--16815701426389__4d8ff25c-8549-4153-a528-c106e7f02fb6-content-1","template--16815701426389__4d8ff25c-8549-4153-a528-c106e7f02fb6-content-2","template--16815701426389__4d8ff25c-8549-4153-a528-c106e7f02fb6-content-3","template--16815701426389__4d8ff25c-8549-4153-a528-c106e7f02fb6-content-4","template--16815701426389__4d8ff25c-8549-4153-a528-c106e7f02fb6-content-5","template--16815701426389__4d8ff25c-8549-4153-a528-c106e7f02fb6-content-6","0f731a4a-9eeb-48c8-923f-55005cdda799","75f04117-339c-4894-9dc8-5f8b5ef64eed","f1d06437-0d0d-446b-a07d-fdc4986a91d9","0e67fd5d-82d5-439d-88fc-bfd56e13b9e7","6e984e1c-58e7-4e6b-9ccd-554b1de5209d","545dee19-3a25-42dd-8e26-fe83e5bd8315","cdf2a02e-898e-4f63-a389-ba45958e16ec","b3c07793-04bc-4ac3-bec3-f152109d1019","c7423ae4-1e55-49f9-8a9b-2a504a574816","8be38c3f-b8a7-4738-9c0b-01da2e45fdcf"],"settings":{"title":"","width":"standard","padding_top":0,"padding_bottom":80,"animation":"none","padding_top_mobile":56,"padding_bottom_mobile":56,"css_class":"","custom_css":""}},"main":{"type":"page-content__main","disabled":true,"settings":{"show_heading":true,"heading_alignment":"left","width":"standard","padding_top":40,"padding_bottom":40,"css_class":"","custom_css":""}}},"order":["e190c6c2-169a-4e32-b7e3-d15938bcde1d","a7880be4-b755-40f9-9639-c97eba95b517","0e55ac26-cb26-4c0b-bdef-cb69efe74c75","9d720465-214d-4315-a9ea-5666ee19f197","925e30c9-3e1b-494b-b051-656e7da297b5","main"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "e190c6c2-169a-4e32-b7e3-d15938bcde1d": {
+      "type": "index__rich-text",
+      "settings": {
+        "is_h1_title": true,
+        "title": "<span class=\"ambit-black-text\">Longevity</span> <span class=\"romie-regular-italic-text\">Rewards</span>",
+        "heading_font": "open_sans_n4",
+        "heading_alignment": "left",
+        "heading_size": 50,
+        "text": "",
+        "text_font": "open_sans_n4",
+        "text_alignment": "left",
+        "text_size": 14,
+        "columns": 2,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "button--primary",
+        "button_alignment": "center",
+        "heading_color": "rgba(0,0,0,0)",
+        "text_color": "rgba(0,0,0,0)",
+        "background": "rgba(0,0,0,0)",
+        "gradient": "rgba(0,0,0,0)",
+        "gradient_rotation": 180,
+        "width": "standard",
+        "padding_top": 20,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "animation": "none",
+        "mobile_title": "",
+        "mobile_heading_size": 29,
+        "mobile_text": "",
+        "mobile_alignment": "none",
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 0,
+        "css_class": "rewards-dashboards-heading",
+        "custom_css": ""
+      }
+    },
+    "a7880be4-b755-40f9-9639-c97eba95b517": {
+      "type": "index__image-with-text-overlay",
+      "settings": {
+        "image": "shopify://shop_images/8f31b58f7d17e8140900ed2f4f3fcd5d.jpg",
+        "desktop_image_height": 360,
+        "use_image_aspect_ratio": false,
+        "image_opacity": 1,
+        "image-border-radius": 12,
+        "background_image_color": "rgba(0,0,0,0)",
+        "mobile_image_height": 230,
+        "link": "",
+        "pretext": "",
+        "is_h1_title": false,
+        "title": "",
+        "subtitle": "",
+        "pretext_color": "#000000",
+        "heading_color": "#000000",
+        "subheading_color": "#000000",
+        "text_alignment": "center",
+        "text_horizontal_position": "left",
+        "text_vertical_position": "middle",
+        "text_width": 50,
+        "background_color": "rgba(0,0,0,0)",
+        "background_opacity": 0,
+        "border_color": "#ffffff",
+        "border_width": 0,
+        "button_1": "",
+        "button_1_link": "https://youthandearth.com/account/register",
+        "button_1_style": "button--primary",
+        "button_2": "",
+        "button_2_link": "",
+        "button_2_style": "button--secondary",
+        "width": "standard",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "animation": "none",
+        "mobile_text_below_image": false,
+        "mobile_preheading": "",
+        "mobile_heading": "",
+        "mobile_subheading": "",
+        "pretext_color_mobile": "rgba(0,0,0,0)",
+        "heading_color_mobile": "rgba(0,0,0,0)",
+        "subheading_color_mobile": "rgba(0,0,0,0)",
+        "text_alignment_mobile": "same_as_desktop",
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "0e55ac26-cb26-4c0b-bdef-cb69efe74c75": {
+      "type": "loyalty-page-logged-in",
+      "settings": {
+        "heading_text_color": "#f7f5f1",
+        "heading_background_color": "#284734",
+        "background_color_approved": "#78be20",
+        "tire_image_link_1": "https://cdn.shopify.com/s/files/1/0469/8905/0019/files/Tire-three.png?v=1717655238",
+        "tire_background_color_1": "#cd7f32",
+        "tire_text_color_1": "#704215",
+        "purchase_rule_background_color_1": "#9c6025",
+        "purchase_rule_text_color_1": "#efddcb",
+        "tire_image_link_2": "https://cdn.shopify.com/s/files/1/0469/8905/0019/files/Tire-two.png?v=1717655238",
+        "tire_background_color_2": "#c0c0c0",
+        "tire_text_color_2": "#6f6565",
+        "purchase_rule_background_color_2": "#959595",
+        "purchase_rule_text_color_2": "#eceae7",
+        "tire_image_link_3": "https://cdn.shopify.com/s/files/1/0469/8905/0019/files/Tire-one.png?v=1717655238",
+        "tire_background_color_3": "#ffc000",
+        "tire_text_color_3": "#997407",
+        "purchase_rule_background_color_3": "#c49300",
+        "purchase_rule_text_color_3": "#f9eac1",
+        "url_make_purchase": "https://cdn.shopify.com/s/files/1/0469/8905/0019/files/make-a-purchase.png?v=1717677540",
+        "url_create_account": "https://cdn.shopify.com/s/files/1/0469/8905/0019/files/create-an-account.png?v=1717677540",
+        "url_visit": "https://cdn.shopify.com/s/files/1/0469/8905/0019/files/visit.png?v=1717677654",
+        "url_refer_friends": "https://cdn.shopify.com/s/files/1/0469/8905/0019/files/refer-friends.png?v=1717677540",
+        "url_mailing_list": "https://cdn.shopify.com/s/files/1/0469/8905/0019/files/sign-up-mailing.png?v=1717677540",
+        "url_like_facebook": "https://cdn.shopify.com/s/files/1/0469/8905/0019/files/like-facebook.png?v=1717677539",
+        "url_follow_insta": "https://cdn.shopify.com/s/files/1/0469/8905/0019/files/follow-instagram.png?v=1717677540",
+        "url_follow_x": "https://cdn.shopify.com/s/files/1/0469/8905/0019/files/follow_tik-tok.svg?v=1725530057",
+        "url_happy_birthday": "https://cdn.shopify.com/s/files/1/0469/8905/0019/files/happy-birthday.png?v=1717677540",
+        "url_leave_review": "https://cdn.shopify.com/s/files/1/0469/8905/0019/files/leave-a-review.png?v=1717677540",
+        "url_redemption": "https://cdn.shopify.com/s/files/1/0469/8905/0019/files/Redemption.svg?v=1741018137",
+        "url_gift_1": "https://cdn.shopify.com/s/files/1/0469/8905/0019/files/gift-5.png?v=1717677540",
+        "url_gift_2": "https://cdn.shopify.com/s/files/1/0469/8905/0019/files/gift-10.png?v=1717764826",
+        "url_gift_3": "https://cdn.shopify.com/s/files/1/0469/8905/0019/files/gift-20.png?v=1717677540",
+        "url_gift_4": "https://cdn.shopify.com/s/files/1/0469/8905/0019/files/donate-2.png?v=1718094155",
+        "claimed_reward": "https://cdn.shopify.com/s/files/1/0469/8905/0019/files/Redemption.svg?v=1741018137",
+        "action_button_background": "#284734",
+        "action_button_text": "#f7f5f1",
+        "action_button_border": "#284734",
+        "action_button_background_hover": "#78be20",
+        "action_button_text_hover": "#f7f5f1",
+        "action_button_border_hover": "#78be20",
+        "action_button_background_completed": "#78be20",
+        "action_button_text_completed": "#284734",
+        "action_button_border_completed": "#78be20"
+      }
+    },
+    "9d720465-214d-4315-a9ea-5666ee19f197": {
+      "type": "index__rich-text",
+      "settings": {
+        "is_h1_title": false,
+        "title": "Frequently asked questions",
+        "heading_font": "open_sans_n4",
+        "heading_alignment": "center",
+        "heading_size": 50,
+        "text": "",
+        "text_font": "open_sans_n4",
+        "text_alignment": "left",
+        "text_size": 14,
+        "columns": 2,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "button--primary",
+        "button_alignment": "center",
+        "heading_color": "rgba(0,0,0,0)",
+        "text_color": "rgba(0,0,0,0)",
+        "background": "rgba(0,0,0,0)",
+        "gradient": "rgba(0,0,0,0)",
+        "gradient_rotation": 180,
+        "width": "wide",
+        "padding_top": 20,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "animation": "none",
+        "mobile_title": "",
+        "mobile_heading_size": 29,
+        "mobile_text": "",
+        "mobile_alignment": "none",
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 0,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "925e30c9-3e1b-494b-b051-656e7da297b5": {
+      "type": "index__faq",
+      "blocks": {
+        "template--16815701426389__4d8ff25c-8549-4153-a528-c106e7f02fb6-content-1": {
+          "type": "content",
+          "settings": {
+            "title": "WHAT IS LONGEVITY REWARDS",
+            "answer": "<p>Longevity Rewards is a Youth & Earth loyalty program to show our appreciation for being a loyal customer. For every purchase on our site you will be rewarded points which you can convert into a discount via the checkout slider or redeem as gift cards at checkout. Activities such as Likes and Follows on our social media platforms can also earn you points as well as referrals and adding your birthday via the Loyalty page.</p>"
+          }
+        },
+        "template--16815701426389__4d8ff25c-8549-4153-a528-c106e7f02fb6-content-2": {
+          "type": "content",
+          "settings": {
+            "title": "WHO IS ELIGIBLE TO JOIN?",
+            "answer": "<p>The Longevity Rewards is a free loyalty program open to all above the age of majority according to your country of origin with a valid email address. If you have an existing account you will automatically become a member of the Longevity Rewards program. Please refer to the <a href=\"https://youthandearth.com/pages/longevity-rewards-terms-and-conditions\">Terms and Conditions </a>if you are under the age of majority in relation to consent.</p>"
+          }
+        },
+        "template--16815701426389__4d8ff25c-8549-4153-a528-c106e7f02fb6-content-3": {
+          "type": "content",
+          "settings": {
+            "title": "HOW DO I JOIN THE LOYALTY PROGRAM?",
+            "answer": "<p>We like to keep things simple, just click the link JOIN and you’ll be taken to the signup page where you can fill in the required fields. There is also a JOIN NOW button above the FAQ section. We will welcome you with 250 points!</p>"
+          }
+        },
+        "template--16815701426389__4d8ff25c-8549-4153-a528-c106e7f02fb6-content-4": {
+          "type": "content",
+          "settings": {
+            "title": "HOW DO I EARN MY POINTS?",
+            "answer": "<p>With Longevity Rewards a member earns a minimum of 4 points for every £1 spent online on the Youth & Earth site. You can convert every 100 points that you accumulate into £1 which you can use as discounts or gift cards on future purchases.</p><p>Earn more points by::</p><p>❖ Creating an account (250 points)<br/>❖ Sharing your Birthday (750/1000/1250 points - depending on your tier)<br/>❖ Referring a friend (800/100/1200 points - depending on your tier)<br/>❖ Giving us Likes on Twitter and Instagram (50 points)<br/>❖ Following us on Facebook (50 points)<br/>❖ Joining the Youth & Earth mailing list ( 100 points)<br/>❖ Writing a product review (250 points)</p>"
+          }
+        },
+        "template--16815701426389__4d8ff25c-8549-4153-a528-c106e7f02fb6-content-5": {
+          "type": "content",
+          "settings": {
+            "title": "HOW DO I USE MY POINTS?",
+            "answer": "<p>❖ You can redeem your points at checkout, using the checkout point slider or via the loyalty page to receive discounts.<br/>❖ You can convert points into gift cards to use on your purchases.<br/>❖ Or alternatively, you can show your support and choose to donate an amount to the Alzheimer’s Society. You may donate as many times as you wish in increments of 500 points. (Alzheimer’s Society gift card for 500 points is equal to £5 donation. )</p>"
+          }
+        },
+        "template--16815701426389__4d8ff25c-8549-4153-a528-c106e7f02fb6-content-6": {
+          "type": "content",
+          "settings": {
+            "title": "DO MY POINTS EXPIRE?",
+            "answer": "<p>Yes, please note that your points do expire if you have not placed an order within the past 12 months. Unredeemed points will expire 12 months after your last order on our website, so we encourage you to redeem them often.</p>"
+          }
+        },
+        "0f731a4a-9eeb-48c8-923f-55005cdda799": {
+          "type": "content",
+          "settings": {
+            "title": "WHERE CAN I FIND MY POINT BALANCE?",
+            "answer": "<p>You can view your available and pending points juts below your name when you are logged in.</p>"
+          }
+        },
+        "75f04117-339c-4894-9dc8-5f8b5ef64eed": {
+          "type": "content",
+          "settings": {
+            "title": "CAN I USE MY POINTS WITH A DISCOUNT CODE?",
+            "answer": "<p>No, you cannot use points with discount codes, however points can be used with gift cards. Redeem a gift card or multiple gift cards to use with your points to receive further discounts on your purchase.</p>"
+          }
+        },
+        "f1d06437-0d0d-446b-a07d-fdc4986a91d9": {
+          "type": "content",
+          "settings": {
+            "title": "HOW LONG DOES IT TAKE TO RECEIVE MY POINTS?",
+            "answer": "<p>❖ Points are awarded immediately upon completing activities such as Likes, Follows, creating an account, or joining the mailing list.<br/>❖ Points are added after a 30-day grace period for purchases<br/>❖ Points for referrals are allocated when the referred individual makes an eligible purchase of £40 or more on our site.<br/>❖ Points for sharing your birthday via the loyalty page will be awarded to you on your birthday.<br/>❖ Points for writing a product review will be awarded to you at the end of that week. Please note points will be awarded for not more than one review per calendar week.</p>"
+          }
+        },
+        "0e67fd5d-82d5-439d-88fc-bfd56e13b9e7": {
+          "type": "content",
+          "settings": {
+            "title": "DO PURCHASES MADE PRIOR TO ME JOINING THE LONGEVITY REWARDS COUNT TOWARDS MY POINT EARNINGS?",
+            "answer": "<p>If you have opened an e-mail or placed an order in the last 3 months prior to the launch of the loyalty program, you will receive the points for your purchases in the last 12 months.</p>"
+          }
+        },
+        "6e984e1c-58e7-4e6b-9ccd-554b1de5209d": {
+          "type": "content",
+          "settings": {
+            "title": "DO I RECEIVE SHIPPING BENEFITS?",
+            "answer": "<p>Shipping benefits are available to you when you reach the SILVER BRANCH (+2500 pts) or GOLDEN TREE (+5000 pts) tier. ❖ Silver Branch tier customers will receive a discount of £5 on shipping for economy & premium/express. Free shipping will apply if the cost is below £5 for your country. ❖ Golden Tree tier customers will receive free economy & premium/express shipping.</p>"
+          }
+        },
+        "545dee19-3a25-42dd-8e26-fe83e5bd8315": {
+          "type": "content",
+          "settings": {
+            "title": "HOW DO I ACHIEVE GOLDEN TREE TIER TO ACQUIRE FREE PREMIUM/EXPRESS SHIPPING?",
+            "answer": "<p>To achieve the Golden Tree tier you will need to accumulate 5000 points. Points can also be accumulated on purchases; for sharing your birthday; activities on social media platforms; for friend referrals and reviews. (Please refer to HOW DO I EARN MY POINTS?)</p>"
+          }
+        },
+        "cdf2a02e-898e-4f63-a389-ba45958e16ec": {
+          "type": "content",
+          "settings": {
+            "title": "CAN I USE THE POINTS REDEMPTION AGAINST A SUBSCRIPTION?",
+            "answer": "<p>Unfortunately not, the checkout point slider will not work on orders that include subscriptions. You can however convert your points to gift cards via the loyalty page and use them to attain further discounts on your subscription orders. However, please note that gift cards work only on the initial subscription order, renewals do not receive discounts due to gift cards.</p>"
+          }
+        },
+        "b3c07793-04bc-4ac3-bec3-f152109d1019": {
+          "type": "content",
+          "settings": {
+            "title": "CAN I GIVE MY LONGEVITY REWARDS DISCOUNT CODE TO SOMEONE ELSE?",
+            "answer": "<p>Longevity Rewards discount codes are not transferable and may not be sold, transferred or assigned to anyone else. Attempts to transfer the code may invalidate your Longevity Rewards.</p>"
+          }
+        },
+        "c7423ae4-1e55-49f9-8a9b-2a504a574816": {
+          "type": "content",
+          "settings": {
+            "title": "ARE MY REWARDS REFUNDABLE OR EXCHANGEABLE?",
+            "answer": "<p>Unfortunately, Longevity Rewards. i.e. points/discount codes or gift vouchers, may not be returned or exchanged for points or cash, for another product, gift cards or other discounts. Longevity Rewards points accumulated may only be used by you at checkout, using the checkout slider or via the loyalty page to convert to gift cards to use on your purchases. Alternatively, you can choose to donate an amount to the Alzheimer’s society..</p>"
+          }
+        },
+        "8be38c3f-b8a7-4738-9c0b-01da2e45fdcf": {
+          "type": "content",
+          "settings": {
+            "title": "I CAN’T FIND THE ANSWERS TO MY QUESTIONS?",
+            "answer": "<p>Still looking for answers? You may find them in our <a href=\"https://youthandearth.com/pages/longevity-rewards-terms-and-conditions\">T&C’s</a>  or if you are still unable to find answers to your questions, please contact us via <a href=\"mailto:support@youthandearth.com\">support@youthandearth.com</a>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--16815701426389__4d8ff25c-8549-4153-a528-c106e7f02fb6-content-1",
+        "template--16815701426389__4d8ff25c-8549-4153-a528-c106e7f02fb6-content-2",
+        "template--16815701426389__4d8ff25c-8549-4153-a528-c106e7f02fb6-content-3",
+        "template--16815701426389__4d8ff25c-8549-4153-a528-c106e7f02fb6-content-4",
+        "template--16815701426389__4d8ff25c-8549-4153-a528-c106e7f02fb6-content-5",
+        "template--16815701426389__4d8ff25c-8549-4153-a528-c106e7f02fb6-content-6",
+        "0f731a4a-9eeb-48c8-923f-55005cdda799",
+        "75f04117-339c-4894-9dc8-5f8b5ef64eed",
+        "f1d06437-0d0d-446b-a07d-fdc4986a91d9",
+        "0e67fd5d-82d5-439d-88fc-bfd56e13b9e7",
+        "6e984e1c-58e7-4e6b-9ccd-554b1de5209d",
+        "545dee19-3a25-42dd-8e26-fe83e5bd8315",
+        "cdf2a02e-898e-4f63-a389-ba45958e16ec",
+        "b3c07793-04bc-4ac3-bec3-f152109d1019",
+        "c7423ae4-1e55-49f9-8a9b-2a504a574816",
+        "8be38c3f-b8a7-4738-9c0b-01da2e45fdcf"
+      ],
+      "settings": {
+        "title": "",
+        "width": "standard",
+        "padding_top": 0,
+        "padding_bottom": 80,
+        "animation": "none",
+        "padding_top_mobile": 56,
+        "padding_bottom_mobile": 56,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "main": {
+      "type": "page-content__main",
+      "disabled": true,
+      "settings": {
+        "show_heading": true,
+        "heading_alignment": "left",
+        "width": "standard",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "css_class": "",
+        "custom_css": ""
+      }
+    }
+  },
+  "order": [
+    "e190c6c2-169a-4e32-b7e3-d15938bcde1d",
+    "a7880be4-b755-40f9-9639-c97eba95b517",
+    "0e55ac26-cb26-4c0b-bdef-cb69efe74c75",
+    "9d720465-214d-4315-a9ea-5666ee19f197",
+    "925e30c9-3e1b-494b-b051-656e7da297b5",
+    "main"
+  ]
+}

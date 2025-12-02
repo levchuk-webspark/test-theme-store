@@ -42,6 +42,80 @@
     }
   {% endif %}
 
+  .highlight-query {
+    background-color: {{ settings.link_hover_color }}; 
+    border-radius: 3px;
+    padding: 0 2px;
+  }
+
+   .search-result__title > a {
+    font-family: Ambit;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 110.00000000000001%;
+    letter-spacing: 0%;
+    color: {{ settings.regular_color }};
+  }
+
+   .search-result__title:hover > a {
+    color: {{ settings.link_hover_color }};
+  }
+
+  
+  .search-result__title:hover > a > .highlight-query {
+    color: #F7F5F1;
+  }
+
+   .has-padding-top {
+    padding-top: 0;
+  }
+
+   .blog_meta {
+      font-size: 14px;
+  } 
+
+   .excerpt { 
+    font-size: 16px;
+    margin-top: 8px;
+  }
+
+   .search-result__title {
+    margin-bottom: 8px;
+  }
+
+  img {
+    border-radius: 10px;
+  }
+
+
+  @media only screen and (max-width: 798px) {
+      .search-result__title > a {
+       font-size: 16px;
+       margin-bottom: 8px;
+     }
+
+     .search-result__title {
+      margin-bottom: 8px;
+    }
+
+     .blog_meta {
+      font-size: 12px;
+    }
+
+     .excerpt {
+      font-size: 14px;
+      margin-top: 8px;
+    }
+
+     .control.has-icons-left .input {
+      padding-left: 2.5em;
+    }
+
+    
+  }
+
+  
+
   {% render 'css-loop',
           css: custom_css,
           id: id
@@ -393,6 +467,32 @@
 
 <script data-theme-editor-load-script src="{{ 'z__jsSidebar.js' | asset_url }}"></script>
 <script src="{{ 'z__jsSearch.js' | asset_url }}"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const params = new URLSearchParams(window.location.search);
+    const query = params.get('q')?.toLowerCase();
+    const type = params.get('type');
+
+    if (type === 'article') {
+      // document.body.classList.add('search-article-results');
+    }
+
+    if (query) {
+      const titles = document.querySelectorAll('h3.search-result__title a');
+
+      titles.forEach((titleLink) => {
+        const originalText = titleLink.textContent;
+
+        const regex = new RegExp(`(${query})`, 'gi');
+
+        const highlightedText = originalText.replace(regex, `<span class="highlight-query">$1</span>`);
+
+        titleLink.innerHTML = highlightedText;
+      });
+    }
+  });
+</script>
+
 
 {% schema %}
 {

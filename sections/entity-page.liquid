@@ -1,0 +1,357 @@
+{%- assign entities_links = linklists.entities.links -%}
+{%- assign blog = blogs.learninghub -%}
+
+<div class="ei-container">
+  <h1 class="ei-title">{{ section.settings.heading }}</h1>
+
+  <!-- Chips (scrollable) -->
+  <div id="entity-chips" class="ei-chips" role="toolbar" aria-label="Topics">
+    {%- for link in entities_links -%}
+      {% assign slug = link.title | handleize %}
+      <button class="chip" type="button" data-entity="{{ slug }}" data-url="{{ link.url }}" aria-pressed="false">
+        <span class="chip-text">{{ link.title }}</span>
+      </button>
+    {%- endfor -%}
+  </div>
+
+  <div id="ei-feature" class="ei-feature">
+    {%- for link in entities_links -%}
+      {% assign slug = link.title | handleize %}
+      {% assign entity_meta = metaobjects.entity_details[slug] %}
+
+      {%- assign images_str = '' -%}
+      {%- assign urls_str = '' -%}
+      {%- assign titles_str = '' -%}
+      {%- assign excerpts_str = '' -%}
+      {%- assign images_count = 0 -%}
+
+      {%- for art in blog.articles -%}
+        {% assign refs = art.metafields.custom.entity_reference.value %}
+        {% if refs != blank %}
+          {% for ref in refs %}
+            {%- assign matched = false -%}
+
+            {%- if ref.id != blank and entity_meta.id != blank and ref.id == entity_meta.id -%}
+              {%- assign matched = true -%}
+            {%- elsif ref.system != blank and ref.system.handle == slug -%}
+              {%- assign matched = true -%}
+            {%- elsif ref.handle != blank and ref.handle == slug -%}
+              {%- assign matched = true -%}
+            {%- elsif ref == slug -%}
+              {%- assign matched = true -%}
+            {%- endif -%}
+
+            {% if matched %}
+              {%- if art.image and images_count < 3 -%}
+                {%- assign url_img = art.image | image_url: width: 600, height: 400 -%}
+                {%- assign url_art = art.url -%}
+                {%- assign title_art = art.title | escape -%}
+                {%- assign excerpt_art = art.excerpt_or_content | strip_html | truncate: 140 | escape -%}
+
+                {%- if images_str == '' -%}
+                  {%- assign images_str = url_img -%}
+                  {%- assign urls_str = url_art -%}
+                  {%- assign titles_str = title_art -%}
+                  {%- assign excerpts_str = excerpt_art -%}
+                {%- else -%}
+                  {%- assign images_str = images_str | append: '||' | append: url_img -%}
+                  {%- assign urls_str = urls_str | append: '||' | append: url_art -%}
+                  {%- assign titles_str = titles_str | append: '||' | append: title_art -%}
+                  {%- assign excerpts_str = excerpts_str | append: '||' | append: excerpt_art -%}
+                {%- endif -%}
+
+                {%- assign images_count = images_count | plus: 1 -%}
+              {%- endif -%}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+        {%- if images_count >= 3 -%}{% break %}{%- endif %}
+      {%- endfor -%}
+
+      {%- assign images = images_str | split: '||' -%}
+      {%- assign urls = urls_str | split: '||' -%}
+      {%- assign titles = titles_str | split: '||' -%}
+      {%- assign excerpts = excerpts_str | split: '||' -%}
+
+      <section class="ei-feature-item" data-entity="{{ slug }}" >
+        <h2 class="ei-card-title">{{ entity_meta.title | metafield_tag | strip_html | default: link.title }}</h2>
+        <!-- Article cards grid -->
+        <div class="ei-feature-thumbs">
+          {%- if images.size > 0 and images[0] != '' -%}
+            {%- assign max_index = images.size | minus: 1 -%}
+            {%- for i in (0..max_index) -%}
+              {%- assign img = images[i] -%}
+              {%- assign art_url = urls[i] -%}
+              {%- assign art_title = titles[i] -%}
+              {%- assign art_excerpt = excerpts[i] -%}
+              {%- if img != blank -%}
+                <article class="ei-thumb-card">
+                  <a href="{{ art_url }}" class="ei-thumb-link">
+                    <div class="ei-thumb">
+                      <img src="{{ img }}" alt="{{ art_title }}" loading="lazy" width="100%" height="100%">
+                    </div>
+                    <div class="ei-thumb-content">
+                      <h4 class="ei-thumb-title">{{ art_title }}</h4>
+                      <p class="ei-thumb-excerpt">{{ art_excerpt }}</p>
+                    </div>
+                  </a>
+                </article>
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endif -%}
+        </div>
+
+        <!-- Entity summary below -->
+        <div class="ei-feature-body">
+          {% comment %} <h2 class="ei-card-title">{{ entity_meta.title | default: link.title }}</h2> {% endcomment %}
+          <p class="ei-card-excerpt">
+            {%- if entity_meta.about != blank -%}
+              {% assign about_entity = entity_meta.about | metafield_tag | split: '</h2>' %}
+              {{ about_entity[2] | strip_html |  truncatewords: 30, '...' |  replace: "Entity Type: ", "" }}
+            {%- else -%}
+              No summary available.
+            {%- endif -%}
+          </p>
+          <div class="ei-feature-meta">
+            {% comment %}
+              <span class="ei-count">
+                {{- count }} article{% if count != 1 %}s{% endif -%}
+              </span>
+            {% endcomment %}
+            <a href="{{ link.url }}" class="view-more">Explore {{ link.title }}</a>
+          </div>
+        </div>
+      </section>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% style %}
+  .ei-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .ei-title {
+    font-size: 28px;
+    margin: 0;
+  }
+  /* Chips */
+  .ei-chips {
+    display: flex;
+    gap: 10px;
+    overflow-x: scroll;
+    padding: 5px;
+  }
+  .ei-chips::-webkit-scrollbar {
+    display: none;
+  }
+  .chip {
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid #dcdcdc;
+    background: var(--Earth-Grey-Light);
+    color: var(--Outer-Space);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.12s ease;
+  }
+  .chip__selected {
+    background: #d3e8d0;
+    border-color: rgba(34, 197, 94, 0.2);
+  }
+  .chip:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.25);
+  }
+
+  /* Featured */
+  .ei-feature {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .ei-feature-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+    margin: auto;
+    padding: 10px;
+  }
+
+  .ei-feature-thumbs {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 6px;
+    height: 100%;
+    margin: 0 auto;
+  }
+
+  .ei-thumb {
+    width: 100%;
+    height: 50%;
+  }
+  .ei-thumb-card {
+    display: flex;
+    min-width: 300px;
+    max-width: 400px;
+    height: 100%;
+    flex-direction: column;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .ei-thumb-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  .ei-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .ei-thumb-content {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 10px;
+    align-items: center;
+    height: fit-content;
+  }
+
+  .ei-thumb-title {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--Outer-Space);
+    line-height: 1.4;
+  }
+
+  .ei-thumb-excerpt {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #666;
+    line-height: 1.4;
+    margin: 0;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .ei-feature-body {
+    text-align: center;
+    max-width: 700px;
+  }
+
+  .ei-card-title {
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+
+  .ei-card-excerpt {
+    font-size: 15px;
+    color: #555;
+  }
+
+  .ei-feature-meta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    font-size: 0.8rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .ei-count {
+    font-size: 13px;
+    color: #777;
+  }
+  .view-more {
+    background: var(--Earth-Green-Light);
+    color: white;
+    border-radius: 20px;
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .view-more:hover {
+    opacity: 0.9;
+    color: var(--Youth-Green-Accent);
+  }
+
+  @media (max-width: 900px) {
+    .ei-feature-item {
+      flex-direction: column;
+    }
+    .ei-feature-thumbs {
+      width: 100%;
+      flex-direction: row;
+    }
+    .ei-thumb-card {
+      width: auto;
+      flex: 1;
+    }
+    .ei-thumb {
+      min-height: 120px;
+    }
+    .chip-text {
+      font-size: 12px;
+    }
+    .ei-chips {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      height: 200px;
+      overflow-x: scroll;
+    }
+  }
+{% endstyle %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const chips = document.querySelectorAll('.chip');
+    const features = document.querySelectorAll('.ei-feature-item');
+
+    function showEntity(slug) {
+      chips.forEach((c) => {
+        const is = c.dataset.entity === slug;
+        c.classList.toggle('chip__selected', is);
+        c.setAttribute('aria-pressed', is ? 'true' : 'false');
+      });
+      features.forEach((f) => (f.style.display = f.dataset.entity === slug ? '' : 'none'));
+    }
+
+    chips.forEach((chip, i) => {
+      chip.addEventListener('click', () => showEntity(chip.dataset.entity));
+      chip.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          chip.click();
+        }
+      });
+      if (i === 0) showEntity(chip.dataset.entity);
+    });
+  });
+</script>

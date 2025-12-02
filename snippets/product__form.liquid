@@ -6,12 +6,12 @@
 <div class="{% if section.settings.hide-price and article %}hide-price {% endif %}summary-panel no-subscription-price-display_container no_discount_price_element">
   <div class="panel-cell no-subscription-price-display">
     {% if product_buy_and_save.text_1 != blank %}
-    <div class="price-block__product_buy_and_save">
+      <div class="price-block__product_buy_and_save">
     {% endif %}
     <div style="font-size:14px; margin-left:5px;">Price:</div>
     <div class="no-subscription-price-display-prices">
       {% if product_discount.discount_text %}
-        <span class="product-discount">{{ product_discount.discount_text }}</span>
+        {% comment %} <span class="product-discount">{{ product_discount.discount_text }}</span> {% endcomment %}
       {% endif %}
       <span class="no-subscription-compare-at-price">
         <span class="money">{{ product.compare_at_price | money }}</span>
@@ -21,21 +21,26 @@
       </span>
     </div>
     {% if product_buy_and_save.text_1 != blank %}
-    </div>
+      </div>
     {% endif %}
-    <div class="product_buy_and_save_container" {% if product_buy_and_save.text_1 != blank %}style="display: flex; width: 100%"{% endif %}>
-    {% if product_buy_and_save.text_1 != blank %}
-      <span class="product_buy_and_save_item">{{ product_buy_and_save.text_1 }}</span>
-    {% endif %}
-    {% if product_buy_and_save.text_2 != blank %}
-      <span class="product_buy_and_save_item">{{ product_buy_and_save.text_2 }}</span>
-    {% endif %}
-    {% if product_buy_and_save.text_3 != blank %}
-      <span class="product_buy_and_save_item">{{ product_buy_and_save.text_3 }}</span>
-    {% endif %}
-    {% if product_buy_and_save.text_4 != blank %}
-      <span class="product_buy_and_save_item">{{ product_buy_and_save.text_4 }}</span>
-    {% endif %}
+    <div
+      class="product_buy_and_save_container"
+      {% if product_buy_and_save.text_1 != blank %}
+        style="display: flex; width: 100%"
+      {% endif %}
+    >
+      {% if product_buy_and_save.text_1 != blank %}
+        <span class="product_buy_and_save_item">{{ product_buy_and_save.text_1 }}</span>
+      {% endif %}
+      {% if product_buy_and_save.text_2 != blank %}
+        <span class="product_buy_and_save_item">{{ product_buy_and_save.text_2 }}</span>
+      {% endif %}
+      {% if product_buy_and_save.text_3 != blank %}
+        <span class="product_buy_and_save_item">{{ product_buy_and_save.text_3 }}</span>
+      {% endif %}
+      {% if product_buy_and_save.text_4 != blank %}
+        <span class="product_buy_and_save_item">{{ product_buy_and_save.text_4 }}</span>
+      {% endif %}
     </div>
   </div>
 </div>
@@ -50,7 +55,6 @@
         <span class="money">{{ product.price | money }}</span>
       </span>
       <span class="no-subscription-price no-subscription-price_google-shopping-discount-applied">
-
         {% assign google_discount_value = 100 | minus: settings.google_discount_percentage | times: 0.01 %}
         <span class="money">{{ product.price | times: google_discount_value | money }}</span>
       </span>
@@ -58,9 +62,7 @@
   </div>
 </div>
 
-
 {% style %}
-
   .no-subscription-price-display {
     {% if product_buy_and_save.text_1 != blank %}
       flex-direction: column;
@@ -86,72 +88,62 @@
   .no-subscription-price-display {
     display: flex;
     justify-content: space-between;
-    border-radius: 5px;
+    border-radius: 8px;
     padding: 0.5rem 1rem;
     font-size: 18px !important;
     border: 1px solid #000;
   }
+
   .hide-price {
     display: none !important;
   }
 
   .product:has(.sealsubs-container) .panel-cell.no-subscription-price-display {
     display: none !important;
-}
+  }
 
-.product  .sealsubs-container .sls-purchase-options-container .sls-option-container,
-.product  .sealsubs-container .sls-purchase-options-container .sls-option-container.sls-active,
-  .sealsubs-container .sls-purchase-options-container .sls-option-container, 
+  .product  .sealsubs-container .sls-purchase-options-container .sls-option-container,
+  .product  .sealsubs-container .sls-purchase-options-container .sls-option-container.sls-active,
+  .sealsubs-container .sls-purchase-options-container .sls-option-container,
   .sealsubs-container .sls-purchase-options-container .sls-option-container.sls-active{
     border-color: black;
     padding: 11px 18px !important;
 
     background: transparent;
     box-shadow: unset;
-}
+  }
 
-.product  [data-product] .sls-purchase-options-container, [data-product] .sls-purchase-options-container {
+  .product  [data-product] .sls-purchase-options-container, [data-product] .sls-purchase-options-container {
     border-color: black;
-    border-radius: 5px; 
+    border-radius: 5px;
     overflow: hidden;
-}
+  }
 
-.sls-purchase-options-container  .seal-col.seal-col-radio {
+  .sls-purchase-options-container  .seal-col.seal-col-radio {
     padding-right: 20px !important;
-}
+  }
 
-.product  .sls-purchase-options-container label.sls-selling-plan-group-name {
+  .product  .sls-purchase-options-container label.sls-selling-plan-group-name {
     font-weight: 400;
-}
+  }
 
   label.sls-selling-plan-group-name {
     font-weight: 400;
   }
 
-.sealsubs-target-element .sls-option[type="radio"]:checked + .sls-custom-radio:after {
+  .sealsubs-target-element .sls-option[type="radio"]:checked + .sls-custom-radio:after {
     width: 12px;
     height: 12px;
-}
+  }
 
-.sealsubs-target-element  .sls-selling-plan-group-price .sls-price {
+  .sealsubs-target-element  .sls-selling-plan-group-price .sls-price {
     font-weight: bold;
   }
 
-.sealsubs-target-element .sealsubs-container .sls-select-container select.sls-select {
-  background-image: none !important;
-  border-radius: 8px;
-  padding: 8px 9px;
-  border: 1px solid #40454480 !important;
-  background: transparent;
-  font-family: Ambit;
-  font-weight: 400;
-  font-size: 14px;
-  leading-trim: Cap height;
-  /* line-height: 140%; */
-  line-height: 1;
-  letter-spacing: 0%;
-  color: #404544;
-}
+  .sealsubs-target-element .sealsubs-container .sls-select-container select.sls-select {
+    border-radius: 8px;
+    padding: 0 10px;
+  }
 
   .sealsubs-target-element .sls-option[type="radio"] + .sls-custom-radio:after {
     {% if v14_color != blank  %}
@@ -166,9 +158,7 @@
   }
 
   .sls-savings-badge {
-    padding-left: 7px;
-    padding-right: 7px;
-    font-size: 16px;
+    padding-top: 2px;
     {% if v14_color != blank  %}
       padding-top: unset;
       background-color: {{ v14_color }};
@@ -182,31 +172,117 @@
     {% endif %}
   }
 
+  .product-product-redesign .purchase-details__buttons .button--add-to-cart {
+    border-radius: 32px;
+    background: #284734;
+    color: #F7F5F1;
+    font-family: Ambit;
+    font-weight: 900;
+    font-size: 15px;
+    line-height: 24px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .product-product-redesign .purchase-details__buttons .button--add-to-cart:hover {
+    background: #2f543dff !important;
+    color: #F7F5F1;
+  }
+
+  .product-product-redesign .purchase-details.has-quantity-box-true {
+    gap: 8px;
+    padding-top: 8px;
+  }
+
+  .product-product-redesign .purchase-details .quantity-wrapper {
+      border-radius: 32px !important;
+      border: 1px solid #284734;
+      justify-content: center;
+      background: #fff;
+  }
+
+  .product-product-redesign .purchase-details__quantity .control.quantity-input-control {
+    flex: 0 1 20%;
+  }
+
+  .product-product-redesign .purchase-details__quantity .control.quantity-input-control .quantity-input {
+    background: #fff;
+    color: #404544;
+  }
+
+  .product-product-redesign .purchase-details__quantity .control.minus-control .quantity-minus.quantity-element {
+    border-radius: 32px 0 0 32px;
+    background: #fff;
+    color: #404544;
+  }
+
+  .product-product-redesign .purchase-details__quantity .control.plus-control .quantity-plus.quantity-element {
+    border-radius: 0 32px 32px 0;
+    background: #fff;
+    color: #404544;
+  }
+
+  .product-product-redesign .purchase-details__quantity .control {
+    margin: 0 !important;
+  }
+
+  .product-product-redesign .purchase-details__quantity .control .quantity-element .icon svg {
+    fill: #404544;
+  }
+
+  .product-product-redesign .purchase-details__quantity .control .quantity-element .icon {
+    border: none;
+    padding: 0;
+  }
+
+  .product-product-redesign .purchase-details__quantity .control.plus-control,
+  .product-product-redesign .purchase-details__quantity .control.minus-control {
+    width: auto;
+    flex: 0 1 40%;
+  }
+
+  .product-product-redesign .purchase-details__quantity .control.plus-control .quantity-plus.quantity-element,
+  .product-product-redesign .purchase-details__quantity .control.minus-control .quantity-minus.quantity-element {
+    cursor: pointer;
+    width: auto;
+  }
+
+  .product-product-redesign .purchase-details__quantity .control.plus-control .quantity-plus.quantity-element[disabled="disabled"] .icon svg,
+  .product-product-redesign .purchase-details__quantity .control.minus-control .quantity-minus.quantity-element[disabled="disabled"] .icon svg {
+    fill: #949992;
+  }
+
+  .product-product-redesign .product-quantity-box.purchase-details__quantity {
+    width: 22%;
+  }
+
+  @media (max-width: 991px) {
+    .product-product-redesign .product-quantity-box.purchase-details__quantity {
+      width: 25%;
+    }
+  }
 {% endstyle %}
 
 <script>
-  if(!document.querySelectorAll('.bsub-widget__group-header')[0]){
-    document.querySelector('.no-subscription-price-display_container').style.display = "block";
+  if (!document.querySelectorAll('.bsub-widget__group-header')[0]) {
+    document.querySelector('.no-subscription-price-display_container').style.display = 'block';
   }
 </script>
 
 <script>
-  if(!document.querySelectorAll('.sealsubs-container')[0]){
-    document.querySelector('.no-subscription-price-display_container').style.display = "block";
+  if (!document.querySelectorAll('.sealsubs-container')[0]) {
+    document.querySelector('.no-subscription-price-display_container').style.display = 'block';
   }
 
   // Subscription widget was created
-  document.addEventListener('sealsubs:subscription_widget_created', function(e) {
-    
-    document.querySelector('.no-subscription-price-display_container').style.height = "0px";
-    document.querySelector('.no-subscription-price-display_container').style.display = "none";
-      
+  document.addEventListener('sealsubs:subscription_widget_created', function (e) {
+    document.querySelector('.no-subscription-price-display_container').style.height = '0px';
+    document.querySelector('.no-subscription-price-display_container').style.display = 'none';
   });
 </script>
 
-
 <div class="google_shopping_discount_applied">{{ settings.coupon_applied_text }}</div>
-
 
 {% if show_payment_button == false or product.selling_plan_groups.size > 0 or article %}
   {% assign show_payment_button = false %}
@@ -231,27 +307,27 @@
   data-select-id="product-select-{{ product.id }}{{ product-form }}{{ object.id }}{{ block.id }}"
   data-enable-state="{% if template.name == 'product' %}true{% else %}false{% endif %}"
   {% if settings.limit_quantity or settings.display_inventory_left %}
-  data-variant-inventory='[{%- for v in product.variants -%}{"id":{{v.id}},"inventory_quantity":{{v.inventory_quantity}},"inventory_management":"{{v.inventory_management}}","inventory_policy":"{{v.inventory_policy}}"}{% if forloop.last == false %},{% endif %}{%- endfor -%}]'
+    data-variant-inventory='[{%- for v in product.variants -%}{"id":{{v.id}},"inventory_quantity":{{v.inventory_quantity}},"inventory_management":"{{v.inventory_management}}","inventory_policy":"{{v.inventory_policy}}"}{% if forloop.last == false %},{% endif %}{%- endfor -%}]'
   {% endif %}
-  data-product-id="{{ product.id }}">
-  {% form 'product'
-    , product %}
+  data-product-id="{{ product.id }}"
+>
+  {% form 'product', product %}
     <div style="display: none;" data-shop-pay-installments-template>{{ form | payment_terms }}</div>
 
-    {% comment %} 
-                  Display variant options for a product
-     
-                  @param product
-                  @param selected_variant
-                  @param style
-     
-                  @param enable_swatches
-                  @param swatches_shape
-                  @param swatches_option_trigger
-                  @param swatches_option_style
-                  @param swatches_product_page_size
-                  @param swatch_colors 
-            {% endcomment %}
+    {% comment %}
+      Display variant options for a product
+
+      @param product
+      @param selected_variant
+      @param style
+
+      @param enable_swatches
+      @param swatches_shape
+      @param swatches_option_trigger
+      @param swatches_option_style
+      @param swatches_product_page_size
+      @param swatch_colors
+    {% endcomment %}
 
     {% liquid
       assign style = 'select'
@@ -272,38 +348,40 @@
     %}
 
     {% comment %}Inject @pixelunion/shopify-variants-ui/variant-selection begin{% endcomment %}
-    {% comment %} 
-                  Display variant options for a product
-     
-                  @param product
-                  @param selected_variant
-                  @param variant_selection_id
-                  @param sold_out_options
-                  @param style
-     
-                  @param enable_swatches
-                  @param swatches_shape
-                  @param swatches_option_trigger
-                  @param swatches_option_style
-                  @param swatches_product_page_size
-                  @param swatches_custom_colors 
-            {% endcomment %}
+    {% comment %}
+      Display variant options for a product
+
+      @param product
+      @param selected_variant
+      @param variant_selection_id
+      @param sold_out_options
+      @param style
+
+      @param enable_swatches
+      @param swatches_shape
+      @param swatches_option_trigger
+      @param swatches_option_style
+      @param swatches_product_page_size
+      @param swatches_custom_colors
+    {% endcomment %}
 
     <variant-selection
       {% if variant_selection_id != blank %}
-      id="{{ variant_selection_id }}"
+        id="{{ variant_selection_id }}"
       {% endif %}
       class="variant-selection"
       product-url="{{ product.url }}.js"
       variant="{% if selected_variant %}{{ selected_variant.id }}{% else %}not-selected{% endif %}"
-      data-variant-selection>
+      data-variant-selection
+    >
       {% if product.has_only_default_variant %}
         <input
           class="variant-selection__variants variant-selection__variants--default"
           name="id"
           type="hidden"
           value="{{ product.variants.first.id }}"
-          data-variants>
+          data-variants
+        >
       {% else %}
         <noscript>
           <style>
@@ -316,62 +394,71 @@
           class="variant-selection__variants"
           name="id"
           style="display: none"
-          data-variants>
+          data-variants
+        >
           <option
             value="not-selected"
             disabled
             {% if selected_variant == blank %}
-            selected{% endif %}>
+              selected
+            {% endif %}
+          >
             {{ 'product.variants.choose_variant' | t }}
           </option>
           {% for variant in product.variants %}
             <option
               {% if selected_variant and selected_variant.id == variant.id %}
-              selected{% endif %}
+                selected
+              {% endif %}
               value="{{ variant.id }}"
               {% unless variant.available %}
-              disabled{% endunless %}>
+                disabled
+              {% endunless %}
+            >
               {{ variant.title }} - {{ variant.price | money }}
             </option>
           {% endfor %}
         </select>
 
         {% comment %}Inject @pixelunion/shopify-variants-ui/options-selection begin{% endcomment %}
-        {% comment %} 
-                              Display variant options for a product
-     
-                              @param product
-                              @param selected_variant
-                              @param variant_selection_id
-                              @param sold_out_options
-                              @param style
-     
-                              @param enable_swatches
-                              @param swatches_shape
-                              @param swatches_option_trigger
-                              @param swatches_option_style
-                              @param swatches_product_page_size
-                              @param swatches_custom_colors
-                              @param swatch_file_type 
-                        {% endcomment %}
+        {% comment %}
+          Display variant options for a product
+
+          @param product
+          @param selected_variant
+          @param variant_selection_id
+          @param sold_out_options
+          @param style
+
+          @param enable_swatches
+          @param swatches_shape
+          @param swatches_option_trigger
+          @param swatches_option_style
+          @param swatches_product_page_size
+          @param swatches_custom_colors
+          @param swatch_file_type
+        {% endcomment %}
 
         <options-selection
           {% if variant_selection_id != blank %}
-          variant-selection="{{ variant_selection_id }}"
+            variant-selection="{{ variant_selection_id }}"
           {% endif %}
           style="display: none;"
           {% if sold_out_options == 'disabled' %}
-          disable-unavailable{% endif %}
+            disable-unavailable
+          {% endif %}
           {% if sold_out_options == 'hidden' %}
-          remove-unavailable{% endif %}
-          data-options-selection>
+            remove-unavailable
+          {% endif %}
+          data-options-selection
+        >
           <script>
-            (function() {
+            (function () {
               const scriptTag = document.scripts[document.scripts.length - 1];
               const parentTag = scriptTag.parentNode;
-                    
+
               parentTag.style.display = '';
-            })()
+            })();
           </script>
 
           {% for option in product.options_with_values %}
@@ -388,51 +475,33 @@
             {% endif %}
 
             {% if style == 'select' and show_swatches == false %}
-              {% render 'options-select'
-                ,
- product: product
-                ,
- selected_variant: selected_variant
-                ,
- option: option
-                ,
- option_index: option_index
+              {% render 'options-select',
+                product: product,
+                selected_variant: selected_variant,
+                option: option,
+                option_index: option_index
               %}
             {% elsif style == 'radio' or show_swatches == true %}
-              {% render 'options-radios'
-                ,
- product: product
-                ,
- selected_variant: selected_variant
-                ,
- option: option
-                ,
- option_index: option_index
-                ,
- show_swatches: show_swatches
-                ,
- swatch_option_key: swatch_option_key
-                ,
- swatch_size: swatches_product_page_size
-                ,
- swatches_option_style: swatches_option_style
-                ,
- swatch_file_type: swatch_file_type
-                ,
- swatches_custom_colors: swatches_custom_colors
-                ,
- swatches_shape: swatches_shape
-                ,
+              {% render 'options-radios',
+                product: product,
+                selected_variant: selected_variant,
+                option: option,
+                option_index: option_index,
+                show_swatches: show_swatches,
+                swatch_option_key: swatch_option_key,
+                swatch_size: swatches_product_page_size,
+                swatches_option_style: swatches_option_style,
+                swatch_file_type: swatch_file_type,
+                swatches_custom_colors: swatches_custom_colors,
+                swatches_shape: swatches_shape
               %}
             {% endif %}
           {% endfor %}
         </options-selection>
         {% comment %}Inject @pixelunion/shopify-variants-ui/options-selection end{% endcomment %}
-
       {% endif %}
     </variant-selection>
     {% comment %}Inject @pixelunion/shopify-variants-ui/variant-selection end{% endcomment %}
-
 
     {% if product.available %}
       {% if settings.display_inventory_left %}
@@ -446,50 +515,52 @@
               {% endif %}
             {% endcapture %}
             {% if selected_variant.inventory_quantity <= settings.inventory_threshold %}
-              <p class="items_left-padding-top">{{ selected_variant.inventory_quantity }} {{ items_left_text }}</p>
+              <p class="items_left-padding-top">
+                {{ selected_variant.inventory_quantity }}
+                {{ items_left_text }}
+              </p>
             {% endif %}
           {% endif %}
         </div>
       {% endif %}
 
-      
       <div style="" class="purchase-details has-quantity-box-{{ settings.display_product_quantity }}">
         {% unless show_payment_button %}
           {% comment %}Inject @pixelunion/pxs-gift-card-recipient-form/recipient-form begin{% endcomment %}
-          {% comment %} 
-                                    @param form {Object} 
-                                    The form object
-     
-                                    @param section {Object} 
-                                    The section object
-     
-                                    @param show_recipient_form {Boolean} 
-                                    If true, show the gift card recipient form
-     
-                                    @param show_recipient_form_placeholders {Boolean} 
-                                    If true, show recipient form placeholder attributes
-     
-                                    @param show_recipient_form_labels {Boolean} 
-                                    If true, show recipient form input labels
-     
-                                    @param show_recipient_form_max_characters_message {Boolean} 
-                                    If true, show the recipient form max characters message
-     
-                                    @param recipient_form_textarea_rows {Number} 
-                                    A numerical value to specify the number of textarea rows
-     
-                                    @param recipient_form_textarea_classes {String} 
-                                    A space separated list of class names added to recipient form textarea
-     
-                                    @param recipient_form_input_classes {String} 
-                                    A space separated list of class names added to recipient form inputs
-     
-                                    @param recipient_form_label_classes {String} 
-                                    A space separated list of class names added to recipient form labels
-     
-                                    @param recipient_form_label_position {String} 
-                                    The recipient form input label position, either 'top', or 'bottom' 
-                              {% endcomment %}
+          {% comment %}
+            @param form {Object}
+            The form object
+
+            @param section {Object}
+            The section object
+
+            @param show_recipient_form {Boolean}
+            If true, show the gift card recipient form
+
+            @param show_recipient_form_placeholders {Boolean}
+            If true, show recipient form placeholder attributes
+
+            @param show_recipient_form_labels {Boolean}
+            If true, show recipient form input labels
+
+            @param show_recipient_form_max_characters_message {Boolean}
+            If true, show the recipient form max characters message
+
+            @param recipient_form_textarea_rows {Number}
+            A numerical value to specify the number of textarea rows
+
+            @param recipient_form_textarea_classes {String}
+            A space separated list of class names added to recipient form textarea
+
+            @param recipient_form_input_classes {String}
+            A space separated list of class names added to recipient form inputs
+
+            @param recipient_form_label_classes {String}
+            A space separated list of class names added to recipient form labels
+
+            @param recipient_form_label_position {String}
+            The recipient form input label position, either 'top', or 'bottom'
+          {% endcomment %}
 
           {% liquid
             assign show_recipient_form_placeholders = show_recipient_form_placeholders | default: false
@@ -502,14 +573,18 @@
           {%- if show_recipient_form and product.gift_card? -%}
             <details class="recipient-disclosure" data-recipient-disclosure>
               <summary class="recipient-disclosure__summary">
-                <label class="recipient-disclosure__checkbox-label" for="recipient-disclosure__checkbox-{{ section.id }}">
+                <label
+                  class="recipient-disclosure__checkbox-label"
+                  for="recipient-disclosure__checkbox-{{ section.id }}"
+                >
                   <input
                     class="recipient-disclosure__checkbox"
                     id="recipient-disclosure__checkbox-{{ section.id }}"
                     type="checkbox"
                     name="properties[__shopify_send_gift_card_to_recipient]"
                     tabindex="-1"
-                    data-recipient-disclosure-checkbox>
+                    data-recipient-disclosure-checkbox
+                  >
 
                   {%- render 'recipient-form-disclosure-icon' -%}
 
@@ -697,55 +772,50 @@
             </details>
           {%- endif -%}
           {% comment %}Inject @pixelunion/pxs-gift-card-recipient-form/recipient-form end{% endcomment %}
-
         {% endunless %}
 
         {% if settings.display_product_quantity %}
           <div class="purchase-details__quantity product-quantity-box quantity-box--{{ settings.qty_box_style }}">
-            {% render 'quantity-box'
-              ,
- variant: selected_variant
-              ,
-            %}
+            {% render 'quantity-box', variant: selected_variant %}
           </div>
         {% endif %}
 
         {% if show_payment_button %}
           {% comment %}Inject @pixelunion/pxs-gift-card-recipient-form/recipient-form begin{% endcomment %}
-          {% comment %} 
-                                    @param form {Object} 
-                                    The form object
-     
-                                    @param section {Object} 
-                                    The section object
-     
-                                    @param show_recipient_form {Boolean} 
-                                    If true, show the gift card recipient form
-     
-                                    @param show_recipient_form_placeholders {Boolean} 
-                                    If true, show recipient form placeholder attributes
-     
-                                    @param show_recipient_form_labels {Boolean} 
-                                    If true, show recipient form input labels
-     
-                                    @param show_recipient_form_max_characters_message {Boolean} 
-                                    If true, show the recipient form max characters message
-     
-                                    @param recipient_form_textarea_rows {Number} 
-                                    A numerical value to specify the number of textarea rows
-     
-                                    @param recipient_form_textarea_classes {String} 
-                                    A space separated list of class names added to recipient form textarea
-     
-                                    @param recipient_form_input_classes {String} 
-                                    A space separated list of class names added to recipient form inputs
-     
-                                    @param recipient_form_label_classes {String} 
-                                    A space separated list of class names added to recipient form labels
-     
-                                    @param recipient_form_label_position {String} 
-                                    The recipient form input label position, either 'top', or 'bottom' 
-                              {% endcomment %}
+          {% comment %}
+            @param form {Object}
+            The form object
+
+            @param section {Object}
+            The section object
+
+            @param show_recipient_form {Boolean}
+            If true, show the gift card recipient form
+
+            @param show_recipient_form_placeholders {Boolean}
+            If true, show recipient form placeholder attributes
+
+            @param show_recipient_form_labels {Boolean}
+            If true, show recipient form input labels
+
+            @param show_recipient_form_max_characters_message {Boolean}
+            If true, show the recipient form max characters message
+
+            @param recipient_form_textarea_rows {Number}
+            A numerical value to specify the number of textarea rows
+
+            @param recipient_form_textarea_classes {String}
+            A space separated list of class names added to recipient form textarea
+
+            @param recipient_form_input_classes {String}
+            A space separated list of class names added to recipient form inputs
+
+            @param recipient_form_label_classes {String}
+            A space separated list of class names added to recipient form labels
+
+            @param recipient_form_label_position {String}
+            The recipient form input label position, either 'top', or 'bottom'
+          {% endcomment %}
 
           {% liquid
             assign show_recipient_form_placeholders = show_recipient_form_placeholders | default: false
@@ -758,14 +828,18 @@
           {%- if show_recipient_form and product.gift_card? -%}
             <details class="recipient-disclosure" data-recipient-disclosure>
               <summary class="recipient-disclosure__summary">
-                <label class="recipient-disclosure__checkbox-label" for="recipient-disclosure__checkbox-{{ section.id }}">
+                <label
+                  class="recipient-disclosure__checkbox-label"
+                  for="recipient-disclosure__checkbox-{{ section.id }}"
+                >
                   <input
                     class="recipient-disclosure__checkbox"
                     id="recipient-disclosure__checkbox-{{ section.id }}"
                     type="checkbox"
                     name="properties[__shopify_send_gift_card_to_recipient]"
                     tabindex="-1"
-                    data-recipient-disclosure-checkbox>
+                    data-recipient-disclosure-checkbox
+                  >
 
                   {%- render 'recipient-form-disclosure-icon' -%}
 
@@ -953,57 +1027,50 @@
             </details>
           {%- endif -%}
           {% comment %}Inject @pixelunion/pxs-gift-card-recipient-form/recipient-form end{% endcomment %}
-
         {% endif %}
-
 
         <div class="purchase-details__buttons purchase-details__spb--{{ show_payment_button }}">
           {% if settings.cart_action == 'reload_page' %}
             <input
               type="hidden"
               name="return_to"
-              value="back" />
+              value="back"
+            />
           {% elsif settings.cart_action == 'redirect_cart' %}
             <input
               type="hidden"
               name="return_to"
-              value="{{ routes.cart_url }}" />
+              value="{{ request.path }}?viewcart=true"
+            />
           {% endif %}
 
-
-          {% assign displayPreorderMetafield = false %}
+          {% assign display_preorder_metafield = false %}
           {% for v in product.variants %}
-            {% unless v.inventory_quantity > 0 or v.inventory_policy == "deny" %}
-              {% if product.metafields.jadepuma.preorder_button_text != blank and product.metafields.jadepuma.preorder_message != blank %}
-                {% assign displayPreorderMetafield = true %}
+            {% unless v.inventory_quantity > 0 or v.inventory_policy == 'deny' %}
+              {% if product.metafields.jadepuma.preorder_button_text != blank
+                and product.metafields.jadepuma.preorder_message != blank
+              %}
+                {% assign display_preorder_metafield = true %}
                 {% break %}
               {% endif %}
             {% endunless %}
           {% endfor %}
 
-          {% capture add_to_cart_label %}{% if displayPreorderMetafield %}{{ product.metafields.jadepuma.preorder_button_text }}{% elsif collection_handles contains 'pre-order' %}{{ 'collections.general.pre_order' | t }}{% else %}{{ 'products.product.add_to_cart' | t }}{% endif %}{% endcapture %}
+          {% capture add_to_cart_label %}{% if display_preorder_metafield %}{{ product.metafields.jadepuma.preorder_button_text }}{% elsif collection_handles contains 'pre-order' %}{{ 'collections.general.pre_order' | t }}{% else %}{{ 'products.product.add_to_cart' | t }}{% endif %}{% endcapture %}
           <button
             type="submit"
             name="add"
-            class="button {% if settings.cart_action == 'mini_cart' or settings.cart_action == 'drawer' %} ajax-submit {% endif %}action_button button--add-to-cart {% if show_payment_button %} action_button--secondary {% endif %}"
-            data-label={{ add_to_cart_label | json }}
-            data-add-to-cart-trigger>
+            class="button action_button button--add-to-cart {% if show_payment_button %} action_button--secondary ajax-submit {% endif %}"
+            data-label="{{ add_to_cart_label | json }}"
+            data-primary-atc="true"
+            data-product-id="{{ product.id }}"
+          >
             {% if settings.button_cart_icon != blank and settings.button_cart_icon_position == 'left' %}
-              {% render 'icon'
-                ,
- name: settings.button_cart_icon
-                ,
- icon_class: 'icon--cart'
-              %}
+              {% render 'icon', name: settings.button_cart_icon, icon_class: 'icon--cart' %}
             {% endif %}
             <span class="text">{{ add_to_cart_label }}</span>
             {% if settings.button_cart_icon != blank and settings.button_cart_icon_position == 'right' %}
-              {% render 'icon'
-                ,
- name: settings.button_cart_icon
-                ,
- icon_class: 'icon--cart icon--right'
-              %}
+              {% render 'icon', name: settings.button_cart_icon, icon_class: 'icon--cart icon--right' %}
             {% endif %}
             <svg
               x="0px"
@@ -1011,7 +1078,8 @@
               width="32px"
               height="32px"
               viewBox="0 0 32 32"
-              class="checkmark">
+              class="checkmark"
+            >
               <path
                 fill="none"
                 stroke-width="2"
@@ -1024,14 +1092,13 @@
             {{ form | payment_button }}
           {% endif %}
         </div>
-
       </div>
       <div
         class="cart-warning"
         {% if displayPreorderMetafield %}
-        style="margin-top: 10px"
-        {% endif %}></div>
-
+          style="margin-top: 10px"
+        {% endif %}
+      ></div>
 
       {% if displayPreorderMetafield %}
         <div class="summary-panel metafield_message_preorder_wrapper">
@@ -1043,12 +1110,11 @@
           type="hidden"
           id="preorder_metafield"
           name="properties[{{ product.metafields.jadepuma.preorder_button_text }}]"
-          value="{{ product.metafields.jadepuma.preorder_message }}">
+          value="{{ product.metafields.jadepuma.preorder_message }}"
+        >
       {% endif %}
 
-
       {% render 'custom-add-to-cart' %}
-
     {% endif %}
   {% endform %}
 

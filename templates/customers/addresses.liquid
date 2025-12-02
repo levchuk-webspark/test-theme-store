@@ -151,7 +151,7 @@
 
           <p class="action_bottom is-flex is-align-center has-padding-bottom has-padding-top">
             <input class="button action_button button--secondary" type="submit" value="{{ 'customer.addresses.add' | t }}" />
-            <span> {{ 'customer.addresses.or' | t }} <a href="#" onclick="Shopify.CustomerAddress.toggleNewForm(); return false;">{{ 'customer.addresses.cancel' | t }}</a></span>
+            <span> {{ 'customer.addresses.default' | t }} <a href="#" onclick="Shopify.CustomerAddress.toggleNewForm(); return false;">{{ 'customer.addresses.cancel' | t }}</a></span>
           </p>
 
         {% endform %}
@@ -162,7 +162,7 @@
           {% if customer.addresses.size > 0 %}
             {% render 'address-loop' %}
           {% else %}
-            <p>{{ 'customer.addresses.no_addresses' | t }}</p>
+            <p>{{ 'customer.addresses.default' | t }}</p>
           {% endif %}
 
           <div class="address-table__pagination">

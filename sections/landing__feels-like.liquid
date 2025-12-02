@@ -1,0 +1,305 @@
+{% assign data = section.settings %}
+{% assign cards = section.blocks | where: 'type', 'card' %}
+
+{% style %}
+  .feels-like {
+    padding: 124px 0;
+    background: #fff;
+  }
+
+  .feels-like__wrapper {
+    margin: 0 auto;
+    max-width: 1280px;
+    padding: 0 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .feels-like__head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    max-width: 920px;
+    margin: 0 auto;
+  }
+
+  .feels-like__subtitle {
+    font-family: 'Romie' !important;
+    font-weight: 400;
+    font-size: 40px;
+    color: #284734;
+    line-height: 1.3;
+    letter-spacing: -2.2%;
+    text-align: center;
+  }
+
+  .feels-like__title {
+    color: #284734;
+    font-weight: 400;
+    font-size: 56px;
+    line-height: 1.3;
+    letter-spacing: -2.2%;
+    text-align: center;
+  }
+
+  .feels-like__list {
+    display: flex;
+    gap: 8px;
+  }
+
+  .feels-like__card {
+    flex: 0 0 calc(25% - ((8px * 3) / 4));
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+    background: #EDF2E9;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .feels-like__card:has(.feels-like__card-image) {
+    padding: 0;
+  }
+
+  .feels-like__card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 1.1;
+  }
+
+  .feels-like__card-icon {
+    flex: 0 0 auto;
+    width: 78px;
+    height: 78px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: auto;
+  }
+
+  .feels-like__card-title {
+    font-family: Ambit SemiBold !important;
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -2.2%;
+    color: #284734;
+  }
+
+  .feels-like__card-description {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.25;
+    letter-spacing: -2.2%;
+    color: #404544;
+  }
+
+  @media (max-width: 1200px) {
+    .feels-like__card-icon {
+      width: 64px;
+      height: 64px;
+    }
+
+    .feels-like__card-title {
+      font-size: 32px;
+    }
+  }
+
+  @media (max-width: 991px) {
+    .feels-like__subtitle {
+      font-size: 32px;
+    }
+
+    .feels-like__title {
+      font-size: 48px;
+    }
+
+    .feels-like__list {
+      flex-wrap: wrap;
+    }
+
+    .feels-like__card {
+      flex: 0 0 calc(50% - (8px / 2));
+      aspect-ratio: 1.6;
+    }
+
+    .feels-like__card-image {
+      aspect-ratio: 1.6;
+    }
+
+    .feels-like__card-title {
+      font-size: 36px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .feels-like {
+      padding: 80px 0;
+    }
+
+    .feels-like__title {
+      font-size: 36px;
+    }
+
+    .feels-like__list {
+      flex-wrap: nowrap;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .feels-like__card {
+      flex: 1 1 auto;
+      aspect-ratio: unset;
+      gap: 24px;
+    }
+
+    .feels-like__card-image {
+      aspect-ratio: 2;
+    }
+  }
+
+  @media (max-width: 450px) {
+    .feels-like__subtitle {
+      font-size: 24px;
+    }
+
+    .feels-like__title {
+      font-size: 32px;
+    }
+
+    .feels-like__card-image {
+      aspect-ratio: 1.6;
+    }
+  }
+{% endstyle %}
+
+{% if template.suffix == 'christmas-landing' %}
+  {% style %}
+    .feels-like--{{ template.suffix }} .feels-like__title {
+      font-size: 46px;
+    }
+
+    .feels-like--{{ template.suffix }} .feels-like__head {
+      max-width: 100%;
+    }
+
+    @media (max-width: 991px) {
+      .feels-like--{{ template.suffix }} .feels-like__title {
+        font-size: 48px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .feels-like--{{ template.suffix }} .feels-like__title {
+        font-size: 36px;
+      }
+    }
+
+    @media (max-width: 450px) {
+      .feels-like--{{ template.suffix }} .feels-like__title {
+        font-size: 32px;
+      }
+    }
+  {% endstyle %}
+{% endif %}
+
+<section class="feels-like feels-like--{{ template.suffix }}">
+  <div class="feels-like__wrapper">
+    <div class="feels-like__head">
+      {% if data.subtitle != blank %}
+        <h3 class="feels-like__subtitle">{{ data.subtitle }}</h3>
+      {% endif %}
+      {% if data.title != blank %}
+        <h2 class="feels-like__title">{{ data.title }}</h2>
+      {% endif %}
+    </div>
+    <ul class="feels-like__list">
+      {% for block in cards %}
+        {% assign card = block.settings %}
+
+        <li class="feels-like__card">
+          {% if card.image != blank %}
+            {{ card.image | image_url: width: 608, height: 544 | image_tag: class: 'feels-like__card-image', loading: 'lazy' }}
+          {% else %}
+            {% if card.icon != blank %}
+              <div class="feels-like__card-icon">{{ card.icon }}</div>
+            {% endif %}
+            {% if card.title != blank %}
+              <h4 class="feels-like__card-title">{{ card.title }}</h4>
+            {% endif %}
+            {% if card.description != blank %}
+              <p class="feels-like__card-description">{{ card.description }}</p>
+            {% endif %}
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+    {% if data.disclaimer != blank %}
+      <div class="feels-like__disclaimer">{{ data.disclaimer }}</div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Landing - Feels Like",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Section subtitle"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title"
+    },
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Card image"
+        },
+        {
+          "type": "header",
+          "content": "Or"
+        },
+        {
+          "type": "html",
+          "id": "icon",
+          "label": "Card icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card title"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Card description"
+        },
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Landing: Feels Like"
+    }
+  ]
+}
+{% endschema %}

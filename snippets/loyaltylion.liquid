@@ -13,7 +13,7 @@
           id: "{{ customer.id }}",
           email: "{{ customer.email }}",
           name: "{{ customer.name }}",
-          rechargeHash: "{{ customer.metafields.subscriptions.customer_string | if: customer.metafields.subscriptions.customer_string }}"
+          rechargeHash: "{% if customer.metafields.subscriptions.customer_string %}{{ customer.metafields.subscriptions.customer_string }}{% endif %}"
         },
         auth: {
           date: "{{ date }}",

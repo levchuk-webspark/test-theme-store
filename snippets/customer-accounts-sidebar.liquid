@@ -1,0 +1,14 @@
+<section id="customer-accounts-sidebar" class="customer accounts section-{{ section.id }}-padding">
+  <h1>{{ 'customer.account.title' | t }}</h1>
+  <a href="{{ routes.account_url }}">
+    {{ 'customer.account.return' | t }}
+  </a>
+  <ul>
+    {% for link in linklists['customer-accounts-sidebar'] %}
+        <p>{{ link.title }}</p>
+      <li>
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</section>

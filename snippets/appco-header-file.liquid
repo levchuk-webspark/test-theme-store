@@ -214,11 +214,7 @@ class appco_loadscripts {
         }, 500, e)
     }
     wnwAnalytics() {
-        document.querySelectorAll(".analytics").forEach(function(e) {
-            trekkie.integrations = !1;
-            var t = document.createElement("script");
-            t.innerHTML = e.innerHTML, e.parentNode.insertBefore(t, e.nextSibling), e.parentNode.removeChild(e)
-        })
+        /* Preserve Shopify analytics elements without modification */
     }
     wnwBoomerang() {
         document.querySelectorAll(".boomerang").forEach(function(e) {

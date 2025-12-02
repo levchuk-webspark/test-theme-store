@@ -1,0 +1,481 @@
+{% assign data = section.settings %}
+
+{% style %}
+  .page-christmas-landing .shopify-section.shopify-section-group-header-group-classic:has(#announcement_main),
+  .page-christmas-landing .shopify-section.shopify-section-group-header-group-classic.top-bar,
+  .page-christmas-landing .shopify-section.shopify-section-group-footer-group-classic:has(.trust-badges_outer),
+  .page-christmas-landing .shopify-section.shopify-section-group-footer-group-classic:has(.still-got-questions) {
+    display: none !important;
+  }
+
+  .page-christmas-landing .shopify-section.shopify-section-group-footer-group-classic .under-overlay-menu {
+    margin-bottom: 0 !important;
+    padding-bottom: 24px;
+  }
+
+  .page-christmas-landing #footer.footer__container {
+    padding-top: 96px;
+  }
+
+  .christmases-to-come {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-height: 800px;
+    overflow: hidden;
+  }
+
+  .christmases-to-come__background-image-mobile,
+  .christmases-to-come__background-image {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .christmases-to-come__background-image-mobile {
+    display: none;
+  }
+
+  .christmases-to-come__wrapper {
+    flex: 1 1 auto;
+    display: flex;
+    margin: 0 auto;
+    max-width: 1280px;
+    padding: 0 20px;
+    width: 100%;
+  }
+
+  .christmases-to-come__column {
+    flex: 0 1 50%;
+    padding: 72px 0 24px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .christmases-to-come__info {
+    flex: 0 1 50%;
+    position: relative;
+  }
+
+  .christmases-to-come__list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
+    max-width: 600px;
+    margin-bottom: 56px;
+  }
+
+  .christmases-to-come__list li {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 12px 16px;
+    border-radius: 50px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.25;
+    letter-spacing: -2.2%;
+    color: #F7F5F1;
+    white-space: nowrap;
+    background: #FFFFFF33;
+    backdrop-filter: blur(16px);
+  }
+
+  .christmases-to-come__list li:before {
+    flex: 0 0 auto;
+    content: '';
+    width: 18px;
+    height: 18px;
+    aspect-ratio: 1;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' viewBox='0 0 18 18'%3E%3Ccircle cx='9' cy='9' r='7' fill='%2344693D'/%3E%3Cpath stroke='%23D4D8D0' stroke-linecap='round' stroke-linejoin='round' d='M7 9.5 8.5 11l3-3'/%3E%3C/svg%3E%0A");
+  }
+
+  .christmases-to-come__title {
+    font-family: Ambit !important;
+    font-size: 50px;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -2.2%;
+    color: #F7F5F1;
+    text-transform: capitalize;
+    max-width: 550px;
+    margin-bottom: 24px;
+  }
+
+  .christmases-to-come__subtitle {
+    font-family: 'Romie' !important;
+    font-size: 40px;
+    color: #F7F5F1;
+    font-weight: 400;
+  }
+
+  .christmases-to-come__description {
+    font-size: 20px;
+    line-height: 1.5;
+    font-weight: 400;
+    letter-spacing: -2.2%;
+    color: #F7F5F1;
+    margin-bottom: 24px;
+  }
+
+  .christmases-to-come__price {
+    font-size: 32px;
+    line-height: 1.5;
+    font-weight: 400;
+    letter-spacing: -2.2%;
+    color: #F7F5F1;
+    margin-bottom: 48px;
+  }
+
+  .christmases-to-come__price span:first-child {
+    text-decoration: line-through;
+  }
+
+  .christmases-to-come__price span:last-child {
+    font-weight: 900;
+  }
+
+  .christmases-to-come__button {
+    font-family: Ambit SemiBold !important;
+    background: linear-gradient(65deg, #294031 10%, #71B743 130%);
+    padding: 24px 32px;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 1.25;
+    letter-spacing: -2.2%;
+    color: #fff;
+    width: fit-content;
+    min-width: 240px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .christmases-to-come__button:hover {
+    transform: scale(1.04);
+    color: #fff;
+  }
+
+  .christmases-to-come__image {
+    display: none;
+    flex: 1 1 auto;
+    overflow: hidden;
+  }
+
+  .christmases-to-come__image img {
+    object-fit: contain;
+    max-height: 100%;
+  }
+
+  .christmases-to-come__bottom {
+    flex: 0 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 24px;
+    position: relative;
+    z-index: 1;
+    position: absolute;
+    backdrop-filter: blur(8px);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+    width: 50vw;
+    left: 0;
+    bottom: 0;
+  }
+
+  .christmases-to-come__rating {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 36px;
+    letter-spacing: -2.2%;
+    color: #FEBC18;
+  }
+
+  .christmases-to-come__disclaimer {
+    font-size: 20px;
+    line-height: 1.25;
+    font-weight: 400;
+    letter-spacing: -2.2%;
+    color: #fff;
+    text-align: center;
+  }
+
+  @media (max-width: 1400px) {
+    .christmases-to-come {
+      min-height: auto;
+    }
+
+    .christmases-to-come__column {
+      padding: 48px 0;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .christmases-to-come {
+      min-height: auto;
+    }
+
+    .christmases-to-come__title {
+      font-size: 44px;
+    }
+
+    .christmases-to-come__subtitle {
+      font-size: 32px;
+    }
+
+    .christmases-to-come__column {
+      flex: 0 1 55%;
+    }
+
+    .christmases-to-come__description {
+      font-size: 16px;
+    }
+
+    .christmases-to-come__price {
+      margin-bottom: 32px;
+      font-size: 24px;
+    }
+
+    .christmases-to-come__list {
+      margin-bottom: 32px;
+    }
+
+    .christmases-to-come__info {
+      flex: 0 1 45%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    
+    .christmases-to-come__bottom {
+      position: static;
+      width: calc(100% + 20px);
+      margin-right: -20px;
+    }
+  }
+
+  @media (max-width: 991px) {
+    .page-christmas-landing #footer.footer__container {
+      padding-top: 72px;
+    }
+
+    .christmases-to-come:after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: #00000040;
+      z-index: 0;
+    }
+
+    .christmases-to-come__background-image-mobile {
+      display: block;
+    }
+
+    .christmases-to-come__background-image {
+      display: none;
+    }
+
+    .christmases-to-come__wrapper {
+      flex-direction: column;
+      position: relative;
+      z-index: 1;
+    }
+
+    .christmases-to-come__column {
+      padding: 32px 0 24px;
+    }
+
+    .christmases-to-come__list {
+      max-width: none;
+      order: 2;
+      margin: 24px 0 0;
+    }
+
+    .christmases-to-come__list li {
+      width: 100%;
+    }
+
+    .christmases-to-come__title {
+      font-size: 36px;
+    }
+
+    .christmases-to-come__disclaimer {
+      font-size: 16px;
+    }
+
+    .christmases-to-come__bottom {
+      width: calc(100% + 40px);
+      margin: 0 -20px;
+      padding: 16px;
+    }
+  }
+
+  @media (max-width: 798px) {
+    .page-christmas-landing #footer.footer__container {
+      padding-top: 64px;
+    }
+  }
+
+  @media (max-width: 450px) {
+    .page-christmas-landing #footer.footer__container {
+      padding-top: 48px;
+    }
+
+    .christmases-to-come__title {
+      max-width: 100%;
+      font-size: 32px;
+    }
+
+    .christmases-to-come__title br {
+      display: none;
+    }
+
+    .christmases-to-come__subtitle {
+      font-size: 24px;
+    }
+  }
+{% endstyle %}
+
+<section class="christmases-to-come">
+  {% if data.background_image != blank %}
+    {{ data.background_image | image_url: width: 2880, height: 1640 | image_tag: class: 'christmases-to-come__background-image', loading: 'lazy' }}
+  {% endif %}
+  {% if data.background_image_mobile != blank %}
+    {{ data.background_image_mobile | image_url: width: 1369, height: 1152 | image_tag: class: 'christmases-to-come__background-image-mobile', loading: 'lazy' }}
+  {% endif %}
+
+  <div class="christmases-to-come__wrapper">
+    <div class="christmases-to-come__column">
+      {% if data.list != blank %}
+        <ul class="christmases-to-come__list">{{ data.list }}</ul>
+      {% endif %}
+      {% if data.title != blank %}
+        <h1 class="christmases-to-come__title">{{ data.title }}</h1>
+      {% endif %}
+      {% if data.subtitle != blank %}
+        <h2 class="christmases-to-come__subtitle">{{ data.subtitle }}</h2>
+      {% endif %}
+      {% if data.description != blank %}
+        <p class="christmases-to-come__description">{{ data.description }}</p>
+      {% endif %}
+      {% if data.price != blank %}
+        <div class="christmases-to-come__price">{{ data.price }}</div>
+      {% endif %}
+      {% if data.cta_label != blank %}
+        <a 
+          {% if data.cta_url != blank %}
+            href="{{ data.cta_url }}"
+          {% endif %}
+          class="christmases-to-come__button"
+        >
+          {{ data.cta_label }}
+        </a>
+      {% endif %}
+    </div>
+
+    <div class="christmases-to-come__info">
+      <div class="christmases-to-come__bottom">
+        <div class="christmases-to-come__rating">
+          {% if data.rating != blank %}
+            {{ data.rating }}
+          {% endif %}
+          {% if data.stars != blank %}
+            {{ data.stars }}
+          {% endif %}
+        </div>
+        {% if data.disclaimer != blank %}
+          <div class="christmases-to-come__disclaimer">{{ data.disclaimer }}</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Christmas - To come",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Section background image"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_mobile",
+      "label": "Section background image mobile"
+    },
+    {
+      "type": "html",
+      "id": "list",
+      "label": "Section list"
+    },
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Section title"
+    },
+        {
+      "type": "html",
+      "id": "subtitle",
+      "label": "Section subtitle"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Section description"
+    },
+    {
+      "type": "html",
+      "id": "price",
+      "label": "Section price"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Section CTA label"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Section CTA link"
+    },
+    {
+      "type": "text",
+      "id": "rating",
+      "label": "Section rating"
+    },
+    {
+      "type": "html",
+      "id": "stars",
+      "label": "Section stars"
+    },
+    {
+      "type": "text",
+      "id": "disclaimer",
+      "label": "Section disclaimer"
+    },
+  ],
+  "presets": [
+    {
+      "name": "Christmas Landing: To come"
+    }
+  ]
+}
+{% endschema %}

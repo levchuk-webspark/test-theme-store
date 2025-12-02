@@ -1,0 +1,377 @@
+{% assign data = product.metafields.custom.product_how_it_works.value %}
+{% assign cards = data.section_items.value %}
+
+{% if data != blank %}
+  {% style %}
+  .new-product-how-it-works {
+    padding: 96px 0;
+    background: #F7F5F1;
+  }
+  
+  .new-product-how-it-works__wrapper {
+    margin: 0 auto;
+    max-width: 1440px;
+    padding: 0 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  
+  .new-product-how-it-works__head {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .new-product-how-it-works__title {
+    color: #284734;
+    font-family: Ambit;
+    font-weight: 900;
+    font-size: 38px;
+    line-height: 44px;
+    letter-spacing: 3%;
+  }
+  
+  .new-product-how-it-works__title span {
+    font-family: 'Romie' !important;
+    font-style: Italic;
+    font-weight: 400;
+  }
+  
+  .new-product-how-it-works__description {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #6F726E;
+    letter-spacing: 0%;
+  }
+  
+  .new-product-how-it-works__list {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .new-product-how-it-works__card {
+    flex: 0 0 calc(33.333% - ((20px * 2) / 3));
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    padding: 32px 24px;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.3s ease-in-out; 
+  }
+  
+  .new-product-how-it-works__card:hover {
+    box-shadow: 0 0 10px #00000010;
+  }
+  
+  .new-product-how-it-works__card:hover .new-product-how-it-works__card-button svg {
+    transform: scale(1.2);
+  }
+  
+  .new-product-how-it-works__card-image {
+    flex: 0 0 auto;
+    width: 100px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    margin-bottom: 32px;
+    text-align: left;
+  }
+  
+  .new-product-how-it-works__card-button {
+    font-family: Ambit,Merriweather Sans,sans-serif !important;
+    font-weight: 900;
+    width: 100%;
+    font-size: 20px;
+    line-height: 1.25;
+    color: #284734;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    min-height: 76px;
+    gap: 32px;
+    padding: 12px 0;
+    margin-bottom: 24px;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #EDF2E9;
+  }
+  
+  .new-product-how-it-works__card-button svg {
+    transition: all 0.3s ease-in-out; 
+    flex: 0 0 auto;
+  }
+  
+  .new-product-how-it-works__card-description {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.25;
+    color: #6F726E;
+    font-family: Ambit;
+  }
+  
+  .new-product-how-it-works__popup {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: #04040433;
+    overflow: hidden;
+    z-index: 1000;
+    transition: all 0.3s ease-in-out; 
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  .new-product-how-it-works__popup._active-hiw {
+    pointer-events: auto;
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .new-product-how-it-works__popup-wrapper {
+    margin-left: auto;
+    width: 540px;
+    padding: 32px;
+    position: relative;
+    background: #F7F5F1;
+    height: 100%;
+    transition: all 0.3s ease-in-out; 
+    transform: translateX(100%);
+    overflow-y: auto;
+  }
+  
+  .new-product-how-it-works__popup._active-hiw .new-product-how-it-works__popup-wrapper {
+    transform: none;
+  }
+  
+  .new-product-how-it-works__popup-close {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .new-product-how-it-works__popup-close svg {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .new-product-how-it-works__popup-close:hover svg {
+    transform: rotate(135deg);
+  }
+  
+  .new-product-how-it-works__popup-image {
+    aspect-ratio: 1;
+    width: 112px;
+    height: 112px;
+    margin-bottom: 32px;
+    border-radius: 50%;
+    border: 1px solid #284734;
+    object-fit: cover;
+  }
+  
+  .new-product-how-it-works__popup-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-left: 12px;
+  }
+  
+  .new-product-how-it-works__popup-title {
+    font-family: Ambit;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 1.2;
+    letter-spacing: 0%;
+  }
+  
+  .new-product-how-it-works__popup-content h3 {
+    font-size: 20px;
+  }
+  
+  .new-product-how-it-works__popup-content ul,
+  .new-product-how-it-works__popup-content li,
+  .new-product-how-it-works__popup-content p {
+    font-size: 16px;
+  }
+  
+  .new-product-how-it-works__popup-content ul {
+    list-style: disc;
+    padding-left: 16px;
+  }
+  
+  .new-product-how-it-works__popup-content hr {
+    margin: 0;
+    color: #D4D8D0;
+  }
+  
+  @media (max-width: 991px) {
+    .new-product-how-it-works {
+      padding: 64px 0;
+    }
+  
+    .new-product-how-it-works__wrapper {
+      gap: 24px;
+    }
+  
+    .new-product-how-it-works__title {
+      font-size: 30px;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .new-product-how-it-works__description {
+      font-size: 16px;
+    }
+  
+    .new-product-how-it-works__list {
+      gap: 8px;
+      overflow-x: auto;
+      width: calc(100% + 40px);
+      padding: 20px;
+      margin: 0 -20px;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  
+    .new-product-how-it-works__list::-webkit-scrollbar {
+      display: none;
+    }
+  
+    .new-product-how-it-works__card {
+      flex: 0 0 340px;
+      padding: 24px;
+    }
+  
+    .new-product-how-it-works__card-image {
+      flex: 0 0 auto;
+      width: 72px;
+      margin-bottom: 16px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .new-product-how-it-works__popup-wrapper {
+      width: 100%;
+      padding: 24px;
+    }
+  
+    .new-product-how-it-works__popup-content {
+      padding: 0;
+    }
+  }
+  
+  {% endstyle %}
+  
+  <section class="new-product-how-it-works">
+    <div class="new-product-how-it-works__wrapper">
+      <div class="new-product-how-it-works__head">
+        {% if data.section_title != blank %}
+          <h2 class="new-product-how-it-works__title">{{ data.section_title }}</h2>
+        {% endif %}
+        {% if data.section_description != blank %}
+          <p class="new-product-how-it-works__description">{{ data.section_description }}</p>
+        {% endif %}
+      </div>
+      <div class="new-product-how-it-works__list">
+        {% for card in cards %}
+          <button class="new-product-how-it-works__card" data-prod-hiw-toggle>
+            {% if card.image != blank %}
+              {{ card.image | image_url: width: 100, height: 100 | image_tag: class: 'new-product-how-it-works__card-image', loading: 'lazy' }}
+            {% endif %}
+            {% if card.title != blank %}
+              <div class="new-product-how-it-works__card-button">
+                {{ card.title }}
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="none" viewBox="0 0 36 36">
+                  <rect width="36" height="36" fill="#EDF2E9" rx="18"/>
+                  <g clip-path="url(#a)">
+                    <path stroke="#284734" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18 24.667V11.333M24.666 18H11.333"/>
+                  </g>
+                  <defs>
+                    <clipPath id="a">
+                      <path fill="#fff" d="M10 10h16v16H10z"/>
+                    </clipPath>
+                  </defs>
+                </svg>
+              </div>
+            {% endif %}
+            {% if card.description != blank %}
+              <p class="new-product-how-it-works__card-description">{{ card.description }}</p>
+            {% endif %}
+          </button>
+  
+          <div class="new-product-how-it-works__popup" data-prod-hiw-popup>
+            <div class="new-product-how-it-works__popup-wrapper">
+              <button class="new-product-how-it-works__popup-close" data-prod-hiw-close>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M17.7851 17.7851L6 6M17.7851 6L6 17.7851" stroke="#284734" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              {% if card.image != blank %}
+                {{ card.image | image_url: width: 112, height: 112 | image_tag: class: 'new-product-how-it-works__popup-image', loading: 'lazy' }}
+              {% endif %}
+              {% if card.full_description != blank %}
+                <div class="new-product-how-it-works__popup-content">
+                  {% if card.title != blank %}
+                    <h2 class="new-product-how-it-works__popup-title">
+                      {{ card.title }}
+                    </h2>
+                  {% endif %}
+                  {{ card.full_description }}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  
+  <script>
+    const hiwButtons = document.querySelectorAll('[data-prod-hiw-toggle]');
+    const popups = document.querySelectorAll('[data-prod-hiw-popup]');
+    const closeButtons = document.querySelectorAll('[data-prod-hiw-close]');
+  
+    const closeAllPopups = () => {
+      Array.from(popups).forEach(popup => popup.classList.remove('_active-hiw'));
+      document.documentElement.style.overflow = null;
+    }
+  
+    hiwButtons.forEach(btn => btn.addEventListener('click', () => {
+      const popup = btn.nextElementSibling;
+      popup.classList.add('_active-hiw');
+      document.documentElement.style.overflow = 'hidden';
+    }));
+  
+    closeButtons.forEach(btn => btn.addEventListener('click', closeAllPopups));
+  
+    popups.forEach(popup => popup.addEventListener('click', (e) => {
+      e.target.classList.contains('_active-hiw') && closeAllPopups();
+    }));
+  </script>
+{% endif %}
+
+{% schema %}
+{
+  "name": "New Product: How it works",
+  "presets": [
+    {
+      "name": "New Product: How it works"
+    }
+  ]
+}
+{% endschema %}

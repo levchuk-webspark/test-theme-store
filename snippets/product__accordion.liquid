@@ -12,8 +12,8 @@
   {% style %}
 
     .multiple_accordion__wrapper {
-        /* margin-top: -100px;
-        padding-top: 100px; */
+        margin-top: -100px;
+        padding-top: 100px;
     }
 
     .multiple_accordion_container-{{ id }}{
@@ -349,7 +349,7 @@
                       : <span class="nrv-variant">{{ product.selected_or_first_available_variant.metafields.jadepuma.nrv }}</span></p>
               {% else %}
                     <p>
-                      {% if block.settings.nrv_subheading != blank and product.id != 7396104798281 %}
+                      {% if block.settings.nrv_subheading != blank and product.id != 8667575910613 %}
                           <strong>{{ block.settings.nrv_subheading }}</strong>
                       
                       : {% endif %}{% if product.metafields.jadepuma.nrv != blank %}<span class="nrv-variant">{{ product.metafields.jadepuma.nrv }}</span>{% endif %}</p>
@@ -426,7 +426,7 @@
 
               {% if product.metafields.jadepuma.serving_size != blank %}
                     <p>
-                      {% if block.settings.serving-size_subheading != blank and product.id != 7396104798281 %}
+                      {% if block.settings.serving-size_subheading != blank and product.id != 8667575910613 %}
                           <strong>{{ block.settings.serving-size_subheading }}</strong>
                       
                       : {% endif %}<span class="serving-size-variant">{{ product.metafields.jadepuma.serving_size }}</span></p>

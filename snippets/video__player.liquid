@@ -1,0 +1,279 @@
+{% if video_url contains 'embed/' %}
+  {% assign video_id = video_url | split: 'embed/' | last | split: '?' | first %}
+{% elsif video_url contains 'youtube.com/watch' %}
+  {% assign qs = video_url | split: '?' | last %}
+  {% assign parts = qs | split: '&' %}
+  {% for p in parts %}
+    {% assign pair = p | split: '=' %}
+    {% if pair[0] == 'v' %}{% assign video_id = pair[1] %}{% endif %}
+  {% endfor %}
+{% endif %}
+
+{% style %}
+  .custom-video {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #000;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+
+  .custom-video #youtube-player iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    z-index: 1;
+  }
+
+  .custom-video__controls {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 16px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 6px;
+    width: calc(100% - 32px);
+    z-index: 100;
+  }
+
+  .custom-video__progress-container {
+    position: relative;
+    width: 100%;
+    height: 3.14px;
+    background: #949992;
+    border-radius: 1.5px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .custom-video__progress-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: #78be20;
+    transition: width 0.1s linear;
+  }
+
+  .custom-video__buttons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+  }
+  .custom-video__play-pause,
+  .custom-video__forward,
+  .custom-video__volume,
+  .custom-video__fullscreen {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+
+  .custom-video__volume {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80px;
+  }
+  .custom-video__play-pause img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .custom-video__volume-container {
+    position: relative;
+    width: 43px;
+    height: 4px;
+    transform-origin: center center;
+    cursor: pointer;
+  }
+  .custom-video__volume-track {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #444;
+    border-radius: 2px;
+  }
+  .custom-video__volume-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: #78be20;
+    transition: width 0.1s;
+  }
+  .custom-video__volume-knob {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  .custom-video__time {
+    font-size: 12px;
+    color: #fff;
+    margin-left: auto;
+    white-space: nowrap;
+  }
+
+  .hide {
+    display: none !important;
+  }
+{% endstyle %}
+
+<div class="custom-video">
+  <div id="youtube-player">
+    <iframe width="100%" height="100%" src="{{ video_url }}" frameborder="0" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+  </div>
+
+  {% comment %}
+    <div class="custom-video__controls">
+      <div class="custom-video__progress-container">
+        <div class="custom-video__progress-fill"></div>
+      </div>
+
+      <div class="custom-video__buttons">
+        <div class="custom-video__play-pause">
+          <img id="play" src="{{ 'video-play-btn.svg' | asset_url }}" width="16" height="16">
+          <img id="pause" src="{{ 'video-pause-btn.svg' | asset_url }}" class="hide" width="16" height="16">
+        </div>
+        <img class="custom-video__forward" src="{{ 'video-forward.svg' | asset_url }}" width="16" height="16">
+        <div class="custom-video__volume">
+          <img class="custom-video__volume-icon" src="{{ 'video-volume.svg' | asset_url }}" width="16" height="16">
+          <div class="custom-video__volume-container">
+            <div class="custom-video__volume-track"></div>
+            <div class="custom-video__volume-fill"></div>
+            <div class="custom-video__volume-knob"></div>
+          </div>
+        </div>
+        <span class="custom-video__time">0:00 / 0:00</span>
+        <img class="custom-video__fullscreen" src="{{ 'fullscreen-icon.svg' | asset_url }}" width="16" height="16">
+      </div>
+    </div>
+  {% endcomment %}
+</div>
+
+{% comment %}
+  <script src="https://www.youtube.com/iframe_api" async defer></script>
+  <script>
+    let ytPlayer, duration;
+    const progressFill = document.querySelector('.custom-video__progress-fill');
+    const playBtn = document.getElementById('play');
+    const pauseBtn = document.getElementById('pause');
+    const forwardBtn = document.querySelector('.custom-video__forward');
+    const timeDisplay = document.querySelector('.custom-video__time');
+    const fullBtn = document.querySelector('.custom-video__fullscreen');
+    const volIcon = document.querySelector('.custom-video__volume-icon');
+    const volTrack = document.querySelector('.custom-video__volume-track');
+    const volFill = document.querySelector('.custom-video__volume-fill');
+    const volKnob = document.querySelector('.custom-video__volume-knob');
+    const progBar = document.querySelector('.custom-video__progress-container');
+
+    function onYouTubeIframeAPIReady() {
+      ytPlayer = new YT.Player('youtube-player', {
+        videoId: '{{ video_id }}',
+        playerVars: {
+          enablejsapi: 1,
+          controls: 1,
+          modestbranding: 1,
+          rel: 0,
+          fs: 0,
+        },
+        events: {
+          onReady: onReady,
+          onStateChange: onState,
+        },
+      });
+    }
+
+    function formatTime(s) {
+      const m = Math.floor(s / 60),
+        sec = Math.floor(s % 60)
+          .toString()
+          .padStart(2, '0');
+      return `${m}:${sec}`;
+    }
+
+    function onReady() {
+      let currVol = ytPlayer.getVolume();
+      duration = ytPlayer.getDuration();
+      timeDisplay.textContent = `0:00 / ${formatTime(duration)}`;
+      volKnob.style.left = currVol + '%';
+      volFill.style.width = currVol + '%';
+
+      playBtn.addEventListener('click', () => {
+        ytPlayer.playVideo();
+        playBtn.classList.add('hide');
+        pauseBtn.classList.remove('hide');
+      });
+      pauseBtn.addEventListener('click', () => {
+        ytPlayer.pauseVideo();
+        pauseBtn.classList.add('hide');
+        playBtn.classList.remove('hide');
+      });
+
+      forwardBtn.addEventListener('click', () => ytPlayer.seekTo(ytPlayer.getCurrentTime() + 10, true));
+      fullBtn.addEventListener('click', () => ytPlayer.getIframe().requestFullscreen());
+
+      progBar.addEventListener('click', (e) => {
+        const pct = e.offsetX / progBar.clientWidth;
+        ytPlayer.seekTo(pct * duration, true);
+      });
+
+      volIcon.addEventListener('click', () => {
+        if (ytPlayer.isMuted()) {
+          ytPlayer.unMute();
+          volFill.style.width = currVol + '%';
+          volKnob.style.left = currVol + '%';
+        } else {
+          ytPlayer.mute();
+          volFill.style.width = 0;
+          volKnob.style.left = 0;
+        }
+      });
+      volTrack.parentElement.addEventListener('click', (e) => {
+        const rect = volTrack.getBoundingClientRect();
+        const pct = (e.clientX - rect.left) / rect.width;
+        ytPlayer.setVolume(pct * 100);
+        volFill.style.width = pct * 100 + '%';
+        volKnob.style.left = pct * 100 + '%';
+      });
+
+      setInterval(() => {
+        const now = ytPlayer.getCurrentTime();
+        const pct = now / duration;
+        progressFill.style.width = pct * 100 + '%';
+        timeDisplay.textContent = `${formatTime(now)} / ${formatTime(duration)}`;
+      }, 250);
+    }
+
+    function onState(e) {
+      if (e.data === YT.PlayerState.PLAYING) {
+        playBtn.classList.add('hide');
+        pauseBtn.classList.remove('hide');
+      } else {
+        pauseBtn.classList.add('hide');
+        playBtn.classList.remove('hide');
+      }
+    }
+  </script>
+{% endcomment %}

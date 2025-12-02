@@ -1,0 +1,301 @@
+{% assign data = section.settings %}
+{% assign blocks = section.blocks | where: 'type', 'info' %}
+
+{% style %}
+  .why-it-works {
+    background: #fff;
+  }
+
+  .why-it-works__wrapper {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 2000px;
+  }
+
+  .why-it-works__info-holder {
+    padding: 123px 25px;
+    text-align: center;
+  }
+
+  .why-it-works__info-holder,
+  .why-it-works__main-info {
+    color: #284734;
+  }
+
+  .why-it-works__title,
+  .why-it-works__description {
+    font-family: 'Romie' !important;
+    line-height: 1.3;
+    font-weight: 400;
+  }
+
+  .why-it-works__title {
+    font-size: 83px;
+  }
+
+  .why-it-works__description {
+    font-size: 42px;
+  }
+
+  .why-it-works__main-info {
+    text-align: center;
+    padding: 143px 50px;
+    background: #EDF2E9;
+  }
+
+  .why-it-works__main-info-text {
+    font-family: 'Ambit' !important;
+    font-size: 48px;
+    font-weight: 400;
+  }
+
+  .why-it-works__main-info-text span {
+    font-family: 'Romie' !important;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .why-it-works__item {
+    display: flex;
+    background: #F7F5F1;
+    overflow: hidden;
+  }
+
+  .why-it-works__item:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+
+  .why-it-works__item-info {
+    width: 50%;
+    padding: 44px 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 48px;
+  }
+
+  .why-it-works__item-title {
+    font-family: 'Romie' !important;
+    color: #284734;
+    font-weight: 400;
+    font-size: 56px;
+    line-height: 1.3;
+  }
+
+  .why-it-works__item-text {
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.5;
+    color: #404544;
+  }
+
+  .why-it-works__item-image {
+    width: 50%;
+  }
+
+  .why-it-works__item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (max-width: 1200px) {
+    .why-it-works__item-info {
+      padding: 24px 48px;
+    }
+  }
+
+  @media (max-width: 991px) {
+    .why-it-works__info-holder,
+    .why-it-works__main-info {
+      padding: 50px 15px;
+    }
+
+    .why-it-works__item-info {
+      padding: 24px 32px;
+    }
+
+    .why-it-works__title {
+      font-size: 76px;
+    }
+
+    .why-it-works__description {
+      font-size: 22px;
+    }
+
+    .why-it-works__item-title {
+      font-size: 48px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .why-it-works__title {
+      font-size: 48px;
+    }
+
+    .why-it-works__description {
+      font-size: 20px;
+    }
+
+    .why-it-works__item {
+      display: block;
+    }
+
+    .why-it-works__item-info,
+    .why-it-works__item-image {
+      width: 100%;
+    }
+
+    .why-it-works__item-info {
+      padding: 24px;
+      gap: 24px;
+    }
+
+    .why-it-works__item-title,
+    .why-it-works__main-info-text {
+      font-size: 36px;
+    }
+
+    .why-it-works__item-text {
+      font-size: 18px;
+    }
+  }
+
+  @media (max-width: 576px) {
+
+    .why-it-works__item-info {
+      padding: 24px 16px;
+      gap: 16px;
+    }
+
+    .why-it-works__item-title,
+    .why-it-works__main-info-text {
+      font-size: 32px;
+    }
+
+    .why-it-works__item-text {
+      font-size: 16px;
+    }
+
+    .why-it-works__item-image {
+      overflow: hidden;
+    }
+
+    .why-it-works__item-1 .why-it-works__item-image {
+      border-radius: 0 24px 24px 0
+    }
+
+    .why-it-works__item-4 .why-it-works__item-image {
+      border-radius: 24px 0 0 24px;
+    }
+  }
+
+  @media (max-width: 450px) {
+    .why-it-works__item-info {
+      padding: 8px;
+    }
+
+    .why-it-works__item-title {
+      font-size: 24px;
+    }
+
+    .why-it-works__item-text {
+      font-size: 14px;
+    }
+  }
+{% endstyle %}
+
+<section class="why-it-works why-it-works--{{ template.suffix }}">
+  <div class="why-it-works__wrapper">
+    {% if data.title != blank %}
+      <div class="why-it-works__info-holder">
+          <h2 class="why-it-works__title">{{ data.title }}</h2>
+        {% if data.text != blank %}
+          <p class="why-it-works__description">{{ data.text }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+    <div class="why-it-works__grid">
+      {% for block in blocks %}
+        {% assign info = block.settings %}
+        <div class="why-it-works__item">
+             {% if info.img != blank %}
+          <div class="why-it-works__item-image">
+            {{ info.img | image_url: width: 1440, height: 1000 | image_tag: loading: 'lazy' }}
+          </div>
+        {% endif %}
+        <div class="why-it-works__item-info">
+            {% if info.title != blank %}
+              <h2 class="why-it-works__item-title">
+                {{ info.title }}
+              </h2>
+            {% endif %}
+            {% if info.text != blank %}
+              <p class="why-it-works__item-text">
+                {{ info.text }}
+              </p>
+            {% endif %}
+          </div>
+        </div>
+       {% endfor %}
+    </div>
+     {% if data.main-text != blank %}
+      <div class="why-it-works__main-info">
+          <p class="why-it-works__main-info-text">
+            {{ data.main-text }}
+          </p>
+      </div>
+     {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Why It Works",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title"
+    },
+    {
+      "type": "html",
+      "id": "text",
+      "label": "Section description"
+    },
+     {
+      "type": "html",
+      "id": "main-text",
+      "label": "Main information"
+    },
+  ],
+  "blocks": [
+    {
+      "type": "info",
+      "name": "Info block",
+       "settings": [
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "html",
+          "id": "text",
+          "label": "Text"
+        },
+       ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Landing: Why It Works"
+    }
+  ]
+}
+{% endschema %}

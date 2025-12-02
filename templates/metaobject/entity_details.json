@@ -1,0 +1,80 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "custom_liquid_xY9iG7": {
+      "type": "custom-liquid",
+      "custom_css": [],
+      "name": "Custom liquid",
+      "settings": {
+        "custom_liquid": "",
+        "width": "wide"
+      }
+    },
+    "entity_details_KBfMGW": {
+      "type": "entity_details",
+      "name": "Entity showcase",
+      "settings": {
+        "background_color": "#f7f5f1",
+        "title_color": "#284734",
+        "subtitle_color": "#404544",
+        "text_color": "#404544",
+        "link_color": "#007ace",
+        "price_color": "#000000",
+        "card_background": "#ffffff",
+        "tag_background": "#f0f0f0",
+        "tag_text_color": "#666666",
+        "title_size": 40,
+        "subtitle_size": 26,
+        "section_title_size": 28,
+        "text_size": 16,
+        "section_padding": 40,
+        "image_border_radius": 8,
+        "card_border_radius": 8
+      }
+    },
+    "button_links_nFBk3i": {
+      "type": "button__links",
+      "blocks": {
+        "button_eqk9NV": {
+          "type": "button",
+          "settings": {
+            "name": "Back",
+            "link": "shopify://pages/entity-index",
+            "is_active": true
+          }
+        }
+      },
+      "block_order": [
+        "button_eqk9NV"
+      ],
+      "disabled": true,
+      "name": "Button links",
+      "settings": {
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "default_background_color": "#d4d8d0",
+        "default_text_color": "#284734",
+        "active_background_color": "#78be20",
+        "active_background_gradient_color": "#44693d",
+        "active_text_color": "#f7f5f1",
+        "padding_top_mobile": 10,
+        "padding_bottom_mobile": 10,
+        "css_class": "",
+        "custom_css": ""
+      }
+    }
+  },
+  "order": [
+    "custom_liquid_xY9iG7",
+    "entity_details_KBfMGW",
+    "button_links_nFBk3i"
+  ]
+}

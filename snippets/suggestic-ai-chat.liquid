@@ -1,73 +1,82 @@
-<script 
-  src="https://storage.googleapis.com/sg-data/chatWidgetBundle.v1.5.0.js" 
-  id="chat-widget" 
-  data-client-id="b9311b9f-b243-40ba-a06f-236f811609af" 
-  data-assistant-id="QXNzaXN0YW50OjM3MTAyNTQ3LWMyZGMtNDNkOS05YjIzLTU0ZDUxM2U4ZDQwOA==" 
-  {% if product.id == 7396104994889 %}
+<script
+  src="https://storage.googleapis.com/sg-data/chatWidgetBundle.v1.9.0.js"
+  id="chat-widget"
+  data-client-id="b9311b9f-b243-40ba-a06f-236f811609af"
+  data-assistant-id="QXNzaXN0YW50OjM3MTAyNTQ3LWMyZGMtNDNkOS05YjIzLTU0ZDUxM2U4ZDQwOA=="
+  {% if product.id == 8672614645973 %}
     data-color="#B20040"
   {% else %}
     data-color="#78BE20"
   {% endif %}
   data-disable-image-upload="true"
   data-utm-params='[{"key": "chat_utm_source", "value": "test"}, {"key": "chat_utm_medium", "value": "test"}, {"key": "chat_utm_campaign", "value": "test"}]'
->
-</script>
+  defer
+></script>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const desktopDuration = 7000;
-    const mobileDuration = 4000;
-    const isMobileMedia = window.matchMedia("(max-width: 798px)");
+  document.addEventListener('DOMContentLoaded', function () {
+    //popup after 30 seconds
+    const desktopDuration = 30000; // 30 seconds
+    const mobileDuration = 30000; // 30 seconds
+    const isMobileMedia = window.matchMedia('(max-width: 798px)');
     const currentTemplateName = '{{ template.name }}';
-  // Create the popup container
-  const popup = document.createElement("div");
-  popup.style.position = "fixed";
-  popup.style.bottom = (isMobileMedia.matches && currentTemplateName === 'product') ? "180px" : "80px";
-  popup.style.right = isMobileMedia.matches ? "20px" : "20px";
-  if (isMobileMedia.matches) {
-    popup.style.marginLeft = "20px";
-  }
-  popup.style.backgroundColor = "#fff";
-  popup.style.border = "1px solid #ccc";
-  popup.style.borderRadius = "10px";
-  popup.style.padding = "10px";
-  popup.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.1)";
-  popup.style.display = "flex";
-  popup.style.alignItems = "center";
-  popup.style.zIndex = "1000";
-  popup.style.opacity = "0"; // Start with opacity 0
-  popup.style.transition = "opacity 1s, width 1s ease-in-out"; // Add transition for opacity
-  // Create the avatar
-  const avatar = document.createElement("img");
-  avatar.src = "https://storage.googleapis.com/sg-data/assistants/9034/a19c746f2d054650beb883179a642a60.jpg"; // Replace with the path to your avatar image
-  avatar.style.width = "40px";
-  avatar.style.height = "40px";
-  avatar.style.borderRadius = "50%";
-  avatar.style.marginRight = "10px";
-  avatar.style.objectFit = "cover";
-  avatar.style.objectPosition = "center";
-  // Create the message
-  const message = document.createElement("span");
-  message.style.fontFamily = "Ambit, Merriweather Sans, sans-serif";
-  message.textContent = "Have questions or need help? Tap here to chat with me";
-  message.style.transition = "opacity 1s"; // Add transition for opacity
-  // Append avatar and message to the popup
-  popup.appendChild(avatar);
-  popup.appendChild(message);
-  // Append the popup to the body
-    if (currentTemplateName === 'index') {
-      document.body.appendChild(popup);
+    // Create the popup container
+    const popup = document.createElement('div');
+    popup.style.position = 'fixed';
+    popup.style.bottom = isMobileMedia.matches && currentTemplateName === 'product' ? '180px' : '80px';
+    popup.style.right = isMobileMedia.matches ? '20px' : '20px';
+    if (isMobileMedia.matches) {
+      popup.style.marginLeft = '20px';
     }
-  // Trigger the fade-in animation
-  setTimeout(function () {
-    popup.style.opacity = "1";
-  }, 10); // Small delay to ensure the transition works
-  // Remove the popup after a few seconds with fade-out animation
-  setTimeout(function () {
-    message.style.opacity = "0";
-    setTimeout(function () {
-      message.remove();
-    }, 1000); // Match this delay with the transition duration
-  }, isMobileMedia.matches ? mobileDuration : desktopDuration); // Adjust the time as needed
-});
+    popup.style.backgroundColor = '#fff';
+    popup.style.border = '1px solid #ccc';
+    popup.style.borderRadius = '10px';
+    popup.style.padding = '10px';
+    popup.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.1)';
+    popup.style.display = 'flex';
+    popup.style.alignItems = 'center';
+    popup.style.zIndex = '1000';
+    popup.style.opacity = '0'; // Start with opacity 0
+    popup.style.transition = 'opacity 1s, width 1s ease-in-out'; // Add transition for opacity
+    // Create the avatar
+    const avatar = document.createElement('img');
+    avatar.src = 'https://storage.googleapis.com/sg-data/assistants/9034/a19c746f2d054650beb883179a642a60.jpg'; // Replace with the path to your avatar image
+    avatar.style.width = '40px';
+    avatar.style.height = '40px';
+    avatar.style.borderRadius = '50%';
+    avatar.style.marginRight = '10px';
+    avatar.style.objectFit = 'cover';
+    avatar.style.objectPosition = 'center';
+    // Create the message
+    const message = document.createElement('span');
+    message.style.fontFamily = 'Ambit, Merriweather Sans, sans-serif';
+    message.textContent = 'Have questions or need help? Tap here to chat with me';
+    message.style.transition = 'opacity 1s'; // Add transition for opacity
+    // Append avatar and message to the popup
+    setTimeout(
+      function () {
+        popup.appendChild(avatar);
+        popup.appendChild(message);
+        // Append the popup to the body
+        if (currentTemplateName === 'index') {
+          document.body.appendChild(popup);
+        }
+        // Trigger the fade-in animation
+        setTimeout(function () {
+          popup.style.opacity = '1';
+        }, 10); // Small delay to ensure the transition works
+        // Remove the popup after a few seconds with fade-out animation
+        setTimeout(
+          function () {
+            message.style.opacity = '0';
+            setTimeout(function () {
+              message.remove();
+            }, 1000); // Match this delay with the transition duration
+          },
+          isMobileMedia.matches ? mobileDuration : desktopDuration
+        ); // Adjust the time as needed
+      },
+      isMobileMedia.matches ? mobileDuration : desktopDuration
+    );
+  });
 </script>

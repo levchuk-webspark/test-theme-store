@@ -1,0 +1,249 @@
+{% assign product_discount = product.metafields.custom.product_discount.value %}
+{% assign product_buy_and_save = product.metafields.custom.product_buy_and_save.value %}
+
+{% style %}
+  .seal-row {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  .product__subscription__benefits {
+    display: flex;
+    padding: 0 13px 12px;
+    justify-items: start;
+    position: relative;
+  }
+  
+  .product__purchase-option-benefits__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 400;
+    color: #284734;
+    font-size: 12px;
+    line-height: 22px;
+  }
+
+  .no-subscription-price-display-prices {
+    display: flex;
+  }
+
+  .product-discount {
+    display: none;
+    width: fit-content;
+  }
+
+  .no-subscription-price-display-prices > .product-discount {
+    display: flex;
+  }
+
+  .summary-panel.no-subscription-price-display_container.no_discount_price_element {
+    height: fit-content;
+  }
+
+  .no-subscription-price-display-prices {
+    display: flex;
+  }
+
+  .sealsubs-container .sls-option-container.seal-table {
+    border-radius: 12px !important;
+    box-sizing: border-box !important;
+    border: 1px solid #D4D8D0 !important;
+  }
+
+  .sealsubs-container .sls-option-container.seal-table.sls-active {
+    background: #EDF2E9 !important;
+    border-color: #284734 !important;
+  }
+
+  .sls-purchase-options-container {
+    display: flex;
+    flex-direction: column-reverse;
+    padding-top: 8px;
+  }
+
+  .product-discount {
+    {% if product_discount.background_color != blank %}
+      background-color: {{ product_discount.background_color }};
+    {% endif %}
+    {% if product_discount.text_color != blank %}
+      color: {{ product_discount.text_color }};
+    {% endif %}
+
+    border-radius: 5px;
+    font-size: 13px;
+    {% if product_discount.desktop_product_page_font_size != blank %}
+        font-size: {{ product_discount.desktop_product_page_font_size }}px;
+      {% endif %}
+    font-weight: 900;
+    padding: 4px 9px;
+
+    margin-left: 2.5em;
+  }
+
+  .sealsubs-container .sls-option-container label {
+    display: flex;
+  }
+
+  .product_buy_and_save_container {
+    display: none;
+    gap: 8px;
+    padding-left: 13px;
+    padding-bottom: 13px;
+  }
+
+  .product_buy_and_save_item {
+    padding: 8px 11px;
+    border-radius: 5px;
+    color: {{ product_buy_and_save.text_color }};
+    background-color: {{ product_buy_and_save.background_color }};
+    font-size: {{ product_buy_and_save.font_size }}px;
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  .sls-savings-badge {
+    border-radius: 16px !important;
+  }
+
+  @media screen and (max-width:798px) {
+    .sls-option-container.seal-table .product__subscription__benefits {
+      display: none;
+    }
+
+    .sls-option-container.seal-table.sls-active .product__subscription__benefits {
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: center;
+      justify-items: start;
+      justify-content: start;
+    }
+
+    .product-discount {
+      font-size: 8px;
+      {% if product_discount.mobile_product_page_font_size != blank %}
+        font-size: {{ product_discount.mobile_product_page_font_size }}px;
+      {% endif %}
+      padding: 3px 6px;
+      display: inline-block;
+
+      margin-left: 40px;
+    }
+
+    .product_buy_and_save_container {
+      gap: 6px;
+    }
+
+    .product_buy_and_save_item {
+      padding: 6px;
+      font-size: {{ product_buy_and_save.mobile_font_size }}px;
+      text-align: center;
+    }
+
+  }
+{% endstyle %}
+<ul class="product__subscription__benefits">
+  {% if block.settings.benefit_1 != blank %}
+    <li class="product__purchase-option-benefits__item">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 3L4.5 8.5L2 6" stroke="#284734" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      {{ block.settings.benefit_1 }}
+    </li>
+  {% endif %}
+  {% if block.settings.benefit_2 != blank %}
+    <li class="product__purchase-option-benefits__item">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 3L4.5 8.5L2 6" stroke="#284734" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      {{ block.settings.benefit_2 }}
+    </li>
+  {% endif %}
+</ul>
+
+<script>
+   // https://www.sealsubscriptions.com/articles/merchant-javascript-api-documentation
+     document.addEventListener('sealsubs:subscription_widget_created', function(e) {
+  	// Subscription widget was created
+
+         const slsSubscriptionOptionContainer = document.getElementsByClassName("sls-option-container")[1];
+         const slsSubscriptionOptionContainer_2 = document.getElementsByClassName("sls-option-container")[2];
+       const slsSubscriptionOptionContainer_0 = document.getElementsByClassName("sls-option-container")[0];
+
+       const slsSubscriptionBenefitsList = document.getElementsByClassName("product__subscription__benefits")[0];
+       const slsSubscriptionBenefitsListClone = slsSubscriptionBenefitsList.cloneNode(true);
+       slsSubscriptionBenefitsListClone.style.display = "grid";
+
+         if (slsSubscriptionOptionContainer) {
+             const slsSellingPlanGroupOptions = document.getElementsByClassName("sls-selling-plan-group-options")[0];
+             const slsSellingPlanDescriptionContent = document.getElementsByClassName("sls-selling-plan-description-content")[0];
+
+             const subscriptionOptionFragment = document.createDocumentFragment();
+             const slsSellingPlanGroupOptionsFragment = document.createDocumentFragment();
+             const slsSellingPlanDescriptionContentFragment = document.createDocumentFragment();
+
+             slsSellingPlanGroupOptionsFragment.appendChild(slsSellingPlanGroupOptions);
+             slsSubscriptionOptionContainer.append(slsSellingPlanGroupOptionsFragment);
+
+             subscriptionOptionFragment.appendChild(slsSubscriptionBenefitsList);
+             slsSubscriptionOptionContainer.append(subscriptionOptionFragment);
+             slsSubscriptionBenefitsList.style.display = "grid";
+
+             slsSellingPlanDescriptionContentFragment.appendChild(slsSellingPlanDescriptionContent);
+             slsSubscriptionOptionContainer.append(slsSellingPlanDescriptionContentFragment);
+
+         }
+
+       if (slsSubscriptionOptionContainer_2) {
+             const subscriptionOptionFragmentNew = document.createDocumentFragment();
+
+             subscriptionOptionFragmentNew.appendChild(slsSubscriptionBenefitsListClone);
+             slsSubscriptionOptionContainer_2.append(subscriptionOptionFragmentNew);
+         }
+
+       const productDiscount = {{ product_discount | json }};
+       if (slsSubscriptionOptionContainer_0 && productDiscount && productDiscount.discount_text) {
+          const discountFragmentNew = document.createDocumentFragment();
+
+           const discountElement = document.getElementsByClassName("product-discount")[0];
+           !!discountElement && discountElement.style.display = "flex";
+
+         const isMobileMedia = window.matchMedia("(max-width: 798px)");
+         if (isMobileMedia.matches) {
+           discountFragmentNew.appendChild(discountElement);
+           slsSubscriptionOptionContainer_0.append(discountFragmentNew);
+         } else {
+           const oneTimePurchaseElement = slsSubscriptionOptionContainer_0.querySelectorAll(".sls-selling-plan-group-name")[0];
+           discountFragmentNew.appendChild(discountElement);
+           oneTimePurchaseElement.append(discountFragmentNew);
+         }
+       }
+
+       const productByAndSave = {{ product_buy_and_save | json }};
+       if (slsSubscriptionOptionContainer_0 && productByAndSave) {
+         const productByAndSaveFragmentNew = document.createDocumentFragment();
+
+         const productByAndSaveElement = document.getElementsByClassName("product_buy_and_save_container")[0];
+         productByAndSaveElement.style.display = "flex";
+
+         const isMobileMedia = window.matchMedia("(max-width: 798px)");
+         if (isMobileMedia.matches) {
+           productByAndSaveFragmentNew.appendChild(productByAndSaveElement);
+           slsSubscriptionOptionContainer_0.append(productByAndSaveFragmentNew);
+         } else {
+           const oneTimePurchaseElementForDiscount = slsSubscriptionOptionContainer_0;
+           productByAndSaveFragmentNew.appendChild(productByAndSaveElement);
+           oneTimePurchaseElementForDiscount.append(productByAndSaveFragmentNew);
+         }
+       }
+
+       const secondaryAtcButton = document.querySelector('.desktop-atc-below-subs');
+       const klarna = document.querySelector("[data-key='top-strip-promotion-badge']");
+       if (secondaryAtcButton && klarna) {
+          const frag = document.createDocumentFragment();
+          frag.appendChild(secondaryAtcButton);
+          klarna.parentNode.insertBefore(frag, klarna);
+       }
+  });
+</script>

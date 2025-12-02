@@ -1,0 +1,212 @@
+{% assign data = section.settings %}
+{% assign questions = section.blocks | where: 'type', 'question' %}
+
+{% style %}
+  .common-questions {
+    padding: 148px 0;
+    background: #fff;
+  }
+
+  .common-questions__wrapper {
+    margin: 0 auto;
+    max-width: 1280px;
+    padding: 0 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 48px;
+  }
+
+  .common-questions__title {
+    flex: 0 0 460px;
+    font-family: 'Romie' !important;
+    color: #284734;
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 1.25;
+    letter-spacing: -2.2%;
+    text-align: left;
+  }
+
+  .common-questions__questions {
+    flex: 0 1 640px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .common-questions__question {
+    border-bottom: 1px solid #D4D8D0;
+    padding-bottom: 16px;
+    overflow: hidden;
+  }
+
+  .common-questions__question-btn {
+    font-family: Ambit;
+    width: 100%;
+    padding: 0;
+    background: none;
+    border: none;
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.25;
+    letter-spacing: -2.2%;
+    color: #284734;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .common-questions__question-btn svg {
+    flex: 0 0 24px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .common-questions__question-btn:hover,
+  .common-questions__question-btn._opened {
+    color: #78BE20;
+  }
+
+  .common-questions__question-btn._opened svg {
+    transform: rotateX(180deg);
+  }
+
+  .common-questions__question-answer {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    max-height: 0;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .common-questions__question-answer p {
+    padding: 0;
+    margin: 0;
+    padding-top: 16px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -2.2%;
+    color: #284734;
+  }
+
+  @media (max-width: 991px) {
+    .common-questions__wrapper {
+      flex-direction: column;
+      justify-content: unset;
+    }
+
+    .common-questions__title {
+      flex: auto;
+    }
+
+    .common-questions__questions {
+      flex: auto;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .common-questions {
+      padding: 80px 0;
+    }
+
+    .common-questions__title {
+      font-size: 48px;
+    }
+  }
+
+  @media (max-width: 450px) {
+    .common-questions__title {
+      font-size: 36px;
+    }
+  }
+{% endstyle %}
+
+<section class="common-questions common-questions--{{ template.suffix }}">
+  <div class="common-questions__wrapper">
+    {% if data.title != blank %}
+      <h2 class="common-questions__title">{{ data.title }}</h2>
+    {% endif %}
+
+    <div class="common-questions__questions" data-question-wrapper>
+      {% for block in questions %}
+        {% assign question = block.settings %}
+
+        <div class="common-questions__question">
+          {% if question.title != blank %}
+            <button class="common-questions__question-btn" data-question-btn>
+              {{ question.title }}
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          {% endif %}
+          {% if question.answer != blank %}
+            <div class="common-questions__question-answer">
+                <p>{{ question.answer }}</p>
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}   
+    </div>
+  </div>
+</section>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const wrapper = document.querySelector('[data-question-wrapper]');
+    const buttons = wrapper.querySelectorAll('[data-question-btn]');
+
+    buttons.forEach(btn => btn.addEventListener('click', () => {
+      const isOpened = btn.classList.contains('_opened');
+      const answer = btn.nextElementSibling;
+      btn.classList.toggle('_opened', !isOpened);
+
+      if (isOpened) {
+        answer.style.maxHeight = null;
+      } else {
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    }));
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Common Questions",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title"
+    },
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Question title"
+        },
+        {
+          "type": "text",
+          "id": "answer",
+          "label": "Question answer"
+        },
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Landing: Common Questions"
+    }
+  ]
+}
+{% endschema %}

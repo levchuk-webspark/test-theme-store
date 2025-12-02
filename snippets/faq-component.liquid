@@ -18,6 +18,11 @@
     gap: 20px;
   }
 
+  .faq-component__icon-and-title > h3 {
+    font-size:25px;
+    margin-bottom: unset;
+  }
+
   
   .faq-component__icon-and-title:hover{
     cursor:pointer;
@@ -33,6 +38,9 @@
     position: relative;
      {% if template.name == 'product' and product.metafields.custom.action_color.value %}
         background-color: {{ product.metafields.custom.action_color.value }};
+    {% endif %}
+    {% if is_collection %}
+      background-color: {{ settings.button_cart_bg_color--highlight }};
     {% endif %}
   }
 
@@ -129,7 +137,7 @@
 
 <div class="accordion-item-{{ id }}">    
     <div class="faq-component__icon-and-title">
-      <span>{{ title }}</span>
+      <h3>{{ title }}</h3>
       <!-- {% if number == "1" %}open{% endif %} -->
       <div class="multiple_accordion_title-FAQ__circle-{{ id }} "></div> 
     </div>
@@ -177,7 +185,7 @@
     
           {% else %}
               <div class="faq-component__full_content">
-                    {{ content }}
+                    <p>{{ content }}</p>
              </div>
           {% endif %}
 

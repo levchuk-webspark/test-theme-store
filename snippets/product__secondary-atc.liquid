@@ -1,0 +1,481 @@
+{%- assign show_payment_button = show_payment_button | default: false -%}
+
+{%- assign display_preorder_metafield = false -%}
+{%- for v in product.variants -%}
+  {%- unless v.inventory_quantity > 0 or v.inventory_policy == 'deny' -%}
+    {%- if product.metafields.jadepuma.preorder_button_text and product.metafields.jadepuma.preorder_message -%}
+      {%- assign display_preorder_metafield = true -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endunless -%}
+{%- endfor -%}
+
+{%- capture add_to_cart_label -%}
+  {%- if display_preorder_metafield -%}
+    {{ product.metafields.jadepuma.preorder_button_text }}
+  {%- elsif collection_handles contains 'pre-order' -%}
+    {{ 'collections.general.pre_order' | t }}
+  {%- else -%}
+    {{ 'products.product.add_to_cart' | t }}
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- if settings.qty_box_style == 'stacked' -%}
+  {%- assign icon_plus = 'up-caret' -%}
+  {%- assign icon_minus = 'down-caret' -%}
+{%- else -%}
+  {%- assign icon_plus = 'plus' -%}
+  {%- assign icon_minus = 'minus' -%}
+{%- endif -%}
+
+<style>
+  .desktop-atc-below-subs {
+    margin-top: 20px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .desktop-atc-below-subs .desktop-atc__row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: {{ settings.button_cart_bg_color }};
+    {% if product.id == 8672614645973 %}
+      background-color: {{ product.metafields.custom.action_color.value }} !important;
+    {% endif %}
+    border-radius: 8px;
+    flex: 1 1 auto;
+  }
+
+  .desktop-atc-below-subs .desktop-atc__qty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  .desktop-atc-below-subs .quantity-wrapper
+  {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .desktop-atc__qty .quantity-wrapper .control.quantity-input-control--fill > input{
+   text-align: center;
+   {%if template.name == "product" and product.metafields.custom.action_color.value %}
+      background-color: {{ product.metafields.custom.action_color.value }} !important;
+    {%else%} 
+      background-color: {{ settings.button_cart_bg_color }};
+    {% endif %}
+  }
+  .desktop-atc-below-subs .desktop-atc__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  .desktop-atc-below-subs .quantity-wrapper.field .control.plus-control > span,
+  .desktop-atc-below-subs .quantity-wrapper.field .control.minus-control > span {
+    border: none;
+    border-radius: 8px;
+    background-color: {{ settings.button_cart_bg_color }};
+    {% if product.id == 8672614645973 %}
+      background-color: {{ product.metafields.custom.action_color.value }} !important;
+    {% endif %}
+    transition: background-color 0.2s ease;
+    width: 100%;
+    cursor: pointer;
+  }
+
+  .desktop-atc-below-subs .quantity-input::-webkit-outer-spin-button,
+  .desktop-atc-below-subs .quantity-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .desktop-atc-below-subs .quantity-input[type=number] {
+    -moz-appearance: textfield;
+  }
+
+  .desktop-atc-below-subs .quantity-element svg {
+    fill: {{ settings.button_cart_text_color }};
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Button styling - matches main cart button */
+  .desktop-atc-below-subs .secondary-add-to-cart-btn {
+    width: 100%;
+    height: 100%;
+    background-color: {{ settings.button_cart_bg_color }};
+    color: {{ settings.button_cart_text_color }};
+    {% if product.id == 8672614645973 %}
+      background-color: {{ product.metafields.custom.action_color.value }} !important;
+    {% endif %}
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center !important;
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .desktop-atc-below-subs .secondary-add-to-cart-btn:hover {
+    color: {{ settings.button_cart_text_color--highlight }};
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .desktop-atc-below-subs .secondary-add-to-cart-btn .checkmark {
+    position: absolute;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.3s ease;
+  }
+
+  .desktop-atc-below-subs .secondary-add-to-cart-btn.loading {
+    pointer-events: none;
+  }
+
+  .desktop-atc-below-subs .secondary-add-to-cart-btn.loading .text {
+    opacity: 0.6;
+  }
+
+  .desktop-atc-below-subs .secondary-add-to-cart-btn.success .text {
+    opacity: 0;
+  }
+
+  .desktop-atc-below-subs .secondary-add-to-cart-btn.success .checkmark {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .desktop-atc-below-subs .secondary-add-to-cart-btn .checkmark path {
+    stroke: currentColor;
+    stroke-width: 2;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .desktop-atc-below-subs {
+      padding: 0;
+    }
+
+    .desktop-atc-below-subs .desktop-atc__row {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: stretch;
+      width: 100%;
+      height: 50px;
+      border-radius: 8px;
+    }
+
+    .desktop-atc-below-subs .desktop-atc__qty {
+      flex: 0 0 120px;
+      border-right: 1px solid rgba(255, 255, 255, 0.3);
+      background-color: {{ settings.button_cart_bg_color}};
+      {% if product.id == 8672614645973 %}
+        background-color: {{ product.metafields.custom.action_color.value }} !important;
+      {% endif %}
+    }
+
+    .desktop-atc-below-subs .desktop-atc__btn {
+      flex: 1 1 auto;
+    }
+
+    .desktop-atc-below-subs .quantity-wrapper {
+      height: 100%;
+      padding-inline: 15px;
+    }
+
+    .desktop-atc-below-subs .secondary-add-to-cart-btn {
+      height: 100%;
+      /* Round all corners so the left edge isn't squared */
+      border-radius: 8px;
+    }
+  }
+  @media (min-width: 769px) {
+    .desktop-atc-below-subs {
+      display: none;
+    }
+  }
+</style>
+
+<div
+  class="desktop-atc-below-subs"
+  id="secondary-atc-{{ section.id }}-{{ product.id }}"
+  data-product-id="{{ product.id }}"
+>
+  {% if product.available %}
+    <div class="desktop-atc__row">
+      <div class="desktop-atc__qty">
+        {% render 'quantity-box', variant: selected_variant, show_payment_button: show_payment_button %}
+      </div>
+
+      <div class="desktop-atc__btn">
+        <button
+          type="button"
+          class="secondary-add-to-cart-btn button action_button button--add-to-cart"
+          data-product-id="{{ product.id }}"
+          data-label="{{ add_to_cart_label | json }}"
+          data-primary-atc="true"
+        >
+          {% if settings.button_cart_icon != blank and settings.button_cart_icon_position == 'left' %}
+            {% render 'icon', name: settings.button_cart_icon, icon_class: 'icon--cart' %}
+          {% endif %}
+          <span class="text">{{ add_to_cart_label }}</span>
+          {% if settings.button_cart_icon != blank and settings.button_cart_icon_position == 'right' %}
+            {% render 'icon', name: settings.button_cart_icon, icon_class: 'icon--cart icon--right' %}
+          {% endif %}
+          <svg
+            x="0px"
+            y="0px"
+            width="32px"
+            height="32px"
+            viewBox="0 0 32 32"
+            class="checkmark"
+          >
+            <path
+              fill="none"
+              stroke-width="2"
+              stroke-linecap="square"
+              stroke-miterlimit="10"
+              d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+<script type="text/javascript" defer>
+  (function () {
+    var root = document.getElementById('secondary-atc-{{ section.id }}-{{ product.id }}');
+    if (!root) return;
+
+    var input = root.querySelector('.desktop-atc__qty .quantity-input');
+    var button = root.querySelector('.secondary-add-to-cart-btn');
+    var productId = root.getAttribute('data-product-id');
+
+    if (!input || !button) return;
+
+    // Get quantity controls
+    var minus = root.querySelector('.desktop-atc__qty .quantity-minus');
+    var plus = root.querySelector('.desktop-atc__qty .quantity-plus');
+
+    // Disable theme's quantity controls by unbinding existing events
+    if (minus) {
+      $(minus).off('click');
+    }
+    if (plus) {
+      $(plus).off('click');
+    }
+    // Custom quantity controls
+    function updateQuantity(newValue) {
+      var value = parseInt(newValue, 10);
+      if (isNaN(value) || value < 1) value = 1;
+
+      var max = input.getAttribute('max');
+      if (max && value > parseInt(max, 10)) {
+        value = parseInt(max, 10);
+      }
+
+      input.value = value;
+
+      // Update button states
+      if (minus) {
+        if (value <= 1) {
+          minus.setAttribute('disabled', 'disabled');
+        } else {
+          minus.removeAttribute('disabled');
+        }
+      }
+
+      if (plus && max) {
+        if (value >= parseInt(max, 10)) {
+          plus.setAttribute('disabled', 'disabled');
+        } else {
+          plus.removeAttribute('disabled');
+        }
+      }
+    }
+
+    if (minus) {
+      minus.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        var currentValue = parseInt(input.value || '1', 10);
+        updateQuantity(currentValue - 1);
+      });
+    }
+
+    if (plus) {
+      plus.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        var currentValue = parseInt(input.value || '1', 10);
+        updateQuantity(currentValue + 1);
+      });
+    }
+
+    // Initialize button states
+    updateQuantity(input.value || 1);
+
+    // Add to cart functionality
+    button.addEventListener('click', function () {
+      if (button.classList.contains('loading')) return;
+
+      var quantity = parseInt(input.value || '1', 10);
+      var variantId = getSelectedVariantId();
+
+      if (!variantId) {
+        console.warn('No variant selected');
+        return;
+      }
+
+      addToCart(variantId, quantity);
+    });
+
+    function getSelectedVariantId() {
+      // Get the selected variant from the main product form
+      var mainForm = document.querySelector('#product-form-' + productId);
+      if (mainForm) {
+        var variantSelect = mainForm.querySelector('[name="id"]');
+        if (variantSelect) {
+          return variantSelect.value;
+        }
+      }
+
+      // Fallback: try to get from product data
+      if (window.meta && window.meta.product && window.meta.product.variants) {
+        return window.meta.product.variants[0].id;
+      }
+
+      return null;
+    }
+
+    function addToCart(variantId, quantity) {
+      button.classList.add('loading');
+      button.disabled = true;
+
+      // Try to include selected subscription selling plan if present
+      var payload = { id: variantId, quantity: quantity };
+
+      try {
+        var mainForm = document.querySelector('#product-form-' + productId);
+        if (!mainForm) {
+          // fallback to closest product form on page
+          mainForm = document.querySelector('[data-product-form] form, form[action*="/cart/add"]');
+        }
+        if (mainForm) {
+          var spInput = mainForm.querySelector('input[name="selling_plan"]');
+          var spChecked = mainForm.querySelector('input[name="selling_plan_id"]:checked');
+          var spHidden = mainForm.querySelector('input[name="selling_plan_id"][type="hidden"]');
+          var sellingPlanId = null;
+          if (spInput && spInput.value) sellingPlanId = spInput.value;
+          else if (spChecked && spChecked.value) sellingPlanId = spChecked.value;
+          else if (spHidden && spHidden.value) sellingPlanId = spHidden.value;
+          if (sellingPlanId) {
+            payload.selling_plan = sellingPlanId;
+          }
+        }
+      } catch (_) {}
+
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          button.classList.remove('loading');
+          button.classList.add('success');
+
+          // Show success state briefly
+          setTimeout(function () {
+            button.classList.remove('success');
+            button.disabled = false;
+          }, 1000);
+
+          // Trigger cart update events
+          document.dispatchEvent(
+            new CustomEvent('cart:item-added', {
+              detail: { variant_id: variantId, quantity: quantity },
+            })
+          );
+
+          // Open Rebuy Smart Cart after adding item
+          openRebuySmartCart();
+        })
+        .catch((error) => {
+          console.error('Error adding to cart:', error);
+          button.classList.remove('loading');
+          button.disabled = false;
+        });
+    }
+
+    function openRebuySmartCart() {
+      // Check if Rebuy Smart Cart is available and ready
+      if (window.Rebuy && window.Rebuy.SmartCart && typeof window.Rebuy.SmartCart.show === 'function') {
+        try {
+          // Use invokeSmartCart function from theme if available for better integration
+          if (typeof window.invokeSmartCart === 'function') {
+            window.invokeSmartCart();
+          } else {
+            // Fallback to direct Smart Cart show
+            window.Rebuy.SmartCart.show();
+          }
+        } catch (error) {
+          console.warn('Error opening Rebuy Smart Cart:', error);
+          // Fallback to regular cart behavior if Smart Cart fails
+          if (window.location.pathname !== '/cart') {
+            window.location.href = '/cart';
+          }
+        }
+      } else {
+        // If Rebuy Smart Cart is not ready, wait for it or fallback to cart page
+        var onReady = function () {
+          document.removeEventListener('rebuy:smartcart.ready', onReady);
+          if (window.Rebuy && window.Rebuy.SmartCart && typeof window.Rebuy.SmartCart.show === 'function') {
+            try {
+              if (typeof window.invokeSmartCart === 'function') {
+                window.invokeSmartCart();
+              } else {
+                window.Rebuy.SmartCart.show();
+              }
+            } catch (error) {
+              console.warn('Error opening Rebuy Smart Cart on ready:', error);
+            }
+          }
+        };
+
+        document.addEventListener('rebuy:smartcart.ready', onReady, { once: true });
+
+        // Timeout fallback - if Smart Cart doesn't load within 2 seconds, go to cart page
+        setTimeout(function () {
+          document.removeEventListener('rebuy:smartcart.ready', onReady);
+          if (window.location.pathname !== '/cart') {
+            window.location.href = '/cart';
+          }
+        }, 2000);
+      }
+    }
+  })();
+</script>

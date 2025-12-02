@@ -23,6 +23,10 @@
     {% endif %}
   }
 
+  .section-with-link-button__link-button a{
+    display: flex;
+    justify-content: center !important;
+  }
   .section-with-link-button__title {
     font-size: 25px;
     font-weight: bold;
@@ -43,7 +47,7 @@
 
   #shopify-section-{{ section.id }} .section-with-link-button__description {
     color: {{ section.settings.text_color }};
-    {% if product.id == 7396104798281 %}
+    {% if product.id == 8667575910613 %}
      color: {{ settings.regular_color }};
     {% elsif template.name == 'product' and product.metafields.custom.action_color.value %}
         color: {{ product.metafields.custom.action_color.value }};
@@ -77,10 +81,12 @@
     font-size: 22px;
   }
 
+
   .section-with-link-button a.button--primary.button {
     {% if template.name == 'product' and product.metafields.custom.action_color.value %}
         background-color: {{ product.metafields.custom.action_color.value }};
     {% endif %}
+    text-align: center;
   }
 
   .section-with-link-button a.button--primary.button:hover {
@@ -188,7 +194,7 @@
         {% if block.type == 'button-block' %}
 
             {% if block.settings.button_label != blank %}
-              <div class="buttons section-with-link-button__link-button">
+              <div class="section-with-link-button__link-button">
                 {% render 'button',
                   label: block.settings.button_label,
                   href: block.settings.button_link,

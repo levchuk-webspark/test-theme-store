@@ -460,6 +460,19 @@ document.querySelector('div#feefo-product-review-widgetId').shadowRoot?.appendCh
       "limit":1
     },
     {
+      "type": "bf_product_discount",
+      "name": "Product discount badge",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "discount_entry_handle",
+          "label": "Override discount entry handle",
+          "info": "Optional metaobject handle (ex: bf25) to override the product metafield"
+        }
+      ]
+    },
+    {
       "type": "complementary_products",
       "name": "Complementary products",
       "limit": 1,

@@ -1,0 +1,337 @@
+{% assign data = section.settings %}
+{% assign cards = section.blocks | where: 'type', 'card' %}
+
+{% style %}
+
+.why-buy-from-us {
+  padding: 72px 0;
+  position: relative;
+}
+
+.why-buy-from-us__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.why-buy-from-us__wrapper {
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: 0 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.why-buy-from-us__block {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 32px 72px;
+  border-radius: 16px;
+  backdrop-filter: blur(24px);
+  border: 1px solid #D4D8D033;
+  background: #FCFCF71A;
+  margin: 32px 0 16px;
+}
+
+.why-buy-from-us__title {
+  width: 100%;
+  font-family: Ambit;
+  font-weight: 900;
+  font-size: 38px;
+  line-height: 1.2;
+  letter-spacing: 3%;
+  color: #F7F5F1;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #D4D8D033;
+  margin-bottom: 56px;
+}
+
+.why-buy-from-us__title span {
+  color: #E0E56B;
+  font-weight: 400;
+  font-family: Romie;
+  font-style: Italic;
+}
+
+.why-buy-from-us__list {
+  display: flex;
+  gap: 64px;
+}
+
+.why-buy-from-us__card {
+  flex: 0 0 calc(33.333% - ((64px * 2) / 3));
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.why-buy-from-us__card-icon {
+  flex: 0 0 auto;
+  object-fit: contain;
+  aspect-ratio: 1;
+}
+
+.why-buy-from-us__card-description {
+  font-family: Ambit;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #F7F5F1;
+  letter-spacing: 2%;
+}
+
+.why-buy-from-us__bottom {
+  flex: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 32px;
+  border-radius: 16px;
+  border: 1px solid #D4D8D0;
+}
+
+.why-buy-from-us__description {
+  flex: 0 1 610px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #F7F5F1;
+  letter-spacing: 2%;
+}
+
+.why-buy-from-us__button {
+  font-family: Ambit;
+  background: #F7F5F1;
+  padding: 16px 24px;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.25;
+  color: #284734;
+  width: fit-content;
+  white-space: nowrap;
+  flex: 0 0 auto;
+  transition: all 0.3s ease-in-out; 
+}
+
+.why-buy-from-us__button svg {
+  transition: all 0.3s ease-in-out; 
+}
+
+.why-buy-from-us__button:hover {
+  color: #284734;
+}
+
+.why-buy-from-us__button:hover svg {
+  transform: translateX(4px) scale(1.1);
+}
+
+@media (max-width: 1200px) {
+  .why-buy-from-us__list {
+    gap: 24px;
+  }
+
+  .why-buy-from-us__card {
+    flex: 0 0 calc(33.333% - ((24px * 2) / 3));
+  }
+}
+
+@media (max-width: 991px) {
+  .why-buy-from-us {
+    padding: 48px 0;
+  }
+
+  .why-buy-from-us__logo {
+    max-width: 85%;
+  }
+
+  .why-buy-from-us__logo svg {
+    width: 100%;
+    height: auto;
+  }
+
+  .why-buy-from-us__block {
+    padding: 16px 16px 32px;
+  }
+
+  .why-buy-from-us__title {
+    font-size: 28px;
+    margin-bottom: 32px;
+  }
+
+  .why-buy-from-us__list {
+    flex-direction: column;
+    gap: 64px;
+  }
+
+  .why-buy-from-us__card {
+    flex: auto;
+    flex-direction: row;
+  }
+
+  .why-buy-from-us__card-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .why-buy-from-us__description {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 576px) {
+  .why-buy-from-us__bottom {
+    flex-direction: column;
+    align-items: unset;
+    gap: 24px;
+    padding: 32px 16px;
+  }
+
+  .why-buy-from-us__description {
+    flex: auto;
+    text-align: center;
+  }
+
+  .why-buy-from-us__button {
+    width: 100%;
+  }
+}
+
+{% endstyle %}
+
+<section class="why-buy-from-us">
+  {% if data.image != blank %}
+    {{ data.image | image_url: width: 2880, height: 1600 | image_tag: class: 'why-buy-from-us__image', loading: 'lazy' }}
+  {% endif %}
+  <div class="why-buy-from-us__wrapper">
+    <div class="why-buy-from-us__logo">
+      <svg width="763" height="71" viewBox="0 0 763 71" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_355_26802)">
+          <path d="M40.0533 50.5975L0 1.82715H26.143L40.0533 22.9656V1.82715H60.8488V69.0419H40.0533V50.5975Z" fill="#F7F5F1"/>
+          <path d="M69.918 35.438C69.918 12.5725 84.9816 0 106.162 0C125.874 0 141.636 13.1597 141.636 35.438C141.636 57.7162 125.909 70.876 106.162 70.876C84.9816 70.876 69.918 58.3034 69.918 35.438ZM106.162 53.5714C113.641 53.5714 119.688 47.527 119.688 35.438C119.688 23.3489 113.676 17.27 106.162 17.27C97.1096 17.27 91.8668 23.2108 91.8668 35.438C91.8668 47.6651 97.1096 53.5714 106.162 53.5714Z" fill="#F7F5F1"/>
+          <path d="M149.012 41.2027V1.82715H170.016V38.1286C170.016 48.3179 172.358 53.2917 179.837 53.2917C187.317 53.2917 189.659 48.2834 189.659 38.1286V1.82715H210.664V41.2027C210.664 59.9233 199.69 70.8724 179.558 70.8724C159.426 70.8724 149.046 59.9233 149.046 41.2027H149.012Z" fill="#F7F5F1"/>
+          <path d="M237.252 19.2007H216.352V1.82715H278.948V19.2007H258.257V69.0419H237.252V19.2007Z" fill="#F7F5F1"/>
+          <path d="M285.352 1.82715H306.357V26.5923H326.943V1.82715H347.948V69.0419H326.943V43.9659H306.357V69.0419H285.352V1.82715Z" fill="#F7F5F1"/>
+          <path d="M355.488 50.0446C355.488 41.8932 361.219 36.9885 366.183 33.6381L368.315 32.1875L366.777 30.4605C362.897 26.1429 361.255 21.9982 361.255 17.508C361.255 5.97165 372.439 0.0307617 383.693 0.0307617C396.31 0.0307617 404.978 7.14598 404.978 17.4044C404.978 24.036 401.587 28.6298 395.436 32.8782L392.535 34.8816L400.714 44.0001L419.377 24.7959V47.0742L412.387 54.9493L425.913 69.0761H403.859L400.26 65.1386C395.681 68.7998 388.026 70.9067 381.107 70.9067C366.532 70.9067 355.557 62.8244 355.557 50.0791L355.488 50.0446ZM382.4 55.8819C384.846 55.8819 387.083 55.2256 388.621 54.0512L378.52 43.2057L377.646 43.8619C376.178 45.0018 375.13 47.0396 375.13 49.3192C375.13 53.5331 378.625 55.8473 382.434 55.8473L382.4 55.8819ZM381.945 23.8979L382.819 24.7614L384.461 23.6907C386.419 22.4472 387.677 21.1001 387.677 19.2695C387.677 16.9554 386.209 15.332 383.797 15.332C381.177 15.332 379.533 16.9554 379.533 19.3731C379.533 20.9965 380.513 22.4472 381.98 23.8979H381.945Z" fill="#F7F5F1"/>
+          <path d="M429.375 1.82715H481.276V19.2007H450.38V30.0463L479.633 24.2781V40.8918L450.38 46.66V51.6683H482.919V69.0419H429.375V1.82715Z" fill="#F7F5F1"/>
+          <path d="M510.114 1.82715H537.131L561.526 69.0419H539.158L534.404 53.8788H512.63L507.877 69.0419H485.719L510.114 1.82715ZM517.488 38.4049H529.546L523.535 18.9935L517.524 38.4049H517.488Z" fill="#F7F5F1"/>
+          <path d="M566.378 1.82715H600.385C614.086 1.82715 624.571 7.38808 624.571 20.4442C624.571 29.9426 618.07 35.1237 610.975 37.0578C617.791 38.1286 620.027 42.1352 624.187 49.2504C628.45 56.5383 632.749 63.7572 635.756 69.0419H613.876L604.824 53.6716C601.714 48.3869 599.302 45.7965 593.465 45.7965H586.755V69.0419H566.344V1.82715H566.378ZM595.807 29.4936C600.28 29.4936 603.566 28.2501 603.566 23.8291C603.566 19.408 600.246 18.5444 595.702 18.5444H586.755V29.4936H595.807Z" fill="#F7F5F1"/>
+          <path d="M651.58 19.2007H630.68V1.82715H693.276V19.2007H672.586V69.0419H651.58V19.2007Z" fill="#F7F5F1"/>
+          <path d="M699.711 1.82715H720.717V26.5923H741.302V1.82715H762.307V69.0419H741.302V43.9659H720.717V69.0419H699.711V1.82715Z" fill="#F7F5F1"/>
+        </g>
+        <defs>
+          <clipPath id="clip0_355_26802">
+            <rect width="763" height="71" fill="white"/>
+          </clipPath>
+        </defs>
+      </svg>
+    </div>
+    <div class="why-buy-from-us__block">
+      {% if data.title != blank %}
+        <h2 class="why-buy-from-us__title">{{ data.title }}</h2>
+      {% endif %}
+      <ul class="why-buy-from-us__list">
+        {% for block in cards %}
+          {% assign card = block.settings %}
+          <li class="why-buy-from-us__card">
+            {% if card.icon != blank %}
+              {{ card.icon | image_url: width: 64, height: 64 | image_tag: class: 'why-buy-from-us__card-icon', loading: 'lazy' }}
+            {% endif %}
+            {% if card.description != blank %}
+              <p class="why-buy-from-us__card-description">{{ card.description }}</p>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="why-buy-from-us__bottom">
+      {% if data.description != blank %}
+        <p class="why-buy-from-us__description">{{ data.description }}</p>
+      {% endif %}
+      {% if data.cta_label != blank %}
+        <a 
+          {% if data.cta_url != blank %}
+            href="{{ data.cta_url }}"
+            target="_blank"
+          {% endif %}
+          class="why-buy-from-us__button"
+        >
+          {{ data.cta_label }}
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+            <path fill="#284734" d="M16 8c0 4.417-3.583 8-8 8s-8-3.583-8-8 3.568-8 8-8 8 3.583 8 8ZM7.194 3.194l4.087 4H2.388v1.597h8.893l-4.087 4h2.087l4.892-4.805L9.28 3.18H7.194v.014Z"/>
+          </svg>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "New Product: Why buy",
+  "settings": [
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Section title",
+      "default": "Why buy <span>From Us</span>"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Section description",
+      "default": "All of our award-winning products are manufactured in approved Good Manufacturing Practice (GMP) facilities."
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Section CTA label",
+      "default": "Our mission"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Section CTA link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Section background image"
+    },
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Card icon"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Card description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "New Product: Why buy"
+    }
+  ]
+}
+{% endschema %}

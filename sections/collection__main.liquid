@@ -81,6 +81,10 @@
     background-color: transparent;
   }
 
+  .multiple_accordion_content-{{ id }} {
+    margin-top: 20px;
+  }
+
   @media only screen and (max-width: 798px) {
       #shopify-section-{{ id }} {
         padding-top: 8px;
@@ -462,6 +466,20 @@
 
     {% endpaginate %}
   </div>
+
+   {% comment %} Collection FAQ {% endcomment %}
+
+  {% if collection.metafields.custom.collection_faq.value.question_1 != blank %}
+  <div class="multiple_accordion_content-{{ id }}">
+                {% assign accord_id = id | append: '-collection__faq-snippet' %}
+              
+                {% render 'collection__faq-snippet',
+                  id: accord_id,
+                  faq-link-1-title: 'Ask a question',
+                  faq-link-1-url: 'https://youthandearth.com/pages/contact'
+                %}
+            </div>
+  {% endif %}
 
   {% comment %} Collection bottom text {% endcomment %}
   {% if collection.metafields.custom.collection_bottom_text.value.text != blank %}

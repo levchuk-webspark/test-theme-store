@@ -27,6 +27,7 @@
   .orbe-country-selector-span {
     font-size: 16px;
     color: {{ settings.header_link_color }};
+    {% comment %} сolor: #F7F5F1; {% endcomment %}
     display: flex;
     align-items: center;
     gap: 5px;
@@ -39,6 +40,8 @@
     min-height: 8px;
     border-bottom: 2px solid {{ settings.header_link_color }};
     border-right: 2px solid {{ settings.header_link_color }};
+    {% comment %} border-bottom: 2px solid #F7F5F1;
+    border-right: 2px solid #F7F5F1; {% endcomment %}
     transform: rotate(45deg) translateY(-50%);
   }
 

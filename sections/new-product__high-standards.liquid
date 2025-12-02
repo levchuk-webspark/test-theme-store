@@ -1,0 +1,570 @@
+{% assign data = product.metafields.custom.product_high_standards_section.value %}
+{% assign awards = product.metafields.jadepuma.awards.value %}
+{% assign lab_reports = product.metafields.jadepuma.lab_reports.value %}
+
+{% if data != blank %}
+  {% style %}
+  
+  .high-standards {
+    padding: 48px 0 96px;
+    background: #EDF2E9;
+  }
+  
+  .high-standards__wrapper {
+    margin: 0 auto;
+    max-width: 1440px;
+    padding: 0 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+  }
+  
+  .high-standards__info {
+    flex: 0 1 610px;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+  
+  .high-standards__head {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .high-standards__title {
+    color: #284734;
+    font-family: Ambit;
+    font-weight: 900;
+    font-size: 38px;
+    line-height: 1.2;
+    letter-spacing: 3%;
+  }
+  
+  .high-standards__title span {
+    font-family: Romie;
+    font-weight: 400;
+    font-style: Italic;
+  }
+
+  .high-standards__description {
+    color: #6F726E;
+    font-size: 18px;
+    line-height: 1.4;
+    font-weight: 400;
+  }
+
+  .high-standards__schema {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .high-standards__image {
+    aspect-ratio: 1;
+    max-width: 420px;
+    max-height: 420px;
+    object-fit: contain;
+  }
+
+  .high-standards__schema-label {
+    position: absolute;
+    width: 200px;
+    padding: 12px 0;
+    color: #284734;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    border-top: 1px dashed #284734;
+  }
+
+  .high-standards__schema-label--top-left {
+    top: 72px;
+    left: 0;
+    text-align: left;
+  }
+
+  .high-standards__schema-label--top-right {
+    top: 64px;
+    right: 0;
+    text-align: right;
+  }
+  
+  .high-standards__schema-label--center-left {
+    top: calc(50% + 8px);
+    left: 0;
+    text-align: left;
+    transform: translateY(-50%);
+  }
+
+  .high-standards__schema-label--center-right {
+    top: 50%;
+    right: 0;
+    text-align: right;
+    transform: translateY(-50%);
+  }
+
+  .high-standards__schema-label--bottom-left {
+    bottom: 64px;
+    left: 0;
+    text-align: left;
+  }
+
+  .high-standards__schema-label--bottom-right {
+    bottom: 64px;
+    right: 0;
+    text-align: right;
+  }
+  
+  .high-standards__questions {
+    flex: 0 1 540px;
+    display: flex;
+    flex-direction: column;
+    padding: 16px 24px;
+    background: #FFFFFF;
+    border-radius: 16px;
+  }
+  
+  .high-standards__question {
+    border-bottom: 1px dashed #284734;
+    padding: 20px 0;
+    overflow: hidden;
+  }
+  
+  .high-standards__question:last-child {
+    border-bottom: none;
+  }
+  
+  .high-standards__question-btn {
+    font-family: Ambit;
+    width: 100%;
+    padding: 0;
+    background: none;
+    border: none;
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    gap: 24px;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.25;
+    color: #404544;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .high-standards__question-btn svg {
+    flex: 0 0 24px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .high-standards__question-btn:hover,
+  .high-standards__question-btn._opened {
+    color: #284734;
+  }
+  
+  .high-standards__question-btn._opened svg {
+    transform: rotate(135deg);
+  }
+  
+  .high-standards__question-answer {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    max-height: 0;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .high-standards__question-content {
+    padding-top: 16px;
+  }
+
+  .high-standards__awards {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .high-standards__awards img {
+    flex: 0 0 auto;
+    max-width: 100px;
+    max-height: 100px;
+    object-fit: contain;
+  }
+  
+  .high-standards__reports {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .high-standards__reports a {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: #404544;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    text-decoration: underline;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .high-standards__reports a:hover {
+    color: #78BE20;
+  }
+
+  .high-standards__use {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .high-standards__use-item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: #F7F5F1;
+    border-radius: 16px;
+    padding: 16px;
+  }
+
+  .high-standards__use-heading {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 400;
+    color: #949992;
+  }
+
+  .high-standards__use-text {
+    color: #404544;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+  }
+
+  @media (max-width: 991px) {
+    .high-standards {
+      padding: 64px 0;
+    }
+  
+    .high-standards__title {
+      font-size: 28px;
+    }
+  
+    .high-standards__wrapper {
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    .high-standards__info {
+      flex: auto;
+    }
+
+    .high-standards__questions {
+      flex: auto;
+    }
+  
+    .high-standards__question-btn {
+      font-size: 16px;
+    }
+  }
+
+  @media (max-width: 576px) {
+
+    .high-standards__schema {
+      overflow: hidden;
+      justify-content: unset;
+    }
+
+    .high-standards__schema-labels {
+      flex: 0 0 200px;
+      display: flex;
+      flex-direction: column;
+      order: -1;
+      gap: 24px;
+    }
+
+    .high-standards__schema-label {
+      position: static;
+      text-align: left;
+      width: auto;
+      transform: none;
+    }
+
+    .high-standards__image {
+      flex: 1 1 auto;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 2;
+      object-fit: cover;
+    }
+  }
+  
+  {% endstyle %}
+  
+  <section class="high-standards">
+    <div class="high-standards__wrapper">
+      <div class="high-standards__info">
+        <div class="high-standards__head">
+          {% if data.section_title != blank %}
+            <h2 class="high-standards__title">
+              {{ data.section_title }}
+            </h2>
+          {% endif %}
+          {% if data.section_description != blank %}
+            <p class="high-standards__description">
+              {{ data.section_description }}
+            </p>
+          {% endif %}
+        </div>
+        <div class="high-standards__schema">
+          {% if data.section_image != blank %}
+            {{ data.section_image | image_url: width: 420, height: 420 | image_tag: class: 'high-standards__image', loading: 'lazy' }}
+          {% endif %}
+          <div class="high-standards__schema-labels">
+            {% if data.label_top_left != blank %}
+              <div class="high-standards__schema-label high-standards__schema-label--top-left">
+                {{ data.label_top_left }}
+              </div>
+            {% endif %}
+            {% if data.label_top_right != blank %}
+              <div class="high-standards__schema-label high-standards__schema-label--top-right">
+                {{ data.label_top_right }}
+              </div>
+            {% endif %}
+            {% if data.label_center_left != blank %}
+              <div class="high-standards__schema-label high-standards__schema-label--center-left">
+                {{ data.label_center_left }}
+              </div>
+            {% endif %}
+            {% if data.label_center_right != blank %}
+              <div class="high-standards__schema-label high-standards__schema-label--center-right">
+                {{ data.label_center_right }}
+              </div>
+            {% endif %}
+            {% if data.label_bottom_left != blank %}
+              <div class="high-standards__schema-label high-standards__schema-label--bottom-left">
+                {{ data.label_bottom_left }}
+              </div>
+            {% endif %}
+            {% if data.label_bottom_right != blank %}
+              <div class="high-standards__schema-label high-standards__schema-label--bottom-right">
+                {{ data.label_bottom_right }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="high-standards__questions" data-high-standards-question-wrapper>
+        <div class="high-standards__question">
+          {% if data.benefits_heading != blank %}
+            <button class="high-standards__question-btn" data-high-standards-question-btn>
+              {{ data.benefits_heading }}
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="#284734" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 22V2m10 10H2"/>
+              </svg>
+            </button>
+          {% endif %}
+          <div class="high-standards__question-answer">
+            <div class="high-standards__question-content">
+              {% render 'new-product__benefits-list' %}
+            </div>
+          </div>
+        </div>
+        <div class="high-standards__question">
+          {% if data.ingredients_heading != blank %}
+            <button class="high-standards__question-btn" data-high-standards-question-btn>
+              {{ data.ingredients_heading }}
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="#284734" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 22V2m10 10H2"/>
+              </svg>
+            </button>
+          {% endif %}
+          <div class="high-standards__question-answer">
+            <div class="high-standards__question-content">
+              {% render 'new-product__ingredients-list' %}
+            </div>
+          </div>
+        </div>
+        <div class="high-standards__question">
+          {% if data.how_to_use_heading != blank %}
+            <button class="high-standards__question-btn" data-high-standards-question-btn>
+              {{ data.how_to_use_heading }}
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="#284734" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 22V2m10 10H2"/>
+              </svg>
+            </button>
+          {% endif %}
+          <div class="high-standards__question-answer">
+            <div class="high-standards__question-content">
+              <ul class="high-standards__use">
+                {% if product.metafields.jadepuma.serving_size != blank %}
+                  <li class="high-standards__use-item">
+                    <div class="high-standards__use-heading">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+                        <path fill="#284734" d="M16 8c0 4.417-3.583 8-8 8s-8-3.583-8-8 3.568-8 8-8 8 3.583 8 8ZM7.194 3.194l4.087 4H2.388v1.597h8.893l-4.087 4h2.087l4.892-4.805L9.28 3.18H7.194v.014Z"/>
+                      </svg>
+                      Serving Size
+                    </div>
+                    <p class="high-standards__use-text">
+                      {{ product.metafields.jadepuma.serving_size }}
+                    </p>
+                  </li>
+                {% elsif product.selected_or_first_available_variant.metafields.jadepuma.serving_size != blank %}
+                  <li class="high-standards__use-item">
+                    <div class="high-standards__use-heading">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+                        <path fill="#284734" d="M16 8c0 4.417-3.583 8-8 8s-8-3.583-8-8 3.568-8 8-8 8 3.583 8 8ZM7.194 3.194l4.087 4H2.388v1.597h8.893l-4.087 4h2.087l4.892-4.805L9.28 3.18H7.194v.014Z"/>
+                      </svg>
+                      Serving Size
+                    </div>
+                    <p class="high-standards__use-text">
+                      {{ product.selected_or_first_available_variant.metafields.jadepuma.serving_size }}
+                    </p>
+                  </li>
+                {% endif %}
+  
+                {% if product.metafields.jadepuma.dosage %}
+                  <li class="high-standards__use-item">
+                    <div class="high-standards__use-heading">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+                        <path fill="#284734" d="M16 8c0 4.417-3.583 8-8 8s-8-3.583-8-8 3.568-8 8-8 8 3.583 8 8ZM7.194 3.194l4.087 4H2.388v1.597h8.893l-4.087 4h2.087l4.892-4.805L9.28 3.18H7.194v.014Z"/>
+                      </svg>
+                      Dosage
+                    </div>
+                    <p class="high-standards__use-text">
+                      {{ product.metafields.jadepuma.dosage }}
+                    </p>
+                  </li>            
+                {% endif %}
+  
+                {% if product.metafields.jadepuma.more_info %}              
+                  <li class="high-standards__use-item">
+                    <div class="high-standards__use-heading">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+                        <path fill="#284734" d="M16 8c0 4.417-3.583 8-8 8s-8-3.583-8-8 3.568-8 8-8 8 3.583 8 8ZM7.194 3.194l4.087 4H2.388v1.597h8.893l-4.087 4h2.087l4.892-4.805L9.28 3.18H7.194v.014Z"/>
+                      </svg>
+                      More Info
+                    </div>
+                    <p class="high-standards__use-text">
+                      {{ product.metafields.jadepuma.more_info }}
+                    </p>
+                  </li>
+                {% endif %}
+  
+                {% if product.metafields.jadepuma.storage %}
+                  <li class="high-standards__use-item">
+                    <div class="high-standards__use-heading">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+                        <path fill="#284734" d="M16 8c0 4.417-3.583 8-8 8s-8-3.583-8-8 3.568-8 8-8 8 3.583 8 8ZM7.194 3.194l4.087 4H2.388v1.597h8.893l-4.087 4h2.087l4.892-4.805L9.28 3.18H7.194v.014Z"/>
+                      </svg>
+                      Storage
+                    </div>
+                    <p class="high-standards__use-text">
+                      {{ product.metafields.jadepuma.storage }}
+                    </p>
+                  </li>
+                {% endif %}
+  
+                {% if product.metafields.jadepuma.warnings %}
+                  <li class="high-standards__use-item">
+                    <div class="high-standards__use-heading">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+                        <path fill="#284734" d="M16 8c0 4.417-3.583 8-8 8s-8-3.583-8-8 3.568-8 8-8 8 3.583 8 8ZM7.194 3.194l4.087 4H2.388v1.597h8.893l-4.087 4h2.087l4.892-4.805L9.28 3.18H7.194v.014Z"/>
+                      </svg>
+                      Warnings
+                    </div>
+                    <p class="high-standards__use-text">
+                      {{ product.metafields.jadepuma.warnings }}
+                    </p>
+                  </li>
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="high-standards__question">
+          {% if data.awards_heading != blank %}
+            <button class="high-standards__question-btn" data-high-standards-question-btn>
+              {{ data.awards_heading }}
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="#284734" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 22V2m10 10H2"/>
+              </svg>
+            </button>
+          {% endif %}
+          <div class="high-standards__question-answer">
+            <div class="high-standards__question-content">
+              {% if awards != blank %}
+                <div class="high-standards__awards">
+                  {% for award in awards %}  
+                    <img src="//youthandearth.com/cdn/shop/{{ award }}" width="100" height="100" alt="Product Award" loading="lazy">
+                  {% endfor %}
+                </div>
+              {% endif %}
+              {% if lab_reports != blank %}
+                <div class="high-standards__reports">
+                  {% for report in lab_reports %}
+                    {% assign split_url = report.url | split: "/" %}
+                    {% assign file_with_extension = split_url[-1] | split: "?" | first %}
+                    {% assign file_title = file_with_extension | split: "." | first %}
+                    {% assign title_with_spaces = file_title | replace: "_", " " %}
+                    
+                    <a href="{{ report.url }}" target="_blank">
+                      {{ title_with_spaces }}
+                      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13.8086 4.833L10.0898 8.55175C9.81641 8.82519 9.40625 8.82519 9.16016 8.55175C8.88672 8.30566 8.88672 7.8955 9.16016 7.62207L11.7578 5.02441H0.65625C0.273438 5.02441 0 4.75097 0 4.36816C0 4.01269 0.273438 3.71191 0.65625 3.71191H11.7578L9.16016 1.11425C8.88672 0.868165 8.88672 0.458009 9.16016 0.184571C9.40625 -0.0615235 9.81641 -0.0615235 10.0898 0.184571L13.8086 3.93066C14.0547 4.17675 14.0547 4.58691 13.8086 4.833Z" fill="currentColor"/>
+                      </svg>
+                    </a>
+                    <br>
+                  {% endfor %}
+                </div>
+              {% endif %}
+              <lightlabs-widget company-id="443"></lightlabs-widget>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+    
+  <script>
+      window.addEventListener('DOMContentLoaded', () => {
+        const wrapper = document.querySelector('[data-high-standards-question-wrapper]');
+        const buttons = wrapper.querySelectorAll('[data-high-standards-question-btn]');
+
+        buttons.forEach(btn => btn.addEventListener('click', () => {
+          const isOpened = btn.classList.contains('_opened');
+          const answer = btn.nextElementSibling;
+          btn.classList.toggle('_opened', !isOpened);
+
+          if (isOpened) {
+            answer.style.maxHeight = null;
+          } else {
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+          }
+        }));
+      });
+  </script>
+{% endif %}
+    
+{% schema %}
+{
+  "name": "New Product: H-Standards",
+  "presets": [
+    {
+      "name": "New Product: H-Standards"
+    }
+  ]
+}
+{% endschema %}

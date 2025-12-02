@@ -136,6 +136,7 @@
     class="
       custom-image-element__wrap
       image-element__wrap
+      
       {% if additional_wrapper_classes %}
         {{ additional_wrapper_classes }}
       {% endif %}
@@ -146,6 +147,7 @@
       alt="{{ alt | escape }}"
       src="{{ image | img_url: '2000x' }}"
       style="{{ inline_style }}"
+      loading="lazy"
       {% if additional_classes %}
         class="{{ additional_classes }}"
       {% endif %}
@@ -181,6 +183,7 @@
       data-sizes="auto"
       height="{{ image.height }}"
       width="{{ image.width }}"
+      loading="lazy"
       style="{{ inline_style }}{{ height_style }};"
     />
   </div>

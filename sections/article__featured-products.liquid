@@ -277,31 +277,17 @@ padding-top:0px;
 <div class="featured_product_grid_layout container">
   {% for product in feature_product_array  %}
     <div class="featured_product_grid_item">
-    {% if settings.thumbnail_image_flip and product.images[2] != blank %}
-      {% render 'product-thumbnail-flip-custom-image',
-              product: product,
-              limit: limit,
-              products_per_row: products_per_row,
-              mobile_products_per_row: mobile_products_per_row,
-              align_height: align_height,
-              height: height,
-              collection_group_thumb: collection_group_thumb,
-              collection_group_mobile: collection_group_mobile,
-              related_products: related_items
-      %}
-    {% else %}
-      {% render 'product-thumbnail',
-              product: product,
-              limit: limit,
-              products_per_row: products_per_row,
-              mobile_products_per_row: mobile_products_per_row,
-              align_height: align_height,
-              height: height,
-              collection_group_thumb: collection_group_thumb,
-              collection_group_mobile: collection_group_mobile,
-              related_products: related_items
-      %}
-    {% endif %}
+    {% render 'product-thumbnail-flip-custom-image',
+            product: product,
+            limit: limit,
+            products_per_row: products_per_row,
+            mobile_products_per_row: mobile_products_per_row,
+            align_height: align_height,
+            height: height,
+            collection_group_thumb: collection_group_thumb,
+            collection_group_mobile: collection_group_mobile,
+            related_products: related_items
+    %}
     </div>
 
     

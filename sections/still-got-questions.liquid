@@ -263,6 +263,7 @@
             <img
               src="{{ slide.settings.mobile_image | img_url: 'master' }}"
               alt="{{ slide.settings.mobile_image.alt }}"
+              loading="lazy"
             />
             <div class="caption section is-width-standard">
               <div class="caption-info">
@@ -346,7 +347,7 @@
       {% for slide in slides %}
         {% if slide.settings.video_link != blank %}
           <div class="carousel-cell is-hidden-mobile-only">
-            <video loop autoplay muted playsinline>
+            <video loop autoplay muted playsinline loading="lazy">
               <source src="{{ slide.settings.video_link }}" type="video/webm">
               <source src="{{ slide.settings.video_link }}" type="video/mp4">
             </video>
@@ -418,7 +419,7 @@
           </div>
         {% else %}
           <div class="carousel-cell is-hidden-mobile-only">
-            <img src="{{ slide.settings.image | img_url: 'master' }}" alt="{{ slide.settings.image.alt }}">
+            <img src="{{ slide.settings.image | img_url: 'master' }}" alt="{{ slide.settings.image.alt }}" loading="lazy">
             <div class="caption section is-width-standard">
               <div class="caption-info">
                 {% if section.settings.title != blank %}

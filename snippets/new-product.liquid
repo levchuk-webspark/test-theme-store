@@ -1,0 +1,964 @@
+{% comment %} 
+    Product snippet
+   
+    @param product
+    @param selected_variant
+    @param width
+    @param css_class
+    @param display_social_buttons
+    @param display_thumbnails
+    @param enable_product_lightbox
+    @param enable_thumbnail_slider
+    @param enable_zoom
+    @param gallery_arrows
+    @param product_description_position
+    @param product_height
+    @param set_product_height
+    @param slideshow_transition
+    @param stickers_enabled
+    @param tag_style
+    @param thumbnail_position
+    @param video_looping
+    @param section_onboarding 
+{% endcomment %}
+
+{% comment %} HTML markup {% endcomment %}
+
+{% liquid
+  assign product_discount_block = blank
+  for block in section.blocks
+    if block.type == 'bf_product_discount'
+      assign product_discount_block = block
+      break
+    endif
+  endfor
+
+  assign product_discount_entry = blank
+  if product_discount_block != blank
+    assign product_discount_entry = product.metafields.custom.product_discount.value
+
+    assign override_handle = product_discount_block.settings.discount_entry_handle | strip
+    if override_handle != blank
+      assign override_metaobject = metaobjects.product_discount[override_handle]
+      if override_metaobject
+        assign product_discount_entry = override_metaobject
+      endif
+    endif
+  endif
+%}
+
+{% style %}
+  .product-product-redesign .shopify-section.shopify-section-group-header-group-classic:has(#announcement_main),
+  .product-product-redesign .shopify-section.shopify-section-group-footer-group-classic:has(.trust-badges_outer),
+  .product-product-redesign .shopify-section.shopify-section-group-footer-group-classic:has(.still-got-questions) {
+    display: none !important;
+  }
+
+  .product-product-redesign .shopify-section.shopify-section-group-footer-group-classic .under-overlay-menu {
+    margin-bottom: 0 !important;
+    padding-bottom: 24px;
+  }
+
+  .product-product-redesign #footer.footer__container {
+    padding-top: 96px;
+  }
+
+  .product-product-redesign .shopify-section:has(.feefo-review-widget-product) > .section {
+    max-width: 1450px;
+    width: 100%;
+  }
+
+  .product-product-redesign .shopify-section:has(.feefo-review-widget-product) .from-our-community__title {
+    padding: 0 16px;
+    margin: 72px 0 32px;
+    color: #404544;
+    font-family: Ambit;
+    font-weight: 900;
+    font-size: 38px;
+    line-height: 1.2;
+    letter-spacing: 3%;
+  }
+
+  .product-product-redesign .shopify-section:has(.feefo-review-widget-product) .from-our-community__title span {
+    font-family: 'Romie' !important;
+    font-style: Italic;
+    font-weight: 400;
+  }
+
+  .product-product-redesign .shopify-section:has(#vimonial-carousel) #vimonial-heading {
+    color: #404544;
+    font-family: Ambit;
+    font-weight: 900;
+    font-size: 38px;
+    line-height: 1.2;
+    letter-spacing: 3%;
+    margin-bottom: 12px;
+  }
+
+  .product-product-redesign .shopify-section:has(#vimonial-carousel) #vimonial-heading span {
+    font-family: Romie;
+    font-weight: 400;
+    font-style: Italic;
+    text-transform: capitalize;
+  }
+
+  .product-product-redesign .shopify-section:has(#vimonial-carousel) #vimonial-paragraph {
+    color: #6F726E;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.4;
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .product-product-redesign .shopify-section:has(#vimonial-carousel) .one-whole.column {
+    width: 100%;
+    margin: 0;
+  }
+
+  .product-product-redesign .shopify-section:has(#vimonial-carousel) .vimonial_player_controls_play_icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .product-product-redesign .shopify-section:has(#vimonial-carousel) .vimonial_card {
+    border-radius: 16px !important;
+  }
+
+  .product-product-redesign .shopify-section:has(#vimonial-carousel) .vimonial_slider_content {
+    display: none !important;
+  }
+
+  .product-product-redesign .shopify-section:has(#vimonial-carousel) .vimonial_reviewer_name {
+    position: absolute;
+    bottom: 96px;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    text-align: center;
+    background: transparent;
+    color: #F7F9EE;
+    display: flex; 
+    align-items: center;
+    gap: 8px;
+  }
+
+  .product-product-redesign .shopify-section:has(#vimonial-carousel) .vimonial_reviewer_name .vimonial_reviewer_name_name {
+    color: #F7F9EE;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: center;
+  }
+
+  .product-product-redesign .shopify-section:has(#vimonial-carousel) .vimonial_reviewer_name .vimonial_reviewer_text {
+    text-align: center;
+    color: #F7F9EE;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.4;
+  }
+  
+  .product-product-redesign .shopify-section:has(#vimonial-carousel) .vimonial_slide_atc {
+    position: absolute;
+    height: 60%;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    background: linear-gradient(0deg, #212121 0%, rgba(33, 33, 33, 0) 100%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 24px 16px;
+    pointer-events: none;
+  }
+
+  .product-product-redesign .shopify-section:has(#vimonial-carousel) .vimonial_atc_button {
+    background: #F7F5F1;
+    width: fit-content;
+    padding: 16px 24px;
+    border: 1px solid #3C4C2A;
+    border-radius: 44px;
+    color: #3C4C2A;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    pointer-events: auto;
+    cursor: pointer;
+  }
+
+  .product-product-redesign .shopify-section:has(#vimonial-carousel) .vimonial_atc_button:hover {
+    transform: scale(1.1);
+  }
+
+  .product-product-redesign .shopify-section:has(#vimonial-carousel) .vimonial_slider_featured_image {
+    top: 12px;
+    bottom: unset;
+    right: 12px;
+    left: unset;
+    width: 72px;
+    height: 112px;
+  }
+
+  .product-product-redesign .product_buy_and_save_container {
+    padding-left: 0;
+  }
+
+  .product__images {
+    position: relative;
+  }
+
+  .product__discount-tag-wrapper {
+    position: absolute;
+    top: 14px;
+    left: 16px;
+    z-index: 3;
+  }
+
+  .product-product-redesign .product-gallery--left-thumbnails:not(.product-gallery--image-amount-1) {
+    display: unset;
+  }
+
+  .product-product-redesign .product-gallery--left-thumbnails:not(.product-gallery--image-amount-1) .product-gallery__main {
+    width: 100%;
+    height: unset;
+    align-self: unset;
+    order: unset;
+  }
+
+  .product-product-redesign .product-gallery--left-thumbnails:not(.product-gallery--image-amount-1) .product-gallery__thumbnails {
+    width: 100%;
+    margin: 48px 0 16px;
+    order: unset;
+  }
+
+  .product-product-redesign .product-gallery--left-thumbnails:not(.product-gallery--image-amount-1) .product-gallery__thumbnail {
+    margin: 0 10px;
+    width: 100px;
+    height: 130px;
+  }
+
+  .product-product-redesign .product_section .product__images {
+    width: calc(60% - 20px);
+    padding: 0 20px 0 0;
+  }
+
+  .product-product-redesign .product_section .product__information {
+    width: calc(40% - 20px);
+  }
+
+  .product-product-redesign .product-gallery__image img {
+    width: auto;
+    max-width: 100%;
+    margin: 0 auto;
+    height: 500px;
+    object-fit: contain;
+  }
+
+  .product-product-redesign .product-gallery__image .zoom-container {
+    width: fit-content;
+    margin: 0 auto;
+  }
+
+  .product-product-redesign .is-slide-nav--true .product-gallery__thumbnail {
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .product-product-redesign .is-slide-nav--true .product-gallery__thumbnail.is-nav-selected {
+    border: 1px solid #44693D;
+  }
+
+  .product-product-redesign .product-gallery .flickity-page-dots {
+    display: flex;
+    background: #4045441A;
+    width: fit-content;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    border-radius: 64px;
+    padding: 10px;
+    bottom: -36px;
+    left: 50%;
+    gap: 8px;
+    transform: translateX(-50%);
+  }
+
+  .product-product-redesign .product-gallery .flickity-page-dots .dot {
+    margin: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    opacity: 0.3;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .product-product-redesign .product-gallery .flickity-page-dots .dot.is-selected {
+    opacity: 1;
+  }
+
+  .product-product-redesign .product-gallery .flickity-prev-next-button.previous,
+  .product-product-redesign .product-gallery .flickity-prev-next-button.next {
+    background-color: #FFFFFF80;
+    background-size: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+  }
+
+  .product-product-redesign .product-gallery .flickity-prev-next-button:hover {
+    background-color: #fff;
+  }
+
+  .product-product-redesign .product-gallery .flickity-prev-next-button.previous svg,
+  .product-product-redesign .product-gallery .flickity-prev-next-button.next svg {
+    display: none;
+  }
+
+  .product-product-redesign .product-gallery .flickity-prev-next-button.previous {
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16 7L3.83 7L9.42 1.41L8 9.53991e-08L9.53991e-08 8L8 16L9.41 14.59L3.83 9L16 9L16 7Z' fill='%23284734'/%3E%3C/svg%3E%0A");
+  }
+
+  .product-product-redesign .product-gallery .flickity-prev-next-button.next {
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M-3.93402e-07 9L12.17 9L6.58 14.59L8 16L16 8L8 -3.49691e-07L6.59 1.41L12.17 7L-3.0598e-07 7L-3.93402e-07 9Z' fill='%23284734'/%3E%3C/svg%3E%0A");
+  }
+
+  @media screen and (max-width: 991px) {
+    .product-product-redesign .product-gallery--left-thumbnails:not(.product-gallery--image-amount-1) .product-gallery__thumbnail {
+      width: 60px;
+      height: 80px;
+    }
+
+    .product-product-redesign .shopify-section:has(.feefo-review-widget-product) .from-our-community__title {
+      margin: 48px 0 32px;
+      font-size: 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .product-product-redesign .shopify-section:has(#vimonial-carousel) #vimonial-heading {
+      font-size: 28px;
+    }
+
+    .product-product-redesign .shopify-section:has(#vimonial-carousel) #vimonial-paragraph {
+      font-size: 16px;
+    }
+
+    .product-product-redesign .product_section .product__images {
+      width: calc(50% - 20px);
+      padding: 0;
+    }
+
+    .product-product-redesign .product_section .product__information {
+      width: calc(50% - 20px);
+    }
+  }
+
+  @media screen and (max-width: 798px) {
+    .product-product-redesign .product_section .flickity-button {
+      display: none;
+    }
+
+    .product-product-redesign .product_section .product__images {
+      width: calc(100% - 20px);
+    }
+
+    .product-product-redesign .product_section .product__information {
+      width: calc(100% - 20px);
+    }
+
+    .product-product-redesign .product-gallery__image img {
+      height: 360px;
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+    .product__discount-tag-wrapper {
+      top: 10px;
+      left: 10px;
+    }
+  }
+
+  @media screen and (min-width: 799px) {
+    .product-gallery {
+      position: sticky;
+      top: 100px;
+      z-index: 1;
+    }
+  }
+{% endstyle %}
+
+<div class="
+  product_section
+  js-product_section
+  container
+  is-justify-space-between
+  has-padding-bottom
+">
+  <div class="
+    product__images
+    one-half
+    column
+    medium-down--one-whole
+  ">
+    {% if product_discount_entry != blank %}
+      <div class="product__discount-tag-wrapper">
+        {% render 'product-discount-tag',
+          discount_entry: product_discount_entry,
+          unique_id: product.id,
+          variant: 'product' %}
+      </div>
+    {% endif %}
+
+    {% if section_onboarding %}
+      <div class="featured-product__images">
+        {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg placeholder-svg--product' }}
+      </div>
+    {% else %}
+      {% render 'product__images'
+        , product: product
+        , display_thumbnails: display_thumbnails
+        , thumbnail_position: thumbnail_position
+        , enable_thumbnail_slider: enable_thumbnail_slider
+        , product_height: product_height
+        , set_product_height: set_product_height
+        , video_looping: video_looping gallery_arrows: gallery_arrows
+        , slideshow_transition: slideshow_transition
+        , enable_product_lightbox: enable_product_lightbox
+        , enable_zoom: enable_zoom,
+        , is_v14: block.settings.is_v14
+      %}
+    {% endif %}
+
+  </div>
+
+  <div class="
+    product__information
+    has-product-sticker
+    one-half
+    column
+    medium-down--one-whole
+  ">
+    <div class="product__information__content">
+    {% if stickers_enabled %}
+      {% assign collection_handles = product.collections | map: 'handle' %}
+      {% render 'product-thumbnail__sticker'
+        , product: product
+        , context: 'product'
+        , collection_handles: collection_handles
+        ,
+      %}
+    {% endif %}
+
+    {%- for block in section.blocks -%}
+      <div class="
+        product-block
+        product-block--{{ block.type | downcase | replace: '_', '-' }}
+        {% if forloop.first == true %}
+          product-block--first
+        {% endif %}
+      " {{ block.shopify_attributes }}>
+
+        {% if block.type == 'discount_promo' %}
+          {% assign text = product.metafields.jadepuma.promo_discount_rich_text %}
+          {% if settings.toggle_promo_discount_message %}
+            {% if text %}
+              <div class="discount_promo">{{ text | metafield_tag }}</div>
+            {% endif %}
+          {% endif %}
+
+        {%- elsif block.type == 'sku' -%}
+          {% comment %} Sku {% endcomment %}
+          <p class="sku">
+            {% if section_onboarding %}
+              1234567890
+            {% else %}
+              {{ selected_variant.sku }}
+            {% endif %}
+          </p>
+
+        {%- elsif block.type == 'title' -%}
+          {% comment %} Name {% endcomment %}
+          {% style %}
+            .product-block .product-title {
+              font-size: 32px;
+              padding: 8px 0 4px;
+              line-height: 1.2;
+              color: #404544;
+            }
+
+            .product-block .product-category {
+              color: #284734;
+              font-size: 14px;
+              font-weight: 400;
+              line-height: 22px;
+            }
+
+            @media only screen and (max-width: 799px) {
+              .product-block .product-title {
+                font-size: 24px;
+              }
+            }
+          {% endstyle %}
+
+          <div class="product-category">
+            {{ product.metafields.jadepuma.category }}
+          </div>
+
+          <h1 class="product-title title">
+            {% if is_product_modal %}
+              <a href="{{ product.url }}">{{ product.title }}</a>
+            {% elsif section_onboarding %}
+              {{ 'homepage.onboarding.product_title' | t }}
+            {% else %}
+              {{ product.title }}
+            {% endif %}
+          </h1>
+
+          {% comment %} Block to be attached to fixed product form container {% endcomment %}
+          <div class="product-title-and-stars">
+              <p class="product-title title">{{ product.title }}</p>
+          </div>
+
+          {%- elsif block.type == 'one-sentence' -%}
+
+            {% style %}
+              .product__one-sentence {
+                font-size: 16px;
+                line-height: 24px;
+                color: #404544;
+                font-weight: 400;
+                font-family: Ambit !important;
+                margin-bottom: 8px;
+              }
+
+              .product__one-sentence span {
+                font-family: inherit !important;
+              }
+            {% endstyle %}
+                                    
+            {% if product.metafields.custom.product_one_sentence_description %}
+              <div class="product__one-sentence">{{ product.metafields.custom.product_one_sentence_description }}</div>
+            {% endif %}
+
+          {%- elsif block.type == 'product-rating' -%}
+            <div class="product-rating">
+              {% render 'product-category-stars2' %}
+            </div>
+
+          {%- elsif block.type == 'new-product__info-tabs' -%}          
+            {% render 'new-product__info-tabs', block: block, truncate_description: block.settings.truncate_description %}
+
+          {%- elsif block.type == 'size-chart' -%}
+          {% comment %} Size chart {% endcomment %}
+          {% for tag in product.tags %}
+            {% if tag contains 'meta-size-chart-' %}
+              {% assign meta_size_chart = true %}
+            {% endif %}
+          {% endfor %}
+
+          {% if settings.size_chart != blank or block.settings.size_chart != blank or meta_size_chart %}
+            <a
+              class="product__size-chart"
+              href="javascript:;"
+              data-fancybox
+              data-src="#size-chart{{ product.id }}"
+              data-type="inline">
+              {{ block.settings.title | escape }}
+            </a>
+            {% render 'popup-size-chart'
+              , block: block
+              , product_id: product.id
+              ,
+            %}
+          {% endif %}
+
+        {%- elsif block.type == 'price' -%}
+          {% comment %} Price {% endcomment %}
+          <div class="modal_price subtitle" data-display-savings="{{ block.settings.display_savings }}">
+            {% if section_onboarding %}
+              <span class="money">$49.00</span>
+            {% elsif product.available == false %}
+              <span class="sold_out">
+                {{- 'products.product.sold_out' | t -}}
+              </span>
+            {% else %}
+              {% comment %}Inject @pixelunion/shopify-price-ui/price-ui begin{% endcomment %}
+              <div class="price-ui price-ui--loading" data-price-ui>
+                <noscript>
+                  <style>
+                    .price-ui--loading {
+                      display: block !important;
+                      opacity: 1 !important;
+                    }
+                  </style>
+                </noscript>
+                {% assign compare_at_price = false %}
+
+                {% if product.compare_at_price and product.compare_at_price != product.price %}
+                  {% if product.compare_at_price_varies %}
+                    {%- capture price_min -%}
+                      {%-
+                        render 'price-ui-templates',
+                        template: 'price-min',
+                        value: product.compare_at_price_min,
+                      -%}
+                    {%- endcapture -%}
+                    {%- capture price_max -%}
+                      {%-
+                        render 'price-ui-templates',
+                        template: 'price-max',
+                        value: product.compare_at_price_max,
+                      -%}
+                    {%- endcapture -%}
+                    {%- assign compare_at_price = 'product.price.range_html' | t: price_min: price_min, price_max: price_max -%}
+                  {% else %}
+                    {%- capture compare_at_price -%}
+                      {%-
+                        render 'price-ui-templates',
+                        template: 'price',
+                        value: product.compare_at_price,
+                      -%}
+                    {%- endcapture -%}
+                  {% endif %}
+                {% endif %}
+
+                {% if product.price_varies %}
+                  {%- capture price_min -%}
+                    {%-
+                      render 'price-ui-templates',
+                      template: 'price-min',
+                      value: product.price_min,
+                    -%}
+                  {%- endcapture -%}
+                  {%- capture price_max -%}
+                    {%-
+                      render 'price-ui-templates',
+                      template: 'price-max',
+                      value: product.price_max,
+                    -%}
+                  {%- endcapture -%}
+                  {%- assign price = 'product.price.range_html' | t: price_min: price_min, price_max: price_max -%}
+                {% else %}
+                  {%- capture price -%}
+                    {%-
+                      render 'price-ui-templates',
+                      template: 'price',
+                      value: product.price,
+                    -%}
+                  {%- endcapture -%}
+                {% endif %}
+
+                {%- render 'price-ui-templates'
+                  , template: 'price-ui'
+                  , compare_at_price: compare_at_price
+                  , price: price
+                  , unit_pricing: false
+                  ,
+                -%}
+              </div>
+              {% comment %}Inject @pixelunion/shopify-price-ui/price-ui end{% endcomment %}
+
+            {% endif %}
+          </div>
+
+        {%- elsif block.type == 'complementary_products' -%}
+          {% comment %} Complementary products {% endcomment %}
+          {% render 'complementary-products'
+            , product: product
+            , block: block
+            ,
+          %}
+
+          {% if is_product_modal %}
+            <a
+              class="product__view-details"
+              href="{{ product.url | within: collection }}"
+              title="{{ product.title | escape }}">
+              {{- 'collections.general.view_product_details' | t -}}
+            </a>
+          {% endif %}
+
+        <div id="element-to-check-inersection-for-fixed-add-to-cart"></div>  
+
+        {%- elsif block.type == 'form' -%}
+          {% comment %} Purchase form {% endcomment %}
+          {% if section_onboarding %}
+            <div class="product-form-container has-padding-top">
+              <div class="purchase-details">
+                <div class="purchase-details__buttons purchase-details__spb--false">
+                  <button
+                    name="add"
+                    class="action_button button button--add-to-cart add_to_cart"
+                    data-label={{ add_to_cart_label | json }}>
+                    <span class="text">{{ 'products.product.add_to_cart' | t }}</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          {% else %}
+            <div class="product-form-container has-padding-top">
+
+              {% comment %} Notify form {% endcomment %}
+              {% render 'product__notify-me-form'
+                , product: product %}
+
+              {% comment %} Product form {% endcomment %}
+              {% unless collection_handles contains 'coming-soon' %}
+                {% render 'product__form'
+                  , context: 'product'
+                  , product: product
+                  , sold_out_options: sold_out_options
+                  , selected_variant: selected_variant
+                  , show_payment_button: block.settings.show_payment_button
+                  , show_recipient_form: block.settings.show_gift_card_recipient_form
+                  , collection_handles: collection_handles
+                  , v14_color: block.settings.v14_color
+                %}
+              {% endunless %}
+            </div>
+          {% endif %}
+
+          {% render 'new-product__sticky-cta' %}
+
+        {%- elsif block.type == 'new-product__more-info' -%}
+          {% render 'new-product__more-info',
+            block: block,
+          %}
+
+        {%- elsif block.type == 'new-product__light-labs' -%}
+          <lightlabs-widget company-id="443"></lightlabs-widget>
+
+        {%- elsif block.type == 'unique-selling-points' -%}
+          {% render 'product__unique-selling-points',
+            block: block,
+          %}
+                  
+        {%- elsif block.type == 'why-subscribe' and product.metafields.custom.available_as_a_subscription -%}
+          {% render 'product__why-subscribe',
+            block: block,
+        %}
+                  
+        {%- elsif block.type == 'why-subscribe-short' and product.metafields.custom.available_as_a_subscription -%}
+          {% render 'product__why-subscribe-short',
+            block: block,
+        %}
+
+                  
+        {%- elsif block.type == 'product-links' -%}
+          {% comment %} Collections, type, tags {% endcomment %}
+          {% if block.settings.show_collections or block.settings.show_tags or block.settings.show_type %}
+            <div class="product__classification-links has-padding-top">
+              {% if block.settings.show_collections %}
+                <p class="product__collections-list tags">
+                  <span class="product__classification-title">{{ 'products.product.collections' | t }}:</span>
+                  {% for col in product.collections %}
+                    <span class="tag tag--{{ tag_style }}">
+                      <a href="{{ col.url }}" title="{{ col.title }}">{{ col.title }}</a>
+                    </span>
+                  {% endfor %}
+                </p>
+              {% endif %}
+
+              {% if block.settings.show_type %}
+                <p class="product__type-list tags">
+                  <span class="product__classification-title">{{ 'products.product.product_types' | t }}:</span>
+                  <span class="tag tag--{{ tag_style }}">{{ product.type | link_to_type }}</span>
+                </p>
+              {% endif %}
+
+              {% if block.settings.show_tags and product.tags.size > 0 %}
+                <p class="product__tags-list tags">
+                  <span class="product__classification-title">{{ 'products.product.tags' | t }}:</span>
+                  {% for tag in product.tags %}
+                    {% unless tag contains 'meta-' %}
+                      <span class="tag tag--{{ tag_style }}">
+                        <a href="{{ routes.collections_url }}/{% if collection %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag | handle }}" title="{{ 'products.product.products_tagged' | t: tag: tag }}">{{ tag }}</a>
+                      </span>
+                    {% endunless %}
+                  {% endfor %}
+                </p>
+              {% endif %}
+            </div>
+          {% endif %}
+
+        {%- elsif block.type == 'share' -%}
+          {% comment %} Social share icons {% endcomment %}
+          <div class="product__social-share has-padding-top">
+            {% render 'social-share-buttons' %}
+          </div>
+
+        {%- elsif block.type == 'summary-panel' -%}
+          {% comment %} Summary Panel {% endcomment %}
+          {% render 'product__summary-panel' %}
+
+        {%- elsif block.type == 'new-product__subs-ben' -%}
+          {% render 'new-product__subscription-benefits', block: block %}
+
+        {%- elsif block.type == 'text' -%}
+
+          {% comment %} Text {% endcomment %}
+          <div class="product-text">
+            {{ block.settings.text }}
+          </div>
+        {% elsif block.type == '@app' %}
+          <div class="product-app">
+            {% render block %}
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endfor -%}
+    </div>
+  </div>
+
+  </div>
+ {% render 'cross-sell' %}
+
+<script>
+  window.addEventListener('load', function() {
+    
+      const productFormContainer = document.getElementsByClassName("product-form-container")[0];
+      const quantityAndCartWrapper = document.getElementsByClassName("purchase-details")[0];
+      const purchaseDetailsInfo = document.getElementsByClassName("product-title-and-stars")[0];
+      const elementAboveQuantityAndCartWrapper = document.getElementById("element-to-check-inersection-for-fixed-add-to-cart");
+      const media = window.matchMedia("(min-width: 799px)");
+      const fragment = document.createDocumentFragment();
+    
+      fragment.appendChild(purchaseDetailsInfo);
+    
+      if(productFormContainer) {
+          const observer = new window.IntersectionObserver(([entry]) => {
+            if (!entry.isIntersecting && entry.boundingClientRect.top < 0 ) {
+              productFormContainer?.classList?.add("product-form-container-fixed");
+
+              productFormContainer.prepend(fragment);
+              
+              return
+            }
+              productFormContainer?.classList?.remove("product-form-container-fixed");
+          }, {
+            root: null,
+            threshold: 0,
+          });
+      
+          
+          if (media.matches && elementAboveQuantityAndCartWrapper) {
+            observer.observe(elementAboveQuantityAndCartWrapper);
+          }
+          
+      };
+
+  });
+
+</script>
+
+<script>
+(function () {
+  // We transfer savings badges to the required containers
+  function updateDiscountPosition() {
+    var containers = document.getElementsByClassName("sls-selling-plan-group-options");
+    if (!containers || !containers.length) return false;
+
+    var badges = document.getElementsByClassName("sls-savings-badge");
+    if (!badges || !badges.length) return false;
+
+    // We take a snapshot of collections so as not to break when moving nodes
+    var containerArr = Array.prototype.slice.call(containers);
+    var badgeArr = Array.prototype.slice.call(badges);
+
+    var placed = 0;
+    var len = Math.min(containerArr.length, badgeArr.length);
+    for (var i = 0; i < len; i++) {
+      var container = containerArr[i];
+      var badge = badgeArr[i];
+      if (!container || !badge) continue;
+
+      //If the badge is not in this container, move it
+      if (badge.parentNode !== container) {
+        container.appendChild(badge);
+      }
+
+      // Provide the necessary layout
+      container.style.display = "flex";
+      container.style.justifyContent = "space-between";
+      placed++;
+    }
+    return placed > 0;
+  }
+
+  // Debounce for frequent mutations
+  var scheduleId = null;
+  function scheduleUpdate() {
+    if (scheduleId) return;
+    var raf = window.requestAnimationFrame || function (cb) { return setTimeout(cb, 16); };
+    scheduleId = raf(function () {
+      scheduleId = null;
+      updateDiscountPosition();
+    });
+  }
+
+  // DOM change observer (widget can recreate elements)
+  var observer = null;
+  function startObserver() {
+    if (observer) return;
+    observer = new MutationObserver(function (mutations) {
+      var relevant = false;
+      for (var i = 0; i < mutations.length && !relevant; i++) {
+        var m = mutations[i];
+        if (m.type !== "childList") continue;
+        // We react only to the appearance/movement of the necessary nodes
+        for (var j = 0; j < m.addedNodes.length; j++) {
+          var n = m.addedNodes[j];
+          if (n.nodeType !== 1) continue;
+          if (
+            (n.matches && (n.matches(".sls-savings-badge, .sls-selling-plan-group-options"))) ||
+            (n.querySelector && (n.querySelector(".sls-savings-badge") || n.querySelector(".sls-selling-plan-group-options")))
+          ) {
+            relevant = true;
+            break;
+          }
+        }
+      }
+      if (relevant) scheduleUpdate();
+    });
+
+    try {
+      observer.observe(document.body, { childList: true, subtree: true });
+    } catch (e) {
+      console.warn("MutationObserver failed:", e);
+    }
+
+    // Auto-off after 10 sec, so as not to live forever (can be removed if you need to keep it on constantly)
+    setTimeout(function () {
+      if (observer) observer.disconnect();
+      observer = null;
+    }, 10000);
+  }
+
+  // Initialization on widget event + instant try (in case everything is already in DOM)
+  function init() {
+    updateDiscountPosition();
+    startObserver();
+  }
+
+  // Our event from Seal Subs
+  document.addEventListener("sealsubs:subscription_widget_created", init);
+
+  // We also try when the document is ready (if the event has already passed or has not arrived)
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
+</script>

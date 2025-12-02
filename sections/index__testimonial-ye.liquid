@@ -764,7 +764,7 @@
    const documentNextButtons = document.getElementById("testimonials-ye__certificate-modal__nav-buttons__next"); 
     const documentPrevButtons = document.getElementById("testimonials-ye__certificate-modal__nav-buttons__prev"); 
     
-    documentNextButtons?.addEventListener('click', function() {
+    documentNextButtons.addEventListener('click', function() {
       
       const documents = document.querySelectorAll(".testimonials-ye__certificate-modal__certificate_document");
       documents.forEach(document => {
@@ -775,7 +775,7 @@
       documentPrevButtons.disabled=false;
     });
 
-    documentPrevButtons?.addEventListener('click', function() {
+    documentPrevButtons.addEventListener('click', function() {
       
       const documents = document.querySelectorAll(".testimonials-ye__certificate-modal__certificate_document");
       documents.forEach(document => {

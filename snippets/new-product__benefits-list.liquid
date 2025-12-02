@@ -1,0 +1,39 @@
+
+{% if product.metafields.custom.benefits != blank %}
+  {% style %}
+  
+  .new-product__benefits-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  
+  .new-product__benefits-list__item {
+    flex: 0 1 calc(50% - 8px);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: #404544;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .new-product__benefits-list__item svg {
+    flex: 0 0 auto;
+  }
+    
+  {% endstyle %}
+  
+  <ul class="new-product__benefits-list">
+    {% for benefit in product.metafields.custom.benefits.value %}
+      <li class="new-product__benefits-list__item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20">
+          <rect width="20" height="20" fill="#78BE20" fill-opacity=".1" rx="10"/>
+          <path stroke="#404544" stroke-linecap="round" stroke-linejoin="round" d="m14 7-5.5 5.5L6 10"/>
+        </svg>
+        <div>{{ benefit }}</div>
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}

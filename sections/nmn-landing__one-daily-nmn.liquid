@@ -1,0 +1,489 @@
+{% assign data = section.settings %}
+
+{% style %}
+  .page-nmn-capsules-landing .shopify-section.shopify-section-group-header-group-classic:has(#announcement_main),
+  .page-nmn-capsules-landing .shopify-section.shopify-section-group-header-group-classic.top-bar,
+  .page-nmn-capsules-landing .shopify-section.shopify-section-group-footer-group-classic:has(.trust-badges_outer),
+  .page-nmn-capsules-landing .shopify-section.shopify-section-group-footer-group-classic:has(.still-got-questions) {
+    display: none !important;
+  }
+
+  .page-nmn-capsules-landing .shopify-section.shopify-section-group-footer-group-classic .under-overlay-menu {
+    margin-bottom: 0 !important;
+    padding-bottom: 24px;
+  }
+
+  .page-nmn-capsules-landing #footer.footer__container {
+    padding-top: 96px;
+  }
+
+  .one-daily-nmn {
+    display: flex;
+    position: relative;
+    min-height: 780px;
+    height: calc(100dvh - 87px);
+  }
+
+  .one-daily-nmn__background-image,
+  .one-daily-nmn__background-image-mobile {
+    display: none;
+  }
+
+  .one-daily-nmn__background-image-big,
+  .one-daily-nmn__background-image-mobile,
+  .one-daily-nmn__background-image {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .one-daily-nmn__wrapper {
+    flex: 0 1 54%;
+    display: flex;
+    flex-direction: column;
+    padding: 72px 48px 72px 236px;
+    backdrop-filter: blur(24px);
+    background: #28473470;
+  }
+
+  .one-daily-nmn__list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
+    max-width: 600px;
+    margin-bottom: 64px;
+  }
+
+  .one-daily-nmn__list li {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 12px 16px;
+    border-radius: 50px;
+    background: #FFFFFF14;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.25;
+    letter-spacing: -2.2%;
+    color: #F7F5F1;
+    white-space: nowrap;
+  }
+
+  .one-daily-nmn__list li:before {
+    flex: 0 0 auto;
+    content: '';
+    width: 18px;
+    height: 18px;
+    aspect-ratio: 1;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' viewBox='0 0 18 18'%3E%3Ccircle cx='9' cy='9' r='7' fill='%2344693D'/%3E%3Cpath stroke='%23D4D8D0' stroke-linecap='round' stroke-linejoin='round' d='M7 9.5 8.5 11l3-3'/%3E%3C/svg%3E%0A");
+  }
+
+  .one-daily-nmn__title {
+    font-family: Ambit SemiBold !important;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-size: 66px;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -2.2%;
+    text-transform: uppercase;
+    color: #F7F5F1;
+    margin-bottom: 24px;
+  }
+
+  .one-daily-nmn__title span {
+    font-family: 'Romie' !important;
+    font-weight: 400;
+    margin-left: 48px;
+  }
+
+  .one-daily-nmn__description {
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 400;
+    letter-spacing: -2.2%;
+    color: #F7F5F1;
+    max-width: 440px;
+    margin-bottom: 32px;
+    margin-left: 64px;
+  }
+
+  .one-daily-nmn__button {
+    font-family: Ambit SemiBold !important;
+    background: linear-gradient(65deg, #294031 10%, #71B743 130%);
+    padding: 24px 32px;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 1.25;
+    letter-spacing: -2.2%;
+    color: #fff;
+    width: fit-content;
+    min-width: 240px;
+    transition: all 0.3s ease-in-out;
+    margin-left: 48px;
+  }
+
+  .one-daily-nmn__button:hover {
+    transform: scale(1.04);
+    color: #fff;
+  }
+
+  .one-daily-nmn__info {
+    flex: 0 1 46%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .one-daily-nmn__image {
+    display: none;
+    flex: 1 1 auto;
+    overflow: hidden;
+  }
+
+  .one-daily-nmn__image img {
+    object-fit: contain;
+    max-height: 100%;
+  }
+
+  .one-daily-nmn__bottom-mobile,
+  .one-daily-nmn__bottom {
+    flex: 0 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 24px;
+    border-top: 1px solid #99999966;
+    backdrop-filter: blur(8px);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+  }
+
+  .one-daily-nmn__bottom-mobile {
+    display: none;
+  }
+
+  .one-daily-nmn__rating {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 36px;
+    letter-spacing: -2.2%;
+    color: #FEBC18;
+  }
+
+  .one-daily-nmn__disclaimer {
+    font-size: 20px;
+    line-height: 1.25;
+    font-weight: 400;
+    letter-spacing: -2.2%;
+    color: #fff;
+    text-align: center;
+  }
+
+  @media (max-width: 1800px) {
+    .one-daily-nmn__wrapper {
+      padding: 72px 48px 72px 186px;
+    }
+  }
+
+  @media (max-width: 1600px) {
+    .one-daily-nmn__wrapper {
+      padding: 72px 48px 72px 96px;
+    }
+  }
+
+  @media (max-width: 1440px) {
+    .one-daily-nmn__background-image-big {
+      display: none;
+    }
+
+    .one-daily-nmn__background-image {
+      display: block;
+    }
+  }
+
+  @media (max-width: 1400px) {
+    .one-daily-nmn {
+      min-height: 750px;
+    }
+
+    .one-daily-nmn__wrapper {
+      padding: 32px;
+    }
+
+    .one-daily-nmn__title span {
+      margin-left: 24px;
+    }
+
+    .one-daily-nmn__button {
+      margin-left: 24px;
+    }
+
+    .one-daily-nmn__description {
+      margin-left: 32px;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .one-daily-nmn {
+      min-height: auto;
+      height: auto;
+    }
+
+    .one-daily-nmn__title {
+      gap: 8px;
+      font-size: 48px;
+    }
+
+    .one-daily-nmn__wrapper {
+      padding: 48px 24px;
+      flex: 0 1 60%;
+    }
+
+    .one-daily-nmn__info {
+      flex: 0 1 40%;
+    }
+  }
+
+  @media (max-width: 991px) {
+    .page-nmn-capsules-landing #footer.footer__container {
+      padding-top: 72px;
+    }
+
+    .one-daily-nmn__list {
+      max-width: none;
+      margin-bottom: 36px;
+    }
+
+    .one-daily-nmn__title {
+      font-size: 36px;
+    }
+
+    .one-daily-nmn__disclaimer {
+      font-size: 16px;
+    }
+  }
+
+  @media (max-width: 798px) {
+    .page-nmn-capsules-landing #footer.footer__container {
+      padding-top: 64px;
+    }
+
+    .one-daily-nmn__background-image {
+      display: none;
+    }
+
+    .one-daily-nmn__background-image-mobile {
+      display: block;
+    }
+
+    .one-daily-nmn {
+      flex-direction: column;
+    }
+
+    .one-daily-nmn__wrapper {
+      flex: 1 1 auto;
+      padding: 32px 20px;
+      backdrop-filter: blur(4px);
+    }
+
+    .one-daily-nmn__list {
+      order: 2;
+      margin: 32px 0;
+    }
+
+    .one-daily-nmn__list li {
+      width: 100%;
+      font-size: 16px;
+    }
+
+    .one-daily-nmn__info {
+      display: none;
+    }
+
+    .one-daily-nmn__bottom-mobile {
+      display: flex;
+      order: 3;
+      padding: 0;
+      backdrop-filter: none;
+      background: none;
+      border: none;
+    }
+
+    .one-daily-nmn__image {
+      display: block;
+      flex: 0 0 400px;
+      margin-bottom: 16px;
+    }
+
+    .one-daily-nmn__description {
+      order: 1;
+      margin-bottom: 0;
+      margin-top: 32px;
+    }
+  }
+
+  @media (max-width: 450px) {
+    .page-nmn-capsules-landing #footer.footer__container {
+      padding-top: 48px;
+    }
+  }
+{% endstyle %}
+
+<section class="one-daily-nmn">
+  {% if data.background_image_big != blank %}
+    {{ data.background_image_big | image_url: width: 3840, height: 2160 | image_tag: class: 'one-daily-nmn__background-image-big', loading: 'lazy' }}
+  {% endif %}
+  {% if data.background_image != blank %}
+    {{ data.background_image | image_url: width: 3072, height: 2048 | image_tag: class: 'one-daily-nmn__background-image', loading: 'lazy' }}
+  {% endif %}
+    {% if data.background_image_mobile != blank %}
+    {{ data.background_image_mobile | image_url: width: 2880, height: 1660 | image_tag: class: 'one-daily-nmn__background-image-mobile', loading: 'lazy' }}
+  {% endif %}
+
+  <div class="one-daily-nmn__wrapper">
+    {% if data.image != blank %}
+      <div class="one-daily-nmn__image">
+        {{ data.image | image_url: width: 720, height: 1100 | image_tag: loading: 'lazy' }}
+      </div>
+    {% endif %}
+    {% if data.list != blank %}
+      <ul class="one-daily-nmn__list">{{ data.list }}</ul>
+    {% endif %}
+    {% if data.title != blank %}
+      <h1 class="one-daily-nmn__title">{{ data.title }}</h1>
+    {% endif %}
+    {% if data.description != blank %}
+      <p class="one-daily-nmn__description">{{ data.description }}</p>
+    {% endif %}
+    {% if data.cta_label != blank %}
+      <a 
+        {% if data.cta_url != blank %}
+          href="{{ data.cta_url }}"
+        {% endif %}
+        class="one-daily-nmn__button"
+      >
+        {{ data.cta_label }}
+      </a>
+    {% endif %}
+    <div class="one-daily-nmn__bottom-mobile">
+      <div class="one-daily-nmn__rating">
+        {% if data.rating != blank %}
+          {{ data.rating }}
+        {% endif %}
+        {% if data.stars != blank %}
+          {{ data.stars }}
+        {% endif %}
+      </div>
+      {% if data.disclaimer != blank %}
+        <div class="one-daily-nmn__disclaimer">{{ data.disclaimer }}</div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="one-daily-nmn__info">
+    <div class="one-daily-nmn__bottom">
+      <div class="one-daily-nmn__rating">
+        {% if data.rating != blank %}
+          {{ data.rating }}
+        {% endif %}
+        {% if data.stars != blank %}
+          {{ data.stars }}
+        {% endif %}
+      </div>
+      {% if data.disclaimer != blank %}
+        <div class="one-daily-nmn__disclaimer">{{ data.disclaimer }}</div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "NMN - One Daily NMN",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image_big",
+      "label": "Section background big image"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Section background image"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_mobile",
+      "label": "Section background image mobile"
+    },
+    {
+      "type": "html",
+      "id": "list",
+      "label": "Section list"
+    },
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Section title"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Section description"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Section CTA label"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Section CTA link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Section product image"
+    },
+    {
+      "type": "text",
+      "id": "rating",
+      "label": "Section rating"
+    },
+    {
+      "type": "html",
+      "id": "stars",
+      "label": "Section stars"
+    },
+    {
+      "type": "text",
+      "id": "disclaimer",
+      "label": "Section disclaimer"
+    },
+  ],
+  "presets": [
+    {
+      "name": "NMN Landing: One Daily NMN"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,214 @@
+{% assign buttons = section.blocks | where: 'type', 'button' %}
+
+{% style %}
+   #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  .button__links__wrapper {
+    display: flex;
+    column-gap: 20px;
+    row-gap: 17px;
+    
+    flex-wrap: wrap;
+  }
+
+  #shopify-section-{{ section.id }} .button__links__item {
+    border-radius: 10px;
+    padding: 21px 10px;
+    min-width: 176px;
+    color: {{ section.settings.default_text_color }};
+    background: {{ section.settings.default_background_color }};
+
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 110.00000000000001%;
+    text-transform: capitalize;
+    text-align: center;
+
+  }
+
+  #shopify-section-{{ section.id }} .button__links__item__active, 
+  #shopify-section-{{ section.id }} .button__links__item:hover {
+    color: {{ section.settings.active_text_color }};
+    {% if section.settings.active_background_gradient_color != nil %}
+      background: linear-gradient(180deg, {{ section.settings.active_background_color }} 0%, {{ section.settings.active_background_gradient_color }} 100%);
+    {% else %}
+      background: {{ section.settings.active_background_color }};
+    {% endif %}
+  }
+
+  @media only screen and (max-width: 798px) { 
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .button__links__item {
+      padding: 14px 5px;
+      min-width: 47.5%;
+    }
+
+    #shopify-section-{{ section.id }} .button__links__item__active {
+      width: 100%;
+    }
+
+    @media only screen and (max-width: 420px) { 
+      #shopify-section-{{ section.id }} .button__links__item {
+        min-width: 47%;
+      }
+    }
+  }
+  
+  {%
+    render 'css-loop',
+    css: section.settings.custom_css,
+    id: section.id,
+  %}
+{% endstyle %}
+
+<section
+  class="
+    section
+    {{ section.settings.css_class }}
+    button__links
+  "
+>
+  <div class="button__links__wrapper">
+    {% for block in buttons %}
+      {% if block.settings.name and block.settings.link %}
+        <a class="button__links__item {% if block.settings.is_active %} button__links__item__active {% endif %}" href="{{ block.settings.link }}" target="_blank"  rel="noopener noreferrer">
+          {{ block.settings.name }}
+        </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Button links",
+    "settings": [
+       {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Top spacing",
+        "min": 0,
+        "max": 100,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Bottom spacing",
+        "min": 0,
+        "max": 100,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+          "type": "header",
+          "content": "Colors"
+        },
+      {
+          "type": "color",
+          "id": "default_background_color",
+          "label": "Default button background color",
+          "default": "#D4D8D0"
+        },
+        {
+          "type": "color",
+          "id": "default_text_color",
+          "label": "Default button text color",
+          "default": "#284734"
+        },
+      {
+          "type": "color",
+          "id": "active_background_color",
+          "label": "Active button background color",
+          "default": "#78BE20"
+        },
+      {
+          "type": "color",
+          "id": "active_background_gradient_color",
+          "label": "Active button background gradient color",
+          "default": "#44693D"
+        },
+        {
+          "type": "color",
+          "id": "active_text_color",
+          "label": "Active button text color",
+          "default": "#F7F5F1"
+        },
+      {
+      "type": "header",
+      "content": "Mobile layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile top spacing",
+      "min": 0,
+      "max": 100,
+      "default": 10,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile bottom spacing",
+      "min": 0,
+      "max": 100,
+      "default": 10,
+      "unit": "px"
+    },
+      {
+        "type": "header",
+        "content": "Advanced",
+        "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+      },
+      {
+        "type": "text",
+        "id": "css_class",
+        "label": "CSS Class"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_css",
+        "label": "Custom CSS"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "button",
+        "name": "Button",
+        "limit": 7,
+        "settings": [
+          {
+            "type": "text",
+            "id": "name",
+            "label": "Name"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
+          },
+          {
+            "type": "checkbox",
+            "id": "is_active",
+            "label": "Is active?",
+            "default": false
+          },
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Button links"
+      }
+    ]
+  }
+{% endschema %}

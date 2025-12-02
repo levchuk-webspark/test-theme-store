@@ -1,0 +1,296 @@
+{% assign data = product.metafields.custom.product_why_choose.value %}
+
+{% if data != blank %}
+  {% style %}
+  
+  .new-product-why-choose {
+    padding: 64px 0;
+    background: #F7F5F1;
+  }
+  
+
+  .new-product-why-choose__wrapper {
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 36px;
+  }
+
+  .new-product-why-choose__head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .new-product-why-choose__subtitle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 4px;
+    margin-bottom: 24px;
+    color: #404544;
+    font-family: Romie !important;
+    font-weight: 400;
+    font-style: Italic;
+    font-size: 38px;
+    line-height: 1.2;
+  }
+
+  .new-product-why-choose__title {
+    font-family: Ambit;
+    font-weight: 900;
+    font-size: 38px;
+    letter-spacing: 3%;
+    text-align: center;
+    color: #404544;
+    font-size: 38px;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .new-product-why-choose__description {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5;
+    text-align: center;
+    color: #6F726E;
+    max-width: 580px;
+  }
+
+  .new-product-why-choose__button {
+    font-family: Ambit;
+    background: #F7F5F1;
+    padding: 16px 24px;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 16px;
+    color: #284734;
+    width: fit-content;
+    white-space: nowrap;
+    flex: 0 0 auto;
+    cursor: pointer;
+    border: 1px solid #284734;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .new-product-why-choose__button svg {
+    width: 0;
+    margin: 0;
+    transition: all 0.3s ease-in-out; 
+  }
+
+  .new-product-why-choose__button:hover {
+    color: #284734;
+  }
+
+  .new-product-why-choose__button:hover svg {
+    width: 16px;
+    margin-left: 8px;
+  }
+
+  .new-product-why-choose__list {
+    margin: 0 -20px;
+    width: calc(100% + 40px);
+  }
+
+  .new-product-why-choose__card {
+    flex: 1 1 auto;
+    padding: 32px;
+    width: 20%;
+    border: 1px solid #284734;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    border-radius: 12px;
+    margin-right: 16px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .new-product-why-choose__card.is-selected {
+    background-color: #fff;
+  }
+
+  .new-product-why-choose__card-stars {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .new-product-why-choose__card-review {
+    color: #284734;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.4;
+    text-align: center;
+  }
+
+  .new-product-why-choose__card-name {
+    color: #404544;
+    text-align: center;
+    font-family: Ambit;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 1.2;
+  }
+
+  @media (max-width: 1440px) {
+    .new-product-why-choose__card {
+      width: 26%;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .new-product-why-choose__card {
+      width: 40%;
+    }
+  }
+
+  @media (max-width: 991px) {
+    .new-product-why-choose__subtitle {
+      font-size: 30px;
+      margin-bottom: 16px;
+    }
+
+    .new-product-why-choose__wrapper {
+      gap: 24px;
+    }
+
+    .new-product-why-choose__title {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .new-product-why-choose__description,
+    .new-product-why-choose__card-review {
+      font-size: 16px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .new-product-why-choose__card {
+      width: 70%;
+      transform: scale(0.95);
+      margin-right: 4px;
+      opacity: 0.4;
+    }
+
+    .new-product-why-choose__card.is-selected {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .new-product-why-choose__card {
+      width: 84%;
+    }
+  }
+  
+  {% endstyle %}
+  
+  <section class="new-product-why-choose">
+    <div class="new-product-why-choose__wrapper">
+      <div class="new-product-why-choose__head">
+        {% if data.section_subtitle != blank %}
+          <h3 class="new-product-why-choose__subtitle">
+            <div>
+              {% for i in (1..5) %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                  <path fill="#FFD100" d="m19.26 24-1.395-8.654L24 8.976l-8.454-1.314L12 0 8.454 7.662 0 8.975l6.134 6.37L4.74 24 12 19.933 19.26 24Z"/>
+                </svg>
+              {% endfor %}
+            </div>
+            {{ data.section_subtitle }}
+          </h3>
+        {% endif %}
+        {% if data.section_title != blank %}
+          <h2 class="new-product-why-choose__title">
+            {{ data.section_title }}
+          </h2>
+        {% endif %}
+        {% if data.section_description != blank %}
+          <p class="new-product-why-choose__description">
+            {{ data.section_description }}
+          </p>
+        {% endif %}
+      </div>
+      <ul class="new-product-why-choose__list" data-why-choose-slider>
+        {% for card in data.section_items.value %}
+          <li class="new-product-why-choose__card">
+            {% if card.stars != blank %}
+              <div class="new-product-why-choose__card-stars">
+                {% for i in (1..card.stars) %}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path fill="#FFD100" d="m19.26 24-1.395-8.654L24 8.976l-8.454-1.314L12 0 8.454 7.662 0 8.975l6.134 6.37L4.74 24 12 19.933 19.26 24Z"/>
+                  </svg>
+                {% endfor %}
+              </div>
+            {% endif %}
+            {% if card.review != blank %}
+              <p class="new-product-why-choose__card-review">
+                {{ card.review }}
+              </p>
+            {% endif %}
+            {% if card.name != blank %}
+              <div class="new-product-why-choose__card-name">
+                {{ card.name }}
+              </div>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+      {% if data.cta_label != blank %}
+          <a 
+            {% if data.cta_url != blank %}
+              href="{{ data.cta_url }}"
+            {% endif %}
+            class="new-product-why-choose__button"
+          >
+            {{ data.cta_label }}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+              <path fill="#284734" d="M16 8c0 4.417-3.583 8-8 8s-8-3.583-8-8 3.568-8 8-8 8 3.583 8 8ZM7.194 3.194l4.087 4H2.388v1.597h8.893l-4.087 4h2.087l4.892-4.805L9.28 3.18H7.194v.014Z"/>
+            </svg>
+          </a>
+        {% endif %}
+    </div>
+  </section>
+    
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const slider = document.querySelector('[data-why-choose-slider]');
+    
+      const flickity = new Flickity(slider, {
+        draggable: true,
+        pageDots: false,
+        cellAlign: 'center',
+        prevNextButtons: false,
+        initialIndex: 2
+      });
+
+      slider.querySelectorAll('.new-product-why-choose__card').forEach(card => card.style.height = '100%');
+    });
+  </script>
+
+{% endif %}
+    
+{% schema %}
+{
+  "name": "New Product: Why Choose",
+  "presets": [
+    {
+      "name": "New Product: Why Choose"
+    }
+  ]
+}
+{% endschema %}

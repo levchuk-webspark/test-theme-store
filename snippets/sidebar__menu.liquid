@@ -1,57 +1,289 @@
+{% style %}
+  .block__menu.has-padding-top { padding-top: 0; }
+
+  @media (min-width: 798px) {
+    .block__menu .menu-heading-wrapper {
+      display: flex;
+      width: 90%;
+      flex-wrap: wrap;
+      padding: 0;
+      margin: 0;
+    }
+  }
+  
+
+  .block__menu .sidebar-block__heading {
+    font-size: 22px;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+
+  .block__menu .sidebar-block__content {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .block__menu .sidebar-block__item {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--shopify-editor-setting-regular_color);
+  }
+  .block__menu .sidebar-block__item a:hover {
+    color: var(--shopify-editor-setting-regular_color);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .active-title-menu {
+    color: #78BE20;
+  }
+
+  .block__menu .sidebar-block__item a.active {
+    color: var(--shopify-editor-setting-regular_color);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  @media (max-width: 798px) {
+    .sidebar__block.block__menu {
+       width: 49%;
+      display: inline-block;
+    }
+
+    .block__menu .sidebar-block__heading {
+      font-size: 16px;
+      margin-bottom: 15px;
+      width: 95%;
+    }
+
+    .block__menu .sidebar-block__item {
+      font-size: 13px;
+    }
+
+    .sidebar__block.block__menu.has-padding-bottom {
+      padding-bottom: 15px;
+    }
+
+    .sidebar-block__toggle-icon .icon {
+      width: 10px;
+      height: 18px;
+    }
+
+    .sidebar__block.block__menu.is-active  .icon {
+      transform: rotate(180deg);
+    }
+  }
+{% endstyle %}
+{% assign full_url = request.host | append: request.path %}
+{% assign link_for_menu_changed = link_for_menu | remove: 'https://' %}
+{% assign link_for_menu_class = link_for_menu | remove: 'https://youthandearth.com/blogs/learninghub/tagged/' %}
+
 {% if menu != blank %}
-  <div data-has-toggle-option>
-    <h3 class="sidebar-block__heading" {% if settings.toggle_sidebar %}data-sidebar-block__toggle="closed" aria-label="toggle"{% endif %}>
+  <div data-has-toggle-option class="menu-heading-wrapper">
+    {% if link_for_menu != blank %}
+      <a
+        class="sidebar-block__heading__link"
+        href="{{ link_for_menu  }}"
+        title="{{ linklists[menu].title }}"
+      >
+    {% endif %}
+    <h3
+      class="sidebar-block__heading {% if full_url == link_for_menu_changed %} active-title-menu {% endif %}"
+    >
       {{ linklists[menu].title }}
-      {% if settings.toggle_sidebar %}
-        <button class="sidebar-block__toggle-icon icon-style--{{ settings.toggle_icon_style }}">
+        <button class="sidebar-block__toggle-icon icon-style--{{ settings.toggle_icon_style }} is-hidden-desktop-only">
           {% if settings.toggle_icon_style == 'plus_and_minus' %}
-            {% render 'icon',
-                    name: 'plus',
-                    icon_class: 'icon--active'
-            %}
+            {% render 'icon', name: 'plus', icon_class: 'icon--active' %}
             {% render 'icon', name: 'minus' %}
           {% else %}
-            {% render 'icon',
-                    name: 'down-caret',
-                    icon_class: 'icon--active'
-            %}
+            {% render 'icon', name: 'down-caret', icon_class: 'icon--active' %}
           {% endif %}
         </button>
-      {% endif %}
     </h3>
+    {% if link_for_menu != blank %}
+      </a>
+    {% endif %}
   </div>
-  <ul class="sidebar-block__content" {% if settings.toggle_sidebar %}data-sidebar-block__content--collapsible{% endif %}>
+  <ul
+    class="sidebar-block__content {% if link_for_menu != blank %} {{ link_for_menu_class }} {% endif %}"
+  >
     {% for link in linklists[menu].links %}
+      {% assign link_url_changed = link.url | remove: 'https://' %}
       <li class="sidebar-block__item">
-        <a {% if link.active %}class="active"{% endif %} href="{{ link.url }}" title="{{ link.title | escape }}">
+        <a
+          class="{% if link_url_changed == full_url  %} active {% endif %}"
+          {% if link.active %}
+            class="active"
+          {% endif %}
+          href="{{ link.url }}"
+          title="{{ link.title | escape }}"
+        >
           {{ link.title }}
         </a>
       </li>
     {% endfor %}
   </ul>
+
 {% else %}
   <div data-has-toggle-option>
-    <h3 class="sidebar-block__heading" {% if settings.toggle_sidebar %}data-sidebar-block__toggle="closed" aria-label="toggle"{% endif %}>
+    <h3
+      class="sidebar-block__heading"
+      {% if settings.toggle_sidebar %}
+        data-sidebar-block__toggle="closed" aria-label="toggle"
+      {% endif %}
+    >
       {{ 'homepage.onboarding.menu_title' | t }}
       {% if settings.toggle_sidebar %}
         <button class="sidebar-block__toggle-icon icon-style--{{ settings.toggle_icon_style }}">
           {% if settings.toggle_icon_style == 'plus_and_minus' %}
-            {% render 'icon',
-                    name: 'plus',
-                    icon_class: 'icon--active'
-            %}
+            {% render 'icon', name: 'plus', icon_class: 'icon--active' %}
             {% render 'icon', name: 'minus' %}
           {% else %}
-            {% render 'icon',
-                    name: 'down-caret',
-                    icon_class: 'icon--active'
-            %}
+            {% render 'icon', name: 'down-caret', icon_class: 'icon--active' %}
           {% endif %}
         </button>
       {% endif %}
     </h3>
   </div>
-  <ul class="sidebar-block__content" {% if settings.toggle_sidebar %}data-sidebar-block__content--collapsible{% endif %}>
-    <li><p>{{ 'homepage.onboarding.no_content' | t }}</p></li>
+  <ul
+    class="sidebar-block__content"
+    {% if settings.toggle_sidebar %}
+      data-sidebar-block__content--collapsible
+    {% endif %}
+  >
+    <li>
+      <p>{{ 'homepage.onboarding.no_content' | t }}</p>
+    </li>
   </ul>
 {% endif %}
+
+<script>
+  //Add toggle option on mobile view
+  window.addEventListener('DOMContentLoaded', function() {
+     const isMobileMedia = window.matchMedia("(max-width: 798px)");
+      if (isMobileMedia.matches) {
+        //Add needed properties to the tag elements
+        //sidebar-block__heading -> data-sidebar-block__toggle="closed" aria-label="toggle"
+        const sidebarBlockHeadings = document.querySelectorAll('.sidebar-block__heading');
+        if (sidebarBlockHeadings) {
+          sidebarBlockHeadings.forEach((sidebarBlockHeading) => {
+            if (sidebarBlockHeading) {
+              sidebarBlockHeading.setAttribute('data-sidebar-block__toggle', 'closed');
+              sidebarBlockHeading.setAttribute('aria-label', 'toggle');
+            }
+          })
+        }
+        //sidebar-block__toggle-icon -> display
+        //sidebar-block__content -> data-sidebar-block__content--collapsible
+        const sidebarBlockContents = document.querySelectorAll('ul.sidebar-block__content');
+        if (sidebarBlockContents) {
+          sidebarBlockContents.forEach((sidebarBlockContent) => {
+            if (sidebarBlockContent) {
+              sidebarBlockContent.setAttribute('data-sidebar-block__content--collapsible', '');
+              sidebarBlockContent.style.display = 'none';
+            }
+          })
+        }
+    }
+  })
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', function() {
+    const blockId = "{{block_id}}";
+    if (blockId) { 
+      const element = document.getElementById("shopify-section-{{ block_id }}");
+      const activeMenuItems = element.querySelectorAll(".active");
+      
+      if (activeMenuItems.length) {
+        const menuTitle =  element.querySelectorAll(".sidebar-block__heading")
+        if (activeMenuItems[0]) {
+          const hrefMenuItem = activeMenuItems[0].getAttribute("href");
+          const titleMenuItem  = activeMenuItems[0].getAttribute("title");
+          if (hrefMenuItem && titleMenuItem) {
+              const subcategory = {
+                title: titleMenuItem,
+                href: hrefMenuItem
+              }
+              
+              window.localStorage.setItem('breadcrumb_subcategory-{{ breadcrumb_id }}', JSON.stringify(subcategory))
+
+              window.localStorage.removeItem('breadcrumb_category-{{ breadcrumb_id }}')
+
+              const breadcrumbContainer = document.getElementById('breadcrumbs-{{ breadcrumb_id }}')
+              if (breadcrumbContainer) {
+                const subcategoryElement = breadcrumbContainer.getElementsByClassName("breadcrumbs__subcategory-{{ breadcrumb_id }}")
+                if (subcategoryElement?.length) {
+                  
+                  subcategoryElement[0].setAttribute('href', hrefMenuItem)
+                  subcategoryElement[0].setAttribute('title', titleMenuItem)
+                  subcategoryElement[0].textContent = "> "+ titleMenuItem
+                }
+              }
+            }
+        }
+        if (menuTitle.length) {
+          menuTitle[0].classList.add("active-title-menu"); 
+          const menuTitleLink =  element.querySelectorAll(".sidebar-block__heading__link")
+          if (menuTitleLink[0]) {
+            const hrefMenuTitle = menuTitleLink[0].getAttribute("href");
+            const titleMenuTitle  = menuTitleLink[0].getAttribute("title");
+            if (hrefMenuTitle && titleMenuTitle) {
+              const category = {
+                title: titleMenuTitle,
+                href: hrefMenuTitle
+              }
+              window.localStorage.setItem('breadcrumb_category-{{ breadcrumb_id }}', JSON.stringify(category))
+
+              const breadcrumbCategory = document.getElementById('breadcrumbs-{{ breadcrumb_id }}')
+              if (breadcrumbCategory) {
+                const categorybreadcrumbElement = breadcrumbCategory.getElementsByClassName("breadcrumbs__category-{{ breadcrumb_id }}")
+                if (categorybreadcrumbElement) {
+                  
+                  categorybreadcrumbElement[0].setAttribute('href', hrefMenuTitle)
+                  categorybreadcrumbElement[0].setAttribute('title', titleMenuTitle)
+                  categorybreadcrumbElement[0].textContent = "> "+ titleMenuTitle
+                }
+              }
+            }
+            
+          }
+        }
+      }
+
+      const menuTitleActive =  element.querySelectorAll(".active-title-menu")
+      if (menuTitleActive.length) {
+        const menuTitleLinkActive =  element.querySelectorAll(".sidebar-block__heading__link")
+        if (menuTitleLinkActive[0]) {
+            const hrefMenuTitleActive = menuTitleLinkActive[0].getAttribute("href");
+            const titleMenuTitleActive  = menuTitleLinkActive[0].getAttribute("title");
+            if (hrefMenuTitleActive && titleMenuTitleActive) {
+              const categoryActive = {
+                title: titleMenuTitleActive,
+                href: hrefMenuTitleActive
+              }
+              window.localStorage.setItem('breadcrumb_category-{{ breadcrumb_id }}', JSON.stringify(categoryActive))
+              // window.localStorage.removeItem('breadcrumb_subcategory')
+
+              const breadcrumb = document.getElementById('breadcrumbs-{{ breadcrumb_id }}')
+              if (breadcrumb) {
+                const categoryElement = breadcrumb.getElementsByClassName("breadcrumbs__category-{{ breadcrumb_id }}")
+                if (categoryElement) {
+                  
+                  categoryElement[0].setAttribute('href', hrefMenuTitleActive)
+                  categoryElement[0].setAttribute('title', titleMenuTitleActive)
+                  categoryElement[0].textContent = "> "+ titleMenuTitleActive
+                }
+              }
+            }
+            
+          }
+      }
+    }
+  })
+</script>

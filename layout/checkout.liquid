@@ -103,6 +103,42 @@
 
     </script>
 
+    <script>
+      (function () {
 
+        function isCartHref(href) {
+          if (!href) return false;
+          var url = href.toLowerCase();
+          return url.indexOf('/cart') !== -1 || url.indexOf('/cart?') !== -1;
+        }
+
+        function sendHomeAndOpenSmartCart() {
+          window.location.assign('{{ routes.root_url }}?viewcart=true');
+        }
+
+        function handleCartClick(e) {
+          var a = e.target.closest('a');
+          if (!a) return;
+          var href = a.getAttribute('href');
+          if (isCartHref(href)) {
+            e.preventDefault();
+            sendHomeAndOpenSmartCart();
+          }
+        }
+
+        document.addEventListener('click', handleCartClick, true);
+
+        var mo = new MutationObserver(function (muts) {
+          // nothing to do — we use capture-phase click handler above
+        });
+        mo.observe(document.documentElement, { childList: true, subtree: true });
+
+        window.addEventListener('popstate', function () {
+          if (isCartHref(window.location.pathname + window.location.search)) {
+            sendHomeAndOpenSmartCart();
+          }
+        });
+      })();
+    </script>
   </body>
 </html>

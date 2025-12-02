@@ -31,11 +31,57 @@
     //Subscription widget was created
     document.addEventListener('sealsubs:subscription_widget_created', function(e) {
 
-      // This event will be fired whenever a different subscription option is selected
+      // Keep product form's hidden selling_plan in sync and update compare-at price
       document.addEventListener('sealsubs:price_update', function(e) {
-        if (e.detail.compareAtPrice > 0) {
-          updateComparePrice(e.detail.compareAtPrice);
-        }
+        try {
+          // Try to find the widget root and its nearest product form
+          var widget = (e && e.detail && e.detail.element) ? e.detail.element : null;
+          var form = widget && widget.closest ? widget.closest('form') : document.querySelector('[data-product-form] form, form[action*="/cart/add"]');
+
+          // Resolve selected selling plan id
+          var selectedPlan = document.querySelector('input[name="selling_plan_id"]:checked');
+          var sellingPlanId = selectedPlan && selectedPlan.value ? selectedPlan.value : null;
+
+          if (form) {
+            var spInput = form.querySelector('input[name="selling_plan"]');
+            if (!spInput) {
+              spInput = document.createElement('input');
+              spInput.type = 'hidden';
+              spInput.name = 'selling_plan';
+              form.appendChild(spInput);
+            }
+            if (sellingPlanId) {
+              spInput.value = sellingPlanId;
+            } else {
+              // Remove stale selling_plan if switching back to one-time
+              try { spInput.parentNode.removeChild(spInput); } catch (_) {}
+            }
+          }
+        } catch (_) {}
+
+        try {
+          if (e.detail.compareAtPrice > 0) {
+            updateComparePrice(e.detail.compareAtPrice);
+          }
+        } catch (_) {}
+      });
+
+      // Ensure selling_plan hidden input updates on explicit plan change events as well
+      document.addEventListener('sealsubs:selling_plan_changed', function(ev) {
+        try {
+          var widget = (ev && ev.detail && ev.detail.element) ? ev.detail.element : null;
+          var form = widget && widget.closest ? widget.closest('form') : document.querySelector('[data-product-form] form, form[action*="/cart/add"]');
+          var planId = ev && ev.detail ? (ev.detail.selling_plan_id || ev.detail.sellingPlanId) : null;
+          if (!form) return;
+          var spInput = form.querySelector('input[name="selling_plan"]');
+          if (!spInput) {
+            spInput = document.createElement('input');
+            spInput.type = 'hidden';
+            spInput.name = 'selling_plan';
+            form.appendChild(spInput);
+          }
+          if (planId) { spInput.value = planId; } else { try { spInput.remove(); } catch (_) {} }
+        } catch (_) {}
       });
         
 	});
@@ -111,7 +157,7 @@
 
     margin-right: 13px;
     margin-top: 0px;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
     margin-left: 0;
     /* padding-bottom: 10px; */
 
@@ -136,7 +182,7 @@
   .sls-option-container.seal-table.sls-active > .sls-selling-plan-group-options > .sls-savings-badge,
   .sls-option-container.seal-table.sls-active > .seal-row > .sls-label-container.seal-col > .sls-selling-plan-group-options > .sls-savings-badge {
     background-color: #78BE20;
-    {% if product.id == 7396104994889 %}
+    {% if product.id == 8672614645973 %}
       background-color: #61072D;
     {% endif %}
   }
@@ -188,10 +234,9 @@
 
   .sls-option-container.seal-table.sls-active {
     border-color: #44693D !important;
-    {% if product.id == 7396104994889 %}
+    {% if product.id == 8672614645973 %}
       border-color: #61072D !important;
     {% endif %}
-    border-width: 1.5px !important;
   }
 
   @media only screen and (max-width: 375px){

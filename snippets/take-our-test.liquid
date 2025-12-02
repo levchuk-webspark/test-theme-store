@@ -1,48 +1,47 @@
 {% comment %} A Call to Action button saying Take our Test {% endcomment %}
 
 {% style %}
-
-.take-our-test-container {
+  .take-our-test-container {
     display: flex;
     justify-content: center;
     align-items: center;
     border: none;
-}
-  
-.take-our-test {
-  padding: 5px 20px;
-  background: var(--Youth-Mix-Gradient);
-  border-radius: 20px;
-  height: max-content;
-  width: 100%;
-  border: none;
-}
+  }
 
-.take-our-test__text {
+  .take-our-test {
+    padding: 5px 20px;
+    background: var(--Youth-Mix-Gradient);
+    border-radius: 20px;
+    height: max-content;
+    width: 100%;
+    border: none;
+  }
+
+  .take-our-test__text {
     color: white;
     font-style: black;
     font-size: 12px;
     font-weight: 900;
     line-height: 110.00000000000001%;
     letter-spacing: 0;
-}
+  }
 
-.take-our-test__text:hover {
+  .take-our-test__text:hover {
     text-decoration: underline;
     color: white !important;
     cursor: pointer;
-}
+  }
 
-.take-our-test:hover {
+  .take-our-test:hover {
     transform: translateY(-2px);
     transition: all 0.3s ease-in-out;
     cursor: pointer;
-}
-
+  }
 {% endstyle %}
-{% assign cta_text = "Take our Test" %}
+{% assign cta_text = 'Take our Test' %}
+
 <div class="take-our-test-container">
-    <button class="take-our-test">
-        <a href="https://youthandearth.com/#quiz-qrHLLqB" class="take-our-test__text">{{ cta_text | upcase}}</a>
-    </button>
+  <button class="take-our-test">
+    <a href='{{ cta_url }}' class="take-our-test__text">{{ cta_text | upcase }}</a>
+  </button>
 </div>

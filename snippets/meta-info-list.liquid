@@ -1,35 +1,177 @@
 {% comment %}
-Required values
-article: <string>
-blog_author: <string>
-blog_date: <string>
-blog_read_time: <string>
-blog_comment_count: <string>
+  Required values
+  article: <string>
+  blog_author: <string>
+  blog_date: <string>
+  blog_read_time: <string>
+  blog_comment_count: <string>
 {% endcomment %}
+{% style %}
+  .meta-info-list__item__image {
+    width: 45px;
+    max-width: 45px;
+    height: 45px;
+    min-height: 45px;
+  }
 
-<ul class="meta-info-list">
+  .meta-info-list__item {
+    font-size: 25px;
+    line-height: 110.00000000000001%;
+    vertical-align: middle;
+  }
+  
+  .meta-info-list__row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .meta-info-list__item__duration {
+    margin-bottom: 14px;
+  }
+
+  .meta-info-list__item__duration:last-child {
+    margin-bottom: 0;
+  }
+
+  .meta-info-list {
+    gap: 15px;
+  }
+
+  @media scrreen and (max-width: 1198px) {
+    .meta-info-list {
+      display: flex;
+      flex-direction: row;
+      gap: 11px;
+    }
+
+    .meta-info-list__item {
+      font-size: 16px;
+    }
+  }
+
+  @media screen and (max-width: 798px) {
+    .meta-info-list__item__image {
+      width: 31px;
+      max-width: 31px;
+      height: 31px;
+      min-height: 31px;
+    }
+
+    .meta-info-list__item {
+      font-size: 20px;
+    }
+
+    .meta-info-list__row {
+      gap: 11px;
+    }
+
+    .meta-info-list {
+      flex-direction: column;
+       gap: 11px;
+      margin-top: 27px;
+      margin-bottom: 27px;
+    }
+  }
+{% endstyle %}
+<ul id="shopify-section-meta-info" class="meta-info-list">
   {% if blog_author %}
-    <li class="meta-info-list__item">
-      <a href="{{ routes.search_url }}?type=author&q={{ article.author }}">{{ 'blogs.article.by' | t }} {% if article %}{{ article.author }}{% else %}{{ shop.name }}{% endif %}</a>
-    </li>
-  {% endif %}
-  {% if blog_date %}
-    <li class="meta-info-list__item">
-      <span class="featured-article__date">{% if article %}{{ article.published_at | date: "%B %d, %Y" }}{% else %}{{ "today" | date: "%B %d, %Y" }}{% endif %}</span>
-    </li>
+    <span class="meta-info-list__row">
+      {% if settings_section.author_type_icon_small != nil %}
+       {%
+                    render 'image-element',
+                    image: settings_section.author_type_icon_small,
+                    alt: settings_section.author_type_icon_small.alt,
+                    additional_classes: 'meta-info-list__item__image',
+      %}
+      {% endif %}
+      <li class="meta-info-list__item">
+        <a href="{{ routes.search_url }}?type=author&q={{ article.author }}">
+          {% if article %}{{ article.author }}{% else %}{{ shop.name }}{% endif -%}
+        </a>
+      </li>
+    </span>
   {% endif %}
   {% if blog_read_time %}
-    <li class="meta-info-list__item">
-      {% render 'blog__read-time', article: article %}
-    </li>
+    <span class="meta-info-list__row">
+      {% if article_type == 'Blog' and settings_section.blog_type_icon_small != nil %}
+        {%
+                    render 'image-element',
+                    image: settings_section.blog_type_icon_small,
+                    alt: settings_section.blog_type_icon_small.alt,
+                    additional_classes: 'meta-info-list__item__image',
+        %}
+      {% endif %}
+    {% if article_type == 'Audio' and settings_section.audio_type_icon_small != nil %}
+        {%
+                    render 'image-element',
+                    image: settings_section.audio_type_icon_small,
+                    alt: settings_section.audio_type_icon_small.alt,
+                    additional_classes: 'meta-info-list__item__image',
+        %}
+      {% endif %}
+      {% if article_type == 'Video' and settings_section.video_type_icon_small != nil %}
+        {%
+                    render 'image-element',
+                    image: settings_section.video_type_icon_small,
+                    alt: settings_section.video_type_icon_small.alt,
+                    additional_classes: 'meta-info-list__item__image',
+        %}
+      {% endif %}
+    {% if article_type == 'Recipes' and settings_section.recipes_type_icon_small != nil %}
+        {%
+                    render 'image-element',
+                    image: settings_section.recipes_type_icon_small,
+                    alt: settings_section.recipes_type_icon_small.alt,
+                    additional_classes: 'meta-info-list__item__image',
+        %}
+      {% endif %}
+      <li class="meta-info-list__item">
+        {% assign durations = article_details.duration_tags | split: "," %}
+        {% if durations %}
+          <div class="meta-info-list__item__durations-wrapper">
+            {% for duration_tag in durations %}
+              <div class="meta-info-list__item__duration">{{ duration_tag | remove: '[' | remove: ']' | remove: "'" | remove: '"' }}</div>
+            {% endfor %}
+          </div>
+        {% else %}
+          {% render 'blog__read-time', article: article %}
+        {% endif %}
+      </li>
+    </span>
+  {% endif %}
+  {% if blog_date %}
+    <span class="meta-info-list__row">
+      {% if settings_section.calendar_type_icon_small != nil %}
+       {%
+                    render 'image-element',
+                    image: settings_section.calendar_type_icon_small,
+                    alt: settings_section.calendar_type_icon_small.alt,
+                    additional_classes: 'meta-info-list__item__image',
+      %}
+      {% endif %}
+      <li class="meta-info-list__item">
+        <div class="featured-article__date">
+          {% if article -%}
+            {{- article.published_at | date: '%B %d, %Y' -}}
+          {%- else -%}
+            {{- 'today' | date: '%B %d, %Y' -}}
+          {%- endif %}
+        </div>
+      </li>
+    </span>
   {% endif %}
   {% if settings.disqus_enabled and blog_comment_count %}
     <li class="meta-info-list__item">
-      <a href="{{ article.url }}#disqus_thread" data-disqus-identifier="{{ article.id }}" class="disqus-comment-count">{{ 'blogs.counts.comments_with_count' | t: count: 0 }}</a>
+      <a href="{{ article.url }}#disqus_thread" data-disqus-identifier="{{ article.id }}" class="disqus-comment-count">
+        {{- 'blogs.counts.comments_with_count' | t: count: 0 -}}
+      </a>
     </li>
   {% elsif blog_comment_count and article.comments_count > 0 %}
     <li class="meta-info-list__item">
-      <a href="{{ article.url }}#comments">{{ 'blogs.counts.comments_with_count' | t: count: article.comments_count }}</a>
+      <a href="{{ article.url }}#comments">
+        {{- 'blogs.counts.comments_with_count' | t: count: article.comments_count -}}
+      </a>
     </li>
   {% endif %}
 </ul>

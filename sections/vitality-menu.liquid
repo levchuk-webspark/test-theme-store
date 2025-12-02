@@ -129,8 +129,8 @@
 
     // Apply the offset top to the current sticky section
       
-    currentStickySection.style.top = ((isMobileMedia.matches ? offsetTopMobile : offsetTop) - 1) + 'px';
-    currentStickySection.style.position = 'fixed';
+    {% comment %} currentStickySection.style.top = ((isMobileMedia.matches ? offsetTopMobile : offsetTop) - 1) + 'px'; {% endcomment %}
+    {% comment %} currentStickySection.style.position = 'fixed'; {% endcomment %}
      currentStickySection.style.width = '100%';
       currentStickySection.style.zIndex = '70';
     }

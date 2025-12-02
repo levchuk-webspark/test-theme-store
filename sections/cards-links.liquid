@@ -17,23 +17,42 @@
   }
 
   .cards-links__cards-list {
-      display: flex;
-      align-items: stretch;
-      justify-content: space-between;
-      position: relative;
-    }
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    position: relative;
+  }
 
-    #shopify-section-{{ section.id }} .cards-links__card {
-      margin-right: 20px;
-      width: {{section.settings.card-size}}px;
-      height: {{section.settings.card-size}}px;
-      border-radius: 10px;
-      padding: 18px;
+  #shopify-section-{{ section.id }} .cards-links__card {
+    margin-right: 20px;
+    width: {{section.settings.card-size}}px;
+    height: {{section.settings.card-size}}px;
+    border-radius: 10px;
+    padding: 18px;
+    position: relative;
+    transition: flex 0.3s ease, transform 0.3s ease;
+    overflow: hidden;
+    flex-shrink: 1; 
+  }
 
-      transition: flex 0.3s ease, transform 0.3s ease;
-      overflow: hidden;
-      flex-shrink: 1; 
-    }
+  .cards-links__card:hover .cards-links__card-backplate {
+    transform: scale(1.1);
+  }
+
+  .cards-links__card-backplate,
+  .cards-links__card-backplate img {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .cards-links__card-backplate img {
+    object-fit: cover;
+  }
 
   .cards-links__card-opacity {
     width: {{ section.settings.card-size }}px;
@@ -172,16 +191,12 @@
     <ul class="cards-links__cards-list carousel-{{ section.id }}">
       {% for block in section.blocks %}
         {% if block.type == 'card' %}
-          {% style %}
-            .block-{{ block.id }}.cards-links__card {
-              {% if block.settings.image != nil %}
-                     background: url("{{block.settings.image | img_url: 'master'}}");
-                     background-size:cover;
-                     background-position:center;                  
-              {% endif %}
-            }
-          {% endstyle %}
           <li class="cards-links__card block-{{ block.id }} carousel-cell">
+            {% if block.settings.image != nil %}
+              <div class="cards-links__card-backplate">
+                <img src="{{ block.settings.image | img_url: 'master' }}" loading="lazy" />
+              </div>
+            {% endif %}
             <a href="{{ block.settings.link_url }}"  target="_blank"  rel="noopener">
               <div class="cards-links__card-opacity"></div>
               <div class="cards-links__card-content">

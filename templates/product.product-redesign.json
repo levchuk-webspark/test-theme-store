@@ -1,0 +1,404 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "product__breadcrumb",
+      "settings": {
+        "width": "standard",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "main": {
+      "type": "new-product__main",
+      "blocks": {
+        "39f9c4c1-574e-4af5-a129-c658f0455557": {
+          "type": "shopify://apps/feefo-product-reviews/blocks/product-stars/b69c206e-8df3-4642-a8bf-d681d74dfe91",
+          "disabled": true,
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "product-title-font-size": 34,
+            "product-title-font-size-mobile": 21
+          }
+        },
+        "one_sentence_xMw9Er": {
+          "type": "one-sentence",
+          "settings": {}
+        },
+        "product_rating_wE8WCJ": {
+          "type": "product-rating",
+          "settings": {}
+        },
+        "new_product_info_tabs_yrqUew": {
+          "type": "new-product__info-tabs",
+          "settings": {
+            "description_heading": "Description",
+            "benefits_heading": "Benefits",
+            "ingredients_heading": "Ingredients",
+            "truncate_description": 300
+          }
+        },
+        "f022e2b0-7ffe-45f7-90cb-413439bbee87": {
+          "type": "summary-panel",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "display_savings": true
+          }
+        },
+        "49ec59c7-cc61-42c6-bf02-65639927f9a1": {
+          "type": "description",
+          "settings": {
+            "truncate_description": 290
+          }
+        },
+        "seal_subscriptions_subscription_widget_ygfp4q": {
+          "type": "shopify://apps/seal-subscriptions/blocks/subscription-widget/13b25004-a140-4ab7-b5fe-29918f759699",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "9b9f6435-97b0-47fd-b34e-e13d0028c451": {
+          "type": "discount_promo",
+          "settings": {}
+        },
+        "form": {
+          "type": "form",
+          "settings": {
+            "show_payment_button": false,
+            "show_gift_card_recipient_form": false,
+            "preordermessage_bg_color": "#fc4301",
+            "preordermessage_border_color": "#000000",
+            "preordermessage_border_radius": 8,
+            "v14_color": ""
+          }
+        },
+        "klarna_on_site_messaging_app_block_rJEwD7": {
+          "type": "shopify://apps/klarna-on-site-messaging/blocks/app-block/b95936a9-74b6-4a95-8103-6a1b6459c25e",
+          "settings": {
+            "data_key": "top-strip-promotion-badge",
+            "theme": "custom",
+            "topPadding": "0",
+            "bottomPadding": "0",
+            "messagePrefix": ""
+          }
+        },
+        "new_product_subs_ben_3UgVfj": {
+          "type": "new-product__subs-ben",
+          "settings": {
+            "benefit_1": "Skip, change or cancel anytime.",
+            "benefit_2": "Convenient automatic delivery."
+          }
+        },
+        "new_product_light_labs_99PUyV": {
+          "type": "new-product__light-labs",
+          "settings": {}
+        },
+        "new_product_more_info_C7hUDC": {
+          "type": "new-product__more-info",
+          "settings": {
+            "delivery_heading": "Delivery & returns",
+            "rewards_heading": "Rewards"
+          }
+        }
+      },
+      "block_order": [
+        "39f9c4c1-574e-4af5-a129-c658f0455557",
+        "title",
+        "one_sentence_xMw9Er",
+        "product_rating_wE8WCJ",
+        "new_product_info_tabs_yrqUew",
+        "f022e2b0-7ffe-45f7-90cb-413439bbee87",
+        "price",
+        "49ec59c7-cc61-42c6-bf02-65639927f9a1",
+        "seal_subscriptions_subscription_widget_ygfp4q",
+        "9b9f6435-97b0-47fd-b34e-e13d0028c451",
+        "form",
+        "klarna_on_site_messaging_app_block_rJEwD7",
+        "new_product_subs_ben_3UgVfj",
+        "new_product_light_labs_99PUyV",
+        "new_product_more_info_C7hUDC"
+      ],
+      "settings": {
+        "product_height": 800,
+        "product_height_mobile": 400,
+        "video_looping": false,
+        "enable_1st_image_hide": true,
+        "enable_2nd_image_hide": false,
+        "gallery_arrows": true,
+        "enable_zoom": true,
+        "enable_product_lightbox": true,
+        "slideshow_speed": 0,
+        "slideshow_transition": "slide",
+        "display_thumbnails": true,
+        "thumbnail_position": "left-thumbnails",
+        "enable_thumbnail_slider": true,
+        "width": "standard",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "animation": "none",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "new_product_high_standards_gmJAFC": {
+      "type": "new-product__high-standards",
+      "name": "New Product: H-Standards",
+      "settings": {}
+    },
+    "new_product_product_badges_UfErQi": {
+      "type": "new-product__product-badges",
+      "name": "New Product: Badges",
+      "settings": {}
+    },
+    "new_product_how_it_works_gQ7HLk": {
+      "type": "new-product__how-it-works",
+      "name": "New Product: How it works",
+      "settings": {}
+    },
+    "new_product_benefits_of_daily_use_Aghqez": {
+      "type": "new-product__benefits-of-daily-use",
+      "name": "New Product: Daily use",
+      "settings": {}
+    },
+    "new_product_product_overview_PQPhMr": {
+      "type": "new-product__product-overview",
+      "name": "New Product: Overview",
+      "settings": {
+        "title": "What <span>On Earth</span> is",
+        "cta_question": "Still got questions?",
+        "cta_label": "{{ product.metafields.custom.benefits_of_daily_use.value.button_label.value }}",
+        "cta_url": "{{ product.metafields.custom.benefits_of_daily_use.value.button_link.value }}"
+      }
+    },
+    "new_product_why_choose_jRQ7bf": {
+      "type": "new-product__why-choose",
+      "name": "New Product: Why Choose",
+      "settings": {}
+    },
+    "1718204024ad6a9072": {
+      "type": "apps",
+      "blocks": {
+        "vimonial_shoppable_videos_ugc_app_block_carousel_ABPhbe": {
+          "type": "shopify://apps/vimonial-shoppable-videos-ugc/blocks/app-block_carousel/1dcd7963-8ac2-434c-ae02-8cb7de12e6a2",
+          "settings": {
+            "heading": "Their first try changed <span>everything</span>",
+            "description": "Their first try changed everything",
+            "campaign_id": "clxbslpie00950dmn2ih4m0lg",
+            "shadow_size": 10,
+            "width": 350,
+            "width_mobile": 330,
+            "slide_gap": 16,
+            "autoplay": false,
+            "display_discount": false,
+            "display_card": true,
+            "popup": true,
+            "show_names": true,
+            "prev_next_buttons": true,
+            "force_aspect": true,
+            "display_atc": true,
+            "redirect_to_cart": true,
+            "align_heading": "center",
+            "align_items": "center",
+            "order_by": "order_desc",
+            "buy_now_text": "Add to cart",
+            "color_play_button": "#f7f5f1",
+            "color_play_button_inner": "#284734",
+            "border_color": "#000000",
+            "border_size": 0,
+            "overflow": false
+          }
+        }
+      },
+      "block_order": [
+        "vimonial_shoppable_videos_ugc_app_block_carousel_ABPhbe"
+      ],
+      "settings": {
+        "width": "wide",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "css_class": "new-product-videos",
+        "custom_css": ""
+      }
+    },
+    "new_product_why_buy_from_us_N4hPrE": {
+      "type": "new-product__why-buy-from-us",
+      "blocks": {
+        "card_8WKPc8": {
+          "type": "card",
+          "settings": {
+            "icon": "shopify://shop_images/why-buy_1.svg",
+            "description": "At Youth & Earth, we harness nature’s power to support longevity with pure, organic, and effective cellular supplements."
+          }
+        },
+        "card_tAXGP9": {
+          "type": "card",
+          "settings": {
+            "icon": "shopify://shop_images/why-buy_2.svg",
+            "description": "Our science-backed products boost energy, enhance DNA repair, and activate longevity genes at any age."
+          }
+        },
+        "card_beqiyC": {
+          "type": "card",
+          "settings": {
+            "icon": "shopify://shop_images/why-buy_3.svg",
+            "description": "We celebrate every stage of life, empowering you to unlock your full potential—physically and mentally—at any age."
+          }
+        }
+      },
+      "block_order": [
+        "card_8WKPc8",
+        "card_tAXGP9",
+        "card_beqiyC"
+      ],
+      "name": "New Product: Why buy",
+      "settings": {
+        "title": "Why buy <span>From Us</span>",
+        "description": "All of our award-winning products are manufactured in approved Good Manufacturing Practice (GMP) facilities.",
+        "cta_label": "Our mission",
+        "cta_url": "shopify://pages/our-mission",
+        "image": "shopify://shop_images/why-buy_bg.jpg"
+      }
+    },
+    "d9341378-8d54-4588-b5d4-686d04e1c9d1": {
+      "type": "product__FAQ",
+      "disabled": true,
+      "settings": {}
+    },
+    "custom_liquid_T7nndU": {
+      "type": "custom-liquid",
+      "custom_css": [],
+      "settings": {
+        "custom_liquid": "<h2 class=\"from-our-community__title\">Hear from <span>our community</span></h2>\n\n{% if product.id == 8174336213205 %}  \n      <div id=\"feefo-product-review-widgetId\" class=\"feefo-review-widget-product\" data-product-sku=\"SQ0960213,SQ9604110,SQ8719575,SQ9603360,SQ8710176,SQ0948111,SQ8660950\" data-widget-title=\"NMN\"></div>\n    {% elsif product.id == 8174339653845 %}  \n      <div id=\"feefo-product-review-widgetId\" class=\"feefo-review-widget-product\" data-product-sku=\"SQ0960213,SQ9604110,SQ8719575,SQ9603360,SQ8710176,SQ0948111,SQ8660950\" data-widget-title=\"NMN\"></div>\n  {% elsif product.id == 8667575910613 %}  \n<div id=\"feefo-product-review-widgetId\" class=\"feefo-review-widget-product\" data-product-sku=\"SQ9960688,SQ9960770,SQ9960787,SQ9960671,\" data-widget-title=\"Hyaluronic Acid - Gel Face Mask\"></div>\n    {% else %}\n<div id=\"feefo-product-review-widgetId\" class=\"feefo-review-widget-product\" data-product-sku=\"{{ product.variants.first.sku }}\" data-widget-title=\"{{ product.title }}\">\n    {% endif %}",
+        "width": "standard"
+      }
+    },
+    "1694134446068f6323": {
+      "type": "apps",
+      "blocks": {
+        "eb2ee7d6-9d02-404b-86d6-68e5b82ea9d4": {
+          "type": "shopify://apps/feefo-product-reviews/blocks/on-page-reviews/b69c206e-8df3-4642-a8bf-d681d74dfe91",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "eb2ee7d6-9d02-404b-86d6-68e5b82ea9d4"
+      ],
+      "disabled": true,
+      "settings": {
+        "width": "standard",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "recommendations": {
+      "type": "product__recommendations",
+      "disabled": true,
+      "settings": {
+        "show_product_recommendations": false,
+        "product_recommendations_style": "grid",
+        "product_recommendations_heading": "Also Found in this Bundle",
+        "products_per": 3,
+        "recommended_products_limit": 6,
+        "align_height": false,
+        "collection_height": 200,
+        "width": "standard",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "animation": "none",
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "174238612628579206": {
+      "type": "apps",
+      "blocks": {
+        "rebuy_personalization_engine_rebuy_widget_LURHXK": {
+          "type": "shopify://apps/rebuy-personalization-engine/blocks/rebuy-widget/a26ae9b9-933b-40bf-bbc6-bf1220bbc4dc",
+          "settings": {
+            "enabled": true,
+            "id": "204336",
+            "product_id_enabled": true,
+            "collection_id_enabled": false
+          }
+        }
+      },
+      "block_order": [
+        "rebuy_personalization_engine_rebuy_widget_LURHXK"
+      ],
+      "settings": {
+        "width": "standard",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "new_product_not_sure_LR6CfX": {
+      "type": "new-product__not-sure",
+      "name": "New Product: Not sure",
+      "settings": {
+        "image": "shopify://shop_images/not-sure.jpg",
+        "title": "Not sure what you’re <span>Looking For?</span>",
+        "description": "Take our test to find your personalised programme.",
+        "cta_label": "Take our diagnostic",
+        "cta_url": "https://youthandearth.com/pages/start-quiz"
+      }
+    },
+    "new_product_faq_DkfWf7": {
+      "type": "new-product__faq",
+      "name": "New Product: FAQ",
+      "settings": {
+        "title": "You probably have <span>some questions</span>",
+        "description": "Check out our FAQs to find answers to common questions and feel free to reach out if you have more.",
+        "cta_question": "Still got questions?",
+        "cta_label": "All FAQs",
+        "cta_url": "shopify://pages/contact"
+      }
+    },
+    "new_product_you_may_also_like_iGxRhT": {
+      "type": "new-product__you-may-also-like",
+      "name": "New Product: You May Also",
+      "settings": {}
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "main",
+    "new_product_high_standards_gmJAFC",
+    "new_product_product_badges_UfErQi",
+    "new_product_how_it_works_gQ7HLk",
+    "new_product_benefits_of_daily_use_Aghqez",
+    "new_product_product_overview_PQPhMr",
+    "new_product_why_choose_jRQ7bf",
+    "1718204024ad6a9072",
+    "new_product_why_buy_from_us_N4hPrE",
+    "d9341378-8d54-4588-b5d4-686d04e1c9d1",
+    "custom_liquid_T7nndU",
+    "1694134446068f6323",
+    "recommendations",
+    "174238612628579206",
+    "new_product_not_sure_LR6CfX",
+    "new_product_faq_DkfWf7",
+    "new_product_you_may_also_like_iGxRhT"
+  ]
+}

@@ -1,0 +1,360 @@
+{% assign data = section.settings %}
+
+{% style %}
+  .makes-different {
+    padding: 124px 0 0;
+    background: #fff;
+  }
+
+  .makes-different__wrapper {
+    margin: 0 auto;
+    max-width: 1280px;
+    padding: 0 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .makes-different__title {
+    font-family: 'Romie' !important;
+    color: #284734;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 1.3;
+    letter-spacing: -2.2%;
+  }
+
+  .makes-different__grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .makes-different__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -2.2%;
+    text-align: center;
+    background: #F7F5F1;
+    color: #284734;
+  }
+
+  .makes-different__item:empty {
+    display: none;
+  }
+
+  .makes-different__item-50 {
+    flex: 0 0 calc(50% - 8px);
+  }
+
+  .makes-different__item-25 {
+    flex: 0 0 calc(25% - 8px);
+  }
+
+  .makes-different__item-text {
+    padding: 32px;
+  }
+
+  .makes-different__item-text-big {
+    font-size: 30px;
+  }
+
+  .makes-different__item-image {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .makes-different__item-image img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 304 / 232;
+  }
+
+  .makes-different__item-image-big img {
+    aspect-ratio: 616 / 232;
+  }
+
+  @media (max-width: 991px) {
+    .makes-different__title {
+      font-size: 48px;
+    }
+
+    .makes-different__item-text {
+      padding: 16px;
+    }
+
+    .makes-different__item-text-big {
+      font-size: 24px;
+    }
+
+    .makes-different__item:nth-child(1) {
+      order: 1;
+    }
+    .makes-different__item:nth-child(2) {
+      order: 2;
+    }
+    .makes-different__item:nth-child(3) {
+      order: 3;
+    }
+    .makes-different__item:nth-child(4) {
+      order: 4;
+    }
+    .makes-different__item:nth-child(5) {
+      order: 5;
+    }
+    .makes-different__item:nth-child(6) {
+      order: 6;
+    }
+    .makes-different__item:nth-child(7) {
+      order: 7;
+    }
+    .makes-different__item:nth-child(8) {
+      order: 8;
+    }
+    .makes-different__item:nth-child(9) {
+      order: 9;
+    }
+    .makes-different__item:nth-child(10) {
+      order: 10;
+    }
+    .makes-different__item:nth-child(11) {
+      order: 11;
+    }
+    .makes-different__item:nth-child(12) {
+      order: 12;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .makes-different {
+      padding: 80px 0 0;
+    }
+
+    .makes-different br {
+      display: none;
+    }
+
+    .makes-different__item-text-big {
+      font-size: 32px;
+    }
+
+    .makes-different__item-image img {
+      aspect-ratio: 21 / 9;
+    }
+
+    .makes-different__item-50 {
+      flex: 0 0 calc(100% - 8px);
+    }
+
+    .makes-different__item-25 {
+      flex: 0 0 calc(50% - 8px);
+    }
+
+    .makes-different__item:nth-child(6) {
+      order: 7;
+    }
+
+    .makes-different__item:nth-child(7) {
+      order: 6;
+    }
+  }
+
+  @media (max-width: 450px) {
+    .makes-different__title {
+      font-size: 36px;
+    }
+
+    .makes-different__item-text {
+      padding: 8px;
+    }
+
+    .makes-different__item-text-big {
+      font-size: 24px;
+    }
+  }
+{% endstyle %}
+
+<section class="makes-different makes-different--{{ template.suffix }}">
+  <div class="makes-different__wrapper">
+    {% if data.title != blank %}
+      <h2 class="makes-different__title">{{ data.title }}</h2>
+    {% endif %}
+
+    <div class="makes-different__grid">
+      {% if data.item_1 != blank %}
+        <div class="makes-different__item makes-different__item-50">
+            <div class="makes-different__item-text makes-different__item-text-big">
+              {{ data.item_1 }}
+            </div>
+        </div>
+      {% endif %}
+      {% if data.item_2 != blank %}
+        <div class="makes-different__item makes-different__item-25">
+            <div class="makes-different__item-image">
+              {{ data.item_2 | image_url: width: 608, height: 464 | image_tag: loading: 'lazy' }}
+            </div>
+        </div>
+      {% endif %}
+      {% if data.item_3 != blank %}
+        <div class="makes-different__item makes-different__item-25">
+            <div class="makes-different__item-text">
+              {{ data.item_3 }}
+            </div>
+        </div>
+      {% endif %}
+      {% if data.item_4 != blank %}
+        <div class="makes-different__item makes-different__item-25">
+            <div class="makes-different__item-text">
+              {{ data.item_4 }}
+            </div>
+        </div>
+      {% endif %}
+      {% if data.item_5 != blank %}
+        <div class="makes-different__item makes-different__item-25">
+            <div class="makes-different__item-image">
+              {{ data.item_5 | image_url: width: 608, height: 464 | image_tag: loading: 'lazy' }}
+            </div>
+        </div>
+      {% endif %}
+      {% if data.item_6 != blank %}
+        <div class="makes-different__item makes-different__item-25">
+            <div class="makes-different__item-text">
+              {{ data.item_6 }}
+            </div>
+        </div>
+      {% endif %}
+      {% if data.item_7 != blank %}
+      <div class="makes-different__item makes-different__item-25">
+          <div class="makes-different__item-image">
+            {{ data.item_7 | image_url: width: 608, height: 464 | image_tag: loading: 'lazy' }}
+          </div>
+      </div>
+      {% endif %}
+      {% if data.item_8 != blank %}
+      <div class="makes-different__item makes-different__item-50">
+          <div class="makes-different__item-image makes-different__item-image-big">
+            {{ data.item_8 | image_url: width: 1232, height: 464 | image_tag: loading: 'lazy' }}
+          </div>
+      </div>
+      {% endif %}
+      {% if data.item_9 != blank %}
+      <div class="makes-different__item makes-different__item-50">
+          <div class="makes-different__item-text makes-different__item-text-big">
+            {{ data.item_9 }}
+          </div>
+      </div>
+      {% endif %}
+      {% if data.item_10 != blank %}
+      <div class="makes-different__item makes-different__item-25">
+          <div class="makes-different__item-text">
+            {{ data.item_10 }}
+          </div>
+      </div>
+      {% endif %}
+      {% if data.item_11 != blank %}
+      <div class="makes-different__item makes-different__item-25">
+          <div class="makes-different__item-image">
+            {{ data.item_11 | image_url: width: 608, height: 464 | image_tag: loading: 'lazy' }}
+          </div>
+      </div>
+      {% endif %}
+      {% if data.item_12 != blank %}
+      <div class="makes-different__item makes-different__item-50">
+          <div class="makes-different__item-text makes-different__item-text-big">
+            {{ data.item_12 }}
+          </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Makes Different",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title"
+    },
+    {
+      "type": "header",
+      "content": "Grid items"
+    },
+    {
+      "type": "text",
+      "id": "item_1",
+      "label": "Grid item 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "item_2",
+      "label": "Grid item 2"
+    },
+    {
+      "type": "text",
+      "id": "item_3",
+      "label": "Grid item 3"
+    },
+    {
+      "type": "text",
+      "id": "item_4",
+      "label": "Grid item 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "item_5",
+      "label": "Grid item 5"
+    },
+    {
+      "type": "text",
+      "id": "item_6",
+      "label": "Grid item 6"
+    },
+    {
+      "type": "image_picker",
+      "id": "item_7",
+      "label": "Grid item 7"
+    },
+    {
+      "type": "image_picker",
+      "id": "item_8",
+      "label": "Grid item 8"
+    },
+    {
+      "type": "text",
+      "id": "item_9",
+      "label": "Grid item 9"
+    },
+    {
+      "type": "text",
+      "id": "item_10",
+      "label": "Grid item 10"
+    },
+    {
+      "type": "image_picker",
+      "id": "item_11",
+      "label": "Grid item 11"
+    },
+    {
+      "type": "text",
+      "id": "item_12",
+      "label": "Grid item 12"
+    },
+  ],
+  "presets": [
+    {
+      "name": "Landing: Makes Different"
+    }
+  ]
+}
+{% endschema %}
