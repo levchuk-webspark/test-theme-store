@@ -1,0 +1,657 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page-content__main",
+      "disabled": true,
+      "settings": {
+        "show_heading": false,
+        "heading_alignment": "left",
+        "width": "standard",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "christmas_landing_christmases_to_come_D4CB68": {
+      "type": "christmas-landing__christmases-to-come",
+      "name": "Christmas Landing: To come",
+      "settings": {
+        "background_image": "shopify://shop_images/christmas-to-come-1.jpg",
+        "background_image_mobile": "shopify://shop_images/christmas-to-come-2.jpg",
+        "list": "<li>60-Day Money Back Guarantee</li>\n<li>Third-Party Tested (Batch COA)</li>\n<li>Scientifically Proven and Risk Free</li>\n<li>Made in the UK with the highest standards</li>",
+        "title": "The age-defying gift for <br> many more Christmases <br> to come.",
+        "subtitle": "Longevity Essentials Trio",
+        "description": "NMN Capsules + Liposomal Spermidine + Liposomal Curcumin",
+        "price": "Limited offer <span>£148</span> <span>£89.99</span>",
+        "cta_label": "Shop exclusive offer",
+        "cta_url": "https://youthandearth.com/products/christmas-trio",
+        "rating": "4.5/5",
+        "stars": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"180\" height=\"36\" fill=\"none\" viewbox=\"0 0 180 36\">\n  <path fill=\"#FEBC18\" d=\"m18 25.912-6.225 3.75c-.275.175-.563.25-.863.225a1.45 1.45 0 0 1-.787-.3 1.8 1.8 0 0 1-.525-.656c-.125-.262-.15-.556-.075-.882l1.65-7.087-5.512-4.763a1.433 1.433 0 0 1-.468-.77 1.503 1.503 0 0 1 .055-.842 1.6 1.6 0 0 1 .45-.675c.201-.176.476-.289.825-.338l7.275-.637 2.813-6.675c.125-.3.319-.525.582-.675.262-.15.531-.225.805-.225s.543.075.805.225c.264.15.457.375.582.675l2.813 6.675 7.275.637c.35.05.625.163.825.338.2.175.35.4.45.675.1.275.119.556.057.844a1.422 1.422 0 0 1-.47.768l-5.512 4.763 1.65 7.087c.075.325.05.62-.075.882-.125.263-.3.482-.525.656a1.465 1.465 0 0 1-.788.3 1.35 1.35 0 0 1-.862-.225L18 25.912ZM54 25.912l-6.225 3.75c-.275.175-.563.25-.862.225a1.45 1.45 0 0 1-.788-.3 1.8 1.8 0 0 1-.525-.656c-.125-.262-.15-.556-.075-.882l1.65-7.087-5.512-4.763a1.433 1.433 0 0 1-.468-.77 1.503 1.503 0 0 1 .055-.842 1.6 1.6 0 0 1 .45-.675c.201-.176.476-.289.825-.338l7.275-.637 2.813-6.675c.124-.3.319-.525.581-.675.264-.15.532-.225.806-.225s.542.075.806.225c.263.15.457.375.582.675l2.812 6.675 7.275.637c.35.05.625.163.825.338.2.175.35.4.45.675.1.275.119.556.057.844a1.422 1.422 0 0 1-.47.768l-5.512 4.763 1.65 7.087c.075.325.05.62-.075.882-.125.263-.3.482-.525.656a1.465 1.465 0 0 1-.788.3 1.35 1.35 0 0 1-.862-.225L54 25.912ZM90 25.912l-6.225 3.75c-.275.175-.563.25-.863.225a1.45 1.45 0 0 1-.787-.3 1.8 1.8 0 0 1-.525-.656c-.125-.262-.15-.556-.075-.882l1.65-7.087-5.513-4.763a1.433 1.433 0 0 1-.468-.77 1.503 1.503 0 0 1 .056-.842 1.6 1.6 0 0 1 .45-.675c.201-.176.476-.289.825-.338l7.275-.637 2.813-6.675c.124-.3.319-.525.582-.675.263-.15.531-.225.805-.225s.543.075.805.225c.263.15.457.375.582.675l2.813 6.675 7.275.637c.35.05.625.163.825.338.2.175.35.4.45.675.1.275.119.556.057.844a1.421 1.421 0 0 1-.469.768l-5.513 4.763 1.65 7.087c.075.325.05.62-.075.882-.125.263-.3.482-.525.656a1.465 1.465 0 0 1-.787.3 1.35 1.35 0 0 1-.863-.225L90 25.912ZM126 25.912l-6.225 3.75c-.275.175-.563.25-.863.225a1.448 1.448 0 0 1-.787-.3 1.8 1.8 0 0 1-.525-.656c-.125-.262-.15-.556-.075-.882l1.65-7.087-5.513-4.763a1.433 1.433 0 0 1-.468-.77 1.503 1.503 0 0 1 .056-.842 1.6 1.6 0 0 1 .45-.675c.201-.176.476-.289.825-.338l7.275-.637 2.812-6.675c.125-.3.319-.525.582-.675a1.61 1.61 0 0 1 .806-.225c.274 0 .542.075.805.225.263.15.457.375.582.675l2.813 6.675 7.275.637c.35.05.625.163.825.338.2.175.35.4.45.675.1.275.119.556.057.844a1.423 1.423 0 0 1-.47.768l-5.512 4.763 1.65 7.087c.075.325.05.62-.075.882-.125.263-.3.482-.525.656a1.467 1.467 0 0 1-.788.3c-.3.026-.587-.05-.862-.225L126 25.912ZM162 25.912l-6.225 3.75c-.275.175-.563.25-.863.225a1.448 1.448 0 0 1-.787-.3 1.8 1.8 0 0 1-.525-.656c-.125-.262-.15-.556-.075-.882l1.65-7.087-5.513-4.763a1.433 1.433 0 0 1-.468-.77 1.503 1.503 0 0 1 .056-.842 1.6 1.6 0 0 1 .45-.675c.201-.176.476-.289.825-.338l7.275-.637 2.812-6.675c.125-.3.319-.525.582-.675a1.61 1.61 0 0 1 .806-.225c.274 0 .542.075.805.225.263.15.457.375.582.675l2.813 6.675 7.275.637c.35.05.625.163.825.338.2.175.35.4.45.675.1.275.119.556.057.844a1.423 1.423 0 0 1-.47.768l-5.512 4.763 1.65 7.087c.075.325.05.62-.075.882-.125.263-.3.482-.525.656a1.467 1.467 0 0 1-.788.3c-.3.026-.587-.05-.862-.225L162 25.912Z\"></path>\n</svg>",
+        "disclaimer": "based on 3000+ verified customers"
+      }
+    },
+    "landing_feels_like_3nM3pV": {
+      "type": "landing__feels-like",
+      "blocks": {
+        "card_wGQUkj": {
+          "type": "card",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"46\" height=\"46\" fill=\"none\" viewbox=\"0 0 46 46\">\n <path fill=\"#FEBC18\" d=\"m23 33.11-7.954 4.792a1.74 1.74 0 0 1-1.102.288 1.852 1.852 0 0 1-1.006-.384 2.3 2.3 0 0 1-.671-.837c-.16-.335-.192-.71-.096-1.127l2.108-9.057L7.236 20.7c-.32-.287-.52-.615-.598-.983a1.92 1.92 0 0 1 .07-1.077c.127-.35.319-.638.575-.863.257-.225.609-.369 1.055-.431l9.296-.815 3.593-8.529c.16-.383.408-.67.744-.862.336-.192.679-.288 1.03-.288.35 0 .692.096 1.028.288.336.191.584.479.744.862l3.594 8.53 9.296.814c.447.064.798.207 1.054.431.255.224.447.511.575.863.128.35.152.71.073 1.079-.08.368-.28.695-.6.981l-7.044 6.085 2.108 9.057c.096.415.064.79-.096 1.127a2.28 2.28 0 0 1-.67.837c-.288.223-.623.35-1.007.384a1.724 1.724 0 0 1-1.102-.288L23 33.11Z\"></path>\n</svg>",
+            "title": "4.5/5",
+            "description": "Rated by verified customers"
+          }
+        },
+        "card_tbgBWc": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/feels-like_2.jpg",
+            "icon": "",
+            "title": "",
+            "description": ""
+          }
+        },
+        "card_NLhLVM": {
+          "type": "card",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"46\" height=\"46\" fill=\"none\" viewbox=\"0 0 46 46\">\n <path fill=\"#78BE20\" d=\"M4.792 8.146a1.437 1.437 0 0 1 1.437-1.438h1.07c1.82 0 2.913 1.225 3.536 2.364.416.759.717 1.639.952 2.436l.192-.008h23.955c1.59 0 2.74 1.522 2.303 3.053l-3.503 12.284a5.271 5.271 0 0 1-5.068 3.826h-11.4a5.272 5.272 0 0 1-5.083-3.875l-1.457-5.314-2.415-8.142-.002-.015c-.299-1.087-.579-2.104-.997-2.863-.4-.738-.722-.87-1.012-.87H6.23a1.437 1.437 0 0 1-1.438-1.438ZM17.25 40.25a3.833 3.833 0 1 0 0-7.666 3.833 3.833 0 0 0 0 7.666Zm13.416 0a3.833 3.833 0 1 0 0-7.666 3.833 3.833 0 0 0 0 7.666Z\"></path>\n</svg>",
+            "title": "300,000+",
+            "description": "Orders"
+          }
+        },
+        "card_Vh3Gai": {
+          "type": "card",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"46\" height=\"46\" fill=\"none\" viewbox=\"0 0 46 46\">\n <path fill=\"#78BE20\" d=\"M35.696 17.887a14.168 14.168 0 0 0-3.05-4.536 14.06 14.06 0 0 0-4.536-3.049A14.108 14.108 0 0 0 22.615 9.2h-.063a14.144 14.144 0 0 0-10.02 4.192 14.087 14.087 0 0 0-3.014 4.52 14.218 14.218 0 0 0-1.085 5.538c.01 2.197.537 4.378 1.52 6.329v4.812c0 .804.654 1.456 1.456 1.456h4.816a14.229 14.229 0 0 0 6.33 1.52h.066c1.898 0 3.735-.367 5.467-1.086a14.065 14.065 0 0 0 4.52-3.014 14.081 14.081 0 0 0 3.056-4.496 14.178 14.178 0 0 0 1.136-5.524c.006-1.928-.368-3.8-1.104-5.56Zm-19.414 7.016a1.521 1.521 0 0 1 0-3.04 1.519 1.519 0 1 1 0 3.04Zm6.333 0a1.521 1.521 0 0 1 0-3.04 1.521 1.521 0 0 1 0 3.04Zm6.333 0a1.521 1.521 0 0 1 0-3.04 1.521 1.521 0 0 1 0 3.04Z\"></path>\n</svg>",
+            "title": "3 000+",
+            "description": "Reviews"
+          }
+        }
+      },
+      "block_order": [
+        "card_wGQUkj",
+        "card_tbgBWc",
+        "card_NLhLVM",
+        "card_Vh3Gai"
+      ],
+      "name": "Landing: Feels Like",
+      "settings": {
+        "subtitle": "Trusted by families who want to enjoy more years together",
+        "title": "“I wanted to give my parents access to the incredible recent breakthroughs in longevity science. This is just the start.”"
+      }
+    },
+    "landing_trust_them_Thjyfj": {
+      "type": "landing__trust-them",
+      "blocks": {
+        "card_BeQ8Xj": {
+          "type": "card",
+          "settings": {
+            "initials": "KA",
+            "description": "Have been taking NMN now for well over a year and I can’t imagine ever wanting to give it up. I’m much more focused, less tired, and have a wonderful renewed energy. Results were not immediate but accumulated over a few months. I love this life-enhancing supplement.",
+            "name": "Kathleen Adams"
+          }
+        },
+        "card_abY6h6": {
+          "type": "card",
+          "settings": {
+            "initials": "TC",
+            "description": "My favorite NMN powder among all brands (I tried them a lot). I did research, and I know that all of them purchase NMN from China, but it means a lot to test the products in the laboratory and ensure their quality. Youth and Earth have NMN with the smallest amount of heavy metals, in fact – insignificant. ",
+            "name": "Trusted Customer"
+          }
+        },
+        "card_wyQ3mE": {
+          "type": "card",
+          "settings": {
+            "initials": "IS",
+            "description": "The bioavailability of curcumin is generally quite poor. Youth and Earth have revolutionised it by adding the liposomal delivery method. This ensures optimal absorption. In addition, the flavour is delicious! As someone with a nutrition and health degree I am very impressed.",
+            "name": "Isabella"
+          }
+        },
+        "card_XHqaXg": {
+          "type": "card",
+          "settings": {
+            "initials": "TC",
+            "description": "I have been taking NMN now for about four months. I take one 250 mg capsule a day. I am 71 and have noticed a big difference in my skin —my face is starting to look younger with less wrinkles and I also seem to have more energy.",
+            "name": "Trusted Customer"
+          }
+        },
+        "card_AwrVBX": {
+          "type": "card",
+          "settings": {
+            "initials": "KA",
+            "description": "I’m amazed by this product. I added it to my basket with my usual mnm order just to try and thought it was really only for hair/nails/skin, etc. but I feel I have so much more energy than usual since taking it and my recovery, the next day is so much better. I have a WHOOP monitor that monitors my heart rate (I’m 47) and heart rate variability etc and it has been the best it has been in five years literally since the day I started taking this and every day since. Admittedly, that has only been three weeks but I’m very impressed.",
+            "name": "Kate"
+          }
+        },
+        "card_K6PrPj": {
+          "type": "card",
+          "settings": {
+            "initials": "KA",
+            "description": "Have been taking NMN now for well over a year and I can’t imagine ever wanting to give it up. I’m much more focused, less tired, and have a wonderful renewed energy. Results were not immediate but accumulated over a few months. I love this life-enhancing supplement. ",
+            "name": "Kathleen Adams"
+          }
+        },
+        "card_WFB3AX": {
+          "type": "card",
+          "settings": {
+            "initials": "JD",
+            "description": "I’m mid-30’s and have been taking NMN for a while now. My skin becomes noticeably softer/smoother to touch and my energy levels are higher. Don’t be fooled by dodgy companies on Amazon — stick with quality solid brands when it comes to your cellular health. ",
+            "name": "Jamie D"
+          }
+        },
+        "card_kF4ciz": {
+          "type": "card",
+          "settings": {
+            "initials": "DS",
+            "description": "You can actually feel it working! I get a gentle uplifting feeling and my whole day is then so much better. I feel better, I can concentrate better, my gym workouts are better. So many benefits and it’s obvious the quality is just incredible. Very different to most other brands as it really is sublingual and results feel immediate. ",
+            "name": "Daniel Saville"
+          }
+        },
+        "card_Gx4pzP": {
+          "type": "card",
+          "settings": {
+            "initials": "MM",
+            "description": "I am a health, wellness, fitness and longevity professional. I spend a third of my time researching, a third putting research into practice and a third helping others navigate their needs. I have used this product for several years and it is the best.",
+            "name": "Mark Miller"
+          }
+        },
+        "card_NiR7DE": {
+          "type": "card",
+          "settings": {
+            "initials": "HF",
+            "description": "Been taking this powder for over a year now and wouldn’t be with out it. Recently was quite unwell so I upped my dose and it made the world of difference to my recovery. ",
+            "name": "Holly Ferguson"
+          }
+        },
+        "card_8jYxtE": {
+          "type": "card",
+          "settings": {
+            "initials": "DW",
+            "description": "This is my second lot of NMN. I just feel so much better when I take it. I am 51 years old and I started to feel sluggish. I did extensive research and this product kept coming up. At first I was put off by the price but then again you get what you pay for! This particular brand seemed to be the most pure form of NMN. Anyway, I’ve been on it 3 months, I take 2 scoops a day directly under my tongue and let it dissolve. Within 3 months my hair is growing, I can’t remember the last time I had pain in my joints, my skin looks healthy and generally I feel great! This month I started taking it with resveratrol and that gives me such an energy boost. So to round it off — ignore the price as it’s worth every penny! I don’t normally leave reviews but I had to for this. ",
+            "name": "Denise Windsor"
+          }
+        },
+        "card_AcQmmp": {
+          "type": "card",
+          "settings": {
+            "initials": "TC",
+            "description": "High quality product, can really feel the difference. I definitely have more energy, helped with aches & pains of middle age... love this product.",
+            "name": "Trusted Customer"
+          }
+        },
+        "card_wJzMpC": {
+          "type": "card",
+          "settings": {
+            "initials": "TC",
+            "description": "At age 84, 250 mg of NMN daily has slowly improved my dry eye symptoms, which had become increasingly problematic. It has also improved my energy levels.",
+            "name": "Trusted Customer"
+          }
+        },
+        "card_zBEVJ9": {
+          "type": "card",
+          "settings": {
+            "initials": "TC",
+            "description": "I’ve been taking NMN 250mg capsules x 2 daily for around 7 week snow. I wasn’t sure much was happening initially but around the 3-4 week mark I noticed that I was sleeping better. Falling asleep faster and staying asleep all night (which as a menopausal woman is amazing)and I also noticed that my nails have stopped splitting and breaking and are actually growing again and are much stronger. For those 2 things alone I decided to persevere. I was yet to see any major differences to my energy or skin. Last weekend I decided to up my dose to 750mg daily after doing some research about dose and age and I am impressed! I’ve been waking up feeling refreshed and alert which is unheard of for me, and I’ve had much more energy this week than for a very long time. I’ve also noticed I have more stamina when am out walking. I met a friend at the weekend who told me that I look younger than ever and I hadn’t even told her about taking NMN!I am delighted with the results in the first week of increasing my dose. I’ve had no side effects at all from these supplements which confirms to me their high quality. I’ve since recommended them tomy friend! ",
+            "name": "Trusted Customer"
+          }
+        },
+        "card_TBya9B": {
+          "type": "card",
+          "settings": {
+            "initials": "TC",
+            "description": "I purchased the NMN powder & I have been using it for over 2 months. I have noticed a huge difference in my energy levels, my sleep patterns & my recovery after a workout... So far I love it& am looking forward to discovering more benefits with continued use. ",
+            "name": "Trusted Customer"
+          }
+        },
+        "card_xH4mNp": {
+          "type": "card",
+          "settings": {
+            "initials": "MH",
+            "description": "Having carefully researched for a good, trustworthy company, I’m more than happy with Youth and Earth. I feel absolutely safe with the purity, reliability and quality of their NMN. Y&E also offer prompt communication with any query and can be trusted for their careful guidance and advice with all of their products. Thank you 👏 ",
+            "name": "Marianne Hancock"
+          }
+        },
+        "card_wDGhaK": {
+          "type": "card",
+          "settings": {
+            "initials": "KA",
+            "description": "Have been taking NMN now for well over a year and I can’t imagine ever wanting to give it up ... I’m much more focused ... less tired... and have a wonderful renewed energy results were not immediate but accumulated over a few months ... I love this life enhancing supplement",
+            "name": "Kathleen Adams"
+          }
+        },
+        "card_98Yp7A": {
+          "type": "card",
+          "settings": {
+            "initials": "MM",
+            "description": "I am a health, wellness, fitness and longevity professional. I spend a third of my time researching, a third putting research into practice and a third helping others navigate their needs. I have used this product for several years and it is the best.",
+            "name": "Mark Miller"
+          }
+        }
+      },
+      "block_order": [
+        "card_BeQ8Xj",
+        "card_abY6h6",
+        "card_wyQ3mE",
+        "card_XHqaXg",
+        "card_AwrVBX",
+        "card_K6PrPj",
+        "card_WFB3AX",
+        "card_kF4ciz",
+        "card_Gx4pzP",
+        "card_NiR7DE",
+        "card_8jYxtE",
+        "card_AcQmmp",
+        "card_wJzMpC",
+        "card_zBEVJ9",
+        "card_TBya9B",
+        "card_xH4mNp",
+        "card_wDGhaK",
+        "card_98Yp7A"
+      ],
+      "name": "Landing: Trust Them",
+      "settings": {
+        "title": "Don’t just take our word for it.",
+        "review_tag": "3,000+ Reviews",
+        "rating_tag": "4.5/5 Average"
+      }
+    },
+    "landing_why_it_works_DgABif": {
+      "type": "landing__why-it-works",
+      "blocks": {
+        "info_LLgM3X": {
+          "type": "info",
+          "settings": {
+            "img": "shopify://shop_images/why-it-works_3.jpg",
+            "title": "NMN Capsules - Cellular energy and repair activator",
+            "text": "NMN boosts NAD+ levels, the molecule that cells need for energy production, DNA repair, and healthy ageing. Higher NAD+ means mitochondria (cells’ energy engines) work more efficiently, setting the stage for better repair, resilience, and vitality."
+          }
+        },
+        "info_PRqX98": {
+          "type": "info",
+          "settings": {
+            "img": "shopify://shop_images/why-it-works_4.jpg",
+            "title": "Liposomal Spermidine - Autophagy trigger",
+            "text": "Spermidine activates autophagy, your body’s natural cellular “clean-up” and renewal process. Spermidine helps remove damaged components so healthier, more efficient cells can thrive.That means cleaner, more youthful cells that respond even better to NMN’s energy boost."
+          }
+        },
+        "info_yEadjx": {
+          "type": "info",
+          "settings": {
+            "img": "shopify://shop_images/why-it-works_5.jpg",
+            "title": "Liposomal Curcumin - Inflammation calmer",
+            "text": "Curcumin is one of nature’s most potent anti-inflammatory compounds. It helps calm chronic inflammation - a major driver of ageing - and protects cells from oxidative stress. By reducing inflammation, curcumin creates an optimal environment for NMN and spermidine to do their work."
+          }
+        }
+      },
+      "block_order": [
+        "info_LLgM3X",
+        "info_PRqX98",
+        "info_yEadjx"
+      ],
+      "name": "Landing: Why It Works",
+      "settings": {
+        "title": "What’s in the bundle",
+        "text": "and why they’re a potent combination for longevity",
+        "main-text": "Together, these three ingredients support the three key pillars of longevity: <span>repair, renewal and protection.</span>"
+      }
+    },
+    "landing_customers_reported_rDjyAE": {
+      "type": "landing__customers-reported",
+      "blocks": {
+        "card_fHjYDn": {
+          "type": "card",
+          "settings": {
+            "percent": "94%",
+            "title": "Energy boost",
+            "description": "94% of participants felt a boost in daily energy within first 30 days"
+          }
+        },
+        "card_qpBCbq": {
+          "type": "card",
+          "settings": {
+            "percent": "79%",
+            "title": "Healthier metabolism",
+            "description": "79% of customers noticed better digestion, stable weight"
+          }
+        },
+        "card_8nXCcN": {
+          "type": "card",
+          "settings": {
+            "percent": "86%",
+            "title": "Brain function",
+            "description": "86% of customers reported sharper focus and productivity, decreased brain fog"
+          }
+        },
+        "card_Q3EM3i": {
+          "type": "card",
+          "settings": {
+            "percent": "88%",
+            "title": "Stronger immunity",
+            "description": "88% of customers experiences less cases of being sick"
+          }
+        }
+      },
+      "block_order": [
+        "card_fHjYDn",
+        "card_qpBCbq",
+        "card_8nXCcN",
+        "card_Q3EM3i"
+      ],
+      "name": "Landing: Customers Reported",
+      "settings": {
+        "title": "What our customers reported",
+        "description": "* Individual experiences vary. NMN supports overall wellbeing; it is not intended to diagnose, treat, cure, or prevent any disease.",
+        "disclaimer": "*Survey conducted within Youth & Earth verified customers, 274 participants, 2024."
+      }
+    },
+    "landing_pure_proven_8ABUzf": {
+      "type": "landing__pure-proven",
+      "blocks": {
+        "card_X8r9ex": {
+          "type": "card",
+          "settings": {
+            "title": "Tested for Purity",
+            "description": "Free From Heavy Metals & Toxins (independent lab screening)",
+            "image": "shopify://shop_images/pure-proven_5.jpg"
+          }
+        },
+        "card_mWKDf4": {
+          "type": "card",
+          "settings": {
+            "title": "Batch-Level COA",
+            "description": "Every batch rigorously tested",
+            "image": "shopify://shop_images/pure-proven_6.jpg"
+          }
+        },
+        "card_MNr7ML": {
+          "type": "card",
+          "settings": {
+            "title": "Clean Formulation",
+            "description": "Vegan, non-GMO, allergen-friendly, no unnecessary fillers",
+            "image": "shopify://shop_images/pure-proven_7.jpg"
+          }
+        },
+        "card_yAnddm": {
+          "type": "card",
+          "settings": {
+            "title": "Verified Quality",
+            "description": "Third-Party Tested for identity, purity, contaminants",
+            "image": "shopify://shop_images/pure-proven_8.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "card_X8r9ex",
+        "card_mWKDf4",
+        "card_MNr7ML",
+        "card_yAnddm"
+      ],
+      "name": "Landing: Pure Proven",
+      "settings": {
+        "title": "Pure, Proven, Transparent",
+        "description": "Youth & Earth’s NMN is pharmaceutical-grade NMN with over 99% purity, manufactured under strict quality control in the UK. Each batch is tested by a third party lab to verify purity, potency and safety",
+        "cta_label": "View Lab Results",
+        "cta_url": "https://youthandearth.com/cdn/shop/files/NMN_-_Certificate_of_Analysis_COA.pdf?v=13086385564106795102"
+      }
+    },
+    "landing_makes_different_zp3WL8": {
+      "type": "landing__makes-different",
+      "name": "Landing: Makes Different",
+      "settings": {
+        "title": "Why Youth & Earth is   better for Mum and Dad",
+        "item_1": "Pure, proven and transparent. High purity, batch COAs published, and clear labels they can read in seconds.",
+        "item_2": "shopify://shop_images/makes-different_9.jpg",
+        "item_3": "Optimised for maximum absorption and effectiveness, our Spermidine and Curcumin are made with the latest liposomal technology, dramatically enhancing their delivery to cells.",
+        "item_4": "",
+        "item_6": "",
+        "item_9": "",
+        "item_10": "60-days Money-Back Guarantee so you can test with peace of mind – we will be happy to refund you if you see no results!",
+        "item_11": "shopify://shop_images/makes-different_5.jpg",
+        "item_12": "Limited Offer 40% off this Christmas! The perfect way to introduce loved ones to the science that unlocks many more festivities to come."
+      }
+    },
+    "landing_nmn_vs_other_gbNhhX": {
+      "type": "landing__nmn-vs-other",
+      "blocks": {
+        "list_Q7ekmt": {
+          "type": "list",
+          "settings": {
+            "title": "Feature",
+            "items": "<li>⚡️ Cellular energy</li>\n<li>✨ Cellular renewal</li>\n<li>💪🏼 Inflammation Support</li>\n<li>🥇 Transparency &amp; proof</li>\n<li>🧘🏼‍♀️ Longevity focus</li>"
+          }
+        },
+        "list_RDbBX9": {
+          "type": "list",
+          "settings": {
+            "title": "Longevity Essentials Trio",
+            "items": "<li>NMN - an NAD+ precursor <br> for cellular energy</li>\n<li>Liposomal Spermidine to support <br> natural renewal processes</li>\n<li>Liposomal Curcumin for everyday inflammation support</li>\n<li>Third-party tested with batch COAs</li>\n<li>Targeted at energy + renewal + resilience</li>"
+          }
+        },
+        "list_yrx9TP": {
+          "type": "list",
+          "settings": {
+            "title": "Daily multivitamin",
+            "items": "<li>Sometimes B-vitamins <br> for general “energy”</li>\n<li>Not renewal focused</li>\n<li>Basic A/C/E/selenium mix; <br> not specific</li>\n<li>Blends, COAs uncommon</li>\n<li>General and untargeted</li>"
+          }
+        }
+      },
+      "block_order": [
+        "list_Q7ekmt",
+        "list_RDbBX9",
+        "list_yrx9TP"
+      ],
+      "name": "Landing: NMN vs Other",
+      "settings": {
+        "title": "Youth & Earth vs. the rest"
+      }
+    },
+    "landing_one_daily_ritual_jfAFfc": {
+      "type": "landing__one-daily-ritual",
+      "blocks": {
+        "card_y47xP6": {
+          "type": "card",
+          "settings": {
+            "title": "Steadier energy",
+            "description": "NMN to support cellular energy. Many feel improved energy levels.",
+            "image": "shopify://shop_images/one-daily-ritual_4.jpg"
+          }
+        },
+        "card_KPYiJN": {
+          "type": "card",
+          "settings": {
+            "title": "Cellular renewal",
+            "description": "Liposomal Spermidine to support the body’s natural cell renewal processes.",
+            "image": "shopify://shop_images/one-daily-ritual_5.jpg"
+          }
+        },
+        "card_TWbpfM": {
+          "type": "card",
+          "settings": {
+            "title": "Everyday resilience",
+            "description": "Liposomal Curcumin for inflammation support as part of active living.",
+            "image": "shopify://shop_images/one-daily-ritual_2.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "card_y47xP6",
+        "card_KPYiJN",
+        "card_TWbpfM"
+      ],
+      "name": "Landing: One Daily Ritual",
+      "settings": {
+        "title": "One New Daily Ritual. Compounding Impact Over Time."
+      }
+    },
+    "landing_edward_van_harmelen_Akp74X": {
+      "type": "landing__edward-van-harmelen",
+      "name": "Landing: Edward van Harmelen",
+      "settings": {
+        "image": "shopify://shop_images/Edward_van_Harmelen.jpg",
+        "position": "A Note From Youth & Earth founder",
+        "name": "Edward van Harmelen",
+        "title": "“We created this Longevity Bundle for families who want to keep making memories - this year and the years ahead.”",
+        "description": "It brings together NMN, Liposomal Spermidine, and Liposomal Curcumin - three simple tools I trust to support cellular energy, renewal, and everyday resilience. I’m 52, and I’ve been taking this combination for eight years. It helps me keep showing up with steady energy and a clear head for the people I love. If you’re gifting your parents, this is a thoughtful way to say: let’s enjoy as many more Christmases together as we can."
+      }
+    },
+    "landing_try_it_risk_free_Mm9wVi": {
+      "type": "landing__try-it-risk-free",
+      "name": "Landing: Try it risk free",
+      "settings": {
+        "title": "Try It Risk-Free\nFor 60 Days",
+        "description": "If you don’t feel the difference, you are entitled to get a full refund on your first order, without any hassle.",
+        "cta_label": "Shop Exclusive Offer Now",
+        "cta_url": "https://youthandearth.com/products/christmas-trio",
+        "list_items": "<li>60-Day Money-Back Guarantee</li>\n<li>Third-Party Tested (COAs included)</li>\n<li>75,000+ Customers</li>\n<li>3,000+ Reviews</li>\n<li>4.5/5 Feefo Score</li>",
+        "background_image": "shopify://shop_images/Try_It_Risk-Free_For_30_Days_2.jpg"
+      }
+    },
+    "landing_common_questions_nztBX3": {
+      "type": "landing__common-questions",
+      "blocks": {
+        "question_RgUBpe": {
+          "type": "question",
+          "settings": {
+            "title": "What’s in this bundle, and why these three?",
+            "answer": "<strong>NMN Capsules</strong> - to boost cellular energy and support DNA repair and healthy ageing via increased NAD⁺ levels <br><br><strong>Liposomal Spermidine</strong> - to trigger autophagy, the body’s natural “cell-clean up and renewal” process, helping cells clear damaged components and stay youthful.<br><br><strong>Liposomal Curcumin</strong> - to provide antioxidant and anti-inflammatory support, protecting cells from oxidative stress and creating a healthier internal environment"
+          }
+        },
+        "question_WrRAEp": {
+          "type": "question",
+          "settings": {
+            "title": "How should I take the supplements and when?",
+            "answer": "<strong>NMN</strong>: Recommended first thing in the morning, on an empty stomach. This timing is chosen to align with natural NAD⁺ metabolic cycles and support steady daytime energy.<br><br><strong>Liposomal Spermidine and Curcumin</strong>: Can be taken alongside or after food. Liposomal formats are used to improve absorption and effectiveness."
+          }
+        },
+        "question_EdLbkx": {
+          "type": "question",
+          "settings": {
+            "title": "When will I feel the effects?",
+            "answer": "Some users report an <strong>energy boost, clearer focus, or better mood within the first weeks</strong>. Others may notice subtler changes - like steadier energy, improved metabolism or digestion, or long-term benefits at the cellular level (mitochondrial efficiency, antioxidant protection)."
+          }
+        },
+        "question_ygRrda": {
+          "type": "question",
+          "settings": {
+            "title": "Is this bundle suitable for everyone?",
+            "answer": "It’s formulated to be <strong>vegan, non-GMO and allergen friendly</strong>. However, if you are pregnant, breastfeeding, on prescription drugs, or have a medical condition, you should speak to a healthcare professional before using."
+          }
+        },
+        "question_KhRHmx": {
+          "type": "question",
+          "settings": {
+            "title": "Is it safe?",
+            "answer": "Yes - NMN, Liposomal Spermidine, and Liposomal Curcumin are all generally well-tolerated and considered safe when taken at the recommended dosages.<br><br>Each product in this bundle goes through strict quality and safety checks:<br><br><ul>\n<li>\n<strong>NMN</strong>: Third-party tested for purity (>99.5%), heavy metals, and contaminants.</li>\n<li>\n<strong>Liposomal Spermidine</strong>: Uses a clean, vegan liposomal delivery system designed for enhanced absorption with no unnecessary additives.</li>\n<li>\n<strong>Liposomal Curcumin</strong>: Formulated to improve bioavailability using a safe, food-grade liposomal format.</li>\n</ul><br>The three supplements work through different biological pathways (NAD⁺ support, autophagy activation, and inflammation reduction), and there are <strong>no known negative interactions</strong> when taken together."
+          }
+        }
+      },
+      "block_order": [
+        "question_RgUBpe",
+        "question_WrRAEp",
+        "question_EdLbkx",
+        "question_ygRrda",
+        "question_KhRHmx"
+      ],
+      "name": "Landing: Common Questions",
+      "settings": {
+        "title": "Straight Answers to Common Questions"
+      }
+    },
+    "landing_ingredient_transparency_X3wMah": {
+      "type": "landing__ingredient-transparency",
+      "blocks": {
+        "card_P9hRtW": {
+          "type": "card",
+          "settings": {
+            "title": "Heavy-Metal Screening",
+            "description": ">99% purity – free from heavy metals & toxins",
+            "image": "shopify://shop_images/ingredient-transparency_4.jpg"
+          }
+        },
+        "card_pTDeTx": {
+          "type": "card",
+          "settings": {
+            "title": "Identity & Purity",
+            "description": "Verified by independent labs",
+            "image": "shopify://shop_images/ingredient-transparency_2.jpg"
+          }
+        },
+        "card_xDDPHH": {
+          "type": "card",
+          "settings": {
+            "title": "No Unnecessary Fillers",
+            "description": "Vegan, non-GMO, allergen-friendly",
+            "image": "shopify://shop_images/ingredient-transparency_3.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "card_P9hRtW",
+        "card_pTDeTx",
+        "card_xDDPHH"
+      ],
+      "name": "Landing: Ingredient Transparency",
+      "settings": {
+        "title": "Ingredient Transparency",
+        "cta_label": "View Lab Results",
+        "cta_url": "https://youthandearth.com/cdn/shop/files/NMN_-_Certificate_of_Analysis_COA.pdf?v=13086385564106795102"
+      }
+    },
+    "landing_ready_to_feel_qBtEFd": {
+      "type": "landing__ready-to-feel",
+      "name": "Landing: Ready To Feel",
+      "settings": {
+        "title": "Ready to give <br> the gift of healthy, <br> happy years?",
+        "cta_label": "Shop now and save 40%",
+        "cta_url": "https://youthandearth.com/products/christmas-trio",
+        "background_image": "shopify://shop_images/ready-to-feel-_2.jpg"
+      }
+    },
+    "index_badges_with_text_gyTFt3": {
+      "type": "index__badges-with-text",
+      "name": "Badges with text",
+      "settings": {
+        "title": "",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "background_color": "",
+        "text_color": "",
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "text_1": "",
+        "text_2": "",
+        "text_3": "",
+        "text_4": "",
+        "css_class": "",
+        "custom_css": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "christmas_landing_christmases_to_come_D4CB68",
+    "landing_feels_like_3nM3pV",
+    "landing_trust_them_Thjyfj",
+    "landing_why_it_works_DgABif",
+    "landing_customers_reported_rDjyAE",
+    "landing_pure_proven_8ABUzf",
+    "landing_makes_different_zp3WL8",
+    "landing_nmn_vs_other_gbNhhX",
+    "landing_one_daily_ritual_jfAFfc",
+    "landing_edward_van_harmelen_Akp74X",
+    "landing_try_it_risk_free_Mm9wVi",
+    "landing_common_questions_nztBX3",
+    "landing_ingredient_transparency_X3wMah",
+    "landing_ready_to_feel_qBtEFd",
+    "index_badges_with_text_gyTFt3"
+  ]
+}

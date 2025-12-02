@@ -1,77 +1,56 @@
-{% comment %} 
-    Product snippet
-   
-    @param product
-    @param selected_variant
-    @param width
-    @param css_class
-    @param display_social_buttons
-    @param display_thumbnails
-    @param enable_product_lightbox
-    @param enable_thumbnail_slider
-    @param enable_zoom
-    @param gallery_arrows
-    @param product_description_position
-    @param product_height
-    @param set_product_height
-    @param slideshow_transition
-    @param stickers_enabled
-    @param tag_style
-    @param thumbnail_position
-    @param video_looping
-    @param section_onboarding 
+{% comment %}
+  Product snippet
+
+  @param product
+  @param selected_variant
+  @param width
+  @param css_class
+  @param display_social_buttons
+  @param display_thumbnails
+  @param enable_product_lightbox
+  @param enable_thumbnail_slider
+  @param enable_zoom
+  @param gallery_arrows
+  @param product_description_position
+  @param product_height
+  @param set_product_height
+  @param slideshow_transition
+  @param stickers_enabled
+  @param tag_style
+  @param thumbnail_position
+  @param video_looping
+  @param section_onboarding
 {% endcomment %}
 
 {% comment %} HTML markup {% endcomment %}
 
-{% style %}
+{% liquid
+  assign product_discount_block = blank
+  for block in section.blocks
+    if block.type == 'bf_product_discount'
+      assign product_discount_block = block
+      break
+    endif
+  endfor
 
+  assign product_discount_entry = product.metafields.custom.product_discount.value
+
+  if product_discount_block != blank
+    assign override_handle = product_discount_block.settings.discount_entry_handle | strip
+    if override_handle != blank
+      assign override_metaobject = metaobjects.product_discount[override_handle]
+      if override_metaobject
+        assign product_discount_entry = override_metaobject
+      endif
+    endif
+  endif
+%}
+
+{% style %}
   .vitality_product__information__content {
     width: 100%;
   }
 
-  .sizeSwatch { 
-    color: #F7F5F1;
-  }
-
-  .is-slide-nav--true .product-gallery__thumbnail.is-nav-selected > img {
-    {% if product.id == 7396104994889 %}
-          border: 1px solid #b20040;
-    {% endif  %}
-  {% if product.id == 7396104863817 %}
-          border: 1px solid #9d5eb9;
-    {% endif  %}
-  
-  }
-
-    .product-gallery .flickity-prev-next-button .flickity-button-icon {
-      {% if product.id == 7396104994889 %}
-        fill: #3D0A1E;
-      {% endif  %}
-    }
-
-    .product-gallery .flickity-prev-next-button:hover {
-      {% if product.id == 7396104994889 %}
-        background-color: #B20040;
-      {% endif  %}
-      {% if product.id == 7396104863817 %}
-        background-color: #9d5eb9;
-      {% endif  %}
-    }
-
-  @media only screen and (max-width: 798px) {
-    .product-gallery .product-gallery__main .flickity-prev-next-button:hover > .flickity-button-icon {
-      {% if product.id == 7396104994889 %}
-        background: #B20040;
-      {% endif  %}
-      {% if product.id == 7396104863817 %}
-        background: #9d5eb9;
-      {% endif  %}
-    }
-  }
-
-  .product-gallery .product-gallery__main .flickity-prev-next-button:hover > .flickity-button-icon
-  
   @media only screen and (min-width: 799px) {
     .product__information__content {
       position: sticky;
@@ -79,178 +58,190 @@
       z-index: 1;
     }
   }
-  
 {% endstyle %}
 
-<div class="product_section
-            js-product_section
-            container
-            is-justify-space-between
-            has-padding-bottom
-            {% if product_images_position == 'right' %}
-              is-flex-row-reverse
-            {% endif %}">
-
-  <div class="product__images
-              one-half
-              column
-              medium-down--one-whole
-    is-hidden-mobile-only
-    ">
+<div
+  class="
+    product_section
+    js-product_section
+    container
+    is-justify-space-between
+    has-padding-bottom
+    {% if product_images_position == 'right' %}
+      is-flex-row-reverse
+    {% endif %}
+  "
+>
+  <div
+    class="
+      product__images
+      one-half
+      column
+      medium-down--one-whole
+    "
+  >
     {% if section_onboarding %}
       <div class="featured-product__images">
         {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg placeholder-svg--product' }}
       </div>
     {% else %}
-      {% render 'product__images'
+      {%
+        render 'product__images'
         , product: product
         , display_thumbnails: display_thumbnails
         , thumbnail_position: thumbnail_position
         , enable_thumbnail_slider: enable_thumbnail_slider
         , product_height: product_height
-        , product_height_mobile: product_height_mobile
         , set_product_height: set_product_height
         , video_looping: video_looping gallery_arrows: gallery_arrows
         , slideshow_transition: slideshow_transition
         , enable_product_lightbox: enable_product_lightbox
-        , enable_zoom: enable_zoom,
+        , enable_zoom: enable_zoom
         , is_v14: block.settings.is_v14
+        , product_discount_entry: product_discount_entry
       %}
     {% endif %}
 
     {%- for block in section.blocks -%}
-        {%- if block.type == 'product-accordion' and block.settings.is_v14 == false -%}
-          <div class="product__accordion-wrapper-desktop">
-            {% render 'product__accordion',
-              block: block,
-              auto_close: block.settings.auto_close,
-              awards_heading: block.settings.awards_heading,
-              certificates_heading: block.settings.certificates_heading,
-              truncate_description: block.settings.truncate_description,
-              id: "product-accordion-desktop",
-              faq-description: block.settings.faq-description,
-              faq-link-1-title: block.settings.faq-link-1-title,
-              faq-link-1-url: block.settings.faq-link-1-url,
-              faq-link-2-title: block.settings.faq-link-2-title,
-              faq-link-2-url: block.settings.faq-link-2-url,
-              faq-title: block.settings.faq-title
-            %}
-          </div>
-        {% endif %}
+      {%- if block.type == 'product-accordion' and block.settings.is_v14 == false -%}
+        <div class="product__accordion-wrapper-desktop">
+          {% render 'product__accordion',
+            block: block,
+            auto_close: block.settings.auto_close,
+            awards_heading: block.settings.awards_heading,
+            certificates_heading: block.settings.certificates_heading,
+            truncate_description: block.settings.truncate_description,
+            id: 'product-accordion-desktop',
+            faq-description: block.settings['faq-description'],
+            faq-link-1-title: block.settings['faq-link-1-title'],
+            faq-link-1-url: block.settings['faq-link-1-url'],
+            faq-link-2-title: block.settings['faq-link-2-title'],
+            faq-link-2-url: block.settings['faq-link-2-url'],
+            faq-title: block.settings['faq-title']
+          %}
+        </div>
+      {% endif %}
     {%- endfor -%}
-    
   </div>
 
-  <div class="
+  <div
+    class="
       product__information
       has-product-sticker
       one-half
       column
       medium-down--one-whole
-    ">
+    "
+  >
     <div class="product__information__content">
-    {% if stickers_enabled %}
-      {% assign collection_handles = product.collections | map: 'handle' %}
-      {% render 'product-thumbnail__sticker'
-        , product: product
-        , context: 'product'
-        , collection_handles: collection_handles
-        ,
-      %}
-    {% endif %}
+      {% if stickers_enabled %}
+        {% assign collection_handles = product.collections | map: 'handle' %}
+        {% render 'product-thumbnail__sticker',
+          product: product,
+          context: 'product',
+          collection_handles: collection_handles
+        %}
+      {% endif %}
 
-    {%- for block in section.blocks -%}
-      <div class="
-          product-block
-          product-block--{{ block.type | downcase | replace: '_', '-' }}
-          {% if forloop.first == true %}
-            product-block--first
-          {% endif %}
-        " {{ block.shopify_attributes }}>
-        {%- if block.type == 'vendor' -%}
-          {% comment %} Vendor {% endcomment %}
-          <p class="vendor">
-            <span class="vendor">
-              {% if section_onboarding %}
-                Vendor name
-              {% else %}
-                {{ product.vendor | link_to_vendor }}
+      {%- for block in section.blocks -%}
+        <div
+          class="
+            product-block
+            product-block--{{ block.type | downcase | replace: '_', '-' }}
+            {% if forloop.first == true %}
+              product-block--first
+            {% endif %}
+          "
+          {{ block.shopify_attributes }}
+        >
+          {%- if block.type == 'vendor' -%}
+            {% comment %} Vendor {% endcomment %}
+            <p class="vendor">
+              <span class="vendor">
+                {% if section_onboarding %}
+                  Vendor name
+                {% else %}
+                  {{ product.vendor | link_to_vendor }}
+                {% endif %}
+              </span>
+            </p>
+            {% comment %}
+              {% elsif block.type == 'discount_promo' %}
+              {% assign text = product.metafields.jadepuma.promo_discount_rich_text %}
+              {% if settings.toggle_promo_discount_message %}
+                {% if text %}
+                  <div class="discount_promo">{{ text | metafield_tag }}</div>
+                {% endif %}
               {% endif %}
-            </span>
-          </p>
-        {% elsif block.type == 'discount_promo' %}
-          {% assign text = product.metafields.jadepuma.promo_discount_rich_text %}
-          {% if settings.toggle_promo_discount_message %}
-            {% if text %}
-              <div class="discount_promo">{{ text | metafield_tag }}</div>
-            {% endif %}
-          {% endif %}
+            {% endcomment %}
+            
+          {%- elsif block.type == 'sku' -%}
+            {% comment %} Sku {% endcomment %}
+            <p class="sku">
+              {% if section_onboarding %}
+                1234567890
+              {% else %}
+                {{ selected_variant.sku }}
+              {% endif %}
+            </p>
 
-        {%- elsif block.type == 'sku' -%}
-          {% comment %} Sku {% endcomment %}
-          <p class="sku">
-            {% if section_onboarding %}
-              1234567890
-            {% else %}
-              {{ selected_variant.sku }}
-            {% endif %}
-          </p>
+            {%- elsif block.type == 'bf_product_discount' -%}
+              {% comment %}
+                Block exists only to toggle the product image discount badge. The badge output
+                is injected near the product gallery to match the desired overlay layout.
+              {% endcomment %}
 
-        {%- elsif block.type == 'title' -%}
-          {% comment %} Name {% endcomment %}
+          {%- elsif block.type == 'title' -%}
+            {% comment %} Name {% endcomment %}
 
             {% style %}
-  
+
+              .product-block .product-title {
+                font-size: {{ block.settings.product-title-font-size }}px;
+              }
+
+              @media only screen and (max-width: 799px) {
                 .product-block .product-title {
-                  font-size: {{ block.settings.product-title-font-size }}px;
+                  font-size: {{ block.settings.product-title-font-size-mobile }}px;
                 }
-    
-                @media only screen and (max-width: 799px) {
-                  .product-block .product-title {
-                    font-size: {{ block.settings.product-title-font-size-mobile }}px;
-                  }
-                }
-              
+              }
             {% endstyle %}
-          
+
             {% if template.name == 'article' %}
-            <p class="product-title title">
-              {{ product.title }}
-            </p>
-            {% else %}
-            <h1 class="product-title title">
-              {% if is_product_modal %}
-                <a href="{{ product.url }}">{{ product.title }}</a>
-              {% elsif section_onboarding %}
-                {{ 'homepage.onboarding.product_title' | t }}
-              {% else %}
+              <p class="product-title title">
                 {{ product.title }}
-              {% endif %}
-            </h1>
+              </p>
+            {% else %}
+              <h1 class="product-title title">
+                {% if is_product_modal %}
+                  <a href="{{ product.url }}">{{ product.title }}</a>
+                {% elsif section_onboarding %}
+                  {{ 'homepage.onboarding.product_title' | t }}
+                {% else %}
+                  {{ product.title }}
+                {% endif %}
+              </h1>
             {% endif %}
 
-          {% comment %} Block to be attached to fixed product form container {% endcomment %}
-          <div class="product-title-and-stars">
+            {% comment %} Block to be attached to fixed product form container {% endcomment %}
+            <div class="product-title-and-stars">
               <p class="product-title title">{{ product.title }}</p>
               {% render 'product-category-stars2' %}
-          </div>
+            </div>
 
           {%- elsif block.type == 'one-sentence' -%}
-
-          {% style %}
-
+            {% style %}
               .product__one-sentence {
                 padding-top: {{ block.settings.one-sentence-top-padding }}px;
                 padding-bottom: {{ block.settings.one-sentence-bottom-padding }}px;
                 font-size: {{ block.settings.one-sentence-font-size }}px;
                 line-height: 1.1;
-                font-family: Romie Regular Italic !important;
               }
 
               .product__one-sentence > span {
                 font-family: Romie Regular Italic !important;
               }
-  
+
               @media only screen and (max-width: 799px) {
                 .product__one-sentence {
                   padding-top: {{ block.settings.one-sentence-top-padding-mobile }}px;
@@ -258,676 +249,578 @@
                   font-size: {{ block.settings.one-sentence-font-size-mobile }}px;
                 }
               }
-              
             {% endstyle %}
-                                    
-          
+
             {% if product.metafields.custom.product_one_sentence_description %}
               <div class="product__one-sentence">{{ product.metafields.custom.product_one_sentence_description }}</div>
             {% endif %}
 
-          {%- elsif block.type == 'product__benefits' -%}          
+          {%- elsif block.type == 'product__benefits' -%}
             {% render 'product__benefits' %}
 
-          {%- elsif block.type == 'v14__product__benefits' -%}          
+          {%- elsif block.type == 'v14__product__benefits' -%}
             {% render 'v14__product__benefits' %}
 
-          {%- elsif block.type == 'image__mobile' -%}
-            <div class="product__images
-              is-hidden-desktop-only
-        "> 
-    {% if section_onboarding %}
-      <div class="featured-product__images">
-        {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg placeholder-svg--product' }}
-      </div>
-    {% else %}
-      {% render 'product__images'
-        , product: product
-        , display_thumbnails: display_thumbnails
-        , thumbnail_position: thumbnail_position
-        , enable_thumbnail_slider: enable_thumbnail_slider
-        , product_height: product_height
-        , product_height_mobile: product_height_mobile
-        , set_product_height: set_product_height
-        , video_looping: video_looping gallery_arrows: gallery_arrows
-        , slideshow_transition: slideshow_transition
-        , enable_product_lightbox: enable_product_lightbox
-        , enable_zoom: enable_zoom,
-        , is_v14: block.settings.is_v14
-      %}
-    {% endif %}
-    
-    </div>
+          {%- elsif block.type == 'size-chart' -%}
+            {% comment %} Size chart {% endcomment %}
+            {% for tag in product.tags %}
+              {% if tag contains 'meta-size-chart-' %}
+                {% assign meta_size_chart = true %}
+              {% endif %}
+            {% endfor %}
 
-        {%- elsif block.type == 'size-chart' -%}
-          {% comment %} Size chart {% endcomment %}
-          {% for tag in product.tags %}
-            {% if tag contains 'meta-size-chart-' %}
-              {% assign meta_size_chart = true %}
+            {% if settings.size_chart != blank or block.settings.size_chart != blank or meta_size_chart %}
+              <a
+                class="product__size-chart"
+                href="javascript:;"
+                data-fancybox
+                data-src="#size-chart{{ product.id }}"
+                data-type="inline"
+              >
+                {{ block.settings.title | escape }}
+              </a>
+              {% render 'popup-size-chart', block: block, product_id: product.id %}
             {% endif %}
-          {% endfor %}
 
-          {% if settings.size_chart != blank or block.settings.size_chart != blank or meta_size_chart %}
-            <a
-              class="product__size-chart"
-              href="javascript:;"
-              data-fancybox
-              data-src="#size-chart{{ product.id }}"
-              data-type="inline">
-              {{ block.settings.title | escape }}
-            </a>
-            {% render 'popup-size-chart'
-              , block: block
-              , product_id: product.id
-              ,
-            %}
-          {% endif %}
+          {%- elsif block.type == 'price' -%}
+            {% comment %} Price {% endcomment %}
+            <div class="modal_price subtitle" data-display-savings="{{ block.settings.display_savings }}">
+              {% if section_onboarding %}
+                <span class="money">$49.00</span>
+              {% elsif product.available == false %}
+                <span class="sold_out">
+                  {{- 'products.product.sold_out' | t -}}
+                </span>
+              {% else %}
+                {% comment %}Inject @pixelunion/shopify-price-ui/price-ui begin{% endcomment %}
+                <div class="price-ui price-ui--loading" data-price-ui>
+                  <noscript>
+                    <style>
+                      .price-ui--loading {
+                        display: block !important;
+                        opacity: 1 !important;
+                      }
+                    </style>
+                  </noscript>
+                  {% assign compare_at_price = false %}
 
-        {%- elsif block.type == 'price' -%}
-          {% comment %} Price {% endcomment %}
-          <div class="modal_price subtitle" data-display-savings="{{ block.settings.display_savings }}">
-            {% if section_onboarding %}
-              <span class="money">$49.00</span>
-            {% elsif product.available == false %}
-              <span class="sold_out">
-                {{- 'products.product.sold_out' | t -}}
-              </span>
-            {% else %}
-              {% comment %}Inject @pixelunion/shopify-price-ui/price-ui begin{% endcomment %}
-              <div class="price-ui price-ui--loading" data-price-ui>
-                <noscript>
-                  <style>
-                    .price-ui--loading {
-                      display: block !important;
-                      opacity: 1 !important;
-                    }
-                  </style>
-                </noscript>
-                {% assign compare_at_price = false %}
-
-                {% if product.compare_at_price and product.compare_at_price != product.price %}
-                  {% if product.compare_at_price_varies %}
-                    {%- capture price_min -%}
+                  {% if product.compare_at_price and product.compare_at_price != product.price %}
+                    {% if product.compare_at_price_varies %}
+                      {%- capture price_min -%}
                       {%-
                         render 'price-ui-templates',
                         template: 'price-min',
                         value: product.compare_at_price_min,
                       -%}
                     {%- endcapture -%}
-                    {%- capture price_max -%}
+                      {%- capture price_max -%}
                       {%-
                         render 'price-ui-templates',
                         template: 'price-max',
                         value: product.compare_at_price_max,
                       -%}
                     {%- endcapture -%}
-                    {%- assign compare_at_price = 'product.price.range_html' | t: price_min: price_min, price_max: price_max -%}
-                  {% else %}
-                    {%- capture compare_at_price -%}
+                      {%- assign compare_at_price = 'product.price.range_html'
+                        | t: price_min: price_min, price_max: price_max
+                      -%}
+                    {% else %}
+                      {%- capture compare_at_price -%}
                       {%-
                         render 'price-ui-templates',
                         template: 'price',
                         value: product.compare_at_price,
                       -%}
                     {%- endcapture -%}
+                    {% endif %}
                   {% endif %}
-                {% endif %}
 
-                {% if product.price_varies %}
-                  {%- capture price_min -%}
+                  {% if product.price_varies %}
+                    {%- capture price_min -%}
                     {%-
                       render 'price-ui-templates',
                       template: 'price-min',
                       value: product.price_min,
                     -%}
                   {%- endcapture -%}
-                  {%- capture price_max -%}
+                    {%- capture price_max -%}
                     {%-
                       render 'price-ui-templates',
                       template: 'price-max',
                       value: product.price_max,
                     -%}
                   {%- endcapture -%}
-                  {%- assign price = 'product.price.range_html' | t: price_min: price_min, price_max: price_max -%}
-                {% else %}
-                  {%- capture price -%}
+                    {%- assign price = 'product.price.range_html' | t: price_min: price_min, price_max: price_max -%}
+                  {% else %}
+                    {%- capture price -%}
                     {%-
                       render 'price-ui-templates',
                       template: 'price',
                       value: product.price,
                     -%}
                   {%- endcapture -%}
-                {% endif %}
+                  {% endif %}
 
-                {%- render 'price-ui-templates'
-                  , template: 'price-ui'
-                  , compare_at_price: compare_at_price
-                  , price: price
-                  , unit_pricing: false
-                  ,
-                -%}
-              </div>
-              {% comment %}Inject @pixelunion/shopify-price-ui/price-ui end{% endcomment %}
+                  {%- render 'price-ui-templates',
+                    template: 'price-ui',
+                    compare_at_price: compare_at_price,
+                    price: price,
+                    unit_pricing: false
+                  -%}
+                </div>
+                {% comment %}Inject @pixelunion/shopify-price-ui/price-ui end{% endcomment %}
+              {% endif %}
+            </div>
 
+          {%- elsif block.type == 'complementary_products' -%}
+            {% comment %} Complementary products {% endcomment %}
+            {% render 'complementary-products', product: product, block: block %}
+
+            {% if is_product_modal %}
+              <a
+                class="product__view-details"
+                href="{{ product.url | within: collection }}"
+                title="{{ product.title | escape }}"
+              >
+                {{- 'collections.general.view_product_details' | t -}}
+              </a>
             {% endif %}
-          </div>
 
-        {%- elsif block.type == 'complementary_products' -%}
-          {% comment %} Complementary products {% endcomment %}
-          {% render 'complementary-products'
-            , product: product
-            , block: block
-            ,
-          %}
+            <div id="element-to-check-inersection-for-fixed-add-to-cart"></div>
 
-
-
-          {% if is_product_modal %}
-            <a
-              class="product__view-details"
-              href="{{ product.url | within: collection }}"
-              title="{{ product.title | escape }}">
-              {{- 'collections.general.view_product_details' | t -}}
-            </a>
-          {% endif %}
-
-        <div id="element-to-check-inersection-for-fixed-add-to-cart"></div>  
-
-        {%- elsif block.type == 'buy-more_save-more' -%}
-          {% comment %} Buy more Save more {% endcomment %}
-           {% render 'product__buy-more_save-more'
-            , product: product
-            , block: block
-            , selected_variant: selected_variant
-            ,
-          %}
-
-        {%- elsif block.type == 'form' -%}
-          {% comment %} Purchase form {% endcomment %}
-          {% if section_onboarding %}
-            <div class="product-form-container has-padding-top">
-              <div class="purchase-details">
-                <div class="purchase-details__buttons purchase-details__spb--false">
-                  <button
-                    name="add"
-                    class="action_button button button--add-to-cart add_to_cart"
-                    data-label={{ add_to_cart_label | json }}>
-                    <span class="text">{{ 'products.product.add_to_cart' | t }}</span>
-                  </button>
+          {%- elsif block.type == 'form' -%}
+            {% comment %} Purchase form {% endcomment %}
+            {% if section_onboarding %}
+              <div class="product-form-container has-padding-top">
+                <div class="purchase-details">
+                  <div class="purchase-details__buttons purchase-details__spb--false">
+                    <button
+                      name="add"
+                      class="action_button button button--add-to-cart add_to_cart"
+                      data-label="{{ add_to_cart_label | json }}"
+                    >
+                      <span class="text">{{ 'products.product.add_to_cart' | t }}</span>
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          {% else %}
-            <div class="product-form-container has-padding-top">
+            {% else %}
+              <div class="product-form-container has-padding-top">
+                {% comment %} Notify form {% endcomment %}
+                {% render 'product__notify-me-form', product: product %}
 
-              {% comment %} Notify form {% endcomment %}
-              {% render 'product__notify-me-form'
-                , product: product %}
+                {% comment %} Product form {% endcomment %}
+                {% unless collection_handles contains 'coming-soon' %}
+                  {% render 'product__form',
+                    context: 'product',
+                    product: product,
+                    sold_out_options: sold_out_options,
+                    selected_variant: selected_variant,
+                    show_payment_button: block.settings.show_payment_button,
+                    show_recipient_form: block.settings.show_gift_card_recipient_form,
+                    collection_handles: collection_handles,
+                    v14_color: block.settings.v14_color
+                  %}
+                {% endunless %}
+              </div>
+            {% endif %}
 
-              {% comment %} Product form {% endcomment %}
-              {% unless collection_handles contains 'coming-soon' %}
-                {% render 'product__form'
-                  , context: 'product'
-                  , product: product
-                  , sold_out_options: sold_out_options
-                  , selected_variant: selected_variant
-                  , show_payment_button: block.settings.show_payment_button
-                  , show_recipient_form: block.settings.show_gift_card_recipient_form
-                  , collection_handles: collection_handles
-                  , v14_color: block.settings.v14_color
-                %}
-              {% endunless %}
-            </div>
-          {% endif %}
+          {%- elsif block.type == 'unique-selling-points' -%}
+            {% render 'product__unique-selling-points', block: block %}
 
-        {%- elsif block.type == 'unique-selling-points' -%}
-            {% render 'product__unique-selling-points',
-              block: block,
-            %}
-                  
-        {%- elsif block.type == 'why-subscribe' and product.metafields.custom.available_as_a_subscription -%}
-          {% render 'product__why-subscribe',
-            block: block,
-        %}
-                  
-        {%- elsif block.type == 'why-subscribe-short' and product.metafields.custom.available_as_a_subscription -%}
-          {% render 'product__why-subscribe-short',
-            block: block,
-        %}
+          {%- elsif block.type == 'why-subscribe' and product.metafields.custom.available_as_a_subscription -%}
+            {% render 'product__why-subscribe', block: block %}
 
+          {%- elsif block.type == 'why-subscribe-short' and product.metafields.custom.available_as_a_subscription -%}
+            {% render 'product__why-subscribe-short', block: block %}
 
-        {%- elsif block.type == 'product-links' -%}
-          {% comment %} Collections, type, tags {% endcomment %}
-          {% if block.settings.show_collections or block.settings.show_tags or block.settings.show_type %}
-            <div class="product__classification-links has-padding-top">
-              {% if block.settings.show_collections %}
-                <p class="product__collections-list tags">
-                  <span class="product__classification-title">{{ 'products.product.collections' | t }}:</span>
-                  {% for col in product.collections %}
-                    <span class="tag tag--{{ tag_style }}">
-                      <a href="{{ col.url }}" title="{{ col.title }}">{{ col.title }}</a>
-                    </span>
-                  {% endfor %}
-                </p>
-              {% endif %}
-
-              {% if block.settings.show_type %}
-                <p class="product__type-list tags">
-                  <span class="product__classification-title">{{ 'products.product.product_types' | t }}:</span>
-                  <span class="tag tag--{{ tag_style }}">{{ product.type | link_to_type }}</span>
-                </p>
-              {% endif %}
-
-              {% if block.settings.show_tags and product.tags.size > 0 %}
-                <p class="product__tags-list tags">
-                  <span class="product__classification-title">{{ 'products.product.tags' | t }}:</span>
-                  {% for tag in product.tags %}
-                    {% unless tag contains 'meta-' %}
+          {%- elsif block.type == 'product-links' -%}
+            {% comment %} Collections, type, tags {% endcomment %}
+            {% if block.settings.show_collections or block.settings.show_tags or block.settings.show_type %}
+              <div class="product__classification-links has-padding-top">
+                {% if block.settings.show_collections %}
+                  <p class="product__collections-list tags">
+                    <span class="product__classification-title">{{ 'products.product.collections' | t }}:</span>
+                    {% for col in product.collections %}
                       <span class="tag tag--{{ tag_style }}">
-                        <a href="{{ routes.collections_url }}/{% if collection %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag | handle }}" title="{{ 'products.product.products_tagged' | t: tag: tag }}">{{ tag }}</a>
+                        <a href="{{ col.url }}" title="{{ col.title }}">{{ col.title }}</a>
                       </span>
-                    {% endunless %}
-                  {% endfor %}
+                    {% endfor %}
+                  </p>
+                {% endif %}
+
+                {% if block.settings.show_type %}
+                  <p class="product__type-list tags">
+                    <span class="product__classification-title">{{ 'products.product.product_types' | t }}:</span>
+                    <span class="tag tag--{{ tag_style }}">{{ product.type | link_to_type }}</span>
+                  </p>
+                {% endif %}
+
+                {% if block.settings.show_tags and product.tags.size > 0 %}
+                  <p class="product__tags-list tags">
+                    <span class="product__classification-title">{{ 'products.product.tags' | t }}:</span>
+                    {% for tag in product.tags %}
+                      {% unless tag contains 'meta-' %}
+                        <span class="tag tag--{{ tag_style }}">
+                          <a
+                            href="{{ routes.collections_url }}/{% if collection %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag | handle }}"
+                            title="{{ 'products.product.products_tagged' | t: tag: tag }}"
+                          >
+                            {{- tag -}}
+                          </a>
+                        </span>
+                      {% endunless %}
+                    {% endfor %}
+                  </p>
+                {% endif %}
+              </div>
+            {% endif %}
+
+          {%- elsif block.type == 'rating' -%}
+            {% if product.metafields.reviews.rating.value != blank %}
+              <div class="product__rating rating">
+                {% render 'rating-stars',
+                  value: product.metafields.reviews.rating.value.rating,
+                  scale_max: product.metafields.reviews.rating.value.scale_max
+                %}
+
+                <p class="rating__text">
+                  <span aria-hidden="true">
+                    {{ product.metafields.reviews.rating.value }} /
+                    {{ product.metafields.reviews.rating.value.scale_max }}
+                  </span>
                 </p>
-              {% endif %}
-            </div>
-          {% endif %}
 
-        {%- elsif block.type == 'rating' -%}
-          {% if product.metafields.reviews.rating.value != blank %}
-            <div class="product__rating rating">
-              {% render 'rating-stars'
-                , value: product.metafields.reviews.rating.value.rating
-                , scale_max: product.metafields.reviews.rating.value.scale_max
-                ,
+                <p class="rating__count">
+                  <span aria-hidden="true">
+                    {{ product.metafields.reviews.rating_count }}
+                    {% if product.metafields.reviews.rating_count > 1 %}
+                      {{ 'general.accessibility.star_reviews_text' | t }}
+                    {% else %}
+                      {{ 'general.accessibility.star_review_text' | t }}
+                    {% endif %}
+                  </span>
+                </p>
+              </div>
+            {% endif %}
+
+          {%- elsif block.type == 'share' -%}
+            {% comment %} Social share icons {% endcomment %}
+            <div class="product__social-share has-padding-top">
+              {% render 'social-share-buttons' %}
+            </div>
+
+          {%- elsif block.type == 'metafield' -%}
+            {% comment %} category metafield {% endcomment %}
+            {% render 'product-category-stars' %}
+
+          {%- elsif block.type == 'summary-panel' -%}
+            {% comment %} Summary Panel {% endcomment %}
+            {% render 'product__summary-panel' %}
+
+          {%- elsif block.type == 'product-accordion' -%}
+            <div class="product__accordion-wrapper-mobile">
+              {% render 'product__accordion',
+                block: block,
+                auto_close: block.settings.auto_close,
+                awards_heading: block.settings.awards_heading,
+                certificates_heading: block.settings.certificates_heading,
+                truncate_description: block.settings.truncate_description,
+                id: 'product-accordion-mobile',
+                faq-description: block.settings['faq-description'],
+                faq-link-1-title: block.settings['faq-link-1-title'],
+                faq-link-1-url: block.settings['faq-link-1-url'],
+                faq-link-2-title: block.settings['faq-link-2-title'],
+                faq-link-2-url: block.settings['faq-link-2-url'],
+                faq-title: block.settings['faq-title']
               %}
-
-              <p class="rating__text">
-                <span aria-hidden="true">
-                  {{ product.metafields.reviews.rating.value }} / {{ product.metafields.reviews.rating.value.scale_max }}
-                </span>
-              </p>
-
-              <p class="rating__count">
-                <span aria-hidden="true">
-                  {{ product.metafields.reviews.rating_count }}
-                  {% if product.metafields.reviews.rating_count > 1 %}
-                    {{ "general.accessibility.star_reviews_text" | t }}
-                  {% else %}
-                    {{ "general.accessibility.star_review_text" | t }}
-                  {% endif %}
-                </span>
-              </p>
             </div>
-          {% endif %}
-
-        {%- elsif block.type == 'share' -%}
-          {% comment %} Social share icons {% endcomment %}
-          <div class="product__social-share has-padding-top">
-            {% render 'social-share-buttons' %}
-          </div>
-
-        {%- elsif block.type == 'metafield' -%}
-          {% comment %} category metafield {% endcomment %}
-          {% render 'product-category-stars' %}
-
-        {%- elsif block.type == 'summary-panel' -%}
-          {% comment %} Summary Panel {% endcomment %}
-          {% render 'product__summary-panel' %}
-
-        {%- elsif block.type == 'product-accordion' -%}
-          <div class="product__accordion-wrapper-mobile">
-            {% render 'product__accordion',
-              block: block,
-              auto_close: block.settings.auto_close,
-              awards_heading: block.settings.awards_heading,
-              certificates_heading: block.settings.certificates_heading,
-              truncate_description: block.settings.truncate_description,
-              id: "product-accordion-mobile",
-              faq-description: block.settings.faq-description,
-              faq-link-1-title: block.settings.faq-link-1-title,
-              faq-link-1-url: block.settings.faq-link-1-url,
-              faq-link-2-title: block.settings.faq-link-2-title,
-              faq-link-2-url: block.settings.faq-link-2-url,
-              faq-title: block.settings.faq-title
-            %}
-          </div>
 
           {%- elsif block.type == 'subscription-benefits' -%}
             {% render 'seal-subscription-benefits', block: block %}
 
           {%- elsif block.type == 'v14-subscription-benefits' -%}
             {% render 'v14-seal-subscription-benefits', block: block %}
-          
-          <!-- <script>
-              const subscriptionBenefits = [
-                {
-                  "subscriptionBenefitTitle": '{{ block.settings.subscription-benefit-1-title }}',
-                  "subscriptionBenefitImage": '{%- if block.settings.subscription-benefit-1-image != blank -%}{{ block.settings.subscription-benefit-1-image | image_url}}{% endif %}',
-                  "subscriptionBenefitImageAlt": '{{ block.settings.subscription-benefit-1-image.alt }}'
-                },
-                {
-                  "subscriptionBenefitTitle": '{{ block.settings.subscription-benefit-2-title }}',
-                  "subscriptionBenefitImage": '{%- if block.settings.subscription-benefit-2-image != blank -%}{{ block.settings.subscription-benefit-2-image | image_url}}{% endif %}',
-                  "subscriptionBenefitImageAlt": '{{ block.settings.subscription-benefit-2-image.alt }}'
-                },
-                {
-                  "subscriptionBenefitTitle": '{{ block.settings.subscription-benefit-3-title }}',
-                  "subscriptionBenefitImage": '{%- if block.settings.subscription-benefit-3-image != blank -%}{{ block.settings.subscription-benefit-3-image | image_url}}{% endif %}',
-                  "subscriptionBenefitImageAlt": '{{ block.settings.subscription-benefit-3-image.alt }}'
-                },
-                {
-                  "subscriptionBenefitTitle": '{{ block.settings.subscription-benefit-4-title }}',
-                  "subscriptionBenefitImage": '{%- if block.settings.subscription-benefit-4-image != blank -%}{{ block.settings.subscription-benefit-4-image | image_url}}{% endif %}',
-                  "subscriptionBenefitImageAlt": '{{ block.settings.subscription-benefit-4-image.alt }}'
-                } 
-              ];
-          </script> -->
-          
-          {%- elsif block.type == 'text' -%}
 
-          {% comment %} Text {% endcomment %}
-          <div class="product-text">
-            {{ block.settings.text }}
-          </div>
-        {% elsif block.type == '@app' %}
-          <div class="product-app">
-            {% render block %}
-          </div>
-        {%- endif -%}
-      </div>
-    {%- endfor -%}
+            <!--
+              <script>
+                  const subscriptionBenefits = [
+                    {
+                      "subscriptionBenefitTitle": '{{ block.settings.subscription-benefit-1-title }}',
+                      "subscriptionBenefitImage": '{%- if block.settings.subscription-benefit-1-image != blank -%}{{ block.settings.subscription-benefit-1-image | image_url}}{% endif %}',
+                      "subscriptionBenefitImageAlt": '{{ block.settings.subscription-benefit-1-image.alt }}'
+                    },
+                    {
+                      "subscriptionBenefitTitle": '{{ block.settings.subscription-benefit-2-title }}',
+                      "subscriptionBenefitImage": '{%- if block.settings.subscription-benefit-2-image != blank -%}{{ block.settings.subscription-benefit-2-image | image_url}}{% endif %}',
+                      "subscriptionBenefitImageAlt": '{{ block.settings.subscription-benefit-2-image.alt }}'
+                    },
+                    {
+                      "subscriptionBenefitTitle": '{{ block.settings.subscription-benefit-3-title }}',
+                      "subscriptionBenefitImage": '{%- if block.settings.subscription-benefit-3-image != blank -%}{{ block.settings.subscription-benefit-3-image | image_url}}{% endif %}',
+                      "subscriptionBenefitImageAlt": '{{ block.settings.subscription-benefit-3-image.alt }}'
+                    },
+                    {
+                      "subscriptionBenefitTitle": '{{ block.settings.subscription-benefit-4-title }}',
+                      "subscriptionBenefitImage": '{%- if block.settings.subscription-benefit-4-image != blank -%}{{ block.settings.subscription-benefit-4-image | image_url}}{% endif %}',
+                      "subscriptionBenefitImageAlt": '{{ block.settings.subscription-benefit-4-image.alt }}'
+                    }
+                  ];
+              </script>
+            -->
+
+          {%- elsif block.type == 'text' -%}
+            {% comment %} Text {% endcomment %}
+            <div class="product-text">
+              {{ block.settings.text }}
+            </div>
+          {% elsif block.type == '@app' %}
+            <div class="product-app">
+              {% render block %}
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
     </div>
   </div>
 
-  
-    {%- for block in section.blocks -%}
-        {%- if block.type == 'product-accordion' and block.settings.is_v14 == true -%}
-          <div class="vitality_product__information__content">
-          <div class="product__accordion-wrapper-desktop">
-            {% render 'product__accordion',
-              block: block,
-              auto_close: block.settings.auto_close,
-              awards_heading: block.settings.awards_heading,
-              certificates_heading: block.settings.certificates_heading,
-              truncate_description: block.settings.truncate_description,
-              id: "product-accordion-desktop",
-              faq-description: block.settings.faq-description,
-              faq-link-1-title: block.settings.faq-link-1-title,
-              faq-link-1-url: block.settings.faq-link-1-url,
-              faq-link-2-title: block.settings.faq-link-2-title,
-              faq-link-2-url: block.settings.faq-link-2-url,
-              faq-title: block.settings.faq-title
-            %}
-          </div>
-          </div>
-        {% endif %}
-    {%- endfor -%}
-  </div>
- {% render 'cross-sell' %}
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'product-accordion' and block.settings.is_v14 == true -%}
+      <div class="vitality_product__information__content">
+        <div class="product__accordion-wrapper-desktop">
+          {% render 'product__accordion',
+            block: block,
+            auto_close: block.settings.auto_close,
+            awards_heading: block.settings.awards_heading,
+            certificates_heading: block.settings.certificates_heading,
+            truncate_description: block.settings.truncate_description,
+            id: 'product-accordion-desktop',
+            faq-description: block.settings['faq-description'],
+            faq-link-1-title: block.settings['faq-link-1-title'],
+            faq-link-1-url: block.settings['faq-link-1-url'],
+            faq-link-2-title: block.settings['faq-link-2-title'],
+            faq-link-2-url: block.settings['faq-link-2-url'],
+            faq-title: block.settings['faq-title']
+          %}
+        </div>
+      </div>
+    {% endif %}
+  {%- endfor -%}
+</div>
+{% render 'cross-sell' %}
 
 <script>
-  window.addEventListener('load', function() {
-    
-      const productFormContainer = document.getElementsByClassName("product-form-container")[0];
-      const quantityAndCartWrapper = document.getElementsByClassName("purchase-details")[0];
-      const purchaseDetailsInfo = document.getElementsByClassName("product-title-and-stars")[0];
-      const elementAboveQuantityAndCartWrapper = document.getElementById("element-to-check-inersection-for-fixed-add-to-cart");
-      const media = window.matchMedia("(min-width: 799px)");
-      const fragment = document.createDocumentFragment();
-    
-      fragment.appendChild(purchaseDetailsInfo);
-    
-      if(productFormContainer) {
-          const observer = new window.IntersectionObserver(([entry]) => {
-            if (!entry.isIntersecting && entry.boundingClientRect.top < 0 ) {
-              productFormContainer?.classList?.add("product-form-container-fixed");
+  window.addEventListener('load', function () {
+    const productFormContainer = document.getElementsByClassName('product-form-container')[0];
+    const quantityAndCartWrapper = document.getElementsByClassName('purchase-details')[0];
+    const purchaseDetailsInfo = document.getElementsByClassName('product-title-and-stars')[0];
+    const elementAboveQuantityAndCartWrapper = document.getElementById(
+      'element-to-check-inersection-for-fixed-add-to-cart'
+    );
+    const media = window.matchMedia('(min-width: 799px)');
+    const fragment = document.createDocumentFragment();
 
-              productFormContainer.prepend(fragment);
-              
-              return
-            }
-              productFormContainer?.classList?.remove("product-form-container-fixed");
-          }, {
-            root: null,
-            threshold: 0,
-          });
-      
-          
-          if (media.matches) {
-            observer?.observe(elementAboveQuantityAndCartWrapper);
+    fragment.appendChild(purchaseDetailsInfo);
+
+    if (productFormContainer) {
+      const observer = new window.IntersectionObserver(
+        ([entry]) => {
+          if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+            productFormContainer?.classList?.add('product-form-container-fixed');
+
+            productFormContainer.prepend(fragment);
+
+            return;
           }
-          
-      };
+          productFormContainer?.classList?.remove('product-form-container-fixed');
+        },
+        {
+          root: null,
+          threshold: 0,
+        }
+      );
 
+      if (media.matches) {
+        observer.observe(elementAboveQuantityAndCartWrapper);
+      }
+    }
   });
-
 </script>
 
 <script>
-   document.addEventListener('DOMContentLoaded', function() {
-     const isMobileMedia = window.matchMedia("(max-width: 798px)");
-      if (isMobileMedia.matches)
-      {
-        const child = document.getElementById("product-accordion-desktop");
-        child.parentNode.removeChild(child);
-      } else {
-        const child = document.getElementById("product-accordion-mobile");
-        child.parentNode.removeChild(child);
-      }
-   })
+  document.addEventListener('DOMContentLoaded', function () {
+    const isMobileMedia = window.matchMedia('(max-width: 798px)');
+    if (isMobileMedia.matches) {
+      const child = document.getElementById('product-accordion-desktop');
+      child.parentNode.removeChild(child);
+    } else {
+      const child = document.getElementById('product-accordion-mobile');
+      child.parentNode.removeChild(child);
+    }
+  });
 </script>
 
-{% comment %} <script>
-document.addEventListener('sealsubs:subscription_widget_created', udpateDiscountPosition);
+<script>
+  (function () {
+    // We transfer savings badges to the required containers
+    function updateDiscountPosition() {
+      var containers = document.getElementsByClassName('sls-selling-plan-group-options');
+      if (!containers || !containers.length) return false;
 
-function udpateDiscountPosition() {
-  const discountBadgeElement = document.getElementsByClassName("sls-savings-badge");
-  if (discountBadgeElement?.length) {
-    {% comment %} Find place to paste discountBadgeElement {% endcomment %}
-     const containerToPaste = document.getElementsByClassName("sls-selling-plan-group-options");
-     if (containerToPaste?.length) {
-      containerToPaste.forEach((container, index) => {
-        if (discountBadgeElement[index]) {
-          container.appendChild(discountBadgeElement[index]);
-          container.style.justifyContent = 'space-between';
-          container.style.display = 'flex';
+      var badges = document.getElementsByClassName('sls-savings-badge');
+      if (!badges || !badges.length) return false;
+
+      // We take a snapshot of collections so as not to break when moving nodes
+      var containerArr = Array.prototype.slice.call(containers);
+      var badgeArr = Array.prototype.slice.call(badges);
+
+      var placed = 0;
+      var len = Math.min(containerArr.length, badgeArr.length);
+      for (var i = 0; i < len; i++) {
+        var container = containerArr[i];
+        var badge = badgeArr[i];
+        if (!container || !badge) continue;
+
+        //If the badge is not in this container, move it
+        if (badge.parentNode !== container) {
+          container.appendChild(badge);
+        }
+
+        // Provide the necessary layout
+        container.style.display = 'flex';
+        container.style.justifyContent = 'space-between';
+        placed++;
+      }
+      return placed > 0;
+    }
+
+    // Debounce for frequent mutations
+    var scheduleId = null;
+    function scheduleUpdate() {
+      if (scheduleId) return;
+      var raf =
+        window.requestAnimationFrame ||
+        function (cb) {
+          return setTimeout(cb, 16);
         };
+      scheduleId = raf(function () {
+        scheduleId = null;
+        updateDiscountPosition();
       });
-      
     }
-  }
-}
-</script> {% endcomment %}
-<script>
-(function () {
-  // We transfer savings badges to the required containers
-  function updateDiscountPosition() {
-    var containers = document.getElementsByClassName("sls-selling-plan-group-options");
-    if (!containers || !containers.length) return false;
 
-    var badges = document.getElementsByClassName("sls-savings-badge");
-    if (!badges || !badges.length) return false;
-
-    // We take a snapshot of collections so as not to break when moving nodes
-    var containerArr = Array.prototype.slice.call(containers);
-    var badgeArr = Array.prototype.slice.call(badges);
-
-    var placed = 0;
-    var len = Math.min(containerArr.length, badgeArr.length);
-    for (var i = 0; i < len; i++) {
-      var container = containerArr[i];
-      var badge = badgeArr[i];
-      if (!container || !badge) continue;
-
-      //If the badge is not in this container, move it
-      if (badge.parentNode !== container) {
-        container.appendChild(badge);
-      }
-
-      // Provide the necessary layout
-      container.style.display = "flex";
-      container.style.justifyContent = "space-between";
-      placed++;
-    }
-    return placed > 0;
-  }
-
-  // Debounce for frequent mutations
-  var scheduleId = null;
-  function scheduleUpdate() {
-    if (scheduleId) return;
-    var raf = window.requestAnimationFrame || function (cb) { return setTimeout(cb, 16); };
-    scheduleId = raf(function () {
-      scheduleId = null;
-      updateDiscountPosition();
-    });
-  }
-
-  // DOM change observer (widget can recreate elements)
-  var observer = null;
-  function startObserver() {
-    if (observer) return;
-    observer = new MutationObserver(function (mutations) {
-      var relevant = false;
-      for (var i = 0; i < mutations.length && !relevant; i++) {
-        var m = mutations[i];
-        if (m.type !== "childList") continue;
-        // We react only to the appearance/movement of the necessary nodes
-        for (var j = 0; j < m.addedNodes.length; j++) {
-          var n = m.addedNodes[j];
-          if (n.nodeType !== 1) continue;
-          if (
-            (n.matches && (n.matches(".sls-savings-badge, .sls-selling-plan-group-options"))) ||
-            (n.querySelector && (n.querySelector(".sls-savings-badge") || n.querySelector(".sls-selling-plan-group-options")))
-          ) {
-            relevant = true;
-            break;
+    // DOM change observer (widget can recreate elements)
+    var observer = null;
+    function startObserver() {
+      if (observer) return;
+      observer = new MutationObserver(function (mutations) {
+        var relevant = false;
+        for (var i = 0; i < mutations.length && !relevant; i++) {
+          var m = mutations[i];
+          if (m.type !== 'childList') continue;
+          // We react only to the appearance/movement of the necessary nodes
+          for (var j = 0; j < m.addedNodes.length; j++) {
+            var n = m.addedNodes[j];
+            if (n.nodeType !== 1) continue;
+            if (
+              (n.matches && n.matches('.sls-savings-badge, .sls-selling-plan-group-options')) ||
+              (n.querySelector &&
+                (n.querySelector('.sls-savings-badge') || n.querySelector('.sls-selling-plan-group-options')))
+            ) {
+              relevant = true;
+              break;
+            }
           }
         }
-      }
-      if (relevant) scheduleUpdate();
-    });
-
-    try {
-      observer.observe(document.body, { childList: true, subtree: true });
-    } catch (e) {
-      console.warn("MutationObserver failed:", e);
-    }
-
-    // Auto-off after 10 sec, so as not to live forever (can be removed if you need to keep it on constantly)
-    setTimeout(function () {
-      if (observer) observer.disconnect();
-      observer = null;
-    }, 10000);
-  }
-
-  // Initialization on widget event + instant try (in case everything is already in DOM)
-  function init() {
-    updateDiscountPosition();
-    startObserver();
-  }
-
-  // Our event from Seal Subs
-  document.addEventListener("sealsubs:subscription_widget_created", init);
-
-  // We also try when the document is ready (if the event has already passed or has not arrived)
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
-  } else {
-    init();
-  }
-})();
-</script>
-
-
-<script>
-document.addEventListener('sealsubs:price_update', checkBlockedOneTimePurchaseOnly);
-{% comment %} Ublock clicking for Save more, Buy more block in case if SealSub has only one time purchase option {% endcomment %}
-function checkBlockedOneTimePurchaseOnly() {
-  const  buy_more_save_more_meta_object = {{ product.metafields.custom.buy_more_save_more.value | json }}
-  if (buy_more_save_more_meta_object?.discount_1) {
-    {% comment %} Check is blocked Sealsub clicking {% endcomment %}
-     const hidedSealSubElement = document.getElementsByClassName('sls-hide');
-     if (hidedSealSubElement?.length) {
-      hidedSealSubElement.forEach((element) => {
-         element.style.pointerEvents = 'all';
-         element.style.opacity = 1;
+        if (relevant) scheduleUpdate();
       });
+
+      try {
+        observer.observe(document.body, { childList: true, subtree: true });
+      } catch (e) {
+        console.warn('MutationObserver failed:', e);
+      }
+
+      // Auto-off after 10 sec, so as not to live forever (can be removed if you need to keep it on constantly)
+      setTimeout(function () {
+        if (observer) observer.disconnect();
+        observer = null;
+      }, 10000);
     }
-  }
-}
+
+    // Initialization on widget event + instant try (in case everything is already in DOM)
+    function init() {
+      updateDiscountPosition();
+      startObserver();
+    }
+
+    // Our event from Seal Subs
+    document.addEventListener('sealsubs:subscription_widget_created', init);
+
+    // We also try when the document is ready (if the event has already passed or has not arrived)
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
 </script>
 
 <script>
-document.addEventListener('sealsubs:price_update', findPrices);
+  document.addEventListener('sealsubs:price_update', findPrices);
 
-function removeEmptyDivs(container) {      
-  
-  const divs = container.querySelectorAll('div');
-      divs.forEach(div => {
-        if (div.innerHTML.trim() === '' && div.classList.length <= 0 && !div.hasChildNodes()) {
-          div.remove();
-        }
-  });
-}
+  function findPrices() {
+    const isMobileMedia = window.matchMedia('(max-width: 798px)');
+    if (!isMobileMedia.matches) return;
 
-function findPrices() {
-  const isMobileMedia = window.matchMedia("(max-width: 798px)");
-  if (!isMobileMedia.matches) return;
-{% comment %} setTimeout(() => { {% endcomment %}
-  const activeSls = document.querySelectorAll(".sls-active");
-  const purchaseContainers = document.querySelectorAll(".purchase-details");
+    const activeSls = document.querySelectorAll('.sls-active');
+    const purchaseContainers = document.querySelectorAll('.purchase-details');
 
-  if (!purchaseContainers.length || !activeSls.length) return;
+    if (!purchaseContainers.length || !activeSls.length) return;
 
-  purchaseContainers.forEach((container, index) => {
-    container.classList.add("mobile-purchase-details");
-    clearExistingContent(container);
+    purchaseContainers.forEach((container, index) => {
+      container.classList.add('mobile-purchase-details');
+      clearExistingContent(container);
 
-    const oneTimePrice = activeSls[index]?.querySelector(".sls-one-time-price");
-    const subscribePrice = activeSls[index]?.querySelector(".sls-selling-plan-group-price");
+      const oneTimePrice = activeSls[index]?.querySelector('.sls-one-time-price');
+      const subscribePrice = activeSls[index]?.querySelector('.sls-selling-plan-group-price');
 
-    if (oneTimePrice) {
-      const newOneTimePrice = oneTimePrice.cloneNode(true);
-      addPriceInfo(container, newOneTimePrice, "One time purchase");
-    }
+      if (oneTimePrice) {
+        const newOneTimePrice = oneTimePrice.cloneNode(true);
+        addPriceInfo(container, newOneTimePrice, 'One time purchase');
+      }
 
-    if (subscribePrice) {
-      const newSubscribePrice = subscribePrice.cloneNode(true);
-      addPriceInfo(container, newSubscribePrice, "Subscribe and save");
-    }
+      if (subscribePrice) {
+        const newSubscribePrice = subscribePrice.cloneNode(true);
+        addPriceInfo(container, newSubscribePrice, 'Subscribe and save');
+      }
+    });
+  }
 
-    {% comment %} removeEmptyDivs(container); {% endcomment %}
-  });
-  {% comment %} }, 600) {% endcomment %}
-}
+  function clearExistingContent(container) {
+    const selectorsToRemove = [
+      '.product-discount',
+      '.no-subscription-price-display-prices',
+      '.sls-one-time-price',
+      '.sls-selling-plan-group-price',
+      '.purchase-details__quantity',
+      '.purchase-details-info',
+      '.no-subscription-price-display-prices',
+      '.purchase-details-info-unsab',
+    ];
+    selectorsToRemove.forEach((selector) => {
+      container.querySelectorAll(selector).forEach((element) => element.remove());
+    });
+  }
 
-function clearExistingContent(container) {
-  const selectorsToRemove = [
-    ".product-discount",
-    ".no-subscription-price-display-prices",
-    ".sls-one-time-price",
-    ".sls-selling-plan-group-price",
-    ".purchase-details__quantity",
-    ".purchase-details-info",
-    ".no-subscription-price-display-prices",
-    ".purchase-details-info-unsab"
-  ];
-  selectorsToRemove.forEach(selector => {
-    container.querySelectorAll(selector).forEach(element => element.remove());
-  });
-}
+  function addPriceInfo(container, priceElement, infoText) {
+    const infoPay = document.createElement('div');
+    infoPay.classList.add('purchase-details-info');
+    infoPay.innerText = infoText;
 
-function addPriceInfo(container, priceElement, infoText) {
-  const infoPay = document.createElement("div");
-  infoPay.classList.add("purchase-details-info");
-  infoPay.innerText = infoText;
+    const payWithInfo = document.createElement('div');
+    payWithInfo.appendChild(priceElement);
+    payWithInfo.appendChild(infoPay);
 
-  const payWithInfo = document.createElement("div");
-  payWithInfo.appendChild(priceElement);
-  payWithInfo.appendChild(infoPay);
-
-  container.prepend(payWithInfo);
-}
+    container.prepend(payWithInfo);
+  }
 </script>

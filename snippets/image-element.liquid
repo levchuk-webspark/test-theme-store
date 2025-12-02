@@ -145,18 +145,20 @@
     <img
       alt="{{ alt | escape }}"
       src="{{ image | img_url: '2000x' }}"
+      width="{{ image.width }}"
+      height="{{ image.height }}"
       style="{{ inline_style }}"
       {% if additional_classes %}
         class="{{ additional_classes }}"
       {% endif %}
+      loading="lazy"
     />
   </div>
 {% else %}
   {% comment %}Build image element{% endcomment %}
   <div
     class="
-          custom-image-element__wrap
-
+      custom-image-element__wrap
       image-element__wrap
       {% if additional_wrapper_classes %}
         {{ additional_wrapper_classes }}
@@ -183,6 +185,7 @@
       height="{{ image.height }}"
       width="{{ image.width }}"
       style="{{ inline_style }}{{ height_style }};"
+      loading="lazy"
     />
   </div>
 {% endif %}

@@ -100,8 +100,8 @@
 }
 
  #vitality-footer > .footer__content {
-    /* border-bottom: thin solid {{ section.settings.border }};
-    border-top: thin solid {{ section.settings.border }}; */
+    border-bottom: thin solid {{ section.settings.border }};
+    border-top: thin solid {{ section.settings.border }};
 }
 
 #vitality-footer > .footer__content {
@@ -110,24 +110,13 @@
   font-size: {{ settings.footer_font_size | append: 'px' }};
 }
 #vitality-footer > .footer__content a,
-#vitality-footer > .footer__content a:visited,
-#vitality-footer > .footer__extra-content > .footer__content a,
-#vitality-footer > .footer__extra-content >  .footer__content a:visited {
+#vitality-footer > .footer__content a:visited {
   color: {{ section.settings.link_color }};
 }
 #vitality-footer > .footer__content a:hover,
-#vitality-footer > .footer__content a:active,
-#vitality-footer > .footer__extra-content > .footer__content a:hover,
-#vitality-footer > .footer__extra-content > .footer__content a:active {
+#vitality-footer > .footer__content a:active {
   color: {{ section.settings.link_hover_color }};
 }
-
-#vitality-footer > .footer__extra-content > .footer__content {
-    border-bottom: none;
-    border-top: none;
-    background-color:  {{ section.settings.background }};
-}
-
 
 #vitality-footer > .footer__content > .container > .footer__block > .footer__menu > .footer__heading {
   color: {{ section.settings.text_color }};
@@ -136,6 +125,15 @@
 #vitality-footer > .footer__content > .container > .block__newsletter > .newsletter-form__wrapper > .contact-form > .newsletter-form .newsletter-input {
    border-bottom-color: {{ section.settings.text_color }};
  }
+
+   #vitality-footer > .footer__content > .container > .block__newsletter > .newsletter-form__wrapper .footer-submit-button {
+    color: {{ section.settings.text_color }};
+    background: {{ section.settings.link_hover_color }};
+  }
+
+   #vitality-footer > .footer__content > .container > .block__newsletter > .newsletter-form__wrapper .footer-submit-button:hover {
+    border: 1px solid {{ section.settings.text_color }};
+  }
 
   .footer__content .container {
     flex-wrap: nowrap;
@@ -151,74 +149,6 @@
     font-size: 34px;
     line-height: 38px;
   }
-
-      .footer__content .block__link-list {
-      min-width: fit-content;
-      width: fit-content;
-      margin-right: 30px;
-    }
-
-  .footer__content .block__newsletter .content {
-    font-weight: 900;
-    font-size: 28px;
-    line-height: 110.00000000000001%;
-  }
-
-  .block__link-list > .block__link-list {
-    margin-right: 0;
-    margin-left: 0;
-  }
-
-  .block__link-list {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .block__link-list > .has-padding-bottom.has-padding-top {
-    margin-top: 15px;
-    padding-bottom: 0;
-  }
-
-  .section__disclaimer {
-    padding-bottom: 68px;
-    padding-top: 68px;
-  }
-
-  section.footer__content.section.has-padding-top.has-padding-bottom {
-    border-bottom: 1px solid #F7F5F1;
-  }
-
-  .footer__content {
-    /* border-bottom: 1px solid #F7F5F1; */
-    padding-top: 60px;
-    padding-bottom: 60px;
-  }
-
-  section.footer__extra-content.section {
-    padding-bottom: 130px;
-    display: flex;
-  }
-
-  .footer__extra-content > .footer__content {
-    padding: unset;
-    display: flex;
-    align-items: center;
-  }
-
-  .footer__extra-content > .footer__content > ul {
-    display: flex;
-    gap: 47px;
-  }
-
-  .footer__credits {
-    text-align: right;
-    width: 100%;
-}
-
-.footer__credits {
-  font-size: 16px;
-}
 
   @media only screen and (max-width: 798px) {
     .footer__content .container {
@@ -237,42 +167,6 @@
 
     .footer__content .block__link-list {
       margin-right: 10px;
-    }
-
-    .block__link-list > .has-padding-bottom.has-padding-top {
-      margin-top: 37px;
-    }
-
-    .footer__content {
-      padding-top: 33px;
-      padding-bottom: 0px;
-    }
-
-    .section__disclaimer {
-      padding-bottom: 40px;
-      padding-top: 40px;
-    }
-
-
-    .footer__extra-content > .footer__content > ul {
-      display: flex;
-      gap: 20px;
-    }
-
-    .footer__extra-content > .footer__content > ul > li{
-      font-size: 13px;
-    }
-
-    .sub-footer {
-      justify-content: center;
-    }
-
-    .footer__credits {
-      font-size: 13px;
-    }
-
-    .sub-footer__row {
-      flex-direction: row-reverse;
     }
   }
 
@@ -365,18 +259,6 @@
             {% endif %}
 
             {% elsif block.type == 'newsletter' %}
-              {% style %}
-                 #vitality-footer > .footer__content > .container > .block__newsletter > .newsletter-form__wrapper .footer-submit-button {
-                  color: {{ section.settings.background }};
-                  background: {{ block.settings.button_background_color }};
-                }
-
-                #vitality-footer > .footer__content > .container > .block__newsletter > .newsletter-form__wrapper .footer-submit-button:hover {
-                  border: 1px solid {{ block.settings.button_background_hover_color }};
-                  background: {{ block.settings.button_background_hover_color }};
-                  color: {{ section.settings.link_color }};
-                }
-              {% endstyle %}
               {% comment %} Newsletter {% endcomment %}
               {% if block.settings.newsletter_title != blank %}
                 <p class="footer__heading">
@@ -396,8 +278,7 @@
                 display_first_name: block.settings.display_first_name,
                 display_last_name: block.settings.display_last_name,
                 id: 'footer',
-                newsletter_icons_color: block.settings.newsletter_icons_color,
-                newsletter_logo: block.settings.newsletter_logo,
+                newsletter_icons_color: block.settings.newsletter_icons_color
               %}
 
               {% if block.settings.social_icons_footer %}
@@ -410,57 +291,7 @@
       {% endfor %}
     </div>
   </section>
-  {% for block in section.blocks %}
-      {% if block.type == 'disclaimer' %}
-        <section class="section section__disclaimer">
-          {% if block.settings.content != blank %}
-            {% style %}
-              .footer__disclaimer {
-                color: {{ block.settings.content_color }};
-                border: 1px solid {{ block.settings.content_color }};
-                border-radius: 8px;
-                padding: 14px 20px;
-                font-size: 18px;
-                line-heigth: 100%;
-              }
-
-              @media only screen and (max-width: 768px) {
-                .footer__disclaimer {
-                  font-size: 16px;
-                  padding: 15px 18px;
-                }
-              }
-            {% endstyle %}
-            <div class="footer__disclaimer">
-              {{ block.settings.content }}
-            </div>
-          {% endif %}
-        </section> 
-      {% endif %}
-    {% endfor %}
   <section class="footer__extra-content section">
-    <div class="footer__extra-content__footer_links_container footer__menu footer__content">
-      <ul>
-        {% for block in section.blocks %}
-          {% if block.type == 'footer_links' %}
-            {% if block.settings.url_link != nil %}
-              <li class="footer__menu-link">
-                <a href="{{ block.settings.url_link }}" class="">
-                  {{ block.settings.label_link }}
-                </a>
-              </li>
-            {% endif %}
-            {% if block.settings.url_link_2 != nil %}
-              <li class="footer__menu-link">
-                <a href="{{ block.settings.url_link_2 }}" class="">
-                  {{ block.settings.label_link_2 }}
-                </a>
-              </li>
-            {% endif %}
-          {% endif %}
-        {% endfor %}
-      </ul>
-    </div>
     <div
       class="
         sub-footer
@@ -492,7 +323,7 @@
         "
       >
         <div class="footer__credits small-down--one-whole">
-          <p>&copy; {{ "now" | date: "%Y" }} Youth and Earth</p>
+          <p>&copy; {{ "now" | date: "%Y" }} {{ shop.name | link_to: routes.root_url }}.</p>
           {{ section.settings.copyright_text }}
           {%- if section.settings.display_designed_by -%}
             <p>{{ 'layout.general.designer_credits_html' | t }}</p>
@@ -527,30 +358,11 @@
   })
 </script>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    {% comment %} Move last menu item to the correct place on desktop view {% endcomment %}
-     const isMobileMedia = window.matchMedia("(max-width: 798px)");
-     const footerMenus = document.getElementById("vitality-footer").getElementsByClassName("block__link-list");
-    
-      if (!isMobileMedia.matches) {
-        if (footerMenus?.length === 4) {
-          footerMenus[0].append(footerMenus[3])
-        }
-      } else {
-        console.log('footerMenus', footerMenus)
-        const parent = footerMenus[2].parentNode;
-        console.log('parent', parent)
-        parent.insertBefore(footerMenus[3], footerMenus[2]);
-      }
-  });
-</script>
-
 {% schema %}
   {
     "name": "Vitality Footer",
     "class": "footer footer--classic",
-    "max_blocks": 7,
+    "max_blocks": 5,
     "settings": [
       {
         "type": "richtext",
@@ -740,7 +552,6 @@
       {
         "type": "link_list",
         "name": "Menu",
-        "limit": 4,
         "settings": [
           {
             "type": "link_list",
@@ -785,32 +596,10 @@
             "label": "Show last name"
           },
           {
-            "type": "image_picker",
-            "id": "newsletter_logo",
-            "label": "Logo"
-          },
-          
-          {
-            "type": "header",
-            "content": "Colors"
-          },
-          {
             "type": "color",
             "id": "newsletter_icons_color",
             "label": "Icons",
             "default": "rgba(0,0,0,0)"
-          },
-          {
-            "type": "color",
-            "id": "button_background_color",
-            "label": "Button background color",
-            "default": "#F7F5F1"
-          },
-          {
-            "type": "color",
-            "id": "button_background_hover_color",
-            "label": "Button background hover color",
-            "default": "#B20040"
           }
         ]
       },
@@ -843,52 +632,7 @@
         "name": "Empty column",
         "settings": [
         ]
-      },
-       {
-        "type": "disclaimer",
-        "name": "Disclaimer",
-        "limit": 1,
-        "settings": [
-          {
-            "type": "html",
-            "id": "content",
-            "label": "Text",
-          },
-          {
-            "type": "color",
-            "id": "content_color",
-            "label": "Content color",
-            "default": "#F7F5F1"
-          }
-        ]
-      },
-      {
-        "type": "footer_links",
-        "name": "Footer links",
-        "limit": 1,
-        "settings": [
-          {
-            "type": "text",
-            "id": "label_link",
-            "label": "Label",
-          },
-          {
-            "type": "url",
-            "id": "url_link",
-            "label": "Link",
-          },
-          {
-            "type": "text",
-            "id": "label_link_2",
-            "label": "Label",
-          },
-          {
-            "type": "url",
-            "id": "url_link_2",
-            "label": "Link",
-          }
-        ]
-      },
+      }
     ],
     "presets": [
       {

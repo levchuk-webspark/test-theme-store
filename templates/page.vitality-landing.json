@@ -1,1 +1,1513 @@
-{"sections":{"main":{"type":"page-content__main","disabled":true,"settings":{"show_heading":false,"heading_alignment":"left","width":"standard","padding_top":40,"padding_bottom":40,"css_class":"","custom_css":""}},"header_vitality_KqdtVC":{"type":"header-vitality","settings":{"logo":"shopify:\/\/shop_images\/Y_E-logotype-RGB-White_copy_1.svg","logo_width":200,"header_background":"#3d0a1e","header_link_color":"#f2ebeb","header_link_hover_color":"#b20040","header_icon_color":"#f7f5f1","main_linklist":"main-nav-flex","menu_alignment":"center","dropdown_click":false,"display_search":true,"icon_style":"icons","enable_overlay":false,"show_text_shadow":false,"overlay_link_color":"rgba(0,0,0,0)","overlay_link_hover_color":"rgba(0,0,0,0)","overlay_background":"rgba(0,0,0,0)","overlay_background_opacity":0,"overlay_logo_width":150,"enable_sticky":true,"sticky_background_opacity":100,"scroll_logo_width":150,"width":"standard","vertical_alignment":"center","css_class":"","custom_css":""}},"mega_menu_Rz4wni":{"type":"mega-menu","blocks":{"menu_UKDczd":{"type":"menu","settings":{"menu_1":"category","menu_1_link":"https:\/\/us.youthandearth.com\/pages\/shop?collection_filter=HealthGoals","menu_1_label":""}},"menu_RiHEec":{"type":"menu","settings":{"menu_1":"health-needs","menu_1_link":"https:\/\/us.youthandearth.com\/pages\/shop?collection_2_filter=HealthNeeds","menu_1_label":""}},"menu_V3Apc3":{"type":"menu","settings":{"menu_1":"best-sellers","menu_1_link":"shopify:\/\/collections\/best-sellers","menu_1_label":"SHOP ALL"}},"menu_tzapV4":{"type":"menu","settings":{"menu_1":"bundles","menu_1_link":"shopify:\/\/collections\/bundles","menu_1_label":"SHOP ALL"}},"image_H7HB8e":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/DSC03984_copy_2_1.png","image_link":"shopify:\/\/pages\/vitality-landing","image_caption":"<p>Introducing V14 - The Future of Longevity in One Daily Dose.<\/p>","label":"New","product_image":"shopify:\/\/shop_images\/DSC01242-11_9f1cc3cd-3b5b-4b56-8e45-1af39fde733b.png","image_height":343,"image_height_mobile":160}},"image_yT6prq":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Product_2_Menu.png","image_link":"shopify:\/\/collections\/shop-all","image_caption":"<p>SHOP ALL PRODUCTS<\/p>","label":"","image_height":224,"image_height_mobile":160}}},"block_order":["menu_UKDczd","menu_RiHEec","menu_V3Apc3","menu_tzapV4","image_H7HB8e","image_yT6prq"],"settings":{"is_new_menu":true,"parent_link":"shop","mega_menu_background_color":"#ffffff","mega_menu_text_color":"rgba(0,0,0,0)","mega_menu_link_color":"#000000","mega_menu_link_hover_color":"#3f4444","enable_mega_menu_border":false,"show_mega_bottom_bar":false,"mega_bottom_bar_icon":"","mega_bottom_bar_text":"Add your deal, information or promotional text","mega_bottom_bar_link":"","size":"regular","bottom_banner_bg":"#007ace","bottom_banner_text":"#efefef","css_class":"","custom_css":""}},"vitality_menu_rTUGf3":{"type":"vitality-menu","blocks":{"link_39mPJA":{"type":"link","settings":{"text":"About v14","url":"shopify:\/\/pages\/vitality-landing"}},"link_M4TMqa":{"type":"link","settings":{"text":"Hallmarks of ageing","url":"shopify:\/\/pages\/vitality-hallmarks-of-ageing"}},"link_JXf6y8":{"type":"link","settings":{"text":"v14 Ingredients","url":"shopify:\/\/pages\/vitality-ingredients"}},"link_BJE3JK":{"type":"link","settings":{"text":"SHOP V14","url":"shopify:\/\/products\/v14"}}},"block_order":["link_39mPJA","link_M4TMqa","link_JXf6y8","link_BJE3JK"],"settings":{"padding_top":16,"padding_bottom":16,"link-gap":25,"link-font-size":12,"opacity_active_link":0,"sticky":true,"background_color":"#f2ebeb","default_link_color":"#3d0a1e","hover_link_color":"#b20040","active_link_color":"#b20040","padding_top_mobile":16,"padding_bottom_mobile":16,"link-font-size-mobile":10,"link-gap_mobile":16,"css_class":"","custom_css":""}},"vitality_video_with_blocks_mB9tTM":{"type":"vitality__video-with-blocks","settings":{"video_link":"https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/0104edd85d9e43ec8e6abea349eeb896.mov","block_title_1":"<span class=\"ambit-black-text\">One<\/span> <span class=\"romie-regular-italic-text\">blend<\/span> <span class=\"ambit-black-text\">to<\/span> <br> <span class=\"ambit-black-text\">rule them all<\/span>","has_h1_block_title_1":false,"block_link_1":"shopify:\/\/products\/v14","block_title_2":"14 longevity boosters. 24 Antioxidant, Superfruit, Mineral &amp; Vitamins. One powerful solution.","has_h1_block_title_2":true,"block_link_2":"shopify:\/\/pages\/vitality-ingredients","section_height":800,"padding_top":150,"padding_bottom":20,"background_color":"rgba(0,0,0,0)","text_color":"#f7f5f1","block_color_5":"#191919","video_link_mobile":"https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/4e407ac5ac204ff0b80667dca866b100.mp4","section_height_mobile":540,"padding_top_mobile":30,"padding_bottom_mobile":20,"css_class":"","custom_css":""}},"vitality_one_blend_83F3Em":{"type":"vitality__one-blend","blocks":{"button_block_i4ifyq":{"type":"button-block","settings":{"button_label":"Shop V14","button_link":"shopify:\/\/products\/v14","button_style":"button--custom","button_custom_border_radius":18,"button_custom_bg_color":"#45001f","button_custom_border_color":"#45001f","button_custom_text_color":"#f7f5f1","button_custom_bg_color--highlight":"#b20040","button_custom_border_color--highlight":"#b20040","button_custom_text_color--highlight":"#f7f5f1"}},"content_F6Kk4b":{"type":"content","settings":{"title":"Longevity Simplified.","description":"","link-label":"V14 Ingredients","link-url":"shopify:\/\/pages\/vitality-ingredients","link_color":"#60012c","link_color_hover":"#b20040"}}},"block_order":["button_block_i4ifyq","content_F6Kk4b"],"settings":{"title":"Anytime <span class=\"romie-regular-italic-text\">Anywhere<span><\/span><\/span>","description":"Tired of juggling multiple supplements? Life doesn't pause for that. V14 delivers complete cellular support in one daily sachet. No bottles. No confusion. Just results.\n \nStore V14 in you desk drawer, gym bag, travel bag, car, wallet, coat pocket.\n\nBecause life doesn't wait, and neither should you.","image_large":"shopify:\/\/shop_images\/V14-Stopmotion.gif","show_features_on_image":true,"show_content_border":true,"padding_top":30,"padding_bottom":0,"title_font_size":65,"description_font_size":22,"background_color":"rgba(0,0,0,0)","title_color":"#000000","description_color":"#000000","text_color":"#000000","border_color":"#5c6870","features_over_image_color":"#f7f5f1","image_large_mobile":"shopify:\/\/shop_images\/V14-Stopmotion.gif","padding_top_mobile":30,"padding_bottom_mobile":30,"title_font_size_mobile":30,"description_font_size_mobile":18,"css_class":"","custom_css":""}},"vitality_how_it_works_kgcr4e":{"type":"vitality-how-it-works","blocks":{"card_QEzzVn":{"type":"card","settings":{"number":"1","description":"Start your day with one sachet of V14. ","image":"shopify:\/\/shop_images\/DSC02060-1_1.png","background_number":"#60012c","color_number":"#f7f5f1","description_color":"#000000"}},"card_6wHUiJ":{"type":"card","settings":{"number":"2","description":"Add to water, juice, or your favourite smoothie blend.","image":"shopify:\/\/shop_images\/DSC01438-1.jpg","background_number":"#60012c","color_number":"#f7f5f1","description_color":"#000000"}},"card_eCHnDf":{"type":"card","settings":{"number":"3","description":"Shake to mix.","image":"shopify:\/\/shop_images\/DSC01842-1.jpg","background_number":"#60012c","color_number":"#f7f5f1","description_color":"#000000"}},"card_wwjW7a":{"type":"card","settings":{"number":"4","description":"Enjoy a delicious, nutrient-packed drink that helps you age against the machine®.","image":"shopify:\/\/shop_images\/opa_f3abf31f-4cf6-430b-8009-dfc02a17d94b.png","background_number":"#60012c","color_number":"#f7f5f1","description_color":"#000000"}}},"block_order":["card_QEzzVn","card_6wHUiJ","card_eCHnDf","card_wwjW7a"],"settings":{"title":"We acknowledge the efforts of our competitors.\n<span class=\"romie-regular-italic-text\"> But, we’ll take it from here.<\/span>","padding_top":79,"padding_bottom":40,"title-font-size":55,"card-number-font-size":41,"card-number-size":50,"description-font-size":20,"background_color":"rgba(0,0,0,0)","title_color":"#000000","nav_button_color":"#60012c","padding_top_mobile":16,"padding_bottom_mobile":16,"title-font-size-mobile":30,"card-number-font-size-mobile":25,"card-number-size-mobile":40,"description-font-size-mobile":18,"css_class":"","custom_css":""}},"vitality_scrolling_text_bFazdR":{"type":"vitality__scrolling-text","blocks":{"scrolling_text_NpiNmU":{"type":"scrolling-text","settings":{"text":"14 LONGEVITY INGREDIENTS","is_first_row":"yes","text_color":"#b20040"}},"scrolling_text_nk4pRx":{"type":"scrolling-text","settings":{"text":"NAD+ Booster","is_first_row":"yes","text_color":""}},"scrolling_text_m8aJgY":{"type":"scrolling-text","settings":{"text":"Trans Resveratrol","is_first_row":"yes","text_color":"#60012c"}},"scrolling_text_eEy43K":{"type":"scrolling-text","settings":{"text":"Calcium AKG","is_first_row":"yes","text_color":"#b20040"}},"scrolling_text_V7VkH9":{"type":"scrolling-text","settings":{"text":"Spermidine","is_first_row":"yes","text_color":"#404544"}},"scrolling_text_EWBPVi":{"type":"scrolling-text","settings":{"text":"Quercetin","is_first_row":"yes","text_color":"#404544"}},"scrolling_text_pbpzRE":{"type":"scrolling-text","settings":{"text":"Fisetin","is_first_row":"yes","text_color":"#404544"}},"scrolling_text_DFeamQ":{"type":"scrolling-text","settings":{"text":"Pterostilbene","is_first_row":"yes","text_color":"#b20040"}},"scrolling_text_xpmEUN":{"type":"scrolling-text","settings":{"text":"","is_first_row":"yes","text_color":""}},"scrolling_text_UB6Yq3":{"type":"scrolling-text","settings":{"text":"","is_first_row":"yes","text_color":""}},"scrolling_text_dPfAQc":{"type":"scrolling-text","settings":{"text":"Lithium","is_first_row":"yes","text_color":"#404544"}},"scrolling_text_RQBtVQ":{"type":"scrolling-text","settings":{"text":"Carotenoids (Astanxathin, Lutein, Zeaxanthin)","is_first_row":"yes","text_color":"#60012c"}},"scrolling_text_NN3eLK":{"type":"scrolling-text","settings":{"text":"Ginger","is_first_row":"yes","text_color":"#404544"}},"scrolling_text_fe6QCU":{"type":"scrolling-text","settings":{"text":"Magnesium Malate","is_first_row":"yes","text_color":"#60012c"}},"scrolling_text_EqwWV7":{"type":"scrolling-text","settings":{"text":"Glycine","is_first_row":"yes","text_color":"#404544"}},"scrolling_text_gzdPmy":{"type":"scrolling-text","settings":{"text":"","is_first_row":"yes","text_color":""}},"scrolling_text_P7mTf6":{"type":"scrolling-text","settings":{"text":"Taurine","is_first_row":"yes","text_color":"#404544"}},"scrolling_text_4XYftm":{"type":"scrolling-text","settings":{"text":"L’Carnitine","is_first_row":"yes","text_color":"#b20040"}},"scrolling_text_QNDTcB":{"type":"scrolling-text","settings":{"text":"","is_first_row":"yes","text_color":""}},"scrolling_text_UrbPji":{"type":"scrolling-text","settings":{"text":"ANYTIME ANYWHERE","is_first_row":"yes","text_color":""}},"scrolling_text_LxV8tJ":{"type":"scrolling-text","settings":{"text":"PLUS 24 ANTIOXIDANTS AND VITAMINS INCLUDING VITAMIN C, D3 AND K2","is_first_row":"yes","text_color":"#404544"}},"scrolling_text_BwmpT3":{"type":"scrolling-text","settings":{"text":"ENERGY ENHANCING","is_first_row":"yes","text_color":""}},"scrolling_text_BUAtE9":{"type":"scrolling-text","settings":{"text":"ALL IN ONE BLEND","is_first_row":"no","text_color":"#b20040"}},"scrolling_text_9kRNg7":{"type":"scrolling-text","settings":{"text":"HEALTHSPAN","is_first_row":"no","text_color":"#404544"}},"scrolling_text_9wEp9M":{"type":"scrolling-text","settings":{"text":"IMPROVED FOCUS","is_first_row":"no","text_color":"#404544"}},"scrolling_text_EfYbUV":{"type":"scrolling-text","settings":{"text":"ANTI-INFLAMMATORY","is_first_row":"no","text_color":"#60012c"}},"scrolling_text_3mYgWL":{"type":"scrolling-text","settings":{"text":"LONGEVITY BOOSTING","is_first_row":"no","text_color":"#b20040"}},"scrolling_text_hxwFLe":{"type":"scrolling-text","settings":{"text":"IMMUNE DEFENCE","is_first_row":"no","text_color":"#404544"}},"scrolling_text_eJ334Q":{"type":"scrolling-text","settings":{"text":"HIGHEST QUALITY INGREDIENT","is_first_row":"no","text_color":"#60012c"}},"scrolling_text_pHUyjw":{"type":"scrolling-text","settings":{"text":"REFRESHING, WITH A DOSE OF REDS","is_first_row":"no","text_color":"#404544"}},"scrolling_text_hD6TKL":{"type":"scrolling-text","settings":{"text":"","is_first_row":"yes","text_color":""}},"scrolling_text_cTNH3e":{"type":"scrolling-text","settings":{"text":"REDEFINING AGEING","is_first_row":"no","text_color":"#b20040"}},"scrolling_text_FdJ4kp":{"type":"scrolling-text","settings":{"text":"AGE AGAINST THE MACHINE","is_first_row":"no","text_color":"#404544"}}},"block_order":["scrolling_text_NpiNmU","scrolling_text_nk4pRx","scrolling_text_m8aJgY","scrolling_text_eEy43K","scrolling_text_V7VkH9","scrolling_text_EWBPVi","scrolling_text_pbpzRE","scrolling_text_DFeamQ","scrolling_text_xpmEUN","scrolling_text_UB6Yq3","scrolling_text_dPfAQc","scrolling_text_RQBtVQ","scrolling_text_NN3eLK","scrolling_text_fe6QCU","scrolling_text_EqwWV7","scrolling_text_gzdPmy","scrolling_text_P7mTf6","scrolling_text_4XYftm","scrolling_text_QNDTcB","scrolling_text_UrbPji","scrolling_text_LxV8tJ","scrolling_text_BwmpT3","scrolling_text_BUAtE9","scrolling_text_9kRNg7","scrolling_text_9wEp9M","scrolling_text_EfYbUV","scrolling_text_3mYgWL","scrolling_text_hxwFLe","scrolling_text_eJ334Q","scrolling_text_pHUyjw","scrolling_text_hD6TKL","scrolling_text_cTNH3e","scrolling_text_FdJ4kp"],"settings":{"scrolling_speed_time":280,"padding_top":20,"padding_bottom":20,"text_font_size":44,"background_color":"rgba(0,0,0,0)","border_color":"#e5e7eb","padding_top_mobile":25,"padding_bottom_mobile":25,"text_font_size_mobile":35,"css_class":"","custom_css":""}},"vitality_cards_with_slider_mb3Cic":{"type":"vitality__cards-with-slider","blocks":{"button_block_kwWfaA":{"type":"button-block","settings":{"button_label":"Shop V14","button_link":"shopify:\/\/products\/v14","button_style":"button--custom","button_custom_border_radius":18,"button_custom_bg_color":"#45001f","button_custom_border_color":"#45001f","button_custom_text_color":"#f7f5f1","button_custom_bg_color--highlight":"#b20040","button_custom_border_color--highlight":"#b20040","button_custom_text_color--highlight":"#f7f5f1"}},"button_block_aVVKcJ":{"type":"button-block","settings":{"button_label":"Hallmarks of ageing","button_link":"shopify:\/\/pages\/vitality-hallmarks-of-ageing","button_style":"button--link-style","button_custom_border_radius":8,"button_custom_bg_color":"","button_custom_border_color":"#f7f5f1","button_custom_text_color":"#f7f5f1","button_custom_bg_color--highlight":"","button_custom_border_color--highlight":"#e0e56b","button_custom_text_color--highlight":"#e0e56b"}},"card_JHFm9Q":{"type":"card","settings":{"title":"Energy <br> &amp; Vitality","description":"Energy Enhancing <br>\nFeel energised all day long. Say goodbye to sluggish afternoons—stay sharp, vibrant, and ready for anything.","background_color":"","title_color":"#f7f5f1","image":"shopify:\/\/shop_images\/Mask_group_520982af-4b2d-414c-8da8-ea858f43b17a.png"}},"card_rbHGYA":{"type":"card","settings":{"title":"Cognitive <br> Clarity","description":"Cognitive Clarity <br>\nStay focused, think sharper.\nFuel your mind for clarity, productivity, and that \"in the zone\" feeling.","background_color":"","title_color":"#f7f5f1","image":"shopify:\/\/shop_images\/Mask_group-7_708e9cb4-4b4e-4f47-9d46-4208872a1032.png"}},"card_CpgQkP":{"type":"card","settings":{"title":"Joints <br> &amp; Mobility","description":"Joints &amp; Mobility <br> Move freely, live actively. Keep your joints happy and your body in motion, so nothing slows you down.","background_color":"","title_color":"#f7f5f1","image":"shopify:\/\/shop_images\/Mask_group-3_bde54d2a-3e68-4ddd-ad6e-3c12d7bd887f.png"}},"card_Q9ijPt":{"type":"card","settings":{"title":"Skin Health <br> &amp; Radiance","description":"Skin Health &amp; Radiance\n<br>\nRadiant skin with a youthful glow that reflects vitality and health.","background_color":"","title_color":"#f7f5f1","image":"shopify:\/\/shop_images\/Mask_group-1_e3845d09-5cde-48d2-9a9b-a3ae2d3b7dbb.png"}},"card_yRwPMx":{"type":"card","settings":{"title":"Resilience <br> &amp; Recovery","description":"Resilence &amp; Recovery\n<br>\nRecover faster and live resiliently. Bounce back quicker and feel strong, no matter what life throws your way.","background_color":"","title_color":"#f7f5f1","image":"shopify:\/\/shop_images\/Mask_group-2_58b04e22-4d82-4305-9b72-6375651add5d.png"}},"card_m8bANn":{"type":"card","settings":{"title":"Overall <br> Wellbeing","description":"Overall Wellbeing \n<br>\nStay and feel young.\nBoost your well-being and embrace the best version of yourself every day.","background_color":"","title_color":"#f7f5f1"}}},"block_order":["button_block_kwWfaA","button_block_aVVKcJ","card_JHFm9Q","card_rbHGYA","card_CpgQkP","card_Q9ijPt","card_yRwPMx","card_m8bANn"],"settings":{"title":"<span class=\"romie-regular-italic-text\">Ageing<\/span> Redefined<span class=\"romie-regular-italic-text\"><\/span>","description":"Every ingredient is chosen for quality, purity, and proven impact. Backed by years of scientific research in longevity, V14 is crafted to support your long-term wellbeing with a single, comprehensive blend you can trust.","padding_top":80,"padding_bottom":20,"title-font-size":65,"description-font-size":21,"card-padding":30,"card-title-font-size":40,"image":"shopify:\/\/shop_images\/vitality-landing-cards-bg.png","background_color":"#e0e56b","title_color":"#f7f5f1","text_color":"#f7f5f1","padding_top_mobile":20,"padding_bottom_mobile":20,"title-font-size_mobile":30,"description-font-size_mobile":18,"card-title-font-size-mobile":21,"css_class":"","custom_css":""}},"vitality_scrolling_badges_LtyhaQ":{"type":"vitality__scrolling-badges","settings":{"title":"<span class=\"ambit-black-text\">Always<\/span> <span class=\"romie-regular-italic-text\"> Proudly<\/span>","padding_top":20,"padding_bottom":20,"background_color":"#60012c","text_color":"#f7f5f1","padding_top_mobile":20,"padding_bottom_mobile":20,"image_1":"shopify:\/\/shop_images\/VE_V14.svg","text_1":"Vegan","image_2":"shopify:\/\/shop_images\/V_V14.svg","text_2":"Vegetarian","image_3":"shopify:\/\/shop_images\/SF_V14.svg","text_3":"Soy Free","image_4":"shopify:\/\/shop_images\/GF_V14.svg","text_4":"Glyphosate Free","image_5":"shopify:\/\/shop_images\/DF_V14.svg","text_5":"Dairy Free","image_6":"shopify:\/\/shop_images\/GF_V14.svg","text_6":"Gluten Free","image_7":"shopify:\/\/shop_images\/SF_V14.svg","text_7":"Sugar Free","image_8":"shopify:\/\/shop_images\/NO_V14.svg","text_8":"GMO Free","css_class":"","custom_css":""}},"vitality_effects_6imqhr":{"type":"vitality__effects","blocks":{"card_J8KxeL":{"type":"card","settings":{"title":"30 Days","sub-title":"Boost cellular energy and mental clarity","description":"You’ll feel a surge in energy and improved focus. Enjoy the vitality that comes with antioxidants working to combat oxidative stress and inflammation, helping you feel healthier.","image":"shopify:\/\/shop_images\/V14_Image_1_1.png","title_color":"#000000","sub-title_color":"#000000","description_color":"#000000"}},"card_nKgCtP":{"type":"card","settings":{"title":"60 Days","sub-title":"Strengthen mental resilience and stress response","description":"Your mind will feel sharper and more resilient. As stress decreases and cognitive function improves, you’ll enjoy better focus and memory, making it easier to stay engaged in the moments that matter and handle daily tasks effortlessly.","image":"shopify:\/\/shop_images\/DSC01842-1-1whiter_copy_1.png","title_color":"#000000","sub-title_color":"#000000","description_color":"#000000"}},"card_AKKQ9g":{"type":"card","settings":{"title":"90 Days","sub-title":"Support long-term health and vitality","description":"At 90 days, deeper benefits emerge, ingredients that support cellular integrity and ageing markers work together to enhance longevity, keeping you feeling strong and youthful.","image":"shopify:\/\/shop_images\/V14-1080x1080px432_1.png","title_color":"#000000","sub-title_color":"#000000","description_color":"#000000"}}},"block_order":["card_J8KxeL","card_nKgCtP","card_AKKQ9g"],"settings":{"title":"<span class=\"romie-regular-italic-text\">Effects<\/span> of V14","description":"Consistent V14 users might notice a difference in several days or weeks. Here are some of the health benefits you can expect to feel from V14 over time.","padding_top":80,"padding_bottom":20,"section-title-font-size":65,"section-description-font-size":21,"card-title-font-size":40,"card-sub-title-font-size":24,"card-description-font-size":21,"background_color":"rgba(0,0,0,0)","title_color":"#000000","text_color":"#404544","nav_button_color":"#60012c","padding_top_mobile":20,"padding_bottom_mobile":20,"section-title-font-size-mobile":30,"section-description-font-size-mobile":21,"card-title-font-size-mobile":30,"card-sub-title-font-size-mobile":20,"card-description-font-size-mobile":15,"css_class":"","custom_css":""}},"index_price_comparison_c6P9wM":{"type":"index__price-comparison","blocks":{"button_block_48QiDG":{"type":"button-block","settings":{"button_label":"Shop V14","button_link":"shopify:\/\/products\/v14","button_style":"button--custom","button_custom_border_radius":18,"button_custom_bg_color":"#60012c","button_custom_border_color":"#60012c","button_custom_text_color":"#f7f5f1","button_custom_bg_color--highlight":"#b20040","button_custom_border_color--highlight":"#b20040","button_custom_text_color--highlight":"#f7f5f1"}},"row_wXHEVe":{"type":"row","settings":{"first_cell":"NAD+ Booster","second_cell":"£41.69","second_cell_info_title":"<strong>Average price of:<\/strong>","second_cell_info":"Longevity Box, Agemate, British Supplements, Viva","third_cell":"<span class=\"romie-regular-italic-text\">Included<\/span>","cell_font_size":30,"cell_font_size_mobile":15}},"row_A3FQwQ":{"type":"row","settings":{"first_cell":"Pterostilbene","second_cell":"£15.26","second_cell_info_title":"<strong>Average price of:<\/strong>","second_cell_info":"Prohealth, California Gold Nutrition, Swanson, Double Wood Supplements, Nutriop Longevity","third_cell":"<span class=\"romie-regular-italic-text\">Included<\/span>","cell_font_size":30,"cell_font_size_mobile":15}},"row_PRG33g":{"type":"row","settings":{"first_cell":"Trans-Resveratrol","second_cell":"£14.86","second_cell_info_title":"<strong>Average price of:<\/strong>","second_cell_info":"Time Health, Supplement Place, Love Life Supplements, Pureclinica, NADIOL","third_cell":"<span class=\"romie-regular-italic-text\">Included<\/span>","cell_font_size":30,"cell_font_size_mobile":15}},"row_HVUV7V":{"type":"row","settings":{"first_cell":"Lithium microdose","second_cell":"£3.92","second_cell_info_title":"<strong>Average price of:<\/strong>","second_cell_info":"Lindens, Life Extension, Life Extension, Good Health Naturally, Alines","third_cell":"<span class=\"romie-regular-italic-text\">Included<\/span>","cell_font_size":30,"cell_font_size_mobile":15}},"row_eqUK3E":{"type":"row","settings":{"first_cell":"Quercetin","second_cell":"£11.12","second_cell_info_title":"<strong>Average price of:<\/strong>","second_cell_info":"Solgar, British Supplements, WeightWorld, Nature's Best, New Leaf","third_cell":"<span class=\"romie-regular-italic-text\">Included<\/span>","cell_font_size":30,"cell_font_size_mobile":15}},"row_RtbqQV":{"type":"row","settings":{"first_cell":"Calcium AKG (Alpha-Ketoglutarate)","second_cell":"£22.89","second_cell_info_title":"<strong>Average price of:<\/strong>","second_cell_info":"Fivescore, Time Health, Longevity box, Do Not Age, Pro Health","third_cell":"<span class=\"romie-regular-italic-text\">Included<\/span>","cell_font_size":30,"cell_font_size_mobile":15}},"row_ermbGa":{"type":"row","settings":{"first_cell":"Cartenoids (Lutein, Astaxanthin, Zeaxanthin)","second_cell":"£3.40","second_cell_info_title":"<strong>Average price of:<\/strong>","second_cell_info":"Mobu, Supplemented, Bulk, Weight World, Nature's Best, Swanson","third_cell":"<span class=\"romie-regular-italic-text\">Included<\/span>","cell_font_size":30,"cell_font_size_mobile":15}},"row_e3KaaF":{"type":"row","settings":{"first_cell":"Ginger","second_cell":"£3.89","second_cell_info_title":"<strong>Average price of:<\/strong>","second_cell_info":"Simply Supplements, Nature's Best, Supplemented, Weight World, Holland and Barrett","third_cell":"<span class=\"romie-regular-italic-text\">Included<\/span>","cell_font_size":30,"cell_font_size_mobile":15}},"row_3jJWBK":{"type":"row","settings":{"first_cell":"Fisetin","second_cell":"£20.52","second_cell_info_title":"<strong>Average price of:<\/strong>","second_cell_info":"Life Extension, Fisetin, NADIOL, Bulk Supplements, Do Not Age","third_cell":"<span class=\"romie-regular-italic-text\">Included<\/span>","cell_font_size":30,"cell_font_size_mobile":15}},"row_CJXFLC":{"type":"row","settings":{"first_cell":"Magnesium-Malate","second_cell":"£7.58","second_cell_info_title":"<strong>Average price of:<\/strong>","second_cell_info":"Piping Rock, Thorne, Ethical Nutrition, New Leaf Products, Sunday Natural","third_cell":"<span class=\"romie-regular-italic-text\">Included<\/span>","cell_font_size":30,"cell_font_size_mobile":15}},"row_99E9cU":{"type":"row","settings":{"first_cell":"Glycine","second_cell":"£9.54","second_cell_info_title":"<strong>Average price of:<\/strong>","second_cell_info":"Metabolics, Thorne, Bulk Supplements, Natures Selection, Do Not Age","third_cell":"<span class=\"romie-regular-italic-text\">Included<\/span>","cell_font_size":30,"cell_font_size_mobile":15}},"row_C8JCgP":{"type":"row","settings":{"first_cell":"Taurine","second_cell":"£4.38","second_cell_info_title":"<strong>Average price of:<\/strong>","second_cell_info":"Simply Supplements, Nature's Best, Supplemented, Big Vits, Holland and Barrett","third_cell":"<span class=\"romie-regular-italic-text\">Included<\/span>","cell_font_size":30,"cell_font_size_mobile":15}},"row_kFGnE8":{"type":"row","settings":{"first_cell":"Spermidine","second_cell":"£23.21","second_cell_info_title":"<strong>Average price of:<\/strong>","second_cell_info":"Pro Health, Revenue By Science, Vitality, Do Not Age, Longevity Box","third_cell":"<span class=\"romie-regular-italic-text\">Included<\/span>","cell_font_size":30,"cell_font_size_mobile":15}},"row_ft7L8K":{"type":"row","settings":{"first_cell":"L-Carnitine","second_cell":"£10.60","second_cell_info_title":"<strong>Average price of:<\/strong>","second_cell_info":"Thorne, Holland and Barrett, Supplemented, My Vitamins, Weight Watchers","third_cell":"<span class=\"romie-regular-italic-text\">Included<\/span>","cell_font_size":30,"cell_font_size_mobile":15}},"row_HQf8pg":{"type":"row","settings":{"first_cell":"Vitamin C","second_cell":"£5.03","second_cell_info_title":"<strong>Average price of:<\/strong>","second_cell_info":"Nature's Best, Bulk, Cytoplan, Holland and Barrett, Simply Supplements","third_cell":"<span class=\"romie-regular-italic-text\">Included<\/span>","cell_font_size":30,"cell_font_size_mobile":15}},"row_9aTEej":{"type":"row","settings":{"first_cell":"Vitamin D3","second_cell":"£2.83","second_cell_info_title":"<strong>Average price of:<\/strong>","second_cell_info":"Nutravita, Simply Supplements, Weight World, Holland and Barrett, Pure","third_cell":"<span class=\"romie-regular-italic-text\">Included<\/span>","cell_font_size":30,"cell_font_size_mobile":15}},"row_WwxKwN":{"type":"row","settings":{"first_cell":"Vitamin K2","second_cell":"£6.29","second_cell_info_title":"<strong>Average price of:<\/strong>","second_cell_info":"Thorne, Big Vits, Holland and Barrett, Mobu, Weight World","third_cell":"<span class=\"romie-regular-italic-text\">Included<\/span>","cell_font_size":30,"cell_font_size_mobile":15}},"row_rzdNmc":{"type":"row","settings":{"first_cell":"Selenium","second_cell":"£4.76","second_cell_info_title":"<strong>Average price of:<\/strong>","second_cell_info":"Thorne, Pure, Weight World, Cytoplan, Holland and Barrett","third_cell":"<span class=\"romie-regular-italic-text\">Included<\/span>","cell_font_size":30,"cell_font_size_mobile":15}},"row_GbQbnt":{"type":"row","settings":{"first_cell":"Tomato Powder, Carrot Powder, Beetroot Powder, Blueberry Powder, Blackcurrant Extract, Pomegranate Powder, Cranberry Extract, Bioflavonoids Grape Seed, Montmorency Tart Cherry Powder, Amla Fruit Extract, Acerola Fruit Extract, Bilberry Fruit Extract, Raspberry Powder Dragon Fruit Powder, Açai Berry (Euterpe Oleracea) Powder, Plum Powder, Rhubarb Powder, Strawberry Powder, Grapefruit Powder.","second_cell":"","second_cell_image":"shopify:\/\/shop_images\/No_Comparison.svg","second_cell_info_title":"<strong>Average price of:<\/strong>","second_cell_info":"","third_cell":"","third_cell_image":"shopify:\/\/shop_images\/Yes_Comparison.svg","cell_font_size":24,"cell_font_size_mobile":13}},"row_xRnBPa":{"type":"row","settings":{"first_cell":"<strong>Total Cost<\/strong>","second_cell":"<strong>£211.77*<\/strong>","second_cell_info_title":"<strong>Average price of:<\/strong>","second_cell_info":"","third_cell":"<strong>£79.99**<\/strong>","cell_font_size":30,"cell_font_size_mobile":15}}},"block_order":["button_block_48QiDG","row_wXHEVe","row_A3FQwQ","row_PRG33g","row_HVUV7V","row_eqUK3E","row_RtbqQV","row_ermbGa","row_e3KaaF","row_3jJWBK","row_CJXFLC","row_99E9cU","row_C8JCgP","row_kFGnE8","row_ft7L8K","row_HQf8pg","row_9aTEej","row_WwxKwN","row_rzdNmc","row_GbQbnt","row_xRnBPa"],"settings":{"title":"Simplify &amp; Save","description":"<p>V14 offers a streamlined approach longevity, combining essential vitamins and minerals into one convenient daily sachet.<br\/><br\/>Purchasing these nutrients separately would cost you over £211* per month, but V14 brings them all together for only £79.99 on subscription**.<br\/><br\/>Not only does <strong>V14 save you over £131 per month<\/strong>, but it also eliminates the hassle of managing multiple supplements, ensuring you receive the right balance of nutrients to support your health without the extra cost.<\/p>","image":"shopify:\/\/shop_images\/Price_Comparison_Image.svg","title_first_column":"<span class=\"romie-regular-italic-text\">Longevity<\/span>  <span class=\"ambit-black-text\">Simplified.<\/span>","title_second_column":"<center><strong>Individual\nCost<\/strong><\/center>","title_third_column":"","image_third_column":"shopify:\/\/shop_images\/V14_Comparison.svg","block_1":"The price of a V14 is £2.86 per day**.<br><strong>Less than a daily coffee. Invest in your health and longevity for less than a coffee a day.<\/strong>","block_2":"<center><strong>Only £2.86 per serve**<\/strong><\/center>\n<span class=\"price__additional-text\"><center>Invest in your health and longevity at an affordable price.<\/center><\/span>","bottom_image_1":"shopify:\/\/shop_images\/Price_Comparison_1.png","bottom_image_2":"shopify:\/\/shop_images\/Price_Comparison_2.png","bottom_image_3":"shopify:\/\/shop_images\/Price_Comparison_3.png","footnote":"*Average of 5 competitor brands for a months supply (2\/1\/2025)\n<br>\n**On a 28 sachet subscription plan","padding_top":60,"padding_bottom":20,"title_font_size":65,"description_font_size":22,"title_column_font_size":40,"block_1_font_size":24,"block_2_font_size":35,"background_color":"","text_color":"#000000","text_color_title_first_column":"#f7f5f1","background_color_title_first_column":"#60012c","text_color_first_column":"#404544","background_color_first_column":"#ebe9e5","text_color_title_second_column":"#404544","background_color_title_second_column":"#ebe9e5","text_color_second_column":"#404544","background_color_second_column":"#ebe9e5","text_color_title_third_column":"#f7f5f1","background_color_title_third_column":"#b20040","text_color_third_column":"#b20040","background_color_third_column":"#f2e1e3","text_color_block_1":"#f7f5f1","background_color_block_1":"#3f4444","text_color_block_2":"#f7f5f1","background_color_block_2":"#b20040","padding_top_mobile":20,"padding_bottom_mobile":20,"title_font_size_mobile":30,"description_font_size_mobile":18,"title_column_font_size_mobile":12,"block_1_font_size_mobile":13,"block_2_font_size_mobile":17,"css_class":"","custom_css":""}},"vitality_discover_whats_inside_phwyYL":{"type":"vitality__discover-whats-inside","blocks":{"button_block_6wPPFw":{"type":"button-block","settings":{"button_label":"Shop V14","button_link":"shopify:\/\/products\/v14","button_style":"button--custom","button_custom_border_radius":18,"button_custom_bg_color":"#45001f","button_custom_border_color":"#45001f","button_custom_text_color":"#f7f5f1","button_custom_bg_color--highlight":"#b20040","button_custom_border_color--highlight":"#b20040","button_custom_text_color--highlight":"#f7f5f1"}},"button_block_Pyj87k":{"type":"button-block","settings":{"button_label":"Hallmarks of ageing","button_link":"shopify:\/\/pages\/vitality-hallmarks-of-ageing","button_style":"button--link-style","button_custom_border_radius":8,"button_custom_bg_color":"","button_custom_border_color":"","button_custom_text_color":"","button_custom_bg_color--highlight":"","button_custom_border_color--highlight":"","button_custom_text_color--highlight":""}},"card_AtnWRp":{"type":"card","settings":{"number":"1","title":"Cellular Ageing","description":"As we age, our cells gradually lose function or die off. This cellular decline is at the heart of ageing.","image":"shopify:\/\/shop_images\/4-discover-whats-inside.jpg","background_number":"#60012c","color_number":"#f7f5f1","title_color":"#000000","description_color":"#000000"}},"card_hYKGmg":{"type":"card","settings":{"number":"2","title":"Immune Ageing","description":"Our immune defence naturally weakens with age, reducing our ability to fight illness.","image":"shopify:\/\/shop_images\/1.png","background_number":"#60012c","color_number":"#f7f5f1","title_color":"#000000","description_color":"#000000"}},"card_gfMRaz":{"type":"card","settings":{"number":"3","title":"Metabolic Ageing","description":"A slowing metabolism affects how we process energy and maintain weight as we age.","image":"shopify:\/\/shop_images\/june-10_0395_1.png","background_number":"#60012c","color_number":"#f7f5f1","title_color":"#000000","description_color":"#000000"}},"card_9MwMt6":{"type":"card","settings":{"number":"4","title":"Vascular Ageing","description":"Ageing blood vessels and heart function impact our cardiovascular health over time.","image":"shopify:\/\/shop_images\/june-10_0435_1.png","background_number":"#60012c","color_number":"#f7f5f1","title_color":"#000000","description_color":"#000000"}}},"block_order":["button_block_6wPPFw","button_block_Pyj87k","card_AtnWRp","card_hYKGmg","card_gfMRaz","card_9MwMt6"],"settings":{"title":"Discover what drives biological ageing","description":"Your cells hold the key to ageing. V14 targets the biological HALLMARKS that affect your DNA, immunity, and metabolism. Scientifically formulated to slow these processes, supporting your longevity from within.","padding_top":80,"padding_bottom":20,"section-title-font-size":65,"description-section-font-size":22,"card-title-font-size":20,"card-number-font-size":30,"card-number-size":40,"description-font-size":21,"background_color":"rgba(0,0,0,0)","title_color":"#000000","text_color":"#000000","nav_button_color":"#60012c","padding_top_mobile":20,"padding_bottom_mobile":20,"section-title-font-size-mobile":30,"description-section-font-size-mobile":18,"card-title-font-size-mobile":15,"card-number-font-size-mobile":20,"card-number-size-mobile":28,"description-font-size-mobile":15,"css_class":"","custom_css":""}},"reviews_carousel_qjw6JU":{"type":"reviews-carousel","settings":{}},"title_with_text_Dqc4fR":{"type":"title-with-text","disabled":true,"settings":{"title":"<span>Third Party Testing<\/span> <span class=\"romie-regular-italic-text\">Certified<\/span>","title_size":65,"title_width":630,"text":"Youth and Earth conducts third-party tests with a xxxx laboratory, to ensure purity is at least xx% pure and is free of heavy metals.","text_size":22,"padding_top":90,"padding_bottom":20,"show_content_border":true,"background_color":"#f7f5f1","border_color":"#3f4444","title_color":"#3f4444","text_color":"#3f4444","padding_top_mobile":20,"padding_bottom_mobile":20,"css_class":"","custom_css":""}},"vitality_footer_7zThCE":{"type":"vitality-footer","blocks":{"link_list_KfrgaB":{"type":"link_list","settings":{"menu":"learn-more","social_icons_footer":false}},"link_list_RAXm8q":{"type":"link_list","settings":{"menu":"engage-1","social_icons_footer":false}},"link_list_A9eH9T":{"type":"link_list","settings":{"menu":"contact","social_icons_footer":false}},"link_list_mF8zFV":{"type":"link_list","settings":{"menu":"shop","social_icons_footer":true}},"newsletter_q34tcG":{"type":"newsletter","settings":{"newsletter_title":"","newsletter_richtext":"<span style=\"margin-bottom: 10px\" class=\"ambit-black-text\">Join thousands of people not letting their age slow them down.<\/span><br> <span class=\"romie-regular-italic-text\" style=\"font-weight: 400;\">Sign up now to receive 15% OFF on your first order*.<\/span><br>\n<span class=\"offer-valid\">*Offer valid for one-off purchases only. It cannot be used in conjunction with subscription discounts.<\/span>","display_first_name":true,"display_last_name":true,"newsletter_logo":"shopify:\/\/shop_images\/letter-logo.svg","newsletter_icons_color":"#b20040","button_background_color":"#f7f5f1","button_background_hover_color":"#b20040"}},"disclaimer_98LpDm":{"type":"disclaimer","settings":{"content":"†These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.","content_color":"#f7f5f1"}},"footer_links_qnfHaC":{"type":"footer_links","settings":{"label_link":"Terms & Conditions","url_link":"shopify:\/\/pages\/longevity-rewards-terms-and-conditions","label_link_2":"Privacy Policy","url_link_2":"shopify:\/\/pages\/privacy-policy"}}},"block_order":["link_list_KfrgaB","link_list_RAXm8q","link_list_A9eH9T","link_list_mF8zFV","newsletter_q34tcG","disclaimer_98LpDm","footer_links_qnfHaC"],"settings":{"copyright_text":"","display_designed_by":false,"display_shopify":false,"display_logo_block":false,"display_localization_switcher":false,"show_follow_on_shop":false,"show_locale_selector":true,"show_currency_selector":false,"display_payment_methods":false,"background":"#45001f","border":"#45001f","link_color":"#f7f5f1","link_hover_color":"#b20040","text_color":"#f7f5f1","css_class":"","custom_css":""}},"index_image_with_text_overlay_HCYXkd":{"type":"index__image-with-text-overlay","disabled":true,"settings":{"image":"shopify:\/\/shop_images\/svgviewer-png-output.png","desktop_image_height":200,"use_image_aspect_ratio":false,"image_opacity":1,"image-border-radius":5,"background_image_color":"#45001f","mobile_image_height":200,"link":"","pretext":"","is_h1_title":false,"title":"","subtitle":"","pretext_color":"#000000","heading_color":"#000000","subheading_color":"#000000","text_alignment":"center","text_horizontal_position":"center","text_vertical_position":"middle","text_width":40,"background_color":"#45001f","background_opacity":77,"border_color":"#45001f","border_width":0,"button_1":"","button_1_link":"","button_1_style":"button--secondary","button_2":"","button_2_link":"","button_2_style":"button--secondary","width":"wide","padding_top":0,"padding_bottom":60,"padding_left":0,"padding_right":0,"animation":"none","mobile_text_below_image":false,"mobile_preheading":"","mobile_heading":"","mobile_subheading":"","pretext_color_mobile":"rgba(0,0,0,0)","heading_color_mobile":"rgba(0,0,0,0)","subheading_color_mobile":"rgba(0,0,0,0)","text_alignment_mobile":"same_as_desktop","padding_top_mobile":0,"padding_bottom_mobile":0,"css_class":"background-green","custom_css":".background-green {\n  background-color: #45001f;\n}\n.background-green img {\n  max-width: 1200px;\n}\n.image-element__wrap {\n  height: 100% !important;\n}\n@media only screen and (max-width: 480px) {\n  .background-green {\n    display: block;\n  }\n  .background-green .image-element__wrap {\n    height: auto !important;\n  }\n}"}}},"order":["main","header_vitality_KqdtVC","mega_menu_Rz4wni","vitality_menu_rTUGf3","vitality_video_with_blocks_mB9tTM","vitality_one_blend_83F3Em","vitality_how_it_works_kgcr4e","vitality_scrolling_text_bFazdR","vitality_cards_with_slider_mb3Cic","vitality_scrolling_badges_LtyhaQ","vitality_effects_6imqhr","index_price_comparison_c6P9wM","vitality_discover_whats_inside_phwyYL","reviews_carousel_qjw6JU","title_with_text_Dqc4fR","vitality_footer_7zThCE","index_image_with_text_overlay_HCYXkd"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page-content__main",
+      "disabled": true,
+      "settings": {
+        "show_heading": false,
+        "heading_alignment": "left",
+        "width": "standard",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "header_vitality_KqdtVC": {
+      "type": "header-vitality",
+      "settings": {
+        "logo": "shopify://shop_images/Y_E-logotype-RGB-White_copy_1.svg",
+        "logo_width": 200,
+        "header_background": "#3d0a1e",
+        "header_link_color": "#f2ebeb",
+        "header_link_hover_color": "#f7f5f1",
+        "header_icon_color": "#f7f5f1",
+        "main_linklist": "main-nav-flex",
+        "menu_alignment": "center",
+        "dropdown_click": false,
+        "display_search": true,
+        "icon_style": "icons",
+        "enable_overlay": false,
+        "show_text_shadow": false,
+        "overlay_link_color": "rgba(0,0,0,0)",
+        "overlay_link_hover_color": "rgba(0,0,0,0)",
+        "overlay_background": "rgba(0,0,0,0)",
+        "overlay_background_opacity": 0,
+        "overlay_logo_width": 150,
+        "enable_sticky": true,
+        "sticky_background_opacity": 100,
+        "scroll_logo_width": 150,
+        "width": "standard",
+        "vertical_alignment": "center",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "mega_menu_Rz4wni": {
+      "type": "mega-menu",
+      "blocks": {
+        "menu_UKDczd": {
+          "type": "menu",
+          "settings": {
+            "menu_1": "category",
+            "menu_1_link": "https://youthandearth.com/pages/shop?collection_filter=HealthGoals",
+            "menu_1_label": ""
+          }
+        },
+        "menu_RiHEec": {
+          "type": "menu",
+          "settings": {
+            "menu_1": "health-needs",
+            "menu_1_link": "https://youthandearth.com/pages/shop?collection_2_filter=HealthNeeds",
+            "menu_1_label": ""
+          }
+        },
+        "menu_V3Apc3": {
+          "type": "menu",
+          "settings": {
+            "menu_1": "best-sellers",
+            "menu_1_link": "shopify://collections/best-sellers",
+            "menu_1_label": "SHOP ALL"
+          }
+        },
+        "menu_tzapV4": {
+          "type": "menu",
+          "settings": {
+            "menu_1": "bundles",
+            "menu_1_link": "shopify://collections/bundles",
+            "menu_1_label": "SHOP ALL"
+          }
+        },
+        "image_H7HB8e": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/DSC03984_copy_2_1.png",
+            "image_link": "shopify://pages/vitality-landing",
+            "image_caption": "<p>Introducing V14 - The Future of Longevity in One Daily Dose.</p>",
+            "label": "New",
+            "product_image": "shopify://shop_images/DSC01242-11_9f1cc3cd-3b5b-4b56-8e45-1af39fde733b.png",
+            "image_height": 343,
+            "image_height_mobile": 160
+          }
+        },
+        "image_yT6prq": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Product_2_Menu.png",
+            "image_link": "shopify://collections/shop-all",
+            "image_caption": "<p>SHOP ALL PRODUCTS</p>",
+            "label": "",
+            "image_height": 224,
+            "image_height_mobile": 160
+          }
+        }
+      },
+      "block_order": [
+        "menu_UKDczd",
+        "menu_RiHEec",
+        "menu_V3Apc3",
+        "menu_tzapV4",
+        "image_H7HB8e",
+        "image_yT6prq"
+      ],
+      "settings": {
+        "is_new_menu": true,
+        "parent_link": "shop",
+        "mega_menu_background_color": "#ffffff",
+        "mega_menu_text_color": "rgba(0,0,0,0)",
+        "mega_menu_link_color": "#000000",
+        "mega_menu_link_hover_color": "#3f4444",
+        "enable_mega_menu_border": false,
+        "show_mega_bottom_bar": false,
+        "mega_bottom_bar_icon": "",
+        "mega_bottom_bar_text": "Add your deal, information or promotional text",
+        "mega_bottom_bar_link": "",
+        "size": "regular",
+        "bottom_banner_bg": "#007ace",
+        "bottom_banner_text": "#efefef",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "vitality_menu_rTUGf3": {
+      "type": "vitality-menu",
+      "blocks": {
+        "link_39mPJA": {
+          "type": "link",
+          "settings": {
+            "text": "About v14",
+            "url": "shopify://pages/vitality-landing"
+          }
+        },
+        "link_M4TMqa": {
+          "type": "link",
+          "settings": {
+            "text": "Hallmarks of ageing",
+            "url": "shopify://pages/vitality-hallmarks-of-ageing"
+          }
+        },
+        "link_JXf6y8": {
+          "type": "link",
+          "settings": {
+            "text": "v14 Ingredients",
+            "url": "shopify://pages/vitality-ingredients"
+          }
+        },
+        "link_BJE3JK": {
+          "type": "link",
+          "settings": {
+            "text": "SHOP V14",
+            "url": "shopify://products/v14"
+          }
+        }
+      },
+      "block_order": [
+        "link_39mPJA",
+        "link_M4TMqa",
+        "link_JXf6y8",
+        "link_BJE3JK"
+      ],
+      "settings": {
+        "padding_top": 16,
+        "padding_bottom": 16,
+        "link-gap": 25,
+        "link-font-size": 12,
+        "opacity_active_link": 0,
+        "sticky": false,
+        "background_color": "#f2ebeb",
+        "default_link_color": "#3d0a1e",
+        "hover_link_color": "#b20040",
+        "active_link_color": "#b20040",
+        "padding_top_mobile": 16,
+        "padding_bottom_mobile": 16,
+        "link-font-size-mobile": 10,
+        "link-gap_mobile": 16,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "vitality_video_with_blocks_mB9tTM": {
+      "type": "vitality__video-with-blocks",
+      "settings": {
+        "video_link": "https://cdn.shopify.com/videos/c/o/v/3346c1466cf3406da979997109e81f88.mov",
+        "block_title_1": "<span class=\"ambit-black-text\">One</span> <span class=\"romie-regular-italic-text\">blend</span> <span class=\"ambit-black-text\">to</span> <br> <span class=\"ambit-black-text\">rule them all</span>",
+        "has_h1_block_title_1": false,
+        "block_link_1": "shopify://products/v14",
+        "block_title_2": "14 longevity boosters. 27 Antioxidant, Superfruit, Mineral &amp; Vitamins. One powerful solution.",
+        "has_h1_block_title_2": true,
+        "block_link_2": "shopify://pages/vitality-ingredients",
+        "section_height": 800,
+        "padding_top": 150,
+        "padding_bottom": 20,
+        "background_color": "rgba(0,0,0,0)",
+        "text_color": "#f7f5f1",
+        "block_color_5": "#191919",
+        "video_link_mobile": "https://cdn.shopify.com/videos/c/o/v/4e407ac5ac204ff0b80667dca866b100.mp4",
+        "section_height_mobile": 540,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "vitality_one_blend_83F3Em": {
+      "type": "vitality__one-blend",
+      "blocks": {
+        "button_block_i4ifyq": {
+          "type": "button-block",
+          "settings": {
+            "button_label": "Shop V14",
+            "button_link": "shopify://products/v14",
+            "button_style": "button--custom",
+            "button_custom_border_radius": 18,
+            "button_custom_bg_color": "#45001f",
+            "button_custom_border_color": "#45001f",
+            "button_custom_text_color": "#f7f5f1",
+            "button_custom_bg_color--highlight": "#b20040",
+            "button_custom_border_color--highlight": "#b20040",
+            "button_custom_text_color--highlight": "#f7f5f1"
+          }
+        },
+        "content_F6Kk4b": {
+          "type": "content",
+          "settings": {
+            "title": "Longevity Simplified.",
+            "description": "",
+            "link-label": "V14 Ingredients",
+            "link-url": "shopify://pages/vitality-ingredients",
+            "link_color": "#60012c",
+            "link_color_hover": "#b20040"
+          }
+        }
+      },
+      "block_order": [
+        "button_block_i4ifyq",
+        "content_F6Kk4b"
+      ],
+      "settings": {
+        "title": "Anytime <span class=\"romie-regular-italic-text\">Anywhere<span></span></span>",
+        "description": "Tired of juggling multiple supplements? Life doesn't pause for that. V14 delivers complete cellular support in one daily sachet. No bottles. No confusion. Just results.\n \nStore V14 in you desk drawer, gym bag, travel bag, car, wallet, coat pocket.\n\nBecause life doesn't wait, and neither should you.",
+        "image_large": "shopify://shop_images/V14-Stopmotion.gif",
+        "show_features_on_image": true,
+        "show_content_border": true,
+        "padding_top": 30,
+        "padding_bottom": 0,
+        "title_font_size": 65,
+        "description_font_size": 22,
+        "background_color": "rgba(0,0,0,0)",
+        "title_color": "#000000",
+        "description_color": "#000000",
+        "text_color": "#000000",
+        "border_color": "#5c6870",
+        "features_over_image_color": "#f7f5f1",
+        "image_large_mobile": "shopify://shop_images/V14-Stopmotion.gif",
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 30,
+        "title_font_size_mobile": 30,
+        "description_font_size_mobile": 18,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "vitality_how_it_works_kgcr4e": {
+      "type": "vitality-how-it-works",
+      "blocks": {
+        "card_QEzzVn": {
+          "type": "card",
+          "settings": {
+            "number": "1",
+            "description": "Start your day with one sachet of V14. ",
+            "image": "shopify://shop_images/DSC02060-1_1.png",
+            "background_number": "#60012c",
+            "color_number": "#f7f5f1",
+            "description_color": "#000000"
+          }
+        },
+        "card_6wHUiJ": {
+          "type": "card",
+          "settings": {
+            "number": "2",
+            "description": "Add to water, juice, or your favourite smoothie blend.",
+            "image": "shopify://shop_images/DSC01438-1.jpg",
+            "background_number": "#60012c",
+            "color_number": "#f7f5f1",
+            "description_color": "#000000"
+          }
+        },
+        "card_eCHnDf": {
+          "type": "card",
+          "settings": {
+            "number": "3",
+            "description": "Shake to mix.",
+            "image": "shopify://shop_images/DSC01842-1.jpg",
+            "background_number": "#60012c",
+            "color_number": "#f7f5f1",
+            "description_color": "#000000"
+          }
+        },
+        "card_wwjW7a": {
+          "type": "card",
+          "settings": {
+            "number": "4",
+            "description": "Enjoy a delicious, nutrient-packed drink that helps you age against the machine®.",
+            "image": "shopify://shop_images/opa_f3abf31f-4cf6-430b-8009-dfc02a17d94b.png",
+            "background_number": "#60012c",
+            "color_number": "#f7f5f1",
+            "description_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "card_QEzzVn",
+        "card_6wHUiJ",
+        "card_eCHnDf",
+        "card_wwjW7a"
+      ],
+      "settings": {
+        "title": "We acknowledge the efforts of our competitors.\n<span class=\"romie-regular-italic-text\"> But, we’ll take it from here.</span>",
+        "padding_top": 79,
+        "padding_bottom": 40,
+        "title-font-size": 55,
+        "card-number-font-size": 41,
+        "card-number-size": 50,
+        "description-font-size": 20,
+        "background_color": "rgba(0,0,0,0)",
+        "title_color": "#000000",
+        "nav_button_color": "#60012c",
+        "padding_top_mobile": 16,
+        "padding_bottom_mobile": 16,
+        "title-font-size-mobile": 30,
+        "card-number-font-size-mobile": 25,
+        "card-number-size-mobile": 40,
+        "description-font-size-mobile": 18,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "vitality_scrolling_text_bFazdR": {
+      "type": "vitality__scrolling-text",
+      "blocks": {
+        "scrolling_text_NpiNmU": {
+          "type": "scrolling-text",
+          "settings": {
+            "text": "14 LONGEVITY INGREDIENTS",
+            "is_first_row": "yes",
+            "text_color": "#b20040"
+          }
+        },
+        "scrolling_text_nk4pRx": {
+          "type": "scrolling-text",
+          "settings": {
+            "text": "NAD+ Booster",
+            "is_first_row": "yes",
+            "text_color": ""
+          }
+        },
+        "scrolling_text_m8aJgY": {
+          "type": "scrolling-text",
+          "settings": {
+            "text": "Trans Resveratrol",
+            "is_first_row": "yes",
+            "text_color": "#60012c"
+          }
+        },
+        "scrolling_text_eEy43K": {
+          "type": "scrolling-text",
+          "settings": {
+            "text": "Calcium AKG",
+            "is_first_row": "yes",
+            "text_color": "#b20040"
+          }
+        },
+        "scrolling_text_V7VkH9": {
+          "type": "scrolling-text",
+          "settings": {
+            "text": "Spermidine",
+            "is_first_row": "yes",
+            "text_color": "#404544"
+          }
+        },
+        "scrolling_text_EWBPVi": {
+          "type": "scrolling-text",
+          "settings": {
+            "text": "Quercetin",
+            "is_first_row": "yes",
+            "text_color": "#404544"
+          }
+        },
+        "scrolling_text_pbpzRE": {
+          "type": "scrolling-text",
+          "settings": {
+            "text": "Fisetin",
+            "is_first_row": "yes",
+            "text_color": "#404544"
+          }
+        },
+        "scrolling_text_DFeamQ": {
+          "type": "scrolling-text",
+          "settings": {
+            "text": "Pterostilbene",
+            "is_first_row": "yes",
+            "text_color": "#b20040"
+          }
+        },
+        "scrolling_text_xpmEUN": {
+          "type": "scrolling-text",
+          "settings": {
+            "text": "",
+            "is_first_row": "yes",
+            "text_color": ""
+          }
+        },
+        "scrolling_text_UB6Yq3": {
+          "type": "scrolling-text",
+          "settings": {
+            "text": "",
+            "is_first_row": "yes",
+            "text_color": ""
+          }
+        },
+        "scrolling_text_dPfAQc": {
+          "type": "scrolling-text",
+          "settings": {
+            "text": "Lithium",
+            "is_first_row": "yes",
+            "text_color": "#404544"
+          }
+        },
+        "scrolling_text_RQBtVQ": {
+          "type": "scrolling-text",
+          "settings": {
+            "text": "Carotenoids (Astanxathin, Lutein, Zeaxanthin)",
+            "is_first_row": "yes",
+            "text_color": "#60012c"
+          }
+        },
+        "scrolling_text_NN3eLK": {
+          "type": "scrolling-text",
+          "settings": {
+            "text": "Ginger",
+            "is_first_row": "yes",
+            "text_color": "#404544"
+          }
+        },
+        "scrolling_text_fe6QCU": {
+          "type": "scrolling-text",
+          "settings": {
+            "text": "Magnesium Malate",
+            "is_first_row": "yes",
+            "text_color": "#60012c"
+          }
+        },
+        "scrolling_text_EqwWV7": {
+          "type": "scrolling-text",
+          "settings": {
+            "text": "Glycine",
+            "is_first_row": "yes",
+            "text_color": "#404544"
+          }
+        },
+        "scrolling_text_gzdPmy": {
+          "type": "scrolling-text",
+          "settings": {
+            "text": "",
+            "is_first_row": "yes",
+            "text_color": ""
+          }
+        },
+        "scrolling_text_P7mTf6": {
+          "type": "scrolling-text",
+          "settings": {
+            "text": "Taurine",
+            "is_first_row": "yes",
+            "text_color": "#404544"
+          }
+        },
+        "scrolling_text_4XYftm": {
+          "type": "scrolling-text",
+          "settings": {
+            "text": "L’Carnitine",
+            "is_first_row": "yes",
+            "text_color": "#b20040"
+          }
+        },
+        "scrolling_text_QNDTcB": {
+          "type": "scrolling-text",
+          "settings": {
+            "text": "",
+            "is_first_row": "yes",
+            "text_color": ""
+          }
+        },
+        "scrolling_text_UrbPji": {
+          "type": "scrolling-text",
+          "settings": {
+            "text": "ANYTIME ANYWHERE",
+            "is_first_row": "yes",
+            "text_color": ""
+          }
+        },
+        "scrolling_text_LxV8tJ": {
+          "type": "scrolling-text",
+          "settings": {
+            "text": "PLUS 24 ANTIOXIDANTS AND VITAMINS INCLUDING VITAMIN C, D3 AND K2",
+            "is_first_row": "yes",
+            "text_color": "#404544"
+          }
+        },
+        "scrolling_text_BwmpT3": {
+          "type": "scrolling-text",
+          "settings": {
+            "text": "ENERGY ENHANCING",
+            "is_first_row": "yes",
+            "text_color": ""
+          }
+        },
+        "scrolling_text_BUAtE9": {
+          "type": "scrolling-text",
+          "settings": {
+            "text": "ALL IN ONE BLEND",
+            "is_first_row": "no",
+            "text_color": "#b20040"
+          }
+        },
+        "scrolling_text_9kRNg7": {
+          "type": "scrolling-text",
+          "settings": {
+            "text": "HEALTHSPAN",
+            "is_first_row": "no",
+            "text_color": "#404544"
+          }
+        },
+        "scrolling_text_9wEp9M": {
+          "type": "scrolling-text",
+          "settings": {
+            "text": "IMPROVED FOCUS",
+            "is_first_row": "no",
+            "text_color": "#404544"
+          }
+        },
+        "scrolling_text_EfYbUV": {
+          "type": "scrolling-text",
+          "settings": {
+            "text": "ANTI-INFLAMMATORY",
+            "is_first_row": "no",
+            "text_color": "#60012c"
+          }
+        },
+        "scrolling_text_3mYgWL": {
+          "type": "scrolling-text",
+          "settings": {
+            "text": "LONGEVITY BOOSTING",
+            "is_first_row": "no",
+            "text_color": "#b20040"
+          }
+        },
+        "scrolling_text_hxwFLe": {
+          "type": "scrolling-text",
+          "settings": {
+            "text": "IMMUNE DEFENCE",
+            "is_first_row": "no",
+            "text_color": "#404544"
+          }
+        },
+        "scrolling_text_eJ334Q": {
+          "type": "scrolling-text",
+          "settings": {
+            "text": "HIGHEST QUALITY INGREDIENT",
+            "is_first_row": "no",
+            "text_color": "#60012c"
+          }
+        },
+        "scrolling_text_pHUyjw": {
+          "type": "scrolling-text",
+          "settings": {
+            "text": "REFRESHING, WITH A DOSE OF REDS",
+            "is_first_row": "no",
+            "text_color": "#404544"
+          }
+        },
+        "scrolling_text_hD6TKL": {
+          "type": "scrolling-text",
+          "settings": {
+            "text": "",
+            "is_first_row": "yes",
+            "text_color": ""
+          }
+        },
+        "scrolling_text_cTNH3e": {
+          "type": "scrolling-text",
+          "settings": {
+            "text": "REDEFINING AGEING",
+            "is_first_row": "no",
+            "text_color": "#b20040"
+          }
+        },
+        "scrolling_text_FdJ4kp": {
+          "type": "scrolling-text",
+          "settings": {
+            "text": "AGE AGAINST THE MACHINE",
+            "is_first_row": "no",
+            "text_color": "#404544"
+          }
+        }
+      },
+      "block_order": [
+        "scrolling_text_NpiNmU",
+        "scrolling_text_nk4pRx",
+        "scrolling_text_m8aJgY",
+        "scrolling_text_eEy43K",
+        "scrolling_text_V7VkH9",
+        "scrolling_text_EWBPVi",
+        "scrolling_text_pbpzRE",
+        "scrolling_text_DFeamQ",
+        "scrolling_text_xpmEUN",
+        "scrolling_text_UB6Yq3",
+        "scrolling_text_dPfAQc",
+        "scrolling_text_RQBtVQ",
+        "scrolling_text_NN3eLK",
+        "scrolling_text_fe6QCU",
+        "scrolling_text_EqwWV7",
+        "scrolling_text_gzdPmy",
+        "scrolling_text_P7mTf6",
+        "scrolling_text_4XYftm",
+        "scrolling_text_QNDTcB",
+        "scrolling_text_UrbPji",
+        "scrolling_text_LxV8tJ",
+        "scrolling_text_BwmpT3",
+        "scrolling_text_BUAtE9",
+        "scrolling_text_9kRNg7",
+        "scrolling_text_9wEp9M",
+        "scrolling_text_EfYbUV",
+        "scrolling_text_3mYgWL",
+        "scrolling_text_hxwFLe",
+        "scrolling_text_eJ334Q",
+        "scrolling_text_pHUyjw",
+        "scrolling_text_hD6TKL",
+        "scrolling_text_cTNH3e",
+        "scrolling_text_FdJ4kp"
+      ],
+      "settings": {
+        "scrolling_speed_time": 280,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "text_font_size": 44,
+        "background_color": "rgba(0,0,0,0)",
+        "border_color": "#e5e7eb",
+        "padding_top_mobile": 25,
+        "padding_bottom_mobile": 25,
+        "text_font_size_mobile": 35,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "vitality_cards_with_slider_mb3Cic": {
+      "type": "vitality__cards-with-slider",
+      "blocks": {
+        "button_block_kwWfaA": {
+          "type": "button-block",
+          "settings": {
+            "button_label": "Shop V14",
+            "button_link": "shopify://products/v14",
+            "button_style": "button--custom",
+            "button_custom_border_radius": 18,
+            "button_custom_bg_color": "#45001f",
+            "button_custom_border_color": "#45001f",
+            "button_custom_text_color": "#f7f5f1",
+            "button_custom_bg_color--highlight": "#b20040",
+            "button_custom_border_color--highlight": "#b20040",
+            "button_custom_text_color--highlight": "#f7f5f1"
+          }
+        },
+        "button_block_aVVKcJ": {
+          "type": "button-block",
+          "settings": {
+            "button_label": "Hallmarks of ageing",
+            "button_link": "shopify://pages/vitality-hallmarks-of-ageing",
+            "button_style": "button--link-style",
+            "button_custom_border_radius": 8,
+            "button_custom_bg_color": "",
+            "button_custom_border_color": "#f7f5f1",
+            "button_custom_text_color": "#f7f5f1",
+            "button_custom_bg_color--highlight": "",
+            "button_custom_border_color--highlight": "#e0e56b",
+            "button_custom_text_color--highlight": "#e0e56b"
+          }
+        },
+        "card_JHFm9Q": {
+          "type": "card",
+          "settings": {
+            "title": "Energy <br> &amp; Vitality",
+            "description": "Energy Enhancing <br>\nFeel energised all day long. Say goodbye to sluggish afternoons—stay sharp, vibrant, and ready for anything.",
+            "background_color": "",
+            "title_color": "#f7f5f1",
+            "image": "shopify://shop_images/Mask_group_520982af-4b2d-414c-8da8-ea858f43b17a.png"
+          }
+        },
+        "card_rbHGYA": {
+          "type": "card",
+          "settings": {
+            "title": "Cognitive <br> Clarity",
+            "description": "Cognitive Clarity <br>\nStay focused, think sharper.\nFuel your mind for clarity, productivity, and that \"in the zone\" feeling.",
+            "background_color": "",
+            "title_color": "#f7f5f1",
+            "image": "shopify://shop_images/Mask_group-7_708e9cb4-4b4e-4f47-9d46-4208872a1032.png"
+          }
+        },
+        "card_CpgQkP": {
+          "type": "card",
+          "settings": {
+            "title": "Joints <br> &amp; Mobility",
+            "description": "Joints &amp; Mobility <br> Move freely, live actively. Keep your joints happy and your body in motion, so nothing slows you down.",
+            "background_color": "",
+            "title_color": "#f7f5f1",
+            "image": "shopify://shop_images/Mask_group-3_bde54d2a-3e68-4ddd-ad6e-3c12d7bd887f.png"
+          }
+        },
+        "card_Q9ijPt": {
+          "type": "card",
+          "settings": {
+            "title": "Skin Health <br> &amp; Radiance",
+            "description": "Skin Health &amp; Radiance\n<br>\nRadiant skin with a youthful glow that reflects vitality and health.",
+            "background_color": "",
+            "title_color": "#f7f5f1",
+            "image": "shopify://shop_images/Mask_group-1_e3845d09-5cde-48d2-9a9b-a3ae2d3b7dbb.png"
+          }
+        },
+        "card_yRwPMx": {
+          "type": "card",
+          "settings": {
+            "title": "Resilience <br> &amp; Recovery",
+            "description": "Resilence &amp; Recovery\n<br>\nRecover faster and live resiliently. Bounce back quicker and feel strong, no matter what life throws your way.",
+            "background_color": "",
+            "title_color": "#f7f5f1",
+            "image": "shopify://shop_images/Mask_group-2_58b04e22-4d82-4305-9b72-6375651add5d.png"
+          }
+        },
+        "card_m8bANn": {
+          "type": "card",
+          "settings": {
+            "title": "Overall <br> Wellbeing",
+            "description": "Overall Wellbeing \n<br>\nStay and feel young.\nBoost your well-being and embrace the best version of yourself every day.",
+            "background_color": "",
+            "title_color": "#f7f5f1",
+            "image": "shopify://shop_images/Mask_group-4_4cea56c2-b58c-43a2-af33-0863bfb33bed.png"
+          }
+        }
+      },
+      "block_order": [
+        "button_block_kwWfaA",
+        "button_block_aVVKcJ",
+        "card_JHFm9Q",
+        "card_rbHGYA",
+        "card_CpgQkP",
+        "card_Q9ijPt",
+        "card_yRwPMx",
+        "card_m8bANn"
+      ],
+      "settings": {
+        "title": "<span class=\"romie-regular-italic-text\">Ageing</span> Redefined<span class=\"romie-regular-italic-text\"></span>",
+        "description": "Every ingredient is chosen for quality, purity, and proven impact. Backed by years of scientific research in longevity, V14 is crafted to support your long-term wellbeing with a single, comprehensive blend you can trust.",
+        "padding_top": 80,
+        "padding_bottom": 20,
+        "title-font-size": 65,
+        "description-font-size": 21,
+        "card-padding": 30,
+        "card-title-font-size": 40,
+        "image": "shopify://shop_images/vitality-landing-cards-bg.png",
+        "background_color": "#e0e56b",
+        "title_color": "#f7f5f1",
+        "text_color": "#f7f5f1",
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "title-font-size_mobile": 30,
+        "description-font-size_mobile": 18,
+        "card-title-font-size-mobile": 21,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "vitality_scrolling_badges_LtyhaQ": {
+      "type": "vitality__scrolling-badges",
+      "settings": {
+        "title": "<span class=\"ambit-black-text\">Always</span> <span class=\"romie-regular-italic-text\"> Proudly</span>",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "background_color": "#60012c",
+        "text_color": "#f7f5f1",
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "image_1": "shopify://shop_images/VE_V14.svg",
+        "text_1": "Vegan",
+        "image_2": "shopify://shop_images/V_V14.svg",
+        "text_2": "Vegetarian",
+        "image_3": "shopify://shop_images/SF_V14.svg",
+        "text_3": "Soy Free",
+        "image_4": "shopify://shop_images/GF_V14.svg",
+        "text_4": "Glyphosate Free",
+        "image_5": "shopify://shop_images/DF_V14.svg",
+        "text_5": "Dairy Free",
+        "image_6": "shopify://shop_images/GF_V14.svg",
+        "text_6": "Gluten Free",
+        "image_7": "shopify://shop_images/SF_V14.svg",
+        "text_7": "Sugar Free",
+        "image_8": "shopify://shop_images/NO_V14.svg",
+        "text_8": "GMO Free",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "vitality_effects_6imqhr": {
+      "type": "vitality__effects",
+      "blocks": {
+        "card_J8KxeL": {
+          "type": "card",
+          "settings": {
+            "title": "30 Days",
+            "sub-title": "Boost cellular energy and mental clarity",
+            "description": "You’ll feel a surge in energy and improved focus. Enjoy the vitality that comes with antioxidants working to combat oxidative stress and inflammation, helping you feel healthier.",
+            "image": "shopify://shop_images/V14_Image_1_1.png",
+            "title_color": "#000000",
+            "sub-title_color": "#000000",
+            "description_color": "#000000"
+          }
+        },
+        "card_nKgCtP": {
+          "type": "card",
+          "settings": {
+            "title": "60 Days",
+            "sub-title": "Strengthen mental resilience and stress response",
+            "description": "Your mind will feel sharper and more resilient. As stress decreases and cognitive function improves, you’ll enjoy better focus and memory, making it easier to stay engaged in the moments that matter and handle daily tasks effortlessly.",
+            "image": "shopify://shop_images/DSC01842-1-1whiter_copy_1.png",
+            "title_color": "#000000",
+            "sub-title_color": "#000000",
+            "description_color": "#000000"
+          }
+        },
+        "card_AKKQ9g": {
+          "type": "card",
+          "settings": {
+            "title": "90 Days",
+            "sub-title": "Support long-term health and vitality",
+            "description": "At 90 days, deeper benefits emerge, ingredients that support cellular integrity and ageing markers work together to enhance longevity, keeping you feeling strong and youthful.",
+            "image": "shopify://shop_images/V14-1080x1080px432_1.png",
+            "title_color": "#000000",
+            "sub-title_color": "#000000",
+            "description_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "card_J8KxeL",
+        "card_nKgCtP",
+        "card_AKKQ9g"
+      ],
+      "settings": {
+        "title": "<span class=\"romie-regular-italic-text\">Effects</span> of V14",
+        "description": "Consistent V14 users might notice a difference in several days or weeks. Here are some of the health benefits you can expect to feel from V14 over time.",
+        "padding_top": 80,
+        "padding_bottom": 20,
+        "section-title-font-size": 65,
+        "section-description-font-size": 21,
+        "card-title-font-size": 40,
+        "card-sub-title-font-size": 24,
+        "card-description-font-size": 21,
+        "background_color": "rgba(0,0,0,0)",
+        "title_color": "#000000",
+        "text_color": "#404544",
+        "nav_button_color": "#60012c",
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "section-title-font-size-mobile": 30,
+        "section-description-font-size-mobile": 18,
+        "card-title-font-size-mobile": 30,
+        "card-sub-title-font-size-mobile": 20,
+        "card-description-font-size-mobile": 15,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "index_price_comparison_c6P9wM": {
+      "type": "index__price-comparison",
+      "blocks": {
+        "button_block_48QiDG": {
+          "type": "button-block",
+          "settings": {
+            "button_label": "Shop V14",
+            "button_link": "shopify://products/v14",
+            "button_style": "button--custom",
+            "button_custom_border_radius": 18,
+            "button_custom_bg_color": "#60012c",
+            "button_custom_border_color": "#60012c",
+            "button_custom_text_color": "#f7f5f1",
+            "button_custom_bg_color--highlight": "#b20040",
+            "button_custom_border_color--highlight": "#b20040",
+            "button_custom_text_color--highlight": "#f7f5f1"
+          }
+        },
+        "row_wXHEVe": {
+          "type": "row",
+          "settings": {
+            "first_cell": "NAD+ Booster",
+            "second_cell": "£41.69",
+            "second_cell_info_title": "<strong>Average price of:</strong>",
+            "second_cell_info": "Longevity Box, Agemate, British Supplements, Viva",
+            "third_cell": "<span class=\"romie-regular-italic-text\">Included</span>",
+            "cell_font_size": 30,
+            "cell_font_size_mobile": 15
+          }
+        },
+        "row_A3FQwQ": {
+          "type": "row",
+          "settings": {
+            "first_cell": "Pterostilbene",
+            "second_cell": "£15.26",
+            "second_cell_info_title": "<strong>Average price of:</strong>",
+            "second_cell_info": "Prohealth, California Gold Nutrition, Swanson, Double Wood Supplements, Nutriop Longevity",
+            "third_cell": "<span class=\"romie-regular-italic-text\">Included</span>",
+            "cell_font_size": 30,
+            "cell_font_size_mobile": 15
+          }
+        },
+        "row_PRG33g": {
+          "type": "row",
+          "settings": {
+            "first_cell": "Trans-Resveratrol",
+            "second_cell": "£14.86",
+            "second_cell_info_title": "<strong>Average price of:</strong>",
+            "second_cell_info": "Time Health, Supplement Place, Love Life Supplements, Pureclinica, NADIOL",
+            "third_cell": "<span class=\"romie-regular-italic-text\">Included</span>",
+            "cell_font_size": 30,
+            "cell_font_size_mobile": 15
+          }
+        },
+        "row_HVUV7V": {
+          "type": "row",
+          "settings": {
+            "first_cell": "Lithium microdose",
+            "second_cell": "£3.92",
+            "second_cell_info_title": "<strong>Average price of:</strong>",
+            "second_cell_info": "Lindens, Life Extension, Life Extension, Good Health Naturally, Alines",
+            "third_cell": "<span class=\"romie-regular-italic-text\">Included</span>",
+            "cell_font_size": 30,
+            "cell_font_size_mobile": 15
+          }
+        },
+        "row_eqUK3E": {
+          "type": "row",
+          "settings": {
+            "first_cell": "Quercetin",
+            "second_cell": "£11.12",
+            "second_cell_info_title": "<strong>Average price of:</strong>",
+            "second_cell_info": "Solgar, British Supplements, WeightWorld, Nature's Best, New Leaf",
+            "third_cell": "<span class=\"romie-regular-italic-text\">Included</span>",
+            "cell_font_size": 30,
+            "cell_font_size_mobile": 15
+          }
+        },
+        "row_RtbqQV": {
+          "type": "row",
+          "settings": {
+            "first_cell": "Calcium AKG (Alpha-Ketoglutarate)",
+            "second_cell": "£22.89",
+            "second_cell_info_title": "<strong>Average price of:</strong>",
+            "second_cell_info": "Fivescore, Time Health, Longevity box, Do Not Age, Pro Health",
+            "third_cell": "<span class=\"romie-regular-italic-text\">Included</span>",
+            "cell_font_size": 30,
+            "cell_font_size_mobile": 15
+          }
+        },
+        "row_ermbGa": {
+          "type": "row",
+          "settings": {
+            "first_cell": "Cartenoids (Lutein, Astaxanthin, Zeaxanthin)",
+            "second_cell": "£3.40",
+            "second_cell_info_title": "<strong>Average price of:</strong>",
+            "second_cell_info": "Mobu, Supplemented, Bulk, Weight World, Nature's Best, Swanson",
+            "third_cell": "<span class=\"romie-regular-italic-text\">Included</span>",
+            "cell_font_size": 30,
+            "cell_font_size_mobile": 15
+          }
+        },
+        "row_e3KaaF": {
+          "type": "row",
+          "settings": {
+            "first_cell": "Ginger",
+            "second_cell": "£3.89",
+            "second_cell_info_title": "<strong>Average price of:</strong>",
+            "second_cell_info": "Simply Supplements, Nature's Best, Supplemented, Weight World, Holland and Barrett",
+            "third_cell": "<span class=\"romie-regular-italic-text\">Included</span>",
+            "cell_font_size": 30,
+            "cell_font_size_mobile": 15
+          }
+        },
+        "row_3jJWBK": {
+          "type": "row",
+          "settings": {
+            "first_cell": "Fisetin",
+            "second_cell": "£20.52",
+            "second_cell_info_title": "<strong>Average price of:</strong>",
+            "second_cell_info": "Life Extension, Fisetin, NADIOL, Bulk Supplements, Do Not Age",
+            "third_cell": "<span class=\"romie-regular-italic-text\">Included</span>",
+            "cell_font_size": 30,
+            "cell_font_size_mobile": 15
+          }
+        },
+        "row_CJXFLC": {
+          "type": "row",
+          "settings": {
+            "first_cell": "Magnesium-Malate",
+            "second_cell": "£7.58",
+            "second_cell_info_title": "<strong>Average price of:</strong>",
+            "second_cell_info": "Piping Rock, Thorne, Ethical Nutrition, New Leaf Products, Sunday Natural",
+            "third_cell": "<span class=\"romie-regular-italic-text\">Included</span>",
+            "cell_font_size": 30,
+            "cell_font_size_mobile": 15
+          }
+        },
+        "row_99E9cU": {
+          "type": "row",
+          "settings": {
+            "first_cell": "Glycine",
+            "second_cell": "£9.54",
+            "second_cell_info_title": "<strong>Average price of:</strong>",
+            "second_cell_info": "Metabolics, Thorne, Bulk Supplements, Natures Selection, Do Not Age",
+            "third_cell": "<span class=\"romie-regular-italic-text\">Included</span>",
+            "cell_font_size": 30,
+            "cell_font_size_mobile": 15
+          }
+        },
+        "row_C8JCgP": {
+          "type": "row",
+          "settings": {
+            "first_cell": "Taurine",
+            "second_cell": "£4.38",
+            "second_cell_info_title": "<strong>Average price of:</strong>",
+            "second_cell_info": "Simply Supplements, Nature's Best, Supplemented, Big Vits, Holland and Barrett",
+            "third_cell": "<span class=\"romie-regular-italic-text\">Included</span>",
+            "cell_font_size": 30,
+            "cell_font_size_mobile": 15
+          }
+        },
+        "row_kFGnE8": {
+          "type": "row",
+          "settings": {
+            "first_cell": "Spermidine",
+            "second_cell": "£23.21",
+            "second_cell_info_title": "<strong>Average price of:</strong>",
+            "second_cell_info": "Pro Health, Revenue By Science, Vitality, Do Not Age, Longevity Box",
+            "third_cell": "<span class=\"romie-regular-italic-text\">Included</span>",
+            "cell_font_size": 30,
+            "cell_font_size_mobile": 15
+          }
+        },
+        "row_ft7L8K": {
+          "type": "row",
+          "settings": {
+            "first_cell": "L-Carnitine",
+            "second_cell": "£10.60",
+            "second_cell_info_title": "<strong>Average price of:</strong>",
+            "second_cell_info": "Thorne, Holland and Barrett, Supplemented, My Vitamins, Weight Watchers",
+            "third_cell": "<span class=\"romie-regular-italic-text\">Included</span>",
+            "cell_font_size": 30,
+            "cell_font_size_mobile": 15
+          }
+        },
+        "row_HQf8pg": {
+          "type": "row",
+          "settings": {
+            "first_cell": "Vitamin C",
+            "second_cell": "£5.03",
+            "second_cell_info_title": "<strong>Average price of:</strong>",
+            "second_cell_info": "Nature's Best, Bulk, Cytoplan, Holland and Barrett, Simply Supplements",
+            "third_cell": "<span class=\"romie-regular-italic-text\">Included</span>",
+            "cell_font_size": 30,
+            "cell_font_size_mobile": 15
+          }
+        },
+        "row_9aTEej": {
+          "type": "row",
+          "settings": {
+            "first_cell": "Vitamin D3",
+            "second_cell": "£2.83",
+            "second_cell_info_title": "<strong>Average price of:</strong>",
+            "second_cell_info": "Nutravita, Simply Supplements, Weight World, Holland and Barrett, Pure",
+            "third_cell": "<span class=\"romie-regular-italic-text\">Included</span>",
+            "cell_font_size": 30,
+            "cell_font_size_mobile": 15
+          }
+        },
+        "row_WwxKwN": {
+          "type": "row",
+          "settings": {
+            "first_cell": "Vitamin K2",
+            "second_cell": "£6.29",
+            "second_cell_info_title": "<strong>Average price of:</strong>",
+            "second_cell_info": "Thorne, Big Vits, Holland and Barrett, Mobu, Weight World",
+            "third_cell": "<span class=\"romie-regular-italic-text\">Included</span>",
+            "cell_font_size": 30,
+            "cell_font_size_mobile": 15
+          }
+        },
+        "row_rzdNmc": {
+          "type": "row",
+          "settings": {
+            "first_cell": "Selenium",
+            "second_cell": "£4.76",
+            "second_cell_info_title": "<strong>Average price of:</strong>",
+            "second_cell_info": "Thorne, Pure, Weight World, Cytoplan, Holland and Barrett",
+            "third_cell": "<span class=\"romie-regular-italic-text\">Included</span>",
+            "cell_font_size": 30,
+            "cell_font_size_mobile": 15
+          }
+        },
+        "row_GbQbnt": {
+          "type": "row",
+          "settings": {
+            "first_cell": "Tomato Powder, Carrot Powder, Beetroot Powder, Blueberry Powder, Blackcurrant Extract, Pomegranate Powder, Cranberry Extract, Bioflavonoids Grape Seed, Montmorency Tart Cherry Powder, Amla Fruit Extract, Acerola Fruit Extract, Bilberry Fruit Extract, Raspberry Powder Dragon Fruit Powder, Açai Berry (Euterpe Oleracea) Powder, Plum Powder, Rhubarb Powder, Strawberry Powder, 5-MTHF, Zinc, Copper, B12",
+            "second_cell": "",
+            "second_cell_image": "shopify://shop_images/No_Comparison.svg",
+            "second_cell_info_title": "<strong>Average price of:</strong>",
+            "second_cell_info": "",
+            "third_cell": "",
+            "third_cell_image": "shopify://shop_images/Yes_Comparison.svg",
+            "cell_font_size": 24,
+            "cell_font_size_mobile": 13
+          }
+        },
+        "row_xRnBPa": {
+          "type": "row",
+          "settings": {
+            "first_cell": "<strong>Total Cost</strong>",
+            "second_cell": "<strong>£211.77*</strong>",
+            "second_cell_info_title": "<strong>Average price of:</strong>",
+            "second_cell_info": "",
+            "third_cell": "<strong>£71.99**</strong>",
+            "cell_font_size": 30,
+            "cell_font_size_mobile": 15
+          }
+        }
+      },
+      "block_order": [
+        "button_block_48QiDG",
+        "row_wXHEVe",
+        "row_A3FQwQ",
+        "row_PRG33g",
+        "row_HVUV7V",
+        "row_eqUK3E",
+        "row_RtbqQV",
+        "row_ermbGa",
+        "row_e3KaaF",
+        "row_3jJWBK",
+        "row_CJXFLC",
+        "row_99E9cU",
+        "row_C8JCgP",
+        "row_kFGnE8",
+        "row_ft7L8K",
+        "row_HQf8pg",
+        "row_9aTEej",
+        "row_WwxKwN",
+        "row_rzdNmc",
+        "row_GbQbnt",
+        "row_xRnBPa"
+      ],
+      "settings": {
+        "title": "Simplify &amp; Save",
+        "description": "<p>V14 offers a streamlined approach longevity, combining essential vitamins and minerals into one convenient daily sachet.<br/><br/>Purchasing these nutrients separately would cost you over £211* per month, but V14 brings them all together for only £71.99 on subscription**.<br/><br/>Not only does <strong>V14 save you over £139 per month</strong>, but it also eliminates the hassle of managing multiple supplements, ensuring you receive the right balance of nutrients to support your health without the extra cost.</p>",
+        "image": "shopify://shop_images/Price_Comparison_Image.svg",
+        "title_first_column": "<span class=\"romie-regular-italic-text\">Longevity</span>  <span class=\"ambit-black-text\">Simplified.</span>",
+        "title_second_column": "<center><strong>Individual\nCost</strong></center>",
+        "title_third_column": "",
+        "image_third_column": "shopify://shop_images/V14_Comparison.svg",
+        "block_1": "The price of a V14 is £2.40 per day**.<br><strong> Invest in your health and longevity for less than a coffee a day.</strong>",
+        "block_2": "<center><strong>Only £2.40 per serve**</strong></center>\n<span class=\"price__additional-text\"><center>Invest in your health and longevity at an affordable price.</center></span>",
+        "bottom_image_1": "shopify://shop_images/Price_Comparison_1.png",
+        "bottom_image_2": "shopify://shop_images/Price_Comparison_2.png",
+        "bottom_image_3": "shopify://shop_images/Price_Comparison_3.png",
+        "footnote": "*Average of 5 competitor brands for a months supply (2/1/2025)\n<br>\n**On a pouch subscription plan",
+        "padding_top": 60,
+        "padding_bottom": 20,
+        "title_font_size": 30,
+        "description_font_size": 18,
+        "title_column_font_size": 40,
+        "block_1_font_size": 24,
+        "block_2_font_size": 35,
+        "background_color": "",
+        "text_color": "#000000",
+        "text_color_title_first_column": "#f7f5f1",
+        "background_color_title_first_column": "#60012c",
+        "text_color_first_column": "#404544",
+        "background_color_first_column": "#ebe9e5",
+        "text_color_title_second_column": "#404544",
+        "background_color_title_second_column": "#ebe9e5",
+        "text_color_second_column": "#404544",
+        "background_color_second_column": "#ebe9e5",
+        "text_color_title_third_column": "#f7f5f1",
+        "background_color_title_third_column": "#b20040",
+        "text_color_third_column": "#b20040",
+        "background_color_third_column": "#f2e1e3",
+        "text_color_block_1": "#f7f5f1",
+        "background_color_block_1": "#3f4444",
+        "text_color_block_2": "#f7f5f1",
+        "background_color_block_2": "#b20040",
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "title_font_size_mobile": 30,
+        "description_font_size_mobile": 18,
+        "title_column_font_size_mobile": 12,
+        "block_1_font_size_mobile": 13,
+        "block_2_font_size_mobile": 17,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "vitality_discover_whats_inside_phwyYL": {
+      "type": "vitality__discover-whats-inside",
+      "blocks": {
+        "button_block_6wPPFw": {
+          "type": "button-block",
+          "settings": {
+            "button_label": "Shop V14",
+            "button_link": "shopify://products/v14",
+            "button_style": "button--custom",
+            "button_custom_border_radius": 18,
+            "button_custom_bg_color": "#45001f",
+            "button_custom_border_color": "#45001f",
+            "button_custom_text_color": "#f7f5f1",
+            "button_custom_bg_color--highlight": "#b20040",
+            "button_custom_border_color--highlight": "#b20040",
+            "button_custom_text_color--highlight": "#f7f5f1"
+          }
+        },
+        "button_block_Pyj87k": {
+          "type": "button-block",
+          "settings": {
+            "button_label": "Hallmarks of ageing",
+            "button_link": "shopify://pages/vitality-hallmarks-of-ageing",
+            "button_style": "button--link-style",
+            "button_custom_border_radius": 8,
+            "button_custom_bg_color": "",
+            "button_custom_border_color": "",
+            "button_custom_text_color": "",
+            "button_custom_bg_color--highlight": "",
+            "button_custom_border_color--highlight": "",
+            "button_custom_text_color--highlight": ""
+          }
+        },
+        "card_AtnWRp": {
+          "type": "card",
+          "settings": {
+            "number": "1",
+            "title": "Cellular Ageing",
+            "description": "As we age, our cells gradually lose function or die off. This cellular decline is at the heart of ageing.",
+            "image": "shopify://shop_images/4-discover-whats-inside.jpg",
+            "background_number": "#60012c",
+            "color_number": "#f7f5f1",
+            "title_color": "#000000",
+            "description_color": "#000000"
+          }
+        },
+        "card_hYKGmg": {
+          "type": "card",
+          "settings": {
+            "number": "2",
+            "title": "Immune Ageing",
+            "description": "Our immune defence naturally weakens with age, reducing our ability to fight illness.",
+            "image": "shopify://shop_images/1.png",
+            "background_number": "#60012c",
+            "color_number": "#f7f5f1",
+            "title_color": "#000000",
+            "description_color": "#000000"
+          }
+        },
+        "card_gfMRaz": {
+          "type": "card",
+          "settings": {
+            "number": "3",
+            "title": "Metabolic Ageing",
+            "description": "A slowing metabolism affects how we process energy and maintain weight as we age.",
+            "image": "shopify://shop_images/june-10_0395_1.png",
+            "background_number": "#60012c",
+            "color_number": "#f7f5f1",
+            "title_color": "#000000",
+            "description_color": "#000000"
+          }
+        },
+        "card_9MwMt6": {
+          "type": "card",
+          "settings": {
+            "number": "4",
+            "title": "Vascular Ageing",
+            "description": "Ageing blood vessels and heart function impact our cardiovascular health over time.",
+            "image": "shopify://shop_images/june-10_0435_1.png",
+            "background_number": "#60012c",
+            "color_number": "#f7f5f1",
+            "title_color": "#000000",
+            "description_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "button_block_6wPPFw",
+        "button_block_Pyj87k",
+        "card_AtnWRp",
+        "card_hYKGmg",
+        "card_gfMRaz",
+        "card_9MwMt6"
+      ],
+      "settings": {
+        "title": "Discover what drives biological ageing",
+        "description": "Your cells hold the key to ageing. V14 targets the biological HALLMARKS that affect your DNA, immunity, and metabolism. Scientifically formulated to slow these processes, supporting your longevity from within.",
+        "padding_top": 80,
+        "padding_bottom": 20,
+        "section-title-font-size": 65,
+        "description-section-font-size": 22,
+        "card-title-font-size": 20,
+        "card-number-font-size": 30,
+        "card-number-size": 40,
+        "description-font-size": 21,
+        "background_color": "rgba(0,0,0,0)",
+        "title_color": "#000000",
+        "text_color": "#000000",
+        "nav_button_color": "#60012c",
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "section-title-font-size-mobile": 30,
+        "description-section-font-size-mobile": 18,
+        "card-title-font-size-mobile": 15,
+        "card-number-font-size-mobile": 20,
+        "card-number-size-mobile": 28,
+        "description-font-size-mobile": 15,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "reviews_carousel_qjw6JU": {
+      "type": "reviews-carousel",
+      "settings": {}
+    },
+    "title_with_text_Dqc4fR": {
+      "type": "title-with-text",
+      "disabled": true,
+      "settings": {
+        "title": "<span>Third Party Testing</span> <span class=\"romie-regular-italic-text\">Certified</span>",
+        "title_size": 65,
+        "title_width": 630,
+        "text": "Youth and Earth conducts third-party tests with a xxxx laboratory, to ensure purity is at least xx% pure and is free of heavy metals.",
+        "text_size": 22,
+        "padding_top": 90,
+        "padding_bottom": 20,
+        "show_content_border": true,
+        "background_color": "#f7f5f1",
+        "border_color": "#3f4444",
+        "title_color": "#3f4444",
+        "text_color": "#3f4444",
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "vitality_footer_7zThCE": {
+      "type": "vitality-footer",
+      "blocks": {
+        "link_list_KfrgaB": {
+          "type": "link_list",
+          "settings": {
+            "menu": "engage",
+            "social_icons_footer": false
+          }
+        },
+        "link_list_RAXm8q": {
+          "type": "link_list",
+          "settings": {
+            "menu": "footer",
+            "social_icons_footer": false
+          }
+        },
+        "newsletter_q34tcG": {
+          "type": "newsletter",
+          "settings": {
+            "newsletter_title": "",
+            "newsletter_richtext": "<span class=\"ambit-black-text\">Join hundreds-of-thousands of people not letting their age slow them down.</span>",
+            "display_first_name": true,
+            "display_last_name": true,
+            "newsletter_icons_color": "#b20040"
+          }
+        },
+        "logo_hcKkxz": {
+          "type": "logo",
+          "settings": {
+            "size": "small",
+            "text": "",
+            "social_icons_footer": true
+          }
+        }
+      },
+      "block_order": [
+        "link_list_KfrgaB",
+        "link_list_RAXm8q",
+        "newsletter_q34tcG",
+        "logo_hcKkxz"
+      ],
+      "settings": {
+        "copyright_text": "",
+        "display_designed_by": false,
+        "display_shopify": false,
+        "display_logo_block": false,
+        "display_localization_switcher": false,
+        "show_follow_on_shop": false,
+        "show_locale_selector": true,
+        "show_currency_selector": false,
+        "display_payment_methods": false,
+        "background": "#45001f",
+        "border": "#45001f",
+        "link_color": "#f7f5f1",
+        "link_hover_color": "#b20040",
+        "text_color": "#f7f5f1",
+        "css_class": "",
+        "custom_css": ".footer__extra-content { display: none; }\n.footer__credits { display: none; }\n.sub-footer { display: none; }\na.footer__logo-wrapper { display: none;  }\n.footer__block .block__logo { margin: 0; }"
+      }
+    },
+    "index_image_with_text_overlay_HCYXkd": {
+      "type": "index__image-with-text-overlay",
+      "settings": {
+        "image": "shopify://shop_images/svgviewer-png-output.png",
+        "desktop_image_height": 200,
+        "use_image_aspect_ratio": false,
+        "image_opacity": 1,
+        "image-border-radius": 5,
+        "background_image_color": "#45001f",
+        "mobile_image_height": 200,
+        "link": "",
+        "pretext": "",
+        "is_h1_title": false,
+        "title": "",
+        "subtitle": "",
+        "pretext_color": "#000000",
+        "heading_color": "#000000",
+        "subheading_color": "#000000",
+        "text_alignment": "center",
+        "text_horizontal_position": "center",
+        "text_vertical_position": "middle",
+        "text_width": 40,
+        "background_color": "#45001f",
+        "background_opacity": 77,
+        "border_color": "#45001f",
+        "border_width": 0,
+        "button_1": "",
+        "button_1_link": "",
+        "button_1_style": "button--secondary",
+        "button_2": "",
+        "button_2_link": "",
+        "button_2_style": "button--secondary",
+        "width": "wide",
+        "padding_top": 0,
+        "padding_bottom": 60,
+        "padding_left": 0,
+        "padding_right": 0,
+        "animation": "none",
+        "mobile_text_below_image": false,
+        "mobile_preheading": "",
+        "mobile_heading": "",
+        "mobile_subheading": "",
+        "pretext_color_mobile": "rgba(0,0,0,0)",
+        "heading_color_mobile": "rgba(0,0,0,0)",
+        "subheading_color_mobile": "rgba(0,0,0,0)",
+        "text_alignment_mobile": "same_as_desktop",
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "css_class": "background-green",
+        "custom_css": ".background-green {\n  background-color: #45001f;\n}\n.background-green img {\n  max-width: 1200px;\n}\n.image-element__wrap {\n  height: 100% !important;\n}\n@media only screen and (max-width: 480px) {\n  .background-green {\n    display: block;\n  }\n  .background-green .image-element__wrap {\n    height: auto !important;\n  }\n}"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "header_vitality_KqdtVC",
+    "mega_menu_Rz4wni",
+    "vitality_menu_rTUGf3",
+    "vitality_video_with_blocks_mB9tTM",
+    "vitality_one_blend_83F3Em",
+    "vitality_how_it_works_kgcr4e",
+    "vitality_scrolling_text_bFazdR",
+    "vitality_cards_with_slider_mb3Cic",
+    "vitality_scrolling_badges_LtyhaQ",
+    "vitality_effects_6imqhr",
+    "index_price_comparison_c6P9wM",
+    "vitality_discover_whats_inside_phwyYL",
+    "reviews_carousel_qjw6JU",
+    "title_with_text_Dqc4fR",
+    "vitality_footer_7zThCE",
+    "index_image_with_text_overlay_HCYXkd"
+  ]
+}

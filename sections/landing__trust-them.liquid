@@ -1,0 +1,386 @@
+{% assign data = section.settings %}
+{% assign cards = section.blocks | where: 'type', 'card' %}
+
+{% style %}
+  .trust-them {
+    padding: 124px 0 196px;
+    background: #EDF2E9;
+  }
+
+  .trust-them__wrapper {
+    margin: 0 auto;
+    max-width: 1280px;
+    padding: 0 20px;
+    width: 100%;
+  }
+
+  .trust-them__head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+
+  .trust-them__tags {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .trust-them__tag {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 12px;
+    background: #fff;
+    border-radius: 70px;
+    font-size: 18px;
+    line-height: 1.25;
+    font-weight: 400;
+    letter-spacing: -2.2%;
+    color: #284734;
+    white-space: nowrap;
+  }
+
+  .trust-them__title {
+    font-family: 'Romie' !important;
+    text-transform: uppercase;
+    color: #284734;
+    font-weight: 400;
+    font-size: 70px;
+    line-height: 1.25;
+    letter-spacing: -2.2%;
+    text-align: center;
+  }
+
+  .trust-them__list .flickity-prev-next-button.previous,
+  .trust-them__list .flickity-prev-next-button.next {
+    top: unset; 
+    bottom: -92px;
+    background-color: transparent;
+    background-size: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .trust-them__list .flickity-prev-next-button.previous svg,
+  .trust-them__list .flickity-prev-next-button.next svg {
+    display: none;
+  }
+
+  .trust-them__list .flickity-prev-next-button.previous {
+    left: 40%;
+    transform: translateX(-50%);
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16 7L3.83 7L9.42 1.41L8 9.53991e-08L9.53991e-08 8L8 16L9.41 14.59L3.83 9L16 9L16 7Z' fill='%23284734'/%3E%3C/svg%3E%0A");
+  }
+
+  .trust-them__list .flickity-prev-next-button.next {
+    right: 40%;
+    transform: translateX(50%);
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M-3.93402e-07 9L12.17 9L6.58 14.59L8 16L16 8L8 -3.49691e-07L6.59 1.41L12.17 7L-3.0598e-07 7L-3.93402e-07 9Z' fill='%23284734'/%3E%3C/svg%3E%0A");
+  }
+
+  .trust-them__list .flickity-page-dots {
+    bottom: -84px;
+  }
+
+  .trust-them__list .flickity-page-dots .dot {
+    border-radius: 50%;
+    border: 1px solid #949992;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .trust-them__list .flickity-page-dots .dot.is-selected {
+    background: #949992;
+  }
+
+  .trust-them__card {
+    width: 610px;
+    height: 305px;
+    display: flex;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #fff;
+    padding: 24px;
+    gap: 24px;
+    aspect-ratio: 2/1;
+    margin-right: 8px;
+  }
+
+  .trust-them__card:last-child {
+    margin: 0;
+  }
+
+  .trust-them__card-left {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    justify-content: space-between;
+  }
+
+  .trust-them__card-initials {
+    flex: 0 0 auto;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #EDF2E9;
+    color: #949992;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1;
+    letter-spacing: -2.2%;
+    white-space: nowrap;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .trust-them__card-counter {
+    flex: 0 0 auto;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1;
+    letter-spacing: -2.2%;
+    white-space: nowrap;
+    text-align: center;
+    color: #949992;
+  }
+
+  .trust-them__card-right {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .trust-them__card-description {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.25;
+    letter-spacing: -2.2%;
+    color: #000;
+    overflow-y: auto;
+    position: relative;
+  }
+
+  .trust-them__card-description:after {
+    content: '';
+    display: block;
+    height: 24px;
+    width: 100%;
+    position: sticky;
+    bottom: 0;
+    background: linear-gradient(to top, #fff 0%, transparent 100%);
+  }
+
+  .trust-them__card-bottom {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .trust-them__card-name {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.25;
+    letter-spacing: -2.2%;
+    color: #000;
+  }
+
+  @media (max-width: 1400px) {
+    .trust-them__list .flickity-prev-next-button.previous {
+      left: 46%;
+      bottom: -60px;
+    }
+
+    .trust-them__list .flickity-prev-next-button.next {
+      right: 46%;
+      bottom: -60px;
+    }
+
+    .trust-them__list .flickity-page-dots {
+      bottom: -92px;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .trust-them__title {
+      font-size: 64px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .trust-them {
+      padding: 80px 0 160px;
+    }
+
+    .trust-them__title {
+      font-size: 48px;
+    }
+
+    .trust-them__card {
+      width: calc(100% - 40px);
+      padding: 16px;
+      gap: 16px;
+      height: 360px;
+    }
+
+    .trust-them__card-description {
+      font-size: 16px;
+    }
+
+    .trust-them__card-initials {
+      width: 32px;
+      height: 32px;
+      font-size: 12px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .trust-them__card {
+      aspect-ratio: 1.6 / 1;
+      height: 340px;
+    }
+  }
+
+  @media (max-width: 425px) {
+    .trust-them__title {
+      font-size: 36px;
+    }
+
+    .trust-them__card {
+      aspect-ratio: 1.2 / 1;
+      height: 320px;
+    }
+
+    .trust-them__list .flickity-page-dots {
+      bottom: -108px;
+    }
+  }
+{% endstyle %}
+
+<section class="trust-them trust-them--{{ template.suffix }}">
+  <div class="trust-them__wrapper">
+    <div class="trust-them__head">
+      <div class="trust-them__tags">
+        {% if data.review_tag != blank %}
+          <div class="trust-them__tag">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+              <path fill="#78BE20" d="M19.877 8.9a7.992 7.992 0 0 0-1.72-2.559 7.93 7.93 0 0 0-2.558-1.72 7.958 7.958 0 0 0-3.1-.621h-.036a7.978 7.978 0 0 0-5.65 2.364 7.945 7.945 0 0 0-1.7 2.55 8.033 8.033 0 0 0 .245 6.693v2.714c0 .454.368.822.82.822h2.717a8.027 8.027 0 0 0 3.57.857h.038a8 8 0 0 0 3.083-.613 7.93 7.93 0 0 0 2.55-1.7 7.941 7.941 0 0 0 1.723-2.535c.42-.986.636-2.034.641-3.116a8.02 8.02 0 0 0-.623-3.136Zm-10.95 3.957a.858.858 0 1 1 .002-1.716.858.858 0 0 1-.002 1.716Zm3.572 0a.858.858 0 1 1 .002-1.716.858.858 0 0 1-.002 1.716Zm3.572 0a.858.858 0 1 1 .002-1.716.858.858 0 0 1-.002 1.716Z"/>
+            </svg>
+            {{ data.review_tag }}
+          </div>
+        {% endif %}
+        {% if data.rating_tag != blank %}
+          <div class="trust-them__tag">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+              <path fill="#FEBC18" d="m12 17.275-4.15 2.5a.908.908 0 0 1-.575.15.966.966 0 0 1-.525-.2 1.2 1.2 0 0 1-.35-.437.875.875 0 0 1-.05-.588l1.1-4.725L3.775 10.8a.955.955 0 0 1-.312-.513 1.002 1.002 0 0 1 .037-.562c.066-.182.166-.332.3-.45.134-.117.317-.192.55-.225l4.85-.425 1.875-4.45c.083-.2.213-.35.388-.45.175-.1.354-.15.537-.15.182 0 .361.05.537.15.175.1.304.25.388.45l1.875 4.45 4.85.425c.233.034.417.109.55.225.133.117.233.267.3.45a1 1 0 0 1 .038.563.948.948 0 0 1-.313.512l-3.675 3.175 1.1 4.725a.875.875 0 0 1-.05.588c-.084.175-.2.321-.35.437a.977.977 0 0 1-.525.2.9.9 0 0 1-.575-.15l-4.15-2.5Z"/>
+            </svg>
+            {{ data.rating_tag }}
+          </div>
+        {% endif %}
+      </div>
+      {% if data.title != blank %}
+        <h2 class="trust-them__title">{{ data.title }}</h2>
+      {% endif %}
+    </div>
+  </div>
+  <ul class="trust-them__list" data-trust-them-slider>
+    {% for block in cards %}
+      {% assign card = block.settings %}
+
+      <li class="trust-them__card">
+        <div class="trust-them__card-left">
+          {% if card.initials != blank %}
+            <div class="trust-them__card-initials">{{ card.initials }}</div>
+          {% endif %}
+          <div class="trust-them__card-counter">
+            {{ forloop.index }}/{{ forloop.length }}
+          </div>
+        </div>
+        <div class="trust-them__card-right">
+          {% if card.description != blank %}
+            <p class="trust-them__card-description">{{ card.description }}</p>
+          {% endif %}
+          <div class="trust-them__card-bottom">
+            {% if card.name != blank %}
+              <p class="trust-them__card-name">{{ card.name }}</p>
+            {% endif %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="20" fill="none" viewBox="0 0 100 20">
+              <path fill="#FEBC18" d="M10 14.396 6.54 16.479a.757.757 0 0 1-.479.125.805.805 0 0 1-.437-.167 1 1 0 0 1-.292-.364.73.73 0 0 1-.042-.49l.917-3.937L3.146 9a.796.796 0 0 1-.26-.428.89.89 0 0 1 .28-.843.861.861 0 0 1 .459-.187l4.041-.355L9.23 3.48a.747.747 0 0 1 .323-.375.893.893 0 0 1 .448-.125c.152 0 .301.042.447.125a.747.747 0 0 1 .324.375l1.562 3.708 4.042.354c.194.028.347.09.458.188a.892.892 0 0 1 .25.375c.056.153.066.31.032.47a.79.79 0 0 1-.261.426l-3.063 2.646.917 3.937a.73.73 0 0 1-.042.49.99.99 0 0 1-.291.364.813.813 0 0 1-.438.167.75.75 0 0 1-.479-.125L10 14.396ZM30 14.396l-3.459 2.083a.757.757 0 0 1-.479.125.805.805 0 0 1-.437-.167 1 1 0 0 1-.292-.364.73.73 0 0 1-.041-.49l.916-3.937L23.146 9a.796.796 0 0 1-.26-.428.89.89 0 0 1 .28-.843.86.86 0 0 1 .459-.187l4.041-.355L29.23 3.48a.747.747 0 0 1 .323-.375.893.893 0 0 1 .448-.125c.152 0 .301.042.447.125a.747.747 0 0 1 .324.375l1.562 3.708 4.042.354c.194.028.347.09.458.188a.892.892 0 0 1 .25.375c.056.153.066.31.032.47a.79.79 0 0 1-.261.426l-3.063 2.646.917 3.937a.73.73 0 0 1-.041.49.99.99 0 0 1-.292.364.813.813 0 0 1-.438.167.75.75 0 0 1-.479-.125L30 14.396ZM50 14.396l-3.459 2.083a.757.757 0 0 1-.479.125.805.805 0 0 1-.437-.167 1 1 0 0 1-.292-.364.73.73 0 0 1-.041-.49l.916-3.937L43.146 9a.796.796 0 0 1-.26-.428.89.89 0 0 1 .28-.843.86.86 0 0 1 .459-.187l4.041-.355L49.23 3.48a.747.747 0 0 1 .323-.375.893.893 0 0 1 .448-.125c.152 0 .301.042.447.125a.747.747 0 0 1 .324.375l1.562 3.708 4.042.354c.194.028.347.09.458.188a.892.892 0 0 1 .25.375c.056.153.066.31.032.47a.79.79 0 0 1-.261.426l-3.063 2.646.917 3.937a.73.73 0 0 1-.041.49.99.99 0 0 1-.292.364.813.813 0 0 1-.438.167.75.75 0 0 1-.479-.125L50 14.396ZM70 14.396l-3.459 2.083a.757.757 0 0 1-.479.125.805.805 0 0 1-.437-.167 1 1 0 0 1-.292-.364.73.73 0 0 1-.041-.49l.916-3.937L63.146 9a.796.796 0 0 1-.26-.428.89.89 0 0 1 .28-.843.86.86 0 0 1 .459-.187l4.041-.355L69.23 3.48a.747.747 0 0 1 .323-.375.893.893 0 0 1 .448-.125c.152 0 .301.042.447.125a.747.747 0 0 1 .324.375l1.562 3.708 4.042.354c.194.028.347.09.458.188a.892.892 0 0 1 .25.375c.056.153.066.31.032.47a.79.79 0 0 1-.261.426l-3.063 2.646.917 3.937a.73.73 0 0 1-.041.49.99.99 0 0 1-.292.364.813.813 0 0 1-.438.167.75.75 0 0 1-.479-.125L70 14.396ZM90 14.396l-3.459 2.083a.757.757 0 0 1-.479.125.805.805 0 0 1-.437-.167 1 1 0 0 1-.292-.364.73.73 0 0 1-.041-.49l.916-3.937L83.146 9a.796.796 0 0 1-.26-.428.89.89 0 0 1 .28-.843.86.86 0 0 1 .459-.187l4.041-.355L89.23 3.48a.747.747 0 0 1 .323-.375.893.893 0 0 1 .448-.125c.152 0 .301.042.447.125a.747.747 0 0 1 .324.375l1.562 3.708 4.042.354c.194.028.347.09.458.188a.892.892 0 0 1 .25.375c.056.153.066.31.032.47a.79.79 0 0 1-.261.426l-3.063 2.646.917 3.937a.73.73 0 0 1-.041.49.99.99 0 0 1-.292.364.813.813 0 0 1-.438.167.75.75 0 0 1-.479-.125L90 14.396Z"/>
+            </svg>
+          </div>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+</section>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const slider = document.querySelector('[data-trust-them-slider]');
+  
+    const flickity = new Flickity(slider, {
+      draggable: false,
+      cellAlign: 'center',
+      groupCells: '90%'
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Landing - Trust Them",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title"
+    },
+    {
+      "type": "text",
+      "id": "review_tag",
+      "label": "Section review tag"
+    },
+    {
+      "type": "text",
+      "id": "rating_tag",
+      "label": "Section rating tag"
+    },
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "initials",
+          "label": "Card initials"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Card description"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Card name"
+        },
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Landing: Trust Them"
+    }
+  ]
+}
+{% endschema %}

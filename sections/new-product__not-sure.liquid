@@ -1,0 +1,200 @@
+{% assign data = section.settings %}
+
+{% style %}
+
+.not-sure {
+  padding: 32px 0;
+}
+
+.not-sure__wrapper {
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: 0 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.not-sure__content {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 16px;
+  background: #EDF2E9;
+  border: 1px solid #284734;
+  border-radius: 16px;
+}
+
+.not-sure__image {
+  flex: 0 0 auto;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.not-sure__texts {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+}
+
+.not-sure__title {
+  width: 100%;
+  font-family: Ambit;
+  font-weight: 900;
+  font-size: 38px;
+  line-height: 1.2;
+  letter-spacing: 3%;
+  color: #404544;
+}
+
+.not-sure__title span {
+  font-weight: 400;
+  font-family: Romie;
+  font-style: Italic;
+}
+
+.not-sure__description {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #404544;
+}
+
+.not-sure__button {
+  font-family: Ambit;
+  background: #284734;
+  padding: 16px 24px;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.25;
+  color: #F7F5F1;
+  width: fit-content;
+  white-space: nowrap;
+  flex: 0 0 auto;
+  transition: all 0.3s ease-in-out; 
+}
+
+.not-sure__button svg {
+  transition: all 0.3s ease-in-out; 
+}
+
+.not-sure__button:hover {
+  color: #F7F5F1;
+}
+
+.not-sure__button:hover svg {
+  transform: translateX(4px) scale(1.1);
+}
+
+@media (max-width: 1280px) {
+  .not-sure__title {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .not-sure__title {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 991px) {
+  .not-sure__content {
+    flex-direction: column;
+    gap: 32px;
+    padding: 8px 8px 32px;
+  }
+
+  .not-sure__image {
+    aspect-ratio: 2.2;
+    width: 100%;
+    max-height: 340px;
+  }
+}
+
+{% endstyle %}
+
+<section class="not-sure">
+  <div class="not-sure__wrapper">
+    <div class="not-sure__content">
+      {% if data.image != blank %}
+        {{ data.image | image_url: width: 230, height: 160 | image_tag: class: 'not-sure__image', loading: 'lazy' }}
+      {% endif %}
+      
+      <div class="not-sure__texts">
+        {% if data.title != blank %}
+          <h2 class="not-sure__title">{{ data.title }}</h2>
+        {% endif %}
+        {% if data.description != blank %}
+          <p class="not-sure__description">{{ data.description }}</p>
+        {% endif %}
+      </div>
+    
+      {% if data.cta_label != blank %}
+        <a 
+          {% if data.cta_url != blank %}
+            href="{{ data.cta_url }}"
+            target="_blank"
+          {% endif %}
+          class="not-sure__button"
+        >
+          {{ data.cta_label }}
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+            <path fill="#F7F5F1" d="M16 8c0 4.417-3.583 8-8 8s-8-3.583-8-8 3.568-8 8-8 8 3.583 8 8ZM7.194 3.194l4.087 4H2.388v1.597h8.893l-4.087 4h2.087l4.892-4.805L9.28 3.18H7.194v.014Z"/>
+            </svg>
+          </a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "New Product: Not sure",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Section image"
+    },
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Section title",
+      "default": "Not sure what you’re <span>Looking For?</span>"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Section description",
+      "default": "Take our test to find your personalised programme."
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Section CTA label",
+      "default": "Take our diagnostic"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Section CTA link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "New Product: Not sure",
+    }
+  ]
+}
+{% endschema %}

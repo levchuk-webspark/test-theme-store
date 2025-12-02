@@ -1,1 +1,305 @@
-{"sections":{"banner":{"type":"fallback_image_banner","settings":{"image_darken":true,"width":"wide","banner_height":"small","padding_top":0,"padding_bottom":0,"css_class":"","custom_css":""}},"main":{"type":"article__main","settings":{"show_breadcrumb":true,"blog_author":true,"blog_date":false,"read_time":true,"blog_comment_count":true,"show_tags":false,"show_featured_image":false,"toggle_related_posts":false,"show_sidebar":false,"sidebar_position":"left","width":"standard","padding_top":40,"padding_bottom":0,"css_class":"","custom_css":""}},"a65626b2-2e02-40fa-ace7-b76974f263e3":{"type":"article__featured-products","blocks":{"af791e8e-16ba-4e8c-9184-0a9c28f2ee77":{"type":"title","settings":{}},"3c0dbf91-e673-4a0c-ae66-35793be06a82":{"type":"description","settings":{"truncate_description":1000}},"8d538621-0832-4642-b627-d48e8e84cb27":{"type":"price","settings":{"display_savings":true}},"1ec156ba-f970-4336-9a16-ef32d2f8d960":{"type":"form","settings":{"show_payment_button":true,"show_gift_card_recipient_form":false,"preordermessage_bg_color":"","preordermessage_border_color":""}}},"block_order":["af791e8e-16ba-4e8c-9184-0a9c28f2ee77","3c0dbf91-e673-4a0c-ae66-35793be06a82","8d538621-0832-4642-b627-d48e8e84cb27","1ec156ba-f970-4336-9a16-ef32d2f8d960"],"settings":{"heading":"YOUTH & EARTH RECOMMENDED PRODUCT","multiple_products_heading":"YOUTH & EARTH RECOMMENDED PRODUCTS","text_align":"left","font_size":32,"heading_color":"#000000","richtext_color":"","heading_background_color":"#eeeeee","background_color":"","products_per_row":4,"hide-price":true,"product_images_position":"left","set_product_height":false,"product_height":410,"video_looping":false,"gallery_arrows":true,"enable_zoom":true,"enable_product_lightbox":true,"display_thumbnails":true,"thumbnail_position":"left-thumbnails","enable_thumbnail_slider":true,"width":"wide","padding_top":20,"padding_bottom":20,"animation":"none","css_class":"","custom_css":""}},"e06e45b4-4cb6-4837-8c7c-a08610c0454c":{"type":"custom-liquid","disabled":true,"settings":{"custom_liquid":"<script>function findDomainSpecificHrefsAndPrint() {\n    var links = document.querySelectorAll('a[href*=\"https:\/\/youthandearth.com\/products\"]');\n    var hrefs = [];\n\n    links.forEach(function(link) {\n        \/\/ Create an HTML string for each link with target=\"_blank\" and a red background\n        var htmlLink = `<a href=\"${link.href}\" target=\"_blank\" style=\"background-color: red; color: white; display: block; margin-bottom: 5px;\">${link.href}<\/a>`;\n        hrefs.push(htmlLink);\n    });\n\n    \/\/ Join the array into a single string with line breaks and log it\n    hrefs.forEach((element) => console.log(element)); \n\n}\n\n\/\/ Example usage:\ndocument.addEventListener('DOMContentLoaded', function() {\nfindDomainSpecificHrefsAndPrint();\n\n});\nfunction injectLinksWithRedBackground() {\n    var links = document.querySelectorAll('a[href*=\"https:\/\/youthandearth.com\/products\"]');\n\n    links.forEach(function(link) {\n        \/\/ Add a solid red background to the link\n        link.style.backgroundColor = '#EEE';\n        link.style.color = 'black'; \/\/ Set text color to white for visibility\n        link.target = '_blank'; \/\/ Open links in a new tab\/window\n    });\n}\n\n\/\/ Example usage:\ndocument.addEventListener('DOMContentLoaded', function() {\n    injectLinksWithRedBackground();\n});\n\n\n\n\n<\/script>","width":"wide"}}},"order":["banner","main","a65626b2-2e02-40fa-ace7-b76974f263e3","e06e45b4-4cb6-4837-8c7c-a08610c0454c"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "fallback_image_banner",
+      "disabled": true,
+      "settings": {
+        "image_darken": true,
+        "width": "wide",
+        "banner_height": "small",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "index_rich_text_JhWgyn": {
+      "type": "index__rich-text",
+      "name": "Rich text",
+      "settings": {
+        "is_h1_title": false,
+        "title": "<span class=\"ambit-black-text\">Learning Hub</span>",
+        "heading_font": "open_sans_n4",
+        "heading_alignment": "left",
+        "heading_size": 94,
+        "text": "",
+        "text_font": "open_sans_n4",
+        "text_alignment": "left",
+        "text_size": 14,
+        "columns": 2,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "button--primary",
+        "button_alignment": "left",
+        "heading_color": "rgba(0,0,0,0)",
+        "text_color": "rgba(0,0,0,0)",
+        "background": "rgba(0,0,0,0)",
+        "gradient": "rgba(0,0,0,0)",
+        "gradient_rotation": 180,
+        "width": "standard",
+        "padding_top": 20,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "animation": "none",
+        "mobile_title": "",
+        "mobile_heading_size": 34,
+        "mobile_text": "",
+        "mobile_alignment": "none",
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "css_class": "",
+        "custom_css": ".card-content {\n    padding: 0px;\n}"
+      }
+    },
+    "main": {
+      "type": "article__main",
+      "blocks": {
+        "search_RW3h4w": {
+          "type": "search",
+          "settings": {
+            "title": ""
+          }
+        },
+        "post_tags_KyPMKB": {
+          "type": "post_tags",
+          "settings": {
+            "title": "Filters",
+            "blog": "learninghub"
+          }
+        },
+        "menu_G49LWk": {
+          "type": "menu",
+          "settings": {
+            "menu": "whats-new",
+            "link_for_menu": "https://youthandearth.com/blogs/learninghub/tagged/trending"
+          }
+        },
+        "menu_8Pwtcq": {
+          "type": "menu",
+          "settings": {
+            "menu": "fundamentals",
+            "link_for_menu": "https://youthandearth.com/blogs/learninghub/tagged/fundamentals"
+          }
+        },
+        "menu_9YK7dA": {
+          "type": "menu",
+          "settings": {
+            "menu": "optimization-1",
+            "link_for_menu": "https://youthandearth.com/blogs/learninghub/tagged/optimization"
+          }
+        },
+        "menu_T979Cd": {
+          "type": "menu",
+          "settings": {
+            "menu": "treatments",
+            "link_for_menu": "https://youthandearth.com/blogs/learninghub/tagged/treatments"
+          }
+        },
+        "menu_bJwDee": {
+          "type": "menu",
+          "settings": {
+            "menu": "testing-and-tracking",
+            "link_for_menu": "https://youthandearth.com/blogs/learninghub/tagged/testing-and-tracking"
+          }
+        },
+        "menu_cMmHcA": {
+          "type": "menu",
+          "settings": {
+            "menu": "lifestyle",
+            "link_for_menu": "https://youthandearth.com/blogs/learninghub/tagged/lifestyle"
+          }
+        },
+        "menu_QfJGba": {
+          "type": "menu",
+          "settings": {
+            "menu": "cutting-edge",
+            "link_for_menu": "https://youthandearth.com/blogs/learninghub/tagged/cutting-edge"
+          }
+        }
+      },
+      "block_order": [
+        "search_RW3h4w",
+        "post_tags_KyPMKB",
+        "menu_G49LWk",
+        "menu_8Pwtcq",
+        "menu_9YK7dA",
+        "menu_T979Cd",
+        "menu_bJwDee",
+        "menu_cMmHcA",
+        "menu_QfJGba"
+      ],
+      "settings": {
+        "show_breadcrumb": true,
+        "blog_author": true,
+        "blog_date": true,
+        "read_time": true,
+        "blog_comment_count": true,
+        "show_tags": false,
+        "show_featured_image": true,
+        "toggle_related_posts": false,
+        "show_sidebar": true,
+        "sidebar_position": "left",
+        "width": "standard",
+        "padding_top": 40,
+        "padding_bottom": 0,
+        "css_class": "",
+        "custom_css": "",
+        "sidebar_button_label": "See All",
+        "sidebar_button_link": "shopify://blogs/learninghub",
+        "blog_type_icon_small": "shopify://shop_images/Exclude_abbe70b5-f728-4df4-8f05-6500a864dab9.svg",
+        "audio_type_icon_small": "shopify://shop_images/Exclude-1_1cfa4c33-f087-4e9d-b069-a43ef32819d0.svg",
+        "video_type_icon_small": "shopify://shop_images/Exclude-3_31a913af-8469-4b38-ae57-301d8015d5b6.svg",
+        "recipes_type_icon_small": "shopify://shop_images/Exclude-2_815cf500-7e83-4d34-ab00-9e343083c9d4.svg",
+        "calendar_type_icon_small": "shopify://shop_images/Group_314442_1.svg",
+        "author_type_icon_small": "shopify://shop_images/Group_314210.svg"
+      }
+    },
+    "a65626b2-2e02-40fa-ace7-b76974f263e3": {
+      "type": "article__featured-products",
+      "blocks": {
+        "af791e8e-16ba-4e8c-9184-0a9c28f2ee77": {
+          "type": "title",
+          "settings": {}
+        },
+        "3c0dbf91-e673-4a0c-ae66-35793be06a82": {
+          "type": "description",
+          "settings": {
+            "truncate_description": 1000
+          }
+        },
+        "8d538621-0832-4642-b627-d48e8e84cb27": {
+          "type": "price",
+          "settings": {
+            "display_savings": true
+          }
+        },
+        "1ec156ba-f970-4336-9a16-ef32d2f8d960": {
+          "type": "form",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient_form": false,
+            "preordermessage_bg_color": "",
+            "preordermessage_border_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "af791e8e-16ba-4e8c-9184-0a9c28f2ee77",
+        "3c0dbf91-e673-4a0c-ae66-35793be06a82",
+        "8d538621-0832-4642-b627-d48e8e84cb27",
+        "1ec156ba-f970-4336-9a16-ef32d2f8d960"
+      ],
+      "settings": {
+        "heading": "YOUTH & EARTH RECOMMENDED PRODUCT",
+        "multiple_products_heading": "YOUTH & EARTH RECOMMENDED PRODUCTS",
+        "text_align": "left",
+        "font_size": 32,
+        "heading_color": "#000000",
+        "richtext_color": "",
+        "heading_background_color": "#eeeeee",
+        "background_color": "",
+        "products_per_row": 4,
+        "hide-price": true,
+        "product_images_position": "left",
+        "set_product_height": false,
+        "product_height": 410,
+        "video_looping": false,
+        "gallery_arrows": true,
+        "enable_zoom": true,
+        "enable_product_lightbox": true,
+        "display_thumbnails": true,
+        "thumbnail_position": "left-thumbnails",
+        "enable_thumbnail_slider": true,
+        "width": "wide",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "animation": "none",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "e06e45b4-4cb6-4837-8c7c-a08610c0454c": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "settings": {
+        "custom_liquid": "<script>function findDomainSpecificHrefsAndPrint() {\n    var links = document.querySelectorAll('a[href*=\"https://youthandearth.com/products\"]');\n    var hrefs = [];\n\n    links.forEach(function(link) {\n        // Create an HTML string for each link with target=\"_blank\" and a red background\n        var htmlLink = `<a href=\"${link.href}\" target=\"_blank\" style=\"background-color: red; color: white; display: block; margin-bottom: 5px;\">${link.href}</a>`;\n        hrefs.push(htmlLink);\n    });\n\n    // Join the array into a single string with line breaks and log it\n    hrefs.forEach((element) => console.log(element)); \n\n}\n\n// Example usage:\ndocument.addEventListener('DOMContentLoaded', function() {\nfindDomainSpecificHrefsAndPrint();\n\n});\nfunction injectLinksWithRedBackground() {\n    var links = document.querySelectorAll('a[href*=\"https://youthandearth.com/products\"]');\n\n    links.forEach(function(link) {\n        // Add a solid red background to the link\n        link.style.backgroundColor = '#EEE';\n        link.style.color = 'black'; // Set text color to white for visibility\n        link.target = '_blank'; // Open links in a new tab/window\n    });\n}\n\n// Example usage:\ndocument.addEventListener('DOMContentLoaded', function() {\n    injectLinksWithRedBackground();\n});\n\n\n\n\n</script>",
+        "width": "wide"
+      }
+    },
+    "index_featured_collection_Ujj74a": {
+      "type": "index__featured-collection",
+      "blocks": {
+        "image_block_KL4e3Y": {
+          "type": "image-block",
+          "settings": {
+            "title": "<span class=\"ambit-black-text\">Protecting future you starts today!</span> <span class=\"romie-regular-italic-text\">Find cutting edge supplements to enhance and safeguard your vitality.</span>",
+            "title_color": "#284734",
+            "image": "shopify://shop_images/AdobeStock_493259264_f1dd6f53-62c0-4503-b02f-f60e0df52c62.jpg",
+            "button_label": "SHOP ALL",
+            "button_link": "shopify://collections/shop-all",
+            "button_bg_color": "#284734",
+            "button_border_color": "#284734",
+            "button_text_color": "#f7f5f1",
+            "button_bg_color_hover": "#78be20",
+            "button_border_color_hover": "#78be20",
+            "button_text_color-hover": "#f7f5f1"
+          }
+        }
+      },
+      "block_order": [
+        "image_block_KL4e3Y"
+      ],
+      "name": "Featured collection",
+      "settings": {
+        "collection": "best-sellers",
+        "heading_desktop": "<span class=\"ambit-black-text\">Providing</span> <span class=\"romie-regular-italic-text\">Personal Longevity</span>",
+        "heading_mobile": "",
+        "sub_heading_desktop": "",
+        "sub_heading_mobile": "",
+        "sub_heading_label": "",
+        "sub_heading_link": "shopify://collections/best-sellers",
+        "section_heading_font_size_desktop": 34,
+        "section_heading_font_size_mobile": 30,
+        "section_sub_heading_font_size_desktop": 65,
+        "section_sub_heading_font_size_mobile": 30,
+        "background_color": "#f7f5f1",
+        "products_per": 4,
+        "products_limit": 12,
+        "align_height": true,
+        "collection_height": 320,
+        "button_label": "",
+        "button_style": "button--primary",
+        "collection_style": "slider",
+        "width": "standard",
+        "show_gutter": true,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "animation": "none",
+        "collection_layout_mobile": "slider",
+        "mobile_products_per_row": "1",
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "index_rich_text_JhWgyn",
+    "main",
+    "a65626b2-2e02-40fa-ace7-b76974f263e3",
+    "e06e45b4-4cb6-4837-8c7c-a08610c0454c",
+    "index_featured_collection_Ujj74a"
+  ]
+}

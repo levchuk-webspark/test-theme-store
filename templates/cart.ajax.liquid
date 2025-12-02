@@ -66,13 +66,13 @@
             {% if item.product.media %}
               {% if item.product.featured_media.preview_image %}
                 <a href="{{ item.url }}">
-                  <img src="{{ item.image | img_url: '320x' }}" alt="{{ item.title | escape }}" />
+                  <img src="{{ item.image | image_url: width: 320 }}" alt="{{ item.title | escape }}" width="320" height="320" />
                 </a>
               {% endif %}
             {% else %}
               {% if item.image %}
                 <a href="{{ item.url }}">
-                  <img src="{{ item | img_url: '320x' }}" alt="{{ item.title | escape }}" />
+                  <img src="{{ item.image | image_url: width: 320 }}" alt="{{ item.title | escape }}" width="320" height="320" />
                 </a>
               {% endif %}
             {% endif %}

@@ -1,0 +1,306 @@
+{% style %}
+
+.new-product__more-info {
+  padding: 32px 0 24px;
+}
+
+.new-product__more-info__questions {
+  display: flex;
+  flex-direction: column;
+}
+  
+.new-product__more-info__question {
+  border-bottom: 1px solid #D4D8D0;
+  padding: 20px 0;
+  overflow: hidden;
+}
+
+.new-product__more-info__question:first-child {
+  border-top: 1px solid #D4D8D0;
+}
+
+.new-product__more-info__question-btn {
+  font-family: Ambit;
+  width: 100%;
+  padding: 0;
+  background: none;
+  border: none;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  gap: 24px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.25;
+  color: #404544;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.new-product__more-info__question-btn svg {
+  flex: 0 0 24px;
+  transition: all 0.3s ease-in-out;
+}
+
+.new-product__more-info__question-btn:hover,
+.new-product__more-info__question-btn._opened {
+  color: #284734;
+}
+
+.new-product__more-info__question-btn._opened svg {
+  transform: rotate(135deg);
+}
+
+.new-product__more-info__question-answer {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  max-height: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.new-product__more-info__question-answer > div {
+  padding: 0;
+  margin: 0;
+  padding-top: 16px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.25;
+  color: #404544;
+}
+
+.new-product__more-info__question-answer > div p:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+.new-product__more-info__question-answer > div a {
+  text-decoration: underline;
+}
+
+.new-product__more-info__popup {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: #04040433;
+  overflow: hidden;
+  z-index: 1000;
+  transition: all 0.3s ease-in-out; 
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.new-product__more-info__popup._active-delivery {
+  pointer-events: auto;
+  opacity: 1;
+  visibility: visible;
+}
+
+.new-product__more-info__popup-wrapper {
+  margin-left: auto;
+  width: 540px;
+  padding: 0 32px;
+  position: relative;
+  background: #F7F5F1;
+  height: 100%;
+  transition: all 0.3s ease-in-out; 
+  transform: translateX(100%);
+  overflow-y: auto;
+}
+
+.new-product__more-info__popup._active-delivery .new-product__more-info__popup-wrapper {
+  transform: none;
+}
+
+.new-product__more-info__popup-close {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.new-product__more-info__popup-close svg {
+  transition: all 0.3s ease-in-out;
+}
+
+.new-product__more-info__popup-close:hover svg {
+  transform: rotate(135deg);
+}
+
+.new-product__more-info__popup-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.new-product__more-info__popup-title {
+  font-family: Ambit;
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 0%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  position: relative;
+  padding: 16px 0;
+  color: #404544;
+  text-transform: uppercase;
+}
+
+.new-product__more-info__popup-title:after {
+  content: '';
+  position: absolute;
+  height: 1px;
+  width: calc(100% + 64px);
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  background: #D4D8D0;
+}
+
+.new-product__more-info__popup-content h3 {
+  font-size: 20px;
+}
+
+.new-product__more-info__popup-content ul,
+.new-product__more-info__popup-content li,
+.new-product__more-info__popup-content p {
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.new-product__more-info__popup-content ol,
+.new-product__more-info__popup-content ul {
+  list-style: disc;
+  padding-left: 16px;
+}
+
+.new-product__more-info__popup-content hr {
+  margin: 0;
+  color: #D4D8D0;
+}
+
+.new-product__more-info__popup-policy {
+  margin-bottom: 24px;
+}
+
+@media (max-width: 576px) {
+  .new-product__more-info__popup-wrapper {
+    width: 100%;
+    padding: 0 24px;
+  }
+
+  .new-product__more-info__popup-title:after {
+    width: calc(100% + 48px);
+  }
+}
+
+{% endstyle %}
+  
+<div class="new-product__more-info">
+    <div class="new-product__more-info__questions" data-more-info-question-wrapper>
+      
+      {% if shop.shipping_policy != blank or shop.refund_policy != blank %}
+        <div class="new-product__more-info__question">
+          <button class="new-product__more-info__question-btn" data-prod-delivery-toggle>
+            {% if block.settings.delivery_heading != blank %}
+              {{ block.settings.delivery_heading }}
+            {% endif %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+              <path stroke="#284734" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 22V2m10 10H2"/>
+            </svg>
+          </button>
+          
+          <div class="new-product__more-info__popup" data-prod-delivery-popup>
+            <div class="new-product__more-info__popup-wrapper">
+              <div class="new-product__more-info__popup-content">
+                <h2 class="new-product__more-info__popup-title">
+                  Delivery & returns
+                  <button class="new-product__more-info__popup-close" data-prod-delivery-close>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M17.7851 17.7851L6 6M17.7851 6L6 17.7851" stroke="#284734" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                </h2>
+                <div class="new-product__more-info__popup-policy">
+                  {{ shop.shipping_policy }}
+                </div>
+
+                <h2 class="new-product__more-info__popup-title">
+                  Returns & Refund Policy
+                </h2>
+                <div class="new-product__more-info__popup-policy">
+                  {{ shop.refund_policy }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+      <div class="new-product__more-info__question">
+        <button class="new-product__more-info__question-btn" data-more-info-question-btn>
+          {% if block.settings.rewards_heading != blank %}
+            {{ block.settings.rewards_heading }}
+          {% endif %}
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <path stroke="#284734" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 22V2m10 10H2"/>
+          </svg>
+        </button>
+        <div class="new-product__more-info__question-answer">
+          <div>
+            {{ pages.rewards.content }}
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const wrapper = document.querySelector('[data-more-info-question-wrapper]');
+    const buttons = wrapper.querySelectorAll('[data-more-info-question-btn]');
+
+    buttons.forEach(btn => btn.addEventListener('click', () => {
+      const isOpened = btn.classList.contains('_opened');
+      const answer = btn.nextElementSibling;
+      btn.classList.toggle('_opened', !isOpened);
+
+      if (isOpened) {
+        answer.style.maxHeight = null;
+      } else {
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    }));
+
+
+    const popup = document.querySelector('[data-prod-delivery-popup]');
+    const deliveryButton = document.querySelector('[data-prod-delivery-toggle]');
+    const closeButton = document.querySelector('[data-prod-delivery-close]');
+  
+    const closePopup = () => {
+      popup.classList.remove('_active-delivery');
+      document.documentElement.style.overflow = null;
+    }
+  
+    deliveryButton.addEventListener('click', () => {
+      popup.classList.add('_active-delivery');
+      document.documentElement.style.overflow = 'hidden';
+    });
+  
+    closeButton.addEventListener('click', closePopup);
+  
+    popup.addEventListener('click', (e) => {
+      e.target.classList.contains('_active-delivery') && closePopup();
+    });
+  });
+</script>

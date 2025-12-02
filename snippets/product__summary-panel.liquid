@@ -1,5 +1,4 @@
 {% assign formatArray = product.metafields.jadepuma.format_options | split: ',' %}
-{% assign buy_more_save_more_meta_object = product.metafields.custom.buy_more_save_more.value %}
 
 {% style %}
 
@@ -33,6 +32,96 @@
   .sizeSwatch { 
     color: #F7F5F1;
   }
+
+  .product-product-redesign .summary-panel {
+    height: auto;
+    margin-bottom: 16px;
+  }
+
+  .product-product-redesign .summary-panel.format {
+    margin-bottom: 16px;
+  }
+
+  .product-product-redesign .panel-cell.size-box,
+  .product-product-redesign .panel-cell.format-box {
+    border: none;
+    padding: 0;
+    height: auto;
+  }
+
+  .product-product-redesign .panel-cell.size-box .text,
+  .product-product-redesign .panel-cell.format-box .text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .product-product-redesign .panel-cell.format-box .text .format-icon-container {
+    position: static;
+    transform: none;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  
+  .product-product-redesign .panel-cell.format-box .text .format-icon-container > a {
+    background: transparent;
+    color: #404544;
+    padding: 8px 8px 8px 40px;
+    border: 1px solid #D4D8D0;
+    transition: all 0.3s ease-in-out;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    border-radius: 8px;
+    margin: 0;
+    gap: 2px;
+    position: relative;
+  }
+
+  .product-product-redesign .panel-cell.format-box .text .format-icon-container > a > img {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    aspect-ratio: 1;
+    object-fit: contain;
+  }
+
+  .product-product-redesign .panel-cell.size-box .text .variants-block {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .product-product-redesign .panel-cell.size-box .text .variants-block > div {
+    background: transparent;
+    color: #404544;
+    padding: 8px;
+    border: 1px solid #D4D8D0;
+    transition: all 0.3s ease-in-out;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    border-radius: 8px;
+    margin: 0;
+  }
+
+  .product-product-redesign .panel-cell.size-box .text .variants-block > div > span {
+    line-height: inherit;
+  }
+
+  .product-product-redesign .panel-cell.format-box .text .format-icon-container > a.selected-icon,
+  .product-product-redesign .panel-cell.size-box .text .variants-block > div.size-swatch-selected {
+    background: #fff;
+    border-color: #284734;
+  }
+  
 {% endstyle %}
 {% if product.id != 8845549011157 %}
   <div class="content1">
@@ -42,9 +131,27 @@
       <div class="panel-cell format-box">
         <div class="text">Type:
 
+          {% if template.suffix == 'product-redesign' %}
+            {% for p in productsArray %}
+              {% if p.id == product.id %}
+                {% assign title = p.title | downcase %}
+                {% if title contains 'powder' %}
+                  Powder
+                {% elsif title contains 'ml' %}
+                  Liquid
+                {% elsif title contains 'capsule' %}
+                  Capsules
+                {% elsif title contains 'soft' %}
+                  Soft gel
+                {% elsif title contains 'skincare' %}
+                  Skincare
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+
           <div class="format-icon-container">
             {% for p in productsArray %}
-
 
               {% if p.id == product.id %}
                 {% assign format-icon-class = "selected-icon" %}
@@ -58,41 +165,65 @@
                 <a
                   href="{{ p.url }}"
                   class="{{format-icon-class}} {% if p.available == false %} format_unavailable {% endif %}"
-                  title="Powder">
-                  {% render 'format-icons'
-                    , format: 'powder' %}
+                  title="Powder"
+                >
+                  {% if template.suffix == 'product-redesign' %}
+                    <img src="{{ 'product-type-powder.png' | asset_url }}" alt="Powder type" width="40" height="40" loading="lazy">
+                    Powder
+                  {% else %}
+                    {% render 'format-icons', format: 'powder' %}
+                  {% endif %}
                 </a>
               {% elsif title contains 'ml' %}
                 <a
                   href="{{ p.url }}"
                   class="{{format-icon-class}} {% if p.available == false %} format_unavailable {% endif %}"
-                  title="Liquid">
-                  {% render 'format-icons'
-                    , format: 'liquid' %}
+                  title="Liquid"
+                >
+                  {% if template.suffix == 'product-redesign' %}
+                    <img src="{{ 'product-type-liquid.png' | asset_url }}" alt="Liquid type" width="40" height="40" loading="lazy">
+                    Liquid
+                  {% else %}
+                    {% render 'format-icons', format: 'liquid' %}
+                  {% endif %}
                 </a>
               {% elsif title contains 'capsule' %}
                 <a
                   href="{{ p.url }}"
                   class="{{format-icon-class}} {% if p.available == false %} format_unavailable {% endif %}"
-                  title="Capsules">
-                  {% render 'format-icons'
-                    , format: 'capsules' %}
+                  title="Capsules"
+                >
+                  {% if template.suffix == 'product-redesign' %}
+                    <img src="{{ 'product-type-capsules.png' | asset_url }}" alt="Capsules type" width="40" height="40" loading="lazy">
+                    Capsules
+                  {% else %}
+                    {% render 'format-icons', format: 'capsules' %}
+                  {% endif %}
                 </a>
               {% elsif title contains 'soft' %}
                 <a
                   href="{{ p.url }}"
                   class="{{format-icon-class}} {% if p.available == false %} format_unavailable {% endif %}"
-                  title="Soft gel">
-                  {% render 'format-icons'
-                    , format: 'softgel' %}
+                  title="Soft gel"
+                >
+                  {% if template.suffix == 'product-redesign' %}
+                    <img src="{{ 'product-type-softgel.png' | asset_url }}" alt="Soft gel type" width="40" height="40" loading="lazy">
+                    Soft gel
+                  {% else %}
+                    {% render 'format-icons', format: 'softgel' %}
+                  {% endif %}
                 </a>
                 {% elsif title contains 'face mask' %}
                 <a
                   href="{{ p.url }}"
                   class="{{format-icon-class}} {% if p.available == false %} format_unavailable {% endif %}"
-                  title="Skincare">
-                  {% render 'format-icons'
-                    , format: 'skincare' %}
+                  title="Skincare"
+                >
+                  {% if template.suffix == 'product-redesign' %}
+                    Skincare
+                  {% else %}
+                    {% render 'format-icons', format: 'skincare' %}
+                  {% endif %}
                 </a>
               {% endif %}
 
@@ -107,87 +238,109 @@
 
     {% assign productFormat = "" %}
 
-    <div class="summary-panel size">
-      <div class="panel-cell size-box">
-        {% if product.has_only_default_variant %}
-          <div class="text">Size: {{ product.metafields.jadepuma.contents_size }} {{ productFormat }}</div>
-        {% else %}
+    {% assign has_size = false %}
 
+    {%- if product.has_only_default_variant -%}
+      {%- if product.metafields.jadepuma.contents_size != blank -%}
+        {% assign has_size = true %}
+      {%- endif -%}
+    {%- else -%}
+      {%- for option in product.options_with_values -%}
+        {%- if option.name contains "Size" and option.values.size > 0 -%}
+          {% assign has_size = true %}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
 
-          {% style %}
+    {% if has_size %}
+      <div class="summary-panel size">
+        <div class="panel-cell size-box">
+          {% if product.has_only_default_variant %}
+            <div class="text">Size: {{ product.metafields.jadepuma.contents_size }} {{ productFormat }}</div>
+          {% else %}
 
-        
+            {% assign option_name = "Size" %}
+            {% if product.options.size == 1 %}
+              {% for option in product.options %}
+                {% assign option_name = option %}
+              {%- endfor %}
+            {%- endif %}
 
+            <script>
 
-          {% endstyle %}
+              let variantInfo  = []
 
+              {% assign google_discount_value = 100 | minus: settings.google_discount_percentage | times: 0.01 %}
 
-
-
-          {% assign option_name = "Size" %}
-          {% if product.options.size == 1 %}
-            {% for option in product.options %}
-              {% assign option_name = option %}
-            {%- endfor %}
-          {%- endif %}
-
-          <script>
-
-            let variantInfo  = []
-
-            {% assign google_discount_value = 100 | minus: settings.google_discount_percentage | times: 0.01 %}
-      
-
-            {% for variant in product.variants %}
-               
-                  variantInfo.push({"index": {{forloop.index}},
-                                    "servingSize": "{{variant.metafields.jadepuma.serving_size}}",
-                                    "nrv" : `{{variant.metafields.jadepuma.nrv}}`,
-                                    "price" : "{{variant.price | money}}",
-                                    "comparePrice" : "{{variant.compare_at_price | money}}",
-                                    "subscriptionPrice" : "{{variant.price | times: 0.75 |  money}}",
-                                    "googleShoppingDiscountPrice" : "{{variant.price | times: google_discount_value |  money}}",
-                                    "variantID" : {{variant.id}}
-                                    })
-
-
-            {% endfor %}
-
-          </script>
-
-
-          <div class="text">
-            <div class="text_name">{{ option_name }}:</div>
-            <div class="variants-block">
               {% for variant in product.variants %}
+                
+                variantInfo.push({
+                  "index": {{forloop.index}},
+                  "servingSize": "{{variant.metafields.jadepuma.serving_size}}",
+                  "nrv" : `{{variant.metafields.jadepuma.nrv}}`,
+                  "price" : "{{variant.price | money}}",
+                  "comparePrice" : "{{variant.compare_at_price | money}}",
+                  "subscriptionPrice" : "{{variant.price | times: 0.75 |  money}}",
+                  "googleShoppingDiscountPrice" : "{{variant.price | times: google_discount_value |  money}}",
+                  "variantID" : {{variant.id}}
+                })
 
+              {% endfor %}
 
-              {% assign variantIndex = forloop.index | minus: 1 %}
+            </script>
 
-              {% if variant.available == false %}
-
+            <div class="text">
+              {% if template.suffix == 'product-redesign' %}
+                {% assign all_sizes = '' %}
+                {% for variant in product.variants %}
+                  {% if forloop.index == 1 %}
+                    {% assign first_size = variant.title %}
+                  {% endif %}
+                  {% assign all_sizes = all_sizes | append: variant.title %}
+                  {% unless forloop.last %}
+                    {% assign all_sizes = all_sizes | append: ',' %}
+                  {% endunless %}
+                {% endfor %}
+              <div class="text_name" data-current-size="{{ first_size }}" data-all-sizes="{{ all_sizes }}">
+                  Size:
+                </div>
+              {% else %}
+                <div class="text_name">
+                  {{ option_name }}:
+                </div>
               {% endif %}
 
-              <div
-                class="sizeSwatch {% if forloop.index == 1 %}size-swatch-selected{% endif %} 
-                {% if variant.title.size > 14 and product.variants.size >= 2 %} sizeSwatchSmall {% endif %}
-                "
-                onclick="selectVariantClick({{variantIndex}})"
+              <div class="variants-block">
+              {% for variant in product.variants %}
+
+                {% assign variantIndex = forloop.index | minus: 1 %}
+
                 {% if variant.available == false %}
-                style="color:grey !important;"
-                {% endif %}>
-                <span>
-                  {{ variant.title }}
-                {% unless productFormat == 'powder' %}
-                  {{ productFormat }}{% endunless %}
-                </span>
+
+                {% endif %}
+
+                <div
+                  class="sizeSwatch {% if forloop.index == 1 %}size-swatch-selected{% endif %} 
+                  {% if variant.title.size > 14 and product.variants.size >= 2 %} sizeSwatchSmall {% endif %}
+                  "
+                  onclick="selectVariantClick({{variantIndex}})"
+                  {% if variant.available == false %}
+                  style="color:grey !important;"
+                  {% endif %}>
+                  <span>
+                    {{ variant.title }}
+                  {% unless productFormat == 'powder' %}
+                    {{ productFormat }}{% endunless %}
+                  </span>
+                </div>
+              {% endfor %}
               </div>
-            {% endfor %}
             </div>
-          </div>
-        {% endif %}
+          {% endif %}
+        </div>
       </div>
-    </div>
+    {% endif %}
+
   </div>
 {% endif %}
 
@@ -280,7 +433,7 @@
     {% if product.id == 8667575910613 %}
         color: #F7F5F1;
       {% endif %}
-    {% if product.id == 7396104994889 %}
+    {% if product.id == 8672614645973 %}
       background-color: #45001F;
       color: #F7F5F1;
     {% endif %}
@@ -315,7 +468,7 @@
       });
 
 
-    {% comment %} $('.sizeSwatch').addClass('black') {% endcomment %}
+    {% comment %} $('.sizeSwatch').addClass('black')  {% endcomment %}
 
     setTimeout(()=>{
 
@@ -337,77 +490,18 @@
 
       },1500)
 
-      function calculateSaveMoreBuyMore(selectedVariant) {
-        const metaObject = {{ buy_more_save_more_meta_object | json }};
+     
+      function selectVariantClick(index){
+        const sizeNode = document.querySelector('[data-current-size]');
 
-        if (metaObject?.quantity_1) {
-          const onlyOneTimePurchaceElement = document.querySelectorAll('[data-only-one-option-overall="1"]');
-          const activeBuyButton = document.getElementsByClassName("product__buy-more_save-more__bottom-block__buy-item active");
-          let currentQuantity = 0;
-          let currentDiscount = 0;
-
-          if (activeBuyButton?.length) {
-            {% comment %} Get quantity and discount from active buy button {% endcomment %}
-            if (activeBuyButton[0]) {
-              currentQuantity = activeBuyButton[0].dataset.quantity;
-              currentDiscount = activeBuyButton[0].dataset.discount;
-              {% comment %} Remove selected state from Sealsub {% endcomment %}
-              setTimeout(() => {
-                const activeSealSubOptions = document.getElementsByClassName('sls-option-container seal-table sls-active');
-                if (activeSealSubOptions) {
-                  activeSealSubOptions.forEach((activeElement) => {
-                    activeElement.classList.remove('sls-active');
-                  });
-                }
-              }, 350)
-            }
-          } else {
-            {% comment %} Use default quantity and discount from meta_object {% endcomment %}
-            if (metaObject?.quantity_3) {
-              currentQuantity = metaObject.quantity_3
-            } else if (metaObject?.quantity_2) {
-              currentQuantity = metaObject.quantity_2
-            } else if (metaObject?.quantity_1) {
-              currentQuantity = metaObject.quantity_1
-            }
-
-            if (metaObject?.discount_3) {
-              currentDiscount = metaObject.discount_3
-            } else if (metaObject?.discount_2) {
-              currentDiscount = metaObject.discount_2
-            } else if (metaObject?.discount_1) {
-              currentDiscount = metaObject.discount_1
-            }
-          }
-
-          let currentPrice = selectedVariant.price / 100;
-          const originalPrice = currentPrice * currentQuantity;
-          const discount = originalPrice * (currentDiscount / 100);
-          const discountedPrice = originalPrice - discount;
-          const pricePerUnit = discountedPrice / currentQuantity;
-          const currency = '{{ cart.currency.symbol }}';
-
-          {% comment %} product__buy-more_save-more__original-price {% endcomment %}
-          const originalPriceElement = document.getElementsByClassName("product__buy-more_save-more__original-price");
-          if (originalPriceElement && originalPrice) {
-            originalPriceElement[0].innerText = currency + originalPrice.toFixed(2);
-          }
-
-          {% comment %} product__buy-more_save-more__price {% endcomment %}
-          const priceElement = document.getElementsByClassName("product__buy-more_save-more__price");
-          if (priceElement && discountedPrice) {
-            priceElement[0].innerText = currency + discountedPrice.toFixed(2);
-          }
-
-          {% comment %} £26.24/unit product__buy-more_save-more__price-per-unit {% endcomment %}
-          const pricePerUnitElement = document.getElementsByClassName("product__buy-more_save-more__price-per-unit");
-          if (pricePerUnitElement && pricePerUnit) {
-            pricePerUnitElement[0].innerText = currency + pricePerUnit.toFixed(2) + '/unit';
+        if (sizeNode) {
+          const allOptions = sizeNode.dataset.allSizes?.split(',');
+          const currentSize = allOptions?.[index];
+          
+          if (currentSize) {
+            sizeNode.textContent = `Size: ${currentSize}`;
           }
         }
-      }
-
-      function selectVariantClick(index){
 
         if(document.querySelectorAll('.bsub-widget__group-header')[0]){
           document.querySelectorAll('.bsub-widget__group-header')[0].click()   
@@ -434,12 +528,8 @@
         document.querySelector('.no-subscription-price_google-shopping-discount-applied').innerHTML = googleShoppingDiscountPrice;
         document.querySelector('.no-subscription-compare-at-price_google-shopping').innerHTML = variantPrice;
 
-        const product_variants = {{ product.variants | json }};
-        const current_product_variant = product_variants[index];
-        calculateSaveMoreBuyMore(current_product_variant)
-
         const isMobileMedia = window.matchMedia("(max-width: 798px)");
-        if (isMobileMedia.matches) {
+        if (isMobileMedia.matches && !document.body.classList.contains('product-product-redesign')) {
           const purchaseContainers = document.querySelectorAll(".purchase-details");
           const currentPrices = document.querySelectorAll(".no-subscription-price-display-prices");
           const activeSls = document.querySelectorAll(".sls-active");
@@ -634,7 +724,7 @@
 
     {% if  formatArray.size > 0 %}
 
-      .panel-cell.size-box {
+       .panel-cell.size-box {
         border-radius: 5px;
       }
       .panel-cell.format-box {
@@ -692,7 +782,7 @@
         align-items: center;
       }
 
-  .format-icon-svg path, .format-icon path {
+.format-icon-svg path, .format-icon path {
     stroke: #949992;
   }
 

@@ -9,6 +9,8 @@
   {%- assign locale_selector = true -%}
 {%- endif -%}
 
+
+
 <div class="mobile-menu">
   <div class="mobile-menu__content">
     <ul class="mobile-menu__list has-margin-bottom">
@@ -39,7 +41,11 @@
           {% endif %}
         </li>
       {% endif %}
+      <div class="widgets">
         {%  render 'localization-orbe' %}
+        {% render 'take-our-test', cta_url: cta_url %}
+      </div>
+        
       </div>
       {% if settings.header_layout == 'vertical' %}
         {% for block in nav_blocks %}

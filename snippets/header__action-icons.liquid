@@ -9,7 +9,10 @@
 {%- assign locale_selector = false -%}
 {%- assign currency_selector = false -%}
 
-{%- if object.settings.show_currency_selector and shop.enabled_currencies.size > 1 or localization.available_countries.size > 1 -%}
+{%- if object.settings.show_currency_selector
+  and shop.enabled_currencies.size > 1
+  or localization.available_countries.size > 1
+-%}
   {%- assign currency_selector = true -%}
 {%- endif -%}
 
@@ -18,24 +21,17 @@
 {%- endif -%}
 
 {% style %}
-
   .header__icon {
     color: {{ settings.header_link_color }};
+    /* color: #F7F5F1; */
   }
 
   .header__icons .action-area__link {
     padding: 1.6rem 5px;
   }
-
-  .header__icons .action-area__link:last-child {
-    padding-right: 0;
-  }
-
 {% endstyle %}
 
 <div class="header__icons header__icon-style-{{ icon_style | replace: '_', '-' }} {{ header_icon_class }}">
-
-
   {% comment %} Currency converter select {% endcomment %}
   <div class="header__link">
     {% render 'localization-switcher',
@@ -56,11 +52,7 @@
       data-show-search-trigger
       tabindex="0"
     >
-      {%
-        render 'icon',
-        name: 'search',
-        icon_class: 'header__icon',
-      %}
+      {% render 'icon', name: 'search', icon_class: 'header__icon' %}
 
       <span class="icon-caption">
         {{- 'general.search.title' | t | escape -}}
@@ -72,46 +64,72 @@
     {% comment %} Account icon {% endcomment %}
     {% if customer %}
       {% comment %} Logout {% endcomment %}
-      <a href="{{ routes.account_url }}" class="header__link action-area__link" >
-          {% render 'icon',
-                  name: 'avatar',
-                  icon_class: 'header__icon'
-          %}
-          <span class="icon-caption">{{ 'layout.customer.my_account' | t | escape }}</span>
+      <a href="{{ routes.account_url }}" class="header__link action-area__link">
+        {% render 'icon', name: 'avatar', icon_class: 'header__icon' %}
+        <span class="icon-caption">{{ 'layout.customer.my_account' | t | escape }}</span>
       </a>
     {% else %}
       {% comment %} Login {% endcomment %}
-      <a href="{{ routes.account_login_url }}" class="header__link action-area__link" >
-          {% render 'icon',
-                  name: 'avatar',
-                  icon_class: 'header__icon'
-          %}
-          <span class="icon-caption">{{ 'layout.customer.log_in' | t | escape }}</span>
+      <a href="{{ routes.account_login_url }}" class="header__link action-area__link">
+        {% render 'icon', name: 'avatar', icon_class: 'header__icon' %}
+        <span class="icon-caption">{{ 'layout.customer.log_in' | t | escape }}</span>
       </a>
     {% endif %}
   {% endif %}
 
   {% comment %} Cart icon {% endcomment %}
-  <div class="header-cart action-area__link {% if cart.item_count != 0 %}has-cart-count{% endif %}" data-ajax-cart-trigger>
-    <a class="header__link" href="{{ routes.cart_url }}" >
-      <span class="header-cart__icon">
-        {% render 'icon',
-                name: settings.cart_icon,
-                icon_class: 'header__icon'
-        %}
-        <span class="header-cart__count header-cart__count--badge badge" data-bind="itemCount">
-          {{ cart.item_count }}
-        </span>
+  {%- assign cart_class = 'header-cart action-area__link' -%}
+{%- if cart.item_count != 0 -%}
+  {%- assign cart_class = cart_class | append: ' has-cart-count' -%}
+{%- endif -%}
+
+
+<div class="{{ cart_class }}" >
+  <a
+    class="header__link"
+    href="{{ request.path }}?viewcart=true"
+    role="button"
+    aria-controls="rebuy-smart-cart"
+    aria-expanded="false"
+    data-smartcart-open
+  >
+    <span class="header-cart__icon">
+      {% render 'icon', name: settings.cart_icon, icon_class: 'header__icon' %}
+      <span class="header-cart__count header-cart__count--badge badge" data-bind="itemCount">
+        {{ cart.item_count }}
       </span>
-      <span class="header-cart__caption icon-caption">
-        {{ 'layout.general.cart' | t | escape }}
-        {%- if icon_style == 'text' -%}
-          <span class="header-cart__count cart__count--text" data-bind="itemCount">{{ cart.item_count }}</span>
-        {%- endif -%}
-      </span>
-    </a>
-    {% if settings.cart_action == 'mini_cart' %}
-      {% render 'ajax-cart' %}
-    {% endif %}
+    </span>
+    <span class="header-cart__caption icon-caption">
+      {{ 'layout.general.cart' | t | escape }}
+      {%- if icon_style == 'text' -%}
+        <span class="header-cart__count cart__count--text" data-bind="itemCount">{{ cart.item_count }}</span>
+      {%- endif -%}
+    </span>
+  </a>
+
+  {%- comment -%}
+    If your theme has its own mini-cart, it can fight with Rebuy.
+    If you're all-in on Rebuy Smart Cart, consider disabling the theme mini-cart:
+    1) Hide the setting in the Customizer OR
+    2) Remove this render:
+  {%- endcomment -%}
+  {% if settings.cart_action == 'mini_cart' %}
+    {% render 'ajax-cart' %}
+  {% endif %}
+
   </div>
 </div>
+
+{% comment %} <script>
+  // on smart cart ready
+  document.addEventListener('readystatechange', function () {
+    const cartLink = document.querySelector('.header-cart .header__link');
+    // when cart link clicked show loader with message "Loading your cart..."
+    cartLink.addEventListener('click', function () {
+      console.log("CART ICON CLICKED")
+      // show loader
+      document.body.insertAdjacentHTML('beforeend', '<div class="cart-loader">Loading your cart...</div>');
+    })
+  })
+</script> {% endcomment %}
+

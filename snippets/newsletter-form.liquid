@@ -82,10 +82,6 @@
     transform: rotate(180deg);
   }
 
-  .field.is-default-width.is-align-self-end.newsletter__button-block {
-    margin-bottom: 30px;
-  }
-
 
   {% render 'css-loop',
           css: custom_css,
@@ -109,22 +105,6 @@
   .is-within-form {
     min-height: 40px;
   }
-  .offer-valid {
-    font-size: 14px; 
-    font-weight: 400;
-  }
-
-  .letter_logo_box {
-    width: 100%;
-    margin-top: 25px;
-  }
-
-  .letter_logo_box__wrapper {
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-  }
-  
   @media only screen and (max-width: 798px) {
     {% if display_first_name and display_last_name %}
       .first_name {
@@ -135,10 +115,6 @@
       }
     {% endif %}
 
-    .email {
-      margin-right: 5px;
-    }
-
     #shopify-section-{{ section.id }} .newsletter__button-block__icons .icon:nth-child(5){
       display: none;
     }
@@ -146,19 +122,6 @@
     #shopify-section-{{ section.id }} .label.newsletter__text {
       font-size: 15px;
     }
-
-    .offer-valid {
-        font-size: 10px;
-        line-height: 1;
-    }
-
-    .field.is-default-width.is-align-self-end.newsletter__button-block {
-      margin-bottom: 25px;
-    }
-
-     .letter_logo_box { 
-      margin-top: 10px;
-     }
   }
 
   @media only screen and (max-width: 389px) {
@@ -233,9 +196,11 @@
             </label>
           </div>
         {% endif %}
-
-        {% comment %} Email {% endcomment %}
-        <div class="field email">
+      </div>
+      
+      {% comment %} Email {% endcomment %}
+      <div class="email_submit_box">
+        <div class="field is-stretched-width">
           <div class="control {% if settings.show_form_icons %} has-icons-left has-icons-left--responsive-form{% endif %}">
             <input
               class="input is-{{ field_input_style }} is-{{ field_input_size }} newsletter-input"
@@ -255,6 +220,13 @@
 
         {% comment %} Submit button {% endcomment %}
         <div class="field is-default-width is-align-self-end newsletter__button-block">
+        <div class="newsletter__button-block__icons">
+            {% render 'icon', name: 'read-more-left-arrow' %}
+            {% render 'icon', name: 'read-more-left-arrow' %}
+            {% render 'icon', name: 'read-more-left-arrow' %}
+            {% render 'icon', name: 'read-more-left-arrow' %}
+            {% render 'icon', name: 'read-more-left-arrow' %}
+          </div>
           <div class="control">
             {%- assign button_label = 'general.newsletter_form.submit' | t -%}
             {% render 'button'
@@ -265,21 +237,6 @@
             %}
           </div>
         </div>
-      </div>
-      
-      
-      <div class="letter_logo_box">
-        {% if newsletter_logo != blank %}
-          {%
-            render 'image-element',
-            image: newsletter_logo,
-            alt: newsletter_logo.alt,
-            class: "",
-            stretch_width: true,
-            additional_wrapper_classes: "letter_logo_box__wrapper",
-            focal_point: newsletter_logo.presentation.focal_point,
-          %}
-        {% endif %}
       </div>
   {% endform %}
 </div>

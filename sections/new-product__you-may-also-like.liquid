@@ -1,0 +1,325 @@
+{% assign data = product.metafields.custom.product_you_may_also_like.value %}
+
+
+{% if data != blank %}
+  {% style %}
+  
+  .you-may-also-like {
+    padding: 48px 0 96px;
+    background: #F7F5F1;
+  }
+  
+  .you-may-also-like__wrapper {
+    margin: 0 auto;
+    max-width: 1440px;
+    padding: 0 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  
+  .you-may-also-like__title {
+    color: #284734;
+    font-family: Ambit;
+    font-weight: 900;
+    font-size: 38px;
+    line-height: 44px;
+    letter-spacing: 3%;
+  }
+  
+  .you-may-also-like__title span {
+    font-family: 'Romie' !important;
+    font-style: Italic;
+    font-weight: 400;
+  }
+  
+  .you-may-also-like__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 72px;
+  }
+  
+  .you-may-also-like__card {
+    flex: 0 0 calc(33.333% - (72px * 2 / 3));
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  
+  .you-may-also-like__card-image {
+    margin: 0 auto;
+    transition: all 0.3s ease-in-out;
+    object-fit: cover;
+  }
+  
+  .you-may-also-like__card-link {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .you-may-also-like__card-link:hover .you-may-also-like__card-image {
+    transform: scale(1.05);
+  }
+  
+  .you-may-also-like__card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  
+  .you-may-also-like__card-category {
+    color: #284734;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+  }
+  
+  .you-may-also-like__card-rating {
+    margin-left: auto;
+  }
+  
+  .you-may-also-like__card-rating .summary-rating {
+    height: 20px !important;
+  }
+  
+  .you-may-also-like__card-title {
+    color: #404544;
+    font-family: Ambit;
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 1.4;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .you-may-also-like__card-link:hover .you-may-also-like__card-title {
+    color: #78be20;
+  }
+  
+  .you-may-also-like__card-subtitle {
+    color: #28473499;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.4;
+    margin-top: 8px;
+  }
+  
+  .you-may-also-like__card-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+  }
+  
+  .you-may-also-like__card-price {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 12px 16px;
+    border: 1px solid #284734;
+    border-radius: 36px;
+    text-align: center;
+    color: #404544;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+  }
+  
+  .you-may-also-like__card-button {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 16px;
+    text-align: center;
+    color: #F7F5F1;
+    border-radius: 36px;
+    cursor: pointer;
+    background: #284734;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .you-may-also-like__card-button:hover {
+    background: #2f543dff;
+    color: #F7F5F1;
+  }
+  
+  .you-may-also-like__card-button-disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  
+  @media (max-width: 1200px) {
+    .you-may-also-like__list {
+      gap: 32px;
+    }
+  
+    .you-may-also-like__card {
+      flex: 0 0 calc(33.333% - (32px * 2 / 3));
+    }
+  }
+  
+  @media (max-width: 991px) {
+    .you-may-also-like__title {
+      font-size: 28px;
+    }
+  
+    .you-may-also-like__list {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      margin: 0 -20px;
+      padding: 0 20px;
+      width: calc(100% + 40px);
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  
+    .you-may-also-like__list::-webkit-scrollbar {
+      display: none;
+    }
+  
+    .you-may-also-like__card {
+      flex: 0 0 320px;
+    }
+  
+    .you-may-also-like__card-image {
+      aspect-ratio: auto 230 / 340;
+    }
+  }
+  
+  {% endstyle %}
+
+  <section class="you-may-also-like">
+    <div class="you-may-also-like__wrapper">
+      <div class="you-may-also-like__info">
+        {% if data.section_title != blank %}
+          <h2 class="you-may-also-like__title">
+            {{ data.section_title }}
+          </h2>
+        {% endif %}
+      </div>
+
+      <ul class="you-may-also-like__list">
+        {% for product in data.items.value %}
+          <li class="you-may-also-like__card">
+            <a href="{{ product.url }}" class="you-may-also-like__card-link">
+              {% if product.featured_media != blank %}
+                {{ product.featured_media | image_url: width: 320, height: 370 | image_tag: class: 'you-may-also-like__card-image', loading: 'lazy' }}
+              {% endif %}
+
+              <span class="you-may-also-like__card-top">
+                {% if product.metafields.jadepuma.category != blank %}
+                  <span class="you-may-also-like__card-category">
+                    {{ product.metafields.jadepuma.category }}
+                  </span>
+                {% endif %}
+                <span class="you-may-also-like__card-rating">
+                  {% if product.id == 8174336213205 %}
+                    <div
+                      class="feefo-product-stars-widget"
+                      data-product-sku="SQ0960213,SQ9604110,SQ8719575,SQ9603360,SQ8710176,SQ0948111,SQ8660950"
+                    ></div>
+                  {% elsif product.id == 8174339653845 %}
+                    <div
+                      class="feefo-product-stars-widget"
+                      data-product-sku="SQ0960213,SQ9604110,SQ8719575,SQ9603360,SQ8710176,SQ0948111,SQ8660950"
+                    ></div>
+                  {% elsif product.id == 8667575910613 %}
+                    <div class="feefo-product-stars-widget" data-product-sku="SQ9960688,SQ9960770,SQ9960787,SQ9960671"></div>
+                  {% else %}
+                    <div class="feefo-product-stars-widget" data-product-sku="{{ product.variants.first.sku }}"></div>
+                  {% endif %}
+                </span>
+              </span>
+
+              <h2 class="you-may-also-like__card-title">
+                {% if product.metafields.jadepuma.short_title %}
+                  {{ product.metafields.jadepuma.short_title }}
+                {% else %}
+                  {{ product.title }}
+                {% endif %}
+              </h2>
+
+              {% if product.metafields.jadepuma.short_subtitle %}
+                <h3 class="you-may-also-like__card-subtitle">
+                  {{- product.metafields.jadepuma.short_subtitle -}}
+                </h3>
+              {% endif %}
+            </a>
+            
+            <div class="you-may-also-like__card-actions">
+              <div class="you-may-also-like__card-price">
+                {% if product.price_varies and product.price_min > 0 %}
+                    {{ 'products.general.from' | t }}
+                {% endif %}
+                {% if product.price_min > 0 %}
+                  {% render 'price-element', price: product.price_min %}
+                {% endif %}
+                {% if product.compare_at_price > product.price %}
+                  {% unless product.price_varies and product.price_min > 0 %}
+                    {% render 'price-element', price: product.compare_at_price %}
+                  {% endunless %}
+                {% endif %}
+              </div>
+
+              
+              {% assign displayPreorderMetafield = false %}
+              {%- assign collection_handles = product.collections | map: 'handle' -%}
+
+              {% for v in product.variants %}
+                {% unless v.inventory_quantity >= 0 or v.inventory_policy == 'deny' %}
+                  {% if product.metafields.jadepuma.preorder_button_text != blank
+                    and product.metafields.jadepuma.preorder_message != blank
+                  %}
+                    {% assign displayPreorderMetafield = true %}
+                    {% break %}
+                  {% endif %}
+                {% endunless %}
+              {% endfor %}
+
+              {% if displayPreorderMetafield %}
+                <a href="/cart/add/{{ product.selected_or_first_available_variant.id }}" class="you-may-also-like__card-button" rel="nofollow">
+                  Add to cart
+                </a>
+              {% elsif collection_handles contains 'coming-soon' %}
+                <div class="you-may-also-like__card-button you-may-also-like__card-button-disabled">
+                  {{ 'collections.general.coming_soon' | t }}
+                </div>
+              {% elsif product.available == false %}
+                <div class="you-may-also-like__card-button you-may-also-like__card-button-disabled">
+                  {{ 'collections.general.sold_out' | t }}
+                </div>
+              {% else %}
+                {% if product.has_only_default_variant %}
+                  <a href="/cart/add/{{ product.selected_or_first_available_variant.id }}" class="you-may-also-like__card-button" rel="nofollow">
+                    Add to cart
+                  </a>
+                {% else %}
+                  <a href="{{ product.url }}" class="you-may-also-like__card-button">View options</a>
+                {% endif %}
+              {% endif %}
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+{% endif %}
+    
+{% schema %}
+{
+  "name": "New Product: You May Also",
+  "presets": [
+    {
+      "name": "New Product: You May Also"
+    }
+  ]
+}
+{% endschema %}

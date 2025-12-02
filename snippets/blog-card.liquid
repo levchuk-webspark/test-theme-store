@@ -1,0 +1,516 @@
+{% comment %}
+  This file is used to render a blog card for each article in the blog.
+  It includes the article image, title, publication date, and a link to view more.
+
+  Parameters:
+  - article: The article object containing details about the blog post.
+{% endcomment %}
+{% liquid
+  assign blog_name = 'Blog'
+  assign audio_name = 'Audio'
+  assign video_name = 'Video'
+  assign recipes_name = 'Recipes'
+  assign filter_opacity_alpha = settings.filter_opacity | divided_by: 100.00
+%}
+
+{% style %}
+  .card {
+      border: 0;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s;
+      width: 373px;
+      height: 500px;
+      margin-right: 20px;
+   }
+
+    .carousel-cell {
+      display: flex;
+      border: 0;
+      box-shadow: none;
+      margin-bottom: 40px;
+      margin-top: 20px;
+      margin-left: 0;
+      padding-left: 0;
+    }
+
+    .carousel-cell:hover > .blog-card__inner > img {
+      transform: scale(1.05);
+    }
+
+   .card-inner-image {
+     width: 100%;
+     height: auto;
+   }
+
+   .content {
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 1;
+   }
+
+    [data-blog-posts-wrapper] {
+      position: relative;
+      overflow: hidden;
+    }
+
+  .blog-card__inner {
+    border-radius: 10px;
+    width: 373px;
+    height: 373px;
+    overflow: hidden;
+  }
+
+  .blog-card__card-opacity {
+    border-radius: 10px;
+    width: 373px;
+    height: 373px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: {{ settings.filter_color | color_modify: 'alpha', filter_opacity_alpha }};
+    transition: visibility 0s, opacity 0.5s linear;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .carousel-cell:hover > .blog-card__inner > .blog-card__card-opacity {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .blog-card__inner > img {
+    border-radius: 10px;
+    aspect-ratio: 1 / 1;
+    max-height: 373px;
+    height: 373px;
+    width: 373px;
+  }
+
+  .blog-card__title {
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 110.00000000000001%;
+    letter-spacing: 0%;
+  }
+
+  .blog-card__meta {
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 110.00000000000001%;
+    letter-spacing: 0%;
+  }
+
+  .blog-card__card-opacity__fixed {
+    background: linear-gradient(180deg, rgba(217, 217, 217, 0) 0%, #404544 100%);
+    background-blend-mode: multiply;
+    border-radius: 10px;
+    width: 373px;
+    height: 230px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  .blog-card__link {
+    border-radius: 10px;
+    width: 373px;
+    height: 373px;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .blog-card__view-more {
+    color: {{ settings.button_primary_text_color }};
+    background-color: {{ settings.button_primary_bg_color | color_modify: 'alpha', btn_primary_alpha }};
+    border-color: {{ settings.button_primary_border_color }};
+  }
+
+  .blog-card__view-more:hover {
+    color: {{ settings.button_primary_text_color--highlight }};
+    border-color: {{ settings.button_primary_border_color--highlight }};
+    background-color: {{ settings.button_primary_bg_color--highlight | color_modify: 'alpha', btn_primary_hover_alpha }};
+  }
+
+  .carousel-cell:hover > .blog-card__inner > a > .blog-card__view-more {
+      color: {{ settings.button_primary_text_color--highlight }};
+      border-color: {{ settings.button_primary_border_color--highlight }};
+      background-color: {{ settings.button_primary_bg_color--highlight | color_modify: 'alpha', btn_primary_hover_alpha }};
+  }
+
+  .blog-card__card-icon {
+    width: 112px;
+    height: 112px;
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+  }
+
+  .blog-card__meta__icon {
+    width: 22px;
+    height: 22px;
+    margin-right: 8px;
+  }
+
+  .blog-card__meta__duration-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .blog-card__divider {
+    height: 0.5px;
+  }
+
+  .blog-card__meta {
+    color: #404544;
+  }
+
+  .blog-card__title {
+    color: #284734;
+  }
+
+  .blogs-container .carousel-cell {
+    margin: 0;
+  }
+
+  .blogs-container .blog-card__link {
+    width: 255px;
+    height: 255px;
+  }
+
+  .blogs-container .blog-card__card-opacity {
+    width: 255px;
+    height: 255px;
+  }
+
+  .blogs-container .blog-card__inner > img {
+    width: 255px;
+    height: 255px;
+    min-height: 255px;
+  }
+
+  .blogs-container .blog-card__inner {
+    width: 255px;
+    height: 255px;
+  }
+
+  .blogs-container .card {
+    width: 255px;
+    height: 350px;
+    margin-right: unset;
+  }
+  
+  .blogs-container .blog-card__card-opacity__fixed {
+    height: 160px;
+    width: 255px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, {{ section.settings.filter_color_fixed }} 100%);
+    background-blend-mode: multiply;
+  }
+
+  .blogs-container .blog-card__card-icon {
+    width: 77px;
+    height: 77px;
+    bottom: 8px;
+    left: 8px;
+  }
+
+  .blogs-container .blog-card__title {
+    font-size: 15px;
+  }
+
+  .blogs-container  .blog-card__divider {
+    margin: 6px 0;
+  }
+
+  @media (max-width: 1101px) {
+    .blogs-container .blog-card__link {
+      width: 225px;
+      height: 225px;
+    }
+
+    .blogs-container .blog-card__inner > img {
+      width: 225px;
+      height: 225px;
+      min-height: 225px;
+    }
+
+    .blogs-container .blog-card__card-opacity {
+      width: 225px;
+      height: 225px;
+    }
+
+    .blogs-container .blog-card__card-opacity__fixed {
+      height: 135px;
+      width: 225px;
+    }
+
+    .blogs-container .blog-card__inner {
+      width: 225px;
+      height: 225px;
+    }
+
+    .blogs-container .card {
+      width: 225px;
+      height: 335px;
+    }
+  }
+
+   @media only screen and (max-width: 798px) {
+     #shopify-section-{{ section.id }} {
+       padding-top: {{ section.settings.padding_top_mobile }}px;
+       padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+     }
+
+    .blog-card__title {
+      font-size: 15px;
+    }
+
+     .blog-card__inner {
+      width: 290px;
+      height: 290px;
+      overflow: hidden;
+    }
+
+    .blog-card__inner > img {
+      max-height: 290px;
+      height: 290px;
+      width: 290px;
+    }
+
+     .card {
+        width: 290px;
+       height: 400px;
+     }
+
+     .blog-card__card-opacity {
+       width: 290px;
+      height: 290px;
+     }
+
+     .blog-card__card-opacity__fixed {
+        width: 290px;
+        height: 180px;
+       background: linear-gradient(180deg, rgba(217, 217, 217, 0) 0%, #404544 100%);
+        background-blend-mode: multiply;
+      }
+
+     .blog-card__link {
+       width: 290px;
+       height: 290px;
+      }
+
+     .blog-card__card-icon {
+        width: 87px;
+        height: 87px;
+        bottom: 10px;
+        left: 10px;
+      }
+
+     .blog-card__meta__icon {
+        width: 17px;
+        height: 17px;
+        margin-right: 6px;
+      }
+   }
+
+   @media (max-width: 575px) {
+     .blogs-container {
+       gap: 10px;
+       margin-bottom: 20px;
+     }
+     
+     .blogs-container .blog-card__link {
+       width: 100%;
+       height: 180px;
+     }
+
+     .blogs-container .blog-card__card-opacity__fixed {
+       width: 100%;
+       height: 90px;
+     }
+
+     .blogs-container .blog-card__card-opacity {
+       width: 100%;
+       height: 180px;
+     }
+
+     .blogs-container .blog-card__inner > img {
+       width: 100%;
+       height: 180px;
+     }
+     
+     .blogs-container .blog-card__inner {
+       width: 100%;
+       height: 180px;
+     }
+
+     .blogs-container .card {
+       width: 100%;
+       height: 300px;
+     }
+
+     .blogs-container .blog-card__card-icon {
+        width: 55px;
+        height: 55px;
+     }
+
+     @media (max-width: 390px) {
+      .blogs-container .blog-card__link {
+         height: 170px;
+       }
+
+     .blogs-container .blog-card__card-opacity__fixed {
+       height: 80px;
+     }
+
+     .blogs-container .blog-card__card-opacity {
+       height: 170px;
+     }
+
+     .blogs-container .blog-card__inner > img {
+       height: 170px;
+     }
+     
+     .blogs-container .blog-card__inner {
+       height: 170px;
+     }
+    }
+  }
+
+  @media (max-width: 350px) {
+    .blogs-container .blog-card__link {
+         height: 150px;
+       }
+
+     .blogs-container .blog-card__card-opacity__fixed {
+       height: 70px;
+     }
+
+     .blogs-container .blog-card__card-opacity {
+       height: 150px;
+     }
+
+     .blogs-container .blog-card__inner > img {
+       height: 150px;
+     }
+     
+     .blogs-container .blog-card__inner {
+       height: 150px;
+     }
+  }
+
+
+   {%
+     render 'css-loop',
+     css: section.settings.custom_css,
+     id: section.id,
+   %}
+{% endstyle %}
+
+<div class="card carousel-cell">
+  {% assign article_details = article.metafields.custom.article_details.value %}
+  {% assign article_type = article.metafields.custom.article_type.value %}
+
+  <div class="blog-card__inner">
+    {% if article.image %}
+      <img
+        src="{{ article.image.src | image_url: width: 600, height: 400 }}"
+        alt="{{ article.title | escape }}"
+        class="blog-card__image"
+        width="{{ article.image.width }}"
+        height="{{ article.image.height }}"
+        loading="lazy"
+      >
+    {% endif %}
+    <div class="blog-card__card-opacity"></div>
+    <div class="blog-card__card-opacity__fixed"></div>
+    <a href="{{ article.url }}" class="blog-card__link"></a>
+
+    {% if article_type %}
+      {% if article_type == blog_name %}
+        {% render 'image-element',
+          image: settings.blog_type_icon_big,
+          alt: settings.blog_type_icon_big.alt,
+          additional_wrapper_classes: 'blog-card__card-icon'
+        %}
+      {% endif %}
+      {% if article_type == audio_name %}
+        {% render 'image-element',
+          image: settings.audio_type_icon_big,
+          alt: settings.audio_type_icon_big.alt,
+          additional_wrapper_classes: 'blog-card__card-icon'
+        %}
+      {% endif %}
+      {% if article_type == video_name %}
+        {% render 'image-element',
+          image: settings.video_type_icon_big,
+          alt: settings.video_type_icon_big.alt,
+          additional_wrapper_classes: 'blog-card__card-icon'
+        %}
+      {% endif %}
+      {% if article_type == recipes_name %}
+        {% render 'image-element',
+          image: settings.recipes_type_icon_big,
+          alt: settings.recipes_type_icon_big.alt,
+          additional_wrapper_classes: 'blog-card__card-icon'
+        %}
+      {% endif %}
+    {% endif %}
+
+    {% comment %} <a href="{{ article.url }}"><div class="blog-card__view-more">View More</div></a> {% endcomment %}
+  </div>
+
+  <div class="content">
+    <a href="{{ article.url }}">
+      <div class="blog-card__title">{{ article.title }}</div>
+    </a>
+    <hr class="blog-card__divider">
+    <div class="blog-card__meta">
+      {% if article_details.duration_tags %}
+        <div class="blog-card__meta__duration-wrapper">
+          {% if article_type %}
+            {% if article_type == blog_name %}
+              {% render 'image-element',
+                image: settings.blog_type_icon_small,
+                alt: settings.blog_type_icon_small.alt,
+                additional_wrapper_classes: 'blog-card__meta__icon'
+              %}
+            {% endif %}
+            {% if article_type == audio_name %}
+              {% render 'image-element',
+                image: settings.audio_type_icon_small,
+                alt: settings.audio_type_icon_small.alt,
+                additional_wrapper_classes: 'blog-card__meta__icon'
+              %}
+            {% endif %}
+            {% if article_type == video_name %}
+              {% render 'image-element',
+                image: settings.video_type_icon_small,
+                alt: settings.video_type_icon_small.alt,
+                additional_wrapper_classes: 'blog-card__meta__icon'
+              %}
+            {% endif %}
+            {% if article_type == recipes_name %}
+              {% render 'image-element',
+                image: settings.recipes_type_icon_small,
+                alt: settings.recipes_type_icon_small.alt,
+                additional_wrapper_classes: 'blog-card__meta__icon'
+              %}
+            {% endif %}
+            <div class="blog-card__meta__duration__value">
+              {{ article_details.duration_tags | remove: '[' | remove: ']' | remove: "'" | remove: '"' }}
+            </div>
+          {% endif %}
+        </div>
+      {% elsif article.content.size %}
+        {% comment %} <span>{{ article.content.size | divided_by: 250 | ceil }} min read</span> {% endcomment %}
+        {% render 'blog__read-time', article: article %}
+      {% endif %}
+      <span>{{ article.published_at | date: '%B %d, %Y' }}</span>
+    </div>
+  </div>
+</div>
+{% comment %} </div> {% endcomment %}

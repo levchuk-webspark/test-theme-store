@@ -1,1 +1,307 @@
-{"sections":{"main":{"type":"page-content__main","disabled":true,"settings":{"show_heading":true,"heading_alignment":"left","width":"standard","padding_top":40,"padding_bottom":40,"css_class":"","custom_css":""}},"bb831b57-3d21-491a-b54d-a2f1cd1e5c99":{"type":"index__image-with-text-overlay","settings":{"image":"shopify:\/\/shop_images\/man-golfing-banner.jpg","desktop_image_height":500,"use_image_aspect_ratio":false,"image_opacity":0.5,"background_image_color":"#003b00","mobile_image":"shopify:\/\/shop_images\/man-golfing-mobile.jpg","mobile_image_height":300,"link":"","pretext":"<p>Nicotinamide<br\/>Mononucleotide<\/p>","title":"NAD+","subtitle":"<p><strong>NAD+<\/strong>is a naturally occurring molecule found in every cell of the body.<br\/>The SIRT gene, one of the 4 Longevity Pathways require NAD+ for activation.<\/p>","pretext_color":"#ffffff","heading_color":"#ffffff","subheading_color":"#ffffff","text_alignment":"left","text_horizontal_position":"center","text_vertical_position":"middle","text_width":40,"background_color":"#ffffff","background_opacity":0,"border_color":"#ffffff","border_width":0,"button_1":"","button_1_link":"","button_1_style":"button--secondary","button_2":"","button_2_link":"","button_2_style":"button--secondary","width":"wide","padding_top":0,"padding_bottom":0,"padding_left":0,"padding_right":0,"animation":"none","mobile_text_below_image":false,"mobile_preheading":"","mobile_heading":"","mobile_subheading":"","pretext_color_mobile":"rgba(0,0,0,0)","heading_color_mobile":"rgba(0,0,0,0)","subheading_color_mobile":"rgba(0,0,0,0)","text_alignment_mobile":"same_as_desktop","padding_top_mobile":0,"padding_bottom_mobile":20,"css_class":"","custom_css":""}},"5f712dfb-24c6-45d1-8f51-0a9ed8fc0fd3":{"type":"index__gallery","blocks":{"template--16814630699221__5f712dfb-24c6-45d1-8f51-0a9ed8fc0fd3-image-2":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/image-assets_23824ea3-28a7-4e71-95ce-8614c9937387.png","link":"","text_description":"<p>Words Words and More words<\/p>","text_color":"#000000","text-box_color":"#000000","text_padding":5,"text_margin":10}},"template--16814630699221__5f712dfb-24c6-45d1-8f51-0a9ed8fc0fd3-image-1":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/nad_energy.png","link":"","text_description":"","text_color":"#000000","text-box_color":"#000000","text_padding":5,"text_margin":10}},"template--16814630699221__5f712dfb-24c6-45d1-8f51-0a9ed8fc0fd3-image-3":{"type":"image","settings":{"link":"","text_description":"","text_color":"#000000","text-box_color":"#000000","text_padding":5,"text_margin":10}},"template--16814630699221__5f712dfb-24c6-45d1-8f51-0a9ed8fc0fd3-image-4":{"type":"image","settings":{"link":"","text_description":"","text_color":"#000000","text-box_color":"#000000","text_padding":5,"text_margin":10}}},"block_order":["template--16814630699221__5f712dfb-24c6-45d1-8f51-0a9ed8fc0fd3-image-2","template--16814630699221__5f712dfb-24c6-45d1-8f51-0a9ed8fc0fd3-image-1","template--16814630699221__5f712dfb-24c6-45d1-8f51-0a9ed8fc0fd3-image-3","template--16814630699221__5f712dfb-24c6-45d1-8f51-0a9ed8fc0fd3-image-4"],"disabled":true,"settings":{"gallery_type":"classic","images_per_row":3,"crop_images":false,"enable_lightbox":false,"overlay_color":"#000000","link_color":"#ffffff","width":"standard","show_gutter":true,"padding_top":20,"padding_bottom":20,"animation":"none","mobile_layout":"stacked","crop_images_mobile":false,"show_arrows":true,"show_navigation_dots":true,"padding_top_mobile":20,"padding_bottom_mobile":20,"css_class":"","custom_css":""}},"5ea47f4d-df59-42f8-a8ec-eadb0991aaac":{"type":"NAD","settings":{"left_img1":"shopify:\/\/shop_images\/image-assets_23824ea3-28a7-4e71-95ce-8614c9937387.png","discription1":"<p><strong>NAD+<\/strong> is in every cell of our body.<\/p>","left_img2":"shopify:\/\/shop_images\/nad-nmn-fuel.png","discription2":"<p>When cellular energy increases as a result of high levels of <strong>NAD+<\/strong> in the body, it energizes us like fuel, that powers our heart and brain, while protecting our DNA from damage.<\/p>","cent_img1":"shopify:\/\/shop_images\/nad-ageing.png","cent_discription1":"<p>The body doesn’t have an endless supply of <strong>NAD+<\/strong> in fact levels decrease as you get older.<\/p>","cent_img2":"shopify:\/\/shop_images\/nad-nmn-meter.png","cent_discription2":"<p><strong>NMN<\/strong> increases <strong>NAD+<\/strong> cellular energy.<\/p>","bottom_img":"shopify:\/\/shop_images\/nad-graph_cfe868ec-4e08-4ba3-9b2b-b95fca548396.png","bottom_discription1":"<p>What can increase <strong>NAD?<\/strong><br\/><br\/>NMN, exercise, calorie restriction, vegetables and fish.<\/p>","bootom_discription2":"<p>What can decrease <strong>NAD?<\/strong><br\/><br\/>Over consumption, sedentary lifestyle, DNA damage, illness and stress.<\/p>","right_img1":"shopify:\/\/shop_images\/nad-volcano.png","right_discription1":"<p><strong>NAD+<\/strong> is used to power metabolism enabling the mitochondria – “the power stations” of the cell to convert the food we eat, into the energy our body needs to sustain all its functions.<\/p>","right_botom_img1":"shopify:\/\/shop_images\/nad-diet.png","right_img2":"shopify:\/\/shop_images\/nad-scale_87349c60-7fb3-4551-9c4b-9be90fe9a185.png","right_discription2":"<p>Reduction in <strong>NAD+<\/strong> impairs the ability to produce cellular energy which is critical in supporting DNA repair.<\/p>","fullwith_img":"shopify:\/\/shop_images\/nad-tennis_2_0967e3e8-62ae-4d7e-8021-3481a8f8f83b.png","bottom_full_discription1":"<p>NMN supplementation can boost <strong>NAD+<\/strong> levels in older people, to that of a 20 year old!<\/p>"}},"53051493-9a35-444e-a3cd-c8649742026d":{"type":"index__image-with-text","blocks":{"template--16814630699221__53051493-9a35-444e-a3cd-c8649742026d-text-1":{"type":"text","settings":{"title":"Shop our Range of NAD+ Products","has_padding":true,"heading_size":"regular","text":"","alignment":"left","vertical_position":"center","button_label":"Shop NAD+","link":"shopify:\/\/collections\/nad-boosters","button_style":"button--primary","background":"rgba(0,0,0,0)","text_color":"rgba(0,0,0,0)","mobile_title":"","mobile_heading_size":"same_as_desktop","mobile_text":"","mobile_alignment":"same_as_desktop"}}},"block_order":["template--16814630699221__53051493-9a35-444e-a3cd-c8649742026d-text-1"],"custom_css":[".button {margin-top: 10px;}"],"settings":{"width":"standard","show_gutter":true,"vertical_images_toggle":false,"padding_top":0,"padding_bottom":20,"animation":"none","mobile_text_position":"same_as_desktop","mobile_padding_top":20,"mobile_padding_bottom":20,"css_class":"","custom_css":""}},"a609b3c4-d2f7-4d2e-ac7c-79e2b2326650":{"type":"index__featured-collection","settings":{"collection":"nad-boosters","products_per":3,"products_limit":9,"align_height":false,"collection_height":200,"button_label":"","button_style":"button--primary","collection_style":"slider","width":"standard","show_gutter":true,"padding_top":0,"padding_bottom":40,"animation":"none","collection_layout_mobile":"grid","mobile_products_per_row":"1","padding_top_mobile":20,"padding_bottom_mobile":20,"css_class":"","custom_css":""}},"ad2b80c8-82db-4e1e-9dba-4b172b3dec79":{"type":"index__image-with-text-overlay","settings":{"image":"shopify:\/\/shop_images\/main-banner-banner.jpg","desktop_image_height":500,"use_image_aspect_ratio":false,"image_opacity":0.5,"background_image_color":"#003b00","mobile_image":"shopify:\/\/shop_images\/main-banner-mobile.jpg","mobile_image_height":300,"link":"","pretext":"","title":"STAY YOUNG, LIVE LONG, LOVE LIFE","subtitle":"","pretext_color":"#ffffff","heading_color":"#ffffff","subheading_color":"#ffffff","text_alignment":"left","text_horizontal_position":"center","text_vertical_position":"middle","text_width":40,"background_color":"#ffffff","background_opacity":0,"border_color":"#ffffff","border_width":0,"button_1":"Shop Now","button_1_link":"shopify:\/\/pages\/shop","button_1_style":"button--primary","button_2":"","button_2_link":"","button_2_style":"button--secondary","width":"wide","padding_top":0,"padding_bottom":0,"padding_left":0,"padding_right":0,"animation":"none","mobile_text_below_image":false,"mobile_preheading":"","mobile_heading":"","mobile_subheading":"","pretext_color_mobile":"rgba(0,0,0,0)","heading_color_mobile":"rgba(0,0,0,0)","subheading_color_mobile":"rgba(0,0,0,0)","text_alignment_mobile":"same_as_desktop","padding_top_mobile":0,"padding_bottom_mobile":0,"css_class":"","custom_css":""}}},"order":["main","bb831b57-3d21-491a-b54d-a2f1cd1e5c99","5f712dfb-24c6-45d1-8f51-0a9ed8fc0fd3","5ea47f4d-df59-42f8-a8ec-eadb0991aaac","53051493-9a35-444e-a3cd-c8649742026d","a609b3c4-d2f7-4d2e-ac7c-79e2b2326650","ad2b80c8-82db-4e1e-9dba-4b172b3dec79"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page-content__main",
+      "disabled": true,
+      "settings": {
+        "show_heading": true,
+        "heading_alignment": "left",
+        "width": "standard",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "bb831b57-3d21-491a-b54d-a2f1cd1e5c99": {
+      "type": "index__image-with-text-overlay",
+      "settings": {
+        "image": "shopify://shop_images/man-golfing-banner.jpg",
+        "desktop_image_height": 500,
+        "use_image_aspect_ratio": false,
+        "image_opacity": 0.5,
+        "background_image_color": "#003b00",
+        "mobile_image": "shopify://shop_images/man-golfing-mobile.jpg",
+        "mobile_image_height": 300,
+        "link": "",
+        "pretext": "<p>Nicotinamide<br/>Mononucleotide</p>",
+        "title": "NAD+",
+        "subtitle": "<p><strong>NAD+</strong>is a naturally occurring molecule found in every cell of the body.<br/>The SIRT gene, one of the 4 Longevity Pathways require NAD+ for activation.</p>",
+        "pretext_color": "#ffffff",
+        "heading_color": "#ffffff",
+        "subheading_color": "#ffffff",
+        "text_alignment": "left",
+        "text_horizontal_position": "center",
+        "text_vertical_position": "middle",
+        "text_width": 40,
+        "background_color": "#ffffff",
+        "background_opacity": 0,
+        "border_color": "#ffffff",
+        "border_width": 0,
+        "button_1": "",
+        "button_1_link": "",
+        "button_1_style": "button--secondary",
+        "button_2": "",
+        "button_2_link": "",
+        "button_2_style": "button--secondary",
+        "width": "wide",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "animation": "none",
+        "mobile_text_below_image": false,
+        "mobile_preheading": "",
+        "mobile_heading": "",
+        "mobile_subheading": "",
+        "pretext_color_mobile": "rgba(0,0,0,0)",
+        "heading_color_mobile": "rgba(0,0,0,0)",
+        "subheading_color_mobile": "rgba(0,0,0,0)",
+        "text_alignment_mobile": "same_as_desktop",
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "5f712dfb-24c6-45d1-8f51-0a9ed8fc0fd3": {
+      "type": "index__gallery",
+      "blocks": {
+        "template--16814630699221__5f712dfb-24c6-45d1-8f51-0a9ed8fc0fd3-image-2": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image-assets_23824ea3-28a7-4e71-95ce-8614c9937387.png",
+            "link": "",
+            "text_description": "<p>Words Words and More words</p>",
+            "text_color": "#000000",
+            "text-box_color": "#000000",
+            "text_padding": 5,
+            "text_margin": 10
+          }
+        },
+        "template--16814630699221__5f712dfb-24c6-45d1-8f51-0a9ed8fc0fd3-image-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/nad_energy.png",
+            "link": "",
+            "text_description": "",
+            "text_color": "#000000",
+            "text-box_color": "#000000",
+            "text_padding": 5,
+            "text_margin": 10
+          }
+        },
+        "template--16814630699221__5f712dfb-24c6-45d1-8f51-0a9ed8fc0fd3-image-3": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "text_description": "",
+            "text_color": "#000000",
+            "text-box_color": "#000000",
+            "text_padding": 5,
+            "text_margin": 10
+          }
+        },
+        "template--16814630699221__5f712dfb-24c6-45d1-8f51-0a9ed8fc0fd3-image-4": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "text_description": "",
+            "text_color": "#000000",
+            "text-box_color": "#000000",
+            "text_padding": 5,
+            "text_margin": 10
+          }
+        }
+      },
+      "block_order": [
+        "template--16814630699221__5f712dfb-24c6-45d1-8f51-0a9ed8fc0fd3-image-2",
+        "template--16814630699221__5f712dfb-24c6-45d1-8f51-0a9ed8fc0fd3-image-1",
+        "template--16814630699221__5f712dfb-24c6-45d1-8f51-0a9ed8fc0fd3-image-3",
+        "template--16814630699221__5f712dfb-24c6-45d1-8f51-0a9ed8fc0fd3-image-4"
+      ],
+      "disabled": true,
+      "settings": {
+        "gallery_type": "classic",
+        "images_per_row": 3,
+        "crop_images": false,
+        "enable_lightbox": false,
+        "overlay_color": "#000000",
+        "link_color": "#ffffff",
+        "width": "standard",
+        "show_gutter": true,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "animation": "none",
+        "mobile_layout": "stacked",
+        "crop_images_mobile": false,
+        "show_arrows": true,
+        "show_navigation_dots": true,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "5ea47f4d-df59-42f8-a8ec-eadb0991aaac": {
+      "type": "NAD",
+      "settings": {
+        "left_img1": "shopify://shop_images/image-assets_23824ea3-28a7-4e71-95ce-8614c9937387.png",
+        "discription1": "<p><strong>NAD+</strong> is in every cell of our body.</p>",
+        "left_img2": "shopify://shop_images/nad-nmn-fuel.png",
+        "discription2": "<p>When cellular energy increases as a result of high levels of <strong>NAD+</strong> in the body, it energizes us like fuel, that powers our heart and brain, while protecting our DNA from damage.</p>",
+        "cent_img1": "shopify://shop_images/nad-ageing.png",
+        "cent_discription1": "<p>The body doesn’t have an endless supply of <strong>NAD+</strong> in fact levels decrease as you get older.</p>",
+        "cent_img2": "shopify://shop_images/nad-nmn-meter.png",
+        "cent_discription2": "<p><strong>NMN</strong> increases <strong>NAD+</strong> cellular energy.</p>",
+        "bottom_img": "shopify://shop_images/nad-graph_cfe868ec-4e08-4ba3-9b2b-b95fca548396.png",
+        "bottom_discription1": "<p>What can increase <strong>NAD?</strong><br/><br/>NMN, exercise, calorie restriction, vegetables and fish.</p>",
+        "bootom_discription2": "<p>What can decrease <strong>NAD?</strong><br/><br/>Over consumption, sedentary lifestyle, DNA damage, illness and stress.</p>",
+        "right_img1": "shopify://shop_images/nad-volcano.png",
+        "right_discription1": "<p><strong>NAD+</strong> is used to power metabolism enabling the mitochondria – “the power stations” of the cell to convert the food we eat, into the energy our body needs to sustain all its functions.</p>",
+        "right_botom_img1": "shopify://shop_images/nad-diet.png",
+        "right_img2": "shopify://shop_images/nad-scale_87349c60-7fb3-4551-9c4b-9be90fe9a185.png",
+        "right_discription2": "<p>Reduction in <strong>NAD+</strong> impairs the ability to produce cellular energy which is critical in supporting DNA repair.</p>",
+        "fullwith_img": "shopify://shop_images/nad-tennis_2_0967e3e8-62ae-4d7e-8021-3481a8f8f83b.png",
+        "bottom_full_discription1": "<p>NMN supplementation can boost <strong>NAD+</strong> levels in older people, to that of a 20 year old!</p>"
+      }
+    },
+    "53051493-9a35-444e-a3cd-c8649742026d": {
+      "type": "index__image-with-text",
+      "blocks": {
+        "template--16814630699221__53051493-9a35-444e-a3cd-c8649742026d-text-1": {
+          "type": "text",
+          "settings": {
+            "title": "Shop our Range of NAD+ Products",
+            "has_padding": true,
+            "heading_size": "regular",
+            "text": "",
+            "alignment": "left",
+            "vertical_position": "center",
+            "button_label": "Shop NAD+",
+            "link": "shopify://collections/nad-boosters",
+            "button_style": "button--primary",
+            "background": "rgba(0,0,0,0)",
+            "text_color": "rgba(0,0,0,0)",
+            "mobile_title": "",
+            "mobile_heading_size": "same_as_desktop",
+            "mobile_text": "",
+            "mobile_alignment": "same_as_desktop"
+          }
+        }
+      },
+      "block_order": [
+        "template--16814630699221__53051493-9a35-444e-a3cd-c8649742026d-text-1"
+      ],
+      "custom_css": [
+        ".button {margin-top: 10px;}"
+      ],
+      "settings": {
+        "width": "standard",
+        "show_gutter": true,
+        "vertical_images_toggle": false,
+        "padding_top": 0,
+        "padding_bottom": 20,
+        "animation": "none",
+        "mobile_text_position": "same_as_desktop",
+        "mobile_padding_top": 20,
+        "mobile_padding_bottom": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "a609b3c4-d2f7-4d2e-ac7c-79e2b2326650": {
+      "type": "index__featured-collection",
+      "settings": {
+        "collection": "nad-boosters",
+        "products_per": 3,
+        "products_limit": 9,
+        "align_height": false,
+        "collection_height": 200,
+        "button_label": "",
+        "button_style": "button--primary",
+        "collection_style": "slider",
+        "width": "standard",
+        "show_gutter": true,
+        "padding_top": 0,
+        "padding_bottom": 40,
+        "animation": "none",
+        "collection_layout_mobile": "grid",
+        "mobile_products_per_row": "1",
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "ad2b80c8-82db-4e1e-9dba-4b172b3dec79": {
+      "type": "index__image-with-text-overlay",
+      "settings": {
+        "image": "shopify://shop_images/main-banner-banner.jpg",
+        "desktop_image_height": 500,
+        "use_image_aspect_ratio": false,
+        "image_opacity": 0.5,
+        "background_image_color": "#003b00",
+        "mobile_image": "shopify://shop_images/main-banner-mobile.jpg",
+        "mobile_image_height": 300,
+        "link": "",
+        "pretext": "",
+        "title": "STAY YOUNG, LIVE LONG, LOVE LIFE",
+        "subtitle": "",
+        "pretext_color": "#ffffff",
+        "heading_color": "#ffffff",
+        "subheading_color": "#ffffff",
+        "text_alignment": "left",
+        "text_horizontal_position": "center",
+        "text_vertical_position": "middle",
+        "text_width": 40,
+        "background_color": "#ffffff",
+        "background_opacity": 0,
+        "border_color": "#ffffff",
+        "border_width": 0,
+        "button_1": "Shop Now",
+        "button_1_link": "shopify://pages/shop",
+        "button_1_style": "button--primary",
+        "button_2": "",
+        "button_2_link": "",
+        "button_2_style": "button--secondary",
+        "width": "wide",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "animation": "none",
+        "mobile_text_below_image": false,
+        "mobile_preheading": "",
+        "mobile_heading": "",
+        "mobile_subheading": "",
+        "pretext_color_mobile": "rgba(0,0,0,0)",
+        "heading_color_mobile": "rgba(0,0,0,0)",
+        "subheading_color_mobile": "rgba(0,0,0,0)",
+        "text_alignment_mobile": "same_as_desktop",
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "css_class": "",
+        "custom_css": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "bb831b57-3d21-491a-b54d-a2f1cd1e5c99",
+    "5f712dfb-24c6-45d1-8f51-0a9ed8fc0fd3",
+    "5ea47f4d-df59-42f8-a8ec-eadb0991aaac",
+    "53051493-9a35-444e-a3cd-c8649742026d",
+    "a609b3c4-d2f7-4d2e-ac7c-79e2b2326650",
+    "ad2b80c8-82db-4e1e-9dba-4b172b3dec79"
+  ]
+}

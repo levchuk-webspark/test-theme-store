@@ -1,1 +1,743 @@
-{"sections":{"breadcrumbs":{"type":"product__breadcrumb","disabled":true,"settings":{"width":"standard","padding_top":20,"padding_bottom":20,"css_class":"","custom_css":""}},"main":{"type":"product__main","blocks":{"becaebad-2d89-4e15-9733-f52a58d04781":{"type":"metafield","settings":{}},"39f9c4c1-574e-4af5-a129-c658f0455557":{"type":"shopify:\/\/apps\/feefo-product-reviews\/blocks\/product-stars\/b69c206e-8df3-4642-a8bf-d681d74dfe91","disabled":true,"settings":{}},"title":{"type":"title","settings":{"product-title-font-size":34,"product-title-font-size-mobile":21}},"one_sentence_xMw9Er":{"type":"one-sentence","settings":{"one-sentence-top-padding":0,"one-sentence-bottom-padding":0,"one-sentence-font-size":24,"one-sentence-top-padding-mobile":10,"one-sentence-bottom-padding-mobile":10,"one-sentence-font-size-mobile":18}},"product_benefits_QwtqHp":{"type":"product__benefits","settings":{}},"image_mobile_7FF6LU":{"type":"image__mobile","settings":{}},"f022e2b0-7ffe-45f7-90cb-413439bbee87":{"type":"summary-panel","settings":{}},"price":{"type":"price","settings":{"display_savings":true}},"49ec59c7-cc61-42c6-bf02-65639927f9a1":{"type":"description","settings":{"truncate_description":290}},"buy_more_save_more_i3mm9N":{"type":"buy-more_save-more","settings":{"discount_background_color_active":"#78be20","discount_background_color_inactive":"#949992","discount_text_color_active":"#f7f5f1","discount_text_color_inactive":"#f7f5f1","buy_background_color_active":"#44693d","buy_background_color_inactive":"#ebe9e5","buy_text_color_active":"#edf2e9","buy_text_color_inactive":"#949992"}},"seal_subscriptions_subscription_widget_ygfp4q":{"type":"shopify:\/\/apps\/seal-subscriptions\/blocks\/subscription-widget\/13b25004-a140-4ab7-b5fe-29918f759699","settings":{"product":"{{product}}"}},"9b9f6435-97b0-47fd-b34e-e13d0028c451":{"type":"discount_promo","settings":{}},"why_subscribe_short_m4RDh7":{"type":"why-subscribe-short","settings":{"title":"<span class=\"ambit-black-text\">Why<\/span> <span class=\"romie-regular-italic-text\">subscribe?<\/span>","description":"We highly recommend subscribing, as it provides the most reliable method for effectively supplementing your body over time, optimizing your health improvements, and maximizing the effects of the product on your body."}},"form":{"type":"form","settings":{"show_payment_button":false,"show_gift_card_recipient_form":false,"preordermessage_bg_color":"#fc4301","preordermessage_border_color":"#000000","preordermessage_border_radius":8,"v14_color":""}},"subscription_benefits_n7gfFb":{"type":"subscription-benefits","settings":{"subscription-benefit-1-title":"Convenient automatic delivery","subscription-benefit-1-image":"shopify:\/\/shop_images\/Delivery_Active_UPD.svg","subscription-benefit-1-image-inactive":"shopify:\/\/shop_images\/Delivery_Inactive_UPD.svg","subscription-benefit-2-title":"Skip, change or cancel anytime","subscription-benefit-2-image":"shopify:\/\/shop_images\/Calendar_Active_UPD.svg","subscription-benefit-2-image-inactive":"shopify:\/\/shop_images\/Calendar_Inactive_UPD.svg","subscription-benefit-3-title":"","subscription-benefit-4-title":"","subscription-benefit-info-icon":"shopify:\/\/shop_images\/Asset_1_3.png","text_color":"#404544","background_color_active":"#edf2e9","background_color_inactive":"#ebe9e5"}},"921e2683-d746-4aa5-bd4e-cb98b8f6d403":{"type":"complementary_products","settings":{"heading":"Pairs well with","product_recommendation_limit":5,"products_per_slide":2}},"unique_selling_points_JYrck8":{"type":"unique-selling-points","settings":{"unique-selling-point-1-title":"FREE U.S. DELIVERY, FOREVER*","unique-selling-point-1-description":"*U.S. delivery is always free for orders over $100.","unique-selling-point-1-image":"shopify:\/\/shop_images\/Delivery_Earth_Green_Dark.svg","unique-selling-point-2-title":"GOOD MANUFACTURING PRACTICE","unique-selling-point-2-description":"Ingredients are sourced and products are manufactured in GMP facilities.","unique-selling-point-2-image":"shopify:\/\/shop_images\/GMP_Earth_Green_Dark.svg","unique-selling-point-3-title":"WORLDWIDE SHIPPING","unique-selling-point-3-description":"We deliver our supplements directly to you.","unique-selling-point-3-image":"shopify:\/\/shop_images\/Shipping_Earth_Green_Dark.svg","unique-selling-point-4-title":"FOOD SAFETY SYSTEM","unique-selling-point-4-description":"Products are manufactured in HACCP facilities.","unique-selling-point-4-image":"shopify:\/\/shop_images\/HACCP_Earth_Green_Dark.svg","unique-selling-point-5-title":"100% HAPPINESS GUARANTEE","unique-selling-point-5-description":"Not right for you after 60 days? No problem, it's on us!","unique-selling-point-5-image":"shopify:\/\/shop_images\/Star_Earth_Green_Dark.svg","unique-selling-point-6-title":"","unique-selling-point-6-description":"","unique-selling-point-font-size":12,"unique-selling-point-font-size__mobile":9,"unique-selling-point-background_color":"rgba(0,0,0,0)","unique-selling-point-title_color":"#3f4444","unique-selling-point-description_color":"#3f4444","unique-selling-point-description_background_color":"#ebe9e5"}},"c355a475-068a-4052-8d10-f0ae4ad900cc":{"type":"product-accordion","settings":{"auto_close":true,"is_v14":true,"description_heading":"Description","ingredients_heading":"Ingredients","ingredients_subheading":"Ingredients","nrv_subheading":"NRV","allergens_subheading":"Allergens","dietary_subheading":"Dietary","additional-info_heading":"Additional information","serving-size_subheading":"Serving Size","dosage_subheading":"Dosage","more-info_subheading":"More Info","storage_subheading":"Storage","warnings_subheading":"Warnings","certificates-and-awards_heading":"Lab Reports & awards","awards_heading":"Awards","certificates_heading":"Lab Reports","delivery-and-returns_heading":"Delivery & returns","delivery_subheading":"Delivery","returns_subheading":"Returns","rewards_heading":"Rewards","truncate_description":290,"faq-title":"","faq-description":"","faq-link-1-title":"Ask a question","faq-link-1-url":"shopify:\/\/pages\/contact","faq-link-2-title":"","faq-link-2-url":""}},"vimonial_shoppable_videos_ugc_app_block_carousel_product_pBhpL3":{"type":"shopify:\/\/apps\/vimonial-shoppable-videos-ugc\/blocks\/app-block_carousel_product\/1dcd7963-8ac2-434c-ae02-8cb7de12e6a2","disabled":true,"settings":{"heading":"Customers Love our products","description":"Watch some short reviews from our customers","campaign_id":"none","shadow_size":10,"width":200,"width_mobile":150,"slide_gap":10,"autoplay":true,"force_aspect":false,"align_heading":"left","align_items":"center","order_by":"date_desc","color_play_button":"#000000","color_play_button_inner":"#ffffff","load_background_color":"rgba(0,0,0,0)","border_color":"#000000","border_size":0,"overflow":false}},"upsell_by_amp_embedded_product_WywDHJ":{"type":"shopify:\/\/apps\/upsell-by-amp\/blocks\/embedded-product\/04a7ddf7-3a4c-4228-9a44-33ba2380f058","settings":{"override_url":""}},"upsell_by_amp_embedded_volume_discount_mPcet3":{"type":"shopify:\/\/apps\/upsell-by-amp\/blocks\/embedded-volume-discount\/04a7ddf7-3a4c-4228-9a44-33ba2380f058","disabled":true,"settings":{"override_url":""}}},"block_order":["becaebad-2d89-4e15-9733-f52a58d04781","39f9c4c1-574e-4af5-a129-c658f0455557","title","one_sentence_xMw9Er","product_benefits_QwtqHp","image_mobile_7FF6LU","f022e2b0-7ffe-45f7-90cb-413439bbee87","price","49ec59c7-cc61-42c6-bf02-65639927f9a1","buy_more_save_more_i3mm9N","seal_subscriptions_subscription_widget_ygfp4q","9b9f6435-97b0-47fd-b34e-e13d0028c451","why_subscribe_short_m4RDh7","form","subscription_benefits_n7gfFb","921e2683-d746-4aa5-bd4e-cb98b8f6d403","unique_selling_points_JYrck8","c355a475-068a-4052-8d10-f0ae4ad900cc","vimonial_shoppable_videos_ugc_app_block_carousel_product_pBhpL3","upsell_by_amp_embedded_product_WywDHJ","upsell_by_amp_embedded_volume_discount_mPcet3"],"settings":{"product_images_position":"left","set_product_height":true,"product_height":680,"product_height_mobile":400,"video_looping":false,"enable_1st_image_hide":true,"enable_2nd_image_hide":false,"gallery_arrows":true,"enable_zoom":true,"enable_product_lightbox":true,"slideshow_speed":0,"slideshow_transition":"slide","display_thumbnails":true,"thumbnail_position":"bottom-thumbnails","enable_thumbnail_slider":true,"width":"standard","padding_top":20,"padding_bottom":20,"animation":"none","css_class":"","custom_css":""}},"product_product_overview_yDV69T":{"type":"product__product-overview","blocks":{"button_block_m4rk7H":{"type":"button-block","settings":{"text":"<p>Still got questions?<\/p>","button_label":"Check out Our FAQ","link-desktop":"#product-accordion-desktop","link-mobile":"#product-accordion-mobile","button_style":"button--secondary","button_background_hover":"#78be20"}}},"block_order":["button_block_m4rk7H"],"settings":{"title":"<span class=\"ambit-black-text\">What<\/span> <span class=\"romie-regular-italic-text\">on Earth<\/span> <span class=\"ambit-black-text\">is<\/span>","padding_top":70,"padding_bottom":50,"background_color":"#e0e56b","title_color":"#3c4c2a","text_color":"#3c4c2a","padding_top_mobile":20,"padding_bottom_mobile":20,"css_class":"","custom_css":""}},"why_use_product_CqVePJ":{"type":"why_use_product","settings":{"title-font-size":34,"text_size":25,"padding_top":20,"padding_bottom":20,"title_color":"","card_title_color":"","background_color":"","title-font-size_mobile":34,"text_size_mobile":16,"padding_top_mobile":20,"padding_bottom_mobile":20,"css_class":"","custom_css":""}},"how_to_use_product_8nymdV":{"type":"how-to-use-product","settings":{"padding_top":20,"padding_bottom":20,"title-font-size":34,"card-number-font-size":41,"card-number-size":50,"description-font-size":20,"background_color":"","text_color":"","padding_top_mobile":20,"padding_bottom_mobile":20,"title-font-size-mobile":34,"card-number-font-size-mobile":25,"card-number-size-mobile":40,"description-font-size-mobile":16,"css_class":"","custom_css":""}},"product_video_with_content_nR3Raw":{"type":"product__video-with-content","blocks":{"button_block_TYTJGc":{"type":"button-block","settings":{"text":"","button_label":"{{ product.metafields.custom.product_video_with_content.value.button_label.value }}","link-desktop":"","link-mobile":"","button_style":"button--primary"}}},"block_order":["button_block_TYTJGc"],"disabled":true,"settings":{"padding_top":20,"padding_bottom":20,"background_color":"","text_color":"","padding_top_mobile":20,"padding_bottom_mobile":20,"css_class":"","custom_css":""}},"product_study_findings_mchXQT":{"type":"product__study-findings","settings":{"title_font_size":34,"description_font_size":20,"item_title_font_size":34,"item_description_font_size":15,"padding_top":20,"padding_bottom":20,"background_color":"","title_color":"#3f4444","description_color":"#5a5552","item_title_color":"#3f4444","item_description_color":"#5a5552","item_background_color":"#ebe9e5","button_color":"#3f4444","button_text_color":"#f7f5f1","slider_color":"#3f4444","title_font_size_mobile":24,"description_font_size_mobile":15,"item_title_font_size_mobile":34,"item_description_font_size_mobile":15,"padding_top_mobile":20,"padding_bottom_mobile":20,"css_class":"","custom_css":""}},"product_image_CWQAyL":{"type":"product__image","disabled":true,"settings":{"is_second_image":false,"padding_top":20,"padding_bottom":20,"image_height":730,"padding_top_mobile":20,"padding_bottom_mobile":20,"image_height_mobile":530,"css_class":"","custom_css":""}},"product_ingredients_mXrNf4":{"type":"product__ingredients","settings":{"padding_top":20,"padding_bottom":50,"title-font-size":34,"description-font-size":20,"card-title-font-size":16,"background_color":"","text_color":"","padding_top_mobile":20,"padding_bottom_mobile":19,"title-font-size_mobile":34,"card-title-font-size_mobile":16,"description-font-size_mobile":20,"css_class":"","custom_css":""}},"product_benefits_of_daily_use_rxXULK":{"type":"product__benefits-of-daily-use","blocks":{"button_block_b7eJNV":{"type":"button-block","settings":{"text":"<p>Still got questions?<\/p>","button_label":"{{ product.metafields.custom.benefits_of_daily_use.value.button_label.value }}","link-desktop":"{{ product.metafields.custom.benefits_of_daily_use.value.button_link.value }}","link-mobile":"{{ product.metafields.custom.benefits_of_daily_use.value.button_link_mobile.value }}","button_style":"button--primary","button_background_hover":"#78be20"}}},"block_order":["button_block_b7eJNV"],"disabled":true,"settings":{"title":"<span class=\"ambit-black-text\">Benefits<\/span> <span class=\"romie-regular-italic-text\">of daily use<\/span>","padding_top":70,"padding_bottom":60,"background_color":"rgba(0,0,0,0)","title_color":"#3f4444","padding_top_mobile":20,"padding_bottom_mobile":20,"css_class":"","custom_css":""}},"product_image_r3mcd3":{"type":"product__image","settings":{"is_second_image":true,"padding_top":20,"padding_bottom":20,"image_height":730,"padding_top_mobile":20,"padding_bottom_mobile":20,"image_height_mobile":530,"css_class":"","custom_css":""}},"product_compare_HPfMDb":{"type":"product__compare","disabled":true,"settings":{"padding_top":20,"padding_bottom":20,"title-font-size":34,"background_color":"","text_color":"","padding_top_mobile":20,"padding_bottom_mobile":20,"title-font-size-mobile":34,"css_class":"","custom_css":""}},"product_before_after_FQGdQ7":{"type":"product__before-after","disabled":true,"settings":{"padding_top":20,"padding_bottom":20,"background_color":"","text_color":"","padding_top_mobile":20,"padding_bottom_mobile":20,"css_class":"","custom_css":""}},"index_testimonial_ye_j9Fbjm":{"type":"index__testimonial-ye","settings":{"title":"<span class=\"ambit-black-text\">Why choose<\/span> <span class=\"romie-regular-italic-text\">this product<\/span>","width":"standard","padding_top":60,"padding_bottom":60,"background_color":"#585c3b","title_color":"#e0e56b","card_width":350,"card_alignment":"left","card_text":"#e0e56b","author_add_color":"#e0e56b","card_background":"rgba(0,0,0,0)","button_background":"#284734","button_text":"#d4d8d0","button_background_hover":"#78be20","button_text_hover":"#edf2e9","padding_top_mobile":30,"padding_bottom_mobile":30,"css_class":"","custom_css":""}},"product_video_zrt9zy":{"type":"product__video","blocks":{"button_block_VHWUbR":{"type":"button-block","settings":{"text":"","button_label":"{{ product.metafields.custom.product_video_section.value.button_label.value }}","link-desktop":"","link-mobile":"","button_style":"button--primary"}}},"block_order":["button_block_VHWUbR"],"settings":{"heading-font-size":34,"subheading-font-size":24,"padding_top":70,"padding_bottom":70,"padding_top_mobile":20,"padding_bottom_mobile":20,"css_class":"","custom_css":""}},"product_scrolling_text_ynXjLY":{"type":"product__scrolling-text","settings":{"padding_top":20,"padding_bottom":20,"text_size":18,"background_color":"{{ product.metafields.custom.product_scrolling_text.value.background_color.value }}","text_color":"{{ product.metafields.custom.product_scrolling_text.value.text_color.value }}","padding_top_mobile":20,"padding_bottom_mobile":20,"text_size_mobile":18,"text_1":"{{ product.metafields.custom.product_scrolling_text.value.text_1.value }}","text_2":"{{ product.metafields.custom.product_scrolling_text.value.text_2.value }}","text_3":"{{ product.metafields.custom.product_scrolling_text.value.text_3.value }}","text_4":"{{ product.metafields.custom.product_scrolling_text.value.text_4.value }}","text_5":"{{ product.metafields.custom.product_scrolling_text.value.text_5.value }}","text_6":"{{ product.metafields.custom.product_scrolling_text.value.text_6.value }}","text_7":"{{ product.metafields.custom.product_scrolling_text.value.text_7.value }}","text_8":"{{ product.metafields.custom.product_scrolling_text.value.text_8.value }}","css_class":"","custom_css":""}},"index_section_with_link_button_YjnUad":{"type":"index__section-with-link-button","blocks":{"button_block_A66Rkh":{"type":"button-block","settings":{"button_label":"Take Our Test","button_link":"https:\/\/youthandearth.com\/#quiz-qrHLLqB","button_style":"button--primary"}}},"block_order":["button_block_A66Rkh"],"settings":{"title":"Not sure what<br>you’re looking for?","description":"<span class=\"romie-regular-italic-text\">Take our test to find your <br>personalised programme.<\/span>","padding_top":32,"padding_bottom":32,"background_color":"","text_color":"#284734","padding_top_mobile":30,"padding_bottom_mobile":30,"css_class":"","custom_css":""}},"index_rich_text_B3kMHP":{"type":"index__rich-text","settings":{"is_h1_title":false,"title":"<span class=\"ambit-black-text\">Hear from<\/span> <span class=\"romie-regular-italic-text\">our community<\/span>","heading_font":"open_sans_n4","heading_alignment":"left","heading_size":34,"text":"","text_font":"open_sans_n4","text_alignment":"left","text_size":14,"columns":2,"button_label":"","button_link":"","button_style":"button--primary","button_alignment":"center","heading_color":"rgba(0,0,0,0)","text_color":"rgba(0,0,0,0)","background":"rgba(0,0,0,0)","gradient":"rgba(0,0,0,0)","gradient_rotation":180,"width":"standard","padding_top":0,"padding_bottom":0,"padding_left":0,"padding_right":0,"animation":"none","mobile_title":"","mobile_heading_size":29,"mobile_text":"","mobile_alignment":"none","padding_top_mobile":0,"padding_bottom_mobile":0,"css_class":"","custom_css":".card-content {\n    padding-left: 0px;\n}"}},"1718204024ad6a9072":{"type":"apps","blocks":{"vimonial_shoppable_videos_ugc_app_block_carousel_ABPhbe":{"type":"shopify:\/\/apps\/vimonial-shoppable-videos-ugc\/blocks\/app-block_carousel\/1dcd7963-8ac2-434c-ae02-8cb7de12e6a2","settings":{"heading":"","description":"","campaign_id":"clxbslpie00950dmn2ih4m0lg","shadow_size":10,"width":140,"width_mobile":140,"slide_gap":12,"autoplay":true,"display_discount":false,"display_card":true,"popup":true,"show_names":true,"prev_next_buttons":true,"force_aspect":true,"display_atc":true,"redirect_to_cart":true,"align_heading":"left","align_items":"center","order_by":"order_desc","buy_now_text":"Add to cart","color_play_button":"#404544","color_play_button_inner":"#f4f3ef","border_color":"#404544","border_size":0,"overflow":false}}},"block_order":["vimonial_shoppable_videos_ugc_app_block_carousel_ABPhbe"],"settings":{"width":"standard","padding_top":20,"padding_bottom":20,"css_class":"","custom_css":".vimonial_atc_button{\nbackground-color: #3F4444 !important;\ncolor: F7F5F1!important;\nborder-color: #3F4444 !important;\n}"}},"product_daily_use_benefits_fqi8zM":{"type":"product__daily-use-benefits","settings":{"title":"Benefits of daily use"}},"17059355736523059e":{"type":"apps","settings":{"width":"standard","padding_top":20,"padding_bottom":20,"css_class":"","custom_css":""}},"custom_liquid_T7nndU":{"type":"custom-liquid","custom_css":[],"settings":{"custom_liquid":"{% if product.id == 7396104044617 %}\n      <div id=\"feefo-product-review-widgetId\" class=\"feefo-review-widget-product\" data-product-sku=\"SQ0960213,SQ9604110,SQ8719575,SQ9603360,SQ8710176,SQ0948111,SQ8660950\" data-widget-title=\"NMN\"><\/div>\n    {% elsif product.id == 7396104306761 %}\n      <div id=\"feefo-product-review-widgetId\" class=\"feefo-review-widget-product\" data-product-sku=\"SQ0960213,SQ9604110,SQ8719575,SQ9603360,SQ8710176,SQ0948111,SQ8660950\" data-widget-title=\"NMN\"><\/div>\n  {% elsif product.id == 7396104798281 %}\n<div id=\"feefo-product-review-widgetId\" class=\"feefo-review-widget-product\" data-product-sku=\"SQ9960688,SQ9960770,SQ9960787,SQ9960671,\" data-widget-title=\"Hyaluronic Acid - Gel Face Mask\"><\/div>\n    {% else %}\n<div id=\"feefo-product-review-widgetId\" class=\"feefo-review-widget-product\" data-product-sku=\"{{ product.variants.first.sku }}\" data-widget-title=\"{{ product.title }}\">\n    {% endif %}","width":"standard"}},"recommendations":{"type":"product__recommendations","disabled":true,"settings":{"show_product_recommendations":false,"product_recommendations_style":"grid","product_recommendations_heading":"Also Found in this Bundle","products_per":3,"recommended_products_limit":6,"align_height":false,"collection_height":200,"width":"standard","padding_top":20,"padding_bottom":20,"animation":"none","padding_top_mobile":20,"padding_bottom_mobile":20,"css_class":"","custom_css":""}}},"order":["breadcrumbs","main","product_product_overview_yDV69T","why_use_product_CqVePJ","how_to_use_product_8nymdV","product_video_with_content_nR3Raw","product_study_findings_mchXQT","product_image_CWQAyL","product_ingredients_mXrNf4","product_benefits_of_daily_use_rxXULK","product_image_r3mcd3","product_compare_HPfMDb","product_before_after_FQGdQ7","index_testimonial_ye_j9Fbjm","product_video_zrt9zy","product_scrolling_text_ynXjLY","index_section_with_link_button_YjnUad","index_rich_text_B3kMHP","1718204024ad6a9072","product_daily_use_benefits_fqi8zM","17059355736523059e","custom_liquid_T7nndU","recommendations"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "product__breadcrumb",
+      "disabled": true,
+      "settings": {
+        "width": "standard",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "main": {
+      "type": "product__main",
+      "blocks": {
+        "becaebad-2d89-4e15-9733-f52a58d04781": {
+          "type": "metafield",
+          "settings": {}
+        },
+        "39f9c4c1-574e-4af5-a129-c658f0455557": {
+          "type": "shopify://apps/feefo-product-reviews/blocks/product-stars/b69c206e-8df3-4642-a8bf-d681d74dfe91",
+          "disabled": true,
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "product-title-font-size": 34,
+            "product-title-font-size-mobile": 21
+          }
+        },
+        "one_sentence_xMw9Er": {
+          "type": "one-sentence",
+          "settings": {
+            "one-sentence-top-padding": 0,
+            "one-sentence-bottom-padding": 0,
+            "one-sentence-font-size": 24,
+            "one-sentence-top-padding-mobile": 10,
+            "one-sentence-bottom-padding-mobile": 10,
+            "one-sentence-font-size-mobile": 18
+          }
+        },
+        "product_benefits_QwtqHp": {
+          "type": "product__benefits",
+          "settings": {}
+        },
+        "f022e2b0-7ffe-45f7-90cb-413439bbee87": {
+          "type": "summary-panel",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "display_savings": true
+          }
+        },
+        "49ec59c7-cc61-42c6-bf02-65639927f9a1": {
+          "type": "description",
+          "settings": {
+            "truncate_description": 290
+          }
+        },
+        "seal_subscriptions_subscription_widget_ygfp4q": {
+          "type": "shopify://apps/seal-subscriptions/blocks/subscription-widget/13b25004-a140-4ab7-b5fe-29918f759699",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "9b9f6435-97b0-47fd-b34e-e13d0028c451": {
+          "type": "discount_promo",
+          "settings": {}
+        },
+        "why_subscribe_short_m4RDh7": {
+          "type": "why-subscribe-short",
+          "settings": {
+            "title": "<span class=\"ambit-black-text\">Why</span> <span class=\"romie-regular-italic-text\">subscribe?</span>",
+            "description": "We highly recommend subscribing, as it provides the most reliable method for effectively supplementing your body over time, optimizing your health improvements, and maximizing the effects of the product on your body."
+          }
+        },
+        "form": {
+          "type": "form",
+          "settings": {
+            "show_payment_button": false,
+            "show_gift_card_recipient_form": false,
+            "preordermessage_bg_color": "#fc4301",
+            "preordermessage_border_color": "#000000",
+            "preordermessage_border_radius": 8,
+            "v14_color": ""
+          }
+        },
+        "subscription_benefits_n7gfFb": {
+          "type": "subscription-benefits",
+          "settings": {
+            "subscription-benefit-1-title": "Convenient automatic delivery",
+            "subscription-benefit-1-image": "shopify://shop_images/Delivery_Active_UPD.svg",
+            "subscription-benefit-1-image-inactive": "shopify://shop_images/Delivery_Inactive_UPD.svg",
+            "subscription-benefit-2-title": "Skip, change or cancel anytime",
+            "subscription-benefit-2-image": "shopify://shop_images/Calendar_Active_UPD.svg",
+            "subscription-benefit-2-image-inactive": "shopify://shop_images/Calendar_Inactive_UPD.svg",
+            "subscription-benefit-3-title": "",
+            "subscription-benefit-4-title": "",
+            "subscription-benefit-info-icon": "shopify://shop_images/Asset_1_3.png",
+            "text_color": "#404544",
+            "background_color_active": "#edf2e9",
+            "background_color_inactive": "#ebe9e5"
+          }
+        },
+        "c355a475-068a-4052-8d10-f0ae4ad900cc": {
+          "type": "product-accordion",
+          "settings": {
+            "auto_close": true,
+            "is_v14": false,
+            "description_heading": "Description",
+            "ingredients_heading": "Ingredients",
+            "ingredients_subheading": "Ingredients",
+            "nrv_subheading": "NRV",
+            "allergens_subheading": "Allergens",
+            "dietary_subheading": "Dietary",
+            "additional-info_heading": "Additional information",
+            "serving-size_subheading": "Serving Size",
+            "dosage_subheading": "Dosage",
+            "more-info_subheading": "More Info",
+            "storage_subheading": "Storage",
+            "warnings_subheading": "Warnings",
+            "certificates-and-awards_heading": "Lab Reports & awards",
+            "awards_heading": "Awards",
+            "certificates_heading": "Lab Reports",
+            "delivery-and-returns_heading": "Delivery & returns",
+            "delivery_subheading": "Delivery",
+            "returns_subheading": "Returns",
+            "rewards_heading": "Rewards",
+            "truncate_description": 290,
+            "faq-title": "",
+            "faq-description": "",
+            "faq-link-1-title": "Ask a question",
+            "faq-link-1-url": "shopify://pages/contact",
+            "faq-link-2-title": "",
+            "faq-link-2-url": ""
+          }
+        },
+        "921e2683-d746-4aa5-bd4e-cb98b8f6d403": {
+          "type": "complementary_products",
+          "settings": {
+            "heading": "Pairs well with",
+            "product_recommendation_limit": 5,
+            "products_per_slide": 2
+          }
+        },
+        "unique_selling_points_JYrck8": {
+          "type": "unique-selling-points",
+          "settings": {
+            "unique-selling-point-1-title": "FREE UK DELIVERY, FOREVER*",
+            "unique-selling-point-1-description": "*UK delivery is always free for  orders over £60.",
+            "unique-selling-point-1-image": "shopify://shop_images/Delivery_Earth_Green_Dark.svg",
+            "unique-selling-point-2-title": "GOOD MANUFACTURING PRACTICE",
+            "unique-selling-point-2-description": "Ingredients are sourced and products are manufactured in GMP facilities.",
+            "unique-selling-point-2-image": "shopify://shop_images/GMP_Earth_Green_Dark.svg",
+            "unique-selling-point-3-title": "WORLDWIDE SHIPPING",
+            "unique-selling-point-3-description": "We deliver our supplements directly to you.",
+            "unique-selling-point-3-image": "shopify://shop_images/Shipping_Earth_Green_Dark.svg",
+            "unique-selling-point-4-title": "FOOD SAFETY SYSTEM",
+            "unique-selling-point-4-description": "Products are manufactured in HACCP facilities.",
+            "unique-selling-point-4-image": "shopify://shop_images/HACCP_Earth_Green_Dark.svg",
+            "unique-selling-point-5-title": "100% HAPPINESS GUARANTEE",
+            "unique-selling-point-5-description": "Not right for you after 60 days? No problem, it's on us!",
+            "unique-selling-point-5-image": "shopify://shop_images/Star_Earth_Green_Dark.svg",
+            "unique-selling-point-6-title": "",
+            "unique-selling-point-6-description": "",
+            "unique-selling-point-font-size": 12,
+            "unique-selling-point-font-size__mobile": 9,
+            "unique-selling-point-background_color": "rgba(0,0,0,0)",
+            "unique-selling-point-title_color": "#284734",
+            "unique-selling-point-description_color": "#3f4444",
+            "unique-selling-point-description_background_color": "#ebe9e5"
+          }
+        },
+        "judge_me_reviews_review_snippet_widget_dqxfDE": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_snippet_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "becaebad-2d89-4e15-9733-f52a58d04781",
+        "39f9c4c1-574e-4af5-a129-c658f0455557",
+        "title",
+        "one_sentence_xMw9Er",
+        "product_benefits_QwtqHp",
+        "f022e2b0-7ffe-45f7-90cb-413439bbee87",
+        "price",
+        "49ec59c7-cc61-42c6-bf02-65639927f9a1",
+        "seal_subscriptions_subscription_widget_ygfp4q",
+        "9b9f6435-97b0-47fd-b34e-e13d0028c451",
+        "why_subscribe_short_m4RDh7",
+        "form",
+        "subscription_benefits_n7gfFb",
+        "c355a475-068a-4052-8d10-f0ae4ad900cc",
+        "921e2683-d746-4aa5-bd4e-cb98b8f6d403",
+        "unique_selling_points_JYrck8",
+        "judge_me_reviews_review_snippet_widget_dqxfDE"
+      ],
+      "settings": {
+        "product_images_position": "left",
+        "set_product_height": true,
+        "product_height": 800,
+        "product_height_mobile": 400,
+        "video_looping": false,
+        "enable_1st_image_hide": true,
+        "enable_2nd_image_hide": false,
+        "gallery_arrows": false,
+        "enable_zoom": true,
+        "enable_product_lightbox": true,
+        "slideshow_speed": 0,
+        "slideshow_transition": "slide",
+        "display_thumbnails": true,
+        "thumbnail_position": "left-thumbnails",
+        "enable_thumbnail_slider": true,
+        "width": "standard",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "animation": "none",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "product_product_overview_yDV69T": {
+      "type": "product__product-overview",
+      "blocks": {
+        "button_block_m4rk7H": {
+          "type": "button-block",
+          "settings": {
+            "text": "<p>Still got questions?</p>",
+            "button_label": "Check out Our FAQ",
+            "link-desktop": "#product-accordion-desktop",
+            "link-mobile": "#product-accordion-mobile",
+            "button_style": "button--secondary",
+            "button_background_hover": "#78be20"
+          }
+        }
+      },
+      "block_order": [
+        "button_block_m4rk7H"
+      ],
+      "settings": {
+        "title": "<span class=\"ambit-black-text\">What</span> <span class=\"romie-regular-italic-text\">on Earth</span> <span class=\"ambit-black-text\">is</span>",
+        "padding_top": 70,
+        "padding_bottom": 50,
+        "background_color": "#e0e56b",
+        "title_color": "#3c4c2a",
+        "text_color": "#3c4c2a",
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "why_use_product_CqVePJ": {
+      "type": "why_use_product",
+      "settings": {
+        "title-font-size": 34,
+        "text_size": 25,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "title_color": "",
+        "card_title_color": "",
+        "background_color": "",
+        "title-font-size_mobile": 34,
+        "text_size_mobile": 16,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "how_to_use_product_8nymdV": {
+      "type": "how-to-use-product",
+      "settings": {
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "title-font-size": 34,
+        "card-number-font-size": 41,
+        "card-number-size": 50,
+        "description-font-size": 20,
+        "background_color": "",
+        "text_color": "",
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "title-font-size-mobile": 34,
+        "card-number-font-size-mobile": 25,
+        "card-number-size-mobile": 40,
+        "description-font-size-mobile": 16,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "product_video_with_content_nR3Raw": {
+      "type": "product__video-with-content",
+      "blocks": {
+        "button_block_TYTJGc": {
+          "type": "button-block",
+          "settings": {
+            "text": "",
+            "button_label": "{{ product.metafields.custom.product_video_with_content.value.button_label.value }}",
+            "link-desktop": "",
+            "link-mobile": "",
+            "button_style": "button--primary"
+          }
+        }
+      },
+      "block_order": [
+        "button_block_TYTJGc"
+      ],
+      "disabled": true,
+      "settings": {
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "background_color": "",
+        "text_color": "",
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "product_study_findings_mchXQT": {
+      "type": "product__study-findings",
+      "settings": {
+        "title_font_size": 34,
+        "description_font_size": 20,
+        "item_title_font_size": 34,
+        "item_description_font_size": 15,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "background_color": "",
+        "title_color": "#3f4444",
+        "description_color": "#5a5552",
+        "item_title_color": "#3f4444",
+        "item_description_color": "#5a5552",
+        "item_background_color": "#ebe9e5",
+        "button_color": "#3f4444",
+        "button_text_color": "#f7f5f1",
+        "slider_color": "#3f4444",
+        "title_font_size_mobile": 24,
+        "description_font_size_mobile": 15,
+        "item_title_font_size_mobile": 34,
+        "item_description_font_size_mobile": 15,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "product_image_CWQAyL": {
+      "type": "product__image",
+      "disabled": true,
+      "settings": {
+        "is_second_image": false,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "image_height": 730,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "image_height_mobile": 530,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "product_ingredients_mXrNf4": {
+      "type": "product__ingredients",
+      "settings": {
+        "padding_top": 20,
+        "padding_bottom": 50,
+        "title-font-size": 34,
+        "description-font-size": 20,
+        "card-title-font-size": 16,
+        "background_color": "",
+        "text_color": "",
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 19,
+        "title-font-size_mobile": 34,
+        "card-title-font-size_mobile": 16,
+        "description-font-size_mobile": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "product_benefits_of_daily_use_rxXULK": {
+      "type": "product__benefits-of-daily-use",
+      "blocks": {
+        "button_block_b7eJNV": {
+          "type": "button-block",
+          "settings": {
+            "text": "<p>Still got questions?</p>",
+            "button_label": "{{ product.metafields.custom.benefits_of_daily_use.value.button_label.value }}",
+            "link-desktop": "{{ product.metafields.custom.benefits_of_daily_use.value.button_link.value }}",
+            "link-mobile": "{{ product.metafields.custom.benefits_of_daily_use.value.button_link_mobile.value }}",
+            "button_style": "button--primary",
+            "button_background_hover": "#78be20"
+          }
+        }
+      },
+      "block_order": [
+        "button_block_b7eJNV"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "<span class=\"ambit-black-text\">Benefits</span> <span class=\"romie-regular-italic-text\">of daily use</span>",
+        "padding_top": 70,
+        "padding_bottom": 60,
+        "background_color": "rgba(0,0,0,0)",
+        "title_color": "#3f4444",
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "product_image_r3mcd3": {
+      "type": "product__image",
+      "settings": {
+        "is_second_image": true,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "image_height": 730,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "image_height_mobile": 530,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "product_compare_HPfMDb": {
+      "type": "product__compare",
+      "disabled": true,
+      "settings": {
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "title-font-size": 34,
+        "background_color": "",
+        "text_color": "",
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "title-font-size-mobile": 34,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "product_before_after_FQGdQ7": {
+      "type": "product__before-after",
+      "disabled": true,
+      "settings": {
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "background_color": "",
+        "text_color": "",
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "index_testimonial_ye_j9Fbjm": {
+      "type": "index__testimonial-ye",
+      "settings": {
+        "title": "<span class=\"ambit-black-text\">Why choose</span> <span class=\"romie-regular-italic-text\">this product</span>",
+        "width": "standard",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "background_color": "#585c3b",
+        "title_color": "#e0e56b",
+        "card_width": 350,
+        "card_alignment": "left",
+        "card_text": "#e0e56b",
+        "author_add_color": "#e0e56b",
+        "card_background": "rgba(0,0,0,0)",
+        "button_background": "#284734",
+        "button_text": "#d4d8d0",
+        "button_background_hover": "#78be20",
+        "button_text_hover": "#edf2e9",
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 30,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "product_video_zrt9zy": {
+      "type": "product__video",
+      "blocks": {
+        "button_block_VHWUbR": {
+          "type": "button-block",
+          "settings": {
+            "text": "",
+            "button_label": "{{ product.metafields.custom.product_video_section.value.button_label.value }}",
+            "link-desktop": "",
+            "link-mobile": "",
+            "button_style": "button--primary"
+          }
+        }
+      },
+      "block_order": [
+        "button_block_VHWUbR"
+      ],
+      "settings": {
+        "heading-font-size": 34,
+        "subheading-font-size": 24,
+        "padding_top": 70,
+        "padding_bottom": 70,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "product_scrolling_text_ynXjLY": {
+      "type": "product__scrolling-text",
+      "settings": {
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "text_size": 18,
+        "background_color": "{{ product.metafields.custom.product_scrolling_text.value.background_color.value }}",
+        "text_color": "{{ product.metafields.custom.product_scrolling_text.value.text_color.value }}",
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "text_size_mobile": 18,
+        "text_1": "{{ product.metafields.custom.product_scrolling_text.value.text_1.value }}",
+        "text_2": "{{ product.metafields.custom.product_scrolling_text.value.text_2.value }}",
+        "text_3": "{{ product.metafields.custom.product_scrolling_text.value.text_3.value }}",
+        "text_4": "{{ product.metafields.custom.product_scrolling_text.value.text_4.value }}",
+        "text_5": "{{ product.metafields.custom.product_scrolling_text.value.text_5.value }}",
+        "text_6": "{{ product.metafields.custom.product_scrolling_text.value.text_6.value }}",
+        "text_7": "{{ product.metafields.custom.product_scrolling_text.value.text_7.value }}",
+        "text_8": "{{ product.metafields.custom.product_scrolling_text.value.text_8.value }}",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "index_section_with_link_button_YjnUad": {
+      "type": "index__section-with-link-button",
+      "blocks": {
+        "button_block_A66Rkh": {
+          "type": "button-block",
+          "settings": {
+            "button_label": "Take Our Test",
+            "button_link": "https://youthandearth.com/#quiz-qrHLLqB",
+            "button_style": "button--primary"
+          }
+        }
+      },
+      "block_order": [
+        "button_block_A66Rkh"
+      ],
+      "settings": {
+        "title": "Not sure what<br>you’re looking for?",
+        "description": "<span class=\"romie-regular-italic-text\">Take our test to find your <br>personalised programme.</span>",
+        "padding_top": 32,
+        "padding_bottom": 32,
+        "background_color": "",
+        "text_color": "#284734",
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 30,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "index_rich_text_B3kMHP": {
+      "type": "index__rich-text",
+      "settings": {
+        "is_h1_title": false,
+        "title": "<span class=\"ambit-black-text\">Hear from</span> <span class=\"romie-regular-italic-text\">our community</span>",
+        "heading_font": "open_sans_n4",
+        "heading_alignment": "left",
+        "heading_size": 34,
+        "text": "",
+        "text_font": "open_sans_n4",
+        "text_alignment": "left",
+        "text_size": 14,
+        "columns": 2,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "button--primary",
+        "button_alignment": "center",
+        "heading_color": "rgba(0,0,0,0)",
+        "text_color": "rgba(0,0,0,0)",
+        "background": "rgba(0,0,0,0)",
+        "gradient": "rgba(0,0,0,0)",
+        "gradient_rotation": 180,
+        "width": "standard",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "animation": "none",
+        "mobile_title": "",
+        "mobile_heading_size": 29,
+        "mobile_text": "",
+        "mobile_alignment": "none",
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "css_class": "",
+        "custom_css": ".card-content {\n    padding-left: 0px;\n}"
+      }
+    },
+    "1718204024ad6a9072": {
+      "type": "apps",
+      "blocks": {
+        "vimonial_shoppable_videos_ugc_app_block_carousel_ABPhbe": {
+          "type": "shopify://apps/vimonial-shoppable-videos-ugc/blocks/app-block_carousel/1dcd7963-8ac2-434c-ae02-8cb7de12e6a2",
+          "settings": {
+            "heading": "",
+            "description": "",
+            "campaign_id": "clxbslpie00950dmn2ih4m0lg",
+            "shadow_size": 10,
+            "width": 140,
+            "width_mobile": 140,
+            "slide_gap": 12,
+            "autoplay": true,
+            "display_discount": false,
+            "display_card": true,
+            "popup": true,
+            "show_names": true,
+            "prev_next_buttons": true,
+            "force_aspect": true,
+            "display_atc": true,
+            "redirect_to_cart": true,
+            "align_heading": "left",
+            "align_items": "center",
+            "order_by": "order_desc",
+            "buy_now_text": "Add to cart",
+            "color_play_button": "#404544",
+            "color_play_button_inner": "#f4f3ef",
+            "border_color": "#404544",
+            "border_size": 0,
+            "overflow": false
+          }
+        }
+      },
+      "block_order": [
+        "vimonial_shoppable_videos_ugc_app_block_carousel_ABPhbe"
+      ],
+      "settings": {
+        "width": "standard",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "css_class": "",
+        "custom_css": ".vimonial_atc_button{\nbackground-color: #3F4444 !important;\ncolor: F7F5F1!important;\nborder-color: #3F4444 !important;\n}"
+      }
+    },
+    "product_daily_use_benefits_fqi8zM": {
+      "type": "product__daily-use-benefits",
+      "settings": {
+        "title": "Benefits of daily use"
+      }
+    },
+    "17059355736523059e": {
+      "type": "apps",
+      "blocks": {
+        "rebuy_personalization_engine_rebuy_widget_PK3atF": {
+          "type": "shopify://apps/rebuy-personalization-engine/blocks/rebuy-widget/a26ae9b9-933b-40bf-bbc6-bf1220bbc4dc",
+          "disabled": true,
+          "settings": {
+            "enabled": true,
+            "id": "130672",
+            "product_id_enabled": true,
+            "collection_id_enabled": true
+          }
+        }
+      },
+      "block_order": [
+        "rebuy_personalization_engine_rebuy_widget_PK3atF"
+      ],
+      "settings": {
+        "width": "standard",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "custom_liquid_T7nndU": {
+      "type": "custom-liquid",
+      "custom_css": [],
+      "settings": {
+        "custom_liquid": "{% if product.id == 8174336213205 %}  \n      <div id=\"feefo-product-review-widgetId\" class=\"feefo-review-widget-product\" data-product-sku=\"SQ0960213,SQ9604110,SQ8719575,SQ9603360,SQ8710176,SQ0948111,SQ8660950\" data-widget-title=\"NMN\"></div>\n    {% elsif product.id == 8174339653845 %}  \n      <div id=\"feefo-product-review-widgetId\" class=\"feefo-review-widget-product\" data-product-sku=\"SQ0960213,SQ9604110,SQ8719575,SQ9603360,SQ8710176,SQ0948111,SQ8660950\" data-widget-title=\"NMN\"></div>\n    {% else %}\n<div id=\"feefo-product-review-widgetId\" class=\"feefo-review-widget-product\" data-product-sku=\"{{ product.variants.first.sku }}\" data-widget-title=\"{{ product.title }}\">\n    {% endif %}",
+        "width": "standard"
+      }
+    },
+    "recommendations": {
+      "type": "product__recommendations",
+      "disabled": true,
+      "settings": {
+        "show_product_recommendations": false,
+        "product_recommendations_style": "grid",
+        "product_recommendations_heading": "Also Found in this Bundle",
+        "products_per": 3,
+        "recommended_products_limit": 6,
+        "align_height": false,
+        "collection_height": 200,
+        "width": "standard",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "animation": "none",
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "main",
+    "product_product_overview_yDV69T",
+    "why_use_product_CqVePJ",
+    "how_to_use_product_8nymdV",
+    "product_video_with_content_nR3Raw",
+    "product_study_findings_mchXQT",
+    "product_image_CWQAyL",
+    "product_ingredients_mXrNf4",
+    "product_benefits_of_daily_use_rxXULK",
+    "product_image_r3mcd3",
+    "product_compare_HPfMDb",
+    "product_before_after_FQGdQ7",
+    "index_testimonial_ye_j9Fbjm",
+    "product_video_zrt9zy",
+    "product_scrolling_text_ynXjLY",
+    "index_section_with_link_button_YjnUad",
+    "index_rich_text_B3kMHP",
+    "1718204024ad6a9072",
+    "product_daily_use_benefits_fqi8zM",
+    "17059355736523059e",
+    "custom_liquid_T7nndU",
+    "recommendations"
+  ]
+}

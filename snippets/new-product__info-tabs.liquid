@@ -1,0 +1,196 @@
+{% style %}
+
+.new-product__info-tabs {
+  padding: 24px 0;
+}
+
+.new-product__info-tabs__tab-buttons {
+  display: flex;
+  margin-bottom: 24px;
+}
+
+.new-product__info-tabs__tab-button {
+  font-family: Ambit;
+  flex: 0 0 33.3333%;
+  background: none;
+  font-weight: 400;
+  border: none;
+  padding: 8px;
+  color: #6F726E;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 32px;
+  text-transform: capitalize;
+  border-bottom: 3px solid #D4D8D0;
+  text-align: center;
+  cursor: pointer;
+}
+
+.new-product__info-tabs__tab-button:hover {
+  border-color: #404544;
+}
+
+.new-product__info-tabs__tab-button._info-tab-active {
+  border-color: #404544;
+  color: #404544;
+  font-weight: 900;
+  font-family: Ambit Black;
+}
+
+.new-product__info-tabs__tab-content {
+  display: none;
+}
+
+.new-product__info-tabs__tab-content._info-tab-active {
+  display: block;
+}
+
+.full_description {
+  display: none;
+}
+
+.full_description > p > span {
+  font-size: unset !important;
+}
+
+.new-product-moreless-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #284734;
+  padding: 12px 24px;
+  font-family: Ambit;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 24px;
+  text-align: center;
+  border-radius: 40px;
+  border: 1px solid #284734;
+  background: transparent;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.new-product-moreless-btn:hover {
+  background: #284734;
+  color: #fff;
+}
+
+.read-less {
+  display: none;
+}
+  
+{% endstyle %}
+  
+<div class="new-product__info-tabs">
+  <div class="new-product__info-tabs__tab-buttons">
+    {% if product.metafields.custom.benefits %}
+      <button class="new-product__info-tabs__tab-button _info-tab-active" data-info-tab-button="benefits">
+        {% if block.settings.benefits_heading != blank %}
+          {{ block.settings.benefits_heading }}
+        {% endif %}
+      </button>
+    {% endif %}
+    <button class="new-product__info-tabs__tab-button" data-info-tab-button="description">
+      {% if block.settings.description_heading != blank %}
+        {{ block.settings.description_heading }}
+      {% endif %}
+    </button>
+    <button class="new-product__info-tabs__tab-button" data-info-tab-button="ingredients">
+      {% if block.settings.ingredients_heading != blank %}
+        {{ block.settings.ingredients_heading }}
+      {% endif %}
+    </button>
+  </div>
+  <div class="new-product__info-tabs__tab-contents">
+    {% if product.metafields.custom.benefits %}
+      <div class="new-product__info-tabs__tab-content _info-tab-active" data-info-tab-content="benefits">
+        {% render 'new-product__benefits-list' %}
+      </div>
+    {% endif %}
+    <div class="new-product__info-tabs__tab-content" data-info-tab-content="description">
+      {% liquid
+        if product.description != blank
+            assign product_description = product.description | split: '<!-- split -->' | first
+        endif
+      %}
+
+      <div class="content">
+        {% assign product_description = product_description | replace: '. </strong>','</strong>. ' %} 
+        {% assign input_html = product_description %}
+        {% assign truncate_limit = 300 %}
+        {% assign safe_strong_open = "TEMP_STRONG_OPEN_TAG" %}
+        {% assign safe_strong_close = "TEMP_STRONG_CLOSE_TAG" %}
+        {% assign with_placeholders = input_html | replace: '<strong>', safe_strong_open | replace: '</strong>', safe_strong_close %}
+        {% assign stripped_html = with_placeholders | strip_html %}
+        {% assign final_output = stripped_html | replace: safe_strong_open, '<strong>' | replace: safe_strong_close, '</strong>' %}
+        {% assign output_size = final_output | size %}
+
+        {% if output_size < truncate_limit %}
+          <div class="_full_description">
+            {% style _%}
+              {% if output_size < truncate_limit %}
+                .full_description {
+                  display: flex;
+                }
+                {% endif %}
+              {% endstyle _%}
+            {{ product_description }}
+          </div>
+        {% else %}
+          <div class="truncated_description">
+            {% assign truncated_description = final_output | truncate: truncate_limit %}
+            {% assign open_strong_count = truncated_description | split: '<strong>' | size | minus: 1 %}
+            {% assign close_strong_count = truncated_description | split: '</strong>' | size | minus: 1 %}
+
+            {% if open_strong_count != close_strong_count %}
+              {% assign final_output_to_truncate = stripped_html | replace: safe_strong_open, '' | replace: safe_strong_close, '' %}
+              {% assign truncated_description = final_output_to_truncate | truncate: truncate_limit %}
+            {% endif %}
+
+            {{ truncated_description }}
+          </div>
+
+          <div class="full_description">
+            {{ product_description }}
+          </div>
+
+          <button class="read-more new-product-moreless-btn" onclick="toggleShowMore()">
+            Read more
+          </button>
+              
+          <button class="read-less new-product-moreless-btn" onclick="toggleShowMore()">
+            Read less
+          </button>
+
+          <script>
+            function toggleShowMore(){
+                $('.truncated_description').toggle()
+                $('.full_description').toggle()
+                $('.read-more').toggle()
+                $('.read-less').toggle()                              
+            }
+          </script>
+        {% endif %}
+      </div>
+    </div>
+    <div class="new-product__info-tabs__tab-content new-product__ingredients" data-info-tab-content="ingredients">
+      {% render 'new-product__ingredients-list' %}
+    </div>
+  </div>
+</div>
+
+<script>
+  const buttons = document.querySelectorAll('[data-info-tab-button]');
+  const contents = document.querySelectorAll('[data-info-tab-content]');
+
+  buttons.forEach(btn => btn.addEventListener('click', () => {
+    [...buttons, ...contents].forEach(btn => btn.classList.remove('_info-tab-active'));
+
+    btn.classList.add('_info-tab-active');
+
+    contents.forEach(content => {
+      content.dataset.infoTabContent === btn.dataset.infoTabButton && content.classList.add('_info-tab-active');
+    });
+  }));
+</script>

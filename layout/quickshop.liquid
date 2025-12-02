@@ -7,6 +7,7 @@
     window.Store.id = {{ shop.id }};
   </script>
   <meta charset="utf-8">
+
   <meta http-equiv="cleartype" content="on">
   <meta name="robots" content="index,follow">
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -136,8 +137,8 @@
   {% if collection.next_product %}<link rel="next" href="{{ collection.next_product }}">{% endif %}
 
   {% if template contains 'customers' %}
-    {{ "shopify_common.js" | shopify_asset_url | script_tag }}
-    {{ "customer_area.js"  | shopify_asset_url | script_tag }}
+    {{ "shopify_common.js" | shopify_asset_url  }}
+    {{ "customer_area.js"  | shopify_asset_url  }}
   {% endif %}
 </head>
 

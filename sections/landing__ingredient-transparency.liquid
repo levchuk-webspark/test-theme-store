@@ -1,0 +1,230 @@
+{% assign data = section.settings %}
+{% assign cards = section.blocks | where: 'type', 'card' %}
+
+{% style %}
+  .ingredient-transparency {
+    padding: 124px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #EDF2E9;
+  }
+
+  .ingredient-transparency__wrapper {
+    margin: 0 auto;
+    max-width: 1280px;
+    padding: 0 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .ingredient-transparency__title {
+    font-family: 'Romie' !important;
+    color: #284734;
+    font-weight: 400;
+    font-size: 76px;
+    line-height: 1.3;
+    letter-spacing: -2.2%;
+    text-align: center;
+  }
+
+  .ingredient-transparency__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .ingredient-transparency__card {
+    flex: 0 0 calc(33.333% - ((8px * 2) / 3));
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .ingredient-transparency__card-header {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 32px;
+  }
+
+  .ingredient-transparency__card-title {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.25;
+    letter-spacing: -2.2%;
+    color: #000;
+  }
+
+  .ingredient-transparency__card-description {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.25;
+    letter-spacing: -2.2%;
+    color: #000;
+  }
+
+  .ingredient-transparency__card-image {
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: 1.6;
+  }
+
+  .ingredient-transparency__button {
+    background: #78BE20;
+    padding: 12px 24px;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.25;
+    letter-spacing: -2.2%;
+    min-width: 180px;
+    min-height: 48px;
+    color: #fff;
+    width: fit-content;
+    transition: all 0.3s ease-in-out; 
+  }
+
+  .ingredient-transparency__button:hover {
+    transform: scale(1.04);
+    color: #fff;
+    background: #598F3D;
+  }
+
+  @media (max-width: 1200px) {
+    .ingredient-transparency__card-header {
+      padding: 24px;
+    }
+  }
+
+  @media (max-width: 991px) {
+    .ingredient-transparency__list {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .ingredient-transparency__card {
+      flex: 1 1 auto;
+    }
+
+    .ingredient-transparency__card-image {
+      aspect-ratio: 21 / 9;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .ingredient-transparency {
+      padding: 80px 0;
+    }
+
+    .ingredient-transparency__title {
+      font-size: 48px;
+    }
+  }
+
+  @media (max-width: 425px) {
+    .ingredient-transparency__card-image {
+      aspect-ratio: 16 / 9;
+    }
+  }
+{% endstyle %}
+
+<section class="ingredient-transparency ingredient-transparency--{{ template.suffix }}">
+  <div class="ingredient-transparency__wrapper">
+    {% if data.title != blank %}
+      <h2 class="ingredient-transparency__title">{{ data.title }}</h2>
+    {% endif %}
+
+    <ul class="ingredient-transparency__list">
+      {% for block in cards %}
+        {% assign card = block.settings %}
+
+        <li class="ingredient-transparency__card">
+          <div class="ingredient-transparency__card-header">
+              {% if card.title != blank %}
+                <h3 class="ingredient-transparency__card-title">{{ card.title }}</h3>
+              {% endif %}
+              {% if card.description != blank %}
+                <p class="ingredient-transparency__card-description">{{ card.description }}</p>
+              {% endif %}
+          </div>
+          {% if card.image != blank %}
+            {{ card.image | image_url: width: 816, height: 506 | image_tag: class: 'ingredient-transparency__card-image', loading: 'lazy' }}
+          {% endif %}
+        </li>
+      {% endfor %}   
+    </ul>
+
+    {% if data.cta_label != blank %}
+      <a 
+        {% if data.cta_url != blank %}
+          href="{{ data.cta_url }}"
+          target="_blank"
+        {% endif %}
+        class="ingredient-transparency__button"
+      >
+        {{ data.cta_label }}
+      </a>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ingredient Transp.",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Section CTA label"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Section CTA link"
+    },
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card title"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Card description"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Card image"
+        },
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Landing: Ingredient Transparency"
+    }
+  ]
+}
+{% endschema %}

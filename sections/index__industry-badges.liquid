@@ -85,7 +85,7 @@
         <div class='industry-badges_images' id='industryImageContainer'>
           <div id="industryImageWrapper">
             {% for block in section.blocks %}
-              <img src="{{ block.settings.image | img_url: 'master' }}" class="industry-badge_image" />
+              <img src="{{ block.settings.image | img_url: 'master' }}" class="industry-badge_image" loading="lazy" />
             {% endfor %}
           </div>
         </div>

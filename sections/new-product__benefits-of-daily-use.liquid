@@ -1,0 +1,499 @@
+{% assign data = product.metafields.custom.new_benefits_of_daily_use.value %}
+{% assign items = data.section_items.value %}
+
+{% if data != blank %}
+  {% style %}
+  
+  .new-product-benefits-of-daily-use {
+    padding: 48px 0;
+    background: #284734;
+    border-radius: 24px;
+  }
+  
+  .new-product-benefits-of-daily-use__wrapper {
+      margin: 0 auto;
+      max-width: 1440px;
+      padding: 0 20px;
+      width: 100%;
+      display: flex;
+      gap: 72px;
+  }
+  
+  .new-product-benefits-of-daily-use__left,
+  .new-product-benefits-of-daily-use__right {
+    flex: 0 1 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  
+  .new-product-benefits-of-daily-use__left {
+    align-items: center;
+  }
+  
+  .new-product-benefits-of-daily-use__images {
+    aspect-ratio: 1;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .new-product-benefits-of-daily-use__background {
+    border-radius: 50%;
+    overflow: hidden;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .new-product-benefits-of-daily-use__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: pulse 10s infinite ease-in-out;
+  }
+  
+  .new-product-benefits-of-daily-use__image {
+    width: 50%;
+    height: 75%;
+    object-fit: contain;
+    position: relative;
+  }
+  
+  .new-product-benefits-of-daily-use__cta {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px;
+    border: 1px solid #949992;
+    border-radius: 16px;
+    max-width: 440px;
+  }
+  
+  .new-product-benefits-of-daily-use__cta.new-product-benefits-of-daily-use__cta-mobile {
+    display: none;
+  }
+  
+  .new-product-benefits-of-daily-use__cta-title {
+    color: #F7F5F1;
+    font-family: Ambit;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 1.2;
+    letter-spacing: 3%;
+  }
+  
+  .new-product-benefits-of-daily-use__cta-button {
+    font-family: Ambit;
+    background: #fff;
+    padding: 16px 24px;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.25;
+    color: #284734;
+    width: fit-content;
+    white-space: nowrap;
+    flex: 0 0 auto;
+    transition: all 0.3s ease-in-out; 
+  }
+  
+  .new-product-benefits-of-daily-use__cta-button svg {
+    flex: 0 0 auto;
+    overflow: hidden;
+    aspect-ratio: 1;
+    width: 0;
+    transition: all 0.3s ease-in-out; 
+  }
+  
+  .new-product-benefits-of-daily-use__cta-button:hover {
+    color: #284734;
+  }
+  
+  .new-product-benefits-of-daily-use__cta-button:hover svg {
+    margin-left: 8px;
+    width: 16px;
+  }
+  
+  .new-product-benefits-of-daily-use__title {
+    width: 100%;
+    font-family: Ambit;
+    font-weight: 900;
+    font-size: 38px;
+    line-height: 1.2;
+    letter-spacing: 3%;
+    color: #F7F5F1;
+  }
+  
+  .new-product-benefits-of-daily-use__title.new-product-benefits-of-daily-use__title-mobile {
+    display: none;
+  }
+  
+  .new-product-benefits-of-daily-use__title span {
+    color: #E0E56B;
+    font-weight: 400;
+    font-family: Romie;
+    font-style: Italic;
+  }
+  
+  .new-product-benefits-of-daily-use__shadows {
+    position: relative;
+  }
+  
+  .new-product-benefits-of-daily-use__shadows:after,
+  .new-product-benefits-of-daily-use__shadows:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 96px;  
+    pointer-events: none;
+    opacity: 1;
+    z-index: 2;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .new-product-benefits-of-daily-use__shadows:after {
+    bottom: 0;
+    background: linear-gradient(to top, #284734 0%, transparent 100%);
+  }
+  
+  .new-product-benefits-of-daily-use__shadows:before {
+    top: 0;
+    background: linear-gradient(to bottom, #284734 0%, transparent 100%);
+  }
+  
+  .new-product-benefits-of-daily-use__shadows._is-bottom-visible:after,
+  .new-product-benefits-of-daily-use__shadows._is-top-visible:before {
+    opacity: 0;
+  }
+  
+  .new-product-benefits-of-daily-use__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow-y: auto;
+    padding-left: 12px;
+    max-height: 570px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .new-product-benefits-of-daily-use__list::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .new-product-benefits-of-daily-use__item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-left: 32px;
+    position: relative;
+    border-left: 1px solid #E0E56B;
+  }
+  
+  .new-product-benefits-of-daily-use__item:after {
+    content: '';
+    position: absolute;
+    left: -12px;
+    top: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #E0E56B;
+    background-size: 12px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 3L4.5 8.5L2 6' stroke='%233C4C2A' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+  }
+  
+  .new-product-benefits-of-daily-use__item-title {
+    color: #F7F5F1;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.2;
+  }
+  
+  .new-product-benefits-of-daily-use__item-description p {
+    color: #F7F5F1B2;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 3%;
+  }
+  
+  .new-product-benefits-of-daily-use__item-description [data-benefit-description-wrapper] {
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .new-product-benefits-of-daily-use__item-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 16px;
+    background: none;
+    border: none;
+    font-weight: 400;
+    color: #FFFFFF;
+    font-size: 16px;
+    gap: 8px;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .new-product-benefits-of-daily-use__item-toggle:hover {
+    color: #E0E56B;
+  }
+  
+  .new-product-benefits-of-daily-use__item-toggle:after {
+    content: '';
+    margin-bottom: 4px;
+    width: 8px;
+    height: 8px;
+    border-right: 1px solid currentColor;
+    border-bottom: 1px solid currentColor;
+    transform: rotate(45deg);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  ._opened .new-product-benefits-of-daily-use__item-toggle:after {
+    transform: rotate(-135deg);
+    margin-bottom: 0;
+  }
+  
+  @media (max-width: 1200px) {
+    .new-product-benefits-of-daily-use__wrapper {
+      gap: 48px;
+    }
+  }
+  
+  @media (max-width: 991px) {
+    .new-product-benefits-of-daily-use {
+      padding: 32px 0;
+      border-radius: 16px;
+    }
+  
+    .new-product-benefits-of-daily-use__wrapper {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .new-product-benefits-of-daily-use__left,
+    .new-product-benefits-of-daily-use__right {
+      flex: auto;
+    }
+  
+    .new-product-benefits-of-daily-use__left {
+      max-width: 500px;
+    }
+  
+    .new-product-benefits-of-daily-use__image {
+      transform: scale(1.4);
+    }
+  
+    .new-product-benefits-of-daily-use__title {
+      display: none;
+      text-align: center;
+      font-size: 28px;
+    }
+  
+    .new-product-benefits-of-daily-use__title.new-product-benefits-of-daily-use__title-mobile {
+      display: block;
+    }
+  
+    .new-product-benefits-of-daily-use__cta {
+      display: none;
+    }
+  
+    .new-product-benefits-of-daily-use__cta.new-product-benefits-of-daily-use__cta-mobile {
+      display: flex;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .new-product-benefits-of-daily-use__cta {
+      width: 100%;
+      max-width: none;
+    }
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.5);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  {% endstyle %}
+
+  <section class="new-product-benefits-of-daily-use">
+    <div class="new-product-benefits-of-daily-use__wrapper">
+      {% if data.title != blank %}
+        <h2 class="new-product-benefits-of-daily-use__title new-product-benefits-of-daily-use__title-mobile">{{ data.title }}</h2>
+      {% endif %}
+
+      <div class="new-product-benefits-of-daily-use__left">
+        <div class="new-product-benefits-of-daily-use__images">
+          <div class="new-product-benefits-of-daily-use__background">
+            {% if data.bg_image != blank %}
+              {{ data.bg_image | image_url: width: 600, height: 600 | image_tag: class: 'new-product-benefits-of-daily-use__bg', loading: 'lazy' }}
+            {% endif %}
+          </div>
+          {% if data.image != blank %}
+            {{ data.image | image_url: width: 506, height: 817 | image_tag: class: 'new-product-benefits-of-daily-use__image', loading: 'lazy' }}
+          {% endif %}
+        </div>
+        <div class="new-product-benefits-of-daily-use__cta">
+          {% if data.cta_title != blank %}
+            <h3 class="new-product-benefits-of-daily-use__cta-title">{{ data.cta_title }}</h3>
+          {% endif %}
+          {% if data.cta_label != blank %}
+            <a 
+              {% if data.cta_url != blank %}
+                href="{{ data.cta_url }}"
+                target="_blank"
+              {% endif %}
+              class="new-product-benefits-of-daily-use__cta-button"
+            >
+              {{ data.cta_label }}
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 8C16 12.4173 12.4173 16 8 16C3.58277 16 0 12.4173 0 8C0 3.58277 3.56837 0 8 0C12.4317 0 16 3.58277 16 8ZM7.19424 3.19421L11.2806 7.19424H2.38843V8.79137H11.2806L7.19424 12.7914H9.28058L14.1727 7.98561L9.28058 3.17982H7.19424V3.19421Z" fill="#284734"/>
+              </svg>
+            </a>
+          {% endif %}
+        </div>
+      </div>
+      <div class="new-product-benefits-of-daily-use__right">
+        {% if data.title != blank %}
+          <h2 class="new-product-benefits-of-daily-use__title">{{ data.title }}</h2>
+        {% endif %}
+        <div class="new-product-benefits-of-daily-use__shadows" data-benefits-shadows>
+          <ul class="new-product-benefits-of-daily-use__list" data-benefits-list>
+            {% for item in items %}
+              <li class="new-product-benefits-of-daily-use__item">
+                {% if item.title != blank %}
+                  <h3 class="new-product-benefits-of-daily-use__item-title">{{ item.title }}</h3>
+                {% endif %}
+                {% if item.description != blank %}
+                  {% assign full = item.description | strip_html %}
+                  {% assign size = full | size %}
+                  {% assign limit = 120 %}
+                  {% assign short = full | truncate: limit %}
+    
+                  <div class="new-product-benefits-of-daily-use__item-description" data-benefit-description>
+                    {% if size < limit %}
+                      <p>
+                        {{ full }}
+                      </p>
+                    {% else %}
+                      <div data-benefit-description-wrapper>
+                        <p data-benefit-full="{{ full }}" data-benefit-short="{{ short }}">
+                          {{ short }}
+                        </p>
+                      </div>
+                      <button class="new-product-benefits-of-daily-use__item-toggle" data-benefit-read-more>
+                        Read more
+                      </button>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <div class="new-product-benefits-of-daily-use__cta new-product-benefits-of-daily-use__cta-mobile">
+        {% if data.cta_title != blank %}
+          <h3 class="new-product-benefits-of-daily-use__cta-title">{{ data.cta_title }}</h3>
+        {% endif %}
+        {% if data.cta_label != blank %}
+          <a 
+            {% if data.cta_url != blank %}
+              href="{{ data.cta_url }}"
+              target="_blank"
+            {% endif %}
+            class="new-product-benefits-of-daily-use__cta-button"
+          >
+            {{ data.cta_label }}
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16 8C16 12.4173 12.4173 16 8 16C3.58277 16 0 12.4173 0 8C0 3.58277 3.56837 0 8 0C12.4317 0 16 3.58277 16 8ZM7.19424 3.19421L11.2806 7.19424H2.38843V8.79137H11.2806L7.19424 12.7914H9.28058L14.1727 7.98561L9.28058 3.17982H7.19424V3.19421Z" fill="#284734"/>
+            </svg>
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const shadows = document.querySelector('[data-benefits-shadows]');
+      const list = document.querySelector('[data-benefits-list]');
+      const firstItem = list.firstElementChild;
+      const lastItem = list.lastElementChild;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.target === firstItem) {
+            shadows.classList.toggle('_is-top-visible', entry.isIntersecting);
+          }
+          if (entry.target === lastItem) {
+            shadows.classList.toggle('_is-bottom-visible', entry.isIntersecting);
+          }
+        });
+      }, {root: list, threshold: 0.8});
+
+      observer.observe(firstItem);
+      observer.observe(lastItem);
+
+      const toggles = document.querySelectorAll('[data-benefit-read-more]');
+      const wrappers = document.querySelectorAll('[data-benefit-description-wrapper]');
+      
+      wrappers.forEach(wrap => wrap.style.height = wrap.querySelector('[data-benefit-short]').scrollHeight + 'px');
+
+      toggles.forEach(toggle => toggle.addEventListener('click', () => {
+        const parent = toggle.closest('[data-benefit-description]');
+        const description = parent.querySelector('[data-benefit-short]');
+        const wrapper = parent.querySelector('[data-benefit-description-wrapper]');
+
+        if (parent.classList.contains('_opened')) {
+          description.textContent = description.dataset.benefitShort;
+        } else {
+          description.textContent = description.dataset.benefitFull;
+        }
+
+        wrapper.style.height = description.scrollHeight + 'px';
+        parent.classList.toggle('_opened');
+      }));
+    });
+  </script>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "New Product: Daily use",
+    "presets": [
+      {
+        "name": "New Product: Daily use"
+      }
+    ]
+  }
+{% endschema %}

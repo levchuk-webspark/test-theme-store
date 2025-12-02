@@ -859,14 +859,14 @@
               {% for slide in slides %}
                 {% if slide.settings.video_link != blank %}
                     <div class="carousel-cell">
-                      <video loop autoplay muted playsinline>
+                      <video loop autoplay muted playsinline loading="lazy">
                         <source src="{{ slide.settings.video_link }}" type="video/webm">  
                         <source src="{{ slide.settings.video_link }}" type="video/mp4">  
                       </video>
                     </div>
                 {% else if slide.settings.image %}
                   <div class="carousel-cell" style="width: 100%; border-radius: 8px;">
-                    <img src="{{ slide.settings.image | img_url: 'master' }}" alt="slide">
+                    <img src="{{ slide.settings.image | img_url: 'master' }}" alt="slide" loading="lazy">
                   </div>
                 {% endif %}
               {% endfor %}
@@ -901,14 +901,14 @@
                {% for slide in slides %}
                  {% if slide.settings.video_link_mobile != blank %}
                     <div class="carousel-cell">
-                      <video loop autoplay muted playsinline>
+                      <video loop autoplay muted playsinline loading="lazy">
                         <source src="{{ slide.settings.video_link_mobile }}" type="video/webm">  
                         <source src="{{ slide.settings.video_link_mobile }}" type="video/mp4">  
                       </video>
                     </div>
                 {% else if slide.settings.mobile_image %}
                   <div class="carousel-cell" style="width: 100%; border-radius: 8px;">
-                    <img src="{{ slide.settings.mobile_image | img_url: 'master' }}" alt="{{ slide.settings.mobile_image.alt }}">
+                    <img src="{{ slide.settings.mobile_image | img_url: 'master' }}" alt="{{ slide.settings.mobile_image.alt }}" loading="lazy">
                   </div>
                 {% endif %}
               {% endfor %}

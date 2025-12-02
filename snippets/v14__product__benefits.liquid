@@ -45,7 +45,7 @@
     {% for benefit in product.metafields.custom.benefits.value %}
       <li class="product__benefits-list__item">
         {% if product.metafields.custom.product_benefits_image %}
-            <img class="product__benefits-list__item__image" src="{{ product.metafields.custom.product_benefits_image | file_url }}" alt="Benefit image" >
+            <img class="product__benefits-list__item__image" src="{{ product.metafields.custom.product_benefits_image | file_url }}" alt="Benefit image" loading="lazy">
         {% endif %}
         <span>{{ benefit }}</span>
       </li>

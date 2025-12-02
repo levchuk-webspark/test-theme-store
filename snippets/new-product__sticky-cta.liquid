@@ -1,0 +1,238 @@
+{% style %}
+
+.new-product__sticky-cta__target {
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.new-product__sticky-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid #D4D8D0;
+  padding: 16px 20px;
+  z-index: 2000;
+  transition: all 0.3s ease-in-out;
+  transform: translateY(100%);
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.new-product__sticky-cta._sticked {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+  
+.new-product__sticky-cta__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1400px;
+}
+
+.new-product__sticky-cta__left {
+  flex: 0 1 auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.new-product__sticky-cta__image {
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.new-product__sticky-cta__col {
+  flex: 0 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.new-product__sticky-cta__title {
+  color: #404544;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.new-product__sticky-cta__purchase {
+  color: #949992;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+}
+
+.new-product__sticky-cta__right {
+  flex: 0 1 auto;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.new-product__sticky-cta__button {
+  background: #284734;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 12px;
+  min-width: 210px;
+  width: fit-content;
+  border-radius: 32px;
+  color: #F7F5F1;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.new-product__sticky-cta__button:hover {
+  background: #2f543dff;
+}
+
+.new-product__sticky-cta__price {
+  color: #3F4444;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.new-product__sticky-cta__price-mobile {
+  display: none;
+}
+
+.new-product__sticky-cta__price span {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 991px) {
+  .new-product__sticky-cta {
+    background: none;
+    border: none;
+    padding: 16px;
+  }
+
+  .new-product__sticky-cta__wrapper {
+    gap: 16px;
+    padding: 8px 16px;
+    background: #fff;
+    border: 1px solid #EDF2E9;
+    box-shadow: 0px 4px 14.7px 0px #0000000A;
+    border-radius: 12px;
+  }
+
+  .new-product__sticky-cta__left {
+    gap: 8px;
+  }
+
+  .new-product__sticky-cta__price,
+  .new-product__sticky-cta__title {
+    display: none;
+  }
+
+  .new-product__sticky-cta__price-mobile {
+    display: block;
+  }
+
+  .new-product__sticky-cta__button {
+    padding: 10px;
+    min-width: 120px;
+  }
+}
+
+{% endstyle %}
+
+<div class="new-product__sticky-cta__target" data-product-sticky-target></div>
+
+<div class="new-product__sticky-cta" data-product-sticky-cta>
+  <div class="new-product__sticky-cta__wrapper">
+    <div class="new-product__sticky-cta__left">
+      {% if product.featured_image != blank %}
+        {{ product.featured_image | image_url: width: 40, height: 50 | image_tag: class: 'new-product__sticky-cta__image', loading: 'lazy' }}
+      {% endif %}
+      <div class="new-product__sticky-cta__col">
+        {% if product.title != blank  %}
+          <h3 class="new-product__sticky-cta__title">
+            {{ product.title }}
+          </h3>
+        {% endif %}
+        <div class="new-product__sticky-cta__price new-product__sticky-cta__price-mobile" data-product-sticky-price>
+          {{ product.price }}
+        </div>
+        <div class="new-product__sticky-cta__purchase" data-product-sticky-purchase>
+          One time purchase
+        </div>
+      </div>
+    </div>
+
+    <div class="new-product__sticky-cta__right">
+      <div class="new-product__sticky-cta__price" data-product-sticky-price>
+        {{ product.price }}
+      </div>
+      <button type="button" class="new-product__sticky-cta__button" data-product-sticky-button>
+        Add to cart
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const targetCtaEl = document.querySelector('[data-product-sticky-target]');
+    const stickySection = document.querySelector('[data-product-sticky-cta]');
+    const stickyButton = document.querySelector('[data-product-sticky-button]');
+    const stickyPurchase = document.querySelector('[data-product-sticky-purchase]');
+    const stickyPrices = document.querySelectorAll('[data-product-sticky-price]');
+    const addToCartBtn = document.querySelector('.product__information .purchase-details .button--add-to-cart');
+    const chatIcon = document.querySelector('#chat-widget-icon');
+    const chatPopup = document.querySelector('#chat-widget-popup');
+    const isMobile = window.matchMedia('(max-width: 798px)').matches;
+    
+    if (!targetCtaEl || !stickySection || !addToCartBtn) return;
+    
+    stickyButton.addEventListener('click', () => addToCartBtn.click());
+    
+    const observer = new IntersectionObserver(([entry]) => {
+      const isShow = isMobile ? !entry.isIntersecting : !entry.isIntersecting && window.scrollY > targetCtaEl.getBoundingClientRect().top;
+      stickySection.classList.toggle('_sticked', isShow);
+      !!chatIcon && (chatIcon.style.bottom = isShow ? '100px' : null);
+      !!chatPopup && (chatPopup.style.bottom = isShow ? '160px' : null);
+    });
+  
+    observer.observe(targetCtaEl);
+
+    const initialPrice = document.querySelector('.product__information .no-subscription-price-display .no-subscription-price');
+    !!initialPrice && stickyPrices.forEach(price => price.textContent = initialPrice?.textContent);
+
+    document.addEventListener('sealsubs:price_update', () => {
+      const chosenOption = document.querySelector('.product__information .sls-active');
+      if (!chosenOption) return;
+
+      const oneTimePrice = chosenOption.querySelector('.sls-one-time-price');
+      const subscribeOldPrice = chosenOption.querySelector('.sls-selling-plan-group-price .sls-original-price'); 
+      const subscribeNewPrice = chosenOption.querySelector('.sls-selling-plan-group-price .sls-price'); 
+      const newPrice = oneTimePrice ? oneTimePrice?.textContent : `<span>${subscribeOldPrice?.textContent}</span> ${subscribeNewPrice?.textContent}`;
+
+      stickyPurchase.textContent = oneTimePrice ? 'One time purchase' : 'Subscribe and save';
+      stickyPrices.forEach(price => price.innerHTML = newPrice);
+    });
+  });
+</script>

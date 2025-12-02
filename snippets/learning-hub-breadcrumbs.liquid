@@ -1,0 +1,331 @@
+{% style %}
+  .breadcrumbs_container {
+    width: calc(50% - 20px);
+  }
+  .breadcrumbs__container,
+  .breadcrumbs__container > a {
+    margin-bottom: 24px;
+    color: #6f726e;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 110.00000000000001%;
+    letter-spacing: 0%;
+    text-transform: capitalize;
+  }
+  .breadcrumbs__container > a:hover {
+    text-decoration: underline;
+  }
+  #breadcrumbs-desktop {
+    display: block;
+  }
+  #breadcrumbs-mobile {
+    display: none;
+  }
+
+  @media screen and (max-width: 798px) {
+    /* #breadcrumbs-desktop {
+      display: none;
+    } */
+    #breadcrumbs-mobile {
+      display: block;
+      margin-top: 20px;
+    }
+  }
+{% endstyle %}
+
+{% if default_blog_urls != null %}
+  <div id="breadcrumbs-{{ breadcrumb_id }}" class="breadcrumbs__container">
+    <a class="breadcrumbs__main" href="https://youthandearth.com/blogs/learninghub">{{ blog.title }}</a>
+    <a
+      class="breadcrumbs__category-{{ breadcrumb_id }}"
+      href="{% if full_url == default_blog_url %}https://youthandearth.com/blogs/learninghub{% endif %}"
+    >
+      {% for url in default_blog_urls %}
+        {% if full_url == url %}
+          > See All
+        {% endif %}
+      {% endfor %}
+    </a>
+    <a class="breadcrumbs__subcategory-{{ breadcrumb_id }}"></a>
+  </div>
+
+{% else %}
+  
+    <div id="breadcrumbs-{{ breadcrumb_id }}" class="breadcrumbs__container">
+      <a class="breadcrumbs__main" href="{{ blog.url }}" title="{{ blog.title | escape }}">
+        {{ blog.title }}
+      </a>
+      <a class="breadcrumbs__category-{{ breadcrumb_id }}"></a>
+      <a class="breadcrumbs__subcategory-{{ breadcrumb_id }}"></a>
+    </div>
+ 
+{% endif %}
+
+<script>
+  window.addEventListener('DOMContentLoaded', function() {
+    const tags = {{ article.tags | json }};
+    const storageCategory = window.localStorage.getItem("breadcrumb_category-{{ breadcrumb_id }}")
+    const storageSubCategory = window.localStorage.getItem("breadcrumb_subcategory-{{ breadcrumb_id }}")
+
+    const parsedCategory = storageCategory ? JSON.parse(storageCategory) : null
+    const parsedSubCategory = storageSubCategory ? JSON.parse(storageSubCategory) : null
+
+    console.log('parsedSubCategory', parsedSubCategory)
+
+    // Capitalize
+    const capitalize = (str) =>
+    str.replace(/\b\w/g, (char) => char.toUpperCase());
+
+  const normalizedCategories = tags.map(capitalize);
+
+    if (parsedCategory?.title) {
+      //Case with category from storage
+      const foundedCategory = tags.find((tag) => tag === parsedCategory.title)
+      if (foundedCategory) {
+        //Set category to breadcrumbs
+        const breadcrumbCategory = document.getElementById('breadcrumbs-{{ breadcrumb_id }}')
+              if (breadcrumbCategory) {
+                const categorybreadcrumbElement = breadcrumbCategory.getElementsByClassName("breadcrumbs__category-{{ breadcrumb_id }}")
+                if (categorybreadcrumbElement) {
+                  categorybreadcrumbElement[0].setAttribute('href', parsedCategory.href)
+                  categorybreadcrumbElement[0].setAttribute('title', parsedCategory.title)
+                  categorybreadcrumbElement[0].textContent = "> "+ parsedCategory.title
+                }
+              }
+        //Set category to sidebar
+        const allCategories = document.querySelectorAll(".sidebar-block__heading__link");
+        if (allCategories) {
+          Array.from(allCategories).forEach((elementCategory) => {
+            const elementHref = elementCategory.getAttribute("href");
+            if (elementHref && elementHref == parsedCategory.href) {
+              //Set Active state to the sidebar menu title
+              const elementTitle = elementCategory.querySelectorAll(".sidebar-block__heading")
+              if (elementTitle) {
+                elementTitle[0].classList.add("active-title-menu");
+                //Set Active state to the sidebar menu item and find Subcategory to the breadcrumbs
+                const link_for_menu_changed = (parsedCategory.href).replace("https://youthandearth.com/blogs/learninghub/tagged/","");
+                const menuItemsContainer = document.querySelectorAll(`.${link_for_menu_changed}`);
+                if (menuItemsContainer) {
+                  // Check subcategory from storage with menu items list
+                  const links = menuItemsContainer[0].querySelectorAll("a");
+                  
+                  const matchingLink = Array.from(links).find(
+                    (link) => link.href === parsedSubCategory?.href
+                  );
+                    if (matchingLink) {
+                      const tagsHasMatchingLink = normalizedCategories.includes(matchingLink.textContent.trim())
+                      if (tagsHasMatchingLink) {
+                        matchingLink.classList.add("active");
+                      //Set subcategory to breadcrumb
+                      if (breadcrumbCategory) {
+                        const subcategorybreadcrumbElement = breadcrumbCategory.getElementsByClassName("breadcrumbs__subcategory-{{ breadcrumb_id }}")
+                        if (subcategorybreadcrumbElement) {
+                          subcategorybreadcrumbElement[0].setAttribute('href', parsedSubCategory.href)
+                          subcategorybreadcrumbElement[0].setAttribute('title', parsedSubCategory.title)
+                          subcategorybreadcrumbElement[0].textContent = "> "+ parsedSubCategory.title
+                        }
+                      }
+                      }
+                    } else {
+                      //Find subcategory element from tag
+
+                      const links = menuItemsContainer[0].querySelectorAll("a");
+
+                      const matchingLinks = Array.from(links).filter((link) =>
+                        normalizedCategories.includes(link.textContent.trim())
+                      );
+
+                      matchingLinks.forEach((link) => {
+                        link.classList.add("active");
+        
+                        //Add subcategory to the breadcrumb
+                        
+                        if (breadcrumbCategory) {
+                        const subcategorybreadcrumbElement = breadcrumbCategory.getElementsByClassName("breadcrumbs__subcategory-{{ breadcrumb_id }}")
+                        if (subcategorybreadcrumbElement) {
+                          subcategorybreadcrumbElement[0].setAttribute('href', link.getAttribute('href'))
+                          subcategorybreadcrumbElement[0].setAttribute('title', link.getAttribute('title'))
+                          subcategorybreadcrumbElement[0].textContent = "> "+ link.getAttribute('title')
+                        }
+                      }
+                      });
+                    }
+                }
+              }
+            }
+          })
+        }
+          
+      } else {
+        //Case when category not found from ste storage
+        
+        const allCategories = document.querySelectorAll(".sidebar-block__heading__link");
+        if (allCategories) {
+          Array.from(allCategories).forEach((elementCategory) => {
+            const elementTitle = elementCategory.getAttribute("title")
+            if (elementTitle) {
+              const matchedCategory = normalizedCategories.find((tag) => tag == elementTitle)
+              if (matchedCategory) {
+                const titleElement = elementCategory.querySelectorAll(".sidebar-block__heading")
+                if (titleElement) {
+                  const link_for_menu_changed = (elementCategory.getAttribute("href")).replace("https://youthandearth.com/blogs/learninghub/tagged/","");
+                  const menuItemsContainer = document.querySelectorAll(`.${link_for_menu_changed}`);
+                  if (menuItemsContainer) {
+                    const links = menuItemsContainer[0].querySelectorAll("a");
+                    const matchingLinks = Array.from(links).filter((link) =>
+                        normalizedCategories.includes(link.textContent.trim())
+                      );
+                    if (matchingLinks?.length > 0 && titleElement?.length > 0) {
+                      //Add active state and breadcrumbs
+                      titleElement[0].classList.add("active-title-menu") //category
+                      matchingLinks[0].classList.add("active") //subcategort
+
+                      const breadcrumbCategory = document.getElementById('breadcrumbs-{{ breadcrumb_id}}')
+                      if (breadcrumbCategory) {
+                        //Set subcategory to breadcrumbs
+                        const subcategorybreadcrumbElement = breadcrumbCategory.getElementsByClassName('breadcrumbs__subcategory-{{ breadcrumb_id }}')
+                        if (subcategorybreadcrumbElement) {
+                          subcategorybreadcrumbElement[0].setAttribute('href', matchingLinks[0].getAttribute('href'))
+                          subcategorybreadcrumbElement[0].setAttribute('title', matchingLinks[0].getAttribute('title'))
+                          subcategorybreadcrumbElement[0].textContent = "> "+ matchingLinks[0].getAttribute('title')
+                        }
+                        
+                        //Set category to breadcrumbs
+                        const categorybreadcrumbElement = breadcrumbCategory.getElementsByClassName("breadcrumbs__category-{{ breadcrumb_id }}")
+                        if (categorybreadcrumbElement) {
+                          categorybreadcrumbElement[0].setAttribute('href', elementCategory.getAttribute('href'))
+                          categorybreadcrumbElement[0].setAttribute('title', elementCategory.getAttribute('title'))
+                          categorybreadcrumbElement[0].textContent = "> "+ elementCategory.getAttribute('title')
+                        }
+                        // return;
+                      }
+                      // return;
+                    } else {
+                      // if (titleElement?.length > 0) {
+                      //   //Add active state to sidebar menu
+                      //   titleElement[0].classList.add("active-title-menu") //category
+                      //   //Set category to breadcrumbs
+                      //   const breadcrumbCategory = document.getElementById('breadcrumbs')
+                      //   if (breadcrumbCategory) {
+                      //     const categorybreadcrumbElement = breadcrumbCategory.getElementsByClassName("breadcrumbs__category")
+                      //     if (categorybreadcrumbElement) {
+                      //       categorybreadcrumbElement[0].setAttribute('href', elementCategory.getAttribute('href'))
+                      //       categorybreadcrumbElement[0].setAttribute('title', elementCategory.getAttribute('title'))
+                      //       categorybreadcrumbElement[0].textContent = "> "+ elementCategory.getAttribute('title')
+                      //     }
+                      //   }
+                      //   return;
+                      // }
+                    }
+                  }
+                } 
+              }
+            }
+          })
+        }
+      }
+    } else {
+      
+      //FIND category without storage elements
+      const allCategories = document.querySelectorAll(".sidebar-block__heading__link");
+        if (allCategories) {
+          Array.from(allCategories).forEach((elementCategory) => {
+            const elementTitle = elementCategory.getAttribute("title")
+            if (elementTitle) {
+              const matchedCategory = normalizedCategories.find((tag) => tag == elementTitle)
+              if (matchedCategory) {
+               
+                const titleElement = elementCategory.querySelectorAll(".sidebar-block__heading")
+                if (titleElement) {
+                  
+                  const link_for_menu_changed = (elementCategory.getAttribute("href")).replace("https://youthandearth.com/blogs/learninghub/tagged/","");
+                  const menuItemsContainer = document.querySelectorAll(`.${link_for_menu_changed}`);
+                  if (menuItemsContainer) {
+                    const links = menuItemsContainer[0].querySelectorAll("a");
+                    
+                    const matchingLinks = Array.from(links).filter((link) =>
+                        normalizedCategories.includes(link.textContent.trim())
+                      );
+                    
+                    const breadcrumbCategory = document.getElementById('breadcrumbs-{{ breadcrumb_id}}')
+
+                    // if (titleElement?.length > 0) {
+                    //   titleElement[0].classList.add("active-title-menu") //category
+                    //   if (breadcrumbCategory) {
+                    //     //Set category to breadcrumbs
+                    //     const categorybreadcrumbElement = breadcrumbCategory.getElementsByClassName("breadcrumbs__category")
+                    //     if (categorybreadcrumbElement) {
+                    //       categorybreadcrumbElement[0].setAttribute('href', elementCategory.getAttribute('href'))
+                    //       categorybreadcrumbElement[0].setAttribute('title', elementCategory.getAttribute('title'))
+                    //       categorybreadcrumbElement[0].textContent = "> "+ elementCategory.getAttribute('title')
+                    //     }
+                    // }
+                    // }
+                    if (matchingLinks?.length > 0 && titleElement?.length > 0) {
+                      //Add active state and breadcrumbs
+                      
+                      matchingLinks[0].classList.add("active") //subcategory
+                      titleElement[0].classList.add("active-title-menu") //category
+                      if (breadcrumbCategory) {
+                        //Set subcategory to breadcrumbs
+                        const subcategorybreadcrumbElement = breadcrumbCategory.getElementsByClassName("breadcrumbs__subcategory-{{ breadcrumb_id }}")
+                        if (subcategorybreadcrumbElement) {
+                          subcategorybreadcrumbElement[0].setAttribute('href', matchingLinks[0].getAttribute('href'))
+                          subcategorybreadcrumbElement[0].setAttribute('title', matchingLinks[0].getAttribute('title'))
+                          subcategorybreadcrumbElement[0].textContent = "> "+ matchingLinks[0].getAttribute('title')
+                        }
+
+                        if (breadcrumbCategory) {
+                        //Set category to breadcrumbs
+                        const categorybreadcrumbElement = breadcrumbCategory.getElementsByClassName("breadcrumbs__category-{{ breadcrumb_id }}")
+                        if (categorybreadcrumbElement) {
+                          categorybreadcrumbElement[0].setAttribute('href', elementCategory.getAttribute('href'))
+                          categorybreadcrumbElement[0].setAttribute('title', elementCategory.getAttribute('title'))
+                          categorybreadcrumbElement[0].textContent = "> "+ elementCategory.getAttribute('title')
+                        }
+                      }
+                        
+                        // return;
+                      }
+                      // return;
+                    }
+                  }
+                }
+              }
+            }
+          })
+        }
+    }
+  })
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', function() {
+    //Clear active state elements which not equal to breadcrumbs
+    const breadcrumbContainer = document.getElementById('breadcrumbs-{{ breadcrumb_id }}');
+    if (breadcrumbContainer) {
+      const categoryBreadcrumb = breadcrumbContainer.getElementsByClassName("breadcrumbs__category-{{ breadcrumb_id }}") 
+      const subcategoryBreadcrumb = breadcrumbContainer.getElementsByClassName("breadcrumbs__subcategory-{{ breadcrumb_id }}")
+      if (categoryBreadcrumb?.[0]) {
+        const targetHref = categoryBreadcrumb[0].getAttribute('href');
+        const allActiveTitles = document.querySelectorAll('h3.active-title-menu');
+
+        allActiveTitles.forEach(h3 => {
+          const parentLink = h3.closest('a.sidebar-block__heading__link');
+          if (parentLink && parentLink.getAttribute('href') !== targetHref) {
+            h3.classList.remove('active-title-menu');
+          }
+        });
+      }
+
+      if (subcategoryBreadcrumb) {
+        const activeSubcategoriesLinks = document.querySelectorAll('a.active');
+        activeSubcategoriesLinks.forEach(link => {
+            if (link.href !== subcategoryBreadcrumb[0].getAttribute('href')) {
+              link.classList.remove('active')
+            }
+        });
+      }
+    }
+  })
+</script>

@@ -1,0 +1,319 @@
+{% comment %}
+  Params:
+  audio_url - audio url
+  audio_title - audio title
+  audio_subtitle - audio subtitle
+  audio_image - audio image
+{% endcomment %}
+{% style %}
+  .audio-card {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 70px;
+    margin-left: auto;
+    margin-right: auto;
+    background: #284734;
+    border-radius: 12px;
+    padding: 25px 25px;
+    gap: 20px;
+
+    @media screen and (max-width: 798px) {
+      margin-top: 30px;
+      width: 100%;
+    }
+  }
+
+  .audio-thumbnail {
+    position: relative;
+    margin: 0 10px;
+    height: 140px;
+    width: auto;
+    background: #949992;
+    border-radius: 12px;
+
+    @media screen and (max-width: 798px) {
+      display: none;
+    }
+  }
+
+  .audio-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+
+  }
+
+  .audio-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 25px;
+    color: #F7F5F1;
+  }
+
+  .audio-title {
+    color: #F7F5F1;
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 110.00000000000001%;
+    letter-spacing: 0px;
+    text-align: left;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @media screen and (max-width: 798px) {
+      font-size: 16px;
+    }
+
+    @media screen and (max-width: 480px) {
+      font-size: 16px;
+      font-size: 0.7rem;
+      padding-right: 2px;
+    }
+  }
+
+  .audio-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    height: 64.33px;
+    padding: 10px 0;
+
+    @media screen and (max-width: 798px) {
+      padding: 0;
+      height: 38px;
+    }
+  }
+
+  .audio-playpause-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    flex-shrink: 1;
+    max-width: 64px;
+
+    @media (max-width: 798px) {
+      cursor: pointer;
+      width: 40px;
+    }
+
+    @media (max-width: 480px) {
+      cursor: pointer;
+      width: 35px;
+    }
+  }
+
+  .audio-progress-bar {
+    position: relative;
+    flex: 1;
+    height: 100%; 
+    background: var(--Youth-Grey-Light);
+    overflow: hidden;
+    mask: url("{{ 'audio-wave.svg' | asset_url }}") repeat-x center/auto 100%;
+    -webkit-mask: url("{{ 'audio-wave.svg' | asset_url }}") repeat-x center/auto 100%;
+    mask-position: -10px;
+
+    @media (max-width: 798px) {
+      mask-position: -210px;
+    }
+  }
+
+  .audio-progress-fill {
+    position: absolute;
+    inset: 0;
+    width: 0%; 
+    background: linear-gradient(180deg, #78BE20 0%, #44693D 100%);
+    transition: width 0.1s linear;
+    z-index: 2;
+  }
+
+  @media (max-width: 798px) {
+    .audio-progress-bar { height: 48px; }
+  }
+ 
+
+  .audio-timestamp {
+    background: linear-gradient(
+      180deg,
+      var(--Youth-Green-Accent) 0%,
+      var(--Earth-Green-Light) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    font-size: 1rem;
+    font-weight: 600;
+    flex-shrink: 0;
+    min-width: 60px;
+
+    @media screen and (max-width: 798px) {
+      font-size: 0.75rem;
+    }
+
+    @media screen and (max-width: 480px) {
+      font-size: 0.6rem;
+    }
+  }
+
+  .audio-subtitle {
+    color: #D4D8D0;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 16px;
+    line-height: 110.00000000000001%;
+    letter-spacing: 0px;
+
+    @media screen and (max-width: 798px) {
+      font-size: 11px;
+    }
+  }
+
+  .audio-divider {
+    height: 140px;
+    width: 1px;
+    background: var(--Youth-Green-Accent);
+    border: 1px solid var(--Youth-Green-Accent);
+    border-radius: 2px;
+
+    @media screen and (max-width: 798px) {
+      display: none;
+    }
+  }
+
+  .headings {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    @media screen and (max-width: 1200px) {
+      gap: 10px;
+    }
+    @media screen and (max-width: 798px) {
+      gap: 15px;
+    }
+  }
+{% endstyle %}
+
+{%- if audio_url -%}
+  {%- assign player_id = 'audio_' | append: section.id | replace: ' ', '_' -%}
+  {% assign img = audio_image | file_url | remove_last: '/files' %}
+  <div class="audio-card" id="audio-card-{{ player_id }}">
+    <div class="audio-thumbnail">
+      <img
+        src="{{ img }}"
+        alt="{{ audio_title | escape }}"
+        loading="eager"
+        width="100%"
+        height="100%"
+      >
+    </div>
+    <div class="audio-divider"></div>
+    <div class="audio-content">
+      <div class="headings">
+        <h4 class="audio-subtitle">{{ audio_subtitle }}</h4>
+        <h3 class="audio-title">{{ audio_title }}</h3>
+      </div>
+
+      <div class="audio-controls">
+        <button
+          class="audio-playpause-button"
+          aria-label="Play or pause"
+          id="playpause-btn-{{ player_id }}"
+        >
+          <img
+            id="play-icon-{{ player_id }}"
+            src="{{ 'playBtn.svg' | asset_url }}"
+            width="60"
+            height="60"
+            alt="Play"
+          >
+        </button>
+
+        <div
+          class="audio-progress-bar"
+          id="progress-bar-{{ player_id }}"
+          aria-label="Seek"
+        >
+          <div
+            class="audio-progress-fill"
+            id="progress-fill-{{ player_id }}"
+          >
+          </div>
+        </div>
+
+        <span
+          class="audio-timestamp"
+          id="timestamp-{{ player_id }}"
+          >00:00:00</span
+        >
+      </div>
+    </div>
+
+    <audio
+      id="audio-element-{{ player_id }}"
+      class="audio-element"
+      src="{{ audio_url }}"
+      preload="metadata"
+      style="display: none;"
+    ></audio>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const id = '{{ player_id }}';
+      const audioEl = document.getElementById('audio-element-' + id);
+      const playPauseBtn = document.getElementById('playpause-btn-' + id);
+      const playIcon = document.getElementById('play-icon-' + id);
+      const progressBar = document.getElementById('progress-bar-' + id);
+      const progressFill = document.getElementById('progress-fill-' + id);
+      const timestamp = document.getElementById('timestamp-' + id);
+
+      function formatTime(sec) {
+        const h = String(Math.floor(sec / 3600)).padStart(2, '0');
+        const m = String(Math.floor(sec / 60)).padStart(2, '0');
+        const s = String(Math.floor(sec % 60)).padStart(2, '0');
+        return `${h}:${m}:${s}`;
+      }
+
+      audioEl.addEventListener('loadedmetadata', () => {
+        timestamp.textContent = formatTime(audioEl.duration);
+      });
+
+      audioEl.addEventListener('timeupdate', () => {
+        const pct = (audioEl.currentTime / audioEl.duration) * 100;
+        progressFill.style.width = pct + '%';
+        timestamp.textContent = formatTime(audioEl.currentTime);
+      });
+
+      // Seek when clicking on progress bar
+      progressBar.addEventListener('click', (e) => {
+        const rect = progressBar.getBoundingClientRect();
+        const pct = (e.clientX - rect.left) / rect.width;
+        audioEl.currentTime = pct * audioEl.duration;
+      });
+
+      // Toggle play/pause
+      playPauseBtn.addEventListener('click', () => {
+        if (audioEl.paused) {
+          audioEl.play();
+          playIcon.src = '{{ "pauseBtn.svg" | asset_url }}';
+        } else {
+          audioEl.pause();
+          playIcon.src = '{{ "playBtn.svg"  | asset_url }}';
+        }
+      });
+    });
+  </script>
+{%- endif -%}

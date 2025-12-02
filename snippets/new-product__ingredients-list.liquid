@@ -1,0 +1,50 @@
+{% style %}
+
+.new-product__ingredients-list > p:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+{% endstyle %}
+
+<div class="new-product__ingredients-list">
+  {% if product.metafields.jadepuma.ingredients %}
+    <p>
+      <strong>Ingredients</strong>
+      : {{ product.metafields.jadepuma.ingredients }}
+    </p>
+  {% endif %}
+  
+  {% if product.selected_or_first_available_variant.metafields.jadepuma.nrv != blank %}
+    <p>
+      <strong>NRV</strong>
+      <span class="nrv-variant">{{ product.selected_or_first_available_variant.metafields.jadepuma.nrv }}</span>
+    </p>
+  {% else %}
+    <p>
+      <strong>NRV</strong>:
+      {% if product.metafields.jadepuma.nrv != blank %}
+        <span class="nrv-variant">
+          {{ product.metafields.jadepuma.nrv }}
+        </span>
+      {% endif %}
+    </p>
+  {% endif %}
+  
+  {% if product.metafields.jadepuma.allergens %}
+    <p>                
+      <strong>Allergens</strong>
+      {{ product.metafields.jadepuma.allergens }}
+    </p>
+  {% endif %}
+  
+  {% if product.metafields.jadepuma.dietary %}
+    <p>
+      <strong>Dietary</strong>
+      {% for dietary_item in product.metafields.jadepuma.dietary.value %}
+        {{ dietary_item }}
+        {% unless forloop.last %} - {% endunless %}
+      {% endfor %}
+    </p>
+  {% endif %}
+</div>
+

@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "product": {
     "variants": {
@@ -138,7 +147,7 @@
       "submit": "Sign Up"
     },
     "breadcrumbs": {
-      "home": "Home",
+      "home": "Shop by health focus",
       "page": "Page {{ current_page }} of {{ pages }}",
       "page_text": "Page",
       "of_text": "of"

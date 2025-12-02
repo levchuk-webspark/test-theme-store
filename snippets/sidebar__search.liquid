@@ -5,6 +5,11 @@
   @param resource_types {String}
     The search resource type
 {% endcomment %}
+{% style %}
+  .block__search > .sidebar-block__heading {
+    display: none;
+  }
+{% endstyle %}
 
 {% if block.settings.title != blank %}
   <h3 class="sidebar-block__heading">
@@ -32,6 +37,11 @@
             class="input"
             type="text"
             name="q"
+            {% if placeholder %}
+              placeholder="{{ placeholder }}"
+            {% else %}
+              placeholder="{{ 'general.search.placeholder' | t }}"
+            {% endif %}
             placeholder="{{ 'general.search.placeholder' | t }}"
             value="{{ search.terms }}"
             x-webkit-speech
@@ -48,10 +58,17 @@
             >
           {%- endif -%}
           <button type="submit" name="search">
-            {%
-              render 'icon',
-              name: 'search',
-            %}
+            {% if search_blog_icon %}
+              {%
+                render 'icon',
+                name: 'search_blog',
+              %}
+            {% else %}
+              {%
+                render 'icon',
+                name: 'search',
+              %}
+            {% endif %}
           </button>
         </div>
       </div>

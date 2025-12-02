@@ -1,1 +1,23 @@
-{"parent":"page.our-mission.json","context":{"market":"german-speaking-countries"},"sections":{"72a78264-5af2-4196-a9ae-4aeef2be902a":{"settings":{"background_color_9":"#585c3b"},"blocks":{}}}}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "page.our-mission.json",
+  "context": {
+    "market": "german-speaking-countries"
+  },
+  "sections": {
+    "72a78264-5af2-4196-a9ae-4aeef2be902a": {
+      "settings": {
+        "background_color_9": "#585c3b"
+      },
+      "blocks": {}
+    }
+  }
+}

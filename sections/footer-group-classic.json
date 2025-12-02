@@ -1,1 +1,459 @@
-{"type":"footer","name":"Footer","sections":{"fce4e3fe-4e20-4758-a430-505acbb04c51":{"type":"index__industry-badges","blocks":{"image_48Pxpr":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/British_GQ_size.png"}},"image_wEN7Ba":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/london-evening-standard_logo.png"}},"192840d6-d459-4cd3-9ff6-eed9a4b8ba4a":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Tatler-logo.png"}},"image_8VD4g4":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/sheerluxe-logo.png"}},"image_CaJnCx":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Top_sante_size.png"}},"e758abc3-17bd-40b0-b638-7a8924bca049":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Vanity-Fair-logo.png"}}},"block_order":["image_48Pxpr","image_wEN7Ba","192840d6-d459-4cd3-9ff6-eed9a4b8ba4a","image_8VD4g4","image_CaJnCx","e758abc3-17bd-40b0-b638-7a8924bca049"],"disabled":true,"settings":{"bg_color":"#ecd898","text":"<span class=\"ambit-black-text\">Trusted<\/span> <span class=\"romie-regular-italic-text\">by leaders<\/span>","text_color":"#3f4444"}},"index_industry_badges_mobile_tWreFf":{"type":"index__industry-badges-mobile","blocks":{"image_Gnec47":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/coverage-title-12.jpg"}},"image_LMpgNB":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/coverage-title-11.jpg"}},"image_rr86Qk":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/coverage-title-10.jpg"}}},"block_order":["image_Gnec47","image_LMpgNB","image_rr86Qk"],"disabled":true,"settings":{"bg_color":"#ecd898","text":"<span class=\"ambit-black-text\">Trusted<\/span> <span class=\"romie-regular-italic-text\">by leaders<\/span>","text_color":"#3f4444"}},"d47eabc9-4328-4df0-bda8-361f7fa5de4d":{"type":"index__trust-badges","blocks":{"image_cXicz6":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Get_the_Gloss_Wellness_Awards_2024_Bronze.png"}},"6a931daa-9e4d-46bc-ba3f-644823cea6ea":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/WINNER_BSWA2023_BADGE.png"}},"72c5b131-cca0-4e14-9fac-0d4434f5f8f3":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/EDITORS-CHOICE_BSWA2023_BADGE.png"}},"95dccb10-21a5-4911-80c4-24427b9a8a6b":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/GBB-Email-Signature-2023_1.png"}},"608e38fb-0d63-43b7-89ef-3d3be591b6cd":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Platinum_Trusted_Service_Award_-_Badge_-_1x1_9e80f3ab-ecc2-426b-9bf5-ea669ad142cd.png"}},"5261c88a-226a-4be8-8814-c99f4b4fd717":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/ABA_WINNER_1.png"}},"6d006500-2149-4a77-b8d4-e05568246148":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Award6-V1.jpg"}},"ef071caa-3816-4bfc-bed8-6ebd914d4431":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Award4-V1.png"}},"796d1b4a-8df4-4e0a-87a3-a5586f75eda2":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Award7-V1_b5f73d39-f690-4229-9aa1-1887e7a5d029.png"}},"d9ff936f-dd3d-4297-b2db-13d934a4e0c0":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/GBB-Brand-Partner-Logo-2022_3.jpg"}},"c9ab1993-0ee3-466a-9660-483da73c3f59":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Feefo_Awards_Posters_2022_Gold_Dark_Print.png"}},"8c884314-c46a-4892-94ef-b1c6a89cba76":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Winner-Healthy-Ageing_c3403184-da02-4eeb-87c7-3855842ca861.png"}},"7c9736f6-89d3-427a-844b-e6957cfcc7bc":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Winner-Best-Supplement_5e45c96e-83b1-48ea-a88e-f8c5483f0068.png"}},"ba233ecf-7439-4b8a-8d86-85b1a7cf3cb0":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/DNA-Repair_f5a81880-63ce-4bed-8d4c-34b8e50a857b.png"}}},"block_order":["image_cXicz6","6a931daa-9e4d-46bc-ba3f-644823cea6ea","72c5b131-cca0-4e14-9fac-0d4434f5f8f3","95dccb10-21a5-4911-80c4-24427b9a8a6b","608e38fb-0d63-43b7-89ef-3d3be591b6cd","5261c88a-226a-4be8-8814-c99f4b4fd717","6d006500-2149-4a77-b8d4-e05568246148","ef071caa-3816-4bfc-bed8-6ebd914d4431","796d1b4a-8df4-4e0a-87a3-a5586f75eda2","d9ff936f-dd3d-4297-b2db-13d934a4e0c0","c9ab1993-0ee3-466a-9660-483da73c3f59","8c884314-c46a-4892-94ef-b1c6a89cba76","7c9736f6-89d3-427a-844b-e6957cfcc7bc","ba233ecf-7439-4b8a-8d86-85b1a7cf3cb0"],"settings":{"bg_color":"#f7f5f1","text":"All of our award-winning products are manufactured in approved Good Manufacturing Practice (GMP) facilities.","link":"https:\/\/youthandearth.com\/pages\/our-mission","link-text":"Our mission","text_color":"#000000","link-icon":"shopify:\/\/shop_images\/Untitled_design_5.svg"}},"still_got_questions_8dFN8z":{"type":"still-got-questions","blocks":{"button_block_UXhC4m":{"type":"button-block","settings":{"button_label":"Check out Our FAQ","button_link":"shopify:\/\/pages\/faq","button_style":"button--custom","button_custom_border_radius":8,"button_custom_bg_color":"#edf2e9","button_custom_border_color":"#edf2e9","button_custom_text_color":"#284734","button_custom_bg_color--highlight":"#78be20","button_custom_border_color--highlight":"#78be20","button_custom_text_color--highlight":"#edf2e9"}},"button_block_6XJAAF":{"type":"button-block","settings":{"button_label":"Shoot Us a Note","button_link":"shopify:\/\/pages\/contact","button_style":"button--custom","button_custom_border_radius":8,"button_custom_bg_color":"#edf2e9","button_custom_border_color":"#edf2e9","button_custom_text_color":"#284734","button_custom_bg_color--highlight":"#78be20","button_custom_border_color--highlight":"#78be20","button_custom_text_color--highlight":"#edf2e9"}},"slide_9tectf":{"type":"slide","settings":{"image":"shopify:\/\/shop_images\/Banner-3_48f63c40-644a-4078-89be-ef32c842e512.png","mobile_image":"shopify:\/\/shop_images\/Banner-3_1.png","video_link":"","video_link_mobile":""}}},"block_order":["button_block_UXhC4m","button_block_6XJAAF","slide_9tectf"],"settings":{"title":"<span class=\"ambit-black-text\">Still got questions?<\/span>","right-image":"shopify:\/\/shop_images\/Group_314462.svg","padding_top":0,"padding_bottom":0,"background_color":"rgba(0,0,0,0)","title_color":"#edf2e9","active_dot_color":"#78be20","padding_top_mobile":0,"padding_bottom_mobile":0,"css_class":"","custom_css":""}},"footer_icon_bar":{"type":"footer__icon-bar","disabled":true,"settings":{"show_icon_bar":true,"icon_position":"row","alignment":"center","mobile_alignment":"none","size":"medium","background":"#8b8b8b","link_color":"#ffffff","link_hover_color":"#000000","text_color":"#ffffff","width":"standard","css_class":"","custom_css":""}},"7bc44deb-901b-464a-8e6b-dbf85041b228":{"type":"index__html","settings":{"html_content":"<div id=\"footer_hyperlink_section\"> \n<\/div>","width":"standard","padding_top":0,"padding_bottom":0,"padding_left":0,"padding_right":0,"animation":"none","padding_top_mobile":0,"padding_bottom_mobile":0,"css_class":"","custom_css":""}},"footer":{"type":"footer-classic","blocks":{"link_list_7gVLwP":{"type":"link_list","settings":{"menu":"learn-more","social_icons_footer":false}},"link_list_gPfhce":{"type":"link_list","settings":{"menu":"engage-1","social_icons_footer":false}},"link_list_HUx4Dy":{"type":"link_list","settings":{"menu":"contact","social_icons_footer":false}},"link_list_UfkkWQ":{"type":"link_list","settings":{"menu":"shop","social_icons_footer":true}},"68b0964a-90ac-4d4c-a5bf-28bf8c796c33":{"type":"newsletter","settings":{"newsletter_title":"","newsletter_richtext":"<span style=\"margin-bottom: 10px\" class=\"ambit-black-text\">Join thousands of people not letting their age slow them down.<\/span><br><span class=\"romie-regular-italic-text\" style=\"font-weight: 400;\">Sign up now to receive 15% OFF on your first order*.<\/span><br>\n<span class=\"offer-valid\">*Offer valid for one-off purchases only. It cannot be used in conjunction with subscription discounts.<\/span>","display_first_name":true,"display_last_name":true,"newsletter_logo":"shopify:\/\/shop_images\/letter-logo.svg","newsletter_icons_color":"#78be20","button_background_color":"#f7f5f1","button_background_hover_color":"#a0d163"}},"disclaimer_zhDmTt":{"type":"disclaimer","settings":{"content":"†These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.","content_color":"#f7f5f1"}},"footer_links_7ijdQN":{"type":"footer_links","settings":{"label_link":"Terms & Conditions","url_link":"shopify:\/\/pages\/longevity-rewards-terms-and-conditions","label_link_2":"Privacy Policy","url_link_2":"shopify:\/\/pages\/privacy-policy"}}},"block_order":["link_list_7gVLwP","link_list_gPfhce","link_list_HUx4Dy","link_list_UfkkWQ","68b0964a-90ac-4d4c-a5bf-28bf8c796c33","disclaimer_zhDmTt","footer_links_7ijdQN"],"settings":{"copyright_text":"","display_designed_by":false,"display_shopify":false,"display_logo_block":false,"display_localization_switcher":false,"show_follow_on_shop":false,"show_locale_selector":true,"show_currency_selector":true,"display_payment_methods":false,"css_class":"","custom_css":""}},"8365c56c-cc6e-4786-8ef4-86ae1395b0c8":{"type":"index__image-with-text-overlay","disabled":true,"custom_css":[".background-green {background-color: #284734;}",".background-green img {max-width: 1200px;}",".image-element__wrap {height: 100% !important;}","@media only screen and (max-width: 480px) {.background-green {display: block; } .background-green .image-element__wrap {height: auto !important; }}"],"settings":{"image":"shopify:\/\/shop_images\/Y_E-logotype-RGB-White_copy_1.svg","desktop_image_height":200,"use_image_aspect_ratio":false,"image_opacity":1,"image-border-radius":5,"background_image_color":"#284734","mobile_image_height":200,"link":"","pretext":"","is_h1_title":false,"title":"","subtitle":"","pretext_color":"#000000","heading_color":"#000000","subheading_color":"#000000","text_alignment":"center","text_horizontal_position":"center","text_vertical_position":"middle","text_width":40,"background_color":"#284734","background_opacity":0,"border_color":"#284734","border_width":0,"button_1":"","button_1_link":"","button_1_style":"button--secondary","button_2":"","button_2_link":"","button_2_style":"button--secondary","width":"wide","padding_top":0,"padding_bottom":60,"padding_left":0,"padding_right":0,"animation":"none","mobile_text_below_image":false,"mobile_preheading":"","mobile_heading":"","mobile_subheading":"","pretext_color_mobile":"rgba(0,0,0,0)","heading_color_mobile":"rgba(0,0,0,0)","subheading_color_mobile":"rgba(0,0,0,0)","text_alignment_mobile":"same_as_desktop","padding_top_mobile":0,"padding_bottom_mobile":0,"css_class":"background-green","custom_css":""}}},"order":["fce4e3fe-4e20-4758-a430-505acbb04c51","index_industry_badges_mobile_tWreFf","d47eabc9-4328-4df0-bda8-361f7fa5de4d","still_got_questions_8dFN8z","footer_icon_bar","7bc44deb-901b-464a-8e6b-dbf85041b228","footer","8365c56c-cc6e-4786-8ef4-86ae1395b0c8"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "fce4e3fe-4e20-4758-a430-505acbb04c51": {
+      "type": "index__industry-badges",
+      "blocks": {
+        "image_48Pxpr": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/British_GQ_size.png"
+          }
+        },
+        "image_wEN7Ba": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/london-evening-standard_logo.png"
+          }
+        },
+        "192840d6-d459-4cd3-9ff6-eed9a4b8ba4a": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Tatler-logo.png"
+          }
+        },
+        "image_8VD4g4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/sheerluxe-logo.png"
+          }
+        },
+        "image_CaJnCx": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Top_sante_size.png"
+          }
+        },
+        "e758abc3-17bd-40b0-b638-7a8924bca049": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Vanity-Fair-logo.png"
+          }
+        }
+      },
+      "block_order": [
+        "image_48Pxpr",
+        "image_wEN7Ba",
+        "192840d6-d459-4cd3-9ff6-eed9a4b8ba4a",
+        "image_8VD4g4",
+        "image_CaJnCx",
+        "e758abc3-17bd-40b0-b638-7a8924bca049"
+      ],
+      "disabled": true,
+      "settings": {
+        "bg_color": "#ecd898",
+        "text": "<span class=\"ambit-black-text\">Trusted</span> <span class=\"romie-regular-italic-text\">by leaders</span>",
+        "text_color": "#3f4444"
+      }
+    },
+    "index_industry_badges_mobile_tWreFf": {
+      "type": "index__industry-badges-mobile",
+      "blocks": {
+        "image_Gnec47": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/coverage-title-12.jpg"
+          }
+        },
+        "image_LMpgNB": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/coverage-title-11.jpg"
+          }
+        },
+        "image_rr86Qk": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/coverage-title-10.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_Gnec47",
+        "image_LMpgNB",
+        "image_rr86Qk"
+      ],
+      "disabled": true,
+      "settings": {
+        "bg_color": "#ecd898",
+        "text": "<span class=\"ambit-black-text\">Trusted</span> <span class=\"romie-regular-italic-text\">by leaders</span>",
+        "text_color": "#3f4444"
+      }
+    },
+    "d47eabc9-4328-4df0-bda8-361f7fa5de4d": {
+      "type": "index__trust-badges",
+      "blocks": {
+        "image_cXicz6": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Get_the_Gloss_Wellness_Awards_2024_Bronze.png"
+          }
+        },
+        "6a931daa-9e4d-46bc-ba3f-644823cea6ea": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/WINNER_BSWA2023_BADGE.png"
+          }
+        },
+        "72c5b131-cca0-4e14-9fac-0d4434f5f8f3": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/EDITORS-CHOICE_BSWA2023_BADGE.png"
+          }
+        },
+        "95dccb10-21a5-4911-80c4-24427b9a8a6b": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GBB-Email-Signature-2023_1.png"
+          }
+        },
+        "608e38fb-0d63-43b7-89ef-3d3be591b6cd": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Platinum_Trusted_Service_Award_-_Badge_-_1x1_9e80f3ab-ecc2-426b-9bf5-ea669ad142cd.png"
+          }
+        },
+        "5261c88a-226a-4be8-8814-c99f4b4fd717": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/ABA_WINNER_1.png"
+          }
+        },
+        "6d006500-2149-4a77-b8d4-e05568246148": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Award6-V1.jpg"
+          }
+        },
+        "ef071caa-3816-4bfc-bed8-6ebd914d4431": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Award4-V1.png"
+          }
+        },
+        "796d1b4a-8df4-4e0a-87a3-a5586f75eda2": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Award7-V1_b5f73d39-f690-4229-9aa1-1887e7a5d029.png"
+          }
+        },
+        "d9ff936f-dd3d-4297-b2db-13d934a4e0c0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GBB-Brand-Partner-Logo-2022_3.jpg"
+          }
+        },
+        "c9ab1993-0ee3-466a-9660-483da73c3f59": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Feefo_Awards_Posters_2022_Gold_Dark_Print.png"
+          }
+        },
+        "8c884314-c46a-4892-94ef-b1c6a89cba76": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Winner-Healthy-Ageing_c3403184-da02-4eeb-87c7-3855842ca861.png"
+          }
+        },
+        "7c9736f6-89d3-427a-844b-e6957cfcc7bc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Winner-Best-Supplement_5e45c96e-83b1-48ea-a88e-f8c5483f0068.png"
+          }
+        },
+        "ba233ecf-7439-4b8a-8d86-85b1a7cf3cb0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/DNA-Repair_f5a81880-63ce-4bed-8d4c-34b8e50a857b.png"
+          }
+        }
+      },
+      "block_order": [
+        "image_cXicz6",
+        "6a931daa-9e4d-46bc-ba3f-644823cea6ea",
+        "72c5b131-cca0-4e14-9fac-0d4434f5f8f3",
+        "95dccb10-21a5-4911-80c4-24427b9a8a6b",
+        "608e38fb-0d63-43b7-89ef-3d3be591b6cd",
+        "5261c88a-226a-4be8-8814-c99f4b4fd717",
+        "6d006500-2149-4a77-b8d4-e05568246148",
+        "ef071caa-3816-4bfc-bed8-6ebd914d4431",
+        "796d1b4a-8df4-4e0a-87a3-a5586f75eda2",
+        "d9ff936f-dd3d-4297-b2db-13d934a4e0c0",
+        "c9ab1993-0ee3-466a-9660-483da73c3f59",
+        "8c884314-c46a-4892-94ef-b1c6a89cba76",
+        "7c9736f6-89d3-427a-844b-e6957cfcc7bc",
+        "ba233ecf-7439-4b8a-8d86-85b1a7cf3cb0"
+      ],
+      "settings": {
+        "bg_color": "#f7f5f1",
+        "text": "All of our award-winning products are manufactured in approved Good Manufacturing Practice (GMP) facilities.",
+        "link": "https://youthandearth.com/pages/our-mission",
+        "link-text": "Our mission",
+        "text_color": "#000000",
+        "link-icon": "shopify://shop_images/Untitled_design_5.svg"
+      }
+    },
+    "still_got_questions_8dFN8z": {
+      "type": "still-got-questions",
+      "blocks": {
+        "button_block_UXhC4m": {
+          "type": "button-block",
+          "settings": {
+            "button_label": "Check out Our FAQ",
+            "button_link": "shopify://pages/faq",
+            "button_style": "button--custom",
+            "button_custom_border_radius": 8,
+            "button_custom_bg_color": "#edf2e9",
+            "button_custom_border_color": "#edf2e9",
+            "button_custom_text_color": "#284734",
+            "button_custom_bg_color--highlight": "#78be20",
+            "button_custom_border_color--highlight": "#78be20",
+            "button_custom_text_color--highlight": "#edf2e9"
+          }
+        },
+        "button_block_6XJAAF": {
+          "type": "button-block",
+          "settings": {
+            "button_label": "Shoot Us a Note",
+            "button_link": "shopify://pages/contact",
+            "button_style": "button--custom",
+            "button_custom_border_radius": 8,
+            "button_custom_bg_color": "#edf2e9",
+            "button_custom_border_color": "#edf2e9",
+            "button_custom_text_color": "#284734",
+            "button_custom_bg_color--highlight": "#78be20",
+            "button_custom_border_color--highlight": "#78be20",
+            "button_custom_text_color--highlight": "#edf2e9"
+          }
+        },
+        "slide_9tectf": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Banner-3_48f63c40-644a-4078-89be-ef32c842e512.png",
+            "mobile_image": "shopify://shop_images/Banner-3_1.png",
+            "video_link": "",
+            "video_link_mobile": ""
+          }
+        },
+        "slide_m9ayJn": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Banner-1_2c65270f-ff8c-4427-a001-5377c9b6b993.png",
+            "mobile_image": "shopify://shop_images/Banner-1_1_981e0207-2aab-4b26-8026-faa8b065d58c.png",
+            "video_link": "",
+            "video_link_mobile": ""
+          }
+        },
+        "slide_4gmEM8": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Banner-2_7eb4147b-1f3f-408f-84fb-62bfaff93ee8.png",
+            "mobile_image": "shopify://shop_images/Banner-2_1.png",
+            "video_link": "",
+            "video_link_mobile": ""
+          }
+        }
+      },
+      "block_order": [
+        "button_block_UXhC4m",
+        "button_block_6XJAAF",
+        "slide_9tectf",
+        "slide_m9ayJn",
+        "slide_4gmEM8"
+      ],
+      "settings": {
+        "title": "<span class=\"ambit-black-text\">Still got questions?</span>",
+        "right-image": "shopify://shop_images/Group_314462.svg",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "background_color": "rgba(0,0,0,0)",
+        "title_color": "#edf2e9",
+        "active_dot_color": "#78be20",
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "footer_icon_bar": {
+      "type": "footer__icon-bar",
+      "disabled": true,
+      "settings": {
+        "show_icon_bar": true,
+        "icon_position": "row",
+        "alignment": "center",
+        "mobile_alignment": "none",
+        "size": "medium",
+        "background": "#8b8b8b",
+        "link_color": "#ffffff",
+        "link_hover_color": "#000000",
+        "text_color": "#ffffff",
+        "width": "standard",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "7bc44deb-901b-464a-8e6b-dbf85041b228": {
+      "type": "index__html",
+      "settings": {
+        "html_content": "<div id=\"footer_hyperlink_section\"> \n</div>",
+        "width": "standard",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "animation": "none",
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "footer": {
+      "type": "footer-classic",
+      "blocks": {
+        "link_list": {
+          "type": "link_list",
+          "settings": {
+            "menu": "engage",
+            "social_icons_footer": false
+          }
+        },
+        "867d6be9-fefc-4eeb-9c27-8e74dca53d2d": {
+          "type": "link_list",
+          "settings": {
+            "menu": "footer",
+            "social_icons_footer": false
+          }
+        },
+        "68b0964a-90ac-4d4c-a5bf-28bf8c796c33": {
+          "type": "newsletter",
+          "settings": {
+            "newsletter_title": "",
+            "newsletter_richtext": "<span class=\"ambit-black-text\">Join thousands of people not letting their age slow them down.</span><br> <span class=\"romie-regular-italic-text\">Sign up now to receive 15% OFF on your first order*.</span> \n<p><span style=\"font-size: 12px;\">*Offer valid for one-off purchases only. It cannot be used in conjunction with subscription discounts.</span></p>",
+            "display_first_name": true,
+            "display_last_name": true,
+            "newsletter_icons_color": "#78be20",
+            "button_background_color": "#78be20",
+            "button_background_hover_color": "#a0d163"
+          }
+        },
+        "logo_HBb6kL": {
+          "type": "logo",
+          "settings": {
+            "size": "small",
+            "text": "",
+            "social_icons_footer": true
+          }
+        }
+      },
+      "block_order": [
+        "link_list",
+        "867d6be9-fefc-4eeb-9c27-8e74dca53d2d",
+        "68b0964a-90ac-4d4c-a5bf-28bf8c796c33",
+        "logo_HBb6kL"
+      ],
+      "settings": {
+        "copyright_text": "",
+        "display_designed_by": false,
+        "display_shopify": false,
+        "display_logo_block": false,
+        "display_localization_switcher": false,
+        "show_follow_on_shop": false,
+        "show_locale_selector": true,
+        "show_currency_selector": true,
+        "display_payment_methods": false,
+        "css_class": "",
+        "custom_css": ".footer__extra-content { display: none; }\n.footer__credits { display: none; }\n.sub-footer { display: none; }\na.footer__logo-wrapper { display: none;  }\n.footer__block .block__logo { margin: 0; }"
+      }
+    },
+    "8365c56c-cc6e-4786-8ef4-86ae1395b0c8": {
+      "type": "index__image-with-text-overlay",
+      "custom_css": [
+        ".background-green {background-color: #284734;}",
+        ".background-green img {max-width: 1200px;}",
+        ".image-element__wrap {height: 100% !important;}",
+        "@media only screen and (max-width: 480px) {.background-green {display: block; } .background-green .image-element__wrap {height: auto !important; }}"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/Y_E-logotype-RGB-White_copy_1.svg",
+        "desktop_image_height": 200,
+        "use_image_aspect_ratio": false,
+        "image_opacity": 1,
+        "image-border-radius": 5,
+        "background_image_color": "#284734",
+        "mobile_image_height": 200,
+        "link": "",
+        "pretext": "",
+        "is_h1_title": false,
+        "title": "",
+        "subtitle": "",
+        "pretext_color": "#000000",
+        "heading_color": "#000000",
+        "subheading_color": "#000000",
+        "text_alignment": "center",
+        "text_horizontal_position": "center",
+        "text_vertical_position": "middle",
+        "text_width": 40,
+        "background_color": "#284734",
+        "background_opacity": 0,
+        "border_color": "#284734",
+        "border_width": 0,
+        "button_1": "",
+        "button_1_link": "",
+        "button_1_style": "button--secondary",
+        "button_2": "",
+        "button_2_link": "",
+        "button_2_style": "button--secondary",
+        "width": "wide",
+        "padding_top": 0,
+        "padding_bottom": 60,
+        "padding_left": 0,
+        "padding_right": 0,
+        "animation": "none",
+        "mobile_text_below_image": false,
+        "mobile_preheading": "",
+        "mobile_heading": "",
+        "mobile_subheading": "",
+        "pretext_color_mobile": "rgba(0,0,0,0)",
+        "heading_color_mobile": "rgba(0,0,0,0)",
+        "subheading_color_mobile": "rgba(0,0,0,0)",
+        "text_alignment_mobile": "same_as_desktop",
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "css_class": "background-green",
+        "custom_css": ""
+      }
+    }
+  },
+  "order": [
+    "fce4e3fe-4e20-4758-a430-505acbb04c51",
+    "index_industry_badges_mobile_tWreFf",
+    "d47eabc9-4328-4df0-bda8-361f7fa5de4d",
+    "still_got_questions_8dFN8z",
+    "footer_icon_bar",
+    "7bc44deb-901b-464a-8e6b-dbf85041b228",
+    "footer",
+    "8365c56c-cc6e-4786-8ef4-86ae1395b0c8"
+  ]
+}

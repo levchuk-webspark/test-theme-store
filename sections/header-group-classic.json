@@ -1,1 +1,360 @@
-{"type":"header","name":"Header","sections":{"announcement_bar":{"type":"announcement-bar","disabled":true,"settings":{"homepage_only":false,"enable_sticky":true,"show_close_icon":true,"icon_label":"","text":"<p><a href=\"https:\/\/youthandearth.com\/#quiz-qrHLLqB\" target=\"_blank\" title=\"https:\/\/youthandearth.com\/#quiz-qrHLLqB\">Unsure which supplements are right for you? Take our quiz to find out!<\/a><\/p>","mobile_text":"<p><a href=\"https:\/\/youthandearth.com\/#quiz-qrHLLqB\" title=\"https:\/\/youthandearth.com\/#quiz-qrHLLqB\">Not sure which supplements you need? <br\/>Take our quiz!<\/a><\/p>","alignment":"center","size":"small","button_label":"","link":"shopify:\/\/collections\/shop-all","button_style":"button--primary","background":"#e0e56b","text_color":"#000000","width":"wide","css_class":"","custom_css":""}},"header_top_bar":{"type":"header__top-bar","blocks":{"text":{"type":"text","settings":{"text":"Feefo Platinum Trusted Service Award Winner, 2,800+ Reviews, 300,000+ Orders. Countless Lives Transformed.","mobile_text":"","link":"shopify:\/\/pages\/shipping-policy","apply_hyperlink":true}},"social_media":{"type":"social_media","settings":{}}},"block_order":["text","social_media"],"custom_css":[],"settings":{"background":"#edf2e9","link_color":"#284734","link_hover_color":"#78be20","text_color":"#284734","font":"merriweather_sans_n4","font_style":"none","font_size":15,"letter_spacing":0,"show_locale_selector":false,"show_currency_selector":false,"width":"standard","css_class":"","custom_css":""}},"header":{"type":"header-classic","settings":{"logo":"shopify:\/\/shop_images\/Y_E-logotype-RGB-White_copy_1.svg","logo_width":200,"main_linklist":"main-nav-flex","menu_alignment":"center","dropdown_click":false,"display_search":true,"icon_style":"icons","enable_overlay":false,"show_text_shadow":false,"overlay_link_color":"rgba(0,0,0,0)","overlay_link_hover_color":"rgba(0,0,0,0)","overlay_background":"rgba(0,0,0,0)","overlay_background_opacity":0,"overlay_logo_width":150,"enable_sticky":true,"sticky_background_opacity":100,"scroll_logo_width":150,"width":"standard","vertical_alignment":"center","css_class":"","custom_css":""}},"25ab00d2-f236-4d67-be87-3ad4c21f55ca":{"type":"mega-menu","blocks":{"0446f2be-7a87-4fec-8ccd-4e7913c4afbc":{"type":"menu","settings":{"menu_1":"category","menu_1_link":"https:\/\/us.youthandearth.com\/pages\/shop?collection_filter=HealthGoals","menu_1_label":""}},"sections--16806877233365__25ab00d2-f236-4d67-be87-3ad4c21f55ca-menu-1":{"type":"menu","settings":{"menu_1":"health-needs","menu_1_link":"https:\/\/us.youthandearth.com\/pages\/shop?collection_2_filter=HealthNeeds","menu_1_label":""}},"menu_WXJK9p":{"type":"menu","settings":{"menu_1":"best-sellers","menu_1_link":"shopify:\/\/collections\/best-sellers","menu_1_label":"SHOP ALL"}},"menu_3Xj8WG":{"type":"menu","settings":{"menu_1":"bundles","menu_1_link":"shopify:\/\/collections\/bundles","menu_1_label":"SHOP ALL"}},"image_6GWgpt":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/uma-magamenu.png","image_link":"shopify:\/\/products\/uma-naidoo-mood-food","image_caption":"<p>Mood Food Mixers - In collaboration with Dr. Uma Naidoo.<\/p>","label":"New","product_image":"shopify:\/\/shop_images\/uma-megamen-2.png","image_height":343,"image_height_mobile":160}},"image_Qrq96g":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Product_2_Menu_604766ad-3011-4acb-b6b8-a7b5cc3cce96_1.png","image_link":"shopify:\/\/collections\/shop-all","image_caption":"<p>Shop All!<\/p>","label":"","image_height":224,"image_height_mobile":136}}},"block_order":["0446f2be-7a87-4fec-8ccd-4e7913c4afbc","sections--16806877233365__25ab00d2-f236-4d67-be87-3ad4c21f55ca-menu-1","menu_WXJK9p","menu_3Xj8WG","image_6GWgpt","image_Qrq96g"],"settings":{"is_new_menu":true,"parent_link":"shop","mega_menu_background_color":"#edf2e9","mega_menu_text_color":"rgba(0,0,0,0)","mega_menu_link_color":"#404544","mega_menu_link_hover_color":"#000000","enable_mega_menu_border":false,"show_mega_bottom_bar":false,"mega_bottom_bar_icon":"","mega_bottom_bar_text":"Add your deal, information or promotional text","mega_bottom_bar_link":"","size":"regular","bottom_banner_bg":"#007ace","bottom_banner_text":"#efefef","css_class":"","custom_css":""}},"acf800e8-5f47-4094-bac0-e0b3b40998fb":{"type":"header__promotional-slider","blocks":{"cab30452-e4aa-4d07-b8ba-301833371af1":{"type":"text","settings":{"title":"3,000+ Reviews","background_color":"rgba(0,0,0,0)","icon_label":"stars-black","link":"shopify:\/\/pages\/reviews"}},"7157e961-02cb-4b40-a9ae-8d71eb7b7011":{"type":"text","settings":{"title":"300,000+ Orders Shipped","background_color":"rgba(0,0,0,0)","icon_label":"truck","link":"shopify:\/\/policies\/shipping-policy"}},"27a713cf-aad4-47da-922d-75052c640dbf":{"type":"text","settings":{"title":"Subscribe & Save Up To 25%","background_color":"","icon_label":"cart","link":"shopify:\/\/pages\/manage-subscriptions"}},"08b42e04-ee36-40b4-92a4-a1fe96bc4d7d":{"type":"text","settings":{"title":"60 Days Money Back Guarantee","background_color":"","icon_label":"shield","link":"shopify:\/\/policies\/refund-policy"}},"3f13162f-6aca-4b4f-bc17-93091aa18167":{"type":"text","disabled":true,"settings":{"title":"Free Shipping on UK orders over £50","background_color":"","icon_label":"","link":""}}},"block_order":["cab30452-e4aa-4d07-b8ba-301833371af1","7157e961-02cb-4b40-a9ae-8d71eb7b7011","27a713cf-aad4-47da-922d-75052c640dbf","08b42e04-ee36-40b4-92a4-a1fe96bc4d7d","3f13162f-6aca-4b4f-bc17-93091aa18167"],"settings":{"show_header_promo":true,"background_color":"#edf2e9","text_color":"#284734","desktop_font-size":15,"mobile_font-size":15,"sticky":true}}},"order":["announcement_bar","header_top_bar","header","25ab00d2-f236-4d67-be87-3ad4c21f55ca","acf800e8-5f47-4094-bac0-e0b3b40998fb"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Header",
+  "sections": {
+    "announcement_bar": {
+      "type": "announcement-bar",
+      "disabled": true,
+      "settings": {
+        "homepage_only": false,
+        "enable_sticky": true,
+        "show_close_icon": true,
+        "icon_label": "",
+        "text": "<p>🌟 Up to 40% Off – Sale Ends Wednesday at Midnight! Use Code: EASTER25 🐣</p>",
+        "mobile_text": "<p>🌟 Up to 40% Off – Sale Ends Wednesday at Midnight! Use Code: EASTER25 🐣</p>",
+        "alignment": "center",
+        "size": "small",
+        "button_label": "",
+        "link": "shopify://collections/shop-all",
+        "button_style": "button--primary",
+        "background": "#e0e56b",
+        "text_color": "#000000",
+        "width": "wide",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "header_top_bar": {
+      "type": "header__top-bar",
+      "blocks": {
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "Feefo Platinum Trusted Service Award Winner, 3,000+ Reviews, 300,000+ Orders. Countless Lives Transformed.",
+            "mobile_text": "",
+            "link": "shopify://collections/shop-all",
+            "apply_hyperlink": true
+          }
+        },
+        "social_media": {
+          "type": "social_media",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "text",
+        "social_media"
+      ],
+      "custom_css": [],
+      "settings": {
+        "background": "#edf2e9",
+        "link_color": "#284734",
+        "link_hover_color": "#78be20",
+        "text_color": "#284734",
+        "font": "merriweather_sans_n4",
+        "font_style": "none",
+        "font_size": 15,
+        "letter_spacing": 0,
+        "show_locale_selector": false,
+        "show_currency_selector": false,
+        "width": "standard",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "header": {
+      "type": "header-classic",
+      "settings": {
+        "logo": "shopify://shop_images/Y_E-logotype-RGB-White_copy_1.svg",
+        "cta_url": "shopify://pages/quiz",
+        "logo_width": 150,
+        "main_linklist": "main-nav-flex",
+        "menu_alignment": "center",
+        "dropdown_click": false,
+        "display_search": true,
+        "icon_style": "icons",
+        "enable_overlay": false,
+        "show_text_shadow": false,
+        "overlay_link_color": "rgba(0,0,0,0)",
+        "overlay_link_hover_color": "rgba(0,0,0,0)",
+        "overlay_background": "rgba(0,0,0,0)",
+        "overlay_background_opacity": 0,
+        "overlay_logo_width": 150,
+        "enable_sticky": true,
+        "sticky_background_opacity": 100,
+        "scroll_logo_width": 150,
+        "width": "standard",
+        "vertical_alignment": "center",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "25ab00d2-f236-4d67-be87-3ad4c21f55ca": {
+      "type": "mega-menu",
+      "blocks": {
+        "0446f2be-7a87-4fec-8ccd-4e7913c4afbc": {
+          "type": "menu",
+          "settings": {
+            "menu_1": "shop-by-health-focus",
+            "menu_1_link": "https://youthandearth.com/pages/shop?collection_filter=HealthGoals",
+            "menu_1_label": ""
+          }
+        },
+        "sections--16806877233365__25ab00d2-f236-4d67-be87-3ad4c21f55ca-menu-1": {
+          "type": "menu",
+          "disabled": true,
+          "settings": {
+            "menu_1": "health-needs",
+            "menu_1_link": "https://youthandearth.com/pages/shop?collection_2_filter=HealthNeeds",
+            "menu_1_label": ""
+          }
+        },
+        "menu_WXJK9p": {
+          "type": "menu",
+          "settings": {
+            "menu_1": "best-sellers-copy",
+            "menu_1_link": "shopify://collections/best-sellers",
+            "menu_1_label": "SHOP ALL"
+          }
+        },
+        "menu_3Xj8WG": {
+          "type": "menu",
+          "settings": {
+            "menu_1": "bundles",
+            "menu_1_link": "shopify://collections/bundles",
+            "menu_1_label": "SHOP ALL"
+          }
+        },
+        "image_6GWgpt": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/v14_514bc10e-86d7-4323-a2f2-50bfbcd25a67.jpg",
+            "image_link": "shopify://products/v14",
+            "image_caption": "<p><strong>V14® Longevity Reds</strong><br/>Daily fuel with 14 longevity actives</p>",
+            "label": "New",
+            "product_image": "shopify://shop_images/v14-2.jpg",
+            "image_height": 343,
+            "image_height_mobile": 160
+          }
+        },
+        "image_Qrq96g": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Product_2_Menu_1_65dc50a8-c85b-40f0-97c6-fa7e4ec01f94.png",
+            "image_link": "shopify://collections/shop-all",
+            "image_caption": "<p>Shop All!</p>",
+            "label": "",
+            "image_height": 224,
+            "image_height_mobile": 136
+          }
+        }
+      },
+      "block_order": [
+        "0446f2be-7a87-4fec-8ccd-4e7913c4afbc",
+        "sections--16806877233365__25ab00d2-f236-4d67-be87-3ad4c21f55ca-menu-1",
+        "menu_WXJK9p",
+        "menu_3Xj8WG",
+        "image_6GWgpt",
+        "image_Qrq96g"
+      ],
+      "settings": {
+        "is_new_menu": true,
+        "parent_link": "shop",
+        "mega_menu_background_color": "#edf2e9",
+        "mega_menu_text_color": "rgba(0,0,0,0)",
+        "mega_menu_link_color": "#404544",
+        "mega_menu_link_hover_color": "#000000",
+        "enable_mega_menu_border": false,
+        "show_mega_bottom_bar": false,
+        "mega_bottom_bar_icon": "",
+        "mega_bottom_bar_text": "Add your deal, information or promotional text",
+        "mega_bottom_bar_link": "",
+        "size": "regular",
+        "bottom_banner_bg": "#007ace",
+        "bottom_banner_text": "#efefef",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "header_promotional_slider_rdjPRe": {
+      "type": "header__promotional-slider",
+      "blocks": {
+        "text_zMxBqm": {
+          "type": "text",
+          "settings": {
+            "title": "Use code EASTER25 for up to 40% off – Limited Time Only!",
+            "background_color": "#fff6d6",
+            "icon_label": "bunny",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_zMxBqm"
+      ],
+      "disabled": true,
+      "settings": {
+        "show_header_promo": false,
+        "background_color": "",
+        "text_color": "",
+        "item_spacing": 0,
+        "desktop_font-size": 14,
+        "mobile_font-size": 14,
+        "sticky": false,
+        "show_divider": true,
+        "stretch_items": true,
+        "repeat_times": 1
+      }
+    },
+    "header_promotional_slider_7CAMWL": {
+      "type": "header__promotional-slider",
+      "blocks": {
+        "text_Mg7jtA": {
+          "type": "text",
+          "settings": {
+            "title": "3,000+  Reviews",
+            "background_color": "rgba(0,0,0,0)",
+            "icon_label": "stars-black",
+            "link": "shopify://pages/reviews"
+          }
+        },
+        "text_FTfdmE": {
+          "type": "text",
+          "settings": {
+            "title": "300,000+ Orders Shipped",
+            "background_color": "rgba(0,0,0,0)",
+            "icon_label": "truck",
+            "link": ""
+          }
+        },
+        "text_64FMJm": {
+          "type": "text",
+          "settings": {
+            "title": "Subscribe & Save Up to 25%",
+            "background_color": "rgba(0,0,0,0)",
+            "icon_label": "pound",
+            "link": ""
+          }
+        },
+        "text_qJDUrm": {
+          "type": "text",
+          "settings": {
+            "title": "60 Days Money Back Guarantee",
+            "background_color": "",
+            "icon_label": "shield",
+            "link": ""
+          }
+        },
+        "text_h3ifDg": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "title": "Free Shipping on UK orders over £50",
+            "background_color": "",
+            "icon_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_Mg7jtA",
+        "text_FTfdmE",
+        "text_64FMJm",
+        "text_qJDUrm",
+        "text_h3ifDg"
+      ],
+      "disabled": true,
+      "settings": {
+        "show_header_promo": true,
+        "background_color": "#edf2e9",
+        "text_color": "#284734",
+        "item_spacing": 0,
+        "desktop_font-size": 15,
+        "mobile_font-size": 15,
+        "sticky": true,
+        "show_divider": true,
+        "stretch_items": true,
+        "repeat_times": 1
+      }
+    },
+    "header_promotional_slider_zGEBnH": {
+      "type": "header__promotional-slider",
+      "blocks": {
+        "text_Rg3hxX": {
+          "type": "text",
+          "settings": {
+            "title": "",
+            "background_color": "",
+            "icon_label": "",
+            "image": "shopify://shop_images/Vector_058e5340-29c4-40f0-a035-c2ea0054f3b7.png",
+            "link": ""
+          }
+        },
+        "text_ApwXL6": {
+          "type": "text",
+          "settings": {
+            "title": "CYBER MONDAY SALE",
+            "background_color": "",
+            "icon_label": "",
+            "link": ""
+          }
+        },
+        "text_qLhgpj": {
+          "type": "text",
+          "settings": {
+            "title": "Up to 50% OFF",
+            "background_color": "",
+            "icon_label": "",
+            "link": ""
+          }
+        },
+        "text_3ypjie": {
+          "type": "text",
+          "settings": {
+            "title": "Use code: <strong>BF25</strong>",
+            "background_color": "",
+            "icon_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_Rg3hxX",
+        "text_ApwXL6",
+        "text_qLhgpj",
+        "text_3ypjie"
+      ],
+      "settings": {
+        "show_header_promo": true,
+        "background_color": "#edf2e9",
+        "text_color": "#284734",
+        "item_spacing": 20,
+        "desktop_font-size": 15,
+        "mobile_font-size": 15,
+        "sticky": true,
+        "show_divider": false,
+        "stretch_items": false,
+        "repeat_times": 3
+      }
+    }
+  },
+  "order": [
+    "announcement_bar",
+    "header_top_bar",
+    "header",
+    "25ab00d2-f236-4d67-be87-3ad4c21f55ca",
+    "header_promotional_slider_rdjPRe",
+    "header_promotional_slider_7CAMWL",
+    "header_promotional_slider_zGEBnH"
+  ]
+}

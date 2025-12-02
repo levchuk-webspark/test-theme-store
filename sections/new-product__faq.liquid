@@ -1,0 +1,341 @@
+{% assign data = product.metafields.jadepuma.product_faq.value %}
+{% assign section_data = section.settings %}
+
+{% style %}
+
+.new-product-faq {
+  padding: 96px 0;
+  background: #F7F5F1;
+}
+
+.new-product-faq__wrapper {
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: 0 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 64px;
+}
+
+.new-product-faq__info {
+  flex: 0 0 370px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.new-product-faq__title {
+  color: #404544;
+  font-family: Ambit;
+  font-weight: 900;
+  font-size: 38px;
+  line-height: 1.2;
+  letter-spacing: 3%;
+}
+
+.new-product-faq__title span {
+  font-family: Romie;
+  font-weight: 400;
+  font-style: Italic;
+  text-transform: capitalize;
+}
+
+.new-product-faq__description {
+  color: #6F726E;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.new-product-faq__button {
+  font-family: Ambit;
+  background: #F7F5F1;
+  padding: 16px 24px;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 16px;
+  color: #284734;
+  width: fit-content;
+  white-space: nowrap;
+  flex: 0 0 auto;
+  cursor: pointer;
+  border: 1px solid #284734;
+  transition: all 0.3s ease-in-out; 
+}
+
+.new-product-faq__button svg {
+  transition: all 0.3s ease-in-out; 
+}
+
+.new-product-faq__button:hover {
+  color: #284734;
+}
+
+.new-product-faq__button:hover svg {
+  transform: translateX(4px) scale(1.1);
+}
+
+.new-product-faq__more:hover {
+  transform: scale(1.04);
+}
+
+.new-product-faq__content {
+  flex: 0 1 710px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.new-product-faq__questions {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-product-faq__question {
+  border-bottom: 1px solid #D4D8D0;
+  padding: 20px 0;
+  overflow: hidden;
+}
+
+.new-product-faq__question._faq-hidden {
+  display: none;
+}
+
+.new-product-faq__question:first-child {
+  border-top: 1px solid #D4D8D0;
+}
+
+.new-product-faq__question-btn {
+  font-family: Ambit;
+  width: 100%;
+  padding: 0;
+  background: none;
+  border: none;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  gap: 24px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.25;
+  color: #404544;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.new-product-faq__question-btn svg {
+  flex: 0 0 24px;
+  transition: all 0.3s ease-in-out;
+}
+
+.new-product-faq__question-btn:hover,
+.new-product-faq__question-btn._opened {
+  color: #284734;
+}
+
+.new-product-faq__question-btn._opened svg {
+  transform: rotate(135deg);
+}
+
+.new-product-faq__question-answer {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  max-height: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.new-product-faq__question-answer p {
+  padding: 0;
+  margin: 0;
+  padding-top: 16px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 1%;
+  color: #404544;
+}
+
+@media (max-width: 991px) {
+  .new-product-faq {
+    padding: 48px 0;
+  }
+
+  .new-product-faq__title {
+    font-size: 28px;
+  }
+
+  .new-product-faq__wrapper {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .new-product-faq__info {
+    flex: auto;
+  }
+
+  .new-product-faq__content {
+    flex: auto;
+  }
+
+  .new-product-faq__question-btn {
+    font-size: 16px;
+  }
+}
+
+{% endstyle %}
+
+{% if data != blank %}
+  <section class="new-product-faq">
+    <div class="new-product-faq__wrapper">
+      <div class="new-product-faq__info">
+        {% if section_data.title != blank %}
+          <h2 class="new-product-faq__title">
+            {{ section_data.title }}
+          </h2>
+        {% endif %}
+        {% if section_data.description != blank %}
+          <p class="new-product-faq__description">
+            {{ section_data.description }}
+          </p>
+        {% endif %}
+        {% if section_data.cta_label != blank %}
+          <a 
+            {% if section_data.cta_url != blank %}
+              href="{{ section_data.cta_url }}"
+              target="_blank"
+            {% endif %}
+            class="new-product-faq__button"
+          >
+            {{ section_data.cta_label }}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+              <path fill="#284734" d="M16 8c0 4.417-3.583 8-8 8s-8-3.583-8-8 3.568-8 8-8 8 3.583 8 8ZM7.194 3.194l4.087 4H2.388v1.597h8.893l-4.087 4h2.087l4.892-4.805L9.28 3.18H7.194v.014Z"/>
+            </svg>
+          </a>
+        {% endif %}
+      </div>
+      <div class="new-product-faq__content">
+        {% capture count %}0{% endcapture %}
+
+        <div class="new-product-faq__questions" data-faq-question-wrapper>
+          {% for i in (1..100) %}
+            {% assign question_key = 'question_' | append: i %}
+            {% assign answer_key = 'answer_' | append: i %}
+
+            {% if data[question_key] == blank or data[answer_key] == blank %}
+              {% break %}
+            {% endif %}
+
+            {% capture count %}{{ i }}{% endcapture %}
+
+            <div class="
+              new-product-faq__question
+              {% if i > 6 %} _faq-hidden {% endif %}
+            ">
+              {% if data[question_key] != blank %}
+                <button class="new-product-faq__question-btn" data-faq-question-btn>
+                  {{ data[question_key] }}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="#284734" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 22V2m10 10H2"/>
+                  </svg>
+                </button>
+              {% endif %}
+              {% if data[answer_key] != blank %}
+                <div class="new-product-faq__question-answer">
+                    <p>{{ data[answer_key] }}</p>
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+
+        {% assign count_number = count | plus: 0 %}
+
+        {% if count_number > 6 %}
+          <button class="new-product-faq__button new-product-faq__more" data-faq-show-more>
+            Show more
+          </button>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+    
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const wrapper = document.querySelector('[data-faq-question-wrapper]');
+      const buttons = wrapper.querySelectorAll('[data-faq-question-btn]');
+
+      buttons.forEach(btn => btn.addEventListener('click', () => {
+        const isOpened = btn.classList.contains('_opened');
+        const answer = btn.nextElementSibling;
+        btn.classList.toggle('_opened', !isOpened);
+
+        if (isOpened) {
+          answer.style.maxHeight = null;
+        } else {
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+      }));
+
+      const showMoreBtn = document.querySelector('[data-faq-show-more]');
+
+      showMoreBtn?.addEventListener('click', () => {
+        const hiddenQuestions = wrapper.querySelectorAll('._faq-hidden');
+        hiddenQuestions.forEach(q => q.classList.remove('_faq-hidden'));
+        showMoreBtn.remove();
+      }, {once: true});
+    });
+  </script>
+
+{% endif %}
+    
+{% schema %}
+{
+  "name": "New Product: FAQ",
+  "settings": [
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Section title",
+      "default": "You probably have <span>some questions</span>"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Section description",
+      "default": "Check out our FAQs to find answers to common questions and feel free to reach out if you have more."
+    },
+    {
+      "type": "text",
+      "id": "cta_question",
+      "label": "Section CTA question",
+      "default": "Still got questions?"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Section CTA label",
+      "default": "All FAQs"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Section CTA link"
+    },
+  ],
+  "presets": [
+    {
+      "name": "New Product: FAQ"
+    }
+  ]
+}
+{% endschema %}

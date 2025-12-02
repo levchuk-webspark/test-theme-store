@@ -1,0 +1,232 @@
+{% assign auto_close = true %}
+
+{% style %}
+
+  .collection-FAQ_accordion__links {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 22px;
+  }
+  .collection-FAQ_accordion__title {
+     font-size: 1.5em;
+    margin-bottom: 0.6666em;
+    word-wrap: break-word;
+  }
+
+  
+{% endstyle %}
+  
+<div class="multiple_accordion_container-{{ id }} content collection-FAQ_accordion">
+
+ {% assign metaobject = collection.metafields.custom.collection_faq.value %}
+  
+      {% if faq-title != blank %}
+          <p class="collection-FAQ_accordion__title">{{ faq-title }}</p>
+      {% elsif metaobject.title != blank %}
+          <p class="collection-FAQ_accordion__title"> {{ metaobject.title }}</p>
+      {% endif %}
+
+      {% if faq-description != blank %}
+          <p>{{ faq-description }}</p>
+      {% endif %}
+  
+      <div class="collection-FAQ_accordion__links">
+
+          {% if faq-link-1-url != blank and faq-link-1-title != blank %}
+                <a href="{{ faq-link-1-url }}" title="{{ faq-link-1-title | escape }}">{{ faq-link-1-title }}</a>
+          {% endif %}
+
+          {% if faq-link-2-url != blank and faq-link-2-title != blank %}
+                <a href="{{ faq-link-2-url }}" title="{{ faq-link-2-title | escape }}">{{ faq-link-2-title }}</a>
+          {% endif %}
+        
+      </div>
+
+      {% if metaobject.question_1 and metaobject.answer_1 %}
+          {% render 'faq-component', 
+            title: metaobject.question_1,
+            content: metaobject.answer_1,
+            id: id,
+            number: "1",
+            is_collection: true
+          %}
+      {% endif %}
+      
+      {% if metaobject.question_2 and metaobject.answer_2 %}
+          {% render 'faq-component', 
+            title: metaobject.question_2,
+            content: metaobject.answer_2,
+            id: id,
+            number: "2",
+            is_collection: true
+          %}
+      {% endif %}
+
+      {% if metaobject.question_3 and metaobject.answer_3 %}
+        {% render 'faq-component', 
+          title: metaobject.question_3,
+          content: metaobject.answer_3,
+          id: id,
+          number: "3",
+          is_collection: true
+        %}
+      {% endif %}
+
+      {% if metaobject.question_4 and metaobject.answer_4 %}
+        {% render 'faq-component', 
+          title: metaobject.question_4,
+          content: metaobject.answer_4,
+          id: id,
+          number: "4",
+          is_collection: true
+        %}
+      {% endif %}
+
+      {% if metaobject.question_5 and metaobject.answer_5 %}
+        {% render 'faq-component', 
+          title: metaobject.question_5,
+          content: metaobject.answer_5,
+          id: id,
+          number: "5",
+          is_collection: true
+        %}
+      {% endif %}
+
+
+      {% if metaobject.question_6 and metaobject.answer_6 %}
+        {% render 'faq-component', 
+          title: metaobject.question_6,
+          content: metaobject.answer_6,
+          id: id,
+          number: "6",
+          is_collection: true
+        %}
+      {% endif %}
+
+      {% if metaobject.question_7 and metaobject.answer_7%}
+        {% render 'faq-component', 
+          title: metaobject.question_7,
+          content: metaobject.answer_7,
+          id: id,
+          number: "7",
+          is_collection: true
+        %}
+      {% endif %}
+
+      {% if metaobject.question_8 and metaobject.answer_8%}
+          {% render 'faq-component', 
+            title: metaobject.question_8,
+            content: metaobject.answer_8,
+            id: id,
+            number: "8",
+            is_collection: true
+          %}
+      {% endif %}
+
+
+      {% if metaobject.question_9 and metaobject.answer_9 %}
+        {% render 'faq-component', 
+          title: metaobject.question_9,
+          content: metaobject.answer_9,
+          id: id,
+          number: "9",
+          is_collection: true
+        %}
+      {% endif %}
+
+      {% if metaobject.question_10 and metaobject.answer_10%}
+        {% render 'faq-component', 
+          title: metaobject.question_10,
+          content: metaobject.answer_10,
+          id: id,
+          number: "10",
+          is_collection: true
+        %}
+      {% endif %}
+  
+      {% if metaobject.question_11 and metaobject.answer_11 %}
+        {% render 'faq-component', 
+          title: metaobject.question_11,
+          content: metaobject.answer_11,
+          id: id,
+          number: "11",
+          is_collection: true
+        %}
+      {% endif %}
+
+      {% if metaobject.question_12 and metaobject.answer_12 %}
+        {% render 'faq-component', 
+          title: metaobject.question_12,
+          content: metaobject.answer_12,
+          id: id,
+          number: "12",
+          is_collection: true
+        %}
+      {% endif %}
+
+      {% if metaobject.question_13 and metaobject.answer_13 %}
+        {% render 'faq-component', 
+          title: metaobject.question_13,
+          content: metaobject.answer_13,
+          id: id,
+          number: "13",
+          is_collection: true
+        %}
+      {% endif %}
+
+      {% if metaobject.question_14 and metaobject.answer_14 %}
+        {% render 'faq-component', 
+          title: metaobject.question_14,
+          content: metaobject.answer_14,
+          id: id,
+          number: "14",
+          is_collection: true
+        %}
+      {% endif %}
+
+      {% if metaobject.question_15 and metaobject.answer_15 %}
+        {% render 'faq-component', 
+          title: metaobject.question_15,
+          content: metaobject.answer_15,
+          id: id,
+          number: "15",
+          is_collection: true
+        %}
+      {% endif %}
+ 
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  
+<script>
+
+    $('.accordion-item-{{ id }}').click(function(){
+      //get the clicked item
+      $clickedItem = $('.multiple_accordion_content-{{ id }}',this);
+      $clickedCircle = $('.multiple_accordion_title-FAQ__circle-{{ id }}',this);
+
+      // is the clicked item already open?
+      if(($clickedItem.hasClass('open'))){
+         //remove the class, slide it up and return early
+
+          $clickedItem.removeClass('open').slideUp(300);
+          $clickedCircle.removeClass('open');
+          return;
+      }
+
+      {% if auto_close %}
+        $('.multiple_accordion_content-{{ id }}').removeClass('open').slideUp(300);
+        $('.multiple_accordion_title-FAQ__circle-{{ id }}').removeClass('open');
+      {% endif %}
+
+      //slide down the clicked item and add the open class
+      $clickedItem.slideDown(300).addClass('open');
+      $clickedCircle.addClass('open');
+
+    });
+
+    //limit clickable aread to the accordion title
+    $( '.multiple_accordion_content-{{ id }}' ).click(function() {
+      event.stopImmediatePropagation()
+    });
+</script>

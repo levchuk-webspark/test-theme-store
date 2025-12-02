@@ -1894,7 +1894,7 @@ function appendStyleToShadowDOMServiceReviewCarousel() {
 
 window.onload = function() {
   console.log("Page is Loading")
-  appendStyleToShadowDOMstars();
+  appendStyleToShadowDOMstars()
   appendStyleToShadowDOM();
   appendStyleToShadowDOMServiceReviewCarousel();
   appendStyleToShadowDOMstarsProduct();

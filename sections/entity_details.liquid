@@ -1,0 +1,774 @@
+{%- assign gen_id = section.id | replace: '_', '' | downcase -%}
+{%- assign slug = request.path | split: '/' | last -%}
+{% assign entity_meta = metaobjects.entity_details[slug] %}
+{% assign curr_blog = blogs.learninghub %}
+{% style %}
+  .entity-section-{{ gen_id }} {
+    position: relative;
+    padding: {{ section.settings.section_padding }}px 0;
+    background-color: {{ section.settings.background_color }};
+    margin-bottom: 50px;
+  }
+
+  .entity-container-{{ gen_id }} {
+    /* max-width: 1200px; */
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .entity-hero-{{ gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 60px;
+  }
+
+  .entity-content-{{ gen_id }} {
+    max-width: 90%;
+  }
+
+  .entity-title-{{ gen_id }} {
+    font-size: {{ section.settings.title_size }}px;
+    color: {{ section.settings.title_color }};
+    margin: 0 0 20px 0;
+    line-height: 1.2;
+  }
+
+  .entity-about-{{ gen_id }} {
+    font-size: {{ section.settings.text_size }}px;
+    color: {{ section.settings.text_color }};
+    line-height: 1.6;
+    margin-top: 30px;
+  }
+
+  .entity-image-wrapper-{{ gen_id }} {
+    border-radius: {{ section.settings.image_border_radius }}px;
+    overflow-x: hidden;
+    margin: 0 auto;
+    width: max-content;
+    height: 80vh;
+  }
+
+  .entity-image-{{ gen_id }} {
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin: auto;
+    object-fit: cover;
+  }
+
+  .entity-image-placeholder-{{ gen_id }} {
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .entity-image-placeholder-{{ gen_id }} svg {
+    width: 60%;
+    height: 60%;
+    opacity: 0.3;
+  }
+
+  .entity-empty-state-{{ gen_id }} {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 16px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 4px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  .entity-section-title-{{ gen_id }} {
+    font-size: {{ section.settings.section_title_size }}px;
+    color: {{ section.settings.title_color }};
+    margin: 0 0 20px 0;
+    text-align: center;
+  }
+
+  /* Articles Grid */
+  .entity-articles-grid-{{ gen_id }} {
+    justify-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 20px;
+    width: 80%;
+    height: 100%;
+    margin: auto;
+  }
+
+  .entity-article-card-{{ gen_id }} {
+    background-color: {{ section.settings.card_background }};
+    border-radius: {{ section.settings.card_border_radius }}px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    width: 400px;
+    height: fit-content;
+  }
+
+  .entity-article-card-{{ gen_id }}:hover {
+    transform: translateY(-2px);
+  }
+
+  .entity-article-image-{{ gen_id }} {
+    object-fit: cover;
+  }
+
+  .entity-article-content-{{ gen_id }} {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 10px;
+    height: 50%;
+
+  }
+
+  .entity-article-subtitle-{{ gen_id }} {
+    font-size: {{ section.settings.subtitle_size }}px;
+    color: {{ section.settings.subtitle_color }};
+    margin: 20px 0;
+  }
+
+  .entity-article-paragraph-{{ gen_id }} {
+    margin: 0 0 20px 0;
+  }
+
+  .entity-article-h3-{{ gen_id }} {
+    font-size: 18px;
+    color: {{ section.settings.title_color }};
+    margin: 15px 0;
+  }
+
+  .entity-article-card-title-{{ gen_id }} a {
+    font-size: 18px;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .entity-article-card-title-{{ gen_id }} a:hover {
+    color: {{ section.settings.link_color }};
+  }
+
+  .entity-article-excerpt-{{ gen_id }} {
+    font-size: 17px;
+    color: {{ section.settings.text_color }};
+    line-height: 1.5;
+    margin-bottom: 15px;
+  }
+
+  .entity-article-date-{{ gen_id }} {
+    font-size: 12px;
+    color: #999;
+  }
+
+  /* Products Grid */
+  .entity-products-grid-{{ gen_id }} {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .entity-product-card-{{ gen_id }} {
+    background-color: {{ section.settings.card_background }};
+    border-radius: {{ section.settings.card_border_radius }}px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    width: 400px;
+    height: 100%;
+  }
+
+  .entity-product-card-{{ gen_id }}:hover {
+    transform: translateY(-2px);
+  }
+
+  .entity-product-image-{{ gen_id }} {
+    object-fit: cover;
+    height: 70%;
+  }
+
+  .entity-product-content-{{ gen_id }} {
+    padding: 20px;
+  }
+
+  .entity-product-title-{{ gen_id }} {
+    font-size: 16px;
+    color: {{ section.settings.title_color }};
+    margin: 0 0 10px 0;
+    line-height: 1.3;
+  }
+
+  .entity-product-title-{{ gen_id }} a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .entity-product-title-{{ gen_id }} a:hover {
+    color: {{ section.settings.link_color }};
+  }
+
+  .entity-product-price-{{ gen_id }} {
+    font-size: 18px;
+    font-weight: 600;
+    color: {{ section.settings.price_color }};
+  }
+
+  .entity-empty-content-{{ gen_id }} {
+    text-align: center;
+    padding: 40px 20px;
+    color: #999;
+    font-style: italic;
+  }
+
+  @media screen and (max-width: 768px) {
+    .entity-article-card-{{ gen_id }} {
+      width: 100%;
+    }
+    .entity-article-card-{{ gen_id }} > img {
+      height: 50%;
+    }
+    .entity-articles-grid-{{ gen_id }} {
+      height: fit-content;
+      width: fit-content;
+    }
+    .entity-article-content-{{ gen_id }} {
+      height: 50%;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .entity-article-card-title-{{ gen_id }} {
+      font-size: 15px;
+    }
+    .entity-article-excerpt-{{ gen_id }} {
+      font-size: 14px;
+    }
+    .entity-hero-{{ gen_id }} {
+      gap: 30px;
+    }
+    .entity-image-wrapper-{{ gen_id }} {
+      height: 300px;
+      width: 300px;
+      margin: 0 auto;
+    }
+    .entity-title-{{ gen_id }} {
+      font-size: {{ section.settings.title_size }}px;
+    }
+    .entity-product-card-{{ gen_id }} {
+      width: 100%;
+    }
+    .entity-product-image-{{ gen_id }} {
+      height: 300px;
+    }
+    .entity-articles-grid-{{ gen_id }} {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      margin: unset;
+    }
+    .entity-products-grid-{{ gen_id }} {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      margin: unset;
+    }
+  }
+
+  #back-arrow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    cursor: pointer;
+  }
+
+  #not-found {
+    text-align: center;
+    font-size: {{section.settings.text_size }};
+    color: {{section.settings.tag_text_color}};
+  }
+  .entity-empty-content-{{ gen_id }} {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--Earth-Green-Light);
+    font-style: italic;
+    cursor: pointer;
+  }
+{% endstyle %}
+{% if entity_meta == blank %}
+  <div class="entity-empty-content-{{ gen_id }}">{{ pages['entity-details'].content }}</div>
+{% else %}
+  <div class="entity-section-{{ gen_id }}" {{ section.shopify_attributes }}>
+    <div class="entity-container-{{ gen_id }}">
+      <!-- Back arrow -->
+      <div id="back-arrow">
+        <a href="/pages/entity-index"><img src="{{ "back-arrow.svg" | asset_url}}" width="40px" height="40px"></a>
+      </div>
+
+      <!-- Hero Section -->
+      <div class="entity-hero-{{ gen_id }}">
+        <div class="entity-content-{{ gen_id }}">
+          <h1 class="entity-title-{{ gen_id }}">
+            {{ entity_meta.title }}
+            {% if entity_meta.title == '' %}
+              {{ slug | replace: '-', ' ' | capitalize }}
+            {% endif %}
+          </h1>
+
+          {% if entity_meta.about != blank %}
+            <div class="entity-about-{{ gen_id }}">
+              {{ entity_meta.about | metafield_tag }}
+            </div>
+          {% else %}
+            <h2>Nothing to display for about section</h2>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Related Articles (client-side pagination, 6 per page, capped to 70) -->
+      <div class="entity-section-{{ gen_id }}">
+        <h2 class="entity-section-title-{{ gen_id }}">Related Articles</h2>
+
+        {%- assign shown_count = 0 -%}
+        {%- assign max_count = 70 -%}
+
+        <div
+          id="entity-articles-wrapper-{{ gen_id }}"
+          class="entity-articles-grid-{{ gen_id }}"
+          data-items-per-page="6"
+          data-max-items="{{ max_count }}"
+        >
+          {%- for a in curr_blog.articles -%}
+            {%- assign related_entities = a.metafields.custom.entity_reference.value -%}
+            {%- if related_entities != null -%}
+              {%- for ref in related_entities -%}
+                {%- if ref.system.url == entity_meta.system.url -%}
+                  {%- assign shown_count = shown_count | plus: 1 -%}
+                  <article class="entity-article-card-{{ gen_id }}" data-idx="{{ shown_count }}" style="display:none;">
+                    {% if a.image %}
+                      <img
+                        src="{{ a.image | image_url: width: 300, height: 250 }}"
+                        alt="{{ a.image.alt | escape }}"
+                        class="entity-article-image-{{ gen_id }}"
+                        loading="lazy"
+                        width="100%"
+                        height="100%"
+                      >
+                    {% endif %}
+                    <div class="entity-article-content-{{ gen_id }}">
+                      <h3 class="entity-article-card-title-{{ gen_id }}">
+                        <a href="{{ a.url }}">{{ a.title }}</a>
+                      </h3>
+                      {% if a.excerpt_or_content != blank %}
+                        <div class="entity-article-excerpt-{{ gen_id }}">
+                          {{ a.excerpt_or_content | strip_html | truncate: 120 }}
+                        </div>
+                      {% endif %}
+                      <div class="entity-article-date-{{ gen_id }}">
+                        {{ a.published_at | date: '%B %d, %Y' }}
+                      </div>
+                    </div>
+                  </article>
+
+                  {%- if shown_count >= max_count -%}{% break %}{%- endif -%}
+                {%- endif -%}
+              {%- endfor -%}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+
+        {% if shown_count == 0 %}
+          <div id="not-found"><p>No Related Articles Found</p></div>
+        {% else %}
+          <nav
+            id="entity-pagination-{{ gen_id }}"
+            class="entity-pagination-{{ gen_id }}"
+            aria-label="Related articles pages"
+            style="text-align:center; margin-top: 24px;"
+          >
+            <button class="entity-page-btn-{{ gen_id }}" data-action="prev" aria-label="Previous page" disabled>
+              <img src="{{ "prevArrow.svg" | asset_url}}" width="24px" height="24px">
+            </button>
+            <span id="entity-page-numbers-{{ gen_id }}" aria-live="polite" style="margin: 0 12px;"></span>
+            <button class="entity-page-btn-{{ gen_id }}" data-action="next" aria-label="Next page" disabled>
+              <img src="{{ "nextArrow.svg" | asset_url}}" width="24px" height="24px">
+            </button>
+          </nav>
+        {% endif %}
+      </div>
+      <!-- Related Products -->
+      <div class="entity-section-{{ gen_id }}">
+        <h2 class="entity-section-title-{{ gen_id }}">Related Products</h2>
+        {%- assign shown_count = 0 -%}
+        {% if entity_meta.related_products %}
+          <div class="entity-products-grid-{{ gen_id }}">
+            {% for prod in entity_meta.related_products.value %}
+              <div class="entity-product-card-{{ gen_id }}">
+                {% if prod.featured_image %}
+                  {%- assign shown_count = shown_count | plus: 1 -%}
+                  <img
+                    src="{{ prod.featured_image | image_url: width: 400, height: 400 }}"
+                    alt="{{ prod.featured_image.alt | escape }}"
+                    class="entity-product-image-{{ gen_id }}"
+                    loading="lazy"
+                    width="100%"
+                    height="100%"
+                  >
+                {% endif %}
+                <div class="entity-product-content-{{ gen_id }}">
+                  <h3 class="entity-product-title-{{ gen_id }}">
+                    <a href="{{ prod.url }}">{{ prod.title }}</a>
+                  </h3>
+                  <div class="entity-product-price-{{ gen_id }}">
+                    {{ prod.price | money }}
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+        {% if shown_count == 0 %}
+          <div id="not-found"><p>No Related Products Found</p></div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+<!-- Apply h2/h3/p styles inside metafield content -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    let h2s = document.querySelectorAll('.entity-about-{{ gen_id }} h2');
+    h2s.forEach((h2) => h2.classList.add('entity-article-subtitle-{{ gen_id }}'));
+
+    let h3s = document.querySelectorAll('.entity-about-{{ gen_id }} h3');
+    h3s.forEach((h3) => h3.classList.add('entity-article-h3-{{ gen_id }}'));
+
+    let ps = document.querySelectorAll('.entity-about-{{ gen_id }} p');
+    ps.forEach((p) => p.classList.add('entity-article-paragraph-{{ gen_id }}'));
+  });
+</script>
+
+<style>
+  .entity-pagination-{{ gen_id }} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .entity-pagination-{{ gen_id }} button[disabled] {
+    opacity: 0.5;
+    cursor: default;
+  }
+  .entity-pagination-{{ gen_id }} .page-number {
+    padding: 5px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: var(--Earth-Grey-Light);
+  }
+  .entity-pagination-{{ gen_id }} .page-number.active {
+    font-weight: 400;
+    border-color: var(--Earth-Green-Light);
+    background-color: blanchedalmond;
+  }
+  .entity-pagination-{{ gen_id }} .page-dots {
+    display: inline-block;
+    padding: 6px 8px;
+    margin: 0 3px;
+  }
+  .entity-page-btn-{{ gen_id }} {
+    border: none;
+    cursor: pointer;
+    background: none;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const wrapper = document.getElementById('entity-articles-wrapper-{{ gen_id }}');
+    if (!wrapper) return;
+
+    const items = Array.from(wrapper.querySelectorAll('article.entity-article-card-{{ gen_id }}'));
+    const itemsPerPage = parseInt(wrapper.dataset.itemsPerPage) || 6;
+    const maxItems = parseInt(wrapper.dataset.maxItems) || 70;
+    const totalItems = Math.min(items.length, maxItems);
+    const totalPages = Math.max(1, Math.ceil(totalItems / itemsPerPage));
+    const pagination = document.getElementById('entity-pagination-{{ gen_id }}');
+    const pageNumbersEl = document.getElementById('entity-page-numbers-{{ gen_id }}');
+
+    // parse ?page= from URL (1-based)
+    function getPageFromUrl() {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const p = parseInt(params.get('page'));
+        return p && p >= 1 && p <= totalPages ? p : 1;
+      } catch (e) {
+        return 1;
+      }
+    }
+
+    function setPageInUrl(page) {
+      try {
+        const url = new URL(window.location.href);
+        if (page === 1) {
+          url.searchParams.delete('page');
+        } else {
+          url.searchParams.set('page', page);
+        }
+        history.replaceState(null, '', url.toString());
+      } catch (e) {
+        /* ignore */
+      }
+    }
+
+    function createPageBtn(p, current) {
+      const span = document.createElement('span');
+      span.className = 'page-number' + (p === current ? ' active' : '');
+      span.textContent = p;
+      span.setAttribute('role', 'button');
+      span.setAttribute('tabindex', '0');
+      span.addEventListener('click', () => goToPage(p));
+      span.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') goToPage(p);
+      });
+      return span;
+    }
+
+    function renderPageButtons(currentPage) {
+      pageNumbersEl.innerHTML = '';
+
+      if (totalPages <= 7) {
+        for (let p = 1; p <= totalPages; p++) pageNumbersEl.appendChild(createPageBtn(p, currentPage));
+        return;
+      }
+
+      pageNumbersEl.appendChild(createPageBtn(1, currentPage));
+
+      if (currentPage > 4) {
+        const dots = document.createElement('span');
+        dots.className = 'page-dots';
+        dots.textContent = '…';
+        pageNumbersEl.appendChild(dots);
+      }
+
+      const start = Math.max(2, currentPage - 1);
+      const end = Math.min(totalPages - 1, currentPage + 1);
+      for (let p = start; p <= end; p++) pageNumbersEl.appendChild(createPageBtn(p, currentPage));
+
+      if (currentPage < totalPages - 3) {
+        const dots2 = document.createElement('span');
+        dots2.className = 'page-dots';
+        dots2.textContent = '…';
+        pageNumbersEl.appendChild(dots2);
+      }
+
+      pageNumbersEl.appendChild(createPageBtn(totalPages, currentPage));
+    }
+
+    function updateControls(currentPage) {
+      if (!pagination) return;
+      const prevBtn = pagination.querySelector('button[data-action="prev"]');
+      const nextBtn = pagination.querySelector('button[data-action="next"]');
+      if (prevBtn) prevBtn.disabled = currentPage <= 1;
+      if (nextBtn) nextBtn.disabled = currentPage >= totalPages;
+      // store current page for Prev/Next handlers
+      pagination.dataset.current = currentPage;
+    }
+
+    function showPage(page) {
+      const startIdx = (page - 1) * itemsPerPage + 1; // items were 1-indexed in data-idx
+      const endIdx = Math.min(page * itemsPerPage, totalItems);
+
+      items.forEach((el) => {
+        const idx = parseInt(el.dataset.idx, 10);
+        if (isNaN(idx)) {
+          el.style.display = 'none';
+          el.setAttribute('aria-hidden', 'true');
+          return;
+        }
+        if (idx >= startIdx && idx <= endIdx) {
+          el.style.display = ''; // show
+          el.setAttribute('aria-hidden', 'false');
+        } else {
+          el.style.display = 'none';
+          el.setAttribute('aria-hidden', 'true');
+        }
+      });
+
+      renderPageButtons(page);
+      updateControls(page);
+      setPageInUrl(page);
+      // smooth scroll to top of the wrapper for good UX
+      // wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function goToPage(p) {
+      const page = Math.min(Math.max(1, p), totalPages);
+      showPage(page);
+    }
+
+    // Prev/Next handlers
+    if (pagination) {
+      const prevBtn = pagination.querySelector('button[data-action="prev"]');
+      const nextBtn = pagination.querySelector('button[data-action="next"]');
+      if (prevBtn)
+        prevBtn.addEventListener('click', () => {
+          const current = parseInt(pagination.dataset.current || getPageFromUrl() || 1, 10);
+          goToPage(current - 1);
+        });
+      if (nextBtn)
+        nextBtn.addEventListener('click', () => {
+          const current = parseInt(pagination.dataset.current || getPageFromUrl() || 1, 10);
+          goToPage(current + 1);
+        });
+    }
+
+    // initialize
+    const initialPage = getPageFromUrl();
+    showPage(initialPage);
+  });
+</script>
+{% schema %}
+{
+  "name": "Entity Detail Page",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Titles",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitles",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Links",
+      "default": "#007ace"
+    },
+    {
+      "type": "color",
+      "id": "price_color",
+      "label": "Product prices",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "tag_background",
+      "label": "Tag background",
+      "default": "#f0f0f0"
+    },
+    {
+      "type": "color",
+      "id": "tag_text_color",
+      "label": "Tag text",
+      "default": "#666666"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Title size",
+      "min": 24,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size",
+      "label": "Subtitle size",
+      "min": 18,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "section_title_size",
+      "label": "Section title size",
+      "min": 18,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Text size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "label": "Section padding",
+      "min": 20,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "label": "Image border radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "label": "Card border radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    }
+  ]
+}
+{% endschema %}

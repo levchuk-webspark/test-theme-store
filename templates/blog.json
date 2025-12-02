@@ -1,1 +1,248 @@
-{"sections":{"banner":{"type":"banner","disabled":true,"settings":{"image_darken":true,"subtitle":"Subheading","width":"wide","banner_height":"medium","padding_top":0,"padding_bottom":0,"css_class":"","custom_css":""}},"main":{"type":"blog__main","settings":{"blog_tags":false,"blog_posts_per_row":3,"blog_posts_per_page":12,"pagination_type":"basic_pagination","show_sidebar":false,"sidebar_position":"left","blog_author":false,"blog_date":false,"read_time":true,"blog_comment_count":false,"blog_show_tags":false,"blog_show_excerpt":true,"show_border":true,"button_label":"Read more","button_type":"button--primary","width":"standard","padding_top":45,"padding_bottom":40,"animation":"none","css_class":"","custom_css":"h1 {\n  font-size: 32px;\n}"}}},"order":["banner","main"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "banner",
+      "disabled": true,
+      "settings": {
+        "image_darken": true,
+        "subtitle": "Subheading",
+        "width": "wide",
+        "banner_height": "medium",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "index_rich_text_M9CCYw": {
+      "type": "index__rich-text",
+      "name": "Rich text",
+      "settings": {
+        "is_h1_title": true,
+        "title": "<span class=\"ambit-black-text\">Learning Hub</span>",
+        "heading_font": "open_sans_n4",
+        "heading_alignment": "left",
+        "heading_size": 94,
+        "text": "",
+        "text_font": "open_sans_n4",
+        "text_alignment": "left",
+        "text_size": 14,
+        "columns": 1,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "button--primary",
+        "button_alignment": "center",
+        "heading_color": "rgba(0,0,0,0)",
+        "text_color": "rgba(0,0,0,0)",
+        "background": "rgba(0,0,0,0)",
+        "gradient": "rgba(0,0,0,0)",
+        "gradient_rotation": 180,
+        "width": "standard",
+        "padding_top": 50,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "animation": "none",
+        "mobile_title": "",
+        "mobile_heading_size": 34,
+        "mobile_text": "",
+        "mobile_alignment": "none",
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "main": {
+      "type": "blog__main",
+      "blocks": {
+        "breadcrumbs_tDwXL8": {
+          "type": "breadcrumbs",
+          "settings": {}
+        },
+        "search_brKLn4": {
+          "type": "search",
+          "settings": {
+            "title": "Search"
+          }
+        },
+        "post_tags_bnEcVG": {
+          "type": "post_tags",
+          "settings": {
+            "title": "Filters",
+            "blog": "learninghub"
+          }
+        },
+        "menu_RdM9mG": {
+          "type": "menu",
+          "settings": {
+            "menu": "whats-new",
+            "link_for_menu": "https://youthandearth.com/blogs/learninghub/tagged/trending"
+          }
+        },
+        "menu_xznyTU": {
+          "type": "menu",
+          "settings": {
+            "menu": "fundamentals",
+            "link_for_menu": "https://youthandearth.com/blogs/learninghub/tagged/fundamentals"
+          }
+        },
+        "menu_FkJVAL": {
+          "type": "menu",
+          "settings": {
+            "menu": "optimization-1",
+            "link_for_menu": "https://youthandearth.com/blogs/learninghub/tagged/optimization"
+          }
+        },
+        "menu_AM7YTB": {
+          "type": "menu",
+          "settings": {
+            "menu": "treatments",
+            "link_for_menu": "https://youthandearth.com/blogs/learninghub/tagged/treatments"
+          }
+        },
+        "menu_npirYh": {
+          "type": "menu",
+          "settings": {
+            "menu": "testing-and-tracking",
+            "link_for_menu": "https://youthandearth.com/blogs/learninghub/tagged/testing-and-tracking"
+          }
+        },
+        "menu_WNkC3f": {
+          "type": "menu",
+          "settings": {
+            "menu": "lifestyle",
+            "link_for_menu": "https://youthandearth.com/blogs/learninghub/tagged/lifestyle"
+          }
+        },
+        "menu_MkdGpz": {
+          "type": "menu",
+          "settings": {
+            "menu": "cutting-edge",
+            "link_for_menu": "https://youthandearth.com/blogs/learninghub/tagged/cutting-edge"
+          }
+        }
+      },
+      "block_order": [
+        "breadcrumbs_tDwXL8",
+        "search_brKLn4",
+        "post_tags_bnEcVG",
+        "menu_RdM9mG",
+        "menu_xznyTU",
+        "menu_FkJVAL",
+        "menu_AM7YTB",
+        "menu_npirYh",
+        "menu_WNkC3f",
+        "menu_MkdGpz"
+      ],
+      "settings": {
+        "blog_type_icon_big": "shopify://shop_images/Exclude_Stroke_-2_e9666f77-b8b0-4971-a208-687378f44dee.svg",
+        "blog_type_icon_small": "shopify://shop_images/Exclude_abbe70b5-f728-4df4-8f05-6500a864dab9.svg",
+        "audio_type_icon_big": "shopify://shop_images/Group_314537.svg",
+        "audio_type_icon_small": "shopify://shop_images/Exclude-1_1cfa4c33-f087-4e9d-b069-a43ef32819d0.svg",
+        "video_type_icon_big": "shopify://shop_images/Exclude_Stroke_-1_c6dad36d-6b2f-4501-8a03-1ee00da4e68d.svg",
+        "video_type_icon_small": "shopify://shop_images/Exclude-3_31a913af-8469-4b38-ae57-301d8015d5b6.svg",
+        "recipes_type_icon_big": "shopify://shop_images/Exclude_Stroke_d20442c2-07c3-49f9-948f-7cf85fa4780b.svg",
+        "recipes_type_icon_small": "shopify://shop_images/Exclude-2_815cf500-7e83-4d34-ab00-9e343083c9d4.svg",
+        "blog_tags": true,
+        "blog_posts_per_row": 3,
+        "blog_posts_per_page": 12,
+        "pagination_type": "basic_pagination",
+        "show_sidebar": true,
+        "sidebar_position": "left",
+        "blog_author": false,
+        "blog_date": true,
+        "read_time": true,
+        "blog_comment_count": false,
+        "blog_show_tags": true,
+        "blog_show_excerpt": true,
+        "show_border": true,
+        "button_label": "Read more",
+        "button_type": "button--primary",
+        "width": "standard",
+        "padding_top": 45,
+        "padding_bottom": 40,
+        "animation": "none",
+        "filter_color": "#284734",
+        "filter_opacity": 50,
+        "filter_color_fixed": "#284734",
+        "css_class": "",
+        "custom_css": "h1 {\n  font-size: 32px;\n}\n.container.has-heading-divider-below {\n  display: none;\n}",
+        "sidebar_button_label": "See All",
+        "sidebar_button_link": ""
+      }
+    },
+    "index_featured_collection_kr8Rq7": {
+      "type": "index__featured-collection",
+      "blocks": {
+        "image_block_hMepkF": {
+          "type": "image-block",
+          "settings": {
+            "title": "<span class=\"ambit-black-text\">Protecting future you starts today!</span> <span class=\"romie-regular-italic-text\">Find cutting edge supplements to enhance and safeguard your vitality.</span>",
+            "title_color": "#284734",
+            "image": "shopify://shop_images/AdobeStock_493259264_f1dd6f53-62c0-4503-b02f-f60e0df52c62.jpg",
+            "button_label": "SHOP ALL",
+            "button_link": "shopify://collections/shop-all",
+            "button_bg_color": "#284734",
+            "button_border_color": "",
+            "button_text_color": "",
+            "button_bg_color_hover": "",
+            "button_border_color_hover": "",
+            "button_text_color-hover": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_block_hMepkF"
+      ],
+      "name": "Featured collection",
+      "settings": {
+        "collection": "best-sellers",
+        "heading_desktop": "<span class=\"ambit-black-text\">Providing</span> <span class=\"romie-regular-italic-text\">Personal Longevity</span>",
+        "heading_mobile": "",
+        "sub_heading_desktop": "",
+        "sub_heading_mobile": "",
+        "sub_heading_label": "",
+        "sub_heading_link": "shopify://collections/best-sellers",
+        "section_heading_font_size_desktop": 34,
+        "section_heading_font_size_mobile": 30,
+        "section_sub_heading_font_size_desktop": 65,
+        "section_sub_heading_font_size_mobile": 30,
+        "background_color": "",
+        "products_per": 4,
+        "products_limit": 12,
+        "align_height": true,
+        "collection_height": 320,
+        "button_label": "",
+        "button_style": "button--primary",
+        "collection_style": "slider",
+        "width": "standard",
+        "show_gutter": true,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "animation": "none",
+        "collection_layout_mobile": "slider",
+        "mobile_products_per_row": "1",
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "index_rich_text_M9CCYw",
+    "main",
+    "index_featured_collection_kr8Rq7"
+  ]
+}

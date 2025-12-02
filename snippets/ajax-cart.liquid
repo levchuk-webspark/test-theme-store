@@ -22,7 +22,7 @@
       "display_tos_checkbox": {{ settings.display_tos_checkbox | json }}
     }
   </script>
-  <script src="{{ 'z__jsAjaxCart.js' | asset_url }}"></script>
+  <script src="{{ 'z__jsAjaxCart.js' | asset_url }}" defer></script>
 </div>
 
 {% if settings.cart_action == 'drawer' %}

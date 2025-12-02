@@ -1,1 +1,331 @@
-{"sections":{"index_rich_text_TpQ4Bp":{"type":"index__rich-text","settings":{"is_h1_title":true,"title":"<span class=\"ambit-black-text\">Become an<\/span> <span class=\"romie-regular-italic-text\">Affiliate<\/span> <span class=\"ambit-black-text\">Today!<\/span>","heading_font":"open_sans_n4","heading_alignment":"left","heading_size":94,"text":"","text_font":"open_sans_n4","text_alignment":"left","text_size":14,"columns":1,"button_label":"","button_link":"","button_style":"button--primary","button_alignment":"center","heading_color":"rgba(0,0,0,0)","text_color":"rgba(0,0,0,0)","background":"rgba(0,0,0,0)","gradient":"rgba(0,0,0,0)","gradient_rotation":180,"width":"standard","padding_top":56,"padding_bottom":80,"padding_left":0,"padding_right":0,"animation":"none","mobile_title":"","mobile_heading_size":29,"mobile_text":"","mobile_alignment":"none","padding_top_mobile":28,"padding_bottom_mobile":28,"css_class":"","custom_css":".card-content{\npadding:0px;\n}"}},"b2ef560e-7c85-4da5-8f66-a399f4874e45":{"type":"index__image-with-text-overlay","custom_css":[".caption-content {width: 100%; max-width: 1700px;}","@media (max-width: 798px) {.caption-content {width: 100%; } .caption-content .button {margin-right: 50px; }}"],"settings":{"image":"shopify:\/\/shop_images\/Affiliate_Banner.png","desktop_image_height":480,"use_image_aspect_ratio":false,"image_opacity":0.7,"image-border-radius":10,"background_image_color":"rgba(0,0,0,0)","mobile_image":"shopify:\/\/shop_images\/Affiliate_Banner_Mobile.png","mobile_image_height":480,"link":"","pretext":"","is_h1_title":false,"title":"Join Us On The <span class=\"romie-regular-italic-text\">Longevity<\/span> Revolution","subtitle":"","pretext_color":"#000000","heading_color":"#f7f5f1","subheading_color":"#000000","text_alignment":"center","text_horizontal_position":"center","text_vertical_position":"bottom","text_width":100,"background_color":"#f7f5f1","background_opacity":0,"border_color":"#f7f5f1","border_width":0,"button_1":"","button_1_link":"","button_1_style":"button--primary","button_2":"","button_2_link":"","button_2_style":"button--secondary","width":"standard","padding_top":0,"padding_bottom":0,"padding_left":0,"padding_right":0,"animation":"none","mobile_text_below_image":false,"mobile_preheading":"","mobile_heading":"","mobile_subheading":"","pretext_color_mobile":"rgba(0,0,0,0)","heading_color_mobile":"rgba(0,0,0,0)","subheading_color_mobile":"rgba(0,0,0,0)","text_alignment_mobile":"same_as_desktop","padding_top_mobile":0,"padding_bottom_mobile":0,"css_class":"","custom_css":".container .columns {\n margin-left: unset;\n margin-right: unset;\n}\n.caption-content{\n margin-left: inset;\n}\nh2.image-with-text-overlay__heading.banner__heading.title {\n  font-size: 44px !important;\n}"}},"index_description_with_buttons_F44XeM":{"type":"index__description-with-buttons","settings":{"text":"The time to live life to your full potential starts on your terms! At Youth &amp; Earth, we’re passionate about more than just supplements—we’re committed to redefining health and longevity.\n<br>\n<br>\nOur mission is to empower people to thrive, not just survive, by unlocking their body's full potential. \n<br>\n<br>\nIf you share our passion for healthy living, join our affiliate family to rewrite the script of longevity together\n<br>\n<br>\n As an affiliate, you’ll not only join a thriving community of like-minded individuals, but you’ll also help inspire others to live younger for longer.","button_description_1":"Already an Affiliate?<br>\nClick the button below to log in as an affiliate.","button_label_1":"LOG IN","link_1":"https:\/\/af.uppromote.com\/youth-earth-us-store\/login","button_style_1":"button--secondary","button_description_2":"Become an Affiliate!<br>\nClick the button below to sign up.","button_label_2":"SIGN UP","link_2":"https:\/\/af.uppromote.com\/youth-earth-us-store\/register","button_style_2":"button--primary","button_description_font_size":25,"text_font_size":19,"padding_top":65,"padding_bottom":65,"button_description_font_size_mobile":25,"text_font_size_mobile":23,"padding_top_mobile":45,"padding_bottom_mobile":45,"css_class":"","custom_css":""}},"index_column_with_items_bcJQLj":{"type":"index__column-with-items","blocks":{"column_DEPUEG":{"type":"column","settings":{"title":"What are the Benefits of Joining?","icon":"shopify:\/\/shop_images\/Vector_2deed2a8-cc3b-412d-a88a-17bbcec980c3.svg","background_color":"#edebe7","text_color":"#3f4444","item_1":"You will earn <strong>15% commission<\/strong> on each order placed by your followers.","item_2":"You will receive a personal discount code and a unique affiliate link that will help us track your sales.","item_3":"You will be featured on our social media channels regularly.","item_4":"Some <strong>free products<\/strong> for content creation after 20 sales.","item_5":""}},"column_Tb3XMW":{"type":"column","settings":{"title":"How Does It Work?","icon":"shopify:\/\/shop_images\/Vector_2deed2a8-cc3b-412d-a88a-17bbcec980c3.svg","background_color":"#edebe7","text_color":"#3f4444","item_1":"Easily sign up to the programme <strong><a href=\"https:\/\/af.uppromote.com\/youthandearth\/register\" target=\"_blank\">here<\/a>.<\/strong>","item_2":"Get access to your affiliate marketing dashboard.","item_3":"Receive your <strong>personal discount code<\/strong> and link that you will share with your audience.","item_4":"Give your followers 15% of their orders.","item_5":"Receive your commission on your PayPal account. Payouts occur after a total of £30 has been accumulated."}}},"block_order":["column_DEPUEG","column_Tb3XMW"],"settings":{"title_font_size":28,"item_font_size":20,"icon_size":25,"padding_top":0,"padding_bottom":20,"background_color":"","title_font_size_mobile":28,"item_font_size_mobile":23,"padding_top_mobile":0,"padding_bottom_mobile":16,"css_class":"","custom_css":""}},"index_rich_text_WGRDWe":{"type":"index__rich-text","settings":{"is_h1_title":false,"title":"","heading_font":"open_sans_n4","heading_alignment":"center","heading_size":30,"text":"<p>With always-on commission opportunities and personal codes, <br\/><strong>the more you engage - the more you earn!<\/strong><\/p>","text_font":"open_sans_n4","text_alignment":"center","text_size":32,"columns":1,"button_label":"","button_link":"","button_style":"button--primary","button_alignment":"center","heading_color":"rgba(0,0,0,0)","text_color":"#f7f5f1","background":"rgba(0,0,0,0)","gradient":"rgba(0,0,0,0)","gradient_rotation":180,"width":"standard","padding_top":20,"padding_bottom":0,"padding_left":0,"padding_right":0,"animation":"none","mobile_title":"","mobile_heading_size":27,"mobile_text":"","mobile_alignment":"none","padding_top_mobile":0,"padding_bottom_mobile":16,"css_class":"","custom_css":".section {\nborder-radius: 10px;\nbackground-color: #44693D;\n}\n.rich-text__text {\nfont-family: Ambit, Merriweather Sans,sans-serif\n}\n.rich-text__text.content {\n    margin-bottom: 0;\n}"}},"index_rich_text_DbHzqi":{"type":"index__rich-text","settings":{"is_h1_title":false,"title":"","heading_font":"open_sans_n4","heading_alignment":"left","heading_size":25,"text":"<p>Social media posts, blogs, and videos that highlight Youth & Earth are excellent ways to spread the word. <br\/><br\/>Aim to create content that not only showcases our products but also addresses challenges your followers may face, offering solutions that resonate with their needs.<br\/><br\/>Tag <strong>@Youthandearth<\/strong> in your content and use the <strong>#youthandearth<\/strong><\/p>","text_font":"open_sans_n4","text_alignment":"left","text_size":25,"columns":1,"button_label":"","button_link":"","button_style":"button--primary","button_alignment":"center","heading_color":"rgba(0,0,0,0)","text_color":"#f7f5f1","background":"rgba(0,0,0,0)","gradient":"rgba(0,0,0,0)","gradient_rotation":180,"width":"standard","padding_top":20,"padding_bottom":57,"padding_left":0,"padding_right":0,"animation":"none","mobile_title":"","mobile_heading_size":29,"mobile_text":"","mobile_alignment":"none","padding_top_mobile":0,"padding_bottom_mobile":41,"css_class":"","custom_css":".section {\nborder-radius: 10px;\nbackground-color:#284734;\n}\n.section.has-background {\nmax-width: unset;\n}\n.rich-text__text {\nfont-family: Ambit, Merriweather Sans,sans-serif\n}\n.container .columns {\nmargin-left: 0;\nmargin-right: 0;\nwidth: 100%;\n}\n.rich-text__text.content {\n    margin-bottom: 0;\n}\nstrong {\ncolor: #78BE20;\n}"}},"index_rich_text_ifXdyY":{"type":"index__rich-text","disabled":true,"settings":{"is_h1_title":false,"title":"<span class=\"ambit-black-text\">Join the Youth &amp; Earth<\/span> <span class=\"romie-regular-italic-text\">Affiliate Community<\/span>","heading_font":"open_sans_n4","heading_alignment":"left","heading_size":34,"text":"","text_font":"open_sans_n4","text_alignment":"left","text_size":14,"columns":1,"button_label":"","button_link":"","button_style":"button--primary","button_alignment":"center","heading_color":"rgba(0,0,0,0)","text_color":"rgba(0,0,0,0)","background":"rgba(0,0,0,0)","gradient":"rgba(0,0,0,0)","gradient_rotation":180,"width":"standard","padding_top":0,"padding_bottom":35,"padding_left":0,"padding_right":0,"animation":"none","mobile_title":"","mobile_heading_size":34,"mobile_text":"","mobile_alignment":"none","padding_top_mobile":0,"padding_bottom_mobile":18,"css_class":"","custom_css":".card-content{\npadding:0px;\n}\n.container .columns {\n margin-left: unset;\n margin-right: unset;\n}"}},"main":{"type":"page-content__main","disabled":true,"settings":{"show_heading":false,"heading_alignment":"left","width":"standard","padding_top":40,"padding_bottom":20,"css_class":"","custom_css":""}},"b82b40d3-ecfd-4ded-ae6d-e84292e11cb4":{"type":"custom-liquid","disabled":true,"custom_css":[],"settings":{"custom_liquid":"<div class=\"tagembed-container\" style=\"width:100%;height:100%;overflow: auto;\"><div class=\"tagembed-socialwall\" data-wall-id=\"2067508\"><\/div><\/div>","width":"wide"}}},"order":["index_rich_text_TpQ4Bp","b2ef560e-7c85-4da5-8f66-a399f4874e45","index_description_with_buttons_F44XeM","index_column_with_items_bcJQLj","index_rich_text_WGRDWe","index_rich_text_DbHzqi","index_rich_text_ifXdyY","main","b82b40d3-ecfd-4ded-ae6d-e84292e11cb4"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "index_rich_text_TpQ4Bp": {
+      "type": "index__rich-text",
+      "settings": {
+        "is_h1_title": true,
+        "title": "<span class=\"ambit-black-text\">Become an</span> <span class=\"romie-regular-italic-text\">Affiliate</span> <span class=\"ambit-black-text\">Today!</span>",
+        "heading_font": "open_sans_n4",
+        "heading_alignment": "left",
+        "heading_size": 94,
+        "text": "",
+        "text_font": "open_sans_n4",
+        "text_alignment": "left",
+        "text_size": 14,
+        "columns": 1,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "button--primary",
+        "button_alignment": "center",
+        "heading_color": "rgba(0,0,0,0)",
+        "text_color": "rgba(0,0,0,0)",
+        "background": "rgba(0,0,0,0)",
+        "gradient": "rgba(0,0,0,0)",
+        "gradient_rotation": 180,
+        "width": "standard",
+        "padding_top": 56,
+        "padding_bottom": 80,
+        "padding_left": 0,
+        "padding_right": 0,
+        "animation": "none",
+        "mobile_title": "",
+        "mobile_heading_size": 29,
+        "mobile_text": "",
+        "mobile_alignment": "none",
+        "padding_top_mobile": 28,
+        "padding_bottom_mobile": 28,
+        "css_class": "",
+        "custom_css": ".card-content{\npadding:0px;\n}"
+      }
+    },
+    "b2ef560e-7c85-4da5-8f66-a399f4874e45": {
+      "type": "index__image-with-text-overlay",
+      "custom_css": [
+        ".caption-content {width: 100%; max-width: 1700px;}",
+        "@media (max-width: 798px) {.caption-content {width: 100%; } .caption-content .button {margin-right: 50px; }}"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/Affiliate_Banner.png",
+        "desktop_image_height": 480,
+        "use_image_aspect_ratio": false,
+        "image_opacity": 0.7,
+        "image-border-radius": 10,
+        "background_image_color": "rgba(0,0,0,0)",
+        "mobile_image": "shopify://shop_images/Affiliate_Banner_Mobile.png",
+        "mobile_image_height": 480,
+        "link": "",
+        "pretext": "",
+        "is_h1_title": false,
+        "title": "Join Us On The <span class=\"romie-regular-italic-text\">Longevity</span> Revolution",
+        "subtitle": "",
+        "pretext_color": "#000000",
+        "heading_color": "#f7f5f1",
+        "subheading_color": "#000000",
+        "text_alignment": "center",
+        "text_horizontal_position": "center",
+        "text_vertical_position": "bottom",
+        "text_width": 100,
+        "background_color": "#f7f5f1",
+        "background_opacity": 0,
+        "border_color": "#f7f5f1",
+        "border_width": 0,
+        "button_1": "",
+        "button_1_link": "",
+        "button_1_style": "button--primary",
+        "button_2": "",
+        "button_2_link": "",
+        "button_2_style": "button--secondary",
+        "width": "standard",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "animation": "none",
+        "mobile_text_below_image": false,
+        "mobile_preheading": "",
+        "mobile_heading": "",
+        "mobile_subheading": "",
+        "pretext_color_mobile": "rgba(0,0,0,0)",
+        "heading_color_mobile": "rgba(0,0,0,0)",
+        "subheading_color_mobile": "rgba(0,0,0,0)",
+        "text_alignment_mobile": "same_as_desktop",
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "css_class": "",
+        "custom_css": ".container .columns {\n margin-left: unset;\n margin-right: unset;\n}\n.caption-content{\n margin-left: inset;\n}\nh2.image-with-text-overlay__heading.banner__heading.title {\n  font-size: 44px !important;\n}"
+      }
+    },
+    "index_description_with_buttons_F44XeM": {
+      "type": "index__description-with-buttons",
+      "settings": {
+        "text": "The time to live life to your full potential starts on your terms! At Youth &amp; Earth, we’re passionate about more than just supplements—we’re committed to redefining health and longevity.\n<br>\n<br>\nOur mission is to empower people to thrive, not just survive, by unlocking their body's full potential. \n<br>\n<br>\nIf you share our passion for healthy living, join our affiliate family to rewrite the script of longevity together\n<br>\n<br>\n As an affiliate, you’ll not only join a thriving community of like-minded individuals, but you’ll also help inspire others to live younger for longer.",
+        "button_description_1": "Already an Affiliate?<br>\nClick the button below to log in as an affiliate.",
+        "button_label_1": "LOG IN",
+        "link_1": "https://af.uppromote.com/youthandearth/login",
+        "button_style_1": "button--secondary",
+        "button_description_2": "Become an Affiliate!<br>\nClick the button below to sign up.",
+        "button_label_2": "SIGN UP",
+        "link_2": "https://af.uppromote.com/youthandearth/register",
+        "button_style_2": "button--primary",
+        "button_description_font_size": 25,
+        "text_font_size": 19,
+        "padding_top": 65,
+        "padding_bottom": 65,
+        "button_description_font_size_mobile": 25,
+        "text_font_size_mobile": 23,
+        "padding_top_mobile": 45,
+        "padding_bottom_mobile": 45,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "index_column_with_items_bcJQLj": {
+      "type": "index__column-with-items",
+      "blocks": {
+        "column_DEPUEG": {
+          "type": "column",
+          "settings": {
+            "title": "What are the Benefits of Joining?",
+            "icon": "shopify://shop_images/Vector_2deed2a8-cc3b-412d-a88a-17bbcec980c3.svg",
+            "background_color": "#edebe7",
+            "text_color": "#3f4444",
+            "item_1": "You will earn <strong>15% commission</strong> on each order placed by your followers.",
+            "item_2": "You will receive a personal discount code and a unique affiliate link that will help us track your sales.",
+            "item_3": "You will be featured on our social media channels regularly.",
+            "item_4": "Some <strong>free products</strong> for content creation after 20 sales.",
+            "item_5": ""
+          }
+        },
+        "column_Tb3XMW": {
+          "type": "column",
+          "settings": {
+            "title": "How Does It Work?",
+            "icon": "shopify://shop_images/Vector_2deed2a8-cc3b-412d-a88a-17bbcec980c3.svg",
+            "background_color": "#edebe7",
+            "text_color": "#3f4444",
+            "item_1": "Easily sign up to the programme <strong><a href=\"https://af.uppromote.com/youthandearth/register\" target=\"_blank\">here</a>.</strong>",
+            "item_2": "Get access to your affiliate marketing dashboard.",
+            "item_3": "Receive your <strong>personal discount code</strong> and link that you will share with your audience.",
+            "item_4": "Give your followers 15% of their orders.",
+            "item_5": "Receive your commission on your PayPal account. Payouts occur after a total of £30 has been accumulated."
+          }
+        }
+      },
+      "block_order": [
+        "column_DEPUEG",
+        "column_Tb3XMW"
+      ],
+      "settings": {
+        "title_font_size": 28,
+        "item_font_size": 20,
+        "icon_size": 25,
+        "padding_top": 0,
+        "padding_bottom": 20,
+        "background_color": "",
+        "title_font_size_mobile": 28,
+        "item_font_size_mobile": 23,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 16,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "index_rich_text_WGRDWe": {
+      "type": "index__rich-text",
+      "settings": {
+        "is_h1_title": false,
+        "title": "",
+        "heading_font": "open_sans_n4",
+        "heading_alignment": "center",
+        "heading_size": 30,
+        "text": "<p>With always-on commission opportunities and personal codes, <br/><strong>the more you engage - the more you earn!</strong></p>",
+        "text_font": "open_sans_n4",
+        "text_alignment": "center",
+        "text_size": 32,
+        "columns": 1,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "button--primary",
+        "button_alignment": "center",
+        "heading_color": "rgba(0,0,0,0)",
+        "text_color": "#f7f5f1",
+        "background": "rgba(0,0,0,0)",
+        "gradient": "rgba(0,0,0,0)",
+        "gradient_rotation": 180,
+        "width": "standard",
+        "padding_top": 20,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "animation": "none",
+        "mobile_title": "",
+        "mobile_heading_size": 27,
+        "mobile_text": "",
+        "mobile_alignment": "none",
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 16,
+        "css_class": "",
+        "custom_css": ".section {\nborder-radius: 10px;\nbackground-color: #44693D;\n}\n.rich-text__text {\nfont-family: Ambit, Merriweather Sans,sans-serif\n}\n.rich-text__text.content {\n    margin-bottom: 0;\n}"
+      }
+    },
+    "index_rich_text_DbHzqi": {
+      "type": "index__rich-text",
+      "settings": {
+        "is_h1_title": false,
+        "title": "",
+        "heading_font": "open_sans_n4",
+        "heading_alignment": "left",
+        "heading_size": 25,
+        "text": "<p>Social media posts, blogs, and videos that highlight Youth & Earth are excellent ways to spread the word. <br/><br/>Aim to create content that not only showcases our products but also addresses challenges your followers may face, offering solutions that resonate with their needs.<br/><br/>Tag <strong>@Youthandearth</strong> in your content and use the <strong>#youthandearth</strong></p>",
+        "text_font": "open_sans_n4",
+        "text_alignment": "left",
+        "text_size": 25,
+        "columns": 1,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "button--primary",
+        "button_alignment": "center",
+        "heading_color": "rgba(0,0,0,0)",
+        "text_color": "#f7f5f1",
+        "background": "rgba(0,0,0,0)",
+        "gradient": "rgba(0,0,0,0)",
+        "gradient_rotation": 180,
+        "width": "standard",
+        "padding_top": 20,
+        "padding_bottom": 57,
+        "padding_left": 0,
+        "padding_right": 0,
+        "animation": "none",
+        "mobile_title": "",
+        "mobile_heading_size": 29,
+        "mobile_text": "",
+        "mobile_alignment": "none",
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 41,
+        "css_class": "",
+        "custom_css": ".section {\nborder-radius: 10px;\nbackground-color: #284734;\n}\n.section.has-background {\nmax-width: unset;\n}\n.rich-text__text {\nfont-family: Ambit, Merriweather Sans,sans-serif\n}\n.container .columns {\nmargin-left: 0;\nmargin-right: 0;\nwidth: 100%;\n}\n.rich-text__text.content {\n    margin-bottom: 0;\n}\nstrong {\ncolor: #78BE20;\n}"
+      }
+    },
+    "index_rich_text_ifXdyY": {
+      "type": "index__rich-text",
+      "disabled": true,
+      "settings": {
+        "is_h1_title": false,
+        "title": "<span class=\"ambit-black-text\">Join the Youth &amp; Earth</span> <span class=\"romie-regular-italic-text\">Affiliate Community</span>",
+        "heading_font": "open_sans_n4",
+        "heading_alignment": "left",
+        "heading_size": 34,
+        "text": "",
+        "text_font": "open_sans_n4",
+        "text_alignment": "left",
+        "text_size": 14,
+        "columns": 1,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "button--primary",
+        "button_alignment": "center",
+        "heading_color": "rgba(0,0,0,0)",
+        "text_color": "rgba(0,0,0,0)",
+        "background": "rgba(0,0,0,0)",
+        "gradient": "rgba(0,0,0,0)",
+        "gradient_rotation": 180,
+        "width": "standard",
+        "padding_top": 0,
+        "padding_bottom": 35,
+        "padding_left": 0,
+        "padding_right": 0,
+        "animation": "none",
+        "mobile_title": "",
+        "mobile_heading_size": 34,
+        "mobile_text": "",
+        "mobile_alignment": "none",
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 18,
+        "css_class": "",
+        "custom_css": ".card-content{\npadding:0px;\n}\n.container .columns {\n margin-left: unset;\n margin-right: unset;\n}"
+      }
+    },
+    "main": {
+      "type": "page-content__main",
+      "disabled": true,
+      "settings": {
+        "show_heading": false,
+        "heading_alignment": "left",
+        "width": "standard",
+        "padding_top": 40,
+        "padding_bottom": 20,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "b82b40d3-ecfd-4ded-ae6d-e84292e11cb4": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "custom_liquid": "<div class=\"tagembed-container\" style=\"width:100%;height:100%;overflow: auto;\"><div class=\"tagembed-socialwall\" data-wall-id=\"2067508\"></div></div>",
+        "width": "wide"
+      }
+    }
+  },
+  "order": [
+    "index_rich_text_TpQ4Bp",
+    "b2ef560e-7c85-4da5-8f66-a399f4874e45",
+    "index_description_with_buttons_F44XeM",
+    "index_column_with_items_bcJQLj",
+    "index_rich_text_WGRDWe",
+    "index_rich_text_DbHzqi",
+    "index_rich_text_ifXdyY",
+    "main",
+    "b82b40d3-ecfd-4ded-ae6d-e84292e11cb4"
+  ]
+}

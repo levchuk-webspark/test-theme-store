@@ -1,0 +1,407 @@
+{% assign data = product.metafields.custom.product_overview.value %}
+
+
+{% if data != blank %}
+  {% style %}
+  
+  .new-product-overview {
+    padding: 96px 0;
+    background: #F7F5F1;
+  }
+  
+  .new-product-overview__wrapper {
+    margin: 0 auto;
+    max-width: 1440px;
+    padding: 0 20px;
+    width: 100%;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .new-product-overview__image {
+    flex: 0 0 calc(50% - 10px);
+    position: relative;
+  }
+  
+  .new-product-overview__image img {
+    overflow: hidden;
+    border-radius: 16px;
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    max-height: 640px;
+  }
+
+  .new-product-overview__featured {
+    position: absolute;
+    right: 24px;
+    top: 24px;
+    border: 1px solid #F7F5F1;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 220px;
+  }
+
+  .new-product-overview__featured img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .new-product-overview__content {
+    flex: 0 0 calc(50% - 10px);
+    border-radius: 16px;
+    padding: 32px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  
+  .new-product-overview__title {
+    color: #404544;
+    font-family: Ambit;
+    font-weight: 900;
+    font-size: 38px;
+    line-height: 1.2;
+    letter-spacing: 3%;
+  }
+  
+  .new-product-overview__title span {
+    font-family: Romie;
+    font-weight: 400;
+    font-style: Italic;
+  }
+  
+  .new-product-overview__questions {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .new-product-overview__question {
+    border-bottom: 1px solid #D4D8D0;
+    padding: 20px 0;
+    overflow: hidden;
+  }
+  
+  .new-product-overview__question:first-child {
+    border-top: 1px solid #D4D8D0;
+  }
+  
+  .new-product-overview__question-btn {
+    font-family: Ambit;
+    width: 100%;
+    padding: 0;
+    background: none;
+    border: none;
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    gap: 24px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.25;
+    color: #404544;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .new-product-overview__question-btn svg {
+    flex: 0 0 24px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .new-product-overview__question-btn:hover,
+  .new-product-overview__question-btn._opened {
+    color: #284734;
+  }
+  
+  .new-product-overview__question-btn._opened svg {
+    transform: rotate(135deg);
+  }
+  
+  .new-product-overview__question-answer {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    max-height: 0;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .new-product-overview__question-answer p {
+    padding: 0;
+    margin: 0;
+    padding-top: 16px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #404544;
+    letter-spacing: 1%;
+  }
+  
+  .new-product-overview__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px;
+    border: 1px solid #284734;
+    border-radius: 16px;
+    margin-top: auto;
+  }
+  
+  .new-product-overview__bottom.new-product-overview__bottom-mobile {
+    display: none;
+  }
+  
+  .new-product-overview__subtitle {
+    color: #284734;
+    font-family: Ambit;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 1.2;
+  }
+  
+  .new-product-overview__button {
+    font-family: Ambit;
+    background: #284734;
+    padding: 16px 24px;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.25;
+    color: #fff;
+    width: fit-content;
+    white-space: nowrap;
+    flex: 0 0 auto;
+    transition: all 0.3s ease-in-out; 
+  }
+  
+  .new-product-overview__button svg {
+    flex: 0 0 auto;
+    overflow: hidden;
+    aspect-ratio: 1;
+    width: 0;
+    transition: all 0.3s ease-in-out; 
+  }
+  
+  .new-product-overview__button:hover {
+    color: #fff;
+  }
+  
+  .new-product-overview__button:hover svg {
+    margin-left: 8px;
+    width: 16px;
+  }
+  
+  @media (max-width: 991px) {
+    .new-product-overview {
+      padding: 64px 0;
+    }
+  
+    .new-product-overview__title {
+      font-size: 28px;
+    }
+  
+    .new-product-overview__wrapper {
+      flex-direction: column;
+      gap: 16px;
+    }
+  
+    .new-product-overview__image {
+      flex: auto;
+    }
+
+    .new-product-overview__image img {
+      max-height: 360px;
+    }
+
+    .new-product-overview__featured {
+      right: 16px;
+      top: 16px;
+      width: 100px;
+      height: 140px;
+    }
+  
+    .new-product-overview__content {
+      flex: auto;
+      padding: 32px 16px;
+      margin-bottom: 24px;
+    }
+  
+    .new-product-overview__question-btn {
+      font-size: 16px;
+    }
+  
+    .new-product-overview__bottom {
+      display: none;
+    }
+  
+    .new-product-overview__bottom.new-product-overview__bottom-mobile {
+      display: flex;
+    }
+  }
+  
+  {% endstyle %}
+  
+  <section class="new-product-overview">
+
+    <div class="new-product-overview__wrapper">
+      <div class="new-product-overview__image">
+        {% if product.featured_image != blank %}
+          <div class="new-product-overview__featured">
+            {{ product.featured_image | image_url: width: 150, height: 220 | image_tag: loading: 'lazy' }}
+          </div>
+        {% endif %}
+        {% if data.image != blank %}
+          {{ data.image | image_url: width: 600, height: 600 | image_tag: loading: 'lazy' }}
+        {% endif %}
+      </div>
+
+      <div class="new-product-overview__content">
+        {% if section.settings.title != blank %}
+          <h2 class="new-product-overview__title">
+            {{ section.settings.title }} {{ data.product_title }}?
+          </h2>
+        {% endif %}
+  
+        <div class="new-product-overview__questions" data-overview-question-wrapper>
+          {% for i in (1..100) %}
+            {% assign question_key = 'question_' | append: i %}
+            {% assign answer_key = 'answer_' | append: i %}
+
+            {% if data[question_key] == blank or data[answer_key] == blank %}
+              {% break %}
+            {% endif %}
+
+            <div class="new-product-overview__question">
+              {% if data[question_key] != blank %}
+                <button class="new-product-overview__question-btn" data-overview-question-btn>
+                  {{ data[question_key] }}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="#284734" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 22V2m10 10H2"/>
+                  </svg>
+                </button>
+              {% endif %}
+              {% if data[answer_key] != blank %}
+                <div class="new-product-overview__question-answer">
+                    <p>{{ data[answer_key] }}</p>
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="new-product-overview__bottom">
+          {% if section.settings.cta_question != blank %}
+            <h3 class="new-product-overview__subtitle">
+              {{ section.settings.cta_question }}
+            </h3>
+          {% endif %}
+
+          {% if section.settings.cta_label != blank %}
+            <a 
+              {% if section.settings.cta_url != blank %}
+                href="{{ section.settings.cta_url }}"
+              {% endif %}
+              class="new-product-overview__button"
+            >
+              {{ section.settings.cta_label }}
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 8C16 12.4173 12.4173 16 8 16C3.58277 16 0 12.4173 0 8C0 3.58277 3.56837 0 8 0C12.4317 0 16 3.58277 16 8ZM7.19424 3.19421L11.2806 7.19424H2.38843V8.79137H11.2806L7.19424 12.7914H9.28058L14.1727 7.98561L9.28058 3.17982H7.19424V3.19421Z" fill="#F7F5F1"/>
+              </svg>
+            </a>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="new-product-overview__bottom new-product-overview__bottom-mobile">
+        {% if section.settings.cta_question != blank %}
+          <h3 class="new-product-overview__subtitle">
+            {{ section.settings.cta_question }}
+          </h3>
+        {% endif %}
+
+        {% if section.settings.cta_label != blank %}
+          <a 
+            {% if section.settings.cta_url != blank %}
+              href="{{ section.settings.cta_url }}"
+            {% endif %}
+            class="new-product-overview__button"
+          >
+            {{ section.settings.cta_label }}
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16 8C16 12.4173 12.4173 16 8 16C3.58277 16 0 12.4173 0 8C0 3.58277 3.56837 0 8 0C12.4317 0 16 3.58277 16 8ZM7.19424 3.19421L11.2806 7.19424H2.38843V8.79137H11.2806L7.19424 12.7914H9.28058L14.1727 7.98561L9.28058 3.17982H7.19424V3.19421Z" fill="#F7F5F1"/>
+            </svg>
+          </a>
+        {% endif %}
+      </div>
+    </div>
+
+  </section>
+    
+  <script>
+      window.addEventListener('DOMContentLoaded', () => {
+        const wrapper = document.querySelector('[data-overview-question-wrapper]');
+        const buttons = wrapper.querySelectorAll('[data-overview-question-btn]');
+
+        buttons.forEach(btn => btn.addEventListener('click', () => {
+          const isOpened = btn.classList.contains('_opened');
+          const answer = btn.nextElementSibling;
+          btn.classList.toggle('_opened', !isOpened);
+
+          if (isOpened) {
+            answer.style.maxHeight = null;
+          } else {
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+          }
+        }));
+      });
+  </script>
+
+{% endif %}
+    
+{% schema %}
+{
+  "name": "New Product: Overview",
+  "settings": [
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Section title",
+    },
+    {
+      "type": "text",
+      "id": "cta_question",
+      "label": "Section CTA question",
+      "default": "Still got questions?"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Section CTA label",
+      "default": "Read our Blog"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Section CTA link"
+    },
+  ],
+  "presets": [
+    {
+      "name": "New Product: Overview"
+    }
+  ]
+}
+{% endschema %}

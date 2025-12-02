@@ -1,0 +1,287 @@
+{% style %}
+  .bf25-caption-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+  }
+
+  .slideshow-classic__heading--bf25 {
+    color: var(--Snow-White);
+  }
+
+  .cta-and-review-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: min-content;
+  }
+
+  .bf25-eyebrow {
+    display: block;
+    font-size: 37px !important;
+    line-height: 110.00000000000001%;
+    letter-spacing: 0.05em;
+    font-weight: 400;
+    margin-bottom: 30px;
+  }
+
+  .bf25-main-line {
+    display: block;
+    font-size: 55px !important;
+    line-height: 110.00000000000001%;
+    font-weight: 400;
+    white-space: nowrap;
+  }
+
+  .bf25-main-line > strong,
+  .bf25-highlight > strong {
+    font-weight: 900;
+  }
+
+  .bf25-highlight {
+    text-decoration: underline;
+    text-decoration-thickness: 5px;
+    text-underline-offset: 8px;
+  }
+
+  @media only screen and (max-width: 968px) {
+    .slideshow-classic__heading--bf25 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      text-align: left;
+      max-width: 560px;
+    }
+    .bf25-caption-wrapper {
+      position: relative;
+      top: -5px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 32px;
+      align-items: flex-start;
+      height: 100%;
+    }
+
+    .cta-and-review-section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .reveiwsection.bf25 > .award-winning > .image img {
+      height: 58px;
+      width: auto;
+      margin-bottom: 12px;
+    }
+    .bf25-eyebrow {
+      font-size: 24px;
+      margin-bottom: 20px;
+      text-align: center;
+      line-height: 110.00000000000001%;
+    }
+
+    .bf25-main-line {
+      font-size: 34px !important;
+      white-space: normal;
+      text-align: center;
+      line-height: 110.00000000000001%;
+      margin-bottom: 10px;
+    }
+
+    .bf25-main-line > strong {
+      font-weight: 900;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .bf25-main-line {
+      font-size: 28px !important;
+    }
+    .bf25-eyebrow {
+      font-size: 20px !important;
+      margin-bottom: 18px;
+      text-align: center;
+      line-height: 110.00000000000001%;
+    }
+
+    .reveiwsection.bf25 > .award-winning > .image img {
+      height: 55px;
+      width: auto;
+      margin-bottom: 10px;
+    }
+
+    .cta-and-review-section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      bottom: 10px;
+    }
+  }
+
+  @media only screen and (max-width: 480px) {
+
+    {% comment %}
+    .bf25-caption-wrapper {
+      position: relative;
+      top: -5px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 50px;
+      align-items: center;
+    }
+    {% endcomment %}
+    .bf25-caption-wrapper {
+      position: relative;
+      top: -5px;              /* pull everything a bit up */
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      gap: calc(100vh * 0.3);               /* smaller gap so badges fit */
+      align-items: center;
+    }
+
+    .slideshow-classic__heading--bf25 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    {% comment %}
+    .cta-and-review-section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      bottom: 10px;
+    }
+    {% endcomment %}
+    .cta-and-review-section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      bottom: 20px;           /* move CTA + badges further up */
+    }
+
+    {% comment %}
+    .reveiwsection.bf25 > .award-winning > .image img {
+      height: 52px;
+      width: auto;
+      margin-bottom: 10px;
+    }
+    {% endcomment %}
+    .reveiwsection.bf25 > .award-winning > .image img {
+      height: 46px;           /* slightly smaller to avoid cut-off */
+      width: auto;
+      margin-bottom: 8px;
+    }
+
+    .bf25-eyebrow {
+      font-size: 20px !important;
+      margin-bottom: 18px;
+      text-align: center;
+      line-height: 110.00000000000001%;
+    }
+
+    .bf25-main-line {
+      font-size: 28px !important;
+      white-space: normal;
+      text-align: center;
+      line-height: 110.00000000000001%;
+      margin-bottom: 10px;
+    }
+
+    .bf25-main-line > strong {
+      font-weight: 900;
+    }
+  }
+
+  @media only screen and (max-width: 389px) {
+
+    {% comment %}
+    .bf25-caption-wrapper {
+      position: relative;
+      top: -5px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 50px;
+      align-items: center;
+    }
+    {% endcomment %}
+    .bf25-caption-wrapper {
+      position: relative;
+      top: -5px;           /* a bit more lift on very small screens */
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      gap: calc(100vh * 0.3);      /* smaller gap so badges fit */
+      align-items: center;
+    }
+
+    {% comment %}
+    .cta-and-review-section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      bottom: 10px;
+    }
+    {% endcomment %}
+    .cta-and-review-section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      bottom: 24px;
+    }
+
+    {% comment %}
+    .reveiwsection.bf25 > .award-winning > .image img {
+      height: 48px;
+      width: auto;
+    }
+    {% endcomment %}
+    .reveiwsection.bf25 > .award-winning > .image img {
+      height: 42px;
+      width: auto;
+    }
+
+    .slideshow-classic__heading--bf25 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .bf25-eyebrow {
+      font-size: 18px !important;
+      margin-bottom: 14px;
+      text-align: center;
+      line-height: 110.00000000000001%;
+    }
+
+    .bf25-main-line {
+      font-size: 24px !important;
+      margin-bottom: 10px;
+      white-space: normal;
+    }
+  }
+{% endstyle %}

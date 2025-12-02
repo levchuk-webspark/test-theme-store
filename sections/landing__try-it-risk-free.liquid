@@ -1,0 +1,213 @@
+{% assign data = section.settings %}
+
+{% style %}
+  .try-it-risk-free {
+    padding: 80px 0;
+    min-height: min(730px, 100dvh);
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .try-it-risk-free__image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    object-fit: cover;
+  }
+
+  .try-it-risk-free__wrapper {
+    position: relative;
+    margin: 0 auto;
+    max-width: 1100px;
+    padding: 0 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+  }
+
+  .try-it-risk-free__info {
+    flex: 0 1 470px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .try-it-risk-free__title {
+    color: #fff;
+    font-weight: 400;
+    font-size: 66px;
+    line-height: 1.3;
+    letter-spacing: -2.2%;
+  }
+
+  .try-it-risk-free__description {
+    color: #fff;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.5;
+    letter-spacing: -2.2%;
+  }
+
+  .try-it-risk-free__button {
+    font-family: Ambit SemiBold !important;
+    background: linear-gradient(65deg, #294031 10%, #71B743 130%);
+    padding: 24px 32px;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 1.25;
+    letter-spacing: -2.2%;
+    color: #fff;
+    width: fit-content;
+    min-width: 240px;
+    transition: all 0.3s ease-in-out; 
+  }
+
+  .try-it-risk-free__button:hover {
+    transform: scale(1.04);
+    color: #fff;
+  }
+
+  .try-it-risk-free__list {
+    flex: 0 1 440px;
+    padding: 48px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    border: 1px solid #99999966;
+    backdrop-filter: blur(4px);
+    background: #00000066;
+  }
+
+  .try-it-risk-free__list li {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: #fff;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.25;
+    letter-spacing: -2.2%;
+  }
+
+  .try-it-risk-free__list li:before {
+    content: '';
+    flex: 0 0 32px;
+    aspect-ratio: 1;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='16.0001' cy='16.0001' r='12.4444' fill='%2378BE20'/%3E%3Cpath d='M12.4443 16.8888L15.111 19.5555L20.4443 14.2222' stroke='%23F7F5F1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+  }
+
+  @media (max-width: 991px) {
+    .try-it-risk-free__title {
+      font-size: 48px;
+    }
+
+    .try-it-risk-free__list {
+      padding: 32px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .try-it-risk-free {
+      min-height: auto;
+    }
+
+    .try-it-risk-free__wrapper {
+      flex-direction: column;
+      align-items: unset;
+      justify-content: unset;
+    }
+
+    .try-it-risk-free__list,
+    .try-it-risk-free__info {
+      flex: auto;
+    }
+  }
+{% endstyle %}
+
+<section class="try-it-risk-free try-it-risk-free--{{ template.suffix }}">
+  {% if data.background_image != blank %}
+    {{ data.background_image | image_url: width: 2880, height: 1484 | image_tag: class: 'try-it-risk-free__image', loading: 'lazy' }}
+  {% endif %}
+
+  <div class="try-it-risk-free__wrapper">
+    <div class="try-it-risk-free__info">
+      {% if data.title != blank %}
+        <h2 class="try-it-risk-free__title">{{ data.title }}</h2>
+      {% endif %}
+      {% if data.description != blank %}
+        <h2 class="try-it-risk-free__description">{{ data.description }}</h2>
+      {% endif %}
+      {% if data.cta_label != blank %}
+        <a 
+          {% if data.cta_url != blank %}
+            href="{{ data.cta_url }}"
+          {% endif %}
+          class="try-it-risk-free__button"
+        >
+          {{ data.cta_label }}
+        </a>
+      {% endif %}
+    </div>
+    {% if data.list_items != blank %}
+      <ul class="try-it-risk-free__list">
+        {{ data.list_items }}
+      </ul>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Try it risk free",
+  "settings": [
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Section title"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Section description"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Section CTA label"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Section CTA link"
+    },
+    {
+      "type": "html",
+      "id": "list_items",
+      "label": "Section list items"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+  ],
+  "presets": [
+    {
+      "name": "Landing: Try it risk free"
+    }
+  ]
+}
+{% endschema %}

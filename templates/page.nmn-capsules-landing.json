@@ -1,0 +1,593 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page-content__main",
+      "disabled": true,
+      "settings": {
+        "show_heading": false,
+        "heading_alignment": "left",
+        "width": "standard",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "nmn_landing_one_daily_nmn_BGfPte": {
+      "type": "nmn-landing__one-daily-nmn",
+      "name": "NMN Landing: One Daily NMN",
+      "settings": {
+        "background_image_big": "shopify://shop_images/one-daily-nmn_4.jpg",
+        "background_image": "shopify://shop_images/one-daily-nmn_3.jpg",
+        "background_image_mobile": "shopify://shop_images/one-daily-nmn_2.jpg",
+        "list": "<li>30-Day Money Back Guarantee</li>\n<li>Third-Party Tested (Batch COA)</li>\n<li>Scientifically Proven and Risk Free</li>\n<li>Made in the UK with the highest standards</li>",
+        "title": "One Daily NMN <span>To Power What</span> Matters Next",
+        "description": "Energy you can feel. Clarity you can count on. Support for healthy aging. Capsules or powder,  clean, third-party tested, and 99% free from heavy metals",
+        "cta_label": "Shop Now",
+        "cta_url": "https://youthandearth.com/products/nmn-capsules",
+        "image": "shopify://shop_images/one-daily-nmn_1.png",
+        "rating": "4.5/5",
+        "stars": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"180\" height=\"36\" fill=\"none\" viewbox=\"0 0 180 36\">\n  <path fill=\"#FEBC18\" d=\"m18 25.912-6.225 3.75c-.275.175-.563.25-.863.225a1.45 1.45 0 0 1-.787-.3 1.8 1.8 0 0 1-.525-.656c-.125-.262-.15-.556-.075-.882l1.65-7.087-5.512-4.763a1.433 1.433 0 0 1-.468-.77 1.503 1.503 0 0 1 .055-.842 1.6 1.6 0 0 1 .45-.675c.201-.176.476-.289.825-.338l7.275-.637 2.813-6.675c.125-.3.319-.525.582-.675.262-.15.531-.225.805-.225s.543.075.805.225c.264.15.457.375.582.675l2.813 6.675 7.275.637c.35.05.625.163.825.338.2.175.35.4.45.675.1.275.119.556.057.844a1.422 1.422 0 0 1-.47.768l-5.512 4.763 1.65 7.087c.075.325.05.62-.075.882-.125.263-.3.482-.525.656a1.465 1.465 0 0 1-.788.3 1.35 1.35 0 0 1-.862-.225L18 25.912ZM54 25.912l-6.225 3.75c-.275.175-.563.25-.862.225a1.45 1.45 0 0 1-.788-.3 1.8 1.8 0 0 1-.525-.656c-.125-.262-.15-.556-.075-.882l1.65-7.087-5.512-4.763a1.433 1.433 0 0 1-.468-.77 1.503 1.503 0 0 1 .055-.842 1.6 1.6 0 0 1 .45-.675c.201-.176.476-.289.825-.338l7.275-.637 2.813-6.675c.124-.3.319-.525.581-.675.264-.15.532-.225.806-.225s.542.075.806.225c.263.15.457.375.582.675l2.812 6.675 7.275.637c.35.05.625.163.825.338.2.175.35.4.45.675.1.275.119.556.057.844a1.422 1.422 0 0 1-.47.768l-5.512 4.763 1.65 7.087c.075.325.05.62-.075.882-.125.263-.3.482-.525.656a1.465 1.465 0 0 1-.788.3 1.35 1.35 0 0 1-.862-.225L54 25.912ZM90 25.912l-6.225 3.75c-.275.175-.563.25-.863.225a1.45 1.45 0 0 1-.787-.3 1.8 1.8 0 0 1-.525-.656c-.125-.262-.15-.556-.075-.882l1.65-7.087-5.513-4.763a1.433 1.433 0 0 1-.468-.77 1.503 1.503 0 0 1 .056-.842 1.6 1.6 0 0 1 .45-.675c.201-.176.476-.289.825-.338l7.275-.637 2.813-6.675c.124-.3.319-.525.582-.675.263-.15.531-.225.805-.225s.543.075.805.225c.263.15.457.375.582.675l2.813 6.675 7.275.637c.35.05.625.163.825.338.2.175.35.4.45.675.1.275.119.556.057.844a1.421 1.421 0 0 1-.469.768l-5.513 4.763 1.65 7.087c.075.325.05.62-.075.882-.125.263-.3.482-.525.656a1.465 1.465 0 0 1-.787.3 1.35 1.35 0 0 1-.863-.225L90 25.912ZM126 25.912l-6.225 3.75c-.275.175-.563.25-.863.225a1.448 1.448 0 0 1-.787-.3 1.8 1.8 0 0 1-.525-.656c-.125-.262-.15-.556-.075-.882l1.65-7.087-5.513-4.763a1.433 1.433 0 0 1-.468-.77 1.503 1.503 0 0 1 .056-.842 1.6 1.6 0 0 1 .45-.675c.201-.176.476-.289.825-.338l7.275-.637 2.812-6.675c.125-.3.319-.525.582-.675a1.61 1.61 0 0 1 .806-.225c.274 0 .542.075.805.225.263.15.457.375.582.675l2.813 6.675 7.275.637c.35.05.625.163.825.338.2.175.35.4.45.675.1.275.119.556.057.844a1.423 1.423 0 0 1-.47.768l-5.512 4.763 1.65 7.087c.075.325.05.62-.075.882-.125.263-.3.482-.525.656a1.467 1.467 0 0 1-.788.3c-.3.026-.587-.05-.862-.225L126 25.912ZM162 25.912l-6.225 3.75c-.275.175-.563.25-.863.225a1.448 1.448 0 0 1-.787-.3 1.8 1.8 0 0 1-.525-.656c-.125-.262-.15-.556-.075-.882l1.65-7.087-5.513-4.763a1.433 1.433 0 0 1-.468-.77 1.503 1.503 0 0 1 .056-.842 1.6 1.6 0 0 1 .45-.675c.201-.176.476-.289.825-.338l7.275-.637 2.812-6.675c.125-.3.319-.525.582-.675a1.61 1.61 0 0 1 .806-.225c.274 0 .542.075.805.225.263.15.457.375.582.675l2.813 6.675 7.275.637c.35.05.625.163.825.338.2.175.35.4.45.675.1.275.119.556.057.844a1.423 1.423 0 0 1-.47.768l-5.512 4.763 1.65 7.087c.075.325.05.62-.075.882-.125.263-.3.482-.525.656a1.467 1.467 0 0 1-.788.3c-.3.026-.587-.05-.862-.225L162 25.912Z\"></path>\n</svg>",
+        "disclaimer": "based on 3000+ verified customers"
+      }
+    },
+    "landing_feels_like_bqrA3e": {
+      "type": "landing__feels-like",
+      "blocks": {
+        "card_zBB7j6": {
+          "type": "card",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"46\" height=\"46\" fill=\"none\" viewbox=\"0 0 46 46\">\n <path fill=\"#FEBC18\" d=\"m23 33.11-7.954 4.792a1.74 1.74 0 0 1-1.102.288 1.852 1.852 0 0 1-1.006-.384 2.3 2.3 0 0 1-.671-.837c-.16-.335-.192-.71-.096-1.127l2.108-9.057L7.236 20.7c-.32-.287-.52-.615-.598-.983a1.92 1.92 0 0 1 .07-1.077c.127-.35.319-.638.575-.863.257-.225.609-.369 1.055-.431l9.296-.815 3.593-8.529c.16-.383.408-.67.744-.862.336-.192.679-.288 1.03-.288.35 0 .692.096 1.028.288.336.191.584.479.744.862l3.594 8.53 9.296.814c.447.064.798.207 1.054.431.255.224.447.511.575.863.128.35.152.71.073 1.079-.08.368-.28.695-.6.981l-7.044 6.085 2.108 9.057c.096.415.064.79-.096 1.127a2.28 2.28 0 0 1-.67.837c-.288.223-.623.35-1.007.384a1.724 1.724 0 0 1-1.102-.288L23 33.11Z\"></path>\n</svg>",
+            "title": "4.5/5",
+            "description": "Rated by verified customers"
+          }
+        },
+        "card_xQnrhC": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/feels-like.jpg",
+            "icon": "",
+            "title": "",
+            "description": ""
+          }
+        },
+        "card_PbR3r9": {
+          "type": "card",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"46\" height=\"46\" fill=\"none\" viewbox=\"0 0 46 46\">\n <path fill=\"#78BE20\" d=\"M4.792 8.146a1.437 1.437 0 0 1 1.437-1.438h1.07c1.82 0 2.913 1.225 3.536 2.364.416.759.717 1.639.952 2.436l.192-.008h23.955c1.59 0 2.74 1.522 2.303 3.053l-3.503 12.284a5.271 5.271 0 0 1-5.068 3.826h-11.4a5.272 5.272 0 0 1-5.083-3.875l-1.457-5.314-2.415-8.142-.002-.015c-.299-1.087-.579-2.104-.997-2.863-.4-.738-.722-.87-1.012-.87H6.23a1.437 1.437 0 0 1-1.438-1.438ZM17.25 40.25a3.833 3.833 0 1 0 0-7.666 3.833 3.833 0 0 0 0 7.666Zm13.416 0a3.833 3.833 0 1 0 0-7.666 3.833 3.833 0 0 0 0 7.666Z\"></path>\n</svg>",
+            "title": "300,000+",
+            "description": "Orders"
+          }
+        },
+        "card_LMRt7H": {
+          "type": "card",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"46\" height=\"46\" fill=\"none\" viewbox=\"0 0 46 46\">\n <path fill=\"#78BE20\" d=\"M35.696 17.887a14.168 14.168 0 0 0-3.05-4.536 14.06 14.06 0 0 0-4.536-3.049A14.108 14.108 0 0 0 22.615 9.2h-.063a14.144 14.144 0 0 0-10.02 4.192 14.087 14.087 0 0 0-3.014 4.52 14.218 14.218 0 0 0-1.085 5.538c.01 2.197.537 4.378 1.52 6.329v4.812c0 .804.654 1.456 1.456 1.456h4.816a14.229 14.229 0 0 0 6.33 1.52h.066c1.898 0 3.735-.367 5.467-1.086a14.065 14.065 0 0 0 4.52-3.014 14.081 14.081 0 0 0 3.056-4.496 14.178 14.178 0 0 0 1.136-5.524c.006-1.928-.368-3.8-1.104-5.56Zm-19.414 7.016a1.521 1.521 0 0 1 0-3.04 1.519 1.519 0 1 1 0 3.04Zm6.333 0a1.521 1.521 0 0 1 0-3.04 1.521 1.521 0 0 1 0 3.04Zm6.333 0a1.521 1.521 0 0 1 0-3.04 1.521 1.521 0 0 1 0 3.04Z\"></path>\n</svg>",
+            "title": "3 000+",
+            "description": "Reviews"
+          }
+        }
+      },
+      "block_order": [
+        "card_zBB7j6",
+        "card_xQnrhC",
+        "card_PbR3r9",
+        "card_LMRt7H"
+      ],
+      "name": "Landing: Feels Like",
+      "settings": {
+        "subtitle": "Trusted By People Who Refuse To Slow Down",
+        "title": "“Feels like my 30-year-old self finally caught up with my to-do list”"
+      }
+    },
+    "landing_trust_them_z4VHVN": {
+      "type": "landing__trust-them",
+      "blocks": {
+        "card_EdWQX9": {
+          "type": "card",
+          "settings": {
+            "initials": "KA",
+            "description": "Have been taking NMN now for well over a year and I can’t imagine ever wanting to give it up. I’m much more focused, less tired, and have a wonderful renewed energy. Results were not immediate but accumulated over a few months. I love this life-enhancing supplement.",
+            "name": "Kathleen Adams"
+          }
+        },
+        "card_6cKcij": {
+          "type": "card",
+          "settings": {
+            "initials": "TC",
+            "description": "My favorite NMN powder among all brands (I tried them a lot). I did research, and I know that all of them purchase NMN from China, but it means a lot to test the products in the laboratory and ensure their quality. Youth and Earth have NMN with the smallest amount of heavy metals, in fact – insignificant. ",
+            "name": "Trusted Customer"
+          }
+        },
+        "card_W9LMkE": {
+          "type": "card",
+          "settings": {
+            "initials": "TC",
+            "description": "I have been taking NMN now for about four months. I take one 250 mg capsule a day. I am 71 and have noticed a big difference in my skin — my face is starting to look younger with less wrinkles and I also seem to have more energy.",
+            "name": "Trusted Customer"
+          }
+        },
+        "card_AVf7Jz": {
+          "type": "card",
+          "settings": {
+            "initials": "JD",
+            "description": "I’m mid-30’s and have been taking NMN for a while now. My skin becomes noticeably softer/smoother to touch and my energy levels are higher. Don’t be fooled by dodgy companies on Amazon — stick with quality solid brands when it comes to your cellular health.",
+            "name": "Jamie D"
+          }
+        },
+        "card_zBbcCQ": {
+          "type": "card",
+          "settings": {
+            "initials": "DS",
+            "description": "You can actually feel it working! I get a gentle uplifting feeling and my whole day is then so much better. I feel better, I can concentrate better, my gym workouts are better. So many benefits and it’s obvious the quality is just incredible. Very different to most other brands as it really is sublingual and results feel immediate.",
+            "name": "Daniel Saville"
+          }
+        },
+        "card_jLAXLR": {
+          "type": "card",
+          "settings": {
+            "initials": "MM",
+            "description": "I am a health, wellness, fitness and longevity professional. I spend a third of my time researching, a third putting research into practice and a third helping others navigate their needs. I have used this product for several years and it is the best.",
+            "name": "Mark Miller"
+          }
+        },
+        "card_nB3dnU": {
+          "type": "card",
+          "settings": {
+            "initials": "HF",
+            "description": "Been taking this powder for over a year now and wouldn’t be without it. Recently was quite unwell so I upped my dose and it made the world of difference to my recovery.",
+            "name": "Holly Ferguson"
+          }
+        },
+        "card_9THAK9": {
+          "type": "card",
+          "settings": {
+            "initials": "DW",
+            "description": "This is my second lot of NMN. I just feel so much better when I take it. I am 51 years old and I started to feel sluggish. I did extensive research and this product kept coming up. At first I was put off by the price but then again you get what you pay for! This particular brand seemed to be the most pure form of NMN. Anyway, I’ve been on it 3 months, I take 2 scoops a day directly under my tongue and let it dissolve. Within 3 months my hair is growing, I can’t remember the last time I had pain in my joints, my skin looks healthy and generally I feel great! This month I started taking it with resveratrol and that gives me such an energy boost. So to round it off — ignore the price as it’s worth every penny! I don’t normally leave reviews but I had to for this.",
+            "name": "Denise Windsor"
+          }
+        },
+        "card_9rUPnA": {
+          "type": "card",
+          "settings": {
+            "initials": "TC",
+            "description": "High quality product, can really feel the difference. I definitely have more energy, helped with aches & pains of middle age... love this product.",
+            "name": "Trusted Customer"
+          }
+        },
+        "card_YBjhA8": {
+          "type": "card",
+          "settings": {
+            "initials": "TC",
+            "description": "At age 84, 250 mg of NMN daily has slowly improved my dry eye symptoms, which had become increasingly problematic. It has also improved my energy levels.",
+            "name": "Trusted Customer"
+          }
+        },
+        "card_bEE7jX": {
+          "type": "card",
+          "settings": {
+            "initials": "TC",
+            "description": "I’ve been taking NMN 250mg capsules x 2 daily for around 7 weeks now. I wasn’t sure much was happening initially but around the 3-4 week mark I noticed that I was sleeping better. Falling asleep faster and staying asleep all night (which as a menopausal woman is amazing) and I also noticed that my nails have stopped splitting and breaking and are actually growing again and are much stronger. For those 2 things alone I decided to persevere. I was yet to see any major differences to my energy or skin. Last weekend I decided to up my dose to 750mg daily after doing some research about dose and age and I am impressed! I’ve been waking up feeling refreshed and alert which is unheard of for me, and I’ve had much more energy this week than for a very long time. I’ve also noticed I have more stamina when am out walking. I met a friend at the weekend who told me that I look younger than ever and I hadn’t even told her about taking NMN! I am delighted with the results in the first week of increasing my dose. I’ve had no side effects at all from these supplements which confirms to me their high quality. I’ve since recommended them to my friend!",
+            "name": "Trusted Customer"
+          }
+        },
+        "card_KQAyYU": {
+          "type": "card",
+          "settings": {
+            "initials": "TC",
+            "description": "I purchased the NMN powder & I have been using it for over 2 months. I have noticed a huge difference in my energy levels, my sleep patterns & my recovery after a workout... So far I love it & am looking forward to discovering more benefits with continued use.",
+            "name": "Trusted Customer"
+          }
+        },
+        "card_QzbyjA": {
+          "type": "card",
+          "settings": {
+            "initials": "MH",
+            "description": "Having carefully researched for a good, trustworthy company, I’m more than happy with Youth and Earth. I feel absolutely safe with the purity, reliability and quality of their NMN. Y&E also offer prompt communication with any query and can be trusted for their careful guidance and advice with all of their products. Thank you 👏",
+            "name": "Marianne Hancock"
+          }
+        }
+      },
+      "block_order": [
+        "card_EdWQX9",
+        "card_6cKcij",
+        "card_W9LMkE",
+        "card_AVf7Jz",
+        "card_zBbcCQ",
+        "card_jLAXLR",
+        "card_nB3dnU",
+        "card_9THAK9",
+        "card_9rUPnA",
+        "card_YBjhA8",
+        "card_bEE7jX",
+        "card_KQAyYU",
+        "card_QzbyjA"
+      ],
+      "name": "Landing: Trust Them",
+      "settings": {
+        "title": "Don’t Trust Us. Trust Them",
+        "review_tag": "3,000+ Reviews",
+        "rating_tag": "4.5/5 Average"
+      }
+    },
+    "landing_why_it_works_adgGbg": {
+      "type": "landing__why-it-works",
+      "blocks": {
+        "info_8cxYdG": {
+          "type": "info",
+          "settings": {
+            "title": "",
+            "text": ""
+          }
+        },
+        "info_LzQAEE": {
+          "type": "info",
+          "settings": {
+            "img": "shopify://shop_images/why-it-works_1.jpg",
+            "title": "What NMN Is",
+            "text": "NMN (Nicotinamide Mononucleotide) is a natural molecule that is a direct precursor to NAD+, a coenzyme for cellular energy metabolism, DNA repair and metabolic function"
+          }
+        },
+        "info_tVA9wy": {
+          "type": "info",
+          "settings": {
+            "img": "shopify://shop_images/why-it-works_2.jpg",
+            "title": "Why It Works",
+            "text": "Research shows NAD+ levels decline with age so NAD+ maintenance is key to healthy aging.\n<br><br>\nNMN works as a powerful battery at a cellular level. It promotes energy and recovery by boosting the body’s natural NAD+ production"
+          }
+        }
+      },
+      "block_order": [
+        "info_8cxYdG",
+        "info_LzQAEE",
+        "info_tVA9wy"
+      ],
+      "name": "Landing: Why It Works",
+      "settings": {
+        "title": "",
+        "text": "",
+        "main-text": ""
+      }
+    },
+    "landing_makes_different_tgEn4t": {
+      "type": "landing__makes-different",
+      "name": "Landing: Makes Different",
+      "settings": {
+        "title": "NMN Landing: Makes Different",
+        "item_1": "Proven Trust . 75k+ customers, 3k+ reviews, 4.5/5 average",
+        "item_2": "shopify://shop_images/makes-different_2.jpg",
+        "item_3": "Radical Transparency. Batch COAs; plain-English science",
+        "item_4": "Targeted Mechanism + NMN + NAD. Supports energy & repair",
+        "item_5": "shopify://shop_images/makes-different_5.jpg",
+        "item_6": "Purity independent heavy-metal screens + solvent checks",
+        "item_7": "shopify://shop_images/makes-different_7.jpg",
+        "item_8": "shopify://shop_images/makes-different_8.jpg",
+        "item_9": "Two Formats. Capsules for convenience, powder for micro-titration",
+        "item_10": "",
+        "item_12": ""
+      }
+    },
+    "landing_nmn_vs_other_9eP8Wc": {
+      "type": "landing__nmn-vs-other",
+      "blocks": {
+        "list_Gtzc9W": {
+          "type": "list",
+          "settings": {
+            "title": "Feature",
+            "items": "<li>🔬   Purity &amp; Identity</li>\n<li>☣️   Heavy Metals</li>\n<li>🧪   Form</li>\n<li>🏭   Transparency</li>\n<li>💊   Formats</li>\n<li>💧   Additives</li>"
+          }
+        },
+        "list_aPKMtn": {
+          "type": "list",
+          "settings": {
+            "title": "<svg width=\"276\" height=\"39\" viewbox=\"0 0 276 39\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<mask id=\"mask0_296_4184\" style=\"mask-type:luminance\" maskunits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"276\" height=\"40\">\n<path d=\"M275.874 0H0V39.0002H275.874V0Z\" fill=\"white\"></path>\n</mask>\n<g mask=\"url(#mask0_296_4184)\">\n<path d=\"M20.935 24.7684L7.20166 7.83519H16.169L20.935 15.1688V7.83519H28.0675V31.1681H20.935V24.7684Z\" fill=\"#78BE20\"></path>\n<path d=\"M31.168 19.5006C31.168 11.5678 36.3349 7.20125 43.601 7.20125C50.3671 7.20125 55.7682 11.7675 55.7682 19.5006C55.7682 27.2337 50.3685 31.8 43.6024 31.8C36.3363 31.8 31.1694 27.4334 31.1694 19.5006H31.168ZM43.601 25.8012C46.1672 25.8012 48.2348 23.7005 48.2348 19.5021C48.2348 15.2691 46.1686 13.2015 43.601 13.2015C40.5003 13.2015 38.7013 15.2677 38.7013 19.5021C38.7013 23.702 40.5017 25.8012 43.601 25.8012Z\" fill=\"#78BE20\"></path>\n<path d=\"M58.3027 21.501V7.83519H65.5028V20.4349C65.5028 23.9681 66.3031 25.7009 68.8693 25.7009C71.4355 25.7009 72.2358 23.9681 72.2358 20.4349V7.83519H79.4358V21.501C79.4358 28.0013 75.6699 31.8003 68.7687 31.8003C61.869 31.8003 58.3027 27.9998 58.3027 21.501Z\" fill=\"#78BE20\"></path>\n<path d=\"M88.5708 13.8685H81.4038V7.83519H102.87V13.8685H95.7708V31.1681H88.5708V13.8685Z\" fill=\"#78BE20\"></path>\n<path d=\"M105.07 7.83519H112.27V16.4347H119.337V7.83519H126.537V31.1681H119.337V22.468H112.27V31.1681H105.07V7.83519Z\" fill=\"#78BE20\"></path>\n<path d=\"M129.137 24.5671C129.137 21.7337 131.104 20.0339 132.804 18.8672L133.537 18.3672L133.004 17.7666C131.67 16.2665 131.104 14.8325 131.104 13.2664C131.104 9.26619 134.938 7.20001 138.804 7.20001C143.138 7.20001 146.103 9.66707 146.103 13.2333C146.103 15.5337 144.937 17.1329 142.836 18.5999L141.836 19.2997L144.636 22.4665L151.036 15.7995V23.5326L148.637 26.2655L153.27 31.1651H145.704L144.471 29.7987C142.905 31.066 140.271 31.7988 137.905 31.7988C132.905 31.7988 129.139 28.9984 129.139 24.5657L129.137 24.5671ZM138.37 26.6003C139.204 26.6003 139.971 26.3675 140.504 25.9666L137.038 22.2007L136.738 22.4334C136.238 22.8329 135.872 23.534 135.872 24.3329C135.872 25.7999 137.071 26.5988 138.372 26.5988L138.37 26.6003ZM138.204 15.5007L138.504 15.801L139.07 15.4346C139.737 15.0021 140.171 14.5351 140.171 13.9014C140.171 13.1011 139.671 12.535 138.837 12.535C137.938 12.535 137.37 13.1011 137.37 13.9345C137.37 14.5006 137.704 15.0006 138.204 15.5007Z\" fill=\"#78BE20\"></path>\n<path d=\"M154.472 7.83519H172.272V13.8685H161.672V17.6345L171.706 15.6344V21.4004L161.672 23.4005V25.1333H172.838V31.1666H154.472V7.83519Z\" fill=\"#78BE20\"></path>\n<path d=\"M182.172 7.83519H191.438L199.805 31.1681H192.138L190.504 25.902H183.037L181.403 31.1681H173.804L182.17 7.83519H182.172ZM184.705 20.534H188.839L186.773 13.801L184.706 20.534H184.705Z\" fill=\"#78BE20\"></path>\n<path d=\"M201.473 7.83519H213.139C217.839 7.83519 221.44 9.76774 221.44 14.3024C221.44 17.6028 219.207 19.4018 216.773 20.0685C219.106 20.4349 219.873 21.8358 221.306 24.3014C222.773 26.8346 224.24 29.3347 225.273 31.1681H217.773L214.673 25.8345C213.607 24.0011 212.774 23.1016 210.774 23.1016H208.473V31.1681H201.473V7.83519ZM211.573 17.4347C213.106 17.4347 214.24 17.0008 214.24 15.4677C214.24 14.0007 213.106 13.6343 211.54 13.6343H208.473V17.4347H211.573Z\" fill=\"#78BE20\"></path>\n<path d=\"M230.707 13.8685H223.54V7.83519H245.006V13.8685H237.907V31.1681H230.707V13.8685Z\" fill=\"#78BE20\"></path>\n<path d=\"M247.209 7.83519H254.409V16.4347H261.475V7.83519H268.675V31.1681H261.475V22.468H254.409V31.1681H247.209V7.83519Z\" fill=\"#78BE20\"></path>\n</g>\n</svg>",
+            "items": "<li>\n<span>Purity &amp; Identity</span>Third-party verified (COA)</li>\n<li>\n<span>Heavy Metals</span>&gt;99% purity</li>\n<li>\n<span>Form</span>β-NMN</li>\n<li>\n<span>Transparency</span>Batch COA lookup</li>\n<li>\n<span>Formats</span>Capsules &amp; Powder</li>\n<li>\n<span>Additives</span>Clean</li>"
+          }
+        },
+        "list_biWJAF": {
+          "type": "list",
+          "settings": {
+            "title": "Other NMN",
+            "items": "<li>\n<span>Purity &amp; Identity</span>Claims without COA</li>\n<li>\n<span>Heavy Metals</span>Not disclosed</li>\n<li>\n<span>Form</span>Not disclosed / mixed</li>\n<li>\n<span>Transparency</span>Limited</li>\n<li>\n<span>Formats</span>Single format</li>\n<li>\n<span>Additives</span>May include fillers</li>"
+          }
+        }
+      },
+      "block_order": [
+        "list_Gtzc9W",
+        "list_aPKMtn",
+        "list_biWJAF"
+      ],
+      "name": "Landing: NMN vs Other",
+      "settings": {
+        "title": "Y&E NMN vs “Other” NMN"
+      }
+    },
+    "landing_one_daily_ritual_H6Rcx7": {
+      "type": "landing__one-daily-ritual",
+      "blocks": {
+        "card_VbC9Ge": {
+          "type": "card",
+          "settings": {
+            "title": "Steadier energy",
+            "description": "Many feel steadier energy, fewer <br> afternoon dips",
+            "image": "shopify://shop_images/one-daily-ritual_1.jpg"
+          }
+        },
+        "card_KVH3RH": {
+          "type": "card",
+          "settings": {
+            "title": "Clearer cognitive function",
+            "description": "Clearer focus, more “get-it-<br>done” days",
+            "image": "shopify://shop_images/one-daily-ritual_2.jpg"
+          }
+        },
+        "card_Eftz7D": {
+          "type": "card",
+          "settings": {
+            "title": "Healthier metabolism",
+            "description": "Ongoing support for healthy ageing <br> and active living",
+            "image": "shopify://shop_images/one-daily-ritual_3.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "card_VbC9Ge",
+        "card_KVH3RH",
+        "card_Eftz7D"
+      ],
+      "name": "Landing: One Daily Ritual",
+      "settings": {
+        "title": "One Daily Ritual. Multiple Impacts Over Time"
+      }
+    },
+    "landing_edward_van_harmelen_8G4mPU": {
+      "type": "landing__edward-van-harmelen",
+      "name": "Landing: Edward van Harmelen",
+      "settings": {
+        "image": "shopify://shop_images/Edward_van_Harmelen.jpg",
+        "position": "A Note From Youth & Earth founder",
+        "name": "Edward van Harmelen",
+        "title": "“We created NMN for people who want more out of their days — and their years.",
+        "description": "Clean sourcing, transparent testing, and science explained in plain English. No noise, no gimmicks — just real support that fits real life. I’ve been taking NMN for eight years now.  I’m 52, and I’ve been able to maintain my energy, focus, and drive through all those years. Discovering how powerful targeted nutrients can be in supporting our bodies was a true game changer for me. I believe age is a privilege — and the way we live it is a choice. It’s not just about adding years to life, but adding life to those years — staying active, fulfilled, and ready for what’s next.”"
+      }
+    },
+    "landing_try_it_risk_free_BgCQRe": {
+      "type": "landing__try-it-risk-free",
+      "name": "Landing: Try it risk free",
+      "settings": {
+        "title": "Try It Risk-Free\nFor 30 Days",
+        "description": "If you don’t feel the difference, get a full refund on your first order no hassle.",
+        "cta_label": "Shop Now",
+        "cta_url": "https://youthandearth.com/products/nmn-capsules",
+        "list_items": "<li>30-Day Money-Back Guarantee</li>\n<li>Third-Party Tested (COAs included)</li>\n<li>75,000+ Customers</li>\n<li>3,000+ Reviews</li>\n<li>4.5/5 Average</li>",
+        "background_image": "shopify://shop_images/Try_It_Risk-Free_For_30_Days.jpg"
+      }
+    },
+    "landing_pure_proven_MA8Jp4": {
+      "type": "landing__pure-proven",
+      "blocks": {
+        "card_CRgpLH": {
+          "type": "card",
+          "settings": {
+            "title": "Tested for Purity",
+            "description": "Free From Heavy Metals & Toxins (independent lab screening)",
+            "image": "shopify://shop_images/pure-proven_1.jpg"
+          }
+        },
+        "card_brifHt": {
+          "type": "card",
+          "settings": {
+            "title": "Batch-Level COA",
+            "description": "Scan your pack to view your certificate",
+            "image": "shopify://shop_images/pure-proven_2.jpg"
+          }
+        },
+        "card_YbDkpc": {
+          "type": "card",
+          "settings": {
+            "title": "Clean Formulation",
+            "description": "Vegan, non-GMO, allergen-friendly, no unnecessary fillers",
+            "image": "shopify://shop_images/pure-proven_3.jpg"
+          }
+        },
+        "card_cHACBU": {
+          "type": "card",
+          "settings": {
+            "title": "Verified Quality",
+            "description": "Third-Party Tested for identity, purity, contaminants",
+            "image": "shopify://shop_images/pure-proven_4.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "card_CRgpLH",
+        "card_brifHt",
+        "card_YbDkpc",
+        "card_cHACBU"
+      ],
+      "name": "Landing: Pure Proven",
+      "settings": {
+        "title": "Pure, Proven, <br> Transparent",
+        "description": "Youth & Earth NMN is pharmaceutical grade NMN above 99.5% purity, manufactured under strict quality control in the UK. Each batch is tested by third party laboratory to verify purity, potency and safety",
+        "cta_label": "View Lab Results",
+        "cta_url": "https://youthandearth.com/cdn/shop/files/NMN_-_Certificate_of_Analysis_COA.pdf?v=13086385564106795102"
+      }
+    },
+    "landing_customers_reported_npgCD7": {
+      "type": "landing__customers-reported",
+      "blocks": {
+        "card_9VfgxH": {
+          "type": "card",
+          "settings": {
+            "percent": "94%",
+            "title": "Energy boost",
+            "description": "94% of participants felt a customers boost in daily energy within first 30 days"
+          }
+        },
+        "card_3LgEja": {
+          "type": "card",
+          "settings": {
+            "percent": "79%",
+            "title": "Healthier metabolism",
+            "description": "79% of customers noticed better digestion, stable weight"
+          }
+        },
+        "card_aaJpVg": {
+          "type": "card",
+          "settings": {
+            "percent": "86%",
+            "title": "Brain function",
+            "description": "86% of customers reported sharper focus and productivity, decreased brain fog"
+          }
+        },
+        "card_phFNTb": {
+          "type": "card",
+          "settings": {
+            "percent": "88%",
+            "title": "Stronger immunity",
+            "description": "88% of customers experiences less cases of being sick*"
+          }
+        }
+      },
+      "block_order": [
+        "card_9VfgxH",
+        "card_3LgEja",
+        "card_aaJpVg",
+        "card_phFNTb"
+      ],
+      "name": "Landing: Customers Reported",
+      "settings": {
+        "title": "What our customers reported",
+        "description": "* Individual experiences vary. NMN supports overall wellbeing; it is not intended to diagnose, treat, cure, or prevent any disease.",
+        "disclaimer": "*Survey conducted within Youth & Earth verified customers, 274 participants, 2024."
+      }
+    },
+    "landing_common_questions_F3nyPT": {
+      "type": "landing__common-questions",
+      "blocks": {
+        "question_dJncjm": {
+          "type": "question",
+          "settings": {
+            "title": "Is it safe?",
+            "answer": "Yes! Every batch of our NMN is third-party tested for purity, potency, and heavy metals to ensure you’re getting exactly what’s on the label, and nothing else. NMN (β-Nicotinamide Mononucleotide) is a naturally occurring molecule found in all living cells and has been widely studied for its role in cellular energy and healthy ageing. If you have a medical condition or take prescription medication, we always recommend consulting a healthcare professional before starting any new supplement."
+          }
+        },
+        "question_FRdQ4w": {
+          "type": "question",
+          "settings": {
+            "title": "Capsules or powder?",
+            "answer": "Our NMN powder, taken sublingually under your tongue, goes directly into your bloodstream and starts to work immediately. Our NMN capsules are just as effective, but they have to reach your stomach first before they start working. Both contain the same high-quality NMN, the choice simply depends on your routine. Capsules are best for convenience and consistent daily dosing, powder offers more flexibility, allowing you to adjust your dosage. Either way, you’re supporting your NAD⁺ levels with pure, bioavailable NMN."
+          }
+        },
+        "question_hRG3YG": {
+          "type": "question",
+          "settings": {
+            "title": "Will I feel it?",
+            "answer": "Whilst some people notice an instant boost in energy, others notice steadier energy, clearer focus, and improved mood within the first few weeks. And for others, the effects are more subtle, working quietly at the cellular level to support mitochondrial function, DNA repair, and resilience over time. Think of it as a long-term investment in your biological energy, not an instant stimulant."
+          }
+        },
+        "question_eFXE4R": {
+          "type": "question",
+          "settings": {
+            "title": "When should I take it?",
+            "answer": "We recommend taking NMN first thing in the morning on an empty stomach. This timing helps align with your body’s natural circadian rhythm and NAD⁺ production, which peaks earlier in the day, supporting consistent daytime energy and focus. We find that NMN delivers best results when consumed on an empty stomach, so we recommend to wait for at least 20–30 minutes before consuming any food or coffee/tea."
+          }
+        },
+        "question_4px8g8": {
+          "type": "question",
+          "settings": {
+            "title": "Can I stack it?",
+            "answer": "Yes, but start simple. Take NMN on its own for 2–4 weeks to let your body adjust and to notice how it feels. Once you’ve established a baseline, you can stack it with other NAD⁺-supporting or longevity nutrients such as Resveratrol, Glutathione, or Spermidine for a more comprehensive protocol."
+          }
+        }
+      },
+      "block_order": [
+        "question_dJncjm",
+        "question_FRdQ4w",
+        "question_hRG3YG",
+        "question_eFXE4R",
+        "question_4px8g8"
+      ],
+      "name": "Landing: Common Questions",
+      "settings": {
+        "title": "Straight Answers to Common Questions"
+      }
+    },
+    "landing_ingredient_transparency_fQCUwD": {
+      "type": "landing__ingredient-transparency",
+      "blocks": {
+        "card_ArKjyz": {
+          "type": "card",
+          "settings": {
+            "title": "Heavy-Metal Screening",
+            "description": "~99% free from heavy metals & toxins",
+            "image": "shopify://shop_images/ingredient-transparency_1.jpg"
+          }
+        },
+        "card_C63QFh": {
+          "type": "card",
+          "settings": {
+            "title": "Identity & Purity",
+            "description": "Verified by independent labs",
+            "image": "shopify://shop_images/ingredient-transparency_2.jpg"
+          }
+        },
+        "card_MXDYrU": {
+          "type": "card",
+          "settings": {
+            "title": "No Unnecessary Fillers",
+            "description": "Vegan, non-GMO, allergen-friendly",
+            "image": "shopify://shop_images/ingredient-transparency_3.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "card_ArKjyz",
+        "card_C63QFh",
+        "card_MXDYrU"
+      ],
+      "name": "Landing: Ingredient Transparency",
+      "settings": {
+        "title": "Ingredient Transparency",
+        "cta_label": "View Lab Results",
+        "cta_url": "https://youthandearth.com/cdn/shop/files/NMN_-_Certificate_of_Analysis_COA.pdf?v=13086385564106795102"
+      }
+    },
+    "landing_ready_to_feel_Mg7tqx": {
+      "type": "landing__ready-to-feel",
+      "name": "Landing: Ready To Feel",
+      "settings": {
+        "title": "Ready To Feel <br>\nThe Difference?",
+        "cta_label": "Shop Now",
+        "cta_url": "shopify://products/nmn-capsules",
+        "background_image": "shopify://shop_images/Ready_To_Feel_The_Difference.jpg"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "nmn_landing_one_daily_nmn_BGfPte",
+    "landing_feels_like_bqrA3e",
+    "landing_trust_them_z4VHVN",
+    "landing_why_it_works_adgGbg",
+    "landing_customers_reported_npgCD7",
+    "landing_pure_proven_MA8Jp4",
+    "landing_makes_different_tgEn4t",
+    "landing_nmn_vs_other_9eP8Wc",
+    "landing_one_daily_ritual_H6Rcx7",
+    "landing_edward_van_harmelen_8G4mPU",
+    "landing_try_it_risk_free_BgCQRe",
+    "landing_common_questions_F3nyPT",
+    "landing_ingredient_transparency_fQCUwD",
+    "landing_ready_to_feel_Mg7tqx"
+  ]
+}

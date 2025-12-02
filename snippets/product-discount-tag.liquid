@@ -1,0 +1,116 @@
+{% liquid
+  assign discount_data = discount_entry
+
+  if discount_data == blank and product_discount != blank
+    assign discount_data = product_discount
+  endif
+
+  if discount_data == blank and product != blank
+    assign discount_data = product.metafields.custom.product_discount.value
+  endif
+
+  if discount_data == blank and metaobject != blank
+    assign discount_data = metaobject
+  endif
+-%}
+
+{% if discount_data != blank %}
+  {% liquid
+    if context != blank
+      assign template_type = context
+    else
+      assign template_name = template.name | default: ''
+      if template_name == 'product'
+        assign template_type = 'product'
+      else
+        assign template_type = 'collection'
+      endif
+    endif
+
+    assign default_bg = '#284734'
+    assign default_text = '#f2f6f2'
+
+    if template_type == 'product'
+      assign desktop_size = 25
+      assign subheading_desktop_size = 20
+      assign mobile_size = 18
+      assign subheading_mobile_size = 14
+    else
+      assign desktop_size = 20
+      assign subheading_desktop_size = 16
+      assign mobile_size = 16
+      assign subheading_mobile_size = 13
+    endif
+
+    if discount_data.discount_value != blank
+      assign discount_value_text = discount_data.discount_value | append: '% OFF'
+      assign discount_code = 'CYBER50'
+    elsif discount_data.product_discount_name != blank
+      assign discount_value_text = discount_data.product_discount_name
+      assign discount_code = 'CYBER50'
+    else
+      assign discount_value_text = ''
+      assign discount_code = ''
+    endif
+
+    assign unique_id = unique_id | default: product.id | default: section.id | default: 'global'
+    assign unique_tag_class = 'product-discount-tag--' | append: unique_id
+    assign heading_range = desktop_size | minus: mobile_size
+    assign subheading_range = subheading_desktop_size | minus: subheading_mobile_size
+
+    assign bg_color = discount_data.background_color | default: default_bg
+    assign text_color = discount_data.text_color | default: default_text
+  %}
+
+  {% if template_type == 'product' %}
+    {% capture heading_fluid %}
+      clamp({{ mobile_size }}px, calc({{ mobile_size }}px + ({{ heading_range }} * ((100vw - 320px) / 1080))), {{ desktop_size }}px)
+    {% endcapture %}
+    {% capture subheading_fluid %}
+      clamp({{ subheading_mobile_size }}px, calc({{ subheading_mobile_size }}px + ({{ subheading_range }} * ((100vw - 320px) / 1080))), {{ subheading_desktop_size }}px)
+    {% endcapture %}
+  {% else %}
+    {% assign heading_mobile_min = mobile_size | times: 0.5 %}
+    {% assign subheading_mobile_min = subheading_mobile_size | times: 0.55 %}
+    {% capture heading_fluid %}
+      clamp({{ heading_mobile_min }}px, calc({{ mobile_size }}px + ({{ heading_range }} * ((100vw - 320px) / 1080))), {{ desktop_size }}px)
+    {% endcapture %}
+    {% capture subheading_fluid %}
+      clamp({{ subheading_mobile_min }}px, calc({{ subheading_mobile_size }}px + ({{ subheading_range }} * ((100vw - 320px) / 1080))), {{ subheading_desktop_size }}px)
+    {% endcapture %}
+  {% endif %}
+
+  {% capture inline_styles %}
+    background-color: {{ bg_color }};
+    color: {{ text_color }};
+    --discount-tag-heading-size: {{ desktop_size }}px;
+    --discount-tag-subheading-size: {{ subheading_desktop_size }}px;
+    --discount-tag-heading-size-mobile: {{ mobile_size }}px;
+    --discount-tag-subheading-size-mobile: {{ subheading_mobile_size }}px;
+    --discount-tag-heading-size-fluid: {{ heading_fluid | strip }};
+    --discount-tag-subheading-size-fluid: {{ subheading_fluid | strip }};
+  {% endcapture %}
+  {% assign inline_styles = inline_styles | strip | replace: '\n', ' ' %}
+
+  <div
+    class="product-discount-tag {{ unique_tag_class }} product-discount-tag--{{ template_type }}"
+    role="status"
+    aria-live="polite"
+    style="{{ inline_styles }}"
+  >
+    <div class="product-discount-tag__container">
+      <span class="product-discount-tag__value">
+        {{ discount_value_text }}
+      </span>
+      {% if template_type == 'product' and discount_code != blank %}
+        <span class="product-discount-tag__code"
+          >Use code: <strong>{{ discount_code }}</strong> at checkout</span
+        >
+      {% elsif discount_code != blank %}
+        <span class="product-discount-tag__code"
+          >Code: <strong>{{ discount_code }}</strong></span
+        >
+      {% endif %}
+    </div>
+  </div>
+{% endif %}

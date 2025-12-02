@@ -1,0 +1,91 @@
+{% assign data = product.metafields.custom.new_product_badges.value %}
+{% assign items = data.badges.value %}
+
+{% if data != blank %}
+  {% style %}
+  
+  .product-badges {
+    background: #284734;
+    border-top: 1px solid #949992;
+    border-bottom: 1px solid #949992; 
+  }
+  
+  .product-badges__wrapper {
+    margin: 0 auto;
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .product-badges__item {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: #F7F5F1;
+    padding: 12px;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    border-right: 1px solid #949992;
+  }
+  
+  .product-badges__item:first-child {
+    border-left: 1px solid #949992;
+  }
+  
+  .product-badges__image {
+    flex: 0 0 auto;
+    object-fit: contain;
+  }
+  
+  @media (max-width: 768px) {
+    .product-badges__wrapper {
+      overflow-x: auto;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      max-width: 100%;
+      justify-content: unset;
+    }
+  
+    .product-badges__wrapper::-webkit-scrollbar {
+      display: none;
+    }
+  
+    .product-badges__item {
+      flex: 0 0 auto;
+      padding: 12px 36px;
+    }
+  }
+  
+  {% endstyle %}
+
+  <section class="product-badges">
+    <div class="product-badges__wrapper">
+      {% for item in items %}
+        <div class="product-badges__item">
+          {% if item.image != blank %}
+            {{ item.image | image_url: width: 24, height: 24 | image_tag: class: 'product-badges__image', loading: 'lazy' }}
+          {% endif %}
+          {% if item.label != blank %}
+            {{ item.label }}
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "New Product: Badges",
+  "presets": [
+    {
+      "name": "New Product: Badges",
+    }
+  ]
+}
+{% endschema %}
