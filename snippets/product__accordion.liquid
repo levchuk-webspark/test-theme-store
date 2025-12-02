@@ -1,0 +1,759 @@
+
+  {% assign border_color = settings.border_color %}
+  {% assign accordion_icon_color = section.settings.accordion_icon_color %}
+  {% assign metafield_page_handle = product.metafields.jadepuma.size_chart_page_title | handleize %}
+  {% assign metafield_page = pages[metafield_page_handle] %}
+  {% assign auto_close = auto_close %}
+  {% assign awards = product.metafields.jadepuma.awards.value %}
+  {% assign lab_reports = product.metafields.jadepuma.lab_reports.value %}
+
+  {% assign include_size_chart = product.metafields.jadepuma.include_size_chart | metafield_text %}
+
+  {% style %}
+
+    .multiple_accordion__wrapper {
+        /* margin-top: -100px;
+        padding-top: 100px; */
+    }
+
+    .multiple_accordion_container-{{ id }}{
+        padding: 0px 0px;
+        margin:30px auto;
+    }
+    .multiple_accordion_heading-{{ id }}{
+      margin-bottom: 15px;
+      font-size:30px;
+      font-weight:400;
+      color:{{section.settings.heading_color}};
+    }
+    .multiple_accordion_title-{{ id }}{
+      display:grid;
+      grid-template-columns:  auto 42px;
+      font-size:16px;
+      padding: 15px 0px;
+      border-bottom:1px solid {{border_color}};
+      color:{{section.settings.tab_heading_color}};
+    }
+    .multiple_accordion_content-{{ id }}{
+      text-align:left;
+      display:none;
+      padding:20px 0;
+    }
+
+    .accordian_content_heading-{{ id }}{
+        margin-top:30px;
+    }
+
+    .multiple_accordion_title-{{ id }}:hover{
+      cursor:pointer;
+      background-color:{{section.settings.tab_hover_color}};
+    }
+    .accordion_expand-{{ id }}{
+        margin:0px 5px;
+        transform:translateY(2px);
+    }
+
+    .accordion_collapse-{{ id }}{
+        margin:0px 5px;
+        transform:translateY(2px);
+    }
+
+    .accordion_expand-{{ id }} .icon svg{
+     height:60%;
+     width:60%;
+    }
+
+    .accordion_collapse-{{ id }} .icon svg{
+     height:60%;
+     width:60%;
+    }
+
+    .lab-report-title, .multiple_accordion_item a {
+      text-decoration: underline
+    }
+
+    .multiple_accordion_title__text {
+      text-transform: uppercase;
+    }
+
+    @media only screen and (max-width: 600px) {
+    .multiple_accordion_content-{{ id }}{
+      text-align:left;
+      display:none;
+      padding: 0;
+
+    }
+    }
+
+.awards-container {
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+}
+
+  {% endstyle %}
+ <div class="multiple_accordion__wrapper" id="{{ id }}" >
+    <div class="multiple_accordion_container-{{ id }} content">
+
+          <div class="multiple_accordion_item item-{{ id }}">
+            <div class="multiple_accordion_title-{{ id }}" style="border-top:1px solid {{border_color}};">
+              <div>
+                  {% if block.settings.description_heading != blank %}
+                      <span class="multiple_accordion_title__text">{{ block.settings.description_heading }}</span>
+                  {% endif %}
+                
+                  {% if settings.toggle_icon_style == 'carets' %}
+                  <span class="accordion_expand-{{ id }}">
+                    {%
+                      render 'icon',
+                      name: 'down-caret',
+                      icon_class: 'icon--rotate',
+                    %}
+                  </span>
+                  <span class="accordion_collapse-{{ id }}" style="display:none;">
+                    {%
+                      render 'icon',
+                      name: 'up-caret',
+                      icon_class: 'icon--rotate',
+                    %}
+                  </span>
+                {% else %}
+                  <span class="accordion_expand-{{ id }}">
+                    {%
+                      render 'icon',
+                      name: 'plus',
+                      icon_class: 'icon--rotate',
+                    %}
+                  </span>
+                  <span class="accordion_collapse-{{ id }}4" style="display:none;">
+                    {%
+                      render 'icon',
+                      name: 'minus',
+                      icon_class: 'icon--rotate',
+                    %}
+                  </span>
+                {% endif %}
+              </div>
+            </div>
+            <div class="multiple_accordion_content-{{ id }}">
+
+                  {% liquid
+                    if product.description != blank
+                        assign product_description = product.description | split: '<!-- split -->' | first
+                    endif
+                  %}
+              
+                  <div class="product__description content">
+                    <div class="has-padding-top">
+
+                    {% assign product_description = product_description | replace: '. </strong>','</strong>. ' %} 
+        
+                    
+        
+                    {% assign input_html = product_description %}
+                    {% assign truncate_limit = truncate_description %}
+                      {% comment %}Replace <strong> and </strong> with placeholders{% endcomment %}
+                      {% assign safe_strong_open = "TEMP_STRONG_OPEN_TAG" %}
+                      {% assign safe_strong_close = "TEMP_STRONG_CLOSE_TAG" %}
+                    {% assign with_placeholders = input_html | replace: '<strong>', safe_strong_open | replace: '</strong>', safe_strong_close %}
+  
+                      {% comment %}Strip all HTML tags{% endcomment %}
+                      {% assign stripped_html = with_placeholders | strip_html %}
+        
+                      {% assign final_output = stripped_html | replace: safe_strong_open, '<strong>' | replace: safe_strong_close, '</strong>' %}
+        
+       
+                      {% assign outputSize = final_output | size %}
+                      {% if outputSize < truncate_limit %}
+      
+                        <div class="full_description">
+                          {% style _%}
+                            {% if outputSize < truncate_limit %}
+                              .full_description {
+                                display: flex;
+                              }
+                              {% endif %}
+                            {% endstyle _%}
+                          {{ product_description }}
+                        </div>
+        
+                      {% else %}
+          
+                       <div class="truncated_description">
+                          {% assign truncated_description = final_output | truncate: truncate_limit %}
+                         
+                          {% assign open_strong_count = truncated_description | split: '<strong>' | size | minus: 1 %}
+                          {% assign close_strong_count = truncated_description | split: '</strong>' | size | minus: 1 %}
+
+                          {% if open_strong_count != close_strong_count %}
+
+                              {% assign final_output_to_truncate = stripped_html | replace: safe_strong_open, '' | replace: safe_strong_close, '' %}
+                              {% assign truncated_description = final_output_to_truncate | truncate: truncate_limit %}
+
+                          {% endif %}
+
+
+                         {{ truncated_description }}
+                        </div>
+        
+                        <div class="full_description">
+                          {{ product_description }}
+                        </div>
+        
+
+                        <div
+                          class="read-more"
+                          href="#"
+                          onclick="toggleShowMore()">
+                          Read more
+
+                          <img
+                            src="//youthandearth.com/cdn/shop/files/Untitled_design_5_small.svg?v=1697411983"
+                            alt="Trust Badge Image"
+                            style="height: 10px; width: auto;margin:auto 0">
+                        </div>
+                        
+                        <div
+                          class="read-less"
+                          href="#"
+                          onclick="toggleShowMore()">
+                          Read less
+                         
+                          <img
+                            src="//youthandearth.com/cdn/shop/files/Untitled_design_5_small.svg?v=1697411983"
+                            alt="Trust Badge Image"
+                            style="height: 10px; width: auto;margin:auto 0">
+        
+                        </div>
+        
+                        <script>
+                          
+                          function toggleShowMore(){
+                              $('.truncated_description').toggle()
+                              $('.full_description').toggle()
+                              $('.read-more').toggle()
+                              $('.read-less').toggle()                              
+                          }
+                        </script>
+        
+        
+                        {% style %}
+        
+                          .full_description {
+                            display: none;
+                          }
+        
+                          .read-more {
+                            text-decoration: underline;
+                            margin-top: 10px;
+                          }
+                          .read-less {
+                            text-decoration: underline;
+                            margin-top: 10px;
+                            display: none;
+                          }
+        
+                          .read-more:hover {
+                            cursor: pointer;
+                            color: #fc4301;
+                          }
+        
+                          .read-less:hover {
+                            cursor: pointer;
+                            color: #fc4301;
+                          }
+        
+                          .read_more_arrow_expand {
+                            height: 10px;
+                          }
+        
+                          .read_more_arrow_close {
+                            height: 10px;
+                          }
+        
+                        {% endstyle %}
+        
+        
+                      {% endif %}
+        
+                    </div>
+        
+                  </div>
+            </div>
+          </div>
+
+          <div class="multiple_accordion_item item-{{ id }}">
+            <div class="multiple_accordion_title-{{ id }}">
+              <div>
+                {% if block.settings.ingredients_heading != blank %}
+                    <span class="multiple_accordion_title__text">{{ block.settings.ingredients_heading }}</span>
+                {% endif %}
+                {% if settings.toggle_icon_style == 'carets' %}
+                  <span class="accordion_expand-{{ id }}">
+                    {%
+                      render 'icon',
+                      name: 'down-caret',
+                      icon_class: 'icon--rotate',
+                    %}
+                  </span>
+                  <span class="accordion_collapse-{{ id }}" style="display:none;">
+                    {%
+                      render 'icon',
+                      name: 'up-caret',
+                      icon_class: 'icon--rotate',
+                    %}
+                  </span>
+                {% else %}
+                  <span class="accordion_expand-{{ id }}">
+                    {%
+                      render 'icon',
+                      name: 'plus',
+                      icon_class: 'icon--rotate',
+                    %}
+                  </span>
+                  <span class="accordion_collapse-{{ id }}" style="display:none;">
+                    {%
+                      render 'icon',
+                      name: 'minus',
+                      icon_class: 'icon--rotate',
+                    %}
+                  </span>
+                {% endif %}
+              </div>
+            </div>
+
+            <div class="multiple_accordion_content-{{ id }}">
+              {% if block.settings.content_heading != blank %}
+                <h3 class="accordian_content_heading">{{ block.settings.content_heading }}</h3>
+              {% endif %}
+
+              {% if product.metafields.jadepuma.ingredients %}
+                <p>
+                  {% if block.settings.ingredients_subheading != blank %}
+                      <strong>{{ block.settings.ingredients_subheading }}</strong>
+                  {% endif %}
+                  : {{ product.metafields.jadepuma.ingredients }}</p>
+              {% endif %}
+
+              {% comment %}
+              {% if product.metafields.jadepuma.nrv %}
+                <p><strong>NRV</strong>: {{ product.metafields.jadepuma.nrv }}</p>
+              {% endif %}
+              {% endcomment %}
+
+              {% if product.selected_or_first_available_variant.metafields.jadepuma.nrv != blank %}
+                    <p>
+                      {% if block.settings.nrv_subheading != blank %}
+                          <strong>{{ block.settings.nrv_subheading }}</strong>
+                      {% endif %}
+                      : <span class="nrv-variant">{{ product.selected_or_first_available_variant.metafields.jadepuma.nrv }}</span></p>
+              {% else %}
+                    <p>
+                      {% if block.settings.nrv_subheading != blank and product.id != 7396104798281 %}
+                          <strong>{{ block.settings.nrv_subheading }}</strong>
+                      
+                      : {% endif %}{% if product.metafields.jadepuma.nrv != blank %}<span class="nrv-variant">{{ product.metafields.jadepuma.nrv }}</span>{% endif %}</p>
+              {% endif %}
+
+
+              {% if product.metafields.jadepuma.allergens %}
+                <p>                
+                  {% if block.settings.allergens_subheading != blank %}
+                      <strong>{{ block.settings.allergens_subheading }}</strong>
+                  {% endif %}
+                  : {{ product.metafields.jadepuma.allergens }}</p>
+              {% endif %}
+              {% if product.metafields.jadepuma.dietary %}
+                <p>
+                  {% if block.settings.dietary_subheading != blank %}
+                      <strong>{{ block.settings.dietary_subheading }}</strong>
+                  {% endif %}: 
+                  {% for dietary_item in product.metafields.jadepuma.dietary.value %}
+                    {{ dietary_item }}
+                    {% unless forloop.last %} - {% endunless %}
+                  {% endfor %}
+                </p>
+              {% endif %}
+
+            </div>
+          </div>
+
+          <div class="multiple_accordion_item item-{{ id }}">
+            <div class="multiple_accordion_title-{{ id }}">
+              <div>
+                {% if block.settings.additional-info_heading != blank %}
+                    <span class="multiple_accordion_title__text">{{ block.settings.additional-info_heading }}</span>
+                {% endif %}
+                
+                {% if settings.toggle_icon_style == 'carets' %}
+                  <span class="accordion_expand-{{ id }}">
+                    {%
+                      render 'icon',
+                      name: 'down-caret',
+                      icon_class: 'icon--rotate',
+                    %}
+                  </span>
+                  <span class="accordion_collapse-{{ id }}" style="display:none;">
+                    {%
+                      render 'icon',
+                      name: 'up-caret',
+                      icon_class: 'icon--rotate',
+                    %}
+                  </span>
+                {% else %}
+                  <span class="accordion_expand-{{ id }}">
+                    {%
+                      render 'icon',
+                      name: 'plus',
+                      icon_class: 'icon--rotate',
+                    %}
+                  </span>
+                  <span class="accordion_collapse-{{ id }}" style="display:none;">
+                    {%
+                      render 'icon',
+                      name: 'minus',
+                      icon_class: 'icon--rotate',
+                    %}
+                  </span>
+                {% endif %}
+              </div>
+            </div>
+            <div class="multiple_accordion_content-{{ id }}">
+              {% if block.settings.content_heading != blank %}
+                <h3 class="accordian_content_heading">{{ block.settings.content_heading }}</h3>
+              {% endif %}
+
+
+              {% if product.metafields.jadepuma.serving_size != blank %}
+                    <p>
+                      {% if block.settings.serving-size_subheading != blank and product.id != 7396104798281 %}
+                          <strong>{{ block.settings.serving-size_subheading }}</strong>
+                      
+                      : {% endif %}<span class="serving-size-variant">{{ product.metafields.jadepuma.serving_size }}</span></p>
+              {% elsif product.selected_or_first_available_variant.metafields.jadepuma.serving_size != blank %}
+                    <p>
+                      {% if block.settings.serving-size_subheading != blank %}
+                          <strong>{{ block.settings.serving-size_subheading }}</strong>
+                      {% endif %}
+                      : <span class="serving-size-variant">{{ product.selected_or_first_available_variant.metafields.jadepuma.serving_size }}</span></p>
+
+              {% endif %}
+              {% if product.metafields.jadepuma.dosage %}              
+                <p>
+                  {% if block.settings.dosage_subheading != blank %}
+                      <strong>{{ block.settings.dosage_subheading }}</strong>
+                  {% endif %}
+                  : {{ product.metafields.jadepuma.dosage }}</p>
+              {% endif %}
+              {% if product.metafields.jadepuma.more_info %}              
+                <p>
+                  {% if block.settings.more-info_subheading != blank %}
+                      <strong>{{ block.settings.more-info_subheading }}</strong>
+                  {% endif %}
+                  : {{ product.metafields.jadepuma.more_info }}</p>
+              {% endif %}
+              {% if product.metafields.jadepuma.storage %}
+                <p>
+                  {% if block.settings.storage_subheading != blank %}
+                      <strong>{{ block.settings.storage_subheading }}</strong>
+                  {% endif %}
+                  : {{ product.metafields.jadepuma.storage }}</p>
+              {% endif %}
+              {% if product.metafields.jadepuma.warnings %}
+                <p>
+                  {% if block.settings.warnings_subheading != blank %}
+                      <strong>{{ block.settings.warnings_subheading }}</strong>
+                  {% endif %}
+                  : {{ product.metafields.jadepuma.warnings }}</p>
+              {% endif %}
+            </div>
+          </div>
+
+      {% if awards or lab_reports %}
+          <div class="multiple_accordion_item item-{{ id }}">
+            <div class="multiple_accordion_title-{{ id }}">
+              <div>
+                {% if block.settings.certificates-and-awards_heading != blank %}
+                    <span id="certificates-and-awards-{{ id }}" class="multiple_accordion_title__text">{{ block.settings.certificates-and-awards_heading }}</span>
+                {% endif %}
+                {% if settings.toggle_icon_style == 'carets' %}
+                  <span class="accordion_expand-{{ id }}">
+                    {%
+                      render 'icon',
+                      name: 'down-caret',
+                      icon_class: 'icon--rotate',
+                    %}
+                  </span>
+                  <span class="accordion_collapse-{{ id }}" style="display:none;">
+                    {%
+                      render 'icon',
+                      name: 'up-caret',
+                      icon_class: 'icon--rotate',
+                    %}
+                  </span>
+                {% else %}
+                  <span class="accordion_expand-{{ id }}">
+                    {%
+                      render 'icon',
+                      name: 'plus',
+                      icon_class: 'icon--rotate',
+                    %}
+                  </span>
+                  <span class="accordion_collapse-{{ id }}" style="display:none;">
+                    {%
+                      render 'icon',
+                      name: 'minus',
+                      icon_class: 'icon--rotate',
+                    %}
+                  </span>
+                {% endif %}
+              </div>
+            </div>
+            <div class="multiple_accordion_content-{{ id }}" id="certificates-and-awards-content">
+              {% if awards %}
+              {% if awards_heading != blank %}
+                <p class="accordian_content_heading">{{ awards_heading }}</p>
+              {% endif %}
+              <div class="awards-container">
+                  {% for award in awards %}  
+                <div class="award-image">
+                    <img class='award' src="//youthandearth.com/cdn/shop/{{ award }}" alt="Product Award" style="width: 100px; height: 100px;">
+                </div>
+                  {% endfor %}
+              </div>
+                {% endif %}
+
+              {% if lab_reports %}
+                {% if certificates_heading != blank %}
+                  <p class="accordian_content_heading">{{ certificates_heading }}</p>
+                {% endif %}
+                  {% for report in lab_reports %}
+                    {% assign split_url = report.url | split: "/" %}
+                    {% assign file_with_extension = split_url[-1] | split: "?" | first %}
+                    {% assign file_title = file_with_extension | split: "." | first %}
+                    {% assign title_with_spaces = file_title | replace: "_", " " %}
+                    
+                    <a class='lab-report-title' href="{{ report.url }}" target="_blank">{{ title_with_spaces }}</a><br>
+                  {% endfor %}
+                {% endif %}
+
+            </div>
+          </div>
+      {% endif %}
+
+          <div class="multiple_accordion_item item-{{ id }}">
+            <div class="multiple_accordion_title-{{ id }}">
+              <div>
+                {% if block.settings.delivery-and-returns_heading != blank %}
+                    <span class="multiple_accordion_title__text">{{ block.settings.delivery-and-returns_heading }}</span>
+                {% endif %}
+                {% if settings.toggle_icon_style == 'carets' %}
+                  <span class="accordion_expand-{{ id }}">
+                    {%
+                      render 'icon',
+                      name: 'down-caret',
+                      icon_class: 'icon--rotate',
+                    %}
+                  </span>
+                  <span class="accordion_collapse-{{ id }}" style="display:none;">
+                    {%
+                      render 'icon',
+                      name: 'up-caret',
+                      icon_class: 'icon--rotate',
+                    %}
+                  </span>
+                {% else %}
+                  <span class="accordion_expand-{{ id }}">
+                    {%
+                      render 'icon',
+                      name: 'plus',
+                      icon_class: 'icon--rotate',
+                    %}
+                  </span>
+                  <span class="accordion_collapse-{{ id }}" style="display:none;">
+                    {%
+                      render 'icon',
+                      name: 'minus',
+                      icon_class: 'icon--rotate',
+                    %}
+                  </span>
+                {% endif %}
+              </div>
+            </div>
+            <div class="multiple_accordion_content-{{ id }}">
+              {% if block.settings.delivery_subheading != blank %}
+                  <p class="accordian_content_heading">{{ block.settings.delivery_subheading }}</p>
+              {% endif %}
+  
+              {{ shop.shipping_policy }}
+              
+              {% if block.settings.returns_subheading != blank %}
+                  <p class="accordian_content_heading">{{ block.settings.returns_subheading }}</p>
+              {% endif %}
+              
+              {{ shop.refund_policy }}
+            </div>
+          </div>
+
+          <div class="multiple_accordion_item item-{{ id }}">
+            <div class="multiple_accordion_title-{{ id }}">
+              <div>
+                {% if block.settings.rewards_heading != blank %}
+                    <span class="multiple_accordion_title__text">{{ block.settings.rewards_heading }}</span>
+                {% endif %}
+                {% if settings.toggle_icon_style == 'carets' %}
+                  <span class="accordion_expand-{{ id }}">
+                    {%
+                      render 'icon',
+                      name: 'down-caret',
+                      icon_class: 'icon--rotate',
+                    %}
+                  </span>
+                  <span class="accordion_collapse-{{ id }}" style="display:none;">
+                    {%
+                      render 'icon',
+                      name: 'up-caret',
+                      icon_class: 'icon--rotate',
+                    %}
+                  </span>
+                {% else %}
+                  <span class="accordion_expand-{{ id }}">
+                    {%
+                      render 'icon',
+                      name: 'plus',
+                      icon_class: 'icon--rotate',
+                    %}
+                  </span>
+                  <span class="accordion_collapse-{{ id }}" style="display:none;">
+                    {%
+                      render 'icon',
+                      name: 'minus',
+                      icon_class: 'icon--rotate',
+                    %}
+                  </span>
+                {% endif %}
+              </div>
+            </div>
+            <div class="multiple_accordion_content-{{ id }}">
+              {{ pages.rewards.content }}
+            </div>
+          </div>
+
+        {% if product.metafields.jadepuma.product_faq.value %}
+
+          <div class="multiple_accordion_item item-{{ id }}">
+            <div class="multiple_accordion_title-{{ id }}">
+              <div>
+                FAQs
+                {% if settings.toggle_icon_style == 'carets' %}
+                  <span class="accordion_expand-{{ id }}">
+                    {%
+                      render 'icon',
+                      name: 'down-caret',
+                      icon_class: 'icon--rotate',
+                    %}
+                  </span>
+                  <span class="accordion_collapse-{{ id }}" style="display:none;">
+                    {%
+                      render 'icon',
+                      name: 'up-caret',
+                      icon_class: 'icon--rotate',
+                    %}
+                  </span>
+                {% else %}
+                  <span class="accordion_expand-{{ id }}">
+                    {%
+                      render 'icon',
+                      name: 'plus',
+                      icon_class: 'icon--rotate',
+                    %}
+                  </span>
+                  <span class="accordion_collapse-{{ id }}" style="display:none;">
+                    {%
+                      render 'icon',
+                      name: 'minus',
+                      icon_class: 'icon--rotate',
+                    %}
+                  </span>
+                {% endif %}
+              </div>
+            </div>
+            <div class="multiple_accordion_content-{{ id }}">
+                {% assign accord-id = id | append: '-product__faq-snippet' %}
+              
+                {% render 'product__faq-snippet',
+                  id: accord-id,
+                  faq-description: faq-description,
+                  faq-link-1-title: faq-link-1-title,
+                  faq-link-1-url: faq-link-1-url,
+                  faq-link-2-title: faq-link-2-title,
+                  faq-link-2-url: faq-link-2-url,
+                  faq-title: faq-title
+                %}
+            </div>
+          </div>
+       {% endif %}
+      
+      
+    </div>
+
+</div> 
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <script>
+
+
+    
+      $('.item-{{ id }}').click(function(){
+      //get the clicked item
+      $clickedItem = $('.multiple_accordion_content-{{ id }}',this);
+      $clickedItemIconExpand = $('.accordion_expand-{{ id }}',this);
+      $clickedItemIconCollapse = $('.accordion_collapse-{{ id }}',this);
+      // is the clicked item already open?
+      if(($clickedItem.hasClass('open'))){
+         //remove the class, slide it up and return early
+
+          $clickedItem.removeClass('open').slideUp(300);
+          $clickedItemIconCollapse.toggle();
+          $clickedItemIconExpand.toggle();
+
+          return;
+      }
+
+
+    {% if auto_close  %}
+
+
+      $('.multiple_accordion_content-{{ id }}').removeClass('open').slideUp(300);
+      document.querySelectorAll('.multiple_accordion_content-{{ id }}').forEach((el, index)=>{
+        if (el.classList.contains("open")) {
+          document.querySelectorAll('.accordion_expand-{{ id }}')[index].style.display = "none";
+          document.querySelectorAll('.accordion_collapse-{{ id }}')[index].style.display = "inline-block";
+        }
+        else{
+          document.querySelectorAll('.accordion_expand-{{ id }}')[index].style.display = "inline-block";
+          document.querySelectorAll('.accordion_collapse-{{ id }}')[index].style.display = "none";
+        }
+      })
+
+      
+    {% else %}
+
+
+    {% endif %}
+
+      //slide down the clicked item and add the open class
+      $clickedItem.slideDown(300).addClass('open');
+      $clickedItemIconCollapse.toggle();
+      $clickedItemIconExpand.toggle();
+    });
+
+    //limit clickable aread to the accordion title
+    $( '.multiple_accordion_content-{{ id }}' ).click(function() {
+      event.stopImmediatePropagation()
+    });
+
+
+  </script>
+

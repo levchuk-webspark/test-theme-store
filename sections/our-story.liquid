@@ -1,0 +1,415 @@
+{% assign id = section.id %}
+{% assign width = section.settings.width %}
+
+{% style %}
+  #shopify-section-{{ id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  {% if width == 'wide' %}
+    width: 100%;
+  {% else %}
+    max-width:1200px;
+    margin:auto;
+  {% endif %}
+
+  }
+
+  {%
+    render 'css-loop',
+    css: section.settings.custom_css,
+    id: id,
+  %}
+
+
+  .row_inner{
+    max-width:1200px;
+    margin:auto;
+  }
+
+{% endstyle %}
+
+
+<section class="story-section">
+
+    <div class="padded-row">
+      <div class="row_inner">
+          <p>Our story began with a quest for <span class="green-highlight">youthful vitality</span> In 2017.</p>
+      </div>
+    </div>
+
+    <div class="padded-row padded-row-extra-2">
+      <div class="row_inner">
+        <p>Ed,  <img src="{{section.settings.founder_image | img_url:'medium'}}" alt="Founder Ed"> our founder, was <span class="orange-highlight" style="position:relative;"><span class="floating-box-1"><img src="https://cdn.shopify.com/s/files/1/0469/8905/0019/files/Isolation_Mode.png?v=1698773950"><span>Maybe you know the feeling.</span></span>struggling to maintain his energy levels</span> and feeling the effects of ageing.</p>
+      </div> 
+    </div>
+
+    <div class="padded-row">
+      <div class="row_inner">
+        <p>Tired of <span class="white-highlight">conflicting information</span> and <span class="highlight">a lack of effective solutions</span>, he decided to do something about it.</p>
+      </div> 
+    </div>
+
+    <div class="padded-row">
+      <div class="row_inner">
+        <p>Countless hours of research later, he discovered two game-changing facts:</p> 
+        <p>his declining <span class="orange-highlight-nad inner-border"><span class="nad_plus_grid"><img src="https://cdn.shopify.com/s/files/1/0469/8905/0019/files/Isolation_Mode_1.png?v=1698774723"><span>NAD+ levels</span></span></span> and the benefits of <span class="light-green-highlight">NMN</span>. The result?</p>
+        <br>
+        <p>More energy than ever.</p>
+      </div> 
+    </div>
+
+    <div class="padded-row padded-row-extra">
+      <div class="row_inner">
+        <p>By harnessing the power of nature and science, <span class="orange-highlight">YOUTH&EARTH</span> was created.</p>
+        <p>We've been helping <span class="brown-highlight" style="display:inline-block; position:relative;"><img src="https://cdn.shopify.com/s/files/1/0469/8905/0019/files/imf_feefo.png?v=1698617291" class="our-mission-rating">hundreds of thousands</span> feel more alive ever since.</p>
+        <p><img src="https://cdn.shopify.com/s/files/1/0469/8905/0019/files/imf_feefo.png?v=1698617291" class="our-mission-rating-mobile">
+      </div>    
+    </div>
+
+    <div class="padded-row" style="border-bottom:1px solid #000;">
+      <div class="row_inner">
+        <p>Our story is your story. Let’s rewrite the rules together.</p>
+      </div>
+    </div>
+
+
+</section>
+
+{% style %}
+
+.story-section {
+    margin:auto;
+}
+
+.story-section img {
+    height:50px;
+    width:auto;
+    transform:translateY(20px);
+}
+
+
+.green-highlight{
+    background-color:#003B00;
+    padding:7px;
+    color:#fff;
+    border-radius:5px;
+}
+
+.light-green-highlight{
+    background: #44AA0E;
+    padding:5px 8px;
+    color:#fff;
+    border-radius:5px;
+
+}
+
+
+.orange-highlight {
+    background: #FC4301;
+    padding:5px 8px;
+    color:#fff;
+    border-radius:5px;
+}
+
+.orange-highlight-nad {
+    background: #FC4301;
+    padding:4px 4px;
+    color:#fff;
+    border-radius:5px;
+}
+
+
+.white-highlight {
+    background: #fff;
+    padding:5px 8px;
+    border-radius:5px;
+    border:1px solid #000;
+}
+
+.brown-highlight{
+   background: #683C11;
+    padding:5px 8px;
+    color:#fff;
+    border-radius:5px;
+}
+
+
+.padded-row{
+    padding:40px 0;
+    border-top:1px solid #000;
+}
+
+.padded-row-extra{
+  padding-bottom:120px;
+}
+
+.padded-row-extra-2{
+  padding-bottom:100px;
+}
+
+.padded-row p{
+  padding-left:10px;
+  margin-top:5px;
+  font-size:{{section.settings.font_size_desktop}}px;
+ 
+}
+
+
+.our-mission-rating{
+  display:inline-block;
+  position:absolute;
+  bottom:calc(-100% - 4px);
+  left:0;
+  right:0;
+  background-color:blue;
+  width:100%;
+  height:unset !important;
+}
+
+.our-mission-rating-mobile{
+  display:none;
+}
+
+.floating-box-1{
+  position:absolute;
+  bottom:-45px;
+  color:#000;
+  border:1px solid #000;
+  border-radius:5px;
+  left:0;
+  width:100%;
+  display:grid;
+  grid-template-columns:13% auto;
+  padding:5px;
+}
+
+.floating-box-1 img{
+  height:30px;
+  transform:translateY(0);
+  margin:auto;
+}
+
+.nad_plus_grid{
+  border:1px solid #fff;
+  grid-template-columns:15% auto;
+  padding:0px 6px;
+  border-radius:5px;
+  align-item:center;
+}
+
+.nad_plus_grid img{
+  height:15px;
+  padding:0px;
+  transform:translateY(0);
+}
+
+
+@media only screen and (max-width: 798px) {
+
+.padded-row{
+    padding:20px 10px;
+}
+
+  .padded-row p{
+    padding-left:10px;
+    margin-top:5px;
+    font-size:{{section.settings.font_size_mobile}}px;
+    line-height:30px;
+  }
+
+.padded-row-extra{
+  padding-bottom:60px;
+}
+
+.padded-row-extra-2{
+  padding-bottom:80px;
+}
+
+.story-section img {
+    height:30px;
+    width:auto;
+    transform:translateY(00px);
+}
+
+.green-highlight{
+    padding:3px 5px;
+    white-space: nowrap;
+}
+
+.light-green-highlight{
+    padding:3px 5px;
+    white-space: nowrap;
+
+}
+
+
+.orange-highlight {
+    padding:3px 5px;
+    white-space: nowrap;
+}
+
+.white-highlight {
+    padding:3px 5px;
+    white-space: nowrap;
+}
+
+.brown-highlight{
+    padding:3px 5px;
+    white-space: nowrap;
+}
+
+.our-mission-rating{
+  display:none;
+}
+
+.our-mission-rating-mobile{
+  display:block;
+  height:50px;
+}
+
+.floating-box-1{
+  position:absolute;
+  bottom:-75px;
+  color:#000;
+  border:1px solid #000;
+  border-radius:5px;
+  left:0;
+  width:100%;
+  display:grid;
+  grid-template-columns:13% auto;
+  padding:2px;
+}
+
+.floating-box-1 img{
+ height:25px;
+}
+
+.nad_plus_grid img{
+  height:12px;
+  padding:0px;
+  padding-right:5px;
+  transform:translateY(0);
+}
+
+}
+
+
+{% endstyle %}
+
+
+
+{% schema %}
+{
+  "name": "Our Story",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "founder_image",
+      "label": "Founder Image"
+    },
+      {
+        "type": "range",
+        "id": "font_size_desktop",
+        "label": "Desktop font size ",
+        "min": 0,
+        "max": 50,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "font_size_mobile",
+        "label": "Mobile font size",
+        "min": 0,
+        "max": 50,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Layout"
+      },
+      {
+        "type": "select",
+        "id": "width",
+        "label": "Width",
+        "default": "standard",
+        "options": [
+          {
+            "value": "standard",
+            "label": "Standard"
+          },
+          {
+            "value": "wide",
+            "label": "Wide"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Top spacing",
+        "min": 0,
+        "max": 80,
+        "default": 56,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Bottom spacing",
+        "min": 0,
+        "max": 80,
+        "default": 56,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Mobile layout"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Mobile top spacing",
+        "min": 0,
+        "max": 80,
+        "default": 56,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Mobile bottom spacing",
+        "min": 0,
+        "max": 80,
+        "default": 56,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Advanced"
+      },
+      {
+        "type": "paragraph",
+        "content": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+      },
+      {
+        "type": "text",
+        "id": "css_class",
+        "label": "CSS Class"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_css",
+        "label": "Custom CSS"
+      }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Our Story",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

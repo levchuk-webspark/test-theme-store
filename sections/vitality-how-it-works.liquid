@@ -1,0 +1,463 @@
+{% style %}
+    #shopify-section-{{ section.id }} .vitality-how-it-works {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      background-color: {{ section.settings.background_color }};
+    }
+
+     .vitality-how-it-works__title {
+      font-weight: normal;
+      margin-bottom: 42px;
+    }
+
+    #shopify-section-{{ section.id }} .vitality-how-it-works__title {
+      color: {{ section.settings.title_color }};
+    }
+
+    #shopify-section-{{ section.id }} .vitality-how-it-works__title {
+      font-size: {{ section.settings.title-font-size }}px;
+    }
+
+    .vitality-how-it-works__cards-list {
+      display: flex;
+      align-items: stretch;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .vitality-how-it-works__card {
+      padding-right: 10px;
+      width: 25%;
+    }
+
+    .vitality-how-it-works__card:last-of-type {
+       padding-right: 0;
+    }
+
+    #shopify-section-{{ section.id }} .vitality-how-it-works__card-content {
+      width: 100%;
+    }
+
+    .vitality-how-it-works-wrapper-image {
+      position: relative;
+      width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .vitality-how-it-works__card__number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: {{ section.settings.card-number-font-size }}px;
+      font-weight: 900;
+      width: {{ section.settings.card-number-size }}px;
+      height: {{ section.settings.card-number-size }}px;
+      border-radius: 50%;
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+    }
+
+     #shopify-section-{{ section.id }} .vitality-how-it-works__card__description {
+      margin-top: 15px;
+    }
+
+    #shopify-section-{{ section.id }} .vitality-how-it-works__description {
+      font-size: {{ section.settings.card-description-font-size }};
+    }
+
+    #shopify-section-{{ section.id }} .vitality-how-it-works__card__image {
+      height: 440px;
+      border-radius: 5px;
+    }
+
+    #shopify-section-{{ section.id }} .vitality-how-it-works__card__image > img {
+      object-fit: cover;
+    }
+
+    .vitality-how-it-works__nav-buttons {
+      display: none;
+    }
+
+    .vitality-how-it-works .flickity-button {
+      display: none;
+    }
+
+    @media only screen and (max-width: 1439px) {
+      #shopify-section-{{ section.id }} .vitality-how-it-works__card__image {
+        height: 350px;
+      }
+    }
+
+     @media only screen and (max-width: 1063px) {
+       .vitality-how-it-works__card {
+          padding-right: 8px;
+          width: 260px;
+        }
+
+       .vitality-how-it-works__card:last-of-type {
+          padding-right: 8px;
+       }
+       
+       .vitality-how-it-works__nav-buttons__prev,
+        .vitality-how-it-works__nav-buttons__next {
+          border: none;
+          background: none;
+          padding: 0;
+      }
+
+      #shopify-section-{{ section.id }} .vitality-how-it-works__nav-buttons__prev .icon,
+      #shopify-section-{{ section.id }} .vitality-how-it-works__nav-buttons__next .icon {
+        width: 26px;
+        height: 26px;
+        color: {{ section.settings.nav_button_color }};
+      }
+
+      .vitality-how-it-works__nav-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        margin-top: 30px;
+      }
+     }
+
+    @media only screen and (max-width: 798px) {
+      #shopify-section-{{ section.id }} .vitality-how-it-works {
+        padding-top: {{ section.settings.padding_top_mobile }}px;
+        padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .vitality-how-it-works__title {
+        margin-bottom: 34px;
+      }
+
+      #shopify-section-{{ section.id }} .vitality-how-it-works__title {
+        font-size: {{ section.settings.title-font-size-mobile }}px;
+      }
+
+      #shopify-section-{{ section.id }} .vitality-how-it-works__card__number {
+        width: {{ section.settings.card-number-size-mobile }}px;
+        height: {{ section.settings.card-number-size-mobile }}px;
+        font-size: {{ section.settings.card-number-font-size-mobile }}px;
+      }
+
+      #shopify-section-{{ section.id }} .vitality-how-it-works__card__description {
+        font-size: {{ section.settings.description-font-size-mobile }}px;
+      }
+    }
+  {%
+    render 'css-loop',
+    css: section.settings.custom_css,
+    id: section.id,
+  %}
+{% endstyle %}
+
+<section
+  class="
+    section
+    {{ section.settings.css_class }}
+    vitality-how-it-works
+  "
+>
+  {% if section.settings.title != blank %}
+    <h2 class="vitality-how-it-works__title">{{ section.settings.title }}</h2>
+  {% endif %}
+
+  {% if section.blocks.size > 0 %}
+    <ul class="vitality-how-it-works__cards-list carousel-{{ section.id }}">
+      {% for block in section.blocks %}
+        {% if block.type == 'card' %}
+          {% style %}
+            .block-{{ block.id }} .vitality-how-it-works__card__description {
+              color: {{ block.settings.description_color }};
+              font-size: {{ section.settings.description-font-size }}px;
+            }
+
+             .block-{{ block.id }} .vitality-how-it-works__card__number {
+                color: {{ block.settings.color_number }};
+                background-color: {{ block.settings.background_number }}
+              }
+          {% endstyle %}
+
+          <li class="vitality-how-it-works__card block-{{ block.id }} carousel-cell">
+            <div class="vitality-how-it-works__card-content">
+              {% if block.settings.image != null %}
+                <div class="vitality-how-it-works-wrapper-image">
+                  {% render 'image-element',
+                    image: block.settings.image,
+                    alt: block.settings.image.alt,
+                    additional_wrapper_classes: 'vitality-how-it-works__card__image',
+                    object_fit: true
+                  %}
+                  <div class="vitality-how-it-works__card__number">{{ block.settings.number }}</div>
+                </div>
+                <div class="vitality-how-it-works__card__description">{{ block.settings.description }}</div>
+              {% endif %}
+            </div>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+    <div class="vitality-how-it-works__nav-buttons">
+      <button class="vitality-how-it-works__nav-buttons__prev vitality-how-it-works__nav-buttons__prev-{{ section.id }}">
+        {% render 'icon', name: 'slider-left-arrow' %}
+      </button>
+      <button class="vitality-how-it-works__nav-buttons__next vitality-how-it-works__nav-buttons__next-{{ section.id }}">
+        {% render 'icon', name: 'slider-right-arrow' %}
+      </button>
+    </div>
+  {% endif %}
+</section>
+
+{% comment %}JavaScript{% endcomment %}
+
+<script>
+  window.addEventListener('load', function() {
+
+    const vitalityHowItWorksCarousel = document.querySelector('.carousel-{{ section.id }}');
+
+        if (vitalityHowItWorksCarousel) {
+            const vitalityHowItWorksFlickity = new Flickity( vitalityHowItWorksCarousel, {
+                cellAlign: 'left',
+                contain: true,
+                groupCells: true,
+                wrapAround: true,
+                pageDots: false
+            });
+
+
+            const vitalityHowItWorksPrevButton = document.querySelector('.vitality-how-it-works__nav-buttons__prev-{{ section.id }}');
+            const vitalityHowItWorksNextButton = document.querySelector('.vitality-how-it-works__nav-buttons__next-{{ section.id }}');
+
+            if (vitalityHowItWorksPrevButton) {
+              vitalityHowItWorksPrevButton.addEventListener( 'click', function() {
+                vitalityHowItWorksFlickity.previous();
+              });
+            }
+
+            if (vitalityHowItWorksNextButton) {
+              vitalityHowItWorksNextButton.addEventListener( 'click', function() {
+                vitalityHowItWorksFlickity.next();
+              });
+            }
+
+        }
+
+  });
+</script>
+
+{% schema %}
+{
+  "name": "How it works",
+  "settings": [
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Section title"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 100,
+      "default": 79,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 136,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "title-font-size",
+      "label": "Title font size",
+      "min": 0,
+      "max": 100,
+      "default": 65,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "card-number-font-size",
+      "label": "Card number font size",
+      "min": 0,
+      "max": 100,
+      "default": 41,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "card-number-size",
+      "label": "Card number size",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 50,
+      "unit": "px"
+    },
+    {
+        "type": "range",
+        "id": "description-font-size",
+        "label": "Card description font size",
+        "min": 0,
+        "max": 100,
+        "default": 20,
+        "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+     {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Section title color",
+      "default": "#000000"
+    },
+     {
+      "type": "color",
+      "id": "nav_button_color",
+      "label": "Navigation button color",
+      "default": "#60012C"
+    },
+    {
+      "type": "header",
+      "content": "Mobile layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile top spacing",
+      "min": 0,
+      "max": 100,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile bottom spacing",
+      "min": 0,
+      "max": 100,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "title-font-size-mobile",
+      "label": "Mobile title font size",
+      "min": 0,
+      "max": 100,
+      "default": 45,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "card-number-font-size-mobile",
+      "label": "Card number font size",
+      "min": 0,
+      "max": 100,
+      "default": 25,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "card-number-size-mobile",
+      "label": "Card number size",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+        "type": "range",
+        "id": "description-font-size-mobile",
+        "label": "Card description font size",
+        "min": 0,
+        "max": 100,
+        "default": 18,
+        "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Advanced",
+      "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+    },
+    {
+      "type": "text",
+      "id": "css_class",
+      "label": "CSS Class"
+    },
+    {
+      "type": "textarea",
+      "id": "custom_css",
+      "label": "Custom CSS"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "card",
+      "settings": [
+        {
+          "type": "html",
+          "id": "number",
+          "label": "Card number"
+        },
+        {
+          "type": "html",
+          "id": "description",
+          "label": "Card description"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "color",
+          "id": "background_number",
+          "label": "Background number",
+          "default": "#60012C"
+        },
+        {
+          "type": "color",
+          "id": "color_number",
+          "label": "Color number",
+          "default": "#F7F5F1"
+        },
+        {
+          "type": "color",
+          "id": "description_color",
+          "label": "Description color",
+          "default": "#000000"
+        }
+      ]
+    }
+  ],
+  "presets": [
+  {
+    "name": "Vitality: How it works"
+  }
+]
+}
+{% endschema %}

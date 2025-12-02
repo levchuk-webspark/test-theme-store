@@ -1,0 +1,515 @@
+{% style %}
+
+   #shopify-section-{{ section.id }} .our-mission__longevity {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+     position: relative;
+      {% if section.settings.image_2 != nil and section.settings.image_alignment_2 == 'right' %}
+          padding-right: 90px;
+      {% elsif section.settings.image_2 != nil and section.settings.image_alignment_2 == 'left' %}
+          padding-left: 90px;
+      {% endif %}
+   }
+
+  #shopify-section-{{ section.id }} .our-mission__longevity__content {
+    background-color: {{ section.settings.background_color }};
+  }
+
+  .our-mission__longevity__content {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    padding: 50px 46px;
+    border-radius: 5px;
+  }
+
+  #shopify-section-{{ section.id }} .our-mission__longevity__content {
+    {% if section.settings.image_2 != nil and section.settings.image_alignment_2 == 'left' %}
+        padding-left: 284px;
+    {% endif %}
+  }
+
+  #shopify-section-{{ section.id }} .our-mission__longevity__title {
+    font-size: {{ section.settings.title_font_size }}px;
+    color: {{ section.settings.title_color }};
+  }
+
+  #shopify-section-{{ section.id }} .our-mission__longevity__description {
+    font-size: {{ section.settings.description_font_size }}px;
+    color: {{ section.settings.description_color }};
+    line-height: 1.1;
+  }
+
+  .our-mission__longevity__content__main {
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+  }
+
+  .our-mission__longevity__image_1 {
+    width: 282px;
+    min-width: 282px;
+  }
+
+.our-mission__longevity__image_2 {
+    position: absolute;
+    top: 50px;
+    width: 300px;
+    height: auto;
+  }
+
+ #shopify-section-{{ section.id }} .our-mission__longevity__image_2 {
+    {% if section.settings.image_2 != nil and section.settings.image_alignment_2 == 'right' %}
+      right: 0;
+    {% elsif section.settings.image_2 != nil and section.settings.image_alignment_2 == 'left' %}
+       left: 0;
+    {% endif %}
+  }
+
+
+  .our-mission__longevity__description-full-{{ section.id }} {
+    display: none;
+  }
+
+  .our-mission__longevity__description__read-more-{{ section.id }}  {
+    font-style: italic;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .our-mission__longevity__description__read-less-{{ section.id }} {
+    font-style: italic;
+    margin-top: 10px;
+    display: none;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .our-mission__longevity__description__read-more-{{ section.id }}:hover,
+  .our-mission__longevity__description__read-less-{{ section.id }}:hover {
+    cursor: pointer;
+    color: #A74634;
+  }
+
+  .our-mission__longevity__description__read-button {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .our-mission__longevity__description__read-more-icons,
+  .our-mission__longevity__description__read-less-icons {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .our-mission__longevity__description__read-more-icons .icon,
+  .our-mission__longevity__description__read-less-icons .icon {
+    width: 13px;
+    height: 13px;
+  }
+
+  .our-mission__longevity__description__read-more-icons .icon {
+    transform: rotate(180deg);
+  }
+
+  .our-mission__longevity__description-mobile {
+    display: none;
+  }
+
+@media only screen and (max-width: 1200px) {
+  #shopify-section-{{ section.id }} .our-mission__longevity {
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+  }
+
+  #shopify-section-{{ section.id }} .our-mission__longevity__title {
+    font-size: {{ section.settings.title_font_size_mobile }}px;
+  }
+
+  #shopify-section-{{ section.id }} .our-mission__longevity__description {
+    font-size: {{ section.settings.description_font_size_mobile }}px;
+  }
+
+  #shopify-section-{{ section.id }} .our-mission__longevity__content {
+    {% if section.settings.image_2 != nil and section.settings.image_alignment_2 == 'left' %}
+      padding-left: 25px;
+      padding-bottom: 180px;
+    {% endif %}
+  }
+
+  .our-mission__longevity__content {
+    gap: 54px;
+    padding: 25px;
+
+  }
+
+  .our-mission__longevity__content__main {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #shopify-section-{{ section.id }} .our-mission__longevity {
+     position: relative;
+     padding-right: 0;
+    padding-left: 0;
+   }
+
+  .our-mission__longevity__image_1 {
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+   #shopify-section-{{ section.id }} .our-mission__longevity__image_2 {
+      width: 170px;
+      height: 170px;
+      top: unset;
+    {% if section.settings.image_2 != nil and section.settings.image_alignment_2 == 'right' %} 
+      bottom: 48px;
+      right: 15px;
+    {% elsif section.settings.image_2 != nil and section.settings.image_alignment_2 == 'left' %}
+      bottom: 40px;
+      left: 25px;
+    {% endif %}
+  }
+
+
+  .our-mission__longevity__description-mobile {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .our-mission__longevity__description-desktop {
+    display: none;
+  }
+
+  .our-mission__longevity__image_1 {
+    width: 69px;
+    min-width: 100px;
+  }
+  
+}
+
+  @media only screen and (max-width: 389px) {
+    #shopify-section-{{ section.id }}  .our-mission__longevity__image_2 {
+      width: 130px;
+      height: 130px;
+
+  }
+
+  
+  {%
+    render 'css-loop',
+    css: section.settings.custom_css,
+    id: section.id,
+  %}
+  
+{% endstyle %}
+
+<section
+  class="
+    section
+    {{ section.settings.css_class }}
+    our-mission__longevity
+  "
+>
+  <div class="our-mission__longevity__content">
+    
+      {% if section.settings.title != blank %}
+        <h2 class="our-mission__longevity__title">
+          {{ section.settings.title }}
+        </h2>
+      {% endif %}
+
+      <div class="our-mission__longevity__content__main">
+          {% if section.settings.description != blank %}
+                <p class="our-mission__longevity__description our-mission__longevity__description-desktop">
+                  {{ section.settings.description }}
+                </p>
+            
+                <div class="our-mission__longevity__description our-mission__longevity__description-mobile">
+          
+                    {% assign content_array = section.settings.description  | split: '<!-- split -->' %}
+                    {% assign truncated_content = content_array | first %}
+                    
+                     {% if content_array.size > 1 %}
+          
+                           <div class="our-mission__longevity__description-truncated-{{ section.id }}">
+                             {{ truncated_content }}
+                            </div>
+              
+                            <div class="our-mission__longevity__description-full-{{ section.id }}">
+                              {{ section.settings.description }}
+                            </div>
+              
+              
+                            <div
+                              class="our-mission__longevity__description__read-more-{{ section.id }} romie-regular-italic-text"
+                              href="#"
+                              onclick="toggleShowMoreInLongevitySetion('{{ section.id }}')">
+                              <div class="our-mission__longevity__description__read-button">
+                                Read more
+                                <span class="our-mission__longevity__description__read-more-icons">
+                                  {% render 'icon', name: 'read-more-left-arrow' %}
+                                  {% render 'icon', name: 'read-more-left-arrow' %}
+                                  {% render 'icon', name: 'read-more-left-arrow' %}
+                                  {% render 'icon', name: 'read-more-left-arrow' %}
+                                  {% render 'icon', name: 'read-more-left-arrow' %}
+                                </span>
+                              </div>
+                            </div>
+                            
+                            <div
+                              class="our-mission__longevity__description__read-less-{{ section.id }} romie-regular-italic-text"
+                              href="#"
+                              onclick="toggleShowMoreInLongevitySetion('{{ section.id }}')">
+                              <div class="our-mission__longevity__description__read-button">
+                                Read less
+                                <span class="our-mission__longevity__description__read-less-icons">
+                                  {% render 'icon', name: 'read-more-left-arrow' %}
+                                  {% render 'icon', name: 'read-more-left-arrow' %}
+                                  {% render 'icon', name: 'read-more-left-arrow' %}
+                                  {% render 'icon', name: 'read-more-left-arrow' %}
+                                  {% render 'icon', name: 'read-more-left-arrow' %}
+                                </span>
+                              </div>
+                            </div>
+              
+                    {% else %}
+                        <div class="our-mission__longevity__full_content">
+                              {{ section.settings.description }}
+                       </div>
+                    {% endif %}
+              </div>
+          {% endif %}
+          {% if section.settings.image_1 != nil %}
+            {%
+              render 'image-element',
+              image: section.settings.image_1,
+              alt: section.settings.image_1.alt,
+              additional_wrapper_classes: 'our-mission__longevity__image_1',
+            %}
+          {% endif %}
+      </div>
+  
+  </div>
+  
+  {% if section.settings.image_2 != nil %}
+    {%
+      render 'image-element',
+      image: section.settings.image_2,
+      alt: section.settings.image_2.alt,
+      additional_wrapper_classes: 'our-mission__longevity__image_2',
+    %}
+  {% endif %}
+</section>
+
+
+<script>
+  
+  function toggleShowMoreInLongevitySetion(elNumber){
+      $(`.our-mission__longevity__description-truncated-${elNumber}`).toggle()
+      $(`.our-mission__longevity__description-full-${elNumber}`).toggle()
+      $(`.our-mission__longevity__description__read-more-${elNumber}`).toggle()
+      $(`.our-mission__longevity__description__read-less-${elNumber}`).toggle()                              
+  }
+  
+</script>
+
+{% schema %}
+  {
+    "name": "Longevity",
+    "settings": [
+      {
+        "type": "html",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "range",
+        "id": "title_font_size",
+        "label": "Title font size",
+        "min": 0,
+        "max": 100,
+        "default": 60,
+        "unit": "px"
+      },
+      {
+        "type": "html",
+        "id": "description",
+        "label": "Description",
+        "info": "Add <!-- split --> to truncate text"
+      },
+      {
+        "type": "range",
+        "id": "description_font_size",
+        "label": "Description font size",
+        "min": 0,
+        "max": 100,
+        "default": 25,
+        "unit": "px"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_1",
+        "label": "Image 1"
+      },
+      {
+        "type": "select",
+        "id": "image_alignment_1",
+        "label": "Image 1 alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "right"
+      },
+      {
+        "type": "range",
+        "id": "image-width_1",
+        "label": "Image 1 width",
+        "min": 0,
+        "max": 500,
+        "step": 5,
+        "default": 295,
+        "unit": "px"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_2",
+        "label": "Image 2"
+      },
+      {
+        "type": "select",
+        "id": "image_alignment_2",
+        "label": "Image 2 alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "right"
+      },
+      {
+        "type": "range",
+        "id": "image-width_2",
+        "label": "Image 2 width",
+        "min": 0,
+        "max": 500,
+        "step": 5,
+        "default": 295,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Section"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Top spacing",
+        "min": 0,
+        "max": 100,
+        "default": 60,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Bottom spacing",
+        "min": 0,
+        "max": 100,
+        "default": 60,
+        "unit": "px"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Section background color",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "color",
+        "id": "title_color",
+        "label": "Title"
+      },
+      {
+        "type": "color",
+        "id": "description_color",
+        "label": "Description"
+      },
+      {
+        "type": "header",
+        "content": "Mobile layout"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Mobile top spacing",
+        "min": 0,
+        "max": 100,
+        "default": 30,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Mobile bottom spacing",
+        "min": 0,
+        "max": 100,
+        "default": 30,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "title_font_size_mobile",
+        "label": "Title font size",
+        "min": 0,
+        "max": 100,
+        "default": 60,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "description_font_size_mobile",
+        "label": "Description font size",
+        "min": 0,
+        "max": 100,
+        "default": 60,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Advanced",
+        "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+      },
+      {
+        "type": "text",
+        "id": "css_class",
+        "label": "CSS Class"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_css",
+        "label": "Custom CSS"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Our mission: Longevity"
+      }
+    ]
+  }
+{% endschema %}

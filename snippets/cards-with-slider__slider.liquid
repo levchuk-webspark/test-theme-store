@@ -1,0 +1,275 @@
+{% style %}
+  
+  .cards-with-slider__modal-backdrop{
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(6, 32, 33, 0.5);
+  }
+
+  .cards-with-slider__modal-backdrop-is-open {
+    display: block;
+  }
+
+  .cards-with-slider__modal__content {
+    background-color: #ffffff;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+    overflow-y: auto;
+    width: 40%;
+    padding: 25px 20px;
+    position: fixed;
+    z-index: 999999;
+    transform: translateX(100%);
+    transition: transform .3s ease, -webkit-transform .3s ease;
+  }
+
+  .cards-with-slider__modal__content.cards-with-slider__modal__content__is-open {
+    transform: translateX(0);
+  }
+
+  .cards-with-slider__modal__header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 40px;
+    margin-bottom: 30px;
+  }
+
+  .cards-with-slider__modal__header br {
+    display: none;
+  }
+
+  .cards-with-slider__modal__close {
+    width: 29px;
+    height: 29px;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 35px;
+    z-index: 1;
+  }
+
+  .cards-with-slider__modal__cards-list {
+    width: 100%;
+    height: 100%;
+    display: flex;
+  }
+
+  .cards-with-slider__modal__cards-list__item {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .cards-with-slider__modal__cards-list__item__image {
+    width: auto;
+    height: 50%;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 50px;
+  }
+
+  .cards-with-slider__modal__cards-list__item__image img {
+    object-fit: cover;
+  }
+
+  .cards-with-slider__modal__cards-list__item__description {
+    font-size: 16px;
+  }
+
+  .cards-with-slider__modal__cards-list__item__footer {
+    margin-bottom: 25px;
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+  }
+
+    .cards-with-slider__modal__cards-list__item__footer br {
+      display: none;
+    }
+
+
+  .flickity-prev-next-button {
+    display: none;
+  }
+  
+  .cards-with-slider__modal__cards-list__item__nav-buttons {
+    position: absolute;
+    z-index: 1;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .cards-with-slider__modal__cards-list__item__button-prev,
+  .cards-with-slider__modal__cards-list__item__button-next {
+    width: 30px;
+    height: 30px;
+    border: 1px solid {{ settings.regular_color}};
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFF;
+  }
+
+  .cards-with-slider__modal__cards-list__item__arrow-prev,
+  .cards-with-slider__modal__cards-list__item__arrow-next {
+    width: 6px;
+    height: 6px;
+    border-top: 1px solid {{ settings.regular_color}};
+    border-right: 1px solid {{ settings.regular_color}};
+  }
+
+  .cards-with-slider__modal__cards-list__item__arrow-prev {
+    transform: rotate(-135deg);
+  }
+
+  .cards-with-slider__modal__cards-list__item__arrow-next {
+    transform: rotate(45deg);
+  }
+
+  @media only screen and (max-width: 1000px) {
+        
+    .cards-with-slider__modal__content {
+      width: 100%;
+      padding: 25px 10px;
+    }
+
+
+    .cards-with-slider__modal__header {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .cards-with-slider__modal__close {
+      width: 20px;
+      height: 20px;
+      top: 28px;
+    }
+
+    
+    .cards-with-slider__modal__cards-list__item {
+      width: 100%;
+      height: 100%;
+      display: block;
+      padding: 0 10px;
+    }
+  
+    .cards-with-slider__modal__cards-list__item__image {
+      margin-bottom: 20px;
+    }
+
+    .cards-with-slider__modal__cards-list__item__description {
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+
+    .cards-with-slider__modal__cards-list__item__footer {
+      margin-bottom: 0;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+    }
+
+    .cards-with-slider__modal__cards-list__item__footer br {
+      display: block;
+    }
+
+    .cards-with-slider__modal__cards-list__item__nav-buttons {
+      bottom: 30px;
+      gap: 12px;
+    }
+
+    .cards-with-slider__modal__cards-list__item__button-prev,
+    .cards-with-slider__modal__cards-list__item__button-next {
+      width: 22px;
+      height: 22px;
+    }
+
+  }
+  
+{% endstyle %}
+
+<div class="cards-with-slider__modal-backdrop"></div> 
+<div class="cards-with-slider__modal__content">
+
+  <div class="cards-with-slider__modal__close">
+      <svg viewBox="0 0 30 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="29.3536" y1="0.353553" x2="1.35355" y2="28.3536" stroke="black"/>
+        <line y1="-0.5" x2="39.598" y2="-0.5" transform="matrix(0.707107 0.707107 0.707107 -0.707107 1 0)" stroke="black"/>
+      </svg>
+  </div>
+                  
+  <div class="cards-with-slider__modal__cards-list carousel-{{ section.id }}">
+    {% for block in cards %} 
+      <div class="
+        cards-with-slider__modal__cards-list__item 
+        block-{{ block.id }} 
+        carousel-cell   
+        "
+        data-carousel-cell-id="{{ block.id }}"
+        >
+        <div class="cards-with-slider__modal__header">
+          <div class="cards-with-slider__modal__title">
+            {{ block.settings.title }}
+          </div>
+        </div>
+      
+        {% if block.settings.image != nil %}
+          {%
+            render 'image-element',
+            image: block.settings.image,
+            alt: block.settings.image.alt,
+            additional_wrapper_classes: 'cards-with-slider__modal__cards-list__item__image',
+          %}
+        {% endif %}
+        {% if block.settings.description != blank %}
+          <div class="cards-with-slider__modal__cards-list__item__description">{{ block.settings.description }}</div>
+        {% endif %}
+
+        {% assign previousIndex = forloop.index | minus: 2 %}
+        {% if forloop.index == cards.size %}
+            {% assign nextIndex = 0 %}
+        {% else %}
+            {% assign nextIndex = forloop.index %}
+        {% endif %}
+
+        <div class="cards-with-slider__modal__cards-list__item__footer">
+          <span>{{ cards[previousIndex].settings.title }}</span>
+          <span>{{ cards[nextIndex].settings.title }}</span>
+        </div>
+      </div>
+    {% endfor %}  
+  </div>
+
+   <div class="cards-with-slider__modal__cards-list__item__nav-buttons">
+    <div class="cards-with-slider__modal__cards-list__item__button-prev cards-with-slider__modal__cards-list__item__button-prev-{{ section.id }}">
+        <div class="cards-with-slider__modal__cards-list__item__arrow-prev"></div>    
+    </div>
+    <div class="cards-with-slider__modal__cards-list__item__button-next cards-with-slider__modal__cards-list__item__button-next-{{ section.id }}">
+        <div class="cards-with-slider__modal__cards-list__item__arrow-next"></div>  
+    </div>
+  </div>
+  
+</div>
+ 
+
+
+              

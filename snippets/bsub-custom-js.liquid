@@ -1,0 +1,169 @@
+{% style %}
+
+.bsub-widget__benefits-list {
+  background-color: #F7F5F1;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  padding: 16px 16px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.bsub-widget__points-list__item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.bsub-widget__points-list__item__title {
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.bsub-widget__points-list__item__image {
+  width: 38px;
+  height: 38px;
+  margin-bottom: 16px;
+}
+
+@media only screen and (max-width: 798px) {
+  /* .bsub-widget__points-list__item {
+    gap: 8px;
+  }
+   */
+  .bsub-widget__points-list__item__image {
+    width: 20px;
+    height: 20px;
+    margin-bottom: 8px;
+  }
+
+  .bsub-widget__points-list__item__title {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+}
+
+{% endstyle %}
+
+{% if template contains 'product' %}
+
+{% assign subscription_compare_price = "" %}
+{% if product.compare_at_price > product.price %}
+    {% assign subscription_compare_price = {{product.compare_at_price | money}} %}
+{% endif %}
+
+<script>
+
+var price = "<div class='bsub-price-element'>{{ product.price | money }}<div>"
+
+setTimeout(()=>{
+
+var element = document.querySelectorAll('.bsub-widget__group-header')[0];
+
+// Check if the element exists to avoid null reference errors
+if(element) {
+    // Append new HTML to the existing HTML of the element
+
+    {% assign google_discount_value = 100 | minus: settings.google_discount_percentage | times: 0.01 %}
+    {% assign google_discounted_product_price =  product.price | times: google_discount_value %}
+
+    element.innerHTML +=  `
+    <div class="google_discount_price_display_product_page"><span class="subscription-compare-at-price">${'{{ product.price | money }}'}</span> <span class="subscription-product-price">${`{{ google_discounted_product_price | money }}`}</span></div>
+    <div class="standard_price_display_product_page"><span class="subscription-compare-at-price">${'{{ subscription_compare_price }}'}</span> <span class="subscription-product-price">${`{{ product.price | money }}`}</span></div>
+    `;
+}
+
+
+// Select the span element using the attribute selector
+var subscriptionPriceElement = document.querySelector('span[data-bsub-per-delivery-price]');
+
+// Make sure the element was found before trying to access its innerHTML
+if(subscriptionPriceElement) {
+    var subPrice = subscriptionPriceElement.textContent;
+
+var element2 = document.querySelectorAll('.bsub-widget__group-header')[1];
+
+// Check if the element exists to avoid null reference errors
+if(element2) {
+    // Append new HTML to the existing HTML of the element
+   console.log(window.BOLD.subscriptions.data.subscriptionGroups[0].percent_discount)
+
+   var boldDiscountRate = (100 - window.BOLD.subscriptions.data.subscriptionGroups[0].percent_discount)/100;
+    document.querySelectorAll('.bsub-widget__group-header')[1].click()
+   var subscriptioPriceElement = document.querySelectorAll('[data-bsub-per-delivery-price]')[0]
+   console.log(subscriptioPriceElement)
+    document.querySelectorAll('.bsub-widget__group-header')[0].click()
+
+    // Added as per task OD-3837 as default should be subscription option. Delete if default should be one-time purchase.s
+    if(window.BOLD.BsubWidget.blockSettings.default_subscribe) {
+        document.querySelectorAll('.bsub-widget__group-header')[1].click();
+    }
+
+
+  
+   var boldSubscriptioPrice = subscriptioPriceElement.textContent; // or element.innerText
+   element2.innerHTML +=  `<div><!--<span class="subscription-original-price">${'{{ product.compare_at_price | money }}'}</span>--> <span class="money custom_display_sub_price" style="color:black;">${boldSubscriptioPrice}</span><p style="color:black; display:inline;"> / delivery</p></div>`;
+
+}
+
+}
+
+  // const boldSubWidgetExtraAction = document.querySelector(".bsub-widget__extra-actions");
+  
+  // if(!!subscriptionBenefits && !!boldSubWidgetExtraAction) {
+  //     const benefitsList = document.createElement("ul");
+  //     benefitsList.classList.add('bsub-widget__benefits-list');
+    
+  //     for (const benefit of subscriptionBenefits) {
+  //         const benefitsListItem = document.createElement("li");        
+  //         benefitsListItem.classList.add('bsub-widget__points-list__item');
+
+  //         if(!!benefit.subscriptionBenefitImage) {
+  //             const benefitsListItemImage = document.createElement("img");
+  //             benefitsListItemImage.classList.add('bsub-widget__points-list__item__image');
+  //             benefitsListItemImage.src = benefit.subscriptionBenefitImage;
+  //             benefitsListItemImage.alt = benefit.subscriptionBenefitImageAlt; 
+
+  //             benefitsListItem.append(benefitsListItemImage);
+  //         }
+
+  //         if(!!benefit.subscriptionBenefitTitle) {
+  //             const benefitsListItemTitle = document.createElement("span");
+  //             benefitsListItemTitle.classList.add('bsub-widget__points-list__item__title');
+  //             benefitsListItemTitle.textContent = benefit.subscriptionBenefitTitle;
+     
+  //             benefitsListItem.append(benefitsListItemTitle);
+  //         }
+        
+  //         benefitsList.append(benefitsListItem);
+  //     }
+    
+  //     boldSubWidgetExtraAction.prepend(benefitsList);
+
+  // }
+
+},750)
+
+
+// setTimeout(()=>{
+
+// document.querySelectorAll('.bsub-widget__group-header')[0].addEventListener('click', ()=>{
+
+//     document.querySelector('.bsub__collapsible-wrapper').classList.add('bsub__collapsible-wrapper--closed')
+//     document.querySelector('.bsub__collapsible-wrapper').style.display = "none";
+//     setTimeout(()=>{
+//         document.querySelector('.bsub__collapsible-wrapper').style.display = "block";
+//     },1000)
+
+// })
+
+
+// },1000)
+
+
+
+
+</script>
+
+{% endif %}

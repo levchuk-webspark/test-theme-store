@@ -1,0 +1,1019 @@
+{% assign slides = section.blocks | where: 'type', 'slide' %}
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    background-color: {{ section.settings.background_color }};
+    color: {{ section.settings.text_color }};
+  }
+
+  #shopify-section-{{ section.id }} .list-with-image {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  .list-with-image__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .list-with-image__large-image-container-mobile {
+    display: none;
+  }
+
+   #shopify-section-{{ section.id }} .list-with-image__large-image-container-desktop,
+  #shopify-section-{{ section.id }} .list-with-image__large-image-container-desktop .flickity-resize,
+  #shopify-section-{{ section.id }} .list-with-image__large-image-container-desktop .flickity-resize .flickity-viewport,
+  #shopify-section-{{ section.id }} .list-with-image__large-image-container-desktop .flickity-resize .flickity-viewport .flickity-slider { 
+     height: 100% !important;
+     width: 100%;
+     /* max-height: 600px; */
+   }
+
+  #shopify-section-{{ section.id }} .list-with-image__large-image-container-mobile,
+  #shopify-section-{{ section.id }} .list-with-image__large-image-container-mobile .flickity-resize,
+  #shopify-section-{{ section.id }} .list-with-image__large-image-container-mobile .flickity-resize .flickity-viewport,
+  #shopify-section-{{ section.id }} .list-with-image__large-image-container-mobile .flickity-resize .flickity-viewport .flickity-slider { 
+     height: 100%;
+     width: 100%;
+     /* max-height: 600px; */
+   }
+
+  #shopify-section-{{ section.id }} .list-with-image__large-image-container-desktop {
+    {% if section.settings.large-image_alignment == "right" %}
+        order: 2;
+    {% endif %}
+  }
+  
+  .list-with-image__large-image-container-desktop,
+  .list-with-image__large-image-container-mobile {
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .list-with-image__large-image-container-desktop img,
+  .list-with-image__large-image-container-mobile img {
+     object-fit: cover;
+      border-radius: 8px;
+      height: 100%;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+   }
+
+  .list-with-image__large-image-container-desktop video,
+  .list-with-image__large-image-container-mobile video {
+    object-fit: cover;
+      border-radius: 8px;
+      height: 100% !important;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+  }
+
+   #shopify-section-{{ section.id }}  .carousel-cell.is-selected {
+     height: 100% !important;
+     width: 100%;
+   }
+
+  #shopify-section-{{ section.id }}  .carousel-cell.is-selected > video,
+  #shopify-section-{{ section.id }}  .carousel-cell.is-selected > video > source {
+     height: 100% !important;
+     width: 100%;
+   }
+
+  #shopify-section-{{ section.id }}  .gallery-cell {
+    height: 100%;
+    width: 100%;
+  }
+
+  .list-with-image__list-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .list-with-image__list-container__top-row {
+    display: flex;
+    gap: 36px;
+    align-items: flex-start;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .list-with-image__list-container__top-row__text-block {
+    width: 100%;
+    max-width: 342px;
+  }
+
+  .list-with-image__list-container__top-row__text-block-preheading,
+  .list-with-image__list-container__top-row__text-block-heading {
+    font-size: 34px;
+    line-height: 37px;
+  }
+
+  .list-with-image__list-container__top-row__text-block-heading {
+    margin-bottom: 47px;
+  }
+  
+   .list-with-image__list-container__top-row__text-block-subheading {
+    font-size: 20px;
+    /* line-height: 22px; */
+  }
+
+  .list-with-image__list-container__top-row__image-block {
+    width: 132px;
+    height: 171px;
+    border-radius: 8px;
+    position: relative;
+  }
+
+  #shopify-section-{{ section.id }} .list-with-image__list-container__top-row__image-block {
+    border: 1px solid {{ section.settings.text_color }};
+  }
+
+  .list-with-image__list-container__top-row__image-block .image-element__wrap {
+    width: 132px;
+    height: 190px;
+    position: absolute;
+    left: -23px;
+    bottom: -47px;
+  }
+
+  .list-with-image__list-container__bottom-row {
+    display: flex;
+    gap: 36px;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .list-with-image__list-block__title {
+    margin-bottom: 18px;
+  }
+
+  .list-with-image__list-item {
+    display: flex;
+    gap: 11px;
+    align-items: center;
+    padding: 11px 0;
+    border-top: 1px solid;
+    font-size: 16px;
+  }
+
+   #shopify-section-{{ section.id }}.list-with-image__list-item {
+    border-color: {{ section.settings.text_color }};
+  }
+
+  .list-with-image__list-item__icon {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    min-height: 30px;
+  }
+
+  .list-with-image__button-mobile {
+    display: none;
+  }
+
+  .list-with-image__button .list-with-image__icons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 32px;
+    align-items: end;
+  }
+
+  .list-with-image__button .list-with-image__icons .icon {
+    transform: rotate(-90deg);
+  }
+
+  .list-with-image__button .list-with-image__icons .icon {
+    width: 22px;
+    height: 22px;
+  }
+
+   #shopify-section-{{ section.id }} button.flickity-button.flickity-prev-next-button.next, 
+   #shopify-section-{{ section.id }} button.flickity-button.flickity-prev-next-button.previous {
+     display: none;
+   }
+
+  #shopify-section-{{ section.id }} .flickity-page-dots {
+	counter-reset: a;
+    background-image: unset;
+     display: flex;
+    justify-content: center;
+    align-items: end;
+  }
+
+  #shopify-section-{{ section.id }} .flickity-page-dots {
+    bottom: 0;
+    height: 20%;
+    background: linear-gradient(360deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 56.45%);
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .flickity-page-dots .dot {
+    width: 19px;
+    height: 19px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid #f7f5f1;;
+    transform: rotate(-45deg);
+    color: #f7f5f1;
+    margin-bottom: 12px;
+  }
+  
+  #shopify-section-{{ section.id }} .flickity-page-dots .dot.is-selected {
+    border: 1px solid {{ section.settings.active_dot_color }};
+    border-bottom-color: transparent;
+    color: {{ section.settings.active_dot_color }};
+  }
+  
+   #shopify-section-{{ section.id }} .flickity-page-dots .dot::after {
+  	content: counter(a);
+  	counter-increment: a;
+    font-size: 12px;
+    font-weight: bold;
+    transform: rotate(45deg);
+  }
+
+      .list-with-image__list-container__top-row__image-block .image-element__wrap > img {
+        object-fit: cover;
+    }
+
+ @media only screen and (max-width: 1440px) {
+    .list-with-image__list-block {
+      width: 69%;
+    }
+
+ }
+
+   @media only screen and (max-width: 1160px) {
+   .list-with-image__list-container__bottom-row {
+     flex-wrap: wrap;
+   }
+
+    .list-with-image__list-block {
+      width: 100%;
+    }
+
+   .list-with-image__button .list-with-image__icons {
+    display: none;
+  }
+
+ }
+
+@media only screen and (max-width: 798px) {
+  .list-with-image__content {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .list-with-image__large-image-container-mobile {
+    display: block;
+    max-height: 440px;
+  }
+
+  .list-with-image__large-image-container-desktop {
+    display: none;
+  }
+
+  .list-with-image__button-desktop {
+      display: none;
+    }
+
+    .list-with-image__button-mobile {
+      display: block;
+      margin-top: 110px;
+    }
+
+
+  .list-with-image__list-container__top-row__image-and-button {
+    height: 100%;
+    width: fit-content;
+    min-width: fit-content;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+
+  #shopify-section-{{ section.id }} .list-with-image__list-container__top-row__image-and-button {
+    {% if section.settings.small-image_alignment == "left" %}
+        order: 1;
+    {% endif %}
+  }
+
+  #shopify-section-{{ section.id }} .list-with-image__list-container__top-row__text-block {
+    {% if section.settings.small-image_alignment == "left" %}
+        order: 2;
+    {% endif %}
+  }
+
+  #shopify-section-{{ section.id }} .list-with-image__list-container__top-row__image-block {
+    position: absolute;
+    width: 108px;
+    height: 140px;
+    z-index: 1;
+    /* top: -50%; */
+    top: 0;
+    {% if section.settings.small-image_alignment == "left" %}
+      /* left: 35px; */
+      left: 15px;
+    {% else %}
+      right: 12px;
+    {% endif %}
+  }
+
+  .list-with-image__list-container__top-row__image-block .image-element__wrap {
+    width: 94px;
+    height: 152px;
+    left: -19px;
+    bottom: -39px;
+  }
+
+   .list-with-image__list-container__top-row__image-block .image-element__wrap > img {
+     object-fit: cover;
+   }
+
+    .list-with-image__list-container__top-row__text-block-preheading,
+    .list-with-image__list-container__top-row__text-block-heading {
+      font-size: 24px;
+      line-height: 26px;
+    }
+  
+    .list-with-image__list-container__top-row__text-block-heading {
+      margin-bottom: 33px;
+    }
+    
+     .list-with-image__list-container__top-row__text-block-subheading {
+      font-size: 16px;
+      /* line-height: 18px; */
+    }
+  
+ }
+
+ @media only screen and (max-width: 798px) {
+    #shopify-section-{{ section.id }} .list-with-image {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+   #shopify-section-{{ section.id }} .flickity-page-dots {
+      height: 15%;
+     align-items: end;
+     {% if section.settings.small-image_alignment == "left" %}
+         padding-right: 10px;
+        justify-content: end;
+    {% else %}
+       padding-left: 10px;
+       justify-content: start;
+    {% endif %}
+   }
+  }
+
+  @media only screen and (min-width: 1441px) {
+
+   #shopify-section-{{ section.id }} .list-with-image__button {
+      width: 30%;
+        display: flex;
+        align-items: end;
+        flex-direction: column;
+    }
+
+     #shopify-section-{{ section.id }} .list-with-image__button-mobile {
+      display: none !important;
+    }
+  }
+  
+  {%
+    render 'css-loop',
+    css: section.settings.custom_css,
+    id: section.id,
+  %}
+  
+{% endstyle %}
+
+<section
+  class="
+    section
+    {{ section.settings.css_class }}
+    list-with-image
+  "
+>
+  <div class="list-with-image__content">
+
+     <div class="list-with-image__large-image-container-mobile">
+           {% if section.settings.large-image-mobile == nil %}
+             <div class="carousel-{{ section.id }}-mobile">
+               {% if slides.size %}
+                 {% for slide in slides %}
+                   {% if slide.settings.video_link_mobile != blank %}
+                    <div class="carousel-cell">
+                      <video loop autoplay muted playsinline>
+                        <source src="{{ slide.settings.video_link_mobile }}" type="video/webm">  
+                        <source src="{{ slide.settings.video_link_mobile }}" type="video/mp4">  
+                      </video>
+                    </div>
+                  {% else if slide.settings.mobile_image %}
+                    <div class="carousel-cell">
+                      <img src="{{ slide.settings.mobile_image | img_url: 'master' }}" alt="{{ slide.settings.mobile_image.alt }}">
+                    </div>
+                  {% endif %}
+                {% endfor %}
+               {% endif %}
+             </div>
+           {% else %}
+            {%
+              render 'image-element',
+              image: section.settings.large-image-mobile,
+              alt: section.settings.large-image-mobile.alt
+            %}
+           {% endif %}
+         </div>
+      
+         <div class="list-with-image__large-image-container-desktop">
+          {% if section.settings.large-image == nil %}
+            <div class="carousel-{{ section.id }}">
+              {% if slides.size %}
+                {% for slide in slides %}
+                  {% if slide.settings.video_link != blank %}
+                    <div class="carousel-cell">
+                      <video loop autoplay muted playsinline>
+                        <source src="{{ slide.settings.video_link }}" type="video/webm">  
+                        <source src="{{ slide.settings.video_link }}" type="video/mp4">  
+                      </video>
+                    </div>
+                  {% else if slide.settings.image %}
+                    <div class="carousel-cell">
+                      <img src="{{ slide.settings.image | img_url: 'master' }}" alt="{{ slide.settings.image.alt }}">
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+          </div>    
+           {% else %}
+             {%
+              render 'image-element',
+              image: section.settings.large-image,
+              alt: section.settings.large-image.alt
+              %}
+           {% endif %}
+         </div>
+      
+    
+    <div class="list-with-image__list-container">
+      <div class="list-with-image__list-container__top-row">
+        <div class="list-with-image__list-container__top-row__text-block">
+
+            {% if section.settings.preheading != blank %}
+                <div class="list-with-image__list-container__top-row__text-block-preheading">{{ section.settings.preheading }}</div>
+            {% endif %}
+            {% if section.settings.heading != blank %}
+                <div class="list-with-image__list-container__top-row__text-block-heading">{{ section.settings.heading }}</div>
+            {% endif %}
+            {% if section.settings.subheading != blank %}
+                <div class="list-with-image__list-container__top-row__text-block-subheading">{{ section.settings.subheading }}</div>
+            {% endif %}
+          
+        </div>
+        
+        {% if section.settings.small-image != nil %}
+            <div class="list-with-image__list-container__top-row__image-and-button">
+                <div class="list-with-image__list-container__top-row__image-block">
+                  {%
+                    render 'image-element',
+                    image: section.settings.small-image,
+                    alt: section.settings.small-image.alt
+                  %}
+               </div>
+
+              {% for block in section.blocks %}
+                    {% if block.type == 'button-block' %}
+    
+                        {% if block.settings.button_label != blank %}
+                            {% style -%}
+                                
+                                .block--{{ block.id }}.list-with-image__button .button--custom {
+                                  border-radius: {{ block.settings.button_custom_border_radius | append: 'px' }};
+                                  border: 1px solid;
+                                  width: auto;
+                                  max-width: 100%;
+                                  white-space: normal;
+                                  overflow-wrap: normal;
+                                }
+                      
+                                .block--{{ block.id }}.list-with-image__button a.button--custom.button,
+                                .block--{{ block.id }}.list-with-image__button a.button--custom.button:link,
+                                .block--{{ block.id }}.list-with-image__button a.button--custom.button:visited {
+                                  background-color: {{ block.settings.button_custom_bg_color }};
+                                  color: {{ block.settings.button_custom_text_color }};
+                                  border-color: {{ block.settings.button_custom_border_color }};
+                                }
+                      
+                                .block--{{ block.id }}.list-with-image__button a.button--custom.button:hover,
+                                .block--{{ block.id }}.list-with-image__button a.button--custom.button.is-hovered {
+                                  color: {{ block.settings.button_custom_text_color--highlight }};
+                                  border-color: {{ block.settings.button_custom_border_color--highlight }};
+                                  background-color: {{ block.settings.button_custom_bg_color--highlight }};
+                                }
+
+
+                              .block--{{ block.id }}.list-with-image__button a.button--primary.button {
+                                width: 100%;
+                              }
+        
+                                @media only screen and (max-width: 389px) {
+                                  .block--{{ block.id }}.list-with-image__button .button--custom {
+                                    width: 230px;
+                                  }
+                                }
+              
+                      
+                            {%- endstyle -%}
+                            
+                              <div class="list-with-image__button block--{{ block.id }} list-with-image__button-mobile">
+                                <a href="{{ block.settings.button_link }}" class="button {{ block.settings.button_style }}">
+                                  {{ block.settings.button_label }}
+                                </a>
+                              </div>
+                        {% endif %}
+                      
+                    {% endif %}
+                
+              {% endfor %} 
+            </div>
+        {% endif %}
+
+      </div>
+
+      <div class="list-with-image__list-container__bottom-row">
+          {% for block in section.blocks %}
+              {% if block.type == 'list-block' %}
+      
+                <div class="list-with-image__list-block">
+                    {% if block.settings.heading != blank %}
+                      <div class="list-with-image__list-block__title">{{ block.settings.heading }}</div>
+                    {% endif %}
+    
+                    <ul class="list-with-image__list">
+                      {% if block.settings.text_1 != blank %}
+                        <div class="list-with-image__list-item">
+                          {% if block.settings.icon != nil %}
+                            <div class="list-with-image__list-item__icon">
+                              {%
+                                render 'image-element',
+                                image: block.settings.icon,
+                                alt: block.settings.icon.alt
+                              %}
+                            </div>
+                          {% endif %}
+                          
+                          <li class="list-with-image__list-item__text">{{ block.settings.text_1 }}</li>
+                        </div>
+                      {% endif %}
+                      {% if block.settings.text_2 != blank %}
+                        <div class="list-with-image__list-item">
+                          {% if block.settings.icon != nil %}
+                            <div class="list-with-image__list-item__icon">
+                              {%
+                                render 'image-element',
+                                image: block.settings.icon,
+                                alt: block.settings.icon.alt
+                              %}
+                            </div>
+                          {% endif %}
+                          
+                          <li class="list-with-image__list-item__text">{{ block.settings.text_2 }}</li>
+                        </div>
+                      {% endif %}
+                      {% if block.settings.text_3 != blank %}
+                        <div class="list-with-image__list-item">
+                          {% if block.settings.icon != nil %}
+                            <div class="list-with-image__list-item__icon">
+                              {%
+                                render 'image-element',
+                                image: block.settings.icon,
+                                alt: block.settings.icon.alt
+                              %}
+                            </div>
+                          {% endif %}
+                          
+                          <li class="list-with-image__list-item__text">{{ block.settings.text_3 }}</li>
+                        </div>
+                      {% endif %}
+                    </ul>
+                </div>
+  
+              {% endif %}
+
+              {% if block.type == 'button-block' %}
+    
+                {% if block.settings.button_label != blank %}
+                    {% style -%}
+                        
+                        .block--{{ block.id }}.list-with-image__button .button--custom {
+                          border-radius: {{ block.settings.button_custom_border_radius | append: 'px' }};
+                          border: 1px solid;
+                          width: auto;
+                          max-width: 100%;
+                          white-space: normal;
+                          overflow-wrap: normal;
+                        }
+              
+                        .block--{{ block.id }}.list-with-image__button a.button--custom.button,
+                        .block--{{ block.id }}.list-with-image__button a.button--custom.button:link,
+                        .block--{{ block.id }}.list-with-image__button a.button--custom.button:visited {
+                          background-color: {{ block.settings.button_custom_bg_color }};
+                          color: {{ block.settings.button_custom_text_color }};
+                          border-color: {{ block.settings.button_custom_border_color }};
+                        }
+              
+                        .block--{{ block.id }}.list-with-image__button a.button--custom.button:hover,
+                        .block--{{ block.id }}.list-with-image__button a.button--custom.button.is-hovered {
+                          color: {{ block.settings.button_custom_text_color--highlight }};
+                          border-color: {{ block.settings.button_custom_border_color--highlight }};
+                          background-color: {{ block.settings.button_custom_bg_color--highlight }};
+                        }
+              
+                    {%- endstyle -%}
+                    
+                      <div class="list-with-image__button block--{{ block.id }} list-with-image__button-desktop">
+                        <div class="list-with-image__button block--{{ block.id }} list-with-image__icons">
+                        {% render 'icon', name: 'read-more-left-arrow' %}
+                        {% render 'icon', name: 'read-more-left-arrow' %}
+                        {% render 'icon', name: 'read-more-left-arrow' %}
+                        </div>
+                        <a href="{{ block.settings.button_link }}" class="button {{ block.settings.button_style }}">
+                          {{ block.settings.button_label }}
+                        </a>
+                      </div>
+                {% endif %}
+              
+            {% endif %}
+          {% endfor %}  
+        
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const isMobileMedia = window.matchMedia("(max-width: 798px)");
+     if (isMobileMedia.matches) {
+       var elemListWithImageMobile = document.querySelector('.carousel-{{ section.id }}-mobile');
+
+       var flktyListWithImageMobile = new Flickity(elemListWithImageMobile, {
+         imagesLoaded: true,
+          lazyLoad: true,
+         
+        cellAlign: 'left',
+        contain: true,
+        groupCells: true,
+        wrapAround: true,
+        adaptiveHeight: false,
+        prevNextButtons: false,
+        pageDots: true,
+        draggable: true,
+        imagesLoaded: true,
+        fade: true,
+        autoPlay: {{ section.settings.image_slideshow_speed | json }} * 1000,
+      });
+     } 
+     if (!isMobileMedia.matches) {
+        var elemListWithImage = document.querySelector('.carousel-{{ section.id }}');
+       
+        var flktyListWithImage = new Flickity( elemListWithImage, {
+          imagesLoaded: true,
+          lazyLoad: true,
+
+        cellAlign: 'left',
+        contain: true,
+        groupCells: true,
+        wrapAround: true,
+        adaptiveHeight: false,
+        prevNextButtons: false,
+        pageDots: true,
+        draggable: true,
+        imagesLoaded: true,
+        fade: true,
+        autoPlay: {{ section.settings.image_slideshow_speed | json }} * 1000,
+      });
+     }
+  });
+</script>
+
+
+{% schema %}
+  {
+    "name": "List with image",
+    "settings": [
+      {
+        "type": "html",
+        "id": "preheading",
+        "label": "Preheading"
+      },
+      {
+        "type": "html",
+        "id": "heading",
+        "label": "Heading"
+      },
+      {
+        "type": "html",
+        "id": "subheading",
+        "label": "Subheading"
+      },
+      {
+        "type": "image_picker",
+        "id": "large-image",
+        "label": "Large image"
+      },
+      {
+        "type": "image_picker",
+        "id": "small-image",
+        "label": "Small image"
+      },
+      {
+        "type": "image_picker",
+        "id": "large-image-mobile",
+        "label": "Large image mobile"
+      },
+      {
+        "type": "range",
+        "id": "image_slideshow_speed",
+        "label": "Change image every",
+        "info": "Set to 0 to disable autoplay.",
+        "min": 0,
+        "max": 20,
+        "step": 1,
+        "default": 5,
+        "unit": "sec"
+      },
+      {
+        "type": "header",
+        "content": "Section"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Top spacing",
+        "min": 0,
+        "max": 100,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Bottom spacing",
+        "min": 0,
+        "max": 100,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "select",
+        "id": "large-image_alignment",
+        "label": "Large image alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "left"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "color",
+        "id": "active_dot_color",
+        "label": "Active navigation color",
+        "default": "#78BE20"
+      },
+      {
+        "type": "header",
+        "content": "Mobile layout"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Mobile top spacing",
+        "min": 0,
+        "max": 100,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Mobile bottom spacing",
+        "min": 0,
+        "max": 100,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "select",
+        "id": "small-image_alignment",
+        "label": "Small image alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "right"
+      },
+      {
+        "type": "header",
+        "content": "Advanced",
+        "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+      },
+      {
+        "type": "text",
+        "id": "css_class",
+        "label": "CSS Class"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_css",
+        "label": "Custom CSS"
+      }
+    ],
+    "blocks": [
+        {
+          "type": "list-block",
+          "name": "List",
+          "settings": [
+            {
+              "type": "html",
+              "id": "heading",
+              "label": "Heading"
+            },
+            {
+              "type": "html",
+              "id": "text_1",
+              "label": "Text 1"
+            },
+            {
+              "type": "html",
+              "id": "text_2",
+              "label": "Text 2"
+            },
+            {
+              "type": "html",
+              "id": "text_3",
+              "label": "Text 3"
+            },
+            {
+              "type": "image_picker",
+              "id": "icon",
+              "label": "Icon"
+            }
+          ]
+        },
+        {
+        "type": "button-block",
+        "name": "Button block",
+        "settings": [
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button label"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+          },
+          {
+            "type": "select",
+            "id": "button_style",
+            "label": "Button style",
+            "options": [
+              {
+                "value": "button--primary",
+                "label": "Primary"
+              },
+              {
+                "value": "button--secondary",
+                "label": "Secondary"
+              },
+              {
+                "value": "button--link-style",
+                "label": "Link style"
+              },
+              {
+                "value": "button--custom",
+                "label": "Custom"
+              }
+            ],
+            "default": "button--primary"
+          },
+          {
+            "type": "header",
+            "content": "Custom button style"
+          },
+          {
+            "type": "range",
+            "id": "button_custom_border_radius",
+            "label": "Border radius",
+            "min": 0,
+            "max": 50,
+            "default": 8,
+            "unit": "px"
+          },
+          {
+            "type": "color",
+            "id": "button_custom_bg_color",
+            "label": "Background"
+          },      
+          {
+            "type": "color",
+            "id": "button_custom_border_color",
+            "label": "Border"
+          },
+          {
+            "type": "color",
+            "id": "button_custom_text_color",
+            "label": "Text"
+          },
+          {
+            "type": "color",
+            "id": "button_custom_bg_color--highlight",
+            "label": "Background hover"
+          },
+          {
+            "type": "color",
+            "id": "button_custom_border_color--highlight",
+            "label": "Border hover"
+          },
+          {
+            "type": "color",
+            "id": "button_custom_text_color--highlight",
+            "label": "Text hover"
+          }
+        ],
+        },
+        {
+          "type": "slide",
+          "name": "Slide",
+          "limit": 4,
+          "settings": [
+            {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+          },
+          {
+            "type": "image_picker",
+            "id": "mobile_image",
+            "label": "Mobile Image",
+          }, 
+          {
+            "type": "url",
+            "id": "video_link",
+            "label": "Video link",
+          },
+          {
+            "type": "url",
+            "id": "video_link_mobile",
+            "label": "Video link mobile",
+          },
+          ]
+        }
+    ],
+    "presets": [
+      {
+        "name": "List with image"
+      }
+    ]
+  }
+{% endschema %}

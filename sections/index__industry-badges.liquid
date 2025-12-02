@@ -1,0 +1,215 @@
+{% style %}
+
+
+  #shopify-section-{{ section.id }}  {
+    background: {{ section.settings.bg_color }};
+  }
+
+  .industry-badges__content {
+    padding: 28px 0px;
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+  }
+
+  .industry-badges_title {
+    white-space: nowrap;
+    display: inline-block;
+    {% if section.settings.icon != blank %}
+      margin-right: 38px;
+    {% endif %}
+    font-size: 34px;
+    color: {{ section.settings.text_color }};
+  }
+
+  .industry-badges_images {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+  }
+
+
+  .industry-badge_image {
+    height: 30px;
+    display: inline-block;
+    margin-right: 45px;
+  }
+
+  #industryImageWrapper {
+    display: flex;
+    white-space: nowrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .industry-badges__content__static {
+    display: flex;
+    align-items: center;
+    margin-right: 38px;
+  }
+
+  .industry-badge_icon__container {
+    height: 32px;
+    width: 32px;
+  }
+
+@media only screen and (max-width: 798px) {
+  .industry-badges_title {
+    white-space: wrap;
+    max-width: 150px;
+    min-width: 150px;
+  }
+}
+  
+  
+{% endstyle %}
+
+<div class='section industry-badges_outer'>
+
+    <div class="industry-badges__content">
+        <div class="industry-badges__content__static">
+          <div class='industry-badges_title'>{{ section.settings.text }}</div>
+          {% if section.settings.icon != blank %}
+            <div class="industry-badge_icon__container">
+               <img height="32" width="32" src="{{ section.settings.icon | img_url: 'master' }}" class="industry-badge_icon" />
+            </div>
+          {% endif %}
+        </div>
+        <div class='industry-badges_images' id='industryImageContainer'>
+          <div id="industryImageWrapper">
+            {% for block in section.blocks %}
+              <img src="{{ block.settings.image | img_url: 'master' }}" class="industry-badge_image" />
+            {% endfor %}
+          </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const container = document.getElementById('industryImageWrapper');
+  let images = Array.from(container.querySelectorAll('.industry-badge_image'));
+  let currentOffset = 0;
+  let shouldScroll = true;
+
+  function checkShouldScroll() {
+    let minImages = window.innerWidth >= 768 ? 6 : 6; // Assuming 768px as the breakpoint between mobile and desktop
+    shouldScroll = images.length >= minImages;
+    shouldScroll = true;
+  }
+  
+  let viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+  let speed = Math.max(1, viewportWidth / 1920) * 0.8; 
+
+  function getTotalWidth(el) {
+    return el.offsetWidth + parseInt(window.getComputedStyle(el).marginRight) + parseInt(window.getComputedStyle(el).marginLeft);
+  }
+  
+  function scrollImages() {
+    if (!shouldScroll) {
+      requestAnimationFrame(scrollImages);
+      if (viewportWidth < 768){
+         container.classList.add('industry-badge_container-no-scroll');
+          images.forEach((image) => {
+            image.classList.add('industry-badge_image-no-scroll');
+          });
+      }
+      return;
+    }
+
+    container.classList.remove('industry-badge_container-no-scroll');
+    images.forEach((image) => {
+      image.classList.remove('industry-badge_image-no-scroll');
+    });
+
+    currentOffset -= speed;
+    let firstImageWidth = getTotalWidth(images[0]);
+    
+    if (-currentOffset > firstImageWidth) {
+      currentOffset += firstImageWidth;
+      
+      // Detach the first image element and append it back to the container.
+      const firstImage = images.shift();
+      container.appendChild(firstImage);
+      
+      // Update the images array to match the new DOM state.
+      images.push(firstImage);
+    }
+    
+    container.style.transform = `translateX(${currentOffset}px)`;
+    requestAnimationFrame(scrollImages);
+  }
+
+  window.addEventListener('resize', function() {
+    viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+    speed = Math.max(1, viewportWidth / 1920);
+    checkShouldScroll(); // Check if we should scroll when the screen size changes
+  });
+
+  checkShouldScroll(); 
+  scrollImages();
+});
+
+
+
+
+</script>
+
+{% schema %}
+  {
+    "name": "Industry Badges",
+    "settings": [
+      {
+      "type": "color",
+      "label": "Background Color",
+      "id": "bg_color",
+      "default": "#efdacc"
+    },
+    {
+        "type": "image_picker",
+        "id": "icon",
+        "label": "Icon"
+    },
+    {
+      "type": "html",
+      "label": "Text",
+      "id": "text",
+      "default": "Trusted By Industry Leaders:"
+    },
+    {
+      "type": "color",
+      "label": "Text Color",
+      "id": "text_color",
+      "default": "#000000"
+    }
+    ],
+    "presets": [
+      {
+        "name": "Industry Badges",
+        "category": "Custom"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Badge"
+          }
+      ]
+    }
+    ]
+  }
+
+{% endschema %}

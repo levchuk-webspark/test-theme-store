@@ -1,0 +1,558 @@
+{% assign product_discount_value = product.metafields.custom.product_discount.value %}
+
+{% style %}
+  .product-thumbnail .icons {
+    {% if product.metafields.jadepuma.dosage == blank %}
+      margin-right: 0;
+    {% endif %}
+  }
+
+  :host-context(.feefo-product-stars-widget) .reviews-count {
+    display: none
+  }
+
+  .product-thumbnail .hide-price.panel-cell.price {
+    display: none;
+  }
+
+  .product-thumbnail .hide-price-border.panel-cell.buy,
+  .product-thumbnail .hide-price-border.panel-cell.buy a {
+    border-radius: 8px;
+  }
+
+  .product-{{product.id}}.product-discount {
+    {% if product_discount_value.background_color != blank %}
+      background-color: {{ product_discount_value.background_color }};
+    {% endif %}
+    {% if product_discount_value.text_color != blank %}
+      color: {{ product_discount_value.text_color }};
+    {% endif %}
+
+    border-radius: 5px;
+    font-size: 13px;
+    {% if product_discount_value.desktop_collection_font_size != blank %}
+      font-size: {{ product_discount_value.desktop_collection_font_size }}px;
+    {% endif %}
+    font-weight: 900;
+    padding: 4px 9px;
+
+    width: fit-content;
+    display: inline-block;
+    
+    margin-left: unset;
+  }
+  .subtitle.with-discount {
+    margin-bottom: unset;
+  }
+  .product-thumbnail__info-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .summary-panel__detailed-container {
+    display: flex;
+  }
+   .summary-panel__detailed-container__info {
+    display: flex;
+    width: 100%;
+  }
+  @media only screen and (max-width: 798px){
+    .product-{{product.id}}.product-discount {
+      {% if product_discount_value.mobile_collection_font_size != blank %}
+        font-size: {{ product_discount_value.mobile_collection_font_size }}px;
+      {% endif %}
+    }
+  }
+  @media only screen and (max-width: 600px){
+    {% if mobile_products_per_row == '2' %}
+      .product-thumbnail .summary-panel.summary-panel-detailed {
+        flex-direction: column;
+      }
+      .product-thumbnail .panel-cell.buy {
+        margin-left: unset;
+        margin-top: 7px;
+      }
+      .product-thumbnail .panel-cell.stats {
+        height: 38px;
+      }
+      .product-thumbnail .panel-cell.buy a {
+        height: 38px;
+      }
+      .product-thumbnail .panel-cell.buy.sold-out_button > span {
+        height: 38px;
+        display: flex;
+        align-items: center;
+      }
+      .product-thumbnail .panel-cell.price {
+        width: 100%;
+      }
+      .pagination {
+        margin-top: 12px;
+      }
+      .summary-panel__detailed-container__info {
+        width: 100%;
+        display: flex;
+      }    
+      .panel-cell.price.panel-cell-price_has-variants {
+        height: 38px;
+      }
+      .product-thumbnail > .top-box > .first-row {
+        flex-direction: column;
+      }
+      .product__thumbnail.has-padding-bottom {
+        padding-bottom: unset;
+        margin-bottom: 40px;
+      }
+      .product-thumbnail > .top-box > .first-row > .feefo-product-stars-widget {
+        margin-left: -12px;
+      }
+      {% endif %}
+    }
+    @media only screen and (max-width: 400px){
+      {% if mobile_products_per_row == '2' %}
+        .product-thumbnail .panel-cell.stats {
+          min-width: 50px;
+        }
+      {% endif %}
+    }
+    @media only screen and (max-width: 375px){
+      {% if mobile_products_per_row == '2' %}
+        .product-thumbnail .panel-cell.price {
+          min-width: 50px;
+        }
+      {% endif %}
+    }
+{% endstyle %}
+
+<div class="product-thumbnail">
+  {% if settings.display_vendor %}
+    <span class="product-thumbnail__vendor">{{ product.vendor }}</span>
+  {% endif %}
+  <div class="top-box">
+    <div class="first-row {% if article %} article-product-card-mobile{% endif %}">
+      <div class="product-thumbnail__category">{{ product.metafields.jadepuma.category }}</div>
+      <!-- TODO: uncomment this section when product catalogue will contain correct parrent-product-sku data -->
+      <!-- <div  class="feefo-product-stars-widget 1"  data-product-sku="{{product.variants.first.sku}}"  data-parent-product-sku="{{product.variants.first.sku}}"></div> -->
+      <!-- <div class="feefo-product-stars-widget" data-parent-product-sku="{{product.id}}"></div> -->
+
+    <!-- {% if product.id == 8174336213205 %}  <div class="feefo-product-stars-widget" data-parent-product-sku="44870038290645"></div>{% elsif product.id == 8174339653845 %}  <div class="feefo-product-stars-widget" data-parent-product-sku="44870057263317"></div>{% else %}
+      <div class="feefo-product-stars-widget" data-product-sku="{{product.variants.first.sku}}"></div>
+    {% endif %} -->
+
+    {% if product.id == 7396104044617 %}  
+      <div class="feefo-product-stars-widget" data-product-sku="SQ0960213,SQ9604110,SQ8719575,SQ9603360,SQ8710176,SQ0948111,SQ8660950"></div>
+    {% elsif product.id == 7396104306761 %}  
+      <div class="feefo-product-stars-widget" data-product-sku="SQ0960213,SQ9604110,SQ8719575,SQ9603360,SQ8710176,SQ0948111,SQ8660950"></div>
+    {% elsif product.id == 7396104798281 %}  
+      <div class="feefo-product-stars-widget" data-product-sku="SQ9960688,SQ9960770,SQ9960787,SQ9960671"></div>
+    {% else %}
+      <div class="feefo-product-stars-widget" data-product-sku="{{ product.variants.first.sku }}"></div>
+    {% endif %}
+    </div>
+
+    {% if hover_enabled %}
+      <span class="product-thumbnail__title">{{ product.title }}</span>
+    {% else %}
+      <a href="{{ product.url }}" class="product-thumbnail__title">
+        {% if product.metafields.jadepuma.short_title %}
+          {{ product.metafields.jadepuma.short_title }}
+        {% else %}
+          {{ product.title }}
+        {% endif %}
+        <div class="product-thumbnail__info-container">
+          {% if product.metafields.jadepuma.short_subtitle %}
+            <span class="subtitle {% if product_discount_value.discount_text != blank %}with-discount{% endif %}">{{ product.metafields.jadepuma.short_subtitle }}</span>
+          {% endif %}
+          {% if product_discount_value.discount_text != blank %}
+            <span class="product-{{product.id}} product-discount">{{ product_discount_value.discount_text }}</span>
+          {% endif %}
+        </div>
+      </a>
+    {% endif %}
+  </div>
+
+  {% style %}
+    .summary-panel-detailed-mobile {
+      display: none;
+    }
+
+    .product-thumbnail__title {
+      display: flex;
+      flex-direction: column;
+    }
+
+    @media only screen and (max-width: 480px) {
+      .product-thumbnail__title {
+        font-size: 21px;
+        /* display: inline-block; */
+      }
+      .subtitle {
+        font-size: 12px;
+      }
+
+      .first-row .product-thumbnail__category {
+        font-size: 14px;
+      }
+      .compare-at-price {
+      ;
+      /* display: block; */
+    }
+    /* .summary-panel-detailed {
+      display: none !important;
+    }
+    .summary-panel-detailed-mobile {
+      display: block;
+      margin-bottom: 10px;
+    } */
+    .summary-panel-detailed-mobile .hide-price.product-thumbnail__price {
+      display: none;
+    }
+    .summary-panel-detailed-mobile .product-thumbnail__price {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .product-thumbnail .top-box {
+      height: unset;
+      margin-bottom: 5px;
+    }
+    .discount_promo_collection_bottom {
+      font-size: 12px !important;
+    }
+
+    /* .view_product_thumbnail-button {
+      display: block;
+    } */
+    :lang(de) .view_product_thumbnail-button a {
+      font-size: 12px;
+    }
+    :lang(fr) .view_product_thumbnail-button a {
+      font-size: 9px;
+    }
+    :lang(es) .view_product_thumbnail-button a {
+      font-size: 10px;
+    }
+    :lang(it) .view_product_thumbnail-button a {
+      font-size: 10px;
+    }
+
+    .view_product_thumbnail-button-sold-out {
+      background-color: #bfbfbf;
+      color: #FFFFFF;
+      border-radius: 5px;
+      font-size: 14px;
+      min-height: 30px;
+      height: 30px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  {% endstyle %}
+
+  <div class="summary-panel-detailed-mobile">
+
+    <span class="{% if section.settings.hide-price and article %}hide-price {% endif %}product-thumbnail__price price {% if product.compare_at_price_max > product.price %}sale{% endif %}">
+      {% if product.price_varies and product.price_min > 0 %}
+        <small>
+          <em>{{ 'products.general.from' | t }}</em>
+        </small>
+      {% endif %}
+      {% if product.compare_at_price > product.price %}
+        {% unless product.price_varies and product.price_min > 0 %}
+          <span class="product-thumbnail__was-price compare-at-price">
+            <span class="money">
+              {%
+                render 'price-element'
+                , price: product.compare_at_price
+                ,
+              %}
+            </span>
+          </span>
+        {% endunless %}
+      {% endif %}
+      {% if product.price_min > 0 %}
+        <span class="money product-thumbnail__sale-price">
+          {%
+            render 'price-element'
+            , price: product.price_min
+          %}
+        </span>
+      {% else %}
+        {{ settings.free_price_text }}
+      {% endif %}
+    </span>
+    {% if settings.select_first_available_variant %}
+      {%- assign variant_for_unit_price = product.variants | sort: 'price' | first -%}
+      {%
+        render 'unit-price'
+        , item: variant_for_unit_price
+        , class: 'product-thumbnail__unit-price'
+      %}
+    {% endif %}
+
+    <span class="product-thumbnail__price_google-discount price {% if product.compare_at_price_max > product.price %}sale{% endif %}">
+
+      {% assign google_discount_value = 100 | minus: settings.google_discount_percentage | times: 0.01 %}
+
+      {% if product.price_varies and product.price_min > 0 %}
+        <small>
+          <em>{{ 'products.general.from' | t }}</em>
+        </small>
+      {% endif %}
+
+
+      {% assign google_discount_compare_price = product.price | times: google_discount_value %}
+
+      {% unless product.price_varies and product.price_min > 0 %}
+        <span class="product-thumbnail__was-price compare-at-price">
+          <span class="money">
+            {%
+              render 'price-element'
+              , price: product.price
+              ,
+            %}
+          </span>
+        </span>
+      {% endunless %}
+
+
+      {% assign google_discount_price_min = product.price_min | times: google_discount_value %}
+
+      {% if product.price_min > 0 %}
+        <span class="money product-thumbnail__sale-price" style="margin-left:5px; display: inline !important;">
+          {%
+            render 'price-element'
+            , price: google_discount_price_min
+          %}
+        </span>
+      {% else %}
+        {{ settings.free_price_text }}
+      {% endif %}
+
+    </span>
+
+
+  </div>
+
+
+  <div class="summary-panel summary-panel-detailed">
+
+    {% if mobile_products_per_row == '2' %}
+    <div class="summary-panel__detailed-container">
+  {% endif %}
+      {% if mobile_products_per_row == '2' %}
+        <div class="summary-panel__detailed-container__info">
+      {% endif %}
+
+
+    <div class="panel-cell stats" style="{% unless product.has_only_default_variant %} display:none; {% endunless %}">
+      <div class="icons">
+        {% if product.metafields.jadepuma.format == 'Capsules' %}
+          <!-- <img
+            src="https://cdn.shopify.com/s/files/1/0469/8905/0019/files/icon-pill.png?v=1695846845"
+            alt="icon"
+            loading="lazy"> -->
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11.1625 1.81907C10.0704 0.726977 8.31096 0.726977 7.21886 1.81907L1.81907 7.21886C0.726977 8.31096 0.726977 10.0704 1.81907 11.1625C2.91116 12.2546 4.67065 12.2546 5.76274 11.1625L11.1625 5.76274C12.2546 4.67065 12.2546 2.91116 11.1625 1.81907Z" stroke="#3F4444" stroke-miterlimit="10"/>
+              <path d="M4.51953 4.51953L8.4632 8.4632" stroke="#3F4444" stroke-miterlimit="10"/>
+            </svg>
+
+
+        {% elsif product.metafields.jadepuma.format == 'Ketone' %}
+          <img
+            src="https://cdn.shopify.com/s/files/1/0469/8905/0019/files/Capsule-icon.png?v=1695341783"
+            alt="icon"
+            loading="lazy">
+        {% elsif product.metafields.jadepuma.format == 'Liquid' %}
+          <!-- <img
+            src="https://cdn.shopify.com/s/files/1/0469/8905/0019/files/icon-drop.png?v=1700064760"
+            alt="icon"
+            loading="lazy"> -->
+          <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.5 8C7.5 9.933 5.933 11.5 4 11.5C2.067 11.5 0.5 9.933 0.5 8C0.5 7.56128 0.709315 6.86917 1.08277 6.01914C1.4472 5.18963 1.937 4.27663 2.4325 3.42246C2.92705 2.56993 3.42231 1.78449 3.79433 1.21167C3.86811 1.09806 3.93699 0.9929 4 0.897324C4.06301 0.9929 4.13189 1.09806 4.20567 1.21167C4.57769 1.78449 5.07295 2.56993 5.5675 3.42246C6.063 4.27663 6.5528 5.18963 6.91723 6.01914C7.29068 6.86917 7.5 7.56128 7.5 8Z" stroke="black"/>
+          </svg>
+
+        {% elsif product.metafields.jadepuma.format == 'Powder' %}
+          <!-- <img
+            src="https://cdn.shopify.com/s/files/1/0469/8905/0019/files/icon-powder.png?v=1695846845"
+            alt="icon"
+            loading="lazy"> -->
+            <svg width="20" height="11" viewBox="0 0 20 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 1L20 1" stroke="black" stroke-miterlimit="10"/>
+              <path d="M7.93359 1H17.2236V9.81584C17.2236 10.0793 17.0129 10.29 16.7494 10.29H8.40775C8.14433 10.29 7.93359 10.0793 7.93359 9.81584V1Z" stroke="black" stroke-miterlimit="10"/>
+              <path d="M13.9336 3.94922H16.9336" stroke="black" stroke-miterlimit="10"/>
+              <path d="M13.9336 6.97266H16.9336" stroke="black" stroke-miterlimit="10"/>
+            </svg>
+
+        {% elsif product.metafields.jadepuma.format == 'Softgels' %}
+          <!-- <img
+            src="https://cdn.shopify.com/s/files/1/0469/8905/0019/files/icon-softgell.png?v=1700064759"
+            alt="icon"
+            loading="lazy"> -->
+
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8.64008 8.88046C11.3303 6.19028 12.353 2.85135 10.9244 1.42277C9.49583 -0.0058145 6.15691 1.01692 3.46672 3.70711C0.776532 6.3973 -0.246202 9.73622 1.18238 11.1648C2.61096 12.5934 5.94989 11.5707 8.64008 8.88046Z" stroke="black" stroke-miterlimit="10"/>
+          </svg>
+
+          {% elsif product.metafields.jadepuma.format == 'Sachet' %}
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12.8451 4.9123C11.8725 3.93548 13.3992 -0.402973 11.5427 1.45944L1.09509 11.9698C0.951095 12.1144 0.973249 12.3747 1.14383 12.5483L5.43052 16.8539C5.60332 17.0274 5.8603 17.0497 6.00651 16.9028L16.5631 6.29924C18.4195 4.4346 13.8198 5.88912 12.8451 4.9123Z" stroke="#3F4444" stroke-miterlimit="10"/>
+            </svg>
+
+        {% elsif product.metafields.jadepuma.format == 'Bundle' %}
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.5 1L7.5 14" stroke="#3F4444" stroke-linecap="round"/>
+            <path d="M14 7.5L1 7.5" stroke="#3F4444" stroke-linecap="round"/>
+          </svg>
+        {% else %}
+          <!-- <img
+            src="https://cdn.shopify.com/s/files/1/0469/8905/0019/files/icon-pill.png?v=1695846845"
+            alt="icon"
+            loading="lazy"> -->
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11.1625 1.81907C10.0704 0.726977 8.31096 0.726977 7.21886 1.81907L1.81907 7.21886C0.726977 8.31096 0.726977 10.0704 1.81907 11.1625C2.91116 12.2546 4.67065 12.2546 5.76274 11.1625L11.1625 5.76274C12.2546 4.67065 12.2546 2.91116 11.1625 1.81907Z" stroke="#3F4444" stroke-miterlimit="10"/>
+              <path d="M4.51953 4.51953L8.4632 8.4632" stroke="#3F4444" stroke-miterlimit="10"/>
+            </svg>
+        {% endif %}
+      </div>
+    </div>
+    <div class="{% if section.settings.hide-price and article %}hide-price {% endif %}panel-cell price {% if product.price_varies %} panel-cell-price_has-variants {% endif %}" style="flex-direction: column;">
+
+      <span class="product-thumbnail__price price {% if product.compare_at_price_max > product.price %}sale{% endif %}">
+        {% if product.price_varies and product.price_min > 0 %}
+          <small>
+            <em>{{ 'products.general.from' | t }}</em>
+          </small>
+        {% endif %}
+        {% if product.price_min > 0 %}
+          <span class="money product-thumbnail__sale-price">
+            {%
+              render 'price-element'
+              , price: product.price_min
+            %}
+          </span>
+        {% else %}
+          {{ settings.free_price_text }}
+        {% endif %}
+        {% if product.compare_at_price > product.price %}
+          {% unless product.price_varies and product.price_min > 0 %}
+            <span class="product-thumbnail__was-price compare-at-price">
+              <span class="money">
+                {%
+                  render 'price-element'
+                  , price: product.compare_at_price
+                  ,
+                %}
+              </span>
+            </span>
+          {% endunless %}
+        {% endif %}
+      </span>
+
+      <span class="product-thumbnail__price_google-discount price {% if product.compare_at_price_max > product.price %}sale{% endif %}">
+
+        {% assign google_discount_value = 100 | minus: settings.google_discount_percentage | times: 0.01 %}
+
+        {% if product.price_varies and product.price_min > 0 %}
+          <small>
+            <em>{{ 'products.general.from' | t }}</em>
+          </small>
+        {% endif %}
+
+        {% assign google_discount_price_min = product.price_min | times: google_discount_value %}
+
+        {% if product.price_min > 0 %}
+          <span class="money product-thumbnail__sale-price">
+            {%
+              render 'price-element'
+              , price: google_discount_price_min
+            %}
+          </span>
+        {% else %}
+          {{ settings.free_price_text }}
+        {% endif %}
+
+        {% assign google_discount_compare_price = product.price | times: google_discount_value %}
+
+        {% unless product.price_varies and product.price_min > 0 %}
+          <span class="product-thumbnail__was-price compare-at-price">
+            <span class="money">
+              {%
+                render 'price-element'
+                , price: product.price
+                ,
+              %}
+            </span>
+          </span>
+        {% endunless %}
+      </span>
+
+
+      {% if settings.select_first_available_variant %}
+        {%- assign variant_for_unit_price = product.variants | sort: 'price' | first -%}
+        {%
+          render 'unit-price'
+          , item: variant_for_unit_price
+          , class: 'product-thumbnail__unit-price'
+        %}
+      {% endif %}
+
+  </div>
+              {% if mobile_products_per_row == '2' %}
+                </div>
+              {% endif %}
+    {% comment %} Checking for preorder {% endcomment %}
+    {% assign displayPreorderMetafield = false %}
+    {% for v in product.variants %}
+      {% unless v.inventory_quantity >= 0 or v.inventory_policy == "deny" %}
+        {% if product.metafields.jadepuma.preorder_button_text != blank and product.metafields.jadepuma.preorder_message != blank %}
+          {% assign displayPreorderMetafield = true %}
+          {% break %}
+        {% endif %}
+      {% endunless %}
+    {% endfor %}
+
+    {% if mobile_products_per_row == '2' %} </div> {% endif %}
+
+
+    <div class="{% if product.has_only_default_variant %}{% elsif section.settings.hide-price and article %}hide-price-border {% endif %}panel-cell buy {% if product.available == false %}sold-out_button{% endif %}">
+
+      {% if displayPreorderMetafield %}
+        <a href="/cart/add/{{ product.selected_or_first_available_variant.id }}" rel="nofollow">
+          ADD TO CART
+        {% comment %}{{ 'collections.general.pre_order' | t | upcase}}{% endcomment %}
+        </a>
+      {% elsif collection_handles contains 'coming-soon' %}
+        {% if settings.stickers_enabled == false %}
+          {{ 'collections.general.coming_soon' | t }}
+        {% endif %}
+      {% elsif product.available == false %}
+        <span class="">
+          {{ 'collections.general.sold_out' | t }}
+        </span>
+      {% else %}
+        {% if product.has_only_default_variant %}
+          <a href="/cart/add/{{ product.selected_or_first_available_variant.id }}" rel="nofollow">ADD TO CART</a>
+        {% else %}
+          <a href="{{ product.url }}">VIEW OPTIONS</a>
+        {% endif %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<div class="summary-panel view_product_thumbnail-button">
+  {% if product.available == false %}
+    <span class="view_product_thumbnail-button-sold-out">
+      {{ 'collections.general.sold_out' | t }}
+    </span>
+  {% else %}
+      {% if product.has_only_default_variant %}
+        <a href="/cart/add/{{ product.selected_or_first_available_variant.id }}" rel="nofollow">ADD TO CART</a>
+      {% else %}
+        <a href="{{ product.url }}">VIEW OPTIONS</a>
+      {% endif %}
+  {% endif %}
+</div>

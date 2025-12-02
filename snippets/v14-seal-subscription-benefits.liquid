@@ -1,0 +1,430 @@
+{% assign product_discount = product.metafields.custom.product_discount.value %}
+{% assign product_buy_and_save = product.metafields.custom.product_buy_and_save.value %}
+
+
+{% style %}
+
+  .seal-row {
+    display: flex;
+    align-items: center;
+
+    box-sizing: border-box;
+  }
+
+  .product__subscription__benefits {
+    display: none;
+    border-radius: 5px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding: 16px 23px;
+    padding-bottom: 16px !important;
+    padding-bottom: unset;
+    justify-items: start;
+    gap: 7px;
+    color: {{ block.settings.text_color }};
+    background-color: {{ block.settings.background_color_inactive }};
+
+    position: relative;
+  }
+
+   .sls-option-container.seal-table.sls-active > ul.product__subscription__benefits {
+    background-color: {{ block.settings.background_color_active }};
+  }
+
+  .product__purchase-option-benefits__item__image-active {
+    display: none;
+  }
+
+  .product__purchase-option-benefits__item__image-inactive {
+    display: flex;
+  }
+
+  .product__purchase-option-benefits__item__image__info-icon {
+    min-width: 15px;
+    min-height: 15px;
+    width: 15px;
+    height: 15px;
+
+    position: absolute;
+    bottom: 23px;
+    right: 23px;
+    cursor: pointer;
+  }
+
+  .sls-option-container.seal-table.sls-active > ul.product__subscription__benefits > .product__purchase-option-benefits__item > .custom-image-element__wrap.image-element__wrap.product__purchase-option-benefits__item__image-active {
+    display: flex;
+  }
+
+  .sls-option-container.seal-table.sls-active > ul.product__subscription__benefits > .product__purchase-option-benefits__item > .custom-image-element__wrap.image-element__wrap.product__purchase-option-benefits__item__image-inactive {
+    display: none;
+  }
+
+  .product__purchase-option-benefits__item {
+    display: flex;
+    align-items: center;
+    gap: 6.5px;
+  }
+  
+  .product__purchase-option-benefits__item .image-element__wrap {
+    min-width: 17px;
+    min-height: 17px;
+    width: 17px;
+    height: 17px;
+  }
+
+  .product__purchase-option-benefits__item__text {
+    font-size: 14px;
+    line-height: 1;
+  }
+
+  .no-subscription-price-display-prices {
+    display: flex;
+  }
+
+  .product-discount {
+    {% if product_discount.background_color != blank %}
+      background-color: {{ product_discount.background_color }};
+    {% endif %}
+    {% if product_discount.text_color != blank %}
+      color: {{ product_discount.text_color }};
+    {% endif %}
+
+    border-radius: 5px;
+    font-size: 13px;
+    {% if product_discount.desktop_product_page_font_size != blank %}
+        font-size: {{ product_discount.desktop_product_page_font_size }}px;
+      {% endif %}
+    font-weight: 900;
+    padding: 4px 9px;
+
+    width: fit-content;
+    margin-left: 2.5em;
+  } 
+
+  .product_buy_and_save_container {
+    display: none;
+    gap: 8px;
+    margin-top: 9px;
+  }
+
+  .product_buy_and_save_item {
+    padding: 8px 11px;
+    border-radius: 5px;
+    color: {{ product_buy_and_save.text_color }};
+    background-color: {{ product_buy_and_save.background_color }};
+    font-size: {{ product_buy_and_save.font_size }}px;
+    font-weight: 900;
+    line-height: 1;
+  }
+
+
+  @media screen and (max-width:798px) {
+
+    .sls-option-container.seal-table .product__subscription__benefits {
+      display: none;
+    }
+    
+    .sls-option-container.seal-table.sls-active .product__subscription__benefits {
+      display: grid;
+      grid-template-columns: 1fr;
+      /* grid-template-rows: repeat(4, 1fr); */
+      align-items: center;
+      justify-items: start;
+      justify-content: start;
+    }
+
+    .product-discount {
+      font-size: 8px;
+      {% if product_discount.mobile_product_page_font_size != blank %}
+        font-size: {{ product_discount.mobile_product_page_font_size }}px;
+      {% endif %}
+      padding: 3px 6px; 
+      display: inline-block;
+
+      margin-left: 40px;
+    }
+
+    .product_buy_and_save_container {
+      gap: 6px;
+    }
+
+    .product_buy_and_save_item {
+      padding: 6px;
+      font-size: {{ product_buy_and_save.mobile_font_size }}px;
+      text-align: center;
+    }
+    
+  }
+  
+{% endstyle %}
+{% comment %}
+  14 sachet subscription
+{% endcomment %}
+<ul class="product__subscription__benefits">
+    {% if block.settings.subscription-benefit-1-title != blank %}
+      <li class="product__purchase-option-benefits__item">
+        {%- if block.settings.subscription-benefit-1-image != blank -%}
+           {%
+              render 'image-element',
+              image: block.settings.subscription-benefit-1-image,
+              alt: block.settings.subscription-benefit-1-image.alt,
+              additional_wrapper_classes: "product__purchase-option-benefits__item__image-active"
+            %}
+        {% endif %}
+      {%- if block.settings.subscription-benefit-1-image-inactive != blank -%}
+           {%
+              render 'image-element',
+              image: block.settings.subscription-benefit-1-image-inactive,
+              alt: block.settings.subscription-benefit-1-image-inactive.alt,
+              additional_wrapper_classes: "product__purchase-option-benefits__item__image-inactive"
+            %}
+        {% endif %}
+        <span class="product__purchase-option-benefits__item__text">{{ block.settings.subscription-benefit-1-title }}</span>
+      </li>
+    {% endif %}
+    {% if block.settings.subscription-benefit-2-title != blank %}
+      <li class="product__purchase-option-benefits__item">
+        {%- if block.settings.subscription-benefit-2-image != blank -%}
+           {%
+              render 'image-element',
+              image: block.settings.subscription-benefit-2-image,
+              alt: block.settings.subscription-benefit-2-image.alt,
+              additional_wrapper_classes: "product__purchase-option-benefits__item__image-active"
+            %}
+        {% endif %}
+        {%- if block.settings.subscription-benefit-2-image-inactive != blank -%}
+           {%
+              render 'image-element',
+              image: block.settings.subscription-benefit-2-image-inactive,
+              alt: block.settings.subscription-benefit-2-image-inactive.alt,
+              additional_wrapper_classes: "product__purchase-option-benefits__item__image-inactive"
+            %}
+        {% endif %}
+        <span class="product__purchase-option-benefits__item__text">{{ block.settings.subscription-benefit-2-title }}</span>
+      </li>
+    {% endif %}
+      {% if block.settings.subscription-benefit-3-title != blank %}
+      <li class="product__purchase-option-benefits__item">
+        {%- if block.settings.subscription-benefit-3-image != blank -%}
+           {%
+              render 'image-element',
+              image: block.settings.subscription-benefit-3-image,
+              alt: block.settings.subscription-benefit-3-image.alt,
+              additional_wrapper_classes: "product__purchase-option-benefits__item__image-active"
+            %}
+        {% endif %}
+        {%- if block.settings.subscription-benefit-3-image-inactive != blank -%}
+           {%
+              render 'image-element',
+              image: block.settings.subscription-benefit-3-image-inactive,
+              alt: block.settings.subscription-benefit-3-image-inactive.alt,
+              additional_wrapper_classes: "product__purchase-option-benefits__item__image-inactive"
+            %}
+        {% endif %}
+        <span class="product__purchase-option-benefits__item__text">{{ block.settings.subscription-benefit-3-title }}</span>
+      </li>
+    {% endif %}
+      {% if block.settings.subscription-benefit-4-title != blank %}
+      <li class="product__purchase-option-benefits__item">
+        {%- if block.settings.subscription-benefit-4-image != blank -%}
+           {%
+              render 'image-element',
+              image: block.settings.subscription-benefit-4-image,
+              alt: block.settings.subscription-benefit-4-image.alt,
+              additional_wrapper_classes: "product__purchase-option-benefits__item__image-active"
+            %}
+        {% endif %}
+        {%- if block.settings.subscription-benefit-4-image-inactive != blank -%}
+           {%
+              render 'image-element',
+              image: block.settings.subscription-benefit-4-image-inactive,
+              alt: block.settings.subscription-benefit-4-image-inactive.alt,
+              additional_wrapper_classes: "product__purchase-option-benefits__item__image-inactive"
+            %}
+        {% endif %}
+        <span class="product__purchase-option-benefits__item__text">{{ block.settings.subscription-benefit-4-title }}</span>
+      </li>
+    {% endif %} 
+    {% if block.settings.subscription-benefit-info-icon != blank %}
+      <a href="https://www.sealsubscriptions.com/articles/how-subscriptions-work" target="_blank" rel="noopener noreferrer">
+        {%
+          render 'image-element',
+          image: block.settings.subscription-benefit-info-icon,
+          alt: block.settings.subscription-benefit-info-icon.alt,
+          additional_wrapper_classes: "product__purchase-option-benefits__item__image__info-icon"
+        %}
+      </a>
+    {% endif %}
+</ul>
+{% comment %}
+  28 sachet subscription
+{% endcomment %}
+<ul class="product__subscription__benefits">
+    {% if block.settings.subscription-benefit-1-title != blank %}
+      <li class="product__purchase-option-benefits__item">
+        {%- if block.settings.subscription-benefit-1-image != blank -%}
+           {%
+              render 'image-element',
+              image: block.settings.subscription-benefit-1-image,
+              alt: block.settings.subscription-benefit-1-image.alt,
+              additional_wrapper_classes: "product__purchase-option-benefits__item__image-active"
+            %}
+        {% endif %}
+        {%- if block.settings.subscription-benefit-1-image-inactive != blank -%}
+           {%
+              render 'image-element',
+              image: block.settings.subscription-benefit-1-image-inactive,
+              alt: block.settings.subscription-benefit-1-image-inactive.alt,
+              additional_wrapper_classes: "product__purchase-option-benefits__item__image-inactive"
+            %}
+        {% endif %}
+        <span class="product__purchase-option-benefits__item__text">{{ block.settings.subscription-benefit-1-title }}</span>
+      </li>
+    {% endif %}
+    {% if block.settings.subscription-benefit-2-title != blank %}
+      <li class="product__purchase-option-benefits__item">
+        {%- if block.settings.subscription-benefit-2-image != blank -%}
+           {%
+              render 'image-element',
+              image: block.settings.subscription-benefit-2-image,
+              alt: block.settings.subscription-benefit-2-image.alt,
+              additional_wrapper_classes: "product__purchase-option-benefits__item__image-active"
+            %}
+        {% endif %}
+        {%- if block.settings.subscription-benefit-2-image-inactive != blank -%}
+           {%
+              render 'image-element',
+              image: block.settings.subscription-benefit-2-image-inactive,
+              alt: block.settings.subscription-benefit-2-image-inactive.alt,
+              additional_wrapper_classes: "product__purchase-option-benefits__item__image-inactive"
+            %}
+        {% endif %}
+        <span class="product__purchase-option-benefits__item__text">{{ block.settings.subscription-benefit-2-title }}</span>
+      </li>
+    {% endif %}
+      {% if block.settings.subscription-benefit-3-title != blank %}
+      <li class="product__purchase-option-benefits__item">
+        {%- if block.settings.subscription-benefit-3-image != blank -%}
+           {%
+              render 'image-element',
+              image: block.settings.subscription-benefit-3-image,
+              alt: block.settings.subscription-benefit-3-image.alt,
+              additional_wrapper_classes: "product__purchase-option-benefits__item__image-active"
+            %}
+        {% endif %}
+        {%- if block.settings.subscription-benefit-3-image-inactive != blank -%}
+           {%
+              render 'image-element',
+              image: block.settings.subscription-benefit-3-image-inactive,
+              alt: block.settings.subscription-benefit-3-image-inactive.alt,
+              additional_wrapper_classes: "product__purchase-option-benefits__item__image-inactive"
+            %}
+        {% endif %}
+        <span class="product__purchase-option-benefits__item__text">{{ block.settings.subscription-benefit-3-title }}</span>
+      </li>
+    {% endif %}
+      {% if block.settings.subscription-benefit-4-title != blank %}
+      <li class="product__purchase-option-benefits__item">
+        {%- if block.settings.subscription-benefit-4-image != blank -%}
+           {%
+              render 'image-element',
+              image: block.settings.subscription-benefit-4-image,
+              alt: block.settings.subscription-benefit-4-image.alt,
+              additional_wrapper_classes: "product__purchase-option-benefits__item__image-active"
+            %}
+        {% endif %}
+        {%- if block.settings.subscription-benefit-4-image-inactive != blank -%}
+           {%
+              render 'image-element',
+              image: block.settings.subscription-benefit-4-image-inactive,
+              alt: block.settings.subscription-benefit-4-image-inactive.alt,
+              additional_wrapper_classes: "product__purchase-option-benefits__item__image-inactive"
+            %}
+        {% endif %}
+        <span class="product__purchase-option-benefits__item__text">{{ block.settings.subscription-benefit-4-title }}</span>
+      </li>
+    {% endif %} 
+    {% if block.settings.subscription-benefit-info-icon != blank %}
+      <a href="https://www.sealsubscriptions.com/articles/how-subscriptions-work" target="_blank" rel="noopener noreferrer">
+        {%
+          render 'image-element',
+          image: block.settings.subscription-benefit-info-icon,
+          alt: block.settings.subscription-benefit-info-icon.alt,
+          additional_wrapper_classes: "product__purchase-option-benefits__item__image__info-icon"
+        %}
+      </a>
+    {% endif %}
+</ul>
+
+<script>
+
+  // https://www.sealsubscriptions.com/articles/merchant-javascript-api-documentation
+    
+    document.addEventListener('sealsubs:subscription_widget_created', function(e) {
+		// Subscription widget was created
+
+       //14 sachet subscription 
+      const slsSubscriptionOptionContainer14 = document.getElementsByClassName("sls-option-container")[2];
+
+        if (slsSubscriptionOptionContainer14) {
+            const slsSubscriptionBenefitsList14 = document.getElementsByClassName("product__subscription__benefits")[0];
+ 
+            const subscriptionOptionFragment14 = document.createDocumentFragment();
+
+            subscriptionOptionFragment14.appendChild(slsSubscriptionBenefitsList14);
+            slsSubscriptionOptionContainer14.append(subscriptionOptionFragment14);
+            slsSubscriptionBenefitsList14.style.display = "grid";      
+        }
+     //28 sachet subscription 
+      const slsSubscriptionOptionContainer28 = document.getElementsByClassName("sls-option-container")[1];
+
+        if (slsSubscriptionOptionContainer28) {
+            const slsSubscriptionBenefitsList28 = document.getElementsByClassName("product__subscription__benefits")[1];
+ 
+            const subscriptionOptionFragment28 = document.createDocumentFragment();
+
+            subscriptionOptionFragment28.appendChild(slsSubscriptionBenefitsList28);
+            slsSubscriptionOptionContainer28.append(subscriptionOptionFragment28);
+            slsSubscriptionBenefitsList28.style.display = "grid";      
+        }
+
+      //One time purchase
+      const slsSubscriptionOptionContainer_0 = document.getElementsByClassName("sls-option-container")[0];
+      const productDiscount = {{ product_discount | json }};
+       if (slsSubscriptionOptionContainer_0 && productDiscount && productDiscount.discount_text) {
+         const discountFragmentNew = document.createDocumentFragment();
+
+          const discountElement = document.getElementsByClassName("product-discount")[0]
+          discountElement.style.display = "inline-flex";
+
+        const isMobileMedia = window.matchMedia("(max-width: 798px)");
+        if (isMobileMedia.matches) {
+          discountFragmentNew.appendChild(discountElement);
+          slsSubscriptionOptionContainer_0.append(discountFragmentNew); 
+        } else {
+          const oneTimePurchaseElement = slsSubscriptionOptionContainer_0.querySelectorAll(".sls-selling-plan-group-name")[0];
+          discountFragmentNew.appendChild(discountElement);
+          oneTimePurchaseElement.append(discountFragmentNew);
+        }
+      }
+
+      const productByAndSave = {{ product_buy_and_save | json }};
+      if (slsSubscriptionOptionContainer_0 && productByAndSave) {
+        const productByAndSaveFragmentNew = document.createDocumentFragment();
+
+        const productByAndSaveElement = document.getElementsByClassName("product_buy_and_save_container")[0];
+        productByAndSaveElement.style.display = "flex";
+
+        const isMobileMedia = window.matchMedia("(max-width: 798px)");
+        if (isMobileMedia.matches) {
+          productByAndSaveFragmentNew.appendChild(productByAndSaveElement);
+          slsSubscriptionOptionContainer_0.append(productByAndSaveFragmentNew);
+        } else {
+          const oneTimePurchaseElementForDiscount = slsSubscriptionOptionContainer_0;
+          productByAndSaveFragmentNew.appendChild(productByAndSaveElement);
+          oneTimePurchaseElementForDiscount.append(productByAndSaveFragmentNew);
+        } 
+      }
+	});
+  
+</script>

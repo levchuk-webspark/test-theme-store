@@ -1,0 +1,89 @@
+<style>
+  .header__link.header__orbe-selector {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-left: 30px;
+    margin-right: 30px;
+    gap: 8px;
+    cursor: pointer;
+  }
+  
+  .orbe-country-selector-span {
+    text-transform: none;
+  }
+
+  .mobile-menu__content .header__link.header__orbe-selector {
+    justify-content: flex-start;
+    margin-bottom: 10px;
+}
+
+  .orbe-country-selector-span {
+    font-size: 16px;
+    color: {{ settings.header_link_color }};
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .orbe-country-selector-span__arrow {
+    width: 8px;
+    height: 8px;
+    min-width: 8px;
+    min-height: 8px;
+    border-bottom: 2px solid {{ settings.header_link_color }};
+    border-right: 2px solid {{ settings.header_link_color }};
+    transform: rotate(45deg) translateY(-50%);
+  }
+
+  @media only screen and (max-width: 798px) {
+
+    .header__link.header__orbe-selector {
+      margin-top: 20px;
+    }
+        
+    .orbe-country-selector-span {
+      color: {{ settings.mobile_menu_link_color }};
+    }
+  
+    .orbe-country-selector-span__arrow {
+      border-bottom: 2px solid {{ settings.mobile_menu_link_color }};
+      border-right: 2px solid {{ settings.mobile_menu_link_color }};
+    }
+  }
+
+</style>
+<script>
+  function orbeOpenSelector(){
+    var element = document.querySelector('div[data-show-mobile-menu="true"]');
+    if (element) {element.click();}
+    orbito.openModal('md-app-embed__modal');
+  }
+</script>
+<span 
+  class="header__link header__orbe-selector" 
+  onclick="orbeOpenSelector()"
+>
+    <!-- <span class="orbe-country-selector orbe-flags-{{ localization.country.iso_code | downcase }}" style="
+        width: 19px;
+        height: 15px;
+        background-repeat: no-repeat;
+        background-size: contain;
+    ">
+    </span> -->
+    <!-- <span class="orbe-country-selector-span">
+      {{ localization.country.currency.iso_code }} ({{ localization.country.currency.symbol }}) / {{ localization.language.name | capitalize }}
+    </span> -->
+    <span class="orbe-country-selector-span">
+      <span>{{ localization.language.iso_code | upcase }}</span> 
+      <span>{{ localization.country.currency.symbol }}</span>  
+      <div class="orbe-country-selector-span__arrow"></div>
+    </span>
+  <span class="icon-caption hidden">Country and Language selector</span>
+</span>

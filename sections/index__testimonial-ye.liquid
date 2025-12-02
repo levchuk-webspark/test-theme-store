@@ -1,0 +1,966 @@
+{% style %}
+  #shopify-section-{{ section.id }} {
+    {% if template.name == 'product' and product.metafields.custom.product_testimonials.value.background_color %}
+        background-color: {{ product.metafields.custom.product_testimonials.value.background_color }};
+    {% else %}
+        background-color: {{ section.settings.background_color }};
+    {% endif %}
+
+    {% if section.settings.width == 'wide' %}
+      width: 100%;
+    {% endif %}
+  }
+
+  #shopify-section-{{ section.id }} .testimonials-ye {
+   padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+
+  }
+
+  .testimonials-ye {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .testimonials-ye__title {
+    font-size: 30px;
+    font-weight: normal;
+  }
+
+  #shopify-section-{{ section.id }} .testimonials-ye__title {
+    {% if template.name == 'product' and product.metafields.custom.product_testimonials.value.text_color %}
+        color: {{ product.metafields.custom.product_testimonials.value.text_color }};
+    {% else %}
+        color: {{ section.settings.title_color }};
+    {% endif %}
+  }
+
+  .carousel-{{ section.id }} {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .testimonials-ye .carousel-cell {
+    margin-right: 80px;
+    min-height: 100%;
+    display: flex;
+  }
+
+  .testimonials-ye__card {
+    height: 300px;
+    height: inherit;
+    padding: 16px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    font-size: 20px;
+    /* line-height: 28px; */
+  }
+
+  #shopify-section-{{ section.id }} .testimonials-ye__card {
+    width: {{ section.settings.card_width }}px;
+
+    align-items: {{ section.settings.card_alignment }};
+
+    {% if template.name == 'product' and product.metafields.custom.product_testimonials.value.text_color %}
+        color: {{ product.metafields.custom.product_testimonials.value.text_color }};
+        border-color: {{ product.metafields.custom.product_testimonials.value.text_color }};
+    {% else %}
+        color: {{ section.settings.card_text }};
+        border-color:  {{ section.settings.card_text }};
+    {% endif %}
+
+    {% if template.name == 'product' and product.metafields.custom.product_testimonials.value.background_color %}
+        background-color: {{ product.metafields.custom.product_testimonials.value.background_color }};
+    {% else %}
+        background-color: {{ section.settings.card_background }};
+    {% endif %}
+    
+    border: 1px solid;
+  }
+
+    #shopify-section-{{ section.id }} .testimonials-ye__card__descripion {
+    text-align: {{ section.settings.card_alignment }};
+  }
+
+  .testimonials-ye__card__author {
+    margin-top: 20px;
+  }
+  
+  .testimonials-ye__card__author__title,
+  .testimonials-ye__card__author__info {
+    {% if template.name == 'product' and product.metafields.custom.product_testimonials.value.text_color %}
+        color: {{ product.metafields.custom.product_testimonials.value.text_color }};
+    {% else %}
+        color: {{ section.settings.author_add_color }};
+    {% endif %}
+  }
+
+  .testimonials-ye__card__image {
+    width: 160px;
+    height: 210px;
+    position: absolute;
+    top: 24px;
+    right: -60px;
+    z-index: 1;
+  }
+
+  .testimonials-ye__card__image__wrapper {
+    width: 160px;
+    position: absolute;
+    top: 24px;
+    right: -60px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .testimonials-ye__card__image__wrapper > .testimonials-ye__card__image {
+      top: unset;
+      right: unset;
+      position: unset;
+    }
+
+  .testimonials-ye__card__image img {
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .flickity-button {
+    background-color: transparent;
+    border: 1px solid;
+
+    {% if template.name == 'product' and product.metafields.custom.product_testimonials.value.text_color %}
+        color: {{ product.metafields.custom.product_testimonials.value.text_color }};
+        border-color: {{ product.metafields.custom.product_testimonials.value.text_color }};
+    {% else %}
+        color: {{ section.settings.card_text }};
+        border-color:  {{ section.settings.card_text }};
+    {% endif %}
+    
+  }
+
+  #shopify-section-{{ section.id }} .flickity-button-icon {
+    {% if template.name == 'product' and product.metafields.custom.product_testimonials.value.text_color %}
+        fill: {{ product.metafields.custom.product_testimonials.value.text_color }};
+    {% else %}
+        fill: {{ section.settings.card_text }};
+    {% endif %}
+  }
+  
+  .testimonials-ye .flickity-prev-next-button {
+    top: -70px;
+    transform: translateY(0);
+    width: 19px;
+    height: 19px;
+    padding: 0;
+  }
+
+  .testimonials-ye .flickity-prev-next-button.previous {
+    left: unset;
+    right: 40px;
+  }
+
+    .testimonials-ye__nav-buttons {
+      display: flex;
+      justify-content: flex-end;
+      gap: 6px;
+    }
+
+    .testimonials-ye .flickity-button {
+      display: none;
+    }
+
+  .testimonials-ye__nav-buttons__prev,
+  .testimonials-ye__nav-buttons__next {
+    border: none;
+    background: none;
+    padding: 0;
+  }
+
+  .testimonials-ye__nav-buttons__prev:hover,
+  .testimonials-ye__nav-buttons__next:hover {
+    cursor: pointer;
+  }
+
+  .testimonials-ye__nav-buttons__prev .icon,
+  .testimonials-ye__nav-buttons__next .icon {
+    width: 26px;
+    height:26px;
+
+    {% if template.name == 'product' and product.metafields.custom.product_testimonials.value.text_color %}
+        color: {{ product.metafields.custom.product_testimonials.value.text_color }};
+    {% else %}
+        color: {{ section.settings.card_text }};
+    {% endif %}
+  }
+
+  .testimonials-ye__certificate-modal {
+    display: none;
+    position: fixed;
+    z-index: 999999 !important;
+    padding: 70px;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    max-height: 100%;
+    background: rgba(6, 32, 33, 0.5);
+    
+    justify-content: center;
+    align-items: center;
+
+    /* margin-left: auto;
+    margin-right: auto; */
+  }
+
+  .testimonials-ye__certificate-modal__content {
+
+    height: 100%;
+    width: 80%;
+    /* overflow: hidden; */
+    overflow-y: auto;
+    border-radius: 8px;
+    border: 1px solid black;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background: rgba(255, 255, 255);
+    box-shadow: -1px 4px 5px 0px rgba(0,0,0,0.75);
+  }
+
+  .testimonials-ye__certificate-modal__header {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    font-weight: 500;
+    font-size: 24px;
+
+    margin-bottom: 10px;
+  }
+
+  .testimonials-ye__certificate-modal__close {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .testimonials-ye__certificate-modal__close:hover {
+    border: 1px solid black;
+    cursor: pointer;
+  }
+  .testimonials-ye__certificate-modal__close:hover {
+    box-shadow: -1px 4px 5px 0px rgba(0,0,0,0.75);
+  }
+
+  .testimonials-ye__certificate-modal__close svg{
+    width: 24px;
+    height: 24px;
+    color: black;
+  }
+
+  .testimonials-ye__certificate-modal__close:hover svg {
+    color: black;
+  }
+
+  .testimonials-ye__certificate-modal__main {
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .testimonials-ye__certificate__main {
+    width: 100%;
+
+    height: 90%;
+    display: flex;
+    /* align-items: center; */
+    align-items: baseline;
+    justify-content: center;
+  }
+
+  .testimonials-ye__certificate__main > iframe {
+    height: 100%;
+  }
+  
+   .testimonials-ye__certificate-modal ::-webkit-scrollbar {
+      -webkit-appearance: none;
+      width: 2px;
+    }
+
+  .testimonials-ye__certificate-modal ::-webkit-scrollbar-thumb {
+      border-radius: 4px;
+      background-color: #dde2e3;
+      -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+    }
+
+  #shopify-section-{{ section.id }} .carousel-{{ section.id }}-documents .flickity-button {
+    display: flex;
+    
+  }
+
+  #shopify-section-{{ section.id }} .carousel-{{ section.id }}-documents > .flickity-button {
+    color: black;
+    border-color: black;
+    z-index: 9;
+  }
+
+  .testimonials-ye .carousel-{{ section.id }}-documents > .flickity-prev-next-button {
+    width: 24px;
+    height: 24px;
+  }
+
+  #shopify-section-{{ section.id }} .carousel-{{ section.id }}-documents > .flickity-button > .flickity-button-icon {
+    fill: black;
+  }
+
+  .testimonials-ye .carousel-{{ section.id }}-documents > .flickity-prev-next-button {
+    top: -38px;
+  }
+
+  .testimonials-ye__certificate-modal__nav-buttons {
+    position: absolute;
+    left: 50%;
+    top: 11px;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+
+  button.testimonials-ye__certificate-modal__nav-buttons__prev, button.testimonials-ye__certificate-modal__nav-buttons__next {
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+
+   button.testimonials-ye__certificate-modal__nav-buttons__prev:hover, button.testimonials-ye__certificate-modal__nav-buttons__next:hover {
+    box-shadow: -1px 4px 5px 0px rgba(0, 0, 0, 0.75);
+  }
+
+  button.testimonials-ye__certificate-modal__nav-buttons__prev > span.icon, button.testimonials-ye__certificate-modal__nav-buttons__next > span.icon {
+    margin-top: 4px;
+  }
+
+  .testimonials-ye__certificate-modal__certificate_document {
+    opacity: 0;
+    display: none;
+    transition: opacity 0.3s ease;
+  }
+
+   .testimonials-ye__certificate-modal__certificate_document.testimonials-ye__certificate-modal__certificate_document_visible {
+    opacity: 1;
+    display: block;
+  }
+
+  @media only screen and (max-width: 1440px) {
+      #shopify-section-{{ section.id }} .testimonials-ye__card {
+        width: 300px;
+      }
+  }
+
+  @media only screen and (max-width: 1200px) {
+    .testimonials-ye__certificate-modal__content {
+      padding: 20px 10px;
+      /* width: 95%; */
+    }
+  }
+
+  @media only screen and (max-width: 798px) {
+    /* #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      padding-left: 10px;
+      padding-right: 10px;
+    } */
+
+      #shopify-section-{{ section.id }} .testimonials-ye {
+        padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      padding-left: 10px;
+      padding-right: 10px;
+
+  }
+
+    .testimonials-ye__title {
+      max-width: 200px;
+      margin-bottom: 30px;
+    }
+
+    .testimonials-ye__card {
+      padding: 10px;
+      font-size: 14px;
+      /* line-height: 16px; */
+    }
+
+      #shopify-section-{{ section.id }} .testimonials-ye__card {
+        width: 220px;
+      }
+
+      .carousel-cell {
+        margin-right: 60px;
+      }
+
+      .testimonials-ye__card__image {
+        width: 90px;
+        height: 125px;
+        top: 16px;
+        right: -30px;
+      }
+
+    .testimonials-ye__card__image__wrapper {
+        width: 90px;
+        top: 16px;
+        right: -30px;
+    }
+
+    .testimonials-ye__card__image__wrapper > .testimonials-ye__card__image {
+      top: unset;
+      right: unset;
+      position: unset;
+    }
+    
+    .testimonials-ye .flickity-button {
+      display: none;
+    }
+
+    .testimonials-ye__nav-buttons {
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .testimonials-ye__certificate-modal {
+        padding: 24px;
+        padding-top: 90px;
+    }
+
+    .testimonials-ye__certificate-modal__content {
+      padding: 10px;
+      width: 100%;
+    }
+
+    .testimonials-ye__certificate-modal__close {
+        padding: 5px;
+    }
+
+    .testimonials-ye__certificate-modal__close svg{
+      width: 18px;
+      height: 18px;
+    }
+
+    button.testimonials-ye__certificate-modal__nav-buttons__prev:hover, button.testimonials-ye__certificate-modal__nav-buttons__next:hover {
+      box-shadow: none;
+    }
+
+  }
+
+    @media only screen and (max-width: 500px) {
+
+    .testimonials-ye__certificate-modal__header {
+      margin-bottom: 10px;
+    }
+  }
+
+    @media only screen and (min-width: 799px) {
+      .testimonials-ye__nav-buttons {
+        order: 2;
+        margin-bottom: 60px;
+      }
+
+      .carousel-{{ section.id }} {
+        order: 3;
+      }
+    }
+
+  {%
+    render 'css-loop',
+    css: section.settings.custom_css,
+    id: section.id,
+  %}
+{% endstyle %}
+
+
+
+
+{% if product.metafields.custom.product_testimonials %}
+
+    {% assign metaobject = product.metafields.custom.product_testimonials.value %}
+    {% assign show_certificates = metaobject.show_certificates %}
+    {% assign certificate_link = metaobject.certificate_link %}
+    {% assign certificate_link_2 = metaobject.certificate_link_2 %}
+    <section
+      class="
+        section
+        {{ section.settings.css_class }}
+  
+        testimonials-ye
+      "
+    >
+        {% if section.settings.title != blank %}
+            <p class="testimonials-ye__title">{{ section.settings.title }}</p>
+        {% endif %}
+      
+      <div class="carousel-{{ section.id }}">
+        {% if metaobject.description_1 != blank %}
+            {%  assign author_1 = metaobject.author_1 | replace: "[", "" | replace: "]", "" | replace: '"', "" | split: "," %}      
+            <div class="carousel-cell">
+                {% render 'testimonial__card', 
+                  description: metaobject.description_1,
+                  name: author_1[0],
+                  title: author_1[1],
+                  info: author_1[2],
+                  image: metaobject.image_1,
+                  card_id: "1",
+                  show_certificates: show_certificates,
+                  certificate_link: certificate_link,
+                  certificate_link_2: certificate_link_2,
+                  button_text: section.settings.button_text,
+                  button_background: section.settings.button_background,
+                  button_text_hover: section.settings.button_text_hover,
+                  button_background_hover: section.settings.button_background_hover
+                %}
+            </div>
+        {% endif %}
+        {% if metaobject.description_2 != blank %}
+            {%  assign author_2 = metaobject.author_2 | replace: "[", "" | replace: "]", "" | replace: '"', "" | split: "," %}
+            <div class="carousel-cell">
+                {% render 'testimonial__card', 
+                  description: metaobject.description_2,
+                  name: author_2[0],
+                  title: author_2[1],
+                  info: author_2[2],
+                  image: metaobject.image_2,
+                  card_id: "2"
+                %}
+            </div>
+        {% endif %}
+        {% if metaobject.description_3 != blank %}
+            {%  assign author_3 = metaobject.author_3 | replace: "[", "" | replace: "]", "" | replace: '"', "" | split: "," %}
+            <div class="carousel-cell">
+                {% render 'testimonial__card', 
+                  description: metaobject.description_3,
+                  name: author_3[0],
+                  title: author_3[1],
+                  info: author_3[2],
+                  image: metaobject.image_3,
+                  card_id: "3"
+                %}
+            </div>
+        {% endif %}
+        {% if metaobject.description_4 != blank %}
+            {%  assign author_4 = metaobject.author_4 | replace: "[", "" | replace: "]", "" | replace: '"', "" | split: "," %}
+            <div class="carousel-cell">
+                {% render 'testimonial__card', 
+                  description: metaobject.description_4,
+                  name: author_4[0],
+                  title: author_4[1],
+                  info: author_4[2],
+                  image: metaobject.image_4,
+                  card_id: "4"
+                %}
+            </div>
+        {% endif %}
+        {% if metaobject.description_5 != blank %}
+            {%  assign author_5 = metaobject.author_5 | replace: "[", "" | replace: "]", "" | replace: '"', "" | split: "," %}
+            <div class="carousel-cell">
+                {% render 'testimonial__card', 
+                  description: metaobject.description_5,
+                  name: author_5[0],
+                  title: author_5[1],
+                  info: author_5[2],
+                  image: metaobject.image_5,
+                  card_id: "5"
+                %}
+            </div>
+        {% endif %}
+        {% if metaobject.description_6 != blank %}
+            {%  assign author_6 = metaobject.author_6 | replace: "[", "" | replace: "]", "" | replace: '"', "" | split: "," %}
+            <div class="carousel-cell">
+                {% render 'testimonial__card', 
+                  description: metaobject.description_6,
+                  name: author_6[0],
+                  title: author_6[1],
+                  info: author_6[2],
+                  image: metaobject.image_6,
+                  card_id: "6"
+                %}
+            </div>
+        {% endif %}
+        {% if metaobject.description_7 != blank %}
+            {%  assign author_7 = metaobject.author_7 | replace: "[", "" | replace: "]", "" | replace: '"', "" | split: "," %}
+            <div class="carousel-cell">
+                {% render 'testimonial__card', 
+                  description: metaobject.description_7,
+                  name: author_7[0],
+                  title: author_7[1],
+                  info: author_7[2],
+                  image: metaobject.image_7,
+                  card_id: "7"
+                %}
+            </div>
+        {% endif %}
+        {% if metaobject.description_8 != blank %}
+            {%  assign author_8 = metaobject.author_8 | replace: "[", "" | replace: "]", "" | replace: '"', "" | split: "," %}
+            <div class="carousel-cell">
+                {% render 'testimonial__card', 
+                  description: metaobject.description_8,
+                  name: author_8[0],
+                  title: author_8[1],
+                  info: author_8[2],
+                  image: metaobject.image_8,
+                  card_id: "8"
+                %}
+            </div>
+        {% endif %}
+        {% if metaobject.description_9 != blank %}
+            {%  assign author_9 = metaobject.author_9 | replace: "[", "" | replace: "]", "" | replace: '"', "" | split: "," %}
+            <div class="carousel-cell">
+                {% render 'testimonial__card', 
+                  description: metaobject.description_9,
+                  name: author_9[0],
+                  title: author_9[1],
+                  info: author_9[2],
+                  image: metaobject.image_9,
+                  card_id: "9"
+                %}
+            </div>
+        {% endif %}
+        {% if metaobject.description_10 != blank %}
+            {%  assign author_10 = metaobject.author_10 | replace: "[", "" | replace: "]", "" | replace: '"', "" | split: "," %}
+            <div class="carousel-cell">
+                {% render 'testimonial__card', 
+                  description: metaobject.description_10,
+                  name: author_10[0],
+                  title: author_10[1],
+                  info: author_10[2],
+                  image: metaobject.image_10,
+                  card_id: "10"
+                %}
+            </div>
+        {% endif %}
+      </div>
+      <div class="testimonials-ye__nav-buttons">
+        <button class="testimonials-ye__nav-buttons__prev">
+          {% render 'icon', name: 'slider-left-arrow' %}  
+        </button>
+        <button class="testimonials-ye__nav-buttons__next">
+          {% render 'icon', name: 'slider-right-arrow' %} 
+        </button>
+      </div>
+
+  {% if certificate_link != blank %}
+    <div class="testimonials-ye__certificate-modal">
+              <div class="testimonials-ye__certificate-modal__content">
+                <div class="testimonials-ye__certificate-modal__header">
+                  {% if certificate_link_2 != blank %}
+                    <div class="testimonials-ye__certificate-modal__nav-buttons">
+                      <button disabled=true id="testimonials-ye__certificate-modal__nav-buttons__prev" class="testimonials-ye__certificate-modal__nav-buttons__prev">
+                        {% render 'icon', name: 'slider-left-arrow' %}  
+                      </button>
+                      <button id="testimonials-ye__certificate-modal__nav-buttons__next" class="testimonials-ye__certificate-modal__nav-buttons__next">
+                        {% render 'icon', name: 'slider-right-arrow' %} 
+                      </button>
+                    </div>
+                  {% endif %}
+                  <div class="testimonials-ye__certificate-modal__close">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5 19L19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M19 19L5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                </div>
+
+                <div class="testimonials-ye__certificate-modal__certificate_document testimonials-ye__certificate-modal__certificate_document_visible">
+                  <iframe class="carousel-cell" src="{{ certificate_link }}" width="100%" height="500px" style="border:none;">
+                    Your browser does not support PDFs. Download the PDF <a href="{{ certificate_link }}">here</a>.
+                  </iframe>
+                </div>
+
+                {% if certificate_link_2 != blank %}
+                  <div class="testimonials-ye__certificate-modal__certificate_document">
+                    <iframe class="carousel-cell"  src="{{ certificate_link_2 }}" width="100%" height="500px" style="border:none;">
+                      Your browser does not support PDFs. Download the PDF <a href="{{ certificate_link_2 }}">here</a>.
+                    </iframe>
+                  </div>
+                {% endif %}
+              </div>
+      </div>
+  {% endif %}
+    </section>
+
+{% endif %}
+
+{% comment %}JavaScript{% endcomment %}
+
+<script>
+  window.addEventListener('load', function() {
+
+    const testimonialsCarousel = document.querySelector('.carousel-{{ section.id }}');
+
+    if (testimonialsCarousel) {
+        const testimonialsFlickity = new Flickity( testimonialsCarousel, {
+            cellAlign: 'left',
+            contain: true,
+            groupCells: true,
+            wrapAround: true,
+            pageDots: false
+        });
+
+      
+        const testimonialsPrevButton = document.querySelector('.testimonials-ye__nav-buttons__prev');
+        const testimonialsNextButton = document.querySelector('.testimonials-ye__nav-buttons__next');
+    
+        if (testimonialsPrevButton) {
+          testimonialsPrevButton.addEventListener( 'click', function() {
+            testimonialsFlickity.previous();
+          });
+        }
+    
+        if (testimonialsNextButton) {
+          testimonialsNextButton.addEventListener( 'click', function() {
+            testimonialsFlickity.next( );
+          });
+        }
+    
+    }
+
+       
+  const certificateModalButtons = document.querySelectorAll(".testimonials-ye__card__report-button");
+  const certificateModal = document.querySelector(".testimonials-ye__certificate-modal");
+  const certificateModalContent = document.querySelector(".testimonials-ye__certificate-modal__content");
+  const certificateModalClose = document.querySelector(".testimonials-ye__certificate-modal__close");
+
+  if(!!certificateModalButtons.length && certificateModal) {
+
+    document.getElementById('lab-report-button').addEventListener('click', function() {
+      certificateModal.style.display = "flex";
+    });
+    
+      certificateModal.onclick = function() {
+        certificateModal.style.display = "none";
+      }
+    
+      certificateModalClose.onclick = function() {
+        certificateModal.style.display = "none";
+      }
+    
+      certificateModalContent.onclick = function(e) {
+          e.stopPropagation();
+      }
+  };
+
+   const documentNextButtons = document.getElementById("testimonials-ye__certificate-modal__nav-buttons__next"); 
+    const documentPrevButtons = document.getElementById("testimonials-ye__certificate-modal__nav-buttons__prev"); 
+    
+    documentNextButtons?.addEventListener('click', function() {
+      
+      const documents = document.querySelectorAll(".testimonials-ye__certificate-modal__certificate_document");
+      documents.forEach(document => {
+        document.classList.remove("testimonials-ye__certificate-modal__certificate_document_visible");
+      })
+      documents[1].classList.add("testimonials-ye__certificate-modal__certificate_document_visible");
+      documentNextButtons.disabled=true;
+      documentPrevButtons.disabled=false;
+    });
+
+    documentPrevButtons?.addEventListener('click', function() {
+      
+      const documents = document.querySelectorAll(".testimonials-ye__certificate-modal__certificate_document");
+      documents.forEach(document => {
+        document.classList.remove("testimonials-ye__certificate-modal__certificate_document_visible");
+      })
+      documents[0].classList.add("testimonials-ye__certificate-modal__certificate_document_visible");
+      documentNextButtons.disabled=false;
+      documentPrevButtons.disabled=true;
+    });
+  });
+</script>
+
+{% schema %}
+  {
+    "name": "Testimonials YE",
+    "class": "testimonials jsTestimonials",
+    "settings": [
+      {
+        "type": "html",
+        "id": "title",
+        "label": "Section title"
+      },
+      {
+        "type": "header",
+        "content": "Section"
+      },
+      {
+        "type": "select",
+        "id": "width",
+        "label": "Width",
+        "default": "standard",
+        "options": [
+          {
+            "value": "standard",
+            "label": "Standard"
+          },
+          {
+            "value": "wide",
+            "label": "Wide"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Top spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Bottom spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Section background color",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "color",
+        "id": "title_color",
+        "label": "Section title color",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "header",
+        "content": "Card"
+      },
+      {
+        "type": "range",
+        "id": "card_width",
+        "label": "Card width",
+        "min": 200,
+        "max": 400,
+        "step": 5,
+        "default": 300
+      },
+      {
+        "type": "select",
+        "id": "card_alignment",
+        "label": "Card alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          }
+        ],
+        "default": "left"
+      },
+      {
+        "type": "color",
+        "id": "card_text",
+        "label": "Card text color",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "color",
+        "id": "author_add_color",
+        "label": "Author additional info color",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "color",
+        "id": "card_background",
+        "label": "Card background color",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "color",
+        "id": "button_background",
+        "label": "Button background color",
+        "default": "#284734"
+      },
+      {
+        "type": "color",
+        "id": "button_text",
+        "label": "Button text color",
+        "default": "#d4d8d0"
+      },
+      {
+        "type": "color",
+        "id": "button_background_hover",
+        "label": "Button background color hover",
+        "default": "#78BE20"
+      },
+      {
+        "type": "color",
+        "id": "button_text_hover",
+        "label": "Button text color",
+        "default": "#EDF2E9"
+      },
+      {
+        "type": "header",
+        "content": "Mobile layout"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Mobile top spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Mobile bottom spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Advanced",
+        "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+      },
+      {
+        "type": "text",
+        "id": "css_class",
+        "label": "CSS Class"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_css",
+        "label": "Custom CSS"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Testimonials YE"
+      }
+    ]
+  }
+{% endschema %}

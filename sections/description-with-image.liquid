@@ -1,0 +1,1222 @@
+{% assign slides = section.blocks | where: 'type', 'slide' %}
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    background-color: {{ section.settings.background_color }};
+    color: {{ section.settings.text_color }};
+  }
+
+  #shopify-section-{{ section.id }} .description-with-image {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  .description-with-image__large-image-container-mobile {
+    display: none;
+  }
+
+  .description-with-image__large-image-container-desktop,
+  .description-with-image__large-image-container-mobile {
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+   .description-with-image__large-image-container-desktop img,
+    .description-with-image__large-image-container-mobile img {
+     object-fit: cover;
+    border-radius: 8px;
+      
+      /* height: 100%; */
+   }
+
+  .description-with-image__content {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .description-with-image__separator.description-with-image__icons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .description-with-image__separator.description-with-image__icons {
+    margin-right: 15px;
+  }
+
+   .description-with-image__separator.description-with-image__icons > .icon {
+    transform: rotate(90deg);
+  }
+
+  .description-with-image__separator.description-with-image__icons > .icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .description-with-image__description-container__top-row__text-block-heading {
+    font-size: 34px;
+    line-height: 1.1;
+
+    margin-bottom: 48px;
+  }
+
+  .description-with-image__content-main {
+    display: flex;
+
+    width: 60%;
+  }
+
+  .description-with-image__content-main-description-block {
+    display: flex;
+    gap: 30px;
+  }
+
+  .description-with-image__content-main-description-block__description {
+    font-size: 20px;
+    line-height: 1.1;
+
+    width: 50%;
+  }
+
+  .description-with-image__content-main-description-block__image-block > .custom-image-element__wrap.image-element__wrap > img {
+    object-fit: cover;
+    
+    border-radius: 8px;
+  }
+
+  .description-with-image__content-main-description-block__image-block {
+    margin-left: 48px;
+
+    /* height: 312px;
+    width: 247px; */
+  }
+
+  .description-with-image__content-main-description-block__image-block > .custom-image-element__wrap.image-element__wrap {
+    height: 312px;
+    width: 247px;
+  }
+
+  .description-with-image__content-main-description-block__image-block::before {
+    content: '';
+    
+    width: 181px;
+    height: 234px;
+
+    display: block;
+    border-radius: 8px;
+    border: 1px solid {{ section.settings.text_color }};
+
+    margin-left: -48px;
+    margin-bottom: -185px;
+  }
+
+  .description-with-image__content-main-description-block__image-and-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 30px;
+  }
+
+  .description-with-image__button {
+    display: flex;
+    align-self: end;
+  }
+
+  .description-with-image__large-image-container-desktop {
+    /* position: relative; */
+
+    /* height: 660px; */
+    height: 580px;
+
+    display: flex;
+  }
+
+  .description-with-image__large-image-container-desktop__icon {
+    position: absolute;
+
+    width: 246px;
+    height: 246px;
+    
+    bottom: 24px;
+    right: 24px;
+  }
+
+  .description-with-image__image-container {
+    position: relative;
+
+    width: 50%;
+  }
+
+  .description-with-image__separator.description-with-image__icons.description-with-image__icons__mobile {
+    display: none;
+  }
+
+   #shopify-section-{{ section.id }}  .carousel-cell.is-selected {
+     /* height: 100%; */
+   }
+
+  #shopify-section-{{ section.id }} .flickity-prev-next-button.previous, 
+  #shopify-section-{{ section.id }} .flickity-prev-next-button.next {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .flickity-page-dots {
+	counter-reset: a;
+    background-image: unset;
+     display: flex;
+    justify-content: center;
+    align-items: end;
+  }
+
+  #shopify-section-{{ section.id }} .flickity-page-dots {
+    bottom: 0;
+    height: 20%;
+    background: linear-gradient(360deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 56.45%);
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .flickity-page-dots .dot {
+    width: 19px;
+    height: 19px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid #f7f5f1;;
+    transform: rotate(-45deg);
+    color: #f7f5f1;
+    margin-bottom: 12px;
+  }
+  
+  #shopify-section-{{ section.id }} .flickity-page-dots .dot.is-selected {
+    border: 1px solid {{ section.settings.active_dot_color }};
+    border-bottom-color: transparent;
+    color: {{ section.settings.active_dot_color }};
+  }
+  
+   #shopify-section-{{ section.id }} .flickity-page-dots .dot::after {
+  	content: counter(a);
+  	counter-increment: a;
+    font-size: 12px;
+    font-weight: bold;
+    transform: rotate(45deg);
+  }
+
+  #shopify-section-{{ section.id }} .carousel-cell > img {
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .description-with-image__large-image-container-desktop .carousel-{{ section.id }},
+     #shopify-section-{{ section.id }} .description-with-image__large-image-container-desktop .carousel-{{ section.id }} .flickity-viewport,
+     #shopify-section-{{ section.id }} .description-with-image__large-image-container-desktop .carousel-{{ section.id }} .flickity-viewport .flickity-slider,
+     #shopify-section-{{ section.id }} .description-with-image__large-image-container-desktop .carousel-{{ section.id }} .flickity-viewport .flickity-slider .carousel-cell,
+    #shopify-section-{{ section.id }} .description-with-image__large-image-container-desktop .carousel-{{ section.id }} .flickity-viewport .flickity-slider .carousel-cell img {
+       height: 100%;
+            border-radius: 8px;
+     }
+
+      #shopify-section-{{ section.id }} .description-with-image__large-image-container-desktop .carousel-{{ section.id }} .flickity-viewport .flickity-slider .carousel-cell video,
+      #shopify-section-{{ section.id }} .description-with-image__large-image-container-desktop .carousel-{{ section.id }} .flickity-viewport .flickity-slider .carousel-cell video > source {
+        height: 100%;
+        border-radius: 8px;
+        object-fit: cover;
+      }
+
+  .description-with-image__content-main-block {
+    /* height: 100%; */
+  }
+
+  @media only screen and (max-width: 2560px) {
+    .description-with-image__content-main {
+      width: 58%;
+    }
+
+    .description-with-image__large-image-container-desktop__icon {
+      bottom: 32px;
+    }
+  }
+
+  @media only screen and (max-width: 1512px) { 
+    .description-with-image__content-main-description-block__description {
+      width: 52%
+    }
+
+    .description-with-image__large-image-container-desktop__icon {
+       bottom: 24px;
+    }
+  }
+
+  @media only screen and (max-width: 1440px) {
+    .description-with-image__separator.description-with-image__icons {
+      margin-right: 15px;
+    }
+
+    .description-with-image__content-main-description-block__description {
+      margin-right: 15px;
+    }
+
+    /* .description-with-image__large-image-container-desktop {
+      top: 100px;
+      overflow: hidden;
+      position: sticky;
+    } */
+
+    .description-with-image__content-main {
+      width: 50%;
+    }
+
+    .description-with-image__large-image-container-desktop__icon {
+      bottom: 24px;
+    }
+  }
+
+  @media only screen and (max-width: 1160px) {
+    .description-with-image__content {
+      flex-direction: column-reverse;
+    }
+
+    .description-with-image__content-main {
+      width: 100%;
+
+      margin-top: 25px;
+    }
+
+   .description-with-image__separator.description-with-image__icons.description-with-image__icons__desktop {
+      display: none;
+    }
+
+    .description-with-image__large-image-container-desktop__icon {
+      position: absolute;
+      bottom: 24px;
+      left: 47%;
+    }
+
+    .description-with-image__separator.description-with-image__icons > .icon:nth-of-type(1n+13),
+    .description-with-image__separator.description-with-image__icons > .icon__separtor:nth-of-type(1n+13) {
+      display: none;
+    }
+
+    .description-with-image__separator.description-with-image__icons.description-with-image__icons__mobile {
+      display: flex;
+    } 
+
+    .description-with-image__separator.description-with-image__icons {
+      margin-right: unset;
+    }
+
+    .custom-image-element__wrap.image-element__wrap.icon__separtor {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+   @media only screen and (max-width: 798px) {
+      #shopify-section-{{ section.id }} .description-with-image {
+        padding-top: {{ section.settings.padding_top_mobile }}px;
+        padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      } 
+     
+     .description-with-image__description-container__top-row__text-block-heading {
+       font-size: 24px;
+     }
+     
+     .description-with-image__large-image-container-mobile {
+      display: block;
+
+       height: 441px;
+    } 
+
+     #shopify-section-{{ section.id }} .description-with-image__large-image-container-mobile .carousel-{{ section.id }}-mobile,
+     #shopify-section-{{ section.id }} .description-with-image__large-image-container-mobile .carousel-{{ section.id }}-mobile .flickity-viewport,
+     #shopify-section-{{ section.id }} .description-with-image__large-image-container-mobile .carousel-{{ section.id }}-mobile .flickity-viewport .flickity-slider,
+     #shopify-section-{{ section.id }} .description-with-image__large-image-container-mobile .carousel-{{ section.id }}-mobile .flickity-viewport .flickity-slider .carousel-cell,
+    #shopify-section-{{ section.id }} .description-with-image__large-image-container-mobile .carousel-{{ section.id }}-mobile .flickity-viewport .flickity-slider .carousel-cell img {
+       height: 100%;
+     }
+
+      #shopify-section-{{ section.id }} .description-with-image__large-image-container-mobile .carousel-{{ section.id }}-mobile .flickity-viewport .flickity-slider .carousel-cell video,
+      #shopify-section-{{ section.id }} .description-with-image__large-image-container-mobile .carousel-{{ section.id }}-mobile .flickity-viewport .flickity-slider .carousel-cell video > source {
+        height: 100%;
+        border-radius: 8px;
+        object-fit: cover;
+      }
+
+     .description-with-image__large-image-container-desktop {
+      display: none;
+    }
+     
+    .description-with-image__content-main-description-block {
+      flex-direction: column;
+    }
+
+     .description-with-image__separator.description-with-image__icons {
+       margin-right: unset;
+     }
+
+    .description-with-image__content-main-description-block__description {
+      width: 105%;
+      margin-right: unset;
+
+      /* margin-top: 48px; */
+
+      font-size: 16px;
+    }
+
+     .description-with-image__content-main-description-block__image-and-button {
+       flex-direction: column-reverse;
+       align-items: center;
+     }
+
+    .description-with-image__content-main-description-block__image-block {
+      /* height: 273px;
+      width: 210px; */
+    }
+
+  .description-with-image__content-main-description-block__image-block > .custom-image-element__wrap.image-element__wrap {
+    height: 273px;
+    width: 210px;
+  }
+
+     .description-with-image__content-main-description-block__image-and-button {
+       gap: unset;
+     }
+
+     .description-with-image__button {
+       align-self: center;
+       
+        margin-left: 136px;
+        width: 146px;
+     }
+
+     .description-with-image__content-main-description-block__image-block {
+       margin-top: -72px;
+       margin-left: unset;
+     }
+
+     .description-with-image__separator.description-with-image__icons > .icon:nth-of-type(1n+10),
+     .description-with-image__separator.description-with-image__icons > .icon__separtor:nth-of-type(1n+10) {
+      display: none;
+    }
+
+     .description-with-image__large-image-container-desktop__icon {
+       width: 165px;
+       height: 165px;
+
+       position: relative;
+  
+        bottom: 40%;
+        left: 50%;
+     }
+   }
+
+   @media only screen and (max-width: 425px) { 
+     .description-with-image__separator.description-with-image__icons > .icon:nth-of-type(1n+11),
+     .description-with-image__separator.description-with-image__icons > .icon__separtor:nth-of-type(1n+11) {
+      display: none;
+    }
+
+     .description-with-image__content-main-description-block__image-and-button {
+       align-items: start;
+     }
+
+     .description-with-image__content-main-description-block__image-block {
+       margin-left: 48px;
+     }
+
+     .description-with-image__button {
+        margin-left: 64px;
+     }
+
+     
+     .description-with-image__large-image-container-desktop__icon {
+       position: relative;
+       
+        bottom: 180px;
+        left: 200px;
+     }
+   }
+
+   @media only screen and (max-width: 375px) { 
+    .description-with-image__button {
+      margin-left: 103px;
+    }
+     .description-with-image__large-image-container-desktop__icon {
+      left: 175px;
+     }
+   }
+
+   @media only screen and (max-width: 320px) { 
+     .description-with-image__large-image-container-desktop__icon {
+             left: 127px;
+     }
+   }
+{% endstyle %}
+
+<section
+  class="
+    section
+    {{ section.settings.css_class }}
+    description-with-image
+  "
+>
+  <div class="description-with-image__content">
+    <div class="description-with-image__content-main">
+      <div class="description-with-image__content-main-block"> 
+        {% if section.settings.heading != blank %}
+          <div class="description-with-image__description-container__top-row__text-block-heading">{{ section.settings.heading }}</div>
+        {% endif %}
+        <div class="description-with-image__content-main-description-block">
+          {% if section.settings.small-image != nil %}
+            <div class="description-with-image__content-main-description-block__image-and-button">
+              <div class="description-with-image__content-main-description-block__image-block">
+                {%
+                  render 'image-element',
+                  image: section.settings.small-image,
+                  alt: section.settings.small-image.alt
+                %}
+               </div>
+
+              {% for block in section.blocks %}
+                    {% if block.type == 'button-block' %}
+    
+                        {% if block.settings.button_label != blank %}
+                            {% style -%}
+                                
+                                .block--{{ block.id }}.description-with-image__button .button--custom {
+                                  border-radius: {{ block.settings.button_custom_border_radius | append: 'px' }};
+                                  border: 1px solid;
+                                  width: auto;
+                                  max-width: 100%;
+                                  white-space: normal;
+                                  overflow-wrap: normal;
+                                }
+                      
+                                .block--{{ block.id }}.description-with-image__button a.button--custom.button,
+                                .block--{{ block.id }}.description-with-image__button a.button--custom.button:link,
+                                .block--{{ block.id }}.description-with-image__button a.button--custom.button:visited {
+                                  background-color: {{ block.settings.button_custom_bg_color }};
+                                  color: {{ block.settings.button_custom_text_color }};
+                                  border-color: {{ block.settings.button_custom_border_color }};
+                                }
+                      
+                                .block--{{ block.id }}.description-with-image__button a.button--custom.button:hover,
+                                .block--{{ block.id }}.description-with-image__button a.button--custom.button.is-hovered {
+                                  color: {{ block.settings.button_custom_text_color--highlight }};
+                                  border-color: {{ block.settings.button_custom_border_color--highlight }};
+                                  background-color: {{ block.settings.button_custom_bg_color--highlight }};
+                                }
+
+                              .block--{{ block.id }}.description-with-image__button a.button--primary.button {
+                                padding-bottom: 10px;
+                                padding-top: 10px;
+                              }
+        
+                                @media only screen and (max-width: 389px) {
+                                  .block--{{ block.id }}.list-with-image__button .button--custom {
+                                    width: 230px;
+                                  }
+                                }
+              
+                      
+                            {%- endstyle -%}
+                            
+                              <div class="description-with-image__button block--{{ block.id }} description-with-image__button-mobile">
+                                <a href="{{ block.settings.button_link }}" class="button {{ block.settings.button_style }}">
+                                  {{ block.settings.button_label }}
+                                </a>
+                              </div>
+                        {% endif %}
+                      
+                    {% endif %}
+                
+              {% endfor %} 
+            </div>
+          {% endif %}
+          {% if section.settings.description != blank %}
+            <div class="description-with-image__content-main-description-block__description">{{ section.settings.description }}</div>
+          {% endif %}
+        </div>
+      </div>
+      {% if section.settings.icon-separator != blank %}
+      <div class="description-with-image__separator description-with-image__icons description-with-image__icons__mobile">
+          {% if section.settings.icon-separator != blank %}
+               {%
+                render 'image-element',
+                image: section.settings.icon-separator,
+                alt: section.settings.icon-separator.alt,
+                additional_wrapper_classes: "icon__separtor"
+              %}
+             {% else %}
+               {% render 'icon', name: 'read-more-left-arrow' %}
+             {% endif %}
+          {% if section.settings.icon-separator != blank %}
+               {%
+                render 'image-element',
+                image: section.settings.icon-separator,
+                alt: section.settings.icon-separator.alt,
+                additional_wrapper_classes: "icon__separtor"
+              %}
+             {% else %}
+               {% render 'icon', name: 'read-more-left-arrow' %}
+             {% endif %}
+          {% if section.settings.icon-separator != blank %}
+               {%
+                render 'image-element',
+                image: section.settings.icon-separator,
+                alt: section.settings.icon-separator.alt,
+                additional_wrapper_classes: "icon__separtor"
+              %}
+             {% else %}
+               {% render 'icon', name: 'read-more-left-arrow' %}
+             {% endif %}
+          {% if section.settings.icon-separator != blank %}
+               {%
+                render 'image-element',
+                image: section.settings.icon-separator,
+                alt: section.settings.icon-separator.alt,
+                additional_wrapper_classes: "icon__separtor"
+              %}
+             {% else %}
+               {% render 'icon', name: 'read-more-left-arrow' %}
+             {% endif %}
+          {% if section.settings.icon-separator != blank %}
+               {%
+                render 'image-element',
+                image: section.settings.icon-separator,
+                alt: section.settings.icon-separator.alt,
+                additional_wrapper_classes: "icon__separtor"
+              %}
+             {% else %}
+               {% render 'icon', name: 'read-more-left-arrow' %}
+             {% endif %}
+          {% if section.settings.icon-separator != blank %}
+               {%
+                render 'image-element',
+                image: section.settings.icon-separator,
+                alt: section.settings.icon-separator.alt,
+                additional_wrapper_classes: "icon__separtor"
+              %}
+             {% else %}
+               {% render 'icon', name: 'read-more-left-arrow' %}
+             {% endif %}
+          {% if section.settings.icon-separator != blank %}
+               {%
+                render 'image-element',
+                image: section.settings.icon-separator,
+                alt: section.settings.icon-separator.alt,
+                additional_wrapper_classes: "icon__separtor"
+              %}
+             {% else %}
+               {% render 'icon', name: 'read-more-left-arrow' %}
+             {% endif %}
+          {% if section.settings.icon-separator != blank %}
+               {%
+                render 'image-element',
+                image: section.settings.icon-separator,
+                alt: section.settings.icon-separator.alt,
+                additional_wrapper_classes: "icon__separtor"
+              %}
+             {% else %}
+               {% render 'icon', name: 'read-more-left-arrow' %}
+             {% endif %}
+          {% if section.settings.icon-separator != blank %}
+               {%
+                render 'image-element',
+                image: section.settings.icon-separator,
+                alt: section.settings.icon-separator.alt,
+                additional_wrapper_classes: "icon__separtor"
+              %}
+             {% else %}
+               {% render 'icon', name: 'read-more-left-arrow' %}
+             {% endif %}
+          {% if section.settings.icon-separator != blank %}
+               {%
+                render 'image-element',
+                image: section.settings.icon-separator,
+                alt: section.settings.icon-separator.alt,
+                additional_wrapper_classes: "icon__separtor"
+              %}
+             {% else %}
+               {% render 'icon', name: 'read-more-left-arrow' %}
+             {% endif %}
+          {% if section.settings.icon-separator != blank %}
+               {%
+                render 'image-element',
+                image: section.settings.icon-separator,
+                alt: section.settings.icon-separator.alt,
+                additional_wrapper_classes: "icon__separtor"
+              %}
+             {% else %}
+               {% render 'icon', name: 'read-more-left-arrow' %}
+             {% endif %}
+          {% if section.settings.icon-separator != blank %}
+               {%
+                render 'image-element',
+                image: section.settings.icon-separator,
+                alt: section.settings.icon-separator.alt,
+                additional_wrapper_classes: "icon__separtor"
+              %}
+             {% else %}
+               {% render 'icon', name: 'read-more-left-arrow' %}
+             {% endif %}
+          {% if section.settings.icon-separator != blank %}
+               {%
+                render 'image-element',
+                image: section.settings.icon-separator,
+                alt: section.settings.icon-separator.alt,
+                additional_wrapper_classes: "icon__separtor"
+              %}
+             {% else %}
+               {% render 'icon', name: 'read-more-left-arrow' %}
+             {% endif %}
+          {% if section.settings.icon-separator != blank %}
+               {%
+                render 'image-element',
+                image: section.settings.icon-separator,
+                alt: section.settings.icon-separator.alt,
+                additional_wrapper_classes: "icon__separtor"
+              %}
+             {% else %}
+               {% render 'icon', name: 'read-more-left-arrow' %}
+             {% endif %}
+          {% if section.settings.icon-separator != blank %}
+               {%
+                render 'image-element',
+                image: section.settings.icon-separator,
+                alt: section.settings.icon-separator.alt,
+                additional_wrapper_classes: "icon__separtor"
+              %}
+             {% else %}
+               {% render 'icon', name: 'read-more-left-arrow' %}
+             {% endif %}
+        </div>
+      {% endif %}
+    </div>
+    
+      <div class="description-with-image__image-container">
+         <div class="description-with-image__large-image-container-desktop">
+           {% if section.settings.icon-separator != blank %}
+           <div class="description-with-image__separator description-with-image__icons description-with-image__icons__desktop">
+             {% if section.settings.icon-separator != blank %}
+               {%
+                render 'image-element',
+                image: section.settings.icon-separator,
+                alt: section.settings.icon-separator.alt,
+                additional_wrapper_classes: "icon__separtor"
+              %}
+             {% else %}
+               {% render 'icon', name: 'read-more-left-arrow' %}
+             {% endif %}
+          {% if section.settings.icon-separator != blank %}
+               {%
+                render 'image-element',
+                image: section.settings.icon-separator,
+                alt: section.settings.icon-separator.alt,
+                additional_wrapper_classes: "icon__separtor"
+              %}
+             {% else %}
+               {% render 'icon', name: 'read-more-left-arrow' %}
+             {% endif %}
+          {% if section.settings.icon-separator != blank %}
+               {%
+                render 'image-element',
+                image: section.settings.icon-separator,
+                alt: section.settings.icon-separator.alt,
+                additional_wrapper_classes: "icon__separtor"
+              %}
+             {% else %}
+               {% render 'icon', name: 'read-more-left-arrow' %}
+             {% endif %}
+          {% if section.settings.icon-separator != blank %}
+               {%
+                render 'image-element',
+                image: section.settings.icon-separator,
+                alt: section.settings.icon-separator.alt,
+                additional_wrapper_classes: "icon__separtor"
+              %}
+             {% else %}
+               {% render 'icon', name: 'read-more-left-arrow' %}
+             {% endif %}
+          {% if section.settings.icon-separator != blank %}
+               {%
+                render 'image-element',
+                image: section.settings.icon-separator,
+                alt: section.settings.icon-separator.alt,
+                additional_wrapper_classes: "icon__separtor"
+              %}
+             {% else %}
+               {% render 'icon', name: 'read-more-left-arrow' %}
+             {% endif %}
+          {% if section.settings.icon-separator != blank %}
+               {%
+                render 'image-element',
+                image: section.settings.icon-separator,
+                alt: section.settings.icon-separator.alt,
+                additional_wrapper_classes: "icon__separtor"
+              %}
+             {% else %}
+               {% render 'icon', name: 'read-more-left-arrow' %}
+             {% endif %}
+          {% if section.settings.icon-separator != blank %}
+               {%
+                render 'image-element',
+                image: section.settings.icon-separator,
+                alt: section.settings.icon-separator.alt,
+                additional_wrapper_classes: "icon__separtor"
+              %}
+             {% else %}
+               {% render 'icon', name: 'read-more-left-arrow' %}
+             {% endif %}
+          {% if section.settings.icon-separator != blank %}
+               {%
+                render 'image-element',
+                image: section.settings.icon-separator,
+                alt: section.settings.icon-separator.alt,
+                additional_wrapper_classes: "icon__separtor"
+              %}
+             {% else %}
+               {% render 'icon', name: 'read-more-left-arrow' %}
+             {% endif %}
+          {% if section.settings.icon-separator != blank %}
+               {%
+                render 'image-element',
+                image: section.settings.icon-separator,
+                alt: section.settings.icon-separator.alt,
+                additional_wrapper_classes: "icon__separtor"
+              %}
+             {% else %}
+               {% render 'icon', name: 'read-more-left-arrow' %}
+             {% endif %}
+          {% if section.settings.icon-separator != blank %}
+               {%
+                render 'image-element',
+                image: section.settings.icon-separator,
+                alt: section.settings.icon-separator.alt,
+                additional_wrapper_classes: "icon__separtor"
+              %}
+             {% else %}
+               {% render 'icon', name: 'read-more-left-arrow' %}
+             {% endif %}
+          {% if section.settings.icon-separator != blank %}
+               {%
+                render 'image-element',
+                image: section.settings.icon-separator,
+                alt: section.settings.icon-separator.alt,
+                additional_wrapper_classes: "icon__separtor"
+              %}
+             {% else %}
+               {% render 'icon', name: 'read-more-left-arrow' %}
+             {% endif %}
+          {% if section.settings.icon-separator != blank %}
+               {%
+                render 'image-element',
+                image: section.settings.icon-separator,
+                alt: section.settings.icon-separator.alt,
+                additional_wrapper_classes: "icon__separtor"
+              %}
+             {% else %}
+               {% render 'icon', name: 'read-more-left-arrow' %}
+             {% endif %}
+          {% if section.settings.icon-separator != blank %}
+               {%
+                render 'image-element',
+                image: section.settings.icon-separator,
+                alt: section.settings.icon-separator.alt,
+                additional_wrapper_classes: "icon__separtor"
+              %}
+             {% else %}
+               {% render 'icon', name: 'read-more-left-arrow' %}
+             {% endif %}
+          {% if section.settings.icon-separator != blank %}
+               {%
+                render 'image-element',
+                image: section.settings.icon-separator,
+                alt: section.settings.icon-separator.alt,
+                additional_wrapper_classes: "icon__separtor"
+              %}
+             {% else %}
+               {% render 'icon', name: 'read-more-left-arrow' %}
+             {% endif %}
+          {% if section.settings.icon-separator != blank %}
+               {%
+                render 'image-element',
+                image: section.settings.icon-separator,
+                alt: section.settings.icon-separator.alt,
+                additional_wrapper_classes: "icon__separtor"
+              %}
+             {% else %}
+               {% render 'icon', name: 'read-more-left-arrow' %}
+             {% endif %}
+        </div>
+           {% endif %}
+           {% if section.settings.large-image == nil %}
+             <div 
+               class="carousel-{{ section.id }}" 
+               data-flickity='{ "cellAlign": "left", "contain": true, "wrapAround": true }'
+               style="width: 100%; border-radius: 8px;"
+               >
+              {% for slide in slides %}
+                {% if slide.settings.video_link != blank %}
+                    <div class="carousel-cell">
+                      <video loop autoplay muted playsinline>
+                        <source src="{{ slide.settings.video_link }}" type="video/webm">  
+                        <source src="{{ slide.settings.video_link }}" type="video/mp4">  
+                      </video>
+                    </div>
+                {% else if slide.settings.image %}
+                  <div class="carousel-cell" style="width: 100%; border-radius: 8px;">
+                    <img src="{{ slide.settings.image | img_url: 'master' }}" alt="slide">
+                  </div>
+                {% endif %}
+              {% endfor %}
+              </div> 
+            {% else %}
+             {%
+              render 'image-element',
+              image: section.settings.large-image,
+              alt: section.settings.large-image.alt
+            %}
+           {% if section.settings.icon-to-large-image != nil %}
+               <div class="description-with-image__large-image-container-desktop__icon">
+                {%
+                  render 'image-element',
+                  image: section.settings.icon-to-large-image,
+                  alt: section.settings.icon-to-large-image.alt
+                %}
+               </div>
+            {% endif %}
+           {% endif %}
+         </div>
+      </div>
+
+    
+         <div class="description-with-image__large-image-container-mobile ">
+           {% if section.settings.large-image-mobile == nil %}
+            <div 
+              class="carousel-{{ section.id }}-mobile" 
+              data-flickity='{ "cellAlign": "left", "contain": true, "wrapAround": true }'
+              style="width: 100%; border-radius: 8px;"
+              >
+               {% for slide in slides %}
+                 {% if slide.settings.video_link_mobile != blank %}
+                    <div class="carousel-cell">
+                      <video loop autoplay muted playsinline>
+                        <source src="{{ slide.settings.video_link_mobile }}" type="video/webm">  
+                        <source src="{{ slide.settings.video_link_mobile }}" type="video/mp4">  
+                      </video>
+                    </div>
+                {% else if slide.settings.mobile_image %}
+                  <div class="carousel-cell" style="width: 100%; border-radius: 8px;">
+                    <img src="{{ slide.settings.mobile_image | img_url: 'master' }}" alt="{{ slide.settings.mobile_image.alt }}">
+                  </div>
+                {% endif %}
+              {% endfor %}
+             </div>
+            {% else %}
+             {%
+              render 'image-element',
+              image: section.settings.large-image-mobile,
+              alt: section.settings.large-image-mobile.alt
+            %}
+           {% if section.settings.icon-to-large-image != nil %}
+               <div class="description-with-image__large-image-container-desktop__icon">
+                 {%
+                  render 'image-element',
+                  image: section.settings.icon-to-large-image,
+                  alt: section.settings.icon-to-large-image.alt
+                %}
+               </div>
+             {% endif %}
+           {% endif %}
+         </div>
+     
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var elemDescriptionWithImage = document.querySelector('.carousel-{{ section.id }}');
+    var flktyDescriptionWithImage = new Flickity( elemDescriptionWithImage, {
+      cellAlign: 'left',
+      contain: true,
+      groupCells: true,
+      wrapAround: true,
+      adaptiveHeight: false,
+      prevNextButtons: false,
+      pageDots: true,
+      draggable: true,
+      imagesLoaded: true,
+      fade: true ,
+      autoPlay: {{ section.settings.image_slideshow_speed | json }} * 1000,
+    });
+
+    var elemDescriptionWithImageMobile = document.querySelector('.carousel-{{ section.id }}-mobile');
+    var flktyDescriptionWithImageMobile = new Flickity( elemDescriptionWithImageMobile, {
+      cellAlign: 'left',
+      contain: true,
+      groupCells: true,
+      wrapAround: true,
+      adaptiveHeight: false,
+      prevNextButtons: false,
+      pageDots: true,
+      draggable: true,
+      imagesLoaded: true,
+      fade: true ,
+      autoPlay: {{ section.settings.image_slideshow_speed | json }} * 1000,
+    });
+  });
+</script>
+
+{% schema %}
+  {
+    "name": "Description with image",
+    "settings": [
+      {
+        "type": "html",
+        "id": "heading",
+        "label": "Heading"
+      },
+      {
+        "type": "html",
+        "id": "description",
+        "label": "Description"
+      },
+      {
+        "type": "image_picker",
+        "id": "large-image",
+        "label": "Large image"
+      },
+      {
+        "type": "image_picker",
+        "id": "icon-to-large-image",
+        "label": "Icon to large image"
+      },
+      {
+        "type": "image_picker",
+        "id": "small-image",
+        "label": "Small image"
+      },
+      {
+        "type": "image_picker",
+        "id": "large-image-mobile",
+        "label": "Large image mobile"
+      },
+      {
+        "type": "image_picker",
+        "id": "icon-to-large-image-mobile",
+        "label": "Icon to large image mobile"
+      },
+      {
+        "type": "image_picker",
+        "id": "icon-separator",
+        "label": "Icon separator"
+      },
+      {
+        "type": "range",
+        "id": "image_slideshow_speed",
+        "label": "Change image every",
+        "info": "Set to 0 to disable autoplay.",
+        "min": 0,
+        "max": 20,
+        "step": 1,
+        "default": 5,
+        "unit": "sec"
+      },
+      {
+        "type": "header",
+        "content": "Section"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Top spacing",
+        "min": 0,
+        "max": 100,
+        "default": 70,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Bottom spacing",
+        "min": 0,
+        "max": 100,
+        "default": 70,
+        "unit": "px"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "color",
+        "id": "active_dot_color",
+        "label": "Active navigation color",
+        "default": "#78BE20"
+      },
+      {
+        "type": "header",
+        "content": "Mobile layout"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Mobile top spacing",
+        "min": 0,
+        "max": 100,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Mobile bottom spacing",
+        "min": 0,
+        "max": 100,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Advanced",
+        "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+      },
+      {
+        "type": "text",
+        "id": "css_class",
+        "label": "CSS Class"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_css",
+        "label": "Custom CSS"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "button-block",
+        "name": "Button block",
+        "settings": [
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button label"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+          },
+          {
+            "type": "select",
+            "id": "button_style",
+            "label": "Button style",
+            "options": [
+              {
+                "value": "button--primary",
+                "label": "Primary"
+              },
+              {
+                "value": "button--secondary",
+                "label": "Secondary"
+              },
+              {
+                "value": "button--link-style",
+                "label": "Link style"
+              },
+              {
+                "value": "button--custom",
+                "label": "Custom"
+              }
+            ],
+            "default": "button--primary"
+          },
+          {
+            "type": "header",
+            "content": "Custom button style"
+          },
+          {
+            "type": "range",
+            "id": "button_custom_border_radius",
+            "label": "Border radius",
+            "min": 0,
+            "max": 50,
+            "default": 8,
+            "unit": "px"
+          },
+          {
+            "type": "color",
+            "id": "button_custom_bg_color",
+            "label": "Background"
+          },      
+          {
+            "type": "color",
+            "id": "button_custom_border_color",
+            "label": "Border"
+          },
+          {
+            "type": "color",
+            "id": "button_custom_text_color",
+            "label": "Text"
+          },
+          {
+            "type": "color",
+            "id": "button_custom_bg_color--highlight",
+            "label": "Background hover"
+          },
+          {
+            "type": "color",
+            "id": "button_custom_border_color--highlight",
+            "label": "Border hover"
+          },
+          {
+            "type": "color",
+            "id": "button_custom_text_color--highlight",
+            "label": "Text hover"
+          }
+        ]
+      },
+      {
+          "type": "slide",
+          "name": "Slide",
+           "limit": 4,
+          "settings": [
+            {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+          },
+          {
+            "type": "image_picker",
+            "id": "mobile_image",
+            "label": "Mobile Image",
+          }, 
+            {
+            "type": "url",
+            "id": "video_link",
+            "label": "Video link",
+          },
+          {
+            "type": "url",
+            "id": "video_link_mobile",
+            "label": "Video link mobile",
+          },
+          ]
+        }
+    ],
+    "presets": [
+      {
+        "name": "Description with image"
+      }
+    ]
+  }
+{% endschema %}

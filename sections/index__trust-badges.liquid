@@ -1,0 +1,267 @@
+<style>
+
+  .trust-badges_inner {
+    display: flex;
+    padding: 20px 0px
+  }
+
+  .trust-badges_outer {
+    height: 200px;
+    width: 100vw;
+    background: {{ section.settings.bg_color }};
+    display: flex;
+    align-items: center;
+  }
+
+  .trust-badges_text-container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 500px
+  }
+
+  .trust-badges_title {
+    display: inline-block;
+    margin-right: 50px;
+    font-size: 21px;
+    color: {{ section.settings.text_color }};
+    width: 100%;
+    margin-bottom: 10px
+  }
+
+  .trust-badges_link {
+    font-size: 14px;
+    text-decoration: underline;
+    margin-right: 5px
+  }
+
+  #trustImageWrapper {
+    display: flex;
+    white-space: nowrap;
+  }
+
+
+  .trust-badges_images {
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    margin: auto 
+  }
+
+
+  .trust-badge_image {
+    height: 80px;
+    margin: 0 25px;
+    display: inline-block
+  }
+
+  .trust-badge_image-no-scroll {
+    margin: 0px
+  }
+
+  .trust-badge_container-no-scroll {
+    justify-content: space-around
+  }
+
+  
+
+  .trust-badges_scroll-content {
+    animation: scroll 15s linear infinite;
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  @keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .trust-badges_inner {
+     flex-wrap: wrap;
+      justify-content: center;
+  }
+
+  .trust-badges_title {
+    margin-bottom: 10px;
+    margin-right: 0px
+  }
+
+  .trust-badges_outer {
+    height: auto
+  }
+
+  .trust-badge_image {
+    height: 45px
+  }
+
+  .trust-badges_images {
+    margin-top: 40px
+  }
+}
+  
+  
+</style>
+
+
+<div class='trust-badges_outer '>
+    <div class='section trust-badges_inner'>
+      <div class='trust-badges_text-container'>
+        <p class='trust-badges_title'>{{ section.settings.text }}</p>
+        <a class='trust-badges_link' href='{{ section.settings.link }}'>{{ section.settings.link-text }}</a>
+        {% if section.settings.link-icon %}
+          <img src="{{ section.settings.link-icon | img_url }}" alt="Trust Badge Image" style="height: 10px; width: auto;margin:auto 0">
+        {% endif %}
+      </div>
+      <div class='trust-badges_images' id='trustImageContainer'>
+          <div id='trustImageWrapper'>
+            {% for block in section.blocks %}
+             <img 
+                 data-class="LazyLoad"
+                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
+                  data-src="{{ block.settings.image | img_url: '1524x' }}"
+                data-mob-src="{{ block.settings.image | img_url: '580x' }}"
+                class="trust-badge_image" />
+            {% endfor %}
+          </div>
+      </div>
+    </div>
+</div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const container = document.getElementById('trustImageWrapper');
+  let images = Array.from(container.querySelectorAll('.trust-badge_image'));
+  let currentOffset = 0;
+  let shouldScroll = true;
+
+  function checkShouldScroll() {
+    let minImages = window.innerWidth >= 768 ? 6 : 6; // Assuming 768px as the breakpoint between mobile and desktop
+    shouldScroll = images.length >= minImages;
+  }
+  
+  let viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+  let speed = Math.max(1, viewportWidth / 1920) * 0.8; 
+; 
+
+  function getTotalWidth(el) {
+    return el.offsetWidth + parseInt(window.getComputedStyle(el).marginRight) + parseInt(window.getComputedStyle(el).marginLeft);
+  }
+  
+  function scrollImages() {
+    if (!shouldScroll) {
+      requestAnimationFrame(scrollImages);
+      if (viewportWidth < 768){
+         container.classList.add('trust-badge_container-no-scroll');
+          images.forEach((image) => {
+            image.classList.add('trust-badge_image-no-scroll');
+          });
+      }
+      return;
+    }
+
+    container.classList.remove('trust-badge_container-no-scroll');
+    images.forEach((image) => {
+      image.classList.remove('trust-badge_image-no-scroll');
+    });
+
+    currentOffset -= speed;
+    let firstImageWidth = getTotalWidth(images[0]);
+    
+    if (-currentOffset > firstImageWidth) {
+      currentOffset += firstImageWidth;
+      
+      // Detach the first image element and append it back to the container.
+      const firstImage = images.shift();
+      container.appendChild(firstImage);
+      
+      // Update the images array to match the new DOM state.
+      images.push(firstImage);
+    }
+    
+    container.style.transform = `translateX(${currentOffset}px)`;
+    requestAnimationFrame(scrollImages);
+  }
+
+  window.addEventListener('resize', function() {
+    viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+    speed = Math.max(1, viewportWidth / 1920);
+    checkShouldScroll(); // Check if we should scroll when the screen size changes
+  });
+
+  checkShouldScroll(); 
+  scrollImages();
+});
+
+
+
+
+</script>
+
+{% schema %}
+  {
+    "name": "Trust Badges",
+    "settings": [
+      {
+      "type": "color",
+      "label": "Background Color",
+      "id": "bg_color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "textarea",
+      "label": "Text",
+      "id": "text",
+      "default": "Trusted By trust Leaders:"
+    },
+    {
+      "type": "text",
+      "label": "Link",
+      "id": "link",
+      "default": "https://www.google.com/"
+    },
+    {
+      "type": "text",
+      "label": "Link Text",
+      "id": "link-text",
+      "default": "Click Me!"
+    },
+    {
+      "type": "color",
+      "label": "Text Color",
+      "id": "text_color",
+      "default": "#000000"
+    },
+      {
+        "type": "image_picker",
+        "id": "link-icon",
+        "label": "Link Icon"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Trust Badges",
+        "category": "Custom"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Badge"
+          }
+      ]
+    }
+    ]
+  }
+
+{% endschema %}

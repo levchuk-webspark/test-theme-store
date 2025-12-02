@@ -1,0 +1,303 @@
+{% comment %} Opacity level {% endcomment %}
+{% if section.settings.opacity_active_link != 0 %}
+  {% assign active_link_alpha = section.settings.opacity_active_link | divided_by: 100.00 %}
+{% endif %}
+
+{% style %}
+  .vitality-menu {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.background_color }};
+  }
+
+  .vitality-menu__link-list {
+    display: flex;
+    gap: {{ section.settings.link-gap }}px;
+  }
+
+  .vitality-menu__link a {
+    font-weight: normal;
+    font-size: {{ section.settings.link-font-size }}px;
+    color: {{ section.settings.default_link_color }};
+    text-transform: uppercase;
+  }
+
+  .vitality-menu__link a:hover {
+    color: {% if section.settings.opacity_active_link != 0 %}{{ section.settings.default_link_color | color_modify: 'alpha', active_link_alpha }}{% else %}{{ section.settings.hover_link_color }}{% endif %};
+  }
+
+  .vitality-menu__link a:active, .vitality-menu__link a.vitality-menu__link-accent {
+    color: {% if section.settings.opacity_active_link != 0 %}{{ section.settings.default_link_color | color_modify: 'alpha', active_link_alpha }}{% else %}{{ section.settings.active_link_color }}{% endif %};
+  }
+
+  @media only screen and (max-width: 798px) {
+    .vitality-menu {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+    .vitality-menu__link-list {
+      display: flex;
+      gap: {{ section.settings.link-gap_mobile }}px;
+    }
+
+    .vitality-menu__link a {
+      font-size: {{ section.settings.link-font-size-mobile }}px;
+    }
+  }
+
+  @media only screen and (max-width: 389px) {
+    .vitality-menu {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom | minus: 4 }}px;
+    }
+    .vitality-menu .section.vitality-menu-content {
+      overflow-x: scroll;
+      padding-bottom: 4px;
+    }
+    
+    .vitality-menu__link {
+      white-space: nowrap;
+    }
+  }
+
+  {%
+    render 'css-loop',
+    css: section.settings.custom_css,
+    id: section.id,
+  %}
+{% endstyle %}
+
+<section
+  id="vitality-menu"
+  class="
+    {{ section.settings.css_class }}
+    vitality-menu
+  "
+>
+  <div class="section vitality-menu-content">
+    {% if section.blocks.size > 0 %}
+      <ul class="vitality-menu__link-list">
+        {% for block in section.blocks %}
+          {% if block.type == 'link' %}
+            <li class="vitality-menu__link">
+              {% if block.settings.text != blank %}
+                <a
+                  {% if block.settings.url != blank %}
+                    class="{% if page.url == block.settings.url %} vitality-menu__link-accent {% endif %}"
+                    href="{{block.settings.url}}"
+                  {% endif %}
+                >
+                  {{ block.settings.text }}
+                </a>
+              {% endif %}
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+</section>
+
+{% if section.settings.sticky %}
+  
+  <style>
+    #vitality-menu {
+      display: block;
+      position: fixed;
+      width: 100%;
+      z-index: 100;
+  }
+  </style>
+{% endif %}
+
+<script>
+   document.addEventListener('DOMContentLoaded', function() {
+      // Get the previous sticky section by its ID
+  var previousStickySection = document.getElementById('vitality-header');
+  var previousStickySectionMobile = document.getElementById('mobile-header-vitality');
+  var announcementBar = document.getElementById('announcement-bar');
+  const isMobileMedia = window.matchMedia("(max-width: 798px)");
+
+  // Get the current sticky section
+  var currentStickySection = document.getElementById('vitality-menu');
+    
+    if (previousStickySection && currentStickySection) {
+    // Calculate the top position based on the height of the previous sticky section
+    var offsetTop = announcementBar ? previousStickySection.offsetHeight + announcementBar.offsetHeight : previousStickySection.offsetHeight;
+    var offsetTopMobile = announcementBar ? previousStickySectionMobile.offsetHeight + announcementBar.offsetHeight : previousStickySectionMobile.offsetHeight;
+
+    // Apply the offset top to the current sticky section
+      
+    currentStickySection.style.top = ((isMobileMedia.matches ? offsetTopMobile : offsetTop) - 1) + 'px';
+    currentStickySection.style.position = 'fixed';
+     currentStickySection.style.width = '100%';
+      currentStickySection.style.zIndex = '70';
+    }
+   })
+</script>
+
+{% schema %}
+{
+  "name": "Vitality menu",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 100,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 100,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "link-gap",
+      "label": "Space between link",
+      "min": 0,
+      "max": 100,
+      "default": 25,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "link-font-size",
+      "label": "Link font size",
+      "min": 0,
+      "max": 100,
+      "default": 12,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "opacity_active_link",
+      "label": "Active link opacity",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 50,
+      "unit": "%"
+    },
+    {
+             "type": "checkbox",
+             "id": "sticky",
+             "label": "Sticky Section"
+     },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section background color",
+      "default": "#45001F"
+    },
+    {
+      "type": "color",
+      "id": "default_link_color",
+      "label": "Default link",
+      "default": "#F7F5F1"
+    },
+    {
+      "type": "color",
+      "id": "hover_link_color",
+      "label": "Hover link",
+      "default": "#F7F5F1"
+    },
+    {
+      "type": "color",
+      "id": "active_link_color",
+      "label": "Active link",
+      "default": "#F7F5F1"
+    },
+    {
+      "type": "header",
+      "content": "Mobile layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile top spacing",
+      "min": 0,
+      "max": 100,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile bottom spacing",
+      "min": 0,
+      "max": 100,
+      "default": 16,
+      "unit": "px"
+    },
+     {
+      "type": "range",
+      "id": "link-font-size-mobile",
+      "label": "Link font size",
+      "min": 0,
+      "max": 100,
+      "default": 10,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "link-gap_mobile",
+      "label": "Space between link",
+      "min": 0,
+      "max": 100,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Advanced",
+      "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+    },
+    {
+      "type": "text",
+      "id": "css_class",
+      "label": "CSS Class"
+    },
+    {
+      "type": "textarea",
+      "id": "custom_css",
+      "label": "Custom CSS"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Link",
+      "settings": [
+        {
+          "type": "html",
+          "id": "text",
+          "label": "Text link"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Url link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vitality menu"
+    }
+  ]
+}
+{% endschema %}

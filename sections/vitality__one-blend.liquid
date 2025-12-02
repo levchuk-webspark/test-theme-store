@@ -1,0 +1,776 @@
+{% assign features = section.blocks | where: 'type', 'feature' %}
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    background-color: {{ section.settings.background_color }};
+    color: {{ section.settings.text_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  #shopify-section-{{ section.id }} .vitality-one-blend {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .vitality-one-blend__title {
+    line-height: 1.1;
+    font-weight: normal;
+    margin-bottom: 35px;
+  }
+
+  
+
+  #shopify-section-{{ section.id }} .vitality-one-blend__title {
+    color: {{ section.settings.title_color }};
+    font-size: {{ section.settings.title_font_size }}px;
+  }
+
+  .vitality-one-blend__description {
+    margin-bottom: 40px;
+    padding-right: 100px;
+  }
+
+  #shopify-section-{{ section.id }} .vitality-one-blend__description {
+    color: {{ section.settings.description_color }};
+    font-size: {{ section.settings.description_font_size }}px;
+  }
+
+  .vitality-one-blend__buttons-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .vitality-one-blend__right-column {
+    position: relative;
+  }
+
+  .vitality-one-blend__image-large {
+    border-radius: 12px;
+  }
+
+  .vitality-one-blend__image-small {
+    position: absolute;
+    left: 50%;
+    top: 55%;
+    transform: translate(-50%, -50% );
+    z-index: 1;
+    width: 359px;
+    height: auto;
+  }
+
+  #shopify-section-{{ section.id }} .vitality-one-blend__left-column__content {
+    {% if section.settings.show_content_border != blank %}
+        border-top: 1px solid {{ section.settings.border_color }};
+        border-bottom: 1px solid {{ section.settings.border_color }};
+    {% endif %}
+  }
+
+  .vitality-one-blend__left-column__content {
+    margin-top: 70px;
+    padding: 30px 0;
+  }
+
+
+  .vitality-one-blend__left-column__content__title-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 38px;
+  }
+
+  .vitality-one-blend__left-column__content__title {
+    font-size: 20px;
+    line-height: 1.1;
+  }
+
+  .vitality-one-blend__left-column__content__link {
+    font-size: 14px;
+    text-decoration: underline;
+    display: flex;
+    gap: 40px;
+  }
+
+  .vitality-one-blend__left-column__content__link:hover {
+    color: #45001F;
+  } 
+
+  .vitality-one-blend__left-column__content__description {
+    font-size: 15px;
+    margin-bottom: 23px;
+    width: 70%;
+  }
+
+  .vitality-one-blend__features-list br {
+    display: none;
+  }
+
+  .vitality-one-blend__feature {
+    font-size: 15px;
+  }
+
+  .vitality-one-blend__feature__icon {
+    width: 10px;
+    height: 10px;
+  }
+
+  .vitality-one-blend__left-column__content__link__arrow-container {
+    width: 19px;
+    height: 19px;
+    min-width: 19px;
+    min-height: 19px;
+    border: 1px solid;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .vitality-one-blend__left-column__content__link__arrow {
+    width: 4px;
+    height: 4px;
+    border-top: 1px solid;
+    border-right: 1px solid;
+    transform: rotate(45deg);
+  }
+
+  .vitality-one-blend__features-over-image {
+    position: absolute;
+    top: 50px;
+    left: 30px;
+    right: 30px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    font-size: 16px;
+  }
+
+  .vitality-one-blend__features-over-image__feature {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .vitality-one-blend__features-over-image__icon-container {
+    width: 37px;
+    height: 37px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid;
+    border-radius: 50%;
+  }
+
+   #shopify-section-{{ section.id }} .vitality-one-blend__features-over-image {
+        color: {{ section.settings.features_over_image_color }};
+   }
+
+  #shopify-section-{{ section.id }} .vitality-one-blend__features-over-image__icon-container {
+        border-color: {{ section.settings.features_over_image_color }};
+   }
+
+  .vitality-one-blend__features-over-image__icon {
+    width: 15px;
+    height: 15px;
+  }
+
+  @media only screen and (max-width: 1200px) {
+    #shopify-section-{{ section.id }} .vitality-one-blend {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 55px;
+    }
+
+    .vitality-one-blend__left-column {
+       order: 2;
+     }
+  
+    .vitality-one-blend__right-column {
+       order: 1;
+      min-height: 650px;
+     }
+
+    .vitality-one-blend__image-large.image-element__wrap {
+      max-width: 100% !important;
+    }
+
+    .vitality-one-blend__description {
+      padding-right: unset;
+    }
+
+  }
+
+ @media only screen and (max-width: 798px) {
+
+   .vitality-one-blend__image-small {
+      width: 253px;
+    }
+
+   .vitality-one-blend__features-over-image {
+     font-size: 15px;
+      display: grid;
+     grid-template-columns: 1fr 1fr;
+      top: 40px;
+      left: 20px;
+      right: 20px;
+   }
+
+     .vitality-one-blend__features-over-image__icon-container {
+      width: 30px;
+      height: 30px;
+    }
+
+    .vitality-one-blend__features-over-image__icon {
+      width: 11px;
+      height: 11px;
+    }
+
+     .vitality-one-blend__title {
+      margin-bottom: 27px;
+    }
+
+    #shopify-section-{{ section.id }} .vitality-one-blend__title {
+      font-size: {{ section.settings.title_font_size_mobile }}px;
+    }
+  
+    .vitality-one-blend__description {
+      font-size: 15px;
+      margin-bottom: 27px;
+    }
+
+    #shopify-section-{{ section.id }} .vitality-one-blend__description {
+      font-size: {{ section.settings.description_font_size_mobile }}px;
+    }
+
+     .vitality-one-blend__left-column__content {
+      margin-top: 42px;
+      padding: 26px 0;
+    }
+
+   .vitality-one-blend__left-column__content__link {
+      gap: 10px;
+    }
+
+   .vitality-one-blend__left-column__content__title-container {
+      margin-bottom: 27px;
+  }
+
+   .vitality-one-blend__right-column {
+     min-height: unset;
+   }
+
+   .vitality-one-blend__image-large {
+     max-height: 439px;
+   }
+ }
+
+   @media only screen and (max-width: 600px) {
+      .vitality-one-blend__image-small {
+       top: unset;
+       bottom: 40px;
+       transform: translate(-50%, 0);
+      }
+   }
+
+  @media only screen and (max-width: 389px) {
+      .vitality-one-blend__image-small {
+       bottom: 20px;
+      }
+
+     .vitality-one-blend__features-over-image {
+       font-size: 14px;
+        top: 20px;
+        left: 10px;
+        right: 10px;
+     }
+
+    .vitality-one-blend__left-column__content__title {
+      max-width: 50%;
+    }
+   }
+  
+
+  {%
+    render 'css-loop',
+    css: section.settings.custom_css,
+    id: section.id,
+  %}
+{% endstyle %}
+
+<section
+  class="
+    section
+    {{ section.settings.css_class }}
+    vitality-one-blend
+  "
+>
+  <div class="vitality-one-blend__left-column">
+    {% if section.settings.title != blank %}
+      <h2 class="vitality-one-blend__title">{{ section.settings.title }}</h2>
+    {% endif %}
+    {% if section.settings.description != blank %}
+      <div class="vitality-one-blend__description">{{ section.settings.description }}</div>
+    {% endif %}
+    <div class="vitality-one-blend__buttons-container">
+      {% for block in section.blocks %}
+        {% if block.type == 'button-block' %}
+          {% if block.settings.button_label != blank %}
+            {% style -%}
+
+              .block-{{ block.id }}.vitality-one-blend__button .button--custom {
+                border: 1px solid;
+                overflow-wrap: normal;
+                padding: 19px 42px;
+                font-size: 14px !important;
+              }
+
+              .block-{{ block.id }}.vitality-one-blend__button .button--custom,
+              .block-{{ block.id }}.vitality-one-blend__button a.button--primary.button,
+              .block-{{ block.id }}.vitality-one-blend__button a.button--secondary.button  {
+                border-radius: {{ block.settings.button_custom_border_radius | append: 'px' }};
+              }
+
+              .block-{{ block.id }}.vitality-one-blend__button a.button--custom.button,
+              .block-{{ block.id }}.vitality-one-blend__button a.button--custom.button:link,
+              .block-{{ block.id }}.vitality-one-blend__button a.button--custom.button:visited {
+                background-color: {{ block.settings.button_custom_bg_color }};
+                color: {{ block.settings.button_custom_text_color }};
+                border-color: {{ block.settings.button_custom_border_color }};
+              }
+
+              .block-{{ block.id }}.vitality-one-blend__button a.button--custom.button:hover,
+              .block-{{ block.id }}.vitality-one-blend__button a.button--custom.button.is-hovered {
+                color: {{ block.settings.button_custom_text_color--highlight }};
+                border-color: {{ block.settings.button_custom_border_color--highlight }};
+                background-color: {{ block.settings.button_custom_bg_color--highlight }};
+              }
+            {% endstyle -%}
+
+            <div class="vitality-one-blend__button block-{{ block.id }}">
+              <a href="{{ block.settings.button_link }}" class="button {{ block.settings.button_style }}">
+                {{ block.settings.button_label }}
+              </a>
+            </div>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="vitality-one-blend__left-column__content">
+      {% for block in section.blocks %}
+        {% if block.type == 'content' %}
+          {% if block.settings.title != blank %}
+            <div class="vitality-one-blend__left-column__content__title-container">
+              <span class="vitality-one-blend__left-column__content__title">{{ block.settings.title }}</span>
+              {% if block.settings['link-label'] != blank %}
+                {% style -%}
+                  #shopify-section-{{ section.id }} .vitality-one-blend__left-column__content__link {
+                    color: {{ block.settings.link_color }};
+                  }
+                  #shopify-section-{{ section.id }} .vitality-one-blend__left-column__content__link__arrow-container {
+                    border-color: {{ block.settings.link_color }};
+                  }
+                  #shopify-section-{{ section.id }} .vitality-one-blend__left-column__content__link__arrow {
+                    border-color: {{ block.settings.link_color }};
+                  }
+                  #shopify-section-{{ section.id }} .vitality-one-blend__left-column__content__link:hover {
+                    color: {{ block.settings.link_color_hover }};
+                  }
+
+                  #shopify-section-{{ section.id }} .vitality-one-blend__left-column__content__link:hover .vitality-one-blend__left-column__content__link__arrow-container,
+                  #shopify-section-{{ section.id }} .vitality-one-blend__left-column__content__link:hover .vitality-one-blend__left-column__content__link__arrow,
+                  #shopify-section-{{ section.id }} .vitality-one-blend__left-column__content__link:hover .vitality-one-blend__left-column__content__link__arrow-container .vitality-one-blend__left-column__content__link__arrow {
+                    border-color: {{ block.settings.link_color_hover }};
+                  }
+                {% endstyle -%}
+                <a href="{{ block.settings.link-url }}" class="vitality-one-blend__left-column__content__link">
+                  {{ block.settings['link-label'] }}
+                    <div class="vitality-one-blend__left-column__content__link__arrow-container">
+                        <div class="vitality-one-blend__left-column__content__link__arrow"></div>  
+                    </div>
+                </a>
+              {% endif %}
+            </div>
+          {% endif %}
+          {% if block.settings.description != blank %}
+            <div class="vitality-one-blend__left-column__content__description">{{ block.settings.description }}</div>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+      {% if features.size > 0 %}
+        <ul class="vitality-one-blend__features-list">
+          {% for feature in features %}
+              {% if feature.settings.title != blank %}
+                  <li class="vitality-one-blend__feature">
+                    <svg class="vitality-one-blend__feature__icon" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M3.37723 14.5934C3.37723 14.4256 3.35859 14.351 3.28401 14.351L2.85523 14.5561C2.85523 14.4629 2.7993 14.4069 2.70608 14.3696L2.55694 14.351C2.42644 14.351 2.37051 14.3696 2.18408 14.4815C2.12815 14.3696 2.05358 14.2391 1.99765 14.1273C1.51293 13.1951 1.00957 11.7969 0.785857 11.1817C0.673999 10.8648 0.562141 10.2123 0.431641 9.22419C0.580784 9.31741 0.692642 9.35469 0.748571 9.35469C0.823143 9.35469 0.916358 9.22419 0.99093 8.96319C1.02822 9.01912 1.10279 9.03776 1.196 9.03776C1.25193 9.03776 1.3265 9.01912 1.36379 8.96319L1.66208 8.51576L1.99765 8.62762H2.01629C2.05358 8.62762 2.10951 8.57169 2.20272 8.51576C2.29594 8.45983 2.37051 8.42254 2.42644 8.42254L2.48237 8.44119C2.78065 8.59033 2.98573 8.85133 3.07894 9.26148C3.30266 10.2123 3.50773 10.6783 3.75009 10.6783C3.95516 10.6783 4.23481 10.436 4.53309 9.96991C4.83138 9.50384 5.12967 8.86997 5.46524 8.10561C5.48388 8.25476 5.50253 8.32933 5.53981 8.32933C5.65167 8.32933 5.93132 7.67682 6.62111 6.57689C7.64647 4.91767 10.1819 1.72972 10.8344 1.28229C11.3191 0.946714 11.692 0.629783 11.953 0.350139C11.9157 0.536568 11.8784 0.667069 11.8784 0.722998C11.8784 0.778927 11.9157 0.79757 11.953 0.79757L12.475 0.536568V0.61114C12.475 0.704355 12.4936 0.760284 12.5496 0.760284C12.6241 0.760284 12.9224 0.461996 12.9597 0.350139L12.9224 0.61114L13.5563 0.238281L13.4071 0.573855C13.5936 0.443353 13.7427 0.368781 13.8359 0.368781C13.9291 0.368781 13.9851 0.517925 13.9851 0.61114C13.9851 0.760284 13.8546 0.965356 13.6495 1.22636C13.4258 1.52465 12.8665 2.10258 11.1886 4.0228C10.4616 4.84309 7.23632 9.22419 6.62111 10.2682L5.46524 12.2257C4.96188 13.0646 4.64495 13.6053 4.47716 13.8104C4.30938 14.0154 4.1043 14.2205 3.86195 14.4069L3.69416 14.3137L3.54502 14.4069L3.37723 14.5934Z" fill="currentColor"/>
+                    </svg>
+                    {{ feature.settings.title }}
+                  </li>
+              {% endif %}
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+  </div>
+  <div class="vitality-one-blend__right-column">
+    {% if section.settings.image_large != null %}
+      {% render 'image-element',
+        image: section.settings.image_large,
+        alt: section.settings.image_large.alt,
+        additional_wrapper_classes: 'vitality-one-blend__image-large is-hidden-mobile-only',
+        focal_point: section.settings.image_large.presentation.focal_point
+      %}
+    {% endif %}
+    {% if section.settings.image_large_mobile != null %}
+      {% render 'image-element',
+        image: section.settings.image_large_mobile,
+        alt: section.settings.image_large_mobile.alt,
+        additional_wrapper_classes: 'vitality-one-blend__image-large is-hidden-desktop-only ',
+        focal_point: section.settings.image_large.presentation.focal_point
+      %}
+    {% endif %}
+    {% if section.settings.image_small != null %}
+      {% render 'image-element',
+        image: section.settings.image_small,
+        alt: section.settings.image_small.alt,
+        additional_wrapper_classes: 'vitality-one-blend__image-small',
+        focal_point: section.settings.image_small.presentation.focal_point
+      %}
+    {% endif %}
+
+    {% if section.settings.show_features_on_image %}
+      {% if features.size > 0 %}
+        <ul class="vitality-one-blend__features-over-image">
+          {% for feature in features %}
+              {% if feature.settings.title != blank %}
+                  <li class="vitality-one-blend__features-over-image__feature">
+                    <div class="vitality-one-blend__features-over-image__feature">
+                        <div class="vitality-one-blend__features-over-image__icon-container">
+                          <svg class="vitality-one-blend__features-over-image__icon" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.37723 14.5934C3.37723 14.4256 3.35859 14.351 3.28401 14.351L2.85523 14.5561C2.85523 14.4629 2.7993 14.4069 2.70608 14.3696L2.55694 14.351C2.42644 14.351 2.37051 14.3696 2.18408 14.4815C2.12815 14.3696 2.05358 14.2391 1.99765 14.1273C1.51293 13.1951 1.00957 11.7969 0.785857 11.1817C0.673999 10.8648 0.562141 10.2123 0.431641 9.22419C0.580784 9.31741 0.692642 9.35469 0.748571 9.35469C0.823143 9.35469 0.916358 9.22419 0.99093 8.96319C1.02822 9.01912 1.10279 9.03776 1.196 9.03776C1.25193 9.03776 1.3265 9.01912 1.36379 8.96319L1.66208 8.51576L1.99765 8.62762H2.01629C2.05358 8.62762 2.10951 8.57169 2.20272 8.51576C2.29594 8.45983 2.37051 8.42254 2.42644 8.42254L2.48237 8.44119C2.78065 8.59033 2.98573 8.85133 3.07894 9.26148C3.30266 10.2123 3.50773 10.6783 3.75009 10.6783C3.95516 10.6783 4.23481 10.436 4.53309 9.96991C4.83138 9.50384 5.12967 8.86997 5.46524 8.10561C5.48388 8.25476 5.50253 8.32933 5.53981 8.32933C5.65167 8.32933 5.93132 7.67682 6.62111 6.57689C7.64647 4.91767 10.1819 1.72972 10.8344 1.28229C11.3191 0.946714 11.692 0.629783 11.953 0.350139C11.9157 0.536568 11.8784 0.667069 11.8784 0.722998C11.8784 0.778927 11.9157 0.79757 11.953 0.79757L12.475 0.536568V0.61114C12.475 0.704355 12.4936 0.760284 12.5496 0.760284C12.6241 0.760284 12.9224 0.461996 12.9597 0.350139L12.9224 0.61114L13.5563 0.238281L13.4071 0.573855C13.5936 0.443353 13.7427 0.368781 13.8359 0.368781C13.9291 0.368781 13.9851 0.517925 13.9851 0.61114C13.9851 0.760284 13.8546 0.965356 13.6495 1.22636C13.4258 1.52465 12.8665 2.10258 11.1886 4.0228C10.4616 4.84309 7.23632 9.22419 6.62111 10.2682L5.46524 12.2257C4.96188 13.0646 4.64495 13.6053 4.47716 13.8104C4.30938 14.0154 4.1043 14.2205 3.86195 14.4069L3.69416 14.3137L3.54502 14.4069L3.37723 14.5934Z" fill="currentColor"/>
+                          </svg>
+                        </div>
+                    </div>
+                    {{ feature.settings.title }}
+                  </li>
+              {% endif %}
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "One blend",
+  "settings": [
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Section title"
+    },
+    {
+      "type": "html",
+      "id": "description",
+      "label": "Section description"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_large",
+      "label": "Image large"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_small",
+      "label": "Image small"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_features_on_image",
+      "label": "Show features on image",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_content_border",
+      "label": "Show content border",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 80,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 80,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "label": "Title font size",
+      "min": 0,
+      "max": 80,
+      "default": 65,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "description_font_size",
+      "label": "Description font size",
+      "min": 0,
+      "max": 80,
+      "default": 22,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section background color",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Section title color",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Section description color",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Section text color"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "features_over_image_color",
+      "label": "features over image color",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "header",
+      "content": "Mobile layout"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_large_mobile",
+      "label": "Image large"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile top spacing",
+      "min": 0,
+      "max": 80,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile bottom spacing",
+      "min": 0,
+      "max": 80,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "label": "Title font size",
+      "min": 0,
+      "max": 80,
+      "default": 30,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "description_font_size_mobile",
+      "label": "Description font size",
+      "min": 0,
+      "max": 80,
+      "default": 18,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Advanced",
+      "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+    },
+    {
+      "type": "text",
+      "id": "css_class",
+      "label": "CSS Class"
+    },
+    {
+      "type": "textarea",
+      "id": "custom_css",
+      "label": "Custom CSS"
+    }
+  ],
+  "blocks": [
+      {
+        "type": "content",
+        "name": "Content",
+        "settings": [
+        {
+          "type": "html",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "html",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "link-label",
+          "label": "Link label"
+        },
+        {
+          "type": "url",
+          "id": "link-url",
+          "label": "Link url"
+        },
+          {
+          "type": "color",
+          "id": "link_color",
+          "label": "Link color"
+        },
+          {
+          "type": "color",
+          "id": "link_color_hover",
+          "label": "Link hover color"
+        },
+      ]
+    },
+    {
+        "type": "feature",
+        "name": "Feature",
+        "settings": [
+        {
+          "type": "html",
+          "id": "title",
+          "label": "Title"
+        }
+      ]
+    },
+    {
+      "type": "button-block",
+      "name": "Button block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "Button style",
+          "options": [
+            {
+              "value": "button--primary",
+              "label": "Primary"
+            },
+            {
+              "value": "button--secondary",
+              "label": "Secondary"
+            },
+            {
+              "value": "button--link-style",
+              "label": "Link style"
+            },
+            {
+              "value": "button--custom",
+              "label": "Custom"
+            }
+          ],
+          "default": "button--primary"
+        },
+        {
+          "type": "header",
+          "content": "Custom button style"
+        },
+        {
+          "type": "range",
+          "id": "button_custom_border_radius",
+          "label": "Border radius",
+          "min": 0,
+          "max": 50,
+          "default": 8,
+          "unit": "px"
+        },
+        {
+          "type": "color",
+          "id": "button_custom_bg_color",
+          "label": "Background"
+        },
+        {
+          "type": "color",
+          "id": "button_custom_border_color",
+          "label": "Border"
+        },
+        {
+          "type": "color",
+          "id": "button_custom_text_color",
+          "label": "Text"
+        },
+        {
+          "type": "color",
+          "id": "button_custom_bg_color--highlight",
+          "label": "Background hover"
+        },
+        {
+          "type": "color",
+          "id": "button_custom_border_color--highlight",
+          "label": "Border hover"
+        },
+        {
+          "type": "color",
+          "id": "button_custom_text_color--highlight",
+          "label": "Text hover"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vitality: one blend"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,615 @@
+{% style %}
+  #shopify-section-{{ section.id }} {
+    {% if template.name == 'product' and product.metafields.custom.product_overview.value.background_color %}
+        background-color: {{ product.metafields.custom.product_overview.value.background_color }};
+    {% else %}
+        background-color: {{ section.settings.background_color }};
+    {% endif %}
+
+   {% if template.name == 'product' and product.metafields.custom.product_overview.value.text_color %}
+        color: {{ product.metafields.custom.product_overview.value.text_color }};
+    {% else %}
+        color: {{ section.settings.text_color }};
+    {% endif %}
+  }
+
+  #shopify-section-{{ section.id }} .product-overview {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  .product-overview__content-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .product-overview__image-container {
+    position: relative;
+  }
+  
+  .product-overview__image {
+    border-radius: 8px;
+    overflow: hidden;
+    /* height: 100%; */
+  }
+
+  .product-overview__image img {
+    /* object-fit: cover; */
+  }
+
+  .product-overview__title {
+    font-size: 34px;
+    line-height: 37px;
+    font-weight: normal;
+    margin-bottom: 56px;
+  }
+
+  #shopify-section-{{ section.id }} .product-overview__title {
+    {% if template.name == 'product' and product.metafields.custom.product_overview.value.text_color %}
+        color: {{ product.metafields.custom.product_overview.value.text_color }};
+    {% else %}
+        color: {{ section.settings.title_color }};
+    {% endif %}
+  }
+
+  .product-overview__button-block {
+    margin-top: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 18px;
+  }
+
+  .product-overview__button-block__text-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .product-overview__button-block__text {
+    font-size: 20px;
+    line-height: 22px;
+    font-weight: bold;
+  }
+
+  .product-overview__button-block__icons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .product-overview__button-block__icons .icon{
+    width: 17px;
+    height: 17px;
+    transform: rotate(180deg);
+  }
+
+    .buttons.product-overview__link-mobile {
+      display: none;
+    }
+
+  .product-overview__button-block .product-overview__link-desktop a.button,
+  .product-overview__button-block .product-overview__link-mobile a.button {
+    {% if template.name == 'product' and product.metafields.custom.product_overview.value.button_background %}
+        background-color: {{ product.metafields.custom.product_overview.value.button_background }};
+    {% endif %}
+
+    {% if template.name == 'product' and product.metafields.custom.product_overview.value.button_text %}
+        color: {{ product.metafields.custom.product_overview.value.button_text }};
+    {% endif %}
+  }
+
+  .product-overview__button-block .product-overview__link-desktop a.button:hover,
+  .product-overview__button-block .product-overview__link-mobile a.button:hover {
+    {% if template.name == 'product' and product.metafields.custom.product_overview.value.button_background %}
+        color: {{ product.metafields.custom.product_overview.value.button_background }};
+    {% endif %}
+
+    {% if template.name == 'product' and product.metafields.custom.product_overview.value.button_text %}
+        background-color: {{ product.metafields.custom.product_overview.value.button_text }};
+    {% endif %}
+
+  }
+
+  .carousel-{{ section.id }} {
+    height: fit-content;
+  }
+
+    #shopify-section-{{ section.id }}  .carousel-cell.is-selected {
+     height: 100%;
+   }
+
+  .carousel-{{ section.id }} .flickity-prev-next-button.next, 
+  .carousel-{{ section.id }} .flickity-prev-next-button.previous {
+    display: none;
+  }
+
+ .carousel-{{ section.id }} img {
+    height: 100%;
+   width: 100%;
+
+   object-fit: cover;
+   border-radius: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .flickity-page-dots {
+	counter-reset: a;
+    background-image: unset;
+     display: flex;
+    justify-content: center;
+    align-items: end;
+  }
+
+  #shopify-section-{{ section.id }} .flickity-page-dots {
+    bottom: 0;
+    height: 20%;
+    background: linear-gradient(360deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 56.45%);
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .flickity-page-dots .dot {
+    width: 19px;
+    height: 19px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid #f7f5f1;;
+    transform: rotate(-45deg);
+    color: #f7f5f1;
+    margin-bottom: 12px;
+  }
+  
+  #shopify-section-{{ section.id }} .flickity-page-dots .dot.is-selected {
+    {% if template.name == 'product' and product.metafields.custom.product_overview.value.background_color %}
+        border: 1px solid {{ product.metafields.custom.product_overview.value.background_color }};
+    {% else %}
+        border: 1px solid {{ section.settings.background_color }};
+    {% endif %}
+    border-bottom-color: transparent;
+    {% if template.name == 'product' and product.metafields.custom.product_overview.value.background_color %}
+        color: {{ product.metafields.custom.product_overview.value.background_color }};
+    {% else %}
+        color: {{ section.settings.background_color }};
+    {% endif %}
+  }
+  
+   #shopify-section-{{ section.id }} .flickity-page-dots .dot::after {
+  	content: counter(a);
+  	counter-increment: a;
+    font-size: 12px;
+    font-weight: bold;
+    transform: rotate(45deg);
+  }
+ 
+  @media only screen and (max-width: 798px) {
+    #shopify-section-{{ section.id }} .product-overview {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+     .carousel-{{ section.id }} .carousel-cell {
+        margin-right: unset;
+    }
+
+    .product-overview__content-container {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .product-overview__button-block__text-container {
+      gap: 8px;
+    }
+
+    .product-overview__button-block__text {
+      font-size: 15px;
+      line-height: 16px;
+    } 
+
+    .product-overview__button-block__icons {
+      gap: 5px;
+    }
+    
+    .product-overview__button-block__icons .icon{
+      width: 13px;
+      height: 13px;
+    }
+
+    .buttons.product-overview__link-desktop {
+      display: none;
+    }
+
+    .buttons.product-overview__link-mobile {
+      display: block;
+    }
+  }
+
+@media only screen and (max-width: 389px) {
+    .product-overview__button-block {
+      flex-direction: column;
+    }
+
+    .product-overview__button-block__icons .icon{
+      transform: rotate(-90deg);
+    }
+  }
+
+  @media only screen and (min-width: 799px) {
+     /* .product-overview__image {
+      top: 100px;
+      overflow: hidden;
+      position: sticky;
+    } */
+  }
+
+  {%
+    render 'css-loop',
+    css: section.settings.custom_css,
+    id: section.id,
+  %}
+{% endstyle %}
+
+{% if product.metafields.custom.product_overview %}
+
+    {% assign metaobject = product.metafields.custom.product_overview.value %}
+    <section
+      class="
+        section
+        {{ section.settings.css_class }}
+        product-overview
+      "
+    >
+      <div class="product-overview__content-container">
+          {% if metaobject.image != nil and metaobject.slide_1 == nil and metaobject.slide_2 == nil and metaobject.slide_3 == nil %}
+             <div class="product-overview__image-container">
+                  <div class="product-overview__image">
+                    {%
+                      render 'image-element',
+                      image: metaobject.image,
+                      alt: metaobject.image.alt
+                    %}
+                  </div>
+             </div>
+          {% else %}
+            <div class="carousel-{{ section.id }}">
+                {% if metaobject.slide_1 != nil %}
+                  <div class="carousel-cell slide_1">
+                    <img src="{{ metaobject.slide_1  | img_url: 'master' }}" alt="slide_1">
+                  </div>
+                {% endif %}
+                {% if metaobject.slide_2 != nil %}
+                  <div class="carousel-cell slide_3">
+                    <img src="{{ metaobject.slide_2  | img_url: 'master' }}" alt="slide_2">
+                  </div>
+                {% endif %}
+                {% if metaobject.slide_3 != nil %}
+                  <div class="carousel-cell slide_3">
+                    <img src="{{ metaobject.slide_3  | img_url: 'master' }}" alt="slide_3">
+                  </div>
+                {% endif %}
+          </div> 
+          {% endif %}
+
+        <div class="product-overview__content">
+            {% if section.settings.title != blank %}
+                <p class="product-overview__title">
+                  {{ section.settings.title }}
+                  <span class="ambit-black-text">{{ metaobject.product_title }}?</span>
+                </p>
+            {% endif %}
+    
+            <div class="product-overview__accordion-container">
+              {% if metaobject.question_1 and metaobject.answer_1 %}
+                    {% render 'accordion-item-component', 
+                      title: metaobject.question_1,
+                      content: metaobject.answer_1,
+                      icon: metaobject.icon,
+                      id: "product-overview__accordion",
+                      text_color: metaobject.text_color,
+                      number: "1"
+                      initially_open: true
+                    %}
+              {% endif %}
+              {% if metaobject.question_2 and metaobject.answer_2 %}
+                    {% render 'accordion-item-component', 
+                      title: metaobject.question_2,
+                      content: metaobject.answer_2,
+                      icon: metaobject.icon,
+                      id: "product-overview__accordion",
+                      number: "2",
+                      text_color: metaobject.text_color
+                    %}
+              {% endif %}
+              {% if metaobject.question_3 and metaobject.answer_3 %}
+                    {% render 'accordion-item-component', 
+                      title: metaobject.question_3,
+                      content: metaobject.answer_3,
+                      icon: metaobject.icon,
+                      id: "product-overview__accordion",
+                      number: "3",
+                      text_color: metaobject.text_color
+                    %}
+              {% endif %}
+              {% if metaobject.question_4 and metaobject.answer_4 %}
+                    {% render 'accordion-item-component', 
+                      title: metaobject.question_4,
+                      content: metaobject.answer_4,
+                      icon: metaobject.icon,
+                      id: "product-overview__accordion",
+                      number: "4",
+                      text_color: metaobject.text_color
+                    %}
+              {% endif %}
+              {% if metaobject.question_1 and metaobject.answer_5 %}
+                    {% render 'accordion-item-component', 
+                      title: metaobject.question_5,
+                      content: metaobject.answer_5,
+                      icon: metaobject.icon,
+                      id: "product-overview__accordion",
+                      number: "5",
+                      text_color: metaobject.text_color
+                    %}
+              {% endif %}
+              
+            </div>
+        </div>
+      </div>
+
+      {% for block in section.blocks %}
+        {% if block.type == 'button-block' %}
+
+          <div class="product-overview__button-block">
+
+            {% if block.settings.text != blank %}
+              <div class="product-overview__button-block__text-container">
+                  <span class="product-overview__button-block__text">{{ block.settings.text }}</span>
+                  <div class="product-overview__button-block__icons">
+                    {% render 'icon', name: 'read-more-left-arrow' %}
+                    {% render 'icon', name: 'read-more-left-arrow' %}
+                    {% render 'icon', name: 'read-more-left-arrow' %}
+                    {% render 'icon', name: 'read-more-left-arrow' %}
+                    {% render 'icon', name: 'read-more-left-arrow' %}
+                    {% render 'icon', name: 'read-more-left-arrow' %}
+                    {% render 'icon', name: 'read-more-left-arrow' %}
+                    {% render 'icon', name: 'read-more-left-arrow' %}
+                  </div>
+              </div>
+            {% endif %}
+
+            {% if block.settings.button_label != blank %}
+              {% style %}
+                .product-overview__button-block .product-overview__link-desktop a.button:hover,
+                .product-overview__button-block .product-overview__link-mobile a.button:hover {
+                  {% if block.settings.button_background_hover %}
+                    background: {{ block.settings.button_background_hover }};
+                  {% endif %}
+                }
+              {% endstyle %}
+              <div class="buttons product-overview__link-desktop">
+                {% render 'button',
+                        label: block.settings.button_label,
+                        href: block.settings.link-desktop,
+                        style: block.settings.button_style,
+                        type: "link"
+                %}
+              </div>
+
+              <div class="buttons product-overview__link-mobile">
+                {% render 'button',
+                        label: block.settings.button_label,
+                        href: block.settings.link-mobile,
+                        style: block.settings.button_style,
+                        type: "link"
+                %}
+              </div>
+            {% endif %}
+          </div>
+          
+        {% endif %}
+      {% endfor %}
+
+    </section>
+{% endif %}
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var productOverviewSlides = document.querySelector('.carousel-{{ section.id }}');
+    var flktyProductOverviewSlides = new Flickity(productOverviewSlides, {
+      cellAlign: 'left',
+      contain: true,
+      groupCells: true,
+      wrapAround: true,
+      adaptiveHeight: false,
+      prevNextButtons: false,
+      pageDots: true,
+      draggable: true,
+      imagesLoaded: true,
+      fade: true,
+      autoPlay: 5 * 1000,
+    });
+  });
+  </script>
+  
+  <script>
+
+    $('.accordion-item-component-product-overview__accordion').click(function(){
+      //get the clicked item
+      $clickedItem = $('.accordion-item-component__content-product-overview__accordion',this);
+      $clickedCircle = $('.accordion-item-component__arrow-product-overview__accordion',this);
+
+      // is the clicked item already open?
+      if(($clickedItem.hasClass('open'))){
+         //remove the class, slide it up and return early
+
+          $clickedItem.removeClass('open').slideUp(300);
+          $clickedCircle.removeClass('open');
+          return;
+      }
+
+      $('.accordion-item-component__content-product-overview__accordion').removeClass('open').slideUp(300);
+      $('.accordion-item-component__arrow-product-overview__accordion').removeClass('open');
+
+      //slide down the clicked item and add the open class
+      $clickedItem.slideDown(300).addClass('open');
+      $clickedCircle.addClass('open');
+
+    });
+
+    //limit clickable aread to the accordion title
+    $( '.accordion-item-component__content-product-overview__accordion' ).click(function() {
+      event.stopImmediatePropagation()
+    });
+
+  </script>
+
+{% schema %}
+  {
+    "name": "Product overview",
+    "settings": [
+      {
+        "type": "html",
+        "id": "title",
+        "label": "Section title"
+      },
+      {
+        "type": "header",
+        "content": "Section"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Top spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Bottom spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Section background color",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "color",
+        "id": "title_color",
+        "label": "Section title color",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Section text color"
+      },
+      {
+        "type": "header",
+        "content": "Mobile layout"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Mobile top spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Mobile bottom spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Advanced",
+        "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+      },
+      {
+        "type": "text",
+        "id": "css_class",
+        "label": "CSS Class"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_css",
+        "label": "Custom CSS"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "button-block",
+        "name": "Button block",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text"
+          },
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button label",
+            "default": "Check out Our FAQ"
+          },
+          {
+            "type": "url",
+            "id": "link-desktop",
+            "label": "Button link - desktop"
+          },
+          {
+            "type": "url",
+            "id": "link-mobile",
+            "label": "Button link - mobile"
+          },
+          {
+            "type": "select",
+            "id": "button_style",
+            "label": "Button style",
+            "options": [
+              {
+                "value": "button--primary",
+                "label": "Primary"
+              },
+              {
+                "value": "button--secondary",
+                "label": "Secondary"
+              },
+              {
+                "value": "button--link-style",
+                "label": "Link style"
+              }
+            ],
+            "default": "button--primary"
+          },
+          {
+            "type": "color",
+            "id": "button_background_hover",
+            "label": "Button background color hover",
+            "default": "#78BE20"
+          },
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Product overview"
+      }
+    ]
+  }
+{% endschema %}

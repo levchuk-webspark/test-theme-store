@@ -1,0 +1,205 @@
+{% style %}
+
+
+  .accordion-item-component-{{ id }}{% if index != nill %}-{{ index }}{% endif %} {
+    padding: 10px 0;
+    border-top: 1px solid {{ text_color}};
+  }
+
+  .accordion-item-component-{{ id }}{% if index != nill %}-{{ index }}{% endif %}:last-of-type {
+    border-bottom: 1px solid {{ text_color }};
+  }
+  
+  .accordion-item-component__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .accordion-item-component__icon-and-title {
+    display: flex;
+    gap: 11px;
+    text-transform: uppercase;
+    align-items: center;
+  }
+
+  .accordion-item-component__icon {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    min-height: 30px;
+  }
+
+  .accordion-item-component__arrow-{{ id }}{% if index != nill %}-{{ index }}{% endif %} {
+    width: 8px;
+    height: 8px;
+    min-width: 8px;
+    min-height: 8px;
+    border-bottom: 2px solid {{ text_color }};
+    border-right: 2px solid {{ text_color }};
+    transform: rotate(-45deg);
+    transition: transform 0.5s;
+  }
+
+  .accordion-item-component__arrow-{{ id }}{% if index != nill %}-{{ index }}{% endif %}.open {
+    transform: rotate(45deg);
+    transition: transform 0.5s;
+  }
+
+  .accordion-item-component__content-{{ id }}{% if index != nill %}-{{ index }}{% endif %} {
+    display:none;
+    padding-left: 41px;
+    padding-top: 10px;
+  }
+
+  .accordion-item-component__title:hover{
+    cursor:pointer;
+  }
+
+  .accordion-item-component__content-{{ id }}{% if index != nill %}-{{ index }}{% endif %}.open {
+    display: block;
+  }
+
+
+  .accordion-item-component-{{ id }}{% if index != nill %}-{{ index }}{% endif %} .full_content-{{ id }}{% if index != nill %}-{{ index }}{% endif %}-{{ number }} {
+    display: none;
+  }
+
+  .accordion-item-component-{{ id }}{% if index != nill %}-{{ index }}{% endif %} .read-more-{{ id }}{% if index != nill %}-{{ index }}{% endif %}-{{ number }} {
+    font-style: italic;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .accordion-item-component-{{ id }}{% if index != nill %}-{{ index }}{% endif %} .read-less-{{ id }}{% if index != nill %}-{{ index }}{% endif %}-{{ number }} {
+    font-style: italic;
+    margin-top: 10px;
+    display: none;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .accordion-item-component-{{ id }}{% if index != nill %}-{{ index }}{% endif %} .read-more-{{ id }}{% if index != nill %}-{{ index }}{% endif %}-{{ number }}:hover {
+    cursor: pointer;
+    color: {{ text_color }};
+  }
+
+  .accordion-item-component-{{ id }}{% if index != nill %}-{{ index }}{% endif %} .read-less-{{ id }}{% if index != nill %}-{{ index }}{% endif %}-{{ number }}:hover {
+    cursor: pointer;
+    color: {{ text_color }} ;
+  }
+  
+  .accordion-item-component__read-button {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .accordion-item-component__read-more-icons,
+  .accordion-item-component__read-less-icons {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .accordion-item-component__read-more-icons .icon,
+  .accordion-item-component__read-less-icons .icon {
+    width: 13px;
+    height: 13px;
+  }
+
+  .accordion-item-component__read-more-icons .icon {
+    transform: rotate(180deg);
+  }
+
+  
+{% endstyle %}
+
+<div class="accordion-item-component-{{ id }}{% if index != nill %}-{{ index }}{% endif %}">
+    <div class="accordion-item-component__title">      
+        <div class="accordion-item-component__icon-and-title">
+          {% if icon != nil %}
+            <div class="accordion-item-component__icon">
+              {%
+                render 'image-element',
+                image: icon,
+                alt: icon.alt
+              %}
+            </div>
+          {% endif %}
+          <span>{{ title }}</span>
+        </div>
+      <div class="accordion-item-component__arrow-{{ id }}{% if index != nill %}-{{ index }}{% endif %} {% if initially_open %}open{% endif %}"></div>
+    </div>
+
+    <div class="accordion-item-component__content-{{ id }}{% if index != nill %}-{{ index }}{% endif %} {% if initially_open %}open{% endif %}">
+        <div class="product__description content">
+
+          {% assign content_array = content  | split: '<!-- split -->' %}
+          {% assign truncated_content = content_array | first %}
+          
+           {% if content_array.size > 1 %}
+
+                 <div class="truncated_content-{{ id }}{% if index != nill %}-{{ index }}{% endif %}-{{ number }} ">
+                   {{ truncated_content }}
+                  </div>
+    
+                  <div class="full_content-{{ id }}{% if index != nill %}-{{ index }}{% endif %}-{{ number }}">
+                    {{ content }}
+                  </div>
+    
+    
+                  <div
+                    class="read-more-{{ id }}{% if index != nill %}-{{ index }}{% endif %}-{{ number }} romie-regular-italic-text"
+                    href="#"
+                    onclick="toggleShowMoreInAccordItemComponent('{{ id }}{% if index != nill %}-{{ index }}{% endif %}-{{ number }}')">
+                    <div class="accordion-item-component__read-button">
+                      Read more
+                      <span class="accordion-item-component__read-more-icons">
+                        {% render 'icon', name: 'read-more-left-arrow' %}
+                        {% render 'icon', name: 'read-more-left-arrow' %}
+                        {% render 'icon', name: 'read-more-left-arrow' %}
+                        {% render 'icon', name: 'read-more-left-arrow' %}
+                        {% render 'icon', name: 'read-more-left-arrow' %}
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <div
+                    class="read-less-{{ id }}{% if index != nill %}-{{ index }}{% endif %}-{{ number }} romie-regular-italic-text"
+                    href="#"
+                    onclick="toggleShowMoreInAccordItemComponent('{{ id }}{% if index != nill %}-{{ index }}{% endif %}-{{ number }}')">
+                    <div class="accordion-item-component__read-button">
+                      Read less
+                      <span class="accordion-item-component__read-less-icons">
+                        {% render 'icon', name: 'read-more-left-arrow' %}
+                        {% render 'icon', name: 'read-more-left-arrow' %}
+                        {% render 'icon', name: 'read-more-left-arrow' %}
+                        {% render 'icon', name: 'read-more-left-arrow' %}
+                        {% render 'icon', name: 'read-more-left-arrow' %}
+                      </span>
+                    </div>
+                  </div>
+    
+          {% else %}
+              <div class="full_content">
+                    {{ content }}
+             </div>
+          {% endif %}
+
+
+          </div>
+    </div>
+</div>
+
+<script>
+  
+  function toggleShowMoreInAccordItemComponent(elNumber){
+      $(`.truncated_content-${elNumber}`).toggle()
+      $(`.full_content-${elNumber}`).toggle()
+      $(`.read-more-${elNumber}`).toggle()
+      $(`.read-less-${elNumber}`).toggle()                              
+  }
+  
+</script>

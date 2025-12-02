@@ -1,0 +1,656 @@
+{% assign cards = section.blocks | where: 'type', 'card' %}
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    {% if section.settings.image != blank %}
+        background: 
+         linear-gradient(rgba(0, 0, 0, 0.2), transparent),
+         url("{{section.settings.image | img_url: 'master'}}");
+        background-size:cover;
+        background-position:center;
+        background-repeat:norepeat;
+    {% else %}
+        background-color: {{ section.settings.background_color }};
+    {% endif %}    
+  }
+
+   .cards-with-slider__title {
+     width: 61%;
+    
+    line-height: 1.1;
+    font-weight: normal;
+    margin-bottom: 35px;
+  }
+
+  #shopify-section-{{ section.id }} .cards-with-slider__title {
+    color: {{ section.settings.title_color }};
+    font-size: {{ section.settings.title-font-size }}px;
+  }
+
+  .cards-with-slider__description {
+     width: 48%;
+    
+    margin-bottom: 30px;
+  }
+
+  #shopify-section-{{ section.id }} .cards-with-slider__description {
+    font-size: {{ section.settings.description-font-size }}px;
+  }
+
+  #shopify-section-{{ section.id }} .cards-with-slider__description {
+    color: {{ section.settings.text_color }};
+  }
+
+  .cards-with-slider__buttons-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .cards-with-slider__cards-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 75px;
+  }
+
+  .cards-with-slider__card__arrow .icon {
+    width: 80px;
+    height: 80px;
+    transition: transform 0.6s;
+  }
+
+  .cards-with-slider__card:hover .cards-with-slider__card__arrow .icon {
+      transform: rotate(90deg);
+  }
+
+  .cards-with-slider__card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 330px;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  .cards-with-slider__card:hover {
+    cursor: pointer;
+  }
+
+  #shopify-section-{{ section.id }} .cards-with-slider__card__title {
+    font-size: {{ section.settings.card-title-font-size }}px;
+  }
+
+  #shopify-section-{{ section.id }} .cards-with-slider__card {
+        padding: {{ section.settings.card-padding}}px;
+  }
+
+
+  @media only screen and (max-width: 1000px) {
+    .cards-with-slider__cards-container {
+      grid-template-columns: 1fr 1fr;
+      margin-top: 60px;
+    }
+
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+    .cards-with-slider__title {
+      width: 100%;
+      
+      margin-bottom: 40px;
+    }
+
+    .cards-with-slider__description {
+       width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .cards-with-slider__title {
+      font-size: {{ section.settings.title-font-size_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .cards-with-slider__description {
+       font-size: {{ section.settings.description-font-size_mobile }}px;
+    }
+
+     #shopify-section-{{ section.id }} .cards-with-slider__card__title {
+        font-size: {{ section.settings.card-title-font-size-mobile }}px;
+      }
+
+    .cards-with-slider__card__arrow .icon {
+      width: 62px;
+      height: 62px;
+    }
+
+    #shopify-section-{{ section.id }} .cards-with-slider__card {
+      padding: 10px;
+      height: 230px;
+    }
+  }
+
+{%
+  render 'css-loop',
+  css: section.settings.custom_css,
+  id: section.id,
+%}
+  
+{% endstyle %}
+
+<section
+  class="
+    section
+    {{ section.settings.css_class }}
+    cards-with-slider
+  "
+>
+    {% if section.settings.title != blank %}
+        <h2 class="cards-with-slider__title">{{ section.settings.title }}</h2>
+    {% endif %}
+    {% if section.settings.description != blank %}
+        <div class="cards-with-slider__description">{{ section.settings.description }}</div>
+    {% endif %}
+    <div class="cards-with-slider__buttons-container">
+        {% for block in section.blocks %}
+            {% if block.type == 'button-block' %}
+    
+                {% if block.settings.button_label != blank %}
+                    {% style -%}
+                        
+                        .block-{{ block.id }}.cards-with-slider__button .button--custom {
+                          border: 1px solid;
+                          overflow-wrap: normal;
+                          padding: 19px 42px;
+                          font-size: 14px !important;
+                        }
+
+                        .block-{{ block.id }}.cards-with-slider__button .button--custom,
+                        .block-{{ block.id }}.cards-with-slider__button a.button--primary.button,
+                        .block-{{ block.id }}.cards-with-slider__button a.button--secondary.button  {
+                          border-radius: {{ block.settings.button_custom_border_radius | append: 'px' }};
+                        }
+              
+                        .block-{{ block.id }}.cards-with-slider__button a.button--custom.button,
+                        .block-{{ block.id }}.cards-with-slider__button a.button--custom.button:link,
+                        .block-{{ block.id }}.cards-with-slider__button a.button--custom.button:visited {
+                          background-color: {{ block.settings.button_custom_bg_color }};
+                          color: {{ block.settings.button_custom_text_color }};
+                          border-color: {{ block.settings.button_custom_border_color }};
+                        }
+              
+                        .block-{{ block.id }}.cards-with-slider__button a.button--custom.button:hover,
+                        .block-{{ block.id }}.cards-with-slider__button a.button--custom.button.is-hovered {
+                          color: {{ block.settings.button_custom_text_color--highlight }};
+                          border-color: {{ block.settings.button_custom_border_color--highlight }};
+                          background-color: {{ block.settings.button_custom_bg_color--highlight }};
+                        }
+
+                      .block-{{ block.id }}.cards-with-slider__button a.button--link-style.button {
+                        font-size: 13px !important;
+                      }
+
+                        .block-{{ block.id }}.cards-with-slider__button a.button--link-style.button,
+                        .block-{{ block.id }}.cards-with-slider__button a.button--link-style.button:visited {
+                            color: {{ block.settings.button_custom_text_color }};
+                            border-bottom: 1px dashed;
+                            border-bottom-color: {{ block.settings.button_custom_border_color }};
+                        }
+
+                        .block-{{ block.id }}.cards-with-slider__button a.button--link-style.button:hover {
+                            color: {{ block.settings.button_custom_text_color--highlight }};
+                            border-bottom-color: {{ block.settings.button_custom_border_color--highlight }};
+                        }
+
+                        @media only screen and (max-width: 1000px) {
+                            .block-{{ block.id }}.cards-with-slider__button .button--custom {
+                              padding: 19px 10px;
+                            }
+                        }
+
+                    {%- endstyle -%}
+                    
+                      <div class="cards-with-slider__button block-{{ block.id }}">
+                        <a href="{{ block.settings.button_link }}" class="button {{ block.settings.button_style }}">
+                          {{ block.settings.button_label }}
+                        </a>
+                      </div>
+                {% endif %}
+              
+            {% endif %}
+      {% endfor %}   
+  </div>
+
+  
+  {% render 'cards-with-slider__slider',
+    cards: cards,
+  %}
+
+  <div class="cards-with-slider__cards-container">
+        {% for block in cards %}
+    
+                {% if block.settings.title != blank %}
+                    {% style -%}
+
+                      .block-{{ block.id }}.cards-with-slider__card {
+                        background-color: {{ block.settings.background_color }};
+                        border: 1px solid {{ block.settings.title_color }};
+                      }
+
+                      .block-{{ block.id }}.cards-with-slider__card:hover,
+                      .block-{{ block.id }}.cards-with-slider__card.is-selected-card {
+                          {% if block.settings.image != nil %}
+                              background: url("{{block.settings.image | img_url: 'master'}}");
+                              background-size:cover;
+                              background-position:center;
+                              background-repeat:norepeat;
+                              border: none;
+                          {% endif %} 
+                      }
+
+                      .block-{{ block.id }} .cards-with-slider__card__title,
+                      .block-{{ block.id }} .cards-with-slider__card__arrow .icon {
+                        color: {{ block.settings.title_color }};
+                      }
+
+
+                    {%- endstyle -%}
+                    
+                      <div class="cards-with-slider__card block-{{ block.id }}" 
+                        data-selected-card="{{ block.id }}"
+                        data-selected-card-index="{{ forloop.index }}" 
+                        >
+                         <div class="cards-with-slider__card__arrow">
+                                {% render 'icon', name: 'read-more-right-arrow' %}
+                            </div>
+                          <div class="cards-with-slider__card__title">{{ block.settings.title }}</div>
+                      </div>
+
+
+                  
+                {% endif %}
+          
+      {% endfor %}   
+  </div>
+
+</section>
+
+
+
+
+<script>
+    window.addEventListener('load', function() {
+
+    const cardsWithSliderCardslist = document.querySelectorAll(".cards-with-slider__card");
+    const cardsWithSliderModalBackdrop = document.querySelector('.cards-with-slider__modal-backdrop');
+    const cardsWithSliderModalContent = document.querySelector(".cards-with-slider__modal__content");
+    const cardsWithSliderModalClose = document.querySelector(".cards-with-slider__modal__close");
+
+    const removeSelectedClassFromCards = () => {
+      for (const card of cardsWithSliderCardslist) {
+            card.classList.remove("is-selected-card");
+        };
+    };
+
+    for (const card of cardsWithSliderCardslist) { 
+      card.addEventListener("click", () => {
+          removeSelectedClassFromCards();
+          card.classList.add("is-selected-card"); 
+      
+          if(cardsWithSliderModalContent && cardsWithSliderModalBackdrop) {
+
+              cardsWithSliderModalContent.classList.add("cards-with-slider__modal__content__is-open");
+              cardsWithSliderModalBackdrop.classList.add("cards-with-slider__modal-backdrop-is-open");
+
+              const cardsWithSliderCarousel = document.querySelector(".carousel-{{ section.id }}");
+            
+              const cardsWithSliderCarouselFlickity = new Flickity( cardsWithSliderCarousel, {
+                    cellAlign: 'left',
+                    contain: true,
+                    groupCells: true,
+                    wrapAround: true,
+                    pageDots: true,
+                    initialIndex: card.dataset.selectedCardIndex - 1
+                });
+    
+              cardsWithSliderCarouselFlickity.resize();
+
+              const cardsWithSliderCarouselPrevButton = document.querySelector('.cards-with-slider__modal__cards-list__item__button-prev-{{ section.id }}');
+              const cardsWithSliderCarouselNextButton = document.querySelector('.cards-with-slider__modal__cards-list__item__button-next-{{ section.id }}');
+
+              if (cardsWithSliderCarouselPrevButton) {
+                cardsWithSliderCarouselPrevButton.addEventListener( 'click', function() {
+                  cardsWithSliderCarouselFlickity.previous();
+                });
+              }
+          
+              if (cardsWithSliderCarouselNextButton) {
+                cardsWithSliderCarouselNextButton.addEventListener( 'click', function() {
+                  cardsWithSliderCarouselFlickity.next( );
+                });
+              }
+    
+
+        
+              cardsWithSliderModalBackdrop.onclick = function(event) {
+                  cardsWithSliderModalContent.classList.remove("cards-with-slider__modal__content__is-open");
+                  cardsWithSliderModalBackdrop.classList.remove("cards-with-slider__modal-backdrop-is-open");
+                  removeSelectedClassFromCards();
+                  cardsWithSliderCarouselFlickity.destroy();
+              }
+
+              cardsWithSliderModalClose.onclick = function() {
+                  cardsWithSliderModalContent.classList.remove("cards-with-slider__modal__content__is-open");
+                  cardsWithSliderModalBackdrop.classList.remove("cards-with-slider__modal-backdrop-is-open");
+                  removeSelectedClassFromCards();
+                  cardsWithSliderCarouselFlickity.destroy();
+              }
+
+ 
+              cardsWithSliderModalContent.onclick = function(e) {
+                  e.stopPropagation();
+              }
+          
+          }
+
+
+    });
+
+  };
+
+  });
+  
+</script>
+
+{% schema %}
+  {
+    "name": "Cards with sliders",
+    "settings": [
+      {
+        "type": "html",
+        "id": "title",
+        "label": "Section title"
+      },
+      {
+        "type": "html",
+        "id": "description",
+        "label": "Section description"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Top spacing",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "default": 80,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Bottom spacing",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "title-font-size",
+        "label": "Title font size",
+        "min": 0,
+        "max": 100,
+        "default": 65,
+        "unit": "px"
+      },
+       {
+        "type": "range",
+        "id": "description-font-size",
+        "label": "Description font size",
+        "min": 0,
+        "max": 100,
+        "default": 22,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "card-padding",
+        "label": "Card padding",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "card-title-font-size",
+        "label": "Card title font size",
+        "min": 0,
+        "max": 100,
+        "default": 40,
+        "unit": "px"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Background image"
+      },
+      {
+        "type": "header",
+        "content": "Colors"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Section background color",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "color",
+        "id": "title_color",
+        "label": "Section title color",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Section text color",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "header",
+        "content": "Mobile layout"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Mobile top spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Mobile bottom spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+       {
+        "type": "range",
+        "id": "title-font-size_mobile",
+        "label": "Title font size",
+        "min": 0,
+        "max": 100,
+        "default": 50,
+        "unit": "px"
+      },
+       {
+        "type": "range",
+        "id": "description-font-size_mobile",
+        "label": "Description font size",
+        "min": 0,
+        "max": 100,
+        "default": 22,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "card-title-font-size-mobile",
+        "label": "Card title font size mobile",
+        "min": 0,
+        "max": 100,
+        "default": 21,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Advanced",
+        "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+      },
+      {
+        "type": "text",
+        "id": "css_class",
+        "label": "CSS Class"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_css",
+        "label": "Custom CSS"
+      }
+    ],
+    "blocks": [
+        {
+          "type": "card",
+          "name": "Card",
+          "settings": [
+          {
+            "type": "html",
+            "id": "title",
+            "label": "Card title"
+          },
+          {
+            "type": "html",
+            "id": "description",
+            "label": "Card description"
+          },
+          {
+            "type": "header",
+            "content": "Colors"
+          },
+          {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background"
+          },
+          {
+            "type": "color",
+            "id": "title_color",
+            "label": "Title"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }
+        ]
+      },
+      {
+        "type": "button-block",
+        "name": "Button block",
+        "settings": [
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button label"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+          },
+          {
+            "type": "select",
+            "id": "button_style",
+            "label": "Button style",
+            "options": [
+              {
+                "value": "button--primary",
+                "label": "Primary"
+              },
+              {
+                "value": "button--secondary",
+                "label": "Secondary"
+              },
+              {
+                "value": "button--link-style",
+                "label": "Link style"
+              },
+              {
+                "value": "button--custom",
+                "label": "Custom"
+              }
+            ],
+            "default": "button--primary"
+          },
+          {
+            "type": "header",
+            "content": "Custom button style"
+          },
+          {
+            "type": "range",
+            "id": "button_custom_border_radius",
+            "label": "Border radius",
+            "min": 0,
+            "max": 50,
+            "default": 8,
+            "unit": "px"
+          },
+          {
+            "type": "color",
+            "id": "button_custom_bg_color",
+            "label": "Background"
+          },      
+          {
+            "type": "color",
+            "id": "button_custom_border_color",
+            "label": "Border"
+          },
+          {
+            "type": "color",
+            "id": "button_custom_text_color",
+            "label": "Text"
+          },
+          {
+            "type": "color",
+            "id": "button_custom_bg_color--highlight",
+            "label": "Background hover"
+          },
+          {
+            "type": "color",
+            "id": "button_custom_border_color--highlight",
+            "label": "Border hover"
+          },
+          {
+            "type": "color",
+            "id": "button_custom_text_color--highlight",
+            "label": "Text hover"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Vitality: cards with sliders"
+      }
+    ]
+  }
+{% endschema %}

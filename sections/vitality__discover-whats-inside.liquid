@@ -1,0 +1,748 @@
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.background_color }};
+  }
+
+  .discover-whats-inside__title {
+     width: 75%;
+    line-height: 1.1;
+    font-weight: normal;
+    margin-bottom: 50px;
+  }
+
+  #shopify-section-{{ section.id }} .discover-whats-inside__title {
+    color: {{ section.settings.title_color }};
+  }
+
+  #shopify-section-{{ section.id }} .discover-whats-inside__title {
+    font-size: {{ section.settings.section-title-font-size }}px;
+  }
+
+  .discover-whats-inside__card__title {
+    width: 80%;
+    text-align: center;
+  }
+
+   #shopify-section-{{ section.id }} .discover-whats-inside__card__title {
+      font-size: {{ section.settings.card-title-font-size }}px;
+    }
+
+   #shopify-section-{{ section.id }} .discover-whats-inside__card__description {
+      margin-top: 22px;
+    }
+  
+  #shopify-section-{{ section.id }} .discover-whats-inside__card__description {
+    font-size: {{ section.settings.description-font-size }}px;
+  }
+
+   #shopify-section-{{ section.id }} .discover-whats-inside__description__section {
+    font-size: {{ section.settings.description-section-font-size }}px;
+    color: {{ section.settings.text_color }};
+  }
+
+  .discover-whats-inside__description__section {
+    width: 44%;
+    margin-bottom: 30px;
+  }
+
+  #shopify-section-{{ section.id }} .discover-whats-inside__description {
+    color: {{ section.settings.text_color }};
+  }
+
+  .discover-whats-inside__buttons-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .discover-whats-inside__cards-container {
+    margin-top: 63px;
+  }
+
+  .discover-whats-inside__cards-list {
+      display: flex;
+      align-items: stretch;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .discover-whats-inside__card {
+      padding-right: 9px;
+      width: 25%;
+    }
+
+    .discover-whats-inside__card:last-of-type {
+       padding-right: 0;
+    }
+
+    /* #shopify-section-{{ section.id }} .discover-whats-inside__card-content {
+      width: 100%;
+    } */
+
+    .discover-whats-inside__card__title_content {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+    }
+
+  #shopify-section-{{ section.id }} .discover-whats-inside__card__number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: {{ section.settings.card-number-font-size }}px;
+      font-weight: 900;
+      width: {{ section.settings.card-number-size }}px;
+      height: {{ section.settings.card-number-size }}px;
+      border-radius: 50%;
+    }
+
+    #shopify-section-{{ section.id }} .discover-whats-inside__description {
+      font-size: {{ section.settings.description-font-size }}px;
+    }
+
+    #shopify-section-{{ section.id }} .discover-whats-inside__card__image {
+      height: 440px;
+      border-radius: 5px;
+    }
+
+  .discover-whats-inside__nav-buttons {
+    display: none;
+  }
+
+  .discover-whats-inside .flickity-button {
+    display: none;
+  }
+
+   @media only screen and (max-width: 1439px) {
+      #shopify-section-{{ section.id }} .discover-whats-inside__card__image {
+        height: 350px;
+      }
+    }
+
+   @media only screen and (max-width: 950px) {
+     #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+    .discover-whats-inside__title {
+      width: 100%;
+      font-size: 50px;
+      margin-bottom: 40px;
+    }
+
+    #shopify-section-{{ section.id }} .discover-whats-inside__title {
+      font-size: {{ section.settings.section-title-font-size-mobile }}px;
+    }
+
+     #shopify-section-{{ section.id }} .discover-whats-inside__card__title {
+      font-size: {{ section.settings.card-title-font-size-mobile }}px;
+    }
+
+      #shopify-section-{{ section.id }} .discover-whats-inside__card__description {
+      margin-top: 16px;
+    }
+     
+      #shopify-section-{{ section.id }} .discover-whats-inside__card__description {
+        font-size: {{ section.settings.description-font-size-mobile }}px;
+      }
+
+     #shopify-section-{{ section.id }} .discover-whats-inside__description__section {
+       font-size: {{ section.settings.description-section-font-size-mobile }}px;
+     }
+
+    .discover-whats-inside__description__section {
+      width: 100%;
+      margin-bottom: 40px;
+    }
+
+     .discover-whats-inside__cards-container {
+       margin-top: 34px;
+     }
+
+      #shopify-section-{{ section.id }} .discover-whats-inside__card {
+        width: 230px;
+      }
+
+       #shopify-section-{{ section.id }} .discover-whats-inside__card:last-of-type {
+          padding-right: 8px;
+       }
+
+     #shopify-section-{{ section.id }} .discover-whats-inside__card__image {
+      height: 310px;
+    }
+
+     .discover-whats-inside__card__title_content {
+       margin-top: 7px;
+       padding: 7px;
+     }
+
+    #shopify-section-{{ section.id }} .discover-whats-inside__card__number {
+      width: {{ section.settings.card-number-size-mobile }}px;
+      height: {{ section.settings.card-number-size-mobile }}px;
+      font-size: {{ section.settings.card-number-font-size-mobile }}px;
+    }
+
+     .discover-whats-inside__nav-buttons__prev,
+        .discover-whats-inside__nav-buttons__next {
+          border: none;
+          background: none;
+          padding: 0;
+      }
+
+      .discover-whats-inside__nav-buttons__prev .icon,
+      .discover-whats-inside__nav-buttons__next .icon {
+        width: 26px;
+        height: 26px;
+        color: {{ section.settings.nav_button_color }};
+      }
+
+      .discover-whats-inside__nav-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        margin-top: 15px;
+      }
+   }
+  
+  {%
+  render 'css-loop',
+  css: section.settings.custom_css,
+  id: section.id,
+%}
+  
+{% endstyle %}
+
+<section
+  class="
+    section
+    {{ section.settings.css_class }}
+    discover-whats-inside
+  "
+>
+  {% if section.settings.title != blank %}
+    <h2 class="discover-whats-inside__title">{{ section.settings.title }}</h2>
+  {% endif %}
+  {% if section.settings.description != blank %}
+      <div class="discover-whats-inside__description__section">{{ section.settings.description }}</div>
+  {% endif %}
+  <div class="discover-whats-inside__buttons-container">
+        {% for block in section.blocks %}
+            {% if block.type == 'button-block' %}
+    
+                {% if block.settings.button_label != blank %}
+                    {% style -%}
+                        
+                        .block-{{ block.id }}.discover-whats-inside__button .button--custom {
+                          border: 1px solid;
+                          overflow-wrap: normal;
+                          padding: 19px 42px;
+                          font-size: 14px !important;
+                        }
+
+                        .block-{{ block.id }}.discover-whats-inside__button .button--custom,
+                        .block-{{ block.id }}.discover-whats-inside__button a.button--primary.button,
+                        .block-{{ block.id }}.discover-whats-inside__button a.button--secondary.button  {
+                          border-radius: {{ block.settings.button_custom_border_radius | append: 'px' }};
+                        }
+              
+                        .block-{{ block.id }}.discover-whats-inside__button a.button--custom.button,
+                        .block-{{ block.id }}.discover-whats-inside__button a.button--custom.button:link,
+                        .block-{{ block.id }}.discover-whats-inside__button a.button--custom.button:visited {
+                          background-color: {{ block.settings.button_custom_bg_color }};
+                          color: {{ block.settings.button_custom_text_color }};
+                          border-color: {{ block.settings.button_custom_border_color }};
+                        }
+              
+                        .block-{{ block.id }}.discover-whats-inside__button a.button--custom.button:hover,
+                        .block-{{ block.id }}.discover-whats-inside__button a.button--custom.button.is-hovered {
+                          color: {{ block.settings.button_custom_text_color--highlight }};
+                          border-color: {{ block.settings.button_custom_border_color--highlight }};
+                          background-color: {{ block.settings.button_custom_bg_color--highlight }};
+                        }
+
+                      .block-{{ block.id }}.discover-whats-inside__button a.button--link-style.button {
+                        font-size: 13px !important;
+                      }
+
+                        .block-{{ block.id }}.discover-whats-inside__button a.button--link-style.button,
+                        .block-{{ block.id }}.discover-whats-inside__button a.button--link-style.button:visited {
+                            color: {{ block.settings.button_custom_text_color }};
+                            border-bottom: 1px dashed;
+                            border-bottom-color: {{ block.settings.button_custom_border_color }};
+                        }
+
+                        .block-{{ block.id }}.discover-whats-inside__button a.button--link-style.button:hover {
+                            color: {{ block.settings.button_custom_text_color--highlight }};
+                            border-bottom-color: {{ block.settings.button_custom_border_color--highlight }};
+                        }
+
+                        @media only screen and (max-width: 1000px) {
+                            .block-{{ block.id }}.discover-whats-inside__button .button--custom {
+                              padding: 19px 10px;
+                            }
+                        }
+
+                    {%- endstyle -%}
+                    
+                      <div class="discover-whats-inside__button block-{{ block.id }}">
+                        <a href="{{ block.settings.button_link }}" class="button {{ block.settings.button_style }}">
+                          {{ block.settings.button_label }}
+                        </a>
+                      </div>
+                {% endif %}
+              
+            {% endif %}  
+      {% endfor %}   
+  </div>
+  <div class="discover-whats-inside__cards-container">
+     <ul class="discover-whats-inside__cards-list carousel-{{ section.id }}">
+      {% for block in section.blocks %}
+        {% if block.type == 'card' %}
+          {% style %}
+            .block-{{ block.id }} .discover-whats-inside__card__title {
+              color: {{ block.settings.title_color }};
+            }
+
+            .block-{{ block.id }} .discover-whats-inside__card__title_content {
+              border: 1px solid {{ block.settings.title_color }};
+            }
+            
+            .block-{{ block.id }} .discover-whats-inside__card__description {
+              color: {{ block.settings.description_color }};
+            }
+
+            .block-{{ block.id }} .discover-whats-inside__card__number {
+              color: {{ block.settings.color_number }};
+              background-color: {{ block.settings.background_number }}
+            }
+          {% endstyle %}
+
+          <li class="discover-whats-inside__card block-{{ block.id }} carousel-cell">
+            <div class="discover-whats-inside__card-content">
+              {% if block.settings.image != null %}
+                <div class="discover-whats-inside-wrapper-image">
+                  {% render 'image-element',
+                    image: block.settings.image,
+                    alt: block.settings.image.alt,
+                    additional_wrapper_classes: 'discover-whats-inside__card__image',
+                    object_fit: true
+                  %}
+                </div>
+                <div class="discover-whats-inside__card__title_content">
+                  <div class="discover-whats-inside__card__number">{{ block.settings.number }}</div>
+                  <div class="discover-whats-inside__card__title">{{ block.settings.title }}</div>
+                </div>
+                <div class="discover-whats-inside__card__description">{{ block.settings.description }}</div>
+              {% endif %}
+            </div>
+          </li>
+        {% endif %}
+      {% endfor %}
+     </ul>
+      <div class="discover-whats-inside__nav-buttons">
+        <button class="discover-whats-inside__nav-buttons__prev discover-whats-inside__nav-buttons__prev-{{ section.id }}">
+          {% render 'icon', name: 'slider-left-arrow' %}
+        </button>
+        <button class="discover-whats-inside__nav-buttons__next discover-whats-inside__nav-buttons__next-{{ section.id }}">
+          {% render 'icon', name: 'slider-right-arrow' %}
+        </button>
+      </div>
+  </div>
+</section>
+
+{% comment %}JavaScript{% endcomment %}
+
+<script>
+  window.addEventListener('load', function() {
+
+    const discoverWhatsInsideCarousel = document.querySelector('.carousel-{{ section.id }}');
+
+        if (discoverWhatsInsideCarousel) {
+            const discoverWhatsInsideFlickity = new Flickity(discoverWhatsInsideCarousel, {
+                cellAlign: 'left',
+                contain: true,
+                groupCells: true,
+                wrapAround: true,
+                pageDots: false
+            });
+
+
+            const discoverWhatsInsidePrevButton = document.querySelector('.discover-whats-inside__nav-buttons__prev-{{ section.id }}');
+            const discoverWhatsInsideNextButton = document.querySelector('.discover-whats-inside__nav-buttons__next-{{ section.id }}');
+
+            if (discoverWhatsInsidePrevButton) {
+              discoverWhatsInsidePrevButton.addEventListener('click', function() {
+                discoverWhatsInsideFlickity.previous();
+              });
+            }
+
+            if (discoverWhatsInsideNextButton) {
+              discoverWhatsInsideNextButton.addEventListener('click', function() {
+                discoverWhatsInsideFlickity.next();
+              });
+            }
+        }
+  });
+</script>
+  
+{% schema %}
+  {
+    "name": "Discover whats inside",
+    "settings": [
+      {
+        "type": "html",
+        "id": "title",
+        "label": "Section title"
+      },
+      {
+        "type": "html",
+        "id": "description",
+        "label": "Section description"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Top spacing",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "default": 80,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Bottom spacing",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "section-title-font-size",
+        "label": "Section title font size",
+        "min": 0,
+        "max": 100,
+        "default": 65,
+        "unit": "px"
+      },
+       {
+        "type": "range",
+        "id": "description-section-font-size",
+        "label": "Section description font size",
+        "min": 0,
+        "max": 100,
+        "default": 22,
+        "unit": "px"
+    },
+      {
+        "type": "range",
+        "id": "card-title-font-size",
+        "label": "Card title font size",
+        "min": 0,
+        "max": 100,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+      "type": "range",
+      "id": "card-number-font-size",
+      "label": "Card number font size",
+      "min": 0,
+      "max": 100,
+      "default": 30,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "card-number-size",
+      "label": "Card number size",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+        "type": "range",
+        "id": "description-font-size",
+        "label": "Card description font size",
+        "min": 0,
+        "max": 100,
+        "default": 15,
+        "unit": "px"
+    },
+      {
+        "type": "header",
+        "content": "Colors"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Section background color",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "color",
+        "id": "title_color",
+        "label": "Section title color",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Section text color",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+      "type": "color",
+      "id": "nav_button_color",
+      "label": "Navigation button color",
+      "default": "#60012C"
+    },
+      {
+        "type": "header",
+        "content": "Mobile layout"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Mobile top spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Mobile bottom spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "section-title-font-size-mobile",
+        "label": "Section title font size mobile",
+        "min": 0,
+        "max": 100,
+        "default": 45,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "description-section-font-size-mobile",
+        "label": "Section description font size",
+        "min": 0,
+        "max": 100,
+        "default": 18,
+        "unit": "px"
+    },
+      {
+        "type": "range",
+        "id": "card-title-font-size-mobile",
+        "label": "Card title font size",
+        "min": 0,
+        "max": 100,
+        "default": 15,
+        "unit": "px"
+      },
+      {
+      "type": "range",
+      "id": "card-number-font-size-mobile",
+      "label": "Card number font size",
+      "min": 0,
+      "max": 100,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "card-number-size-mobile",
+      "label": "Card number size",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 28,
+      "unit": "px"
+    },
+    {
+        "type": "range",
+        "id": "description-font-size-mobile",
+        "label": "Card description font size",
+        "min": 0,
+        "max": 100,
+        "default": 15,
+        "unit": "px"
+    },
+      {
+        "type": "header",
+        "content": "Advanced",
+        "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+      },
+      {
+        "type": "text",
+        "id": "css_class",
+        "label": "CSS Class"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_css",
+        "label": "Custom CSS"
+      }
+    ],
+    "blocks": [
+       {
+        "type": "button-block",
+        "name": "Button block",
+        "settings": [
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button label"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+          },
+          {
+            "type": "select",
+            "id": "button_style",
+            "label": "Button style",
+            "options": [
+              {
+                "value": "button--primary",
+                "label": "Primary"
+              },
+              {
+                "value": "button--secondary",
+                "label": "Secondary"
+              },
+              {
+                "value": "button--link-style",
+                "label": "Link style"
+              },
+              {
+                "value": "button--custom",
+                "label": "Custom"
+              }
+            ],
+            "default": "button--primary"
+          },
+          {
+            "type": "header",
+            "content": "Custom button style"
+          },
+          {
+            "type": "range",
+            "id": "button_custom_border_radius",
+            "label": "Border radius",
+            "min": 0,
+            "max": 50,
+            "default": 8,
+            "unit": "px"
+          },
+          {
+            "type": "color",
+            "id": "button_custom_bg_color",
+            "label": "Background"
+          },      
+          {
+            "type": "color",
+            "id": "button_custom_border_color",
+            "label": "Border"
+          },
+          {
+            "type": "color",
+            "id": "button_custom_text_color",
+            "label": "Text"
+          },
+          {
+            "type": "color",
+            "id": "button_custom_bg_color--highlight",
+            "label": "Background hover"
+          },
+          {
+            "type": "color",
+            "id": "button_custom_border_color--highlight",
+            "label": "Border hover"
+          },
+          {
+            "type": "color",
+            "id": "button_custom_text_color--highlight",
+            "label": "Text hover"
+          }
+        ]
+      },
+      {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "html",
+          "id": "number",
+          "label": "Card number"
+        },
+        {
+          "type": "html",
+          "id": "title",
+          "label": "Card title"
+        },
+        {
+          "type": "html",
+          "id": "description",
+          "label": "Card description"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "color",
+          "id": "background_number",
+          "label": "Background number",
+          "default": "#60012C"
+        },
+        {
+          "type": "color",
+          "id": "color_number",
+          "label": "Color number",
+          "default": "#F7F5F1"
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Title color",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "description_color",
+          "label": "Description color",
+          "default": "#000000"
+        }
+      ]
+    }
+    ],
+    "presets": [
+    {
+      "name": "Vitality: Discover whats inside"
+    }
+  ]
+  }
+{% endschema %}

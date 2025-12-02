@@ -1,0 +1,431 @@
+{% style %}
+  #shopify-section-{{ section.id }} {
+    {% if template.name == 'product' and product.metafields.custom.product_video_with_content.value.background_color %}
+        background-color: {{ product.metafields.custom.product_video_with_content.value.background_color }};
+    {% else %}
+        background-color: {{ section.settings.background_color }};
+    {% endif %}
+
+   {% if template.name == 'product' and product.metafields.custom.product_video_with_content.value.text_color %}
+        color: {{ product.metafields.custom.product_video_with_content.value.text_color }};
+    {% else %}
+        color: {{ section.settings.text_color }};
+    {% endif %}
+  }
+
+  #shopify-section-{{ section.id }} .product-video-with-content {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  .product-video-with-content__content-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+  }
+
+  .product-video-with-content__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-video-with-content__accordion-container {
+    flex-grow: 1;
+  }
+  
+  .product-video-with-content__video {
+    border-radius: 10px;
+    overflow: hidden;
+    height: 545px;
+    object-fit: cover;
+    width: 100%;
+  }
+
+   .product-video-with-content__video > video {
+    height: 545px;
+    object-fit: cover;
+    width: 100%;
+   }
+
+  .product-video-with-content__title {
+    font-size: 34px;
+    line-height: 37px;
+    font-weight: normal;
+    margin-bottom: 40px;
+  }
+
+  .product-video-with-content__description {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: normal;
+    margin-bottom: 40px;
+  }
+
+  .product-video-with-content .product-video-with-content__link a.button {
+    {% if template.name == 'product' and product.metafields.custom.product_video_with_content.value.button_background %}
+        background-color: {{ product.metafields.custom.product_video_with_content.value.button_background }};
+    {% endif %}
+
+    {% if template.name == 'product' and product.metafields.custom.product_video_with_content.value.button_text_color %}
+        color: {{ product.metafields.custom.product_video_with_content.value.button_text_color }};
+    {% endif %}
+
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+
+  .product-video-with-content .product-video-with-content a.button:hover {
+    {% if template.name == 'product' and product.metafields.custom.product_video_with_content.value.button_background %}
+        color: {{ product.metafields.custom.product_video_with_content.value.button_background }};
+    {% endif %}
+
+    {% if template.name == 'product' and product.metafields.custom.product_video_with_content.value.button_text_color %}
+        background-color: {{ product.metafields.custom.product_video_with_content.value.button_text_color }};
+    {% endif %}
+  }
+
+  .product-video-with-content__link {
+    margin-top: 30px;
+  }
+  @media only screen and (max-width: 798px) {
+    #shopify-section-{{ section.id }} .product-video-with-content {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .product-video-with-content__content-container {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .product-video-with-content__video {
+      height: 281px;
+    }
+
+    .product-video-with-content__video > video {
+      height: 281px;
+    }
+
+    .product-video-with-content__title {
+      font-size: 24px;
+      line-height: 27px;
+      margin-bottom: 20px;
+    }
+
+    .product-video-with-content__description {
+      font-size: 15px;
+      line-height: 21px;
+      font-weight: normal;
+      margin-bottom: 30px;
+    }
+
+    .product-video-with-content__link {
+      display: flex;
+      align-self: end;
+    }
+
+    .product-video-with-content .product-video-with-content__link a.button {
+      font-size: 18px;
+    }
+  }
+
+  @media only screen and (min-width: 799px) {
+     .product-video-with-content__video {
+      top: 100px;
+      overflow: hidden;
+      position: sticky;
+    }
+  }
+
+  {%
+    render 'css-loop',
+    css: section.settings.custom_css,
+    id: section.id,
+  %}
+{% endstyle %}
+{% if product.metafields.custom.product_video_with_content %}
+
+    {% assign metaobject = product.metafields.custom.product_video_with_content.value %}
+    <section
+      class="
+        section
+        {{ section.settings.css_class }}
+        product-video-with-content
+      "
+    >
+      <div class="product-video-with-content__content-container">
+        {% if metaobject.video_link != nil %}
+          <div class="product-video-with-content__video-container">
+            <div class="product-video-with-content__video">
+              <video  loop autoplay muted playsinline width="100%" height="100%" controls>     
+                  <source src="{{ metaobject.video_link }}" type="video/mp4">          
+              </video> 
+            </div>
+          </div>
+        {% endif %}
+        {% if metaobject.video_link == nil and metaobject.image != nil %}
+          <div class="product-video-with-content__video-container">
+            <div class="product-video-with-content__image">
+              {%
+                render 'image-element',
+                image: metaobject.image,
+                alt: metaobject.image.alt,
+              %}
+            </div>
+          </div>
+        {% endif %}
+        <div class="product-video-with-content__content">
+          {% if metaobject.title != blank %}
+                <h2 class="product-video-with-content__title">
+                  {{ metaobject.title }}
+                </h2>
+            {% endif %}
+          {% if metaobject.description != blank %}
+                <div class="product-video-with-content__description">
+                  {{ metaobject.description }}
+                </div>
+            {% endif %}
+          <div class="product-video-with-content__accordion-container">
+              {% if metaobject.question_1 and metaobject.answer_1 %}
+                    {% render 'accordion-item-component', 
+                      title: metaobject.question_1,
+                      content: metaobject.answer_1,
+                      icon: metaobject.icon,
+                      id: "product-video-with-content__accordion",
+                      text_color: metaobject.text_color,
+                      number: "1"
+                      initially_open: false,
+                    %}
+              {% endif %}
+              {% if metaobject.question_2 and metaobject.answer_2 %}
+                    {% render 'accordion-item-component', 
+                      title: metaobject.question_2,
+                      content: metaobject.answer_2,
+                      icon: metaobject.icon,
+                      id: "product-video-with-content__accordion",
+                      number: "2",
+                      text_color: metaobject.text_color
+                    %}
+              {% endif %}
+              {% if metaobject.question_3 and metaobject.answer_3 %}
+                    {% render 'accordion-item-component', 
+                      title: metaobject.question_3,
+                      content: metaobject.answer_3,
+                      icon: metaobject.icon,
+                      id: "product-video-with-content__accordion",
+                      number: "3",
+                      text_color: metaobject.text_color
+                    %}
+              {% endif %}
+              {% if metaobject.question_4 and metaobject.answer_4 %}
+                    {% render 'accordion-item-component', 
+                      title: metaobject.question_4,
+                      content: metaobject.answer_4,
+                      icon: metaobject.icon,
+                      id: "product-video-with-content__accordion",
+                      number: "4",
+                      text_color: metaobject.text_color
+                    %}
+              {% endif %}
+              {% if metaobject.question_1 and metaobject.answer_5 %}
+                    {% render 'accordion-item-component', 
+                      title: metaobject.question_5,
+                      content: metaobject.answer_5,
+                      icon: metaobject.icon,
+                      id: "product-video-with-content__accordion",
+                      number: "5",
+                      text_color: metaobject.text_color
+                    %}
+              {% endif %}              
+            </div>
+           {% for block in section.blocks %}
+                  {% if block.type == 'button-block' %}
+
+                    {% if block.settings.button_label != blank %}
+                      <div class="buttons product-video-with-content__link">
+                        {% if metaobject.is_add_to_cart_button_option %}
+                          <a 
+                             class="button {{ block.settings.button_style }}"
+                             href="/cart/add/{{ product.selected_or_first_available_variant.id }}" 
+                             rel="nofollow">
+                            {{ block.settings.button_label }}
+                          </a>
+                        {% else %}
+                          {% render 'button',
+                                  label: block.settings.button_label,
+                                  href: block.settings.link-desktop,
+                                  style: block.settings.button_style,
+                                  type: "link"
+                          %}
+                        {% endif %}
+                      </div>
+                    {% endif %}
+                  {% endif %}
+        {% endfor %}
+        </div>
+      </div>
+    </section>
+{% endif %}
+<script>
+
+    $('.accordion-item-component-product-video-with-content__accordion').click(function(){
+      //get the clicked item
+      $clickedItem = $('.accordion-item-component__content-product-video-with-content__accordion',this);
+      $clickedCircle = $('.accordion-item-component__arrow-product-video-with-content__accordion',this);
+
+      // is the clicked item already open?
+      if(($clickedItem.hasClass('open'))){
+         //remove the class, slide it up and return early
+
+          $clickedItem.removeClass('open').slideUp(300);
+          $clickedCircle.removeClass('open');
+          return;
+      }
+
+      $('.accordion-item-component__content-product-video-with-content__accordion').removeClass('open').slideUp(300);
+      $('.accordion-item-component__arrow-product-video-with-content__accordion').removeClass('open');
+
+      //slide down the clicked item and add the open class
+      $clickedItem.slideDown(300).addClass('open');
+      $clickedCircle.addClass('open');
+
+    });
+
+    //limit clickable aread to the accordion title
+    $( '.accordion-item-component__content-product-video-with-content__accordion' ).click(function() {
+      event.stopImmediatePropagation()
+    });
+
+  </script>
+{% schema %}
+  {
+    "name": "Video with content",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Top spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Bottom spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Section background color",
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Section text color",
+      },
+      {
+        "type": "header",
+        "content": "Mobile layout"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Mobile top spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Mobile bottom spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Advanced",
+        "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+      },
+      {
+        "type": "text",
+        "id": "css_class",
+        "label": "CSS Class"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_css",
+        "label": "Custom CSS"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "button-block",
+        "name": "Button block",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text"
+          },
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button label",
+            "default": "Check out Our FAQ"
+          },
+          {
+            "type": "url",
+            "id": "link-desktop",
+            "label": "Button link - desktop"
+          },
+          {
+            "type": "url",
+            "id": "link-mobile",
+            "label": "Button link - mobile"
+          },
+          {
+            "type": "select",
+            "id": "button_style",
+            "label": "Button style",
+            "options": [
+              {
+                "value": "button--primary",
+                "label": "Primary"
+              },
+              {
+                "value": "button--secondary",
+                "label": "Secondary"
+              },
+              {
+                "value": "button--link-style",
+                "label": "Link style"
+              }
+            ],
+            "default": "button--primary"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Product: video with content"
+      }
+    ]
+  }
+{% endschema %}

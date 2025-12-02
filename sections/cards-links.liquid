@@ -1,0 +1,440 @@
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.background_color }};
+  }
+
+  .cards-links__title {
+    line-height: 1.1;
+    font-weight: normal;
+    margin-bottom: 70px;
+  }
+
+  #shopify-section-{{ section.id }} .cards-links__title {
+    color: {{ section.settings.title_color }};
+    font-size: {{ section.settings.title-font-size }}px;
+  }
+
+  .cards-links__cards-list {
+      display: flex;
+      align-items: stretch;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    #shopify-section-{{ section.id }} .cards-links__card {
+      margin-right: 20px;
+      width: {{section.settings.card-size}}px;
+      height: {{section.settings.card-size}}px;
+      border-radius: 10px;
+      padding: 18px;
+
+      transition: flex 0.3s ease, transform 0.3s ease;
+      overflow: hidden;
+      flex-shrink: 1; 
+    }
+
+  .cards-links__card-opacity {
+    width: {{ section.settings.card-size }}px;
+    height: {{ section.settings.card-size }}px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 10px;
+
+    background-color: {{ section.settings.opacity_card_color | color_modify: 'alpha', 0.5 }};
+  }
+
+  .cards-links__card-content {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    z-index: 1;
+  }
+
+  #shopify-section-{{ section.id }} .cards-links___cover__title {
+    font-size: {{section.settings.card-title-font-size}}px;
+    color: {{ section.settings.card_title_color }};
+    line-height: 1;
+    font-weight: 900;
+  }
+
+  .cards-links__cover__icon {
+    width: {{ section.settings.card-icon-size }}px;
+    height: {{ section.settings.card-icon-size }}px;
+  }
+
+  .cards-links__cover__icon.image-element__wrap {
+    margin-left: unset;
+    margin-right: unset;
+  }
+
+   #shopify-section-{{ section.id }} .flickity-page-dots {
+	counter-reset: a;
+    background-image: unset;
+     display: flex;
+    justify-content: center;
+    align-items: end;
+     margin-top: 20px;
+  }
+
+  #shopify-section-{{ section.id }} .flickity-page-dots .dot {
+    width: 13px;
+    height: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid {{ section.settings.nav_item_color }};
+    transform: rotate(-45deg);
+    color: {{ section.settings.nav_item_color }};
+    background-color: {{ section.settings.nav_item_color }};
+    margin-top: 20px;
+  }
+
+  #shopify-section-{{ section.id }} .flickity-page-dots .dot.is-selected {
+    border: 1px solid {{ section.settings.active_nav_item_color }};
+    color: {{ section.settings.active_nav_item_color }};
+    background-color: {{ section.settings.active_nav_item_color }};
+  }
+
+  #shopify-section-{{ section.id }} button.flickity-button.flickity-prev-next-button.previous,
+  #shopify-section-{{ section.id }} button.flickity-button.flickity-prev-next-button.next {
+    display: none;
+  }
+
+  @media only screen and (max-width: 798px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .cards-links__title {
+      font-size: {{ section.settings.title-font-size_mobile }}px;
+    }
+
+    .cards-links__title {
+       margin-bottom: 37px;
+     }
+
+    .cards-links__card {
+      width: {{ section.settings.card-size-mobile }}px;
+      height: {{ section.settings.card-size-mobile }}px;
+    }
+     
+    .cards-links__card-opacity {
+      width: {{ section.settings.card-size-mobile }}px;
+      height: {{ section.settings.card-size-mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .cards-links___cover__title {
+      font-size: {{section.settings.card-title-font-size_mobile}}px;
+    }
+
+    .cards-links__cover__icon {
+      width: {{ section.settings.card-icon-size_mobile }}px;
+      height: {{ section.settings.card-icon-size_mobile }}px;
+    }
+  }
+
+  @media only screen and (min-width: 1455px) {
+    #shopify-section-{{ section.id }} .flickity-page-dots {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .cards-links__card:last-of-type {
+      margin-right: unset;
+    }
+  }
+
+  {%
+    render 'css-loop',
+    css: section.settings.custom_css,
+    id: section.id,
+  %}
+{% endstyle %}
+<section
+  class="
+    section
+    {{ section.settings.css_class }}
+    cards-links
+  "
+>
+  {% if section.settings.title != blank %}
+      <h2 class="cards-links__title">{{ section.settings.title }}</h2>
+  {% endif %}
+  {% if section.blocks.size > 0 %}
+    <ul class="cards-links__cards-list carousel-{{ section.id }}">
+      {% for block in section.blocks %}
+        {% if block.type == 'card' %}
+          {% style %}
+            .block-{{ block.id }}.cards-links__card {
+              {% if block.settings.image != nil %}
+                     background: url("{{block.settings.image | img_url: 'master'}}");
+                     background-size:cover;
+                     background-position:center;                  
+              {% endif %}
+            }
+          {% endstyle %}
+          <li class="cards-links__card block-{{ block.id }} carousel-cell">
+            <a href="{{ block.settings.link_url }}"  target="_blank"  rel="noopener">
+              <div class="cards-links__card-opacity"></div>
+              <div class="cards-links__card-content">
+                {% if block.settings.title != blank %}
+                    <h3 class="cards-links___cover__title">{{ block.settings.title }}</h3>
+                {% endif %}
+                {% if block.settings.icon != nil %}
+                    {%
+                       render 'image-element',
+                        image: block.settings.icon,
+                        alt: block.settings.title,
+                        additional_wrapper_classes: 'cards-links__cover__icon',
+                    %}
+                {% endif %}
+              </div>
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  {% endif %}
+</section>
+<script>
+  window.addEventListener('DOMContentLoaded', function() {
+
+    const cardLinksCarousel = document.querySelector('.carousel-{{ section.id }}');
+
+        if (cardLinksCarousel) {
+            const cardLinksFlickity = new Flickity( cardLinksCarousel, {
+                cellAlign: 'left',
+                contain: true,
+                groupCells: true,
+                wrapAround: true,
+                pageDots: true
+            });
+        }
+
+  });
+</script>
+{% schema %}
+  {
+    "name": "Cards Links",
+    "settings": [
+      {
+        "type": "html",
+        "id": "title",
+        "label": "Section title"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Top spacing",
+        "min": 0,
+        "max": 100,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Bottom spacing",
+        "min": 0,
+        "max": 100,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "title-font-size",
+        "label": "Title font size",
+        "min": 0,
+        "max": 100,
+        "default": 34,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "card-title-font-size",
+        "label": "Card title font size",
+        "min": 0,
+        "max": 100,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "card-size",
+        "label": "Card size",
+        "min": 0,
+        "max": 1000,
+        "step": 10,
+        "default": 260,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "card-icon-size",
+        "label": "Card icon size",
+        "min": 0,
+        "max": 500,
+        "step": 5,
+        "default": 95,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Colors"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Section background color",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "color",
+        "id": "title_color",
+        "label": "Section title color",
+        "default": "#404544"
+      },
+      {
+        "type": "color",
+        "id": "card_title_color",
+        "label": "Card title color",
+        "default": "#EDF2E9"
+      },
+      {
+        "type": "color",
+        "id": "opacity_card_color",
+        "label": "Opacity card background color",
+        "default": "#284734"
+      },
+      {
+        "type": "color",
+        "id": "nav_item_color",
+        "label": "Navigation item color",
+        "default": "#949992"
+      },
+      {
+        "type": "color",
+        "id": "active_nav_item_color",
+        "label": "Active navigation item color",
+        "default": "#78BE20"
+      },
+      {
+        "type": "header",
+        "content": "Mobile layout"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Mobile top spacing",
+        "min": 0,
+        "max": 100,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Mobile bottom spacing",
+        "min": 0,
+        "max": 100,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "title-font-size_mobile",
+        "label": "Title font size",
+        "min": 0,
+        "max": 100,
+        "default": 34,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "card-title-font-size_mobile",
+        "label": "Card title font size",
+        "min": 0,
+        "max": 100,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "card-size_mobile",
+        "label": "Card size",
+        "min": 0,
+        "max": 1000,
+        "step": 10,
+        "default": 260,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "card-icon-size_mobile",
+        "label": "Card icon size",
+        "min": 0,
+        "max": 500,
+        "step": 5,
+        "default": 95,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Advanced",
+        "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+      },
+      {
+        "type": "text",
+        "id": "css_class",
+        "label": "CSS Class"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_css",
+        "label": "Custom CSS"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "card",
+        "name": "Card",
+        "limit": 5,
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+          },
+          {
+            "type": "image_picker",
+            "id": "icon",
+            "label": "Icon",
+          },
+          {
+            "type": "html",
+            "id": "title",
+            "label": "Title",
+          },
+          {
+            "type": "url",
+            "id": "link_url",
+            "label": "Link url",
+          },
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Cards Links"
+      }
+    ]
+  }
+{% endschema %}

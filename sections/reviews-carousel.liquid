@@ -1,0 +1,33 @@
+
+<section class="section reviews-carousel-section">
+
+<div id="feefo-service-review-carousel-widgetId" class="feefo-review-carousel-widget-service"></div>
+  
+</section>
+
+<style>
+
+  .reviews-carousel-section {
+    max-width: 1130px;
+  }
+
+    @media only screen and (max-width: 480px) {
+      .reviews-carousel-section div#feefo-service-review-carousel-widgetId {
+            transform: scale(.7);
+            margin-left: -40px;
+      }
+    }
+  
+</style>
+
+{% schema %}
+  {
+    "name": "Reviews carousel",
+    "settings": [],
+    "presets": [
+      {
+        "name": "Reviews carousel"
+      }
+    ]
+  }
+{% endschema %}

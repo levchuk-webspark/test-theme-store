@@ -1,0 +1,394 @@
+{% assign cards = section.blocks | where: 'type', 'card' %}
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+     padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.background_color }};
+  }
+
+  #shopify-section-{{ section.id }} .static-cards__title {
+    color: {{ section.settings.title_color }};
+    font-size: {{ section.settings.title_font_size }}px;
+    margin-bottom: 70px;
+    line-height: 1.1;
+  }
+
+  .static-cards__cards-container {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    position: relative;
+    gap: 23px;
+  }
+
+   #shopify-section-{{ section.id }} .static-cards__card {
+     border-radius: 10px;
+     border: 1px solid {{ section.settings.card_border_color }};
+     padding: 20px;
+     display: flex;
+     gap: 20px;
+     align-items: start;
+     width: 33%;
+   }
+
+  #shopify-section-{{ section.id }} .static-cards__card__icon {
+    width: {{ section.settings.card_icon_size }}px;
+    heigth: {{ section.settings.card_icon_size }}px;
+  }
+
+   #shopify-section-{{ section.id }} .static-cards__card__title {
+     color: {{ section.settings.card_title_color }};
+     font-size: {{ section.settings.card_title_font_size }}px;
+     line-height: 1.1;
+     margin-bottom: 24px;
+   }
+
+  #shopify-section-{{ section.id }} .static-cards__card__description {
+    color: {{ section.settings.card_description_color }};
+     font-size: {{ section.settings.card_description_font_size }}px;
+     line-height: 1.1;
+  }
+
+  #shopify-section-{{ section.id }} .flickity-page-dots {
+	counter-reset: a;
+    background-image: unset;
+     display: flex;
+    justify-content: center;
+    align-items: end;
+     margin-top: 20px;
+  }
+
+  #shopify-section-{{ section.id }} .flickity-page-dots .dot {
+    width: 13px;
+    height: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid {{ section.settings.nav_item_color }};
+    transform: rotate(-45deg);
+    color: {{ section.settings.nav_item_color }};
+    background-color: {{ section.settings.nav_item_color }};
+    margin-top: 20px;
+  }
+
+  #shopify-section-{{ section.id }} .flickity-page-dots .dot.is-selected {
+    border: 1px solid {{ section.settings.active_nav_item_color }};
+    color: {{ section.settings.active_nav_item_color }};
+    background-color: {{ section.settings.active_nav_item_color }};
+  }
+
+  #shopify-section-{{ section.id }} button.flickity-button.flickity-prev-next-button.previous,
+  #shopify-section-{{ section.id }} button.flickity-button.flickity-prev-next-button.next {
+    display: none;
+  }
+
+  @media only screen and (max-width: 798px) { 
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .static-cards__title {
+      margin-bottom: 40px;
+      font-size: {{ section.settings.title_font_size_mobile }}px;
+    }
+
+    .static-cards__cards-container {
+      flex-direction: column;
+    }
+
+    #shopify-section-{{ section.id }} .static-cards__card { 
+      /* width: 100%; */
+      width: 310px;
+      margin-right: 20px;
+    }
+
+    #shopify-section-{{ section.id }} .static-cards__card__icon {
+      width: {{ section.settings.card_icon_size_mobile }}px;
+      heigth: {{ section.settings.card_icon_size_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .static-cards__card__title {
+     font-size: {{ section.settings.card_title_font_size_mobile }}px;
+   }
+
+    #shopify-section-{{ section.id }} .static-cards__card__description {
+     font-size: {{ section.settings.card_description_font_size_mobile }}px;
+    }
+  }
+
+  {%
+    render 'css-loop',
+    css: section.settings.custom_css,
+    id: section.id,
+  %}
+  
+{% endstyle %}
+<section
+  class="
+    section
+    {{ section.settings.css_class }}
+    static-cards
+  "
+>
+  {% if section.settings.title != blank %}
+    <h2 class="static-cards__title">{{ section.settings.title }}</h2>
+  {% endif %}
+  <div class="static-cards__cards-container carousel-{{ section.id }}">
+      {% for block in cards %}
+        <div class="static-cards__card carousel-cell">
+          <div>
+            {% if block.settings.image_icon != blank %}
+              {%
+                 render 'image-element',
+                 image: block.settings.image_icon,
+                 alt: block.settings.image_icon.alt,
+                 additional_wrapper_classes: 'static-cards__card__icon'
+              %}
+            {% endif %}
+          </div>
+          <div class="static-cards__card__info">
+            {% if block.settings.title != blank %}
+              <h3 class="static-cards__card__title">{{ block.settings.title }}</h3>
+            {% endif %}
+            {% if block.settings.description != blank %}
+              <div class="static-cards__card__description">{{ block.settings.description }}</div>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+  </div>
+</section>
+<script>
+  window.addEventListener('DOMContentLoaded', function() {
+    const mobileMedia = window.matchMedia("(max-width: 798px)");
+    if (mobileMedia.matches) {
+      const staticCardsCarousel = document.querySelector('.carousel-{{ section.id }}');
+        if (staticCardsCarousel) {
+            const staticCardsFlickity = new Flickity( staticCardsCarousel, {
+                cellAlign: 'left',
+                contain: true,
+                groupCells: true,
+                wrapAround: true,
+                pageDots: true,
+                adaptiveHeight: true
+            });
+        }
+    }
+  });
+</script>
+{% schema %}
+  {
+    "name": "Static cards",
+    "settings": [
+      {
+        "type": "html",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Top spacing",
+        "min": 0,
+        "max": 100,
+        "default": 70,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Bottom spacing",
+        "min": 0,
+        "max": 100,
+        "default": 70,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "title_font_size",
+        "label": "Title font size",
+        "min": 0,
+        "max": 100,
+        "default": 34,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "card_title_font_size",
+        "label": "Card title font size",
+        "min": 0,
+        "max": 100,
+        "default": 30,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "card_description_font_size",
+        "label": "Card description font size",
+        "min": 0,
+        "max": 100,
+        "default": 16,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "card_icon_size",
+        "label": "Card icon size",
+        "min": 0,
+        "max": 100,
+        "default": 56,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Colours"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background",
+      },
+      {
+        "type": "color",
+        "id": "title_color",
+        "label": "Text",
+        "default": "#404544"
+      },
+      {
+        "type": "color",
+        "id": "card_title_color",
+        "label": "Card title color",
+        "default": "#284734"
+      },
+      {
+        "type": "color",
+        "id": "card_description_color",
+        "label": "Card description color",
+        "default": "#6F726E"
+      },
+      {
+        "type": "color",
+        "id": "card_border_color",
+        "label": "Card border color",
+        "default": "#404544"
+      },
+      {
+        "type": "color",
+        "id": "nav_item_color",
+        "label": "Navigation item color",
+        "default": "#949992"
+      },
+      {
+        "type": "color",
+        "id": "active_nav_item_color",
+        "label": "Active navigation item color",
+        "default": "#78BE20"
+      },
+      {
+        "type": "header",
+        "content": "Mobile layout"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Mobile top spacing",
+        "min": 0,
+        "max": 100,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Mobile bottom spacing",
+        "min": 0,
+        "max": 100,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "title_font_size_mobile",
+        "label": "Title font size mobile",
+        "min": 0,
+        "max": 100,
+        "default": 34,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "card_title_font_size_mobile",
+        "label": "Card title font size",
+        "min": 0,
+        "max": 100,
+        "default": 30,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "card_description_font_size_mobile",
+        "label": "Card description font size",
+        "min": 0,
+        "max": 100,
+        "default": 16,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "card_icon_size_mobile",
+        "label": "Card icon size",
+        "min": 0,
+        "max": 100,
+        "default": 56,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Advanced",
+        "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+      },
+      {
+        "type": "text",
+        "id": "css_class",
+        "label": "CSS Class"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_css",
+        "label": "Custom CSS"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "card",
+        "name": "Card",
+        "limit": 3,
+        "settings": [
+          {
+            "type": "html",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_icon",
+            "label": "Icon"
+          },
+          {
+            "type": "html",
+            "id": "description",
+            "label": "Description"
+          },
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Static cards"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,341 @@
+
+<div class="page-width account-status">
+  <h3>Welcome back {{ customer.name }}</h3>
+  
+  {% comment %}
+  <div data-lion-account></div>
+  {% endcomment %}
+ 
+	<div data-lion-integrated-page=""></div>
+  
+<div class="lion-account-history__heading lion-integrated-page-section__heading">
+  <h3 class="lion-integrated-page-section__heading-text">Your Tier</h3>
+  <div class="lion-integrated-page-section__heading-underline"></div>
+  </div>
+  <div class="your-status">
+  <div data-lion-tier-overview></div>
+    </div>
+
+
+  
+</div>
+</div>
+
+
+<div class="page-width">
+  <br>
+<div data-lion-rules-list></div>
+</div>
+
+<div class="orange-background">
+<div class="page-width">
+  <h2 style="font-size:30px; color:#fff;">Spending my points</h2>
+  <p  style="color:#fff;">As you earn and accumulate more points you can get discounts using the checkout point slider, or convert them into gits cards to redeem on purchases. You can even choose to donate some of your points to Alzheimer’s Society and help others.</p>
+  <div data-lion-rewards-list></div>
+</div>
+</div>
+
+
+<div class="grey-background">
+<div class="page-width">
+  <h2 style="font-size:30px; margin-top:30px; color:#000 !important;" class="title">Moving up tiers</h2>
+  <p style="color:#000 !important;">We believe in rewarding loyalty. Unlock each tier and watch your benefits grow!</p>
+  <div data-lion-tier-overview></div>
+</div>
+</div>
+
+
+
+{% style %}
+/* Base Styles */
+
+
+
+.page-width {
+    margin: 0 auto;
+    max-width: 1400px;
+    padding-left: 80px;
+    padding-right: 80px;
+    width: 100%;
+}
+
+@media only screen and (max-width: 798px) {
+  .page-width {
+    margin: 0 auto;
+    max-width: unset;
+    padding-left: 0;
+    padding-right: 0;
+    width: 90%;
+  }
+
+  #loyaltylion .lion-action-button {
+    padding:0 !important;
+  }
+}
+
+.dynamic-sections {
+    display: block;
+}
+
+
+.hero__overlay::before { background- opacity: 0.0; }
+.hero-fixed-width::before { background- opacity: 0.0; }
+.grey-background { background-color: #eee; text-align: center; padding: 15px 0; }
+.orange-background { background-color: #003b00 ; text-align: center; padding: 10px 0;  }
+.orange-background p {  }
+.btn--secondary:not([disabled]):hover, .btn--secondary:focus, .btn--tertiary:not([disabled]):hover, .btn--tertiary:focus {
+    background-color: #313F2F;
+    border-color: #313F2F;
+    color: #fff;
+}
+@media only screen and (min-width: 750px) {
+	.hero--adapt, .hero-fixed-width__image { max-height: 100vh; }
+}
+
+.account-status h3 { text-align: center; margin-top:20px; }
+
+.lion-header__nav, .lion-earn.lion-integrated-page-section, .lion-tiers-overview.lion-integrated-page-section, .lion-redeem.lion-integrated-page-section { display: none !important; }
+
+#loyaltylion .lion-header { background: transparent;  }
+#loyaltylion .lion-claimed-rewards-list--empty {
+    background: transparent;
+    
+    border: none;
+}
+
+#loyaltylion .lion-history-table__header-cell {
+    background: rgba(0,0,0,0.1);
+    
+    border-bottom: 1px solid #f1f1f1;
+}
+
+#loyaltylion .lion-history-table__row { background-color: transparent; }
+#loyaltylion .lion-history-table__row:nth-child(even) { background-color: rgba(0,0,0,0.05); }
+
+#loyaltylion .lion-history-table { border: 10px solid #003b00; }
+
+#loyaltylion .lion-integrated-page-section__heading-text:after, #loyaltylion .lion-integrated-page-section__heading-text:before { background: #003b00; }
+
+#loyaltylion .lion-claimed-rewards-list, #loyaltylion .lion-rewards-list, #loyaltylion .lion-rules-list { background-color: transparent; }
+
+#loyaltylion .lion-reward-item__content { background-color: transparent; }
+
+#loyaltylion .lion-rule-item__content { background-color: #eee; }
+
+#loyaltylion .lion-reward-item__icon, #loyaltylion .lion-rule-item__icon { background-color: {{ green }}; }
+
+#loyaltylion .lion-action-button--tile { background: {{ green }}; border: 1px solid {{ green }};  }
+
+#loyaltylion .lion-action-button--tile:hover { background: red border: 1px solid red  }
+
+#loyaltylion .lion-reward-item__title {  }
+#loyaltylion .lion-claimed-reward-item__title {  }
+#loyaltylion .lion-claimed-reward-item__date {  }
+
+#loyaltylion .lion-tier-overview { background-color: transparent; }
+
+#loyaltylion .lion-tier-box { background-color: #eeeeee; border-radius:5px;}
+
+#loyaltylion .lion-tier-overview{
+    grid-gap:15px;
+}
+
+
+#loyaltylion .lion-tier-box__you-are-here { background: #FF692E; }
+
+#loyaltylion .lion-reward-item__cost {  }
+
+.lion-tier-box__benefits-list.lion-tier-benefits-list, #loyaltylion .lion-tier-box__purchase-rule, #loyaltylion .lion-tier-box__expiry, #loyaltylion .lion-tier-box__value-to-next {  }
+
+#loyaltylion .lion-reward-item__icon  { width: 100px; height: 120px; }
+
+#loyaltylion .lion-rule-item__icon { width: 60px; height: 60px; }
+
+#loyaltylion .lion-reward-item__links a {  }
+
+#loyaltylion .lion-tier-box__position { display: none; }
+
+#loyaltylion .lion-claimed-reward-item__icon { width: 100px; height: 120px; }
+
+#loyaltylion .lion-claimed-reward-item { background-color: {{ orange }}; }
+
+.your-status #loyaltylion .lion-tier-box__purchase-rule { display: none; }
+.your-status #loyaltylion .lion-tier-box__benefits-list { display: none; }
+.your-status #loyaltylion .lion-tier-box__sub-title { display: none; }
+.your-status #loyaltylion .lion-tier-box { background-color: {{ light-green }}; }
+
+#loyaltylion .lion-icon__rule--facebook-like {
+  background: transparent url(https://cdn.shopify.com/s/files/1/0469/8905/0019/files/icon_facebook-cropped.png?v=1646330200) no-repeat 50% 50%;
+  background-size: 60px;
+  -webkit-mask-image:none;
+}
+
+#loyaltylion .lion-icon__rule--purchase {
+  background: transparent url(https://cdn.shopify.com/s/files/1/0469/8905/0019/files/icon_purchase-cropped.png?v=1646330200) no-repeat 50% 50%;
+  background-size: 60px;
+  -webkit-mask-image:none;
+}
+
+#loyaltylion .lion-icon__rule--referral {
+  background: transparent url(https://cdn.shopify.com/s/files/1/0469/8905/0019/files/icon_referafriend-cropped.png?v=1646330200) no-repeat 50% 50%;
+  background-size: 60px;
+  -webkit-mask-image:none;
+}
+
+#loyaltylion .lion-icon__rule--birthday {
+  background: transparent url(https://cdn.shopify.com/s/files/1/0469/8905/0019/files/icon_birthday-cropped.png?v=1646330201) no-repeat 50% 50%;
+  background-size: 60px;
+  -webkit-mask-image:none;
+}
+
+#loyaltylion .lion-icon__rule--newsletter-signup {
+  background: transparent url(https://cdn.shopify.com/s/files/1/0469/8905/0019/files/icon_mailinglist-cropped.png?v=1646330200) no-repeat 50% 50%;
+  background-size: 60px;
+  -webkit-mask-image:none;
+}
+
+#loyaltylion .lion-icon__rule--instagram-follow {
+  background: transparent url(https://cdn.shopify.com/s/files/1/0469/8905/0019/files/icon_Instagram-cropped.png?v=1646330200) no-repeat 50% 50%;
+  background-size: 60px;
+  -webkit-mask-image:none;
+}
+
+#loyaltylion .lion-icon__rule--twitter-follow {
+  background: transparent url(https://cdn.shopify.com/s/files/1/0469/8905/0019/files/icon_Twitter-cropped.png?v=1646330200) no-repeat 50% 50%;
+  background-size: 60px;
+  -webkit-mask-image:none;
+}
+
+#loyaltylion .lion-icon__rule--custom {
+  background: transparent url(https://cdn.shopify.com/s/files/1/0469/8905/0019/files/icon_leaveareview-cropped.png?v=1646330200) no-repeat 50% 50%;
+  background-size: 60px;
+  -webkit-mask-image:none;
+}
+
+#loyaltylion .lion-icon__rule--signup {
+  background: transparent url(https://cdn.shopify.com/s/files/1/0469/8905/0019/files/icon_useraccount-cropped.png?v=1646330201) no-repeat 50% 50%;
+  background-size: 60px;
+  -webkit-mask-image:none;
+}
+
+#loyaltylion .lion-tier-box__title {  }
+#loyaltylion .lion-tier-box__sub-title {  }
+
+#loyaltylion .lion-icon__reward--gift-card {
+  background: transparent url(https://cdn.shopify.com/s/files/1/0469/8905/0019/files/Panel4_icongift.png?v=1645914722) no-repeat 50% 50%;
+  background-size: 100px;
+  -webkit-mask-image:none;
+}
+
+#loyaltylion .lion-icon__reward--custom {
+  background: transparent url(https://cdn.shopify.com/s/files/1/0469/8905/0019/files/Panel4_icongiftAlzheimers.png?v=1645914801) no-repeat 50% 50%;
+  background-size: 100px;
+  -webkit-mask-image:none;
+}
+
+#loyaltylion .lion-icon__reward--checkout-redemption {
+  background: transparent url(https://cdn.shopify.com/s/files/1/0469/8905/0019/files/checkout-bag.png?v=1647278513) no-repeat 50% 50%;
+  background-size: 50px;
+  -webkit-mask-image:none;
+}
+
+#loyaltylion .lion-reward-item--checkout-redemption .lion-reward-item__icon.lion-icon__reward--checkout-redemption { width: 50px; height: 90px; }
+
+#loyaltylion .lion-rewards-list .lion-reward-item--checkout-redemption .lion-reward-item__meta {
+	background: transparent url(https://cdn.shopify.com/s/files/1/0469/8905/0019/files/slider.png?v=1647279217) no-repeat 50% 50%; 
+  background-size: 300px;
+  width: 100%;
+  height: 90px;
+  -webkit-mask-image:none;
+	color: black;
+}
+
+#loyaltylion .lion-tier-box--0 .lion-tier-box__header {
+  background: {{ light-green }} url(https://cdn.shopify.com/s/files/1/0469/8905/0019/files/Icon_Bronzeleaf-square.png?v=1646334819) no-repeat 50% 50%;
+  -webkit-mask-image:none;
+background-size: 150px;
+}
+
+#loyaltylion .lion-tier-box--1 .lion-tier-box__header {
+  background: {{ light-green }} url(https://cdn.shopify.com/s/files/1/0469/8905/0019/files/Icon_Silverbranch-square.png?v=1646334819) no-repeat 50% 50%;
+  -webkit-mask-image:none;
+background-size: 150px;
+}
+
+#loyaltylion .lion-tier-box--2 .lion-tier-box__header {
+  background: {{ light-green }} url(https://cdn.shopify.com/s/files/1/0469/8905/0019/files/Icon_Goldentree-square.png?v=1646334819) no-repeat 50% 50%;
+  -webkit-mask-image:none;
+background-size: 150px;
+}
+
+#loyaltylion .lion-tier-box__header { min-height: 170px; }
+
+#loyaltylion .lion-action-button--tile.lion-action-button--disabled {  }
+
+.lion-tier-box__title, .lion-tier-box__sub-title {
+	text-shadow: 
+        0.1em 0 rgb(0 0 0 / 80%),
+        0 0.1em rgb(0 0 0 / 80%),
+        -0.1em 0 rgb(0 0 0 / 80%),
+        0 -0.1em rgb(0 0 0 / 80%),
+        -0.1em -0.1em rgb(0 0 0 / 80%),
+        -0.1em 0.1em rgb(0 0 0 / 80%),
+        0.1em -0.1em rgb(0 0 0 / 80%),
+        0.1em 0.1em rgb(0 0 0 / 80%);
+}
+
+#loyaltylion .lion-history-table {  }
+
+@media only screen and (max-width: 798px) {
+	#loyaltylion .lion-tier-box--next { display: none; }
+	#loyaltylion .lion-claimed-rewards-list, #loyaltylion .lion-rewards-list, #loyaltylion .lion-rules-list { 
+		-ms-grid-columns: (minmax(220px,1fr)) [auto-fill]; grid-template-columns: auto auto; }
+	p { font-size: 16px; }
+	.index-section { padding-top: 30px; padding-bottom: 30px; }
+	#loyaltylion .lion-rewards-list .lion-reward-item--checkout-redemption .lion-reward-item__meta { background-size: 250px; }
+}
+
+
+
+.orange-background{
+  padding:40px 0px;
+}
+
+
+.lion-reward-item__title{
+  color:#fff !important;
+}
+
+.lion-reward-item__content{
+ color:#fff !important;
+}
+
+.lion-reward-item__meta span{
+  color:#fff !important;
+}
+
+.lion-action-button{
+}
+
+
+.lion-tier-box{
+  border:1px solid #ddd;
+}
+
+
+{% endstyle %}
+
+
+{% schema %}
+  {
+    "name": "Loyalty Logged-in",
+    "class": "shopify-section--custom-liquid",
+    "settings": [],
+    "presets": [
+      {
+        "name": "Loyalty Logged-in",
+        "category": "Content"
+      }
+    ]
+  }
+{% endschema %}

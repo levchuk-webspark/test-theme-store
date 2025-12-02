@@ -1,0 +1,460 @@
+{% comment %}
+** Video with text overlay
+
+Jadepuma 8/25/2023
+{% endcomment %}
+
+{%- assign button_2 = section.settings.button_2 -%}
+{% if button_1 != blank and button_2 != blank %}
+  {%- assign buttons = true -%}
+{% else %}
+  {%- assign buttons = false -%}
+{% endif %}
+
+{% comment %} Is the color set to transparent? {% endcomment %}
+{%- assign background_color_alpha = section.settings.background_opacity | divided_by: 100.00 -%}
+{%- assign caption_border_alpha = section.settings.border_color | color_extract: 'alpha' -%}
+
+{% comment %} Section specific CSS {% endcomment %}
+{% capture section_css -%}
+  .caption-content {
+    background-color: {% if background_color_alpha != 100 %}{{ section.settings.background_color | color_modify: 'alpha', background_color_alpha }}{% else %}{{ section.settings.background_color }}{% endif %};
+    border: {{ section.settings.border_width }}px solid {{ section.settings.border_color }};
+    padding:30px;
+    border-radius:20px;
+  }
+   #shopify-section-{{ section.id }} h6{ 
+   padding:10px;
+   }
+  .video-heading{
+      font-size: 40px;
+
+  }
+  .video-with-text-overlay__container{ 
+    position: relative;
+    width:100%;
+    height:60vh;
+    
+    overflow:hidden;
+   
+
+  }
+  .video-background{
+    position:absolute;
+    top:70%;
+    left:50%;
+   min-width:100%;
+    min-height:100%;
+    width:auto;
+    height:auto;
+    transform:translate(-50%, -70%);
+    object-fit:cover;
+    z-index:-1;
+  }
+
+  .overlay-text{ 
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items:center;
+    z-index:1;
+
+  }
+
+
+  }
+
+  .video-heading{
+    color:{{ section.settings.heading_color }};
+    font-size:45px;
+  }
+   .video-subtitle{
+    color:{{ section.settings.subheading_color }};
+  }
+
+@media only screen and (max-width: 480px) {
+    .capture-content{
+    background-color: blue;
+    border: {{ section.settings.border_width }}px solid {{ section.settings.border_color }};
+    padding:30px;
+    border-radius:20px;
+    transform: translate(-50%, -50%);
+    }
+  
+  }
+  
+  
+{%- endcapture -%}
+
+{% comment %} Section specific CSS {% endcomment %}
+
+{% style %}
+  {% render 'css-loop',
+          css: section_css,
+          id: section.id
+  %}
+  .video-subheading{
+
+    color:{{ section.settings.subheading_color }};
+  
+  }
+  .video-heading{
+    color:{{ section.settings.heading_color }};
+  }
+  .video-subtitle{
+    color:{{ section.settings.subheading_color }};
+  }
+
+  @media only screen and (min-width: 480px) {
+    #shopify-section-{{ section.id }} .caption-content{
+    padding:30px;
+    border-radius:20px;
+    transform: translate(-50%, 0%);
+    }
+     #shopify-section-{{ section.id }} .video-with-text-overlay__container{ 
+    position: relative;
+    width:100%;
+    height:0%;
+    padding-bottom: 56.25%;
+    overflow:hidden
+   .capture-content{
+    background-color: blue;
+    border: {{ section.settings.border_width }}px solid {{ section.settings.border_color }};
+    padding:30px;
+    border-radius:20px;
+    transform: translate(-40%, -50%);
+    }
+
+  }
+      .video-button{
+      padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-right: 20px;
+}
+    
+  }
+
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    padding-left: {{ section.settings.padding_left }}px;
+    padding-right: {{ section.settings.padding_right }}px;
+    {% if section.settings.width == 'wide' %}
+      width: 100%;
+    {% elsif section.settings.width == 'half' %}
+      width: 50%;
+    {% endif %}
+  }
+
+  {% render 'css-loop',
+          css: section.settings.custom_css,
+          id: section.id
+  %}
+
+{% endstyle %}
+
+{% comment %} HTML markup {% endcomment %}
+<section class="section
+                {{ section.settings.css_class }}
+                is-width-{{ section.settings.width }}
+                under-overlay-menu
+                {% if mobile_text_below_media == true %}
+                  mobile-text--below-media
+                  {% else %}
+                  mobile-text--over-media
+                {% endif %}
+                {% if caption_border_alpha != 0 %}
+                  has-border
+                {% endif %}
+                "
+                {% if section.settings.animation != "none" %}
+                  data-scroll-class="{{ section.settings.animation }}"
+                {% endif %}>
+  <div class="container
+              video-with-text-overlay__container
+              {% if section.settings.width == 'wide' or section.settings.width == 'half' %}
+                equal-columns--outside-trim
+              {% endif %}">
+    <div class="image-with-text-overlay__banner columns one-whole image-crop-{{ mobile_text_crop }}">
+<div class="fullscreen-video-wrap">
+
+<video class="video-js video-background" loop autoplay preload="none" muted playsinline>
+
+<source src="{{ section.settings.video_link }}" type="video/mp4">
+
+</video>
+
+</div>
+     
+      
+      <div class="overlay-text">
+        <div class="caption-content">
+        <h2 class="video-heading" >{{ section.settings.title }}</h2>
+        <h3 class="video-subtitle">{{ section.settings.subtitle }}</h3>
+        <div style="padding-top:20px;">
+          <a href="{{ section.settings.button_1_link }}">
+          <button class="button video-button {{ section.settings.button_1_style }}">{{ section.settings.button_1 }}</button>
+          </a>
+          <a href="{{ section.settings.button_2_link }}">
+            <button class="button video-button {{ section.settings.button_2_style }}">{{ section.settings.button_2 }}</button>
+          </a>
+        </div>
+        </div>
+        
+        </div>
+    
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "Video with text overlay",
+  "class": "video-with-text-overlay overlaid-header-option",
+  "settings": [
+    {
+      "type": "url",
+      "id": "video_link",
+      "label": "Video Link"
+    },
+  
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Video with Text Overlay"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subheading",
+      "default": "<p>Additional info in the subheading</p>"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Text background"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "background_opacity",
+      "label": "Background opacity",
+      "min": 0,
+      "max": 100,
+      "default": 77,
+      "unit": "%"
+    },
+    {
+      "type": "header",
+      "content": "Button 1"
+    },
+    {
+      "type": "text",
+      "id": "button_1",
+      "label": "Button 1 label",
+      "default": "Button 1"
+    },
+    {
+      "type": "url",
+      "id": "button_1_link",
+      "label": "Button 1 link"
+    },
+    {
+      "type": "select",
+      "id": "button_1_style",
+      "label": "Button 1 style",
+      "options": [
+        {
+          "value": "button--primary",
+          "label": "Primary"
+        },
+        {
+          "value": "button--secondary",
+          "label": "Secondary"
+        },
+        {
+          "value": "button--link-style",
+          "label": "Link style"
+        }
+      ],
+      "default": "button--secondary"
+    },
+    {
+      "type": "header",
+      "content": "Button 2"
+    },
+    {
+      "type": "text",
+      "id": "button_2",
+      "label": "Button 2 label",
+      "default": "Button 2"
+    },
+    {
+      "type": "url",
+      "id": "button_2_link",
+      "label": "Button 2 link"
+    },
+    {
+      "type": "select",
+      "id": "button_2_style",
+      "label": "Button 2 style",
+      "options": [
+        {
+          "value": "button--primary",
+          "label": "Primary"
+        },
+        {
+          "value": "button--secondary",
+          "label": "Secondary"
+        },
+        {
+          "value": "button--link-style",
+          "label": "Link style"
+        }
+      ],
+      "default": "button--secondary"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Width",
+      "default": "wide",
+      "options": [
+        {
+          "value": "half",
+          "label": "Half"
+        },
+        {
+          "value": "standard",
+          "label": "Standard"
+        },
+        {
+          "value": "wide",
+          "label": "Wide"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 80,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "default": 0,
+      "min": 0,
+      "max": 80,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "label": "Left spacing",
+      "min": 0,
+      "max": 80,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "label": "Right spacing",
+      "default": 0,
+      "min": 0,
+      "max": 80,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "animation",
+      "label": "Animation",
+      "default": "none",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "fadeIn",
+          "label": "Fade in"
+        },
+        {
+          "value": "fadeInDown",
+          "label": "Fade in down"
+        },
+        {
+          "value": "fadeInLeft",
+          "label": "Fade in left"
+        },
+        {
+          "value": "fadeInRight",
+          "label": "Fade in right"
+        },
+        {
+          "value": "slideInLeft",
+          "label": "Slide in left"
+        },
+        {
+          "value": "slideInRight",
+          "label": "Slide in right"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Advanced",
+      "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+    },
+    {
+      "type": "text",
+      "id": "css_class",
+      "label": "CSS Class"
+    },
+    {
+      "type": "textarea",
+      "id": "custom_css",
+      "label": "Custom CSS"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video with text overlay",
+      "category": "Video"
+    }
+  ]
+}
+{% endschema %}

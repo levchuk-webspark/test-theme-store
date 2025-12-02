@@ -1,0 +1,627 @@
+{% style %}
+  #shopify-section-{{ section.id }} {
+    {% if template.name == 'product' and product.metafields.custom.why_use_product.value.background %}
+        background-color: {{ product.metafields.custom.why_use_product.value.background }};
+    {% else %}
+        background-color: {{ section.settings.background_color }};
+    {% endif %}
+  }
+   #shopify-section-{{ section.id }} .why-use-product {
+     padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  .why-use-product__title {
+    font-size: {{ section.settings.title-font-size }}px;
+    margin-bottom: 50px;
+  }
+
+  #shopify-section-{{ section.id }} .why-use-product__title {
+    {% if template.name == 'product' and product.metafields.custom.why_use_product.value.title_color %}
+        color: {{ product.metafields.custom.why_use_product.value.title_color }};
+    {% else %}
+        color: {{ section.settings.title_color }};
+    {% endif %}
+  }
+
+  .why-use-product__container {
+    display: flex;
+    gap: 30px;
+  }
+
+    .why-use-product__main_image_container {
+      width: 50%;
+    }
+    
+
+    .why-use-product__main_image > img {
+      object-fit: cover;
+      border-radius: 10px;
+      height: 780px;
+    }
+
+  .why-use-product__benefit_container {
+    width: 50%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+   .why-use-product__benefit_card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 240px;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 16px;
+
+     cursor: pointer;
+  } 
+
+.cards-with-slider__card__title, .why-use-product__benefit_card__arrow .icon {
+  {% if template.name == 'product' and product.metafields.custom.why_use_product.value.card_title_color %}
+        color: {{ product.metafields.custom.why_use_product.value.card_title_color }};
+    {% else %}
+       color: {{ section.settings.card_title_color }};
+    {% endif %}
+}
+
+  .cards-with-slider__card__title {
+    font-size: {{ section.settings.text_size }}px;
+    line-height: 1;
+  }
+
+  .why-use-product__benefit_card__arrow .icon {
+    width: 48px;
+    height: 48px;
+    transition: transform 0.6s;
+  }
+
+  .why-use-product__benefit_card:hover .why-use-product__benefit_card__arrow .icon {
+      transform: rotate(90deg);
+  }
+
+  @media only screen and (max-width: 768px) {
+    #shopify-section-{{ section.id }} .why-use-product {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+    .why-use-product__benefit {
+      border-width: 1px;
+    }
+
+     #shopify-section-{{ section.id }} .why-use-product__title {
+      font-size: {{ section.settings.title-font-size_mobile }}px;
+      margin-bottom: 30px;
+    }
+
+     #shopify-section-{{ section.id }} .cards-with-slider__card__title {
+      font-size: {{ section.settings.text_size_mobile }}px;
+    }
+
+    .why-use-product__benefit_card {
+      padding: 14px;
+    }
+
+    .why-use-product__benefit_card__arrow .icon {
+      width: 40px;
+      height: 40px;
+    }
+
+    .why-use-product__main_image > img {
+      height: 500px;
+    }
+
+    .why-use-product__benefit_card {
+      height: 196px;
+    }
+
+    .why-use-product__container {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .why-use-product__main_image_container {
+      width: 100%;
+    }
+
+    .why-use-product__benefit_container {
+      width: 100%;
+      gap: 16px;
+    }
+    
+  }
+
+ 
+
+  
+    {%
+    render 'css-loop',
+    css: section.settings.custom_css,
+    id: section.id,
+  %}
+{% endstyle %}
+{% if product.metafields.custom.why_use_product %}
+  {% assign metaobject = product.metafields.custom.why_use_product.value %}
+  <section
+      class="
+        section
+        {{ section.settings.css_class }}
+        why-use-product
+      "
+    >
+    {% if metaobject.title != blank %}
+      <h2 class="why-use-product__title">{{ metaobject.title }}</h2>
+    {% endif %}
+     {% render 'why-use-product__slider', benefits: metaobject %}
+    <div class="why-use-product__container">
+      {% if metaobject.big_image != nil %}
+        <div class="why-use-product__main_image_container">
+          {%
+            render 'image-element',
+            image: metaobject.big_image,
+            alt: metaobject.big_image.alt,
+            additional_wrapper_classes: "why-use-product__main_image"
+            object_fit: true
+         %}
+        </div>
+      {% endif %}
+      <div class="why-use-product__benefit_container">
+        {% if metaobject.image_1 != nil %}
+          {% style _%}
+            .block-1.why-use-product__benefit_card {
+                  background: url("{{ metaobject.image_1 | img_url: 'master' }}");
+                  background-size: cover;
+                  background-position: center;
+                  background-repeat: no-repeat;
+                  border: none;
+                  position: relative; 
+                  overflow: hidden; 
+              }
+              .block-1.why-use-product__benefit_card::before {
+                  content: '';
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  background-color: rgba(0, 0, 0, 0.3);
+                  transition: background-color 0.6s ease; 
+              }
+              .block-1.why-use-product__benefit_card:hover::before {
+                  background-color: rgba(0, 0, 0, 0); /* Remove darkness on hover */
+              }
+              .block-1.why-use-product__benefit_card > * {
+                  position: relative;
+              }
+              .block-1.why-use-product__benefit_card:hover {
+                  filter: grayscale(0%); /* Removes grayscale filter on hover */
+              }
+              .block-1.why-use-product__benefit_card:hover .why-use-product__benefit_card__arrow .icon {
+                  transform: rotate(90deg);
+              }
+        {% endstyle _%}
+        <div class="why-use-product__benefit_card block-1" data-selected-card-index="1">
+          <div class="why-use-product__benefit_card__arrow">
+             {% render 'icon', name: 'read-more-right-arrow' %}
+          </div>
+          <div class="cards-with-slider__card__title">{{ metaobject.text_1}}</div>
+        </div>
+        {% endif %} 
+        {% if metaobject.image_2 != nil %}
+          {% style _%}
+            .block-2.why-use-product__benefit_card {
+                  background: url("{{ metaobject.image_2 | img_url: 'master' }}");
+                  background-size: cover;
+                  background-position: center;
+                  background-repeat: no-repeat;
+                  border: none;
+                  position: relative; 
+                  overflow: hidden; 
+              }
+              .block-2.why-use-product__benefit_card::before {
+                  content: '';
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  background-color: rgba(0, 0, 0, 0.3);
+                  transition: background-color 0.6s ease; 
+              }
+              .block-2.why-use-product__benefit_card:hover::before {
+                  background-color: rgba(0, 0, 0, 0); /* Remove darkness on hover */
+              }
+              .block-2.why-use-product__benefit_card > * {
+                  position: relative;
+              }
+              .block-2.why-use-product__benefit_card:hover {
+                  filter: grayscale(0%); /* Removes grayscale filter on hover */
+              }
+              .block-2.why-use-product__benefit_card:hover .why-use-product__benefit_card__arrow .icon {
+                  transform: rotate(90deg);
+              }
+        {% endstyle _%}
+        <div class="why-use-product__benefit_card block-2" data-selected-card-index="2">
+          <div class="why-use-product__benefit_card__arrow">
+             {% render 'icon', name: 'read-more-right-arrow' %}
+          </div>
+          <div class="cards-with-slider__card__title">{{ metaobject.text_2}}</div>
+        </div>
+        {% endif %} 
+        {% if metaobject.image_3 != nil %}
+          {% style _%}
+            .block-3.why-use-product__benefit_card {
+                  background: url("{{ metaobject.image_3 | img_url: 'master' }}");
+                  background-size: cover;
+                  background-position: center;
+                  background-repeat: no-repeat;
+                  border: none;
+                  position: relative; 
+                  overflow: hidden; 
+              }
+              .block-3.why-use-product__benefit_card::before {
+                  content: '';
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  background-color: rgba(0, 0, 0, 0.3);
+                  transition: background-color 0.6s ease; 
+              }
+              .block-3.why-use-product__benefit_card:hover::before {
+                  background-color: rgba(0, 0, 0, 0); /* Remove darkness on hover */
+              }
+              .block-3.why-use-product__benefit_card > * {
+                  position: relative;
+              }
+              .block-3.why-use-product__benefit_card:hover {
+                  filter: grayscale(0%); /* Removes grayscale filter on hover */
+              }
+              .block-3.why-use-product__benefit_card:hover .why-use-product__benefit_card__arrow .icon {
+                  transform: rotate(90deg);
+              }
+        {% endstyle _%}
+        <div class="why-use-product__benefit_card block-3" data-selected-card-index="3">
+          <div class="why-use-product__benefit_card__arrow">
+             {% render 'icon', name: 'read-more-right-arrow' %}
+          </div>
+          <div class="cards-with-slider__card__title">{{ metaobject.text_3}}</div>
+        </div>
+        {% endif %} 
+        {% if metaobject.image_4 != nil %}
+          {% style _%}
+            .block-4.why-use-product__benefit_card {
+                  background: url("{{ metaobject.image_4 | img_url: 'master' }}");
+                  background-size: cover;
+                  background-position: center;
+                  background-repeat: no-repeat;
+                  border: none;
+                  position: relative; 
+                  overflow: hidden; 
+              }
+              .block-4.why-use-product__benefit_card::before {
+                  content: '';
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  background-color: rgba(0, 0, 0, 0.3);
+                  transition: background-color 0.6s ease; 
+              }
+              .block-4.why-use-product__benefit_card:hover::before {
+                  background-color: rgba(0, 0, 0, 0); /* Remove darkness on hover */
+              }
+              .block-4.why-use-product__benefit_card > * {
+                  position: relative;
+              }
+              .block-4.why-use-product__benefit_card:hover {
+                  filter: grayscale(0%); /* Removes grayscale filter on hover */
+              }
+              .block-4.why-use-product__benefit_card:hover .why-use-product__benefit_card__arrow .icon {
+                  transform: rotate(90deg);
+              }
+        {% endstyle _%}
+        <div class="why-use-product__benefit_card block-4" data-selected-card-index="4">
+          <div class="why-use-product__benefit_card__arrow">
+             {% render 'icon', name: 'read-more-right-arrow' %}
+          </div>
+          <div class="cards-with-slider__card__title">{{ metaobject.text_4}}</div>
+        </div>
+        {% endif %} 
+        {% if metaobject.image_5 != nil %}
+          {% style _%}
+            .block-5.why-use-product__benefit_card {
+                  background: url("{{ metaobject.image_5 | img_url: 'master' }}");
+                  background-size: cover;
+                  background-position: center;
+                  background-repeat: no-repeat;
+                  border: none;
+                  position: relative; 
+                  overflow: hidden; 
+              }
+              .block-5.why-use-product__benefit_card::before {
+                  content: '';
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  background-color: rgba(0, 0, 0, 0.3);
+                  transition: background-color 0.6s ease; 
+              }
+              .block-5.why-use-product__benefit_card:hover::before {
+                  background-color: rgba(0, 0, 0, 0); /* Remove darkness on hover */
+              }
+              .block-5.why-use-product__benefit_card > * {
+                  position: relative;
+              }
+              .block-5.why-use-product__benefit_card:hover {
+                  filter: grayscale(0%); /* Removes grayscale filter on hover */
+              }
+              .block-5.why-use-product__benefit_card:hover .why-use-product__benefit_card__arrow .icon {
+                  transform: rotate(90deg);
+              }
+        {% endstyle _%}
+        <div class="why-use-product__benefit_card block-5" data-selected-card-index="5">
+          <div class="why-use-product__benefit_card__arrow">
+             {% render 'icon', name: 'read-more-right-arrow' %}
+          </div>
+          <div class="cards-with-slider__card__title">{{ metaobject.text_5}}</div>
+        </div>
+        {% endif %} 
+        {% if metaobject.image_6 != nil %}
+            {% style _%}
+              .block-6.why-use-product__benefit_card {
+                  background: url("{{ metaobject.image_6 | img_url: 'master' }}");
+                  background-size: cover;
+                  background-position: center;
+                  background-repeat: no-repeat;
+                  border: none;
+                  position: relative; 
+                  overflow: hidden; 
+              }
+              .block-6.why-use-product__benefit_card::before {
+                  content: '';
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  background-color: rgba(0, 0, 0, 0.3);
+                  transition: background-color 0.6s ease; 
+              }
+              .block-6.why-use-product__benefit_card:hover::before {
+                  background-color: rgba(0, 0, 0, 0); /* Remove darkness on hover */
+              }
+              .block-6.why-use-product__benefit_card > * {
+                  position: relative;
+              }
+              .block-6.why-use-product__benefit_card:hover {
+                  filter: grayscale(0%); /* Removes grayscale filter on hover */
+              }
+              .block-6.why-use-product__benefit_card:hover .why-use-product__benefit_card__arrow .icon {
+                  transform: rotate(90deg);
+              }
+        {% endstyle _%}
+        <div class="why-use-product__benefit_card block-6" data-selected-card-index="6">
+          <div class="why-use-product__benefit_card__arrow">
+             {% render 'icon', name: 'read-more-right-arrow' %}
+          </div>
+          <div class="cards-with-slider__card__title">{{ metaobject.text_6}}</div>
+        </div>
+        {% endif %} 
+      </div>
+    </div>
+  </section>
+{% endif %}
+<script>
+    window.addEventListener('DOMContentLoaded', function() {
+
+    const whyUseProductSliderCardslist = document.querySelectorAll(".why-use-product__benefit_card");
+    const whyUseProductSliderModalBackdrop = document.querySelector('.why-use-product__modal-backdrop');
+    const whyUseProductSliderModalContent = document.querySelector(".why-use-product__modal__content");
+    const whyUseProductSliderModalClose = document.querySelector(".why-use-product__modal__close");
+
+    const whyUseProductRemoveSelectedClassFromCards = () => {
+      for (const card of whyUseProductSliderCardslist) {
+            card.classList.remove("is-selected-card");
+        };
+    };
+
+    for (const card of whyUseProductSliderCardslist) { 
+      card.addEventListener("click", () => {
+          whyUseProductRemoveSelectedClassFromCards();
+          card.classList.add("is-selected-card"); 
+      
+          if(whyUseProductSliderModalContent && whyUseProductSliderModalBackdrop) {
+
+              whyUseProductSliderModalContent.classList.add("why-use-product__modal__content__is-open");
+              whyUseProductSliderModalBackdrop.classList.add("why-use-product__modal-backdrop-is-open");
+
+              const whyUseProductSliderCarousel = document.querySelector(".carousel-{{ section.id }}");
+            
+              const whyUseProductSliderCarouselFlickity = new Flickity( whyUseProductSliderCarousel, {
+                    cellAlign: 'left',
+                    contain: true,
+                    groupCells: true,
+                    wrapAround: true,
+                    pageDots: true,
+                    initialIndex: card.dataset.selectedCardIndex - 1
+                });
+    
+              whyUseProductSliderCarouselFlickity.resize();
+
+              const whyUseProductSliderCarouselPrevButton = document.querySelector('.why-use-product__modal__cards-list__item__button-prev-{{ section.id }}');
+              const whyUseProductSliderCarouselNextButton = document.querySelector('.why-use-product__modal__cards-list__item__button-next-{{ section.id }}');
+
+              if (whyUseProductSliderCarouselPrevButton) {
+                whyUseProductSliderCarouselPrevButton.addEventListener( 'click', function() {
+                  whyUseProductSliderCarouselFlickity.previous();
+                });
+              }
+          
+              if (whyUseProductSliderCarouselNextButton) {
+                whyUseProductSliderCarouselNextButton.addEventListener( 'click', function() {
+                  whyUseProductSliderCarouselFlickity.next( );
+                });
+              }
+    
+
+        
+              whyUseProductSliderModalBackdrop.onclick = function(event) {
+                  whyUseProductSliderModalContent.classList.remove("why-use-product__modal__content__is-open");
+                  whyUseProductSliderModalBackdrop.classList.remove("why-use-product__modal-backdrop-is-open");
+                  whyUseProductRemoveSelectedClassFromCards();
+                  whyUseProductSliderCarouselFlickity.destroy();
+              }
+
+              whyUseProductSliderModalClose.onclick = function() {
+                  whyUseProductSliderModalContent.classList.remove("why-use-product__modal__content__is-open");
+                  whyUseProductSliderModalBackdrop.classList.remove("why-use-product__modal-backdrop-is-open");
+                  whyUseProductRemoveSelectedClassFromCards();
+                  whyUseProductSliderCarouselFlickity.destroy();
+              }
+
+ 
+              whyUseProductSliderModalContent.onclick = function(e) {
+                  e.stopPropagation();
+              }
+          
+          }
+
+
+    });
+
+  };
+
+  });
+  
+</script>
+{% schema %}
+  {
+    "name": "Why use product",
+    "settings": [
+      {
+      "type": "range",
+      "id": "title-font-size",
+      "label": "Title font size",
+      "min": 0,
+      "max": 100,
+      "default": 34,
+      "unit": "px"
+    },
+       {
+      "type": "range",
+      "id": "text_size",
+      "label": "Text font size",
+      "min": 0,
+      "max": 100,
+      "default": 25,
+      "unit": "px"
+    },
+       {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Top spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Bottom spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+      "type": "header",
+      "content": "Colors"
+    },
+      {
+        "type": "color",
+        "id": "title_color",
+        "label": "Section title color",
+      },
+      {
+        "type": "color",
+        "id": "card_title_color",
+        "label": "Card title color",
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Section background color",
+      },
+      {
+        "type": "header",
+        "content": "Mobile layout"
+      },
+      {
+      "type": "range",
+      "id": "title-font-size_mobile",
+      "label": "Title font size",
+      "min": 0,
+      "max": 100,
+      "default": 34,
+      "unit": "px"
+    },
+      {
+      "type": "range",
+      "id": "text_size_mobile",
+      "label": "Text font size",
+      "min": 0,
+      "max": 100,
+      "default": 16,
+      "unit": "px"
+    },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Mobile top spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Mobile bottom spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Advanced",
+        "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+      },
+      {
+        "type": "text",
+        "id": "css_class",
+        "label": "CSS Class"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_css",
+        "label": "Custom CSS"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Why use the product"
+      }
+    ]
+  }
+{% endschema %}

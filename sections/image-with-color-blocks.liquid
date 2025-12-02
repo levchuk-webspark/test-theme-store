@@ -1,0 +1,344 @@
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.background_color }};
+  }
+
+   .image-with-color-blocks__title {
+    font-size: 34px;
+    font-weight: normal;
+    margin-bottom: 70px;
+
+    font-family: Ambit, Merriweather Sans, sans-serif !important;
+  }
+
+  #shopify-section-{{ section.id }} .image-with-color-blocks__title {
+    color: {{ section.settings.title_color }};
+  }
+
+  .image-with-color-blocks__cards-list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(280px, 1fr));
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 20px;
+  }
+
+  .image-with-color-blocks__card {
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .image-with-color-blocks__card-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: {{ section.settings.card-padding }}px;
+    gap: 20px;
+  }
+
+  #shopify-section-{{ section.id }} .image-with-color-blocks__card__image > img {
+     object-fit: cover;
+  }
+
+  #shopify-section-{{ section.id }} img.image-with-color-blocks__card__image {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+  
+  #shopify-section-{{ section.id }} .image-with-color-blocks__card__number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 64px;
+    font-weight: 900;
+    width: {{ section.settings.card-number-size }}px;
+    height: {{ section.settings.card-number-size }}px;
+    border-radius: 50%;
+  }
+
+  .image-with-color-blocks__description {
+    font-size: {{ section.settings.card-description-font-size }};
+  }
+
+  @media only screen and (max-width: 798px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    .image-with-color-blocks__title {
+      margin-bottom: 40px;
+      font-size: 28px;
+    }
+
+    #shopify-section-{{ section.id }} .image-with-color-blocks__card__number {
+      width: 64px;
+      height: 64px;
+      font-size: 46px;
+    }
+  }
+
+{%
+  render 'css-loop',
+  css: section.settings.custom_css,
+  id: section.id,
+%}
+  
+{% endstyle %}
+
+<section
+  class="
+    section
+    {{ section.settings.css_class }}
+    image-with-color-blocks
+  "
+>
+    {% if section.settings.title != blank %}
+        <p class="image-with-color-blocks__title">{{ section.settings.title }}</p>
+    {% endif %}
+
+      {% if section.blocks.size > 0 %}
+        <ul class="image-with-color-blocks__cards-list">
+            {% for block in section.blocks %}        
+                {% if block.type == 'card' %} 
+
+                    {% style %}
+                      
+                      .block-{{ block.id }}.image-with-color-blocks__card {
+                        background-color: {{ block.settings.background_color }};                        
+                        {% if block.settings.image == nil %}
+                           border: 1px solid {{ block.settings.border_color }};
+                        {% else %}
+                         border: 1px solid transparent;
+                        {% endif %}
+                      }
+
+                      .block-{{ block.id }}.image-with-color-blocks__card:hover {
+                        background-color: {{ block.settings.border_color }};
+                      }
+
+                      .block-{{ block.id }}.image-with-color-blocks__card:hover .image-with-color-blocks__card__number {
+                        background-color: {{ block.settings.number_color }};
+                        color: {{ block.settings.border_color }};
+                      }
+
+                       .block-{{ block.id }}.image-with-color-blocks__card:hover .image-with-color-blocks__card__description {
+                        color: {{ block.settings.number_color }};
+                      }
+
+                      .block-{{ block.id }} .image-with-color-blocks__card__description {
+                        color: {{ block.settings.description_color }};
+                      }
+
+                       .block-{{ block.id }} .image-with-color-blocks__card__number {
+                          color: {{ block.settings.number_color }};
+                          background-color: {{ block.settings.border_color }}
+                        }
+                                            
+                    {% endstyle %}
+
+                    <li class="image-with-color-blocks__card block-{{ block.id }}">
+
+                      {% if block.settings.image != nil %} 
+                        {% if product.id == 7396104798281 and forloop.index == 1 %}
+                           <img class="image-with-color-blocks__card__image" 
+                            src="https://cdn.shopify.com/s/files/1/0469/8905/0019/files/WhyBuy_Mask.jpg?v=1723630880" 
+                            alt="color blocks 1 image" 
+                          >
+                        {% endif %}
+                        {% if product.id != 7396104798281 %}
+                          {%
+                            render 'image-element',
+                            image: block.settings.image,
+                            alt: block.settings.image.alt,
+                            additional_wrapper_classes: 'image-with-color-blocks__card__image'
+                          %}
+                        {% endif %}
+                      {% else %}
+                          <div class="image-with-color-blocks__card-content">
+                            <div class="image-with-color-blocks__card__number">{{ block.settings.number }}</div>
+                            <div class="image-with-color-blocks__card__description">{{ block.settings.description }}</div>
+                          </div>
+                      {% endif %}
+                    </li>
+                {% endif %}        
+            {% endfor %}  
+        </ul>
+      {% endif %}   
+</section>
+
+{% schema %}
+  {
+    "name": "Image with color blocks",
+    "settings": [
+      {
+        "type": "html",
+        "id": "title",
+        "label": "Section title"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Top spacing",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "default": 90,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Bottom spacing",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "card-padding",
+        "label": "Card padding",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "card-description-font-size",
+        "label": "Card description font size",
+        "min": 0,
+        "max": 100,
+        "default": 30,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "card-number-size",
+        "label": "Card number size",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "default": 100,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Colors"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Section background color",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "color",
+        "id": "title_color",
+        "label": "Section title color",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "header",
+        "content": "Mobile layout"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Mobile top spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Mobile bottom spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Advanced",
+        "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+      },
+      {
+        "type": "text",
+        "id": "css_class",
+        "label": "CSS Class"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_css",
+        "label": "Custom CSS"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "card",
+        "name": "Card",
+        "settings": [
+          {
+            "type": "html",
+            "id": "number",
+            "label": "Card number"
+          },
+          {
+            "type": "html",
+            "id": "description",
+            "label": "Card description"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "header",
+            "content": "Colors"
+          },
+          {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background"
+          },
+          {
+            "type": "color",
+            "id": "border_color",
+            "label": "Border"
+          },
+          {
+            "type": "color",
+            "id": "description_color",
+            "label": "Description"
+          },
+          {
+            "type": "color",
+            "id": "number_color",
+            "label": "Number"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Image with color blocks"
+      }
+    ]
+  }
+{% endschema %}

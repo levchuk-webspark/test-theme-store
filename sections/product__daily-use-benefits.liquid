@@ -1,0 +1,297 @@
+{% style %}
+
+.daily-use-benefits {
+  padding: 20px 10px;
+}
+
+.daily-use-benefits__title {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.daily-use-benefits__container {
+  display: grid;
+  grid-template-columns: minmax(0,45%) minmax(0,55%);
+  gap: 24px;
+}
+
+.daily-use-benefits__list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.daily-use-benefits__list__item {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  border: 1px solid #000;
+  border-radius: 8px;
+  padding: 30px;
+}
+
+.daily-use-benefits__list__item__text-block {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;  
+  font-size: 20px;
+  color: #5A5552;
+}
+
+.daily-use-benefits__list__item__text-block__item:first-child {
+  font-size: 25px;
+  color: #000;
+}
+ 
+.daily-use-benefits__image-container {
+  width: auto;
+  height:0;
+  min-height: 100%;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+  
+.daily-use-benefits__image-container__image {
+  height: 100%;
+  min-height: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.daily-use-benefits__image-container__overlay {
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  width: 96%;
+  height: 96%;
+  border-radius: 8px;
+  border: 1px solid #000;
+}
+
+.daily-use-benefits__image-container__arrow {
+  position: absolute;
+  top: 5%;
+  left: 20px;
+  display: none;
+}
+
+.daily-use-benefits__list__item__image {
+  height: 65px;
+  width: 65px;
+  min-height: 65px;
+  min-width: 65px;
+}
+
+.daily-use-benefits__list__item__image,
+.daily-use-benefits__image-container__arrow {
+  color: transparent;
+  transform: rotate(0deg);
+  transition: color 0.5s linear, transform 0.5s linear;
+}
+
+.daily-use-benefits__list__item.visible-benefit .daily-use-benefits__list__item__image,
+.daily-use-benefits__image-container__arrow.visible-benefit {
+  color: #000;
+  transform: rotate(90deg);
+  transition: all 0.5s linear;
+}
+
+@media only screen and (max-width: 798px) {
+  .daily-use-benefits__container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .daily-use-benefits__list {
+    gap: 18px;
+  }
+
+  .daily-use-benefits__list__item {
+    gap: 18px;
+    padding: 18px 20px;
+  }
+
+  .daily-use-benefits__image-container__arrow,
+  .daily-use-benefits__list__item__image {
+    height: 40px;
+    width: 40px;
+    min-height: 40px;
+    min-width: 40px;
+    padding: 1px;
+  }
+
+  .daily-use-benefits__list__item__text-block {
+    gap: 14px;  
+    font-size: 10px;
+  }
+  
+  .daily-use-benefits__list__item__text-block__item:first-child {
+    font-size: 18px;
+  }
+
+  .daily-use-benefits__image-container__arrow {
+    display: block;
+  }
+
+  .daily-use-benefits__image-container {
+    width: 100%;
+    height: auto;
+  }
+
+  .daily-use-benefits__image-container__image {
+    height: auto;
+    width: 100%;
+  }
+  
+}
+  
+{% endstyle %}
+
+
+{% if product.metafields.custom.daily_use_benefits_image %}  
+    <div class="section daily-use-benefits">
+      
+        {% if section.settings.title != blank %}
+            <h2 class="daily-use-benefits__title">{{section.settings.title}}</h2>
+        {% endif %}
+
+        <div class="daily-use-benefits__container">
+
+            <ul class="daily-use-benefits__list">
+                {% if product.metafields.custom.daily_use_benefit_1 != blank %}
+                    <li class="daily-use-benefits__list__item">
+                        <div class="daily-use-benefits__list__item__image">
+                            <svg viewBox="0 0 67 66" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13.6938 36.6754H13.799L13.8725 36.6002L29.7973 20.3317L29.7973 56.0731V56.3231H30.0473H36.5769H36.8269V56.0731L36.8269 20.3317L52.7518 36.6002L53.1804 37.0382V36.4254V27.8957V27.7934L53.1087 27.7205L33.4611 7.71983L33.2827 7.53828L33.1044 7.71983L13.4567 27.7205L13.385 27.7934V27.8957L13.385 36.4254V36.6754H13.635H13.6938ZM33.3415 0.674194C51.2629 0.674194 65.7985 15.2098 65.7985 33.1311C65.7985 51.0525 51.2629 65.5881 33.3415 65.5881C15.4199 65.5881 0.884583 51.111 0.884583 33.1311C0.884583 15.1513 15.4199 0.674194 33.3415 0.674194Z" stroke="black" stroke-width="0.5" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div class="daily-use-benefits__list__item__text-block">
+                            {% for benefit in product.metafields.custom.daily_use_benefit_1.value %}
+                                <span class="daily-use-benefits__list__item__text-block__item">{{ benefit }}</span>
+                            {% endfor %}
+                        </div>                      
+                    </li>
+                {% endif %}
+
+                {% if product.metafields.custom.daily_use_benefit_2 != blank %}
+                    <li class="daily-use-benefits__list__item">
+                        <div class="daily-use-benefits__list__item__image">
+                            <svg viewBox="0 0 67 66" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13.6938 36.6754H13.799L13.8725 36.6002L29.7973 20.3317L29.7973 56.0731V56.3231H30.0473H36.5769H36.8269V56.0731L36.8269 20.3317L52.7518 36.6002L53.1804 37.0382V36.4254V27.8957V27.7934L53.1087 27.7205L33.4611 7.71983L33.2827 7.53828L33.1044 7.71983L13.4567 27.7205L13.385 27.7934V27.8957L13.385 36.4254V36.6754H13.635H13.6938ZM33.3415 0.674194C51.2629 0.674194 65.7985 15.2098 65.7985 33.1311C65.7985 51.0525 51.2629 65.5881 33.3415 65.5881C15.4199 65.5881 0.884583 51.111 0.884583 33.1311C0.884583 15.1513 15.4199 0.674194 33.3415 0.674194Z" stroke="black" stroke-width="0.5" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div class="daily-use-benefits__list__item__text-block">
+                            {% for benefit in product.metafields.custom.daily_use_benefit_2.value %}
+                                <span class="daily-use-benefits__list__item__text-block__item">{{ benefit }}</span>
+                            {% endfor %}
+                        </div>                      
+                    </li>
+                {% endif %}
+
+                {% if product.metafields.custom.daily_use_benefit_3 != blank %}
+                    <li class="daily-use-benefits__list__item">
+                        <div class="daily-use-benefits__list__item__image">
+                            <svg viewBox="0 0 67 66" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13.6938 36.6754H13.799L13.8725 36.6002L29.7973 20.3317L29.7973 56.0731V56.3231H30.0473H36.5769H36.8269V56.0731L36.8269 20.3317L52.7518 36.6002L53.1804 37.0382V36.4254V27.8957V27.7934L53.1087 27.7205L33.4611 7.71983L33.2827 7.53828L33.1044 7.71983L13.4567 27.7205L13.385 27.7934V27.8957L13.385 36.4254V36.6754H13.635H13.6938ZM33.3415 0.674194C51.2629 0.674194 65.7985 15.2098 65.7985 33.1311C65.7985 51.0525 51.2629 65.5881 33.3415 65.5881C15.4199 65.5881 0.884583 51.111 0.884583 33.1311C0.884583 15.1513 15.4199 0.674194 33.3415 0.674194Z" stroke="black" stroke-width="0.5" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div class="daily-use-benefits__list__item__text-block">
+                            {% for benefit in product.metafields.custom.daily_use_benefit_3.value %}
+                                <span class="daily-use-benefits__list__item__text-block__item">{{ benefit }}</span>
+                            {% endfor %}
+                        </div>                      
+                    </li>
+                {% endif %}
+                                  
+            </ul>
+
+            {% if product.metafields.custom.daily_use_benefits_image %}
+                <div class="daily-use-benefits__image-container">
+                    <img class="daily-use-benefits__image-container__image" src="{{ product.metafields.custom.daily_use_benefits_image | file_url }}" alt="Benefit image" >
+                    <div class="daily-use-benefits__image-container__overlay"></div>
+                    <div class="daily-use-benefits__image-container__arrow">
+                        <svg viewBox="0 0 67 66" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.6938 36.6754H13.799L13.8725 36.6002L29.7973 20.3317L29.7973 56.0731V56.3231H30.0473H36.5769H36.8269V56.0731L36.8269 20.3317L52.7518 36.6002L53.1804 37.0382V36.4254V27.8957V27.7934L53.1087 27.7205L33.4611 7.71983L33.2827 7.53828L33.1044 7.71983L13.4567 27.7205L13.385 27.7934V27.8957L13.385 36.4254V36.6754H13.635H13.6938ZM33.3415 0.674194C51.2629 0.674194 65.7985 15.2098 65.7985 33.1311C65.7985 51.0525 51.2629 65.5881 33.3415 65.5881C15.4199 65.5881 0.884583 51.111 0.884583 33.1311C0.884583 15.1513 15.4199 0.674194 33.3415 0.674194Z" stroke="black" stroke-width="0.5" fill="currentColor"/>
+                        </svg>
+                    </div>
+                </div>
+            {% endif %}
+
+        </div>
+      
+    </div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Daily use benefits",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Benefits of daily use"
+      }     
+    ],
+    "presets": [
+      {
+        "name": "Product: daily use benefits"
+      }
+    ]
+  }
+{% endschema %}
+
+<script>
+
+  window.addEventListener('load', function() {
+    
+      const dailyUseBenefitsListItems = document.getElementsByClassName("daily-use-benefits__list__item");
+      const dailyUseBenefitsImageContainerArrow = document.getElementsByClassName("daily-use-benefits__image-container__arrow")[0];
+    
+      if(!!dailyUseBenefitsListItems.length) {
+
+          for (const item of dailyUseBenefitsListItems) {
+            
+            const observer = new window.IntersectionObserver(([entry]) => {
+              
+                if (entry.isIntersecting || entry.boundingClientRect.top < 0) {
+                  item?.classList?.add("visible-benefit");                  
+                  return;
+                }
+              
+                item?.classList?.remove("visible-benefit");
+              
+              }, {
+                root: null,
+                rootMargin: '0px 0px -30% 0px'
+              });
+                    
+              observer.observe(item);
+          }
+         
+     };
+
+      if(dailyUseBenefitsImageContainerArrow) {
+            const observer = new window.IntersectionObserver(([entry]) => {
+              
+                if (entry.isIntersecting || entry.boundingClientRect.top < 0) {
+                  dailyUseBenefitsImageContainerArrow?.classList?.add("visible-benefit");                  
+                  return;
+                }
+              
+                dailyUseBenefitsImageContainerArrow?.classList?.remove("visible-benefit");
+              
+              }, {
+                root: null,
+                rootMargin: '0px 0px -30% 0px'
+              });
+                    
+              observer.observe(dailyUseBenefitsImageContainerArrow);
+      }
+
+  });
+
+</script>

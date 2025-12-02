@@ -1,0 +1,218 @@
+{% style %}
+  .product-videos-with-content__item__content-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    width: 100%;
+    padding-right: 5px;
+  }
+
+  .product-videos-with-content__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-videos-with-content__accordion-container {
+    flex-grow: 1;
+  }
+  
+  .product-videos-with-content__video-container, .product-videos-with-content__video, .product-videos-with-content__image {
+    border-radius: 10px;
+    overflow: hidden;
+    height: 545px; 
+    object-fit: cover;
+    width: 100%;
+  }
+
+   .product-videos-with-content__video > video, .product-videos-with-content__image > .image-element__wrap > img {
+    height: 545px;
+    object-fit: cover;
+    width: 100%;
+   }
+  
+  .product-videos-with-content__title {
+    font-size: 34px;
+    line-height: 37px;
+    font-weight: normal;
+    margin-bottom: 40px;
+  }
+
+  .product-videos-with-content__description {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: normal;
+    margin-bottom: 40px;
+  }
+
+  @media only screen and (max-width: 798px) {
+    .product-videos-with-content__item__content-container {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .product-videos-with-content__video-container, .product-videos-with-content__video, .product-videos-with-content__image {
+      height: 281px;
+    }
+
+    .product-videos-with-content__video > video, .product-videos-with-content__image > image-element__wrap > img {
+      height: 281px;
+    }
+
+    .product-videos-with-content__title {
+      font-size: 24px;
+      line-height: 27px;
+      margin-bottom: 20px;
+    }
+
+    .product-videos-with-content__description {
+      font-size: 15px;
+      line-height: 21px;
+      font-weight: normal;
+      margin-bottom: 30px;
+    }
+
+    .product-videos-with-content__link {
+      display: flex;
+      align-self: end;
+    }
+  }
+{% endstyle %}
+
+<div class="
+        block-{{ index }} 
+        carousel-cell   
+        product-videos-with-content__item__content-container
+        " >
+    {% if content.video_link != nil %}
+          <div class="product-videos-with-content__video-container">
+            <div class="product-videos-with-content__video">
+              <video  loop muted playsinline width="100%" height="100%" controls>     
+                  <source src="{{ content.video_link }}" type="video/mp4">          
+              </video> 
+            </div>
+          </div>
+    {% endif %}
+    {% if content.video_link == nil and content != nil %}
+          <div class="product-videos-with-content__video-container">
+            <div class="product-videos-with-content__image">
+              {%
+                render 'image-element',
+                image: content.image,
+                alt: content.image.alt,
+              %}
+            </div>
+          </div>
+    {% endif %}
+    <div class="product-videos-with-content__content">
+          {% if content.title != blank %}
+                <h2 class="product-videos-with-content__title">
+                  {{ content.title }}
+                </h2>
+            {% endif %}
+          {% if content.description != blank %}
+                <div class="product-videos-with-content__description">
+                  {{ content.description }}
+                </div>
+            {% endif %}
+          <div class="product-videos-with-content__accordion-container">
+              {% if content.question_1 and content.answer_1 %}
+                    {% render 'accordion-item-component', 
+                      title: content.question_1,
+                      content: content.answer_1,
+                      icon: content.icon,
+                      id: "product-videos-with-content__accordion",
+                      index: index,
+                      text_color: content.text_color,
+                      number: "1"
+                      initially_open: false,
+                    %}
+              {% endif %}
+              {% if content.question_2 and content.answer_2 %}
+                    {% render 'accordion-item-component', 
+                      title: content.question_2,
+                      content: content.answer_2,
+                      icon: content.icon,
+                      id: "product-videos-with-content__accordion",
+                      index: index,
+                      number: "2",
+                      text_color: content.text_color
+                    %}
+              {% endif %}
+              {% if content.question_3 and content.answer_3 %}
+                    {% render 'accordion-item-component', 
+                      title: content.question_3,
+                      content: content.answer_3,
+                      icon: content.icon,
+                      id: "product-videos-with-content__accordion",
+                      index: index,
+                      number: "3",
+                      text_color: content.text_color
+                    %}
+              {% endif %}
+              {% if content.question_4 and content.answer_4 %}
+                    {% render 'accordion-item-component', 
+                      title: content.question_4,
+                      content: content.answer_4,
+                      icon: content.icon,
+                      id: "product-videos-with-content__accordion",
+                      index: index,
+                      number: "4",
+                      text_color: content.text_color
+                    %}
+              {% endif %}
+              {% if content.question_1 and content.answer_5 %}
+                    {% render 'accordion-item-component', 
+                      title: content.question_5,
+                      content: content.answer_5,
+                      icon: content.icon,
+                      id: "product-videos-with-content__accordion",
+                      index: index,
+                      number: "5",
+                      text_color: content.text_color
+                    %}
+              {% endif %}              
+            </div>
+        </div>
+</div>
+<script>
+  $(document).ready(function () {
+    const videosWithContentCarousel = document.querySelector('.carousel-{{ section.id }}');
+    if (!videosWithContentCarousel) return; 
+
+    const videosWithContentViewport = videosWithContentCarousel.querySelector('.flickity-viewport');
+    if (!videosWithContentViewport) return;
+
+    let initialHeight = videosWithContentViewport.scrollHeight; 
+
+    $('.accordion-item-component-product-videos-with-content__accordion-{{ index }}').click(function (event) {
+      event.preventDefault(); 
+
+      const $clickedItem = $('.accordion-item-component__content-product-videos-with-content__accordion-{{ index }}', this);
+      const $clickedCircle = $('.accordion-item-component__arrow-product-videos-with-content__accordion-{{ index }}', this);
+
+      if ($clickedItem.hasClass('open')) {
+        $clickedItem.removeClass('open').slideUp(300, function () {
+          videosWithContentViewport.style.height = initialHeight + 'px'; 
+        });
+        $clickedCircle.removeClass('open');
+        return;
+      }
+
+      $('.accordion-item-component__content-product-videos-with-content__accordion-{{ index }}')
+        .removeClass('open')
+        .slideUp(300);
+      $('.accordion-item-component__arrow-product-videos-with-content__accordion-{{ index }}').removeClass('open');
+
+      $clickedItem.slideDown(300, function () {
+        const openedItemContentHeight = this.scrollHeight; 
+        videosWithContentViewport.style.height = (initialHeight + openedItemContentHeight) + 'px';
+      }).addClass('open');
+
+      $clickedCircle.addClass('open');
+    });
+
+    $('.accordion-item-component__content-product-videos-with-content__accordion-{{ index }}').click(function (event) {
+      event.stopImmediatePropagation();
+    });
+  });
+</script>

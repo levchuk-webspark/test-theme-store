@@ -1,0 +1,435 @@
+{% style %}
+
+#shopify-section-{{ section.id }} .product__video {
+  padding-top: {{ section.settings.padding_top }}px;
+  padding-bottom: {{ section.settings.padding_bottom }}px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+  
+  .product__video__wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 32px;
+  }
+
+  .product__video__container {
+    width: 50%;
+    height: 500px;
+  }
+
+.product__video__background {
+    width: 100%;
+    border-radius: 8px;
+    height: 500px;
+    object-fit: cover;
+}
+
+.product__video__text-container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  justify-content: space-between;
+}
+
+#shopify-section-{{ section.id }} .product__video__heading {
+  font-size: {{ section.settings.heading-font-size }}px;
+  color: #FFFFFF;
+}
+
+#shopify-section-{{ section.id }} .product__video__subheading {
+  font-size:{{ section.settings.subheading-font-size }}px;
+  color: #FFFFFF;
+}
+
+
+  .product__video .product__video__link a.button {
+    {% if template.name == 'product' and product.metafields.custom.product_video_section.value.button_background %}
+        background-color: {{ product.metafields.custom.product_video_section.value.button_background }};
+    {% endif %}
+
+    {% if template.name == 'product' and product.metafields.custom.product_video_section.value.button_text_color %}
+        color: {{ product.metafields.custom.product_video_section.value.button_text_color }};
+    {% endif %}
+  }
+
+  .product__video .product__video__link a.button:hover {
+    {% if template.name == 'product' and product.metafields.custom.product_video_section.value.button_background %}
+        color: {{ product.metafields.custom.product_video_section.value.button_background }};
+    {% endif %}
+
+    {% if template.name == 'product' and product.metafields.custom.product_video_section.value.button_text_color %}
+        background-color: {{ product.metafields.custom.product_video_section.value.button_text_color }};
+    {% endif %}
+  }
+
+  .buttons.product__video__link {
+    margin-top: 44px;
+  }
+
+  ul.product__video__information-list {
+    margin-top: 12px;
+  }
+
+  li.product__video__benefits-list__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 12px;
+  }
+
+  img.product__video__benefits-list__item__image {
+    width: 20px;
+  }
+
+  .product__video__cards-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .product__video__card {
+    border-radius: 8px;
+    width: 33.33%;
+    text-align: center;
+    border: solid 1px {{ product.metafields.custom.product_video_section.value.section_heading_color }};
+    padding: 25px 15px 15px;
+
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .product__video__card__title {
+    margin-top: 12px;
+  }
+
+  img.product__video__card__image {
+    width: 80px;
+  }
+    
+    
+  
+@media only screen and (max-width: 798px) {
+  #shopify-section-{{ section.id }} .product__video {
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+  }
+  .product__video__wrapper {
+    flex-direction: column;
+    height: fit-content;
+  }
+
+  .product__video__text-container {
+    width: 100%;
+  }
+
+  .product__video__container {
+    width: 100%;
+    height: fit-content;
+  }
+
+  .product__video__background {
+    height: 375px;
+  }
+
+  img.product__video__card__image {
+    width: 40px;
+  }
+
+  .product__video__card {
+    padding: 12px;
+  }
+
+  .buttons.product__video__link {
+    margin-top: 22px;
+  }
+}
+
+  @media only screen and (max-width: 500px) { 
+    .product__video__cards-container {
+      flex-direction: column;
+    }
+
+    .product__video__card {
+      width: 60%;
+    }
+
+    .buttons.product__video__link.appco_bg {
+      display: flex;
+      align-self: center;
+    }
+  }
+  
+
+{% render 'css-loop',
+        css: section.settings.custom_css,
+        id: section.id
+%}
+  
+{% endstyle %}
+
+{% if product.metafields.custom.product_video_section %}
+  {% assign metaobject = product.metafields.custom.product_video_section.value %}
+
+  <section class="section
+                  {{ section.settings.css_class }}
+                  is-width-{{ section.settings.width }}
+                  container
+                  product__video
+                  "
+  >
+    {% style %}
+      #shopify-section-{{ section.id }} .product__video__heading {
+        color: {{ metaobject.section_heading_color }};
+      }
+      
+      #shopify-section-{{ section.id }} .product__video__subheading {
+        color: {{ metaobject.section_subheading_color }};
+      }
+    {% endstyle %}
+   
+    <div class="product__video__wrapper">
+      <div class="product__video__text-container">
+      {% if metaobject.section_heading != blank %}
+          <p class="product__video__heading">{{ metaobject.section_heading }}</p>
+      {% endif %}
+      {% if metaobject.section_subheading != blank %}
+          <p class="product__video__subheading">{{ metaobject.section_subheading }}</p>
+      {% endif %}
+        {% if metaobject.list_of_information.value %}
+                  <div class="product__video__list_of_information-container">
+                      <ul class="product__video__information-list">
+                        {% for benefit in metaobject.list_of_information.value %}
+      
+                          {% style %}
+                            .product__video__information-list__item__title {
+                              color: {{ metaobject.text_color }};
+                            }
+                          {% endstyle %}
+                            
+                          <li class="product__video__benefits-list__item">
+                            {% if metaobject.list_icon %}
+                                <img class="product__video__benefits-list__item__image" src="{{ metaobject.list_icon | file_url }}" alt="Info image" >
+                            {% endif %}
+                            <span class="product__video__benefits-list__item__title">{{ benefit }}</span>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                  </div>
+              {% endif %}
+        <div class="product__video__cards-container">
+          {% if metaobject.card_title_1 != blank %}
+            <div class="product__video__card">
+              {% if metaobject.card_icon_1 %}
+                 <img class="product__video__card__image" src="{{ metaobject.card_icon_1 | file_url }}" alt="Card 1 image" >
+              {% endif %}
+              <div class="product__video__card__title">
+                {{ metaobject.card_title_1 }}
+              </div>
+            </div>
+          {% endif %}
+          {% if metaobject.card_title_2 != blank %}
+            <div class="product__video__card">
+              {% if metaobject.card_icon_2 %}
+                 <img class="product__video__card__image" src="{{ metaobject.card_icon_2 | file_url }}" alt="Card 2 image" >
+              {% endif %}
+              <div class="product__video__card__title">
+                {{ metaobject.card_title_2 }}
+              </div>
+            </div>
+          {% endif %}
+          {% if metaobject.card_title_3 != blank %}
+            <div class="product__video__card">
+              {% if metaobject.card_icon_3 %}
+                 <img class="product__video__card__image" src="{{ metaobject.card_icon_3 | file_url }}" alt="Card 3 image" >
+              {% endif %}
+              <div class="product__video__card__title">
+                {{ metaobject.card_title_3 }}
+              </div>
+            </div>
+          {% endif %}
+        </div>
+        {% for block in section.blocks %}
+                  {% if block.type == 'button-block' %}
+
+                    {% if block.settings.button_label != blank %}
+                      <div class="buttons product__video__link">
+                        {% if metaobject.is_add_to_cart_button %}
+                          <a 
+                             class="button {{ block.settings.button_style }}"
+                             href="/cart/add/{{ product.selected_or_first_available_variant.id }}" 
+                             rel="nofollow">
+                            {{ block.settings.button_label }}
+                          </a>
+                        {% else %}
+                          {% render 'button',
+                                  label: block.settings.button_label,
+                                  href: block.settings.link-desktop,
+                                  style: block.settings.button_style,
+                                  type: "link"
+                          %}
+                        {% endif %}
+                      </div>
+                    {% endif %}
+                  {% endif %}
+        {% endfor %}
+    </div>
+      <div class="product__video__container">
+        <video class="product__video__background" loop autoplay muted playsinline width="100%" height="100%">     
+          <source src="{{ metaobject.video_link }}" type="video/mp4">          
+        </video>  
+      </div>
+    </div>   
+  </section>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Product video",
+    "settings": [
+      {
+        "type": "range",
+        "id": "heading-font-size",
+        "label": "Heading font size",
+        "min": 0,
+        "max": 100,
+        "default": 12,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "subheading-font-size",
+        "label": "Subheading font size",
+        "min": 0,
+        "max": 100,
+        "default": 24,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Top spacing",
+        "min": 0,
+        "max": 500,
+        "default": 80,
+        "step": 10,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Bottom spacing",
+        "min": 0,
+        "max": 500,
+        "default": 80,
+        "step": 10,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Mobile layout"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Mobile top spacing",
+        "min": 0,
+        "max": 200,
+        "step": 10,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Mobile bottom spacing",
+        "min": 0,
+        "max": 200,
+        "step": 10,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Advanced",
+        "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+      },
+      {
+        "type": "text",
+        "id": "css_class",
+        "label": "CSS Class"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_css",
+        "label": "Custom CSS"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "button-block",
+        "name": "Button block",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text"
+          },
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button label",
+            "default": "Check out Our FAQ"
+          },
+          {
+            "type": "url",
+            "id": "link-desktop",
+            "label": "Button link - desktop"
+          },
+          {
+            "type": "url",
+            "id": "link-mobile",
+            "label": "Button link - mobile"
+          },
+          {
+            "type": "select",
+            "id": "button_style",
+            "label": "Button style",
+            "options": [
+              {
+                "value": "button--primary",
+                "label": "Primary"
+              },
+              {
+                "value": "button--secondary",
+                "label": "Secondary"
+              },
+              {
+                "value": "button--link-style",
+                "label": "Link style"
+              }
+            ],
+            "default": "button--primary"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Product video YE",
+        "category": "Video"
+      }
+    ]
+  }
+{% endschema %}

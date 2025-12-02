@@ -1,0 +1,287 @@
+{% style %}
+  #shopify-section-{{ section.id }} .description-with-buttons {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      background-color: {{ section.settings.background_color }};
+    }
+  .description-with-buttons__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  #shopify-section-{{ section.id }} .description-with-buttons__text {
+    font-size: {{section.settings.text_font_size}}px;
+    line-height: 1.15;
+    padding-right: 63px;
+  }
+  .description-with-buttons__block {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  #shopify-section-{{ section.id }} .description-with-buttons .button {
+    font-size: 20px;
+    font-weight: 400;
+    width: 200px;
+  }
+  #shopify-section-{{ section.id }} .description-with-buttons__description {
+    font-size: {{section.settings.button_description_font_size}}px;
+    margin-bottom: 18px;
+  }
+  @media only screen and (max-width: 798px) {
+    #shopify-section-{{ section.id }} .description-with-buttons {
+        padding-top: {{ section.settings.padding_top_mobile }}px;
+        padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      }
+    .description-with-buttons__container {
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 45px;
+    }
+    #shopify-section-{{ section.id }} .description-with-buttons__text {
+      font-size: {{section.settings.text_font_size_mobile}}px;
+      padding-right: unset;
+    }
+    #shopify-section-{{ section.id }} .description-with-buttons__description {
+      font-size: {{section.settings.button_description_font_size_mobile}}px;
+    }
+  }
+  {%
+    render 'css-loop',
+    css: section.settings.custom_css,
+    id: section.id,
+    %}
+{% endstyle %}
+<section
+  class="
+    section
+    is-width-standard
+    {{ section.settings.css_class }}
+    description-with-buttons
+  "
+>
+  <div class="description-with-buttons__container">
+    {% if section.settings.text != blank %}
+      <div class="description-with-buttons__text">
+        {{ section.settings.text }}
+      </div>
+    {% endif %}
+    {% if section.settings.button_label_1 != blank %}
+      <div class="description-with-buttons__block">
+        <div>
+          {% if section.settings.button_description_1 != blank %}
+            <div class="description-with-buttons__description">{{ section.settings.button_description_1 }}</div>
+          {% endif %}
+          {%
+            render 'button',
+            label: section.settings.button_label_1,
+            href: section.settings.link_1,
+            style: section.settings.button_style_1,
+            type: "link",
+          %}
+        </div>
+        {% if section.settings.button_label_2 != blank %}
+        <div>
+           {% if section.settings.button_description_2 != blank %}
+            <div class="description-with-buttons__description">{{ section.settings.button_description_2 }}</div>
+          {% endif %}
+          {%
+            render 'button',
+            label: section.settings.button_label_2,
+            href: section.settings.link_2,
+            style: section.settings.button_style_2,
+            type: "link",
+          %}
+        </div>
+        {% endif %}
+        
+      </div>
+    {% endif %}
+  </div>
+</section>
+{% schema %}
+  {
+    "name": "Description with buttons",
+    "settings": [
+      {
+         "type": "html",
+          "id": "text",
+          "label": "Text",
+      },
+      {
+          "type": "header",
+          "content": "Button 1"
+        },
+      {
+          "type": "html",
+          "id": "button_description_1",
+          "label": "Button description",
+        },
+        {
+          "type": "text",
+          "id": "button_label_1",
+          "label": "Button label",
+        },
+        {
+          "type": "url",
+          "id": "link_1",
+          "label": "Button link"
+        },
+        {
+          "type": "select",
+          "id": "button_style_1",
+          "label": "Button style",
+          "options": [
+            {
+              "value": "button--primary",
+              "label": "Primary"
+            },
+            {
+              "value": "button--secondary",
+              "label": "Secondary"
+            },
+            {
+              "value": "button--link-style",
+              "label": "Link style"
+            }
+          ],
+          "default": "button--primary"
+        },
+      {
+          "type": "header",
+          "content": "Button 2"
+        },
+      {
+          "type": "html",
+          "id": "button_description_2",
+          "label": "Button description",
+        },
+        {
+          "type": "text",
+          "id": "button_label_2",
+          "label": "Button label",
+        },
+        {
+          "type": "url",
+          "id": "link_2",
+          "label": "Button link"
+        },
+        {
+          "type": "select",
+          "id": "button_style_2",
+          "label": "Button style",
+          "options": [
+            {
+              "value": "button--primary",
+              "label": "Primary"
+            },
+            {
+              "value": "button--secondary",
+              "label": "Secondary"
+            },
+            {
+              "value": "button--link-style",
+              "label": "Link style"
+            }
+          ],
+          "default": "button--primary"
+        },
+      {
+      "type": "range",
+      "id": "button_description_font_size",
+      "label": "Button description font size",
+      "min": 0,
+      "max": 80,
+      "default": 0,
+      "unit": "px"
+    },
+       {
+      "type": "range",
+      "id": "text_font_size",
+      "label": "Text font size",
+      "min": 0,
+      "max": 80,
+      "default": 0,
+      "unit": "px"
+    },
+      {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 80,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "default": 0,
+      "min": 0,
+      "max": 80,
+      "unit": "px"
+    },
+      {
+      "type": "header",
+      "content": "Mobile layout"
+      },
+      {
+      "type": "range",
+      "id": "button_description_font_size_mobile",
+      "label": "Button description font size mobile",
+      "min": 0,
+      "max": 80,
+      "default": 0,
+      "unit": "px"
+      },
+       {
+      "type": "range",
+      "id": "text_font_size_mobile",
+      "label": "Text font size",
+      "min": 0,
+      "max": 100,
+      "default": 0,
+      "unit": "px"
+    },
+      {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile top spacing",
+      "min": 0,
+      "max": 80,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile bottom spacing",
+      "min": 0,
+      "max": 80,
+      "default": 0,
+      "unit": "px"
+    },
+      {
+      "type": "header",
+      "content": "Advanced",
+      "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+    },
+    {
+      "type": "text",
+      "id": "css_class",
+      "label": "CSS Class"
+    },
+    {
+      "type": "textarea",
+      "id": "custom_css",
+      "label": "Custom CSS"
+    }
+    ],
+    "presets": [
+      {
+        "name": "Description with buttons",
+      }
+    ]
+  }
+{% endschema %}

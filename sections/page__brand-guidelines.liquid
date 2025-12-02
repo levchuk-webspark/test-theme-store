@@ -1,0 +1,1031 @@
+{% comment %}
+
+Custom section created by JadePuma
+Instructions - https://jadepuma.com/blogs/shopify-tutorials/brand-guidelines-section-for-the-flex-theme
+Last editted - 27Aug23
+
+{% endcomment %}
+
+{%- assign id = section.id -%}
+
+{% comment %} Section specific CSS {% endcomment %}
+{%- capture section_css -%}
+
+.section-heading {
+text-align: center;
+color: {{ section.settings.heading-color }}; 
+background-color: {{ section.settings.heading-background-color }};
+margin: 20px 0;
+}
+.inverse {
+padding: 15px;
+background-color: #333;
+}
+.brand-guidelines .heading-divider { margin: 10px 0 30px; }
+
+.typo-table {
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: center;
+}
+
+.typo-table div { padding: 10px; }
+
+.banner__heading, .banner__subheading { background-color: #888888; padding: 10px; }
+
+.color-palette {
+  display: grid;
+  grid-template-columns: 3fr 1fr 2fr;
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+max-width: 350px;
+margin: 0 auto;
+}
+
+.color-array {
+  display: grid; 
+  grid-auto-rows: 1fr; 
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr; 
+  gap: 10px 10px; 
+  justify-content: center; 
+  align-content: center; 
+  justify-items: center; 
+  align-items: center; 
+}
+.color-array .color-swatch { height: 30px; width: 100%; }
+
+.icon-grid {
+  display: grid; 
+  grid-auto-rows: 1fr; 
+  grid-template-columns: 1fr 1fr 1fr 1fr; 
+  gap: 10px 10px; 
+  justify-content: center; 
+  align-content: center; 
+  justify-items: center; 
+  align-items: center; 
+}
+
+.mood-board {
+  display: grid; 
+  grid-auto-rows: 1fr; 
+  grid-template-columns: 1fr 1fr 1fr; 
+  gap: 10px 10px; 
+  justify-content: center; 
+  align-content: center; 
+  justify-items: center; 
+  align-items: center; 
+}
+
+
+.brand-guidelines { margin-bottom: 25px; }
+
+.brand-guidelines img { padding: 10px; }
+
+{%- endcapture -%}
+
+{% style %}
+#shopify-section-{{ id }} {
+padding-top: {{ section.settings.padding_top }}px;
+padding-bottom: {{ section.settings.padding_bottom }}px;
+padding-left: {{ section.settings.padding_left }}px;
+padding-right: {{ section.settings.padding_right }}px;
+{% if section.settings.width == 'wide' %}
+width: 100%;
+{% elsif section.settings.width == 'half' %}
+width: 50%;
+{% endif %}
+}
+
+{%
+    render 'css-loop',
+css: section_css,
+id: id
+%}
+
+{%
+    render 'css-loop',
+css: section.settings.custom_css,
+id: id
+%}
+
+{% endstyle %}
+
+{% assign icon-blocks = 0 %}
+{% assign brand-blocks = 0 %}
+{% assign mood-blocks = 0 %}
+{% assign pattern-blocks = 0 %}
+{% assign color-blocks = 0 %}
+
+{% if section.blocks.size > 0 %}
+  {% for block in section.blocks %}
+    {% if block.type == 'iconography-image' %}
+      {% assign icon-blocks = icon-blocks | plus: 1 %}
+      {% elsif block.type == "brand-image" %}
+      {% assign brand-blocks = brand-blocks | plus: 1 %}
+      {% elsif block.type == "mood-image" %}
+      {% assign mood-blocks = mood-blocks | plus: 1 %}
+      {% elsif block.type == "pattern-image" %}
+      {% assign pattern-blocks = pattern-blocks | plus: 1 %}
+      {% elsif block.type == "color" %}
+      {% assign color-blocks = color-blocks | plus: 1 %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% comment %} HTML markup {% endcomment %}
+<section class="featured-video
+                section
+                {{ section.settings.css_class }}
+                is-width-{{ section.settings.width }}
+                {% if section.settings.mobile_text_below_video == true %}
+                mobile-text--below-media
+                {% else %}
+                mobile-text--over-media
+                {% endif %}
+                {% if video_exists %} has-video-added {% endif %}
+                video-controls-enabled--{{ section.settings.controls }}"
+         {% if section.settings.animation != "none" %}
+         data-scroll-class="{{ section.settings.animation }}"
+         {% endif %}>
+  <div class="container
+              video__container
+              {% if section.settings.width == 'wide' or section.settings.width == 'half' %}
+              equal-columns--outside-trim
+              {% endif %}">
+    <div class="one-whole column content">
+
+      {% render 'heading',
+              title: page.title,
+      heading_tag: 'h1',
+      context: 'page',
+      text_alignment: section.settings.heading_alignment
+      %}
+
+      <div class="brand-guidelines">
+
+        {% if section.settings.show-framework %}
+        <h2 class="section-heading">Brand Framework</h2>
+        {% if section.settings.mission-statement != blank %}
+          <h3>Mission Statement</h3>
+          <p>{{ section.settings.mission-statement }}</p>
+        {% endif %}
+        {% if section.settings.vision-statement != blank %}
+          <h3>Vision Statement</h3>
+          <p>{{ section.settings.vision-statement }}</p>
+        {% endif %}
+        {% if section.settings.usp != blank %}
+          <h3>Unique Selling Propostion (USP)</h3>
+          <p>{{ section.settings.usp }}</p>
+        {% endif %}
+        {% if section.settings.value-propostion != blank %}
+          <h3>Value Proposition</h3>
+          <p>{{ section.settings.value-propostion }}</p>
+        {% endif %}
+        {% endif %}          
+
+        {% if section.settings.show-mission %}
+        <h2 class="section-heading">Brand Story</h2>
+        {% if section.settings.about-brand != blank %}
+          <h3>About the Brand</h3>
+          <p>{{ section.settings.about-brand }}</p>
+        {% endif %}
+        {% if section.settings.about-product != blank %}
+          <h3>About the Product</h3>
+          <p>{{ section.settings.about-product }}</p>
+        {% endif %}
+        {% if section.settings.product-why != blank %}
+          <h3>Higher Level Benefits</h3>
+          <p>{{ section.settings.product-why }}</p>
+        {% endif %}
+        {% if section.settings.about-differentiator != blank %}
+          <h3>Brand Differentiator</h3>
+          <p>{{ section.settings.about-differentiator }}</p>
+        {% endif %}
+        {% if section.settings.target-audience != blank %}
+          <h3>Target Audience</h3>
+          <p>{{ section.settings.target-audience }}</p>
+        {% endif %}
+        {% if section.settings.mission != blank %}
+          <h3>Mission</h3>
+          <p>{{ section.settings.mission }}</p>
+        {% endif %}
+        {% if section.settings.tone-personality != blank %}
+          <h3>Tone / Personality</h3>
+          <p>{{ section.settings.tone-personality }}</p>
+        {% endif %}
+        {% endif %}              
+
+        {% if section.settings.show-logos %}
+        <div class="logos">
+          <h2 class="section-heading">Logos</h2>
+
+          {% if section.settings.logo-color %}
+          {%- assign image = section.settings.logo-color -%}
+          <h3>Color Logo </h3>
+          {% render 'image-element', image: image, alt: 'Color Logo' %}      
+          <div class="heading-divider heading-divider--long"></div>
+          {% endif %}
+
+          {% if section.settings.logo-monochrome %}
+          {%- assign image = section.settings.logo-monochrome -%}
+          <h3>Monochrome Logo </h3>
+          {% render 'image-element', image: image, alt: 'Monochrome Logo' %} 
+          <div class="heading-divider heading-divider--long"></div>
+          {% endif %}
+
+          {% if section.settings.logo-small %}
+          {%- assign image = section.settings.logo-small -%}
+          <h3>Small Logo </h3>
+          {% render 'image-element', image: image, alt: 'Small Logo' %}    
+          <div class="heading-divider heading-divider--long"></div>
+          {% endif %}
+
+          {% if section.settings.logo-vertical %}
+          {%- assign image = section.settings.logo-vertical -%}
+          <h3>Vertical Logo </h3>
+          {% render 'image-element', image: image, alt: 'Vertical Logo' %}   
+          <div class="heading-divider heading-divider--long"></div>
+          {% endif %}
+
+          {% if section.settings.logo-inverse %}
+          {%- assign image = section.settings.logo-inverse -%}
+          <h3>Inverse Logo </h3>
+          <div class="inverse">
+            {% render 'image-element', image: image, alt: 'Inverse Logo' %}  
+          </div>
+          <div class="heading-divider heading-divider--long"></div>
+          {% endif %}
+
+          {% if section.settings.logo-icon %}
+          {%- assign image = section.settings.logo-icon -%}
+          <h3>Icon Logo </h3>
+          {% render 'image-element', image: image, alt: 'icon Logo' %}    
+          <div class="heading-divider heading-divider--long"></div>
+          {% endif %}
+
+          {% if section.settings.logo-font != "" %}
+          <p>Logo Font - {{ section.settings.logo-font }}</p>
+          {% endif %}     
+
+        </div>
+        {% endif %}
+
+        <h2 class="section-heading">Color Palette</h2>
+        
+        
+        {% if color-blocks > 0 %}
+        <div class="color-array">
+          <div>Lightest</div>
+          <div>Lighter</div>
+          <div>Main</div>
+          <div>Darker</div>
+          <div>Darkest</div>
+        {% for block in section.blocks %}
+        {% if block.type == 'color' %}
+        <div class="color-swatch" style="background-color: {{ block.settings.color-lightest }}"></div>
+        <div class="color-swatch" style="background-color: {{ block.settings.color-lighter }}"></div>
+        <div class="color-swatch" style="background-color: {{ block.settings.color }}"></div>
+        <div class="color-swatch" style="background-color: {{ block.settings.color-darker }}"></div>
+        <div class="color-swatch" style="background-color: {{ block.settings.color-darkest }}"></div>
+        <div>{{ block.settings.color-lightest }}</div>
+          <div>{{ block.settings.color-lighter }}</div>
+          <div>{{ block.settings.color }}</div>
+          <div>{{ block.settings.color-darker }}</div>
+          <div>{{ block.settings.color-darkest }}</div>
+        {% endif %}
+        {% endfor %} 
+        </div>
+        {% endif %}
+
+        <h3>Theme Color Settings</h3>
+        <div class="color-palette">
+          
+        <div>Background</div>
+        <div class="color-swatch" style="background-color: {{ settings.shop_bg_color }}"></div>
+          <div>{{ settings.shop_bg_color }}</div>
+          
+        <div>Borders</div>
+        <div class="color-swatch" style="background-color: {{ settings.border_color }}"></div>
+          <div>{{ settings.border_color }}</div>
+ 
+        <div>Heading Divider</div>
+        <div class="color-swatch" style="background-color: {{ settings.divider_color }}"></div>
+          <div>{{ settings.divider_color }}</div>
+          
+         <div>Header Background</div>
+        <div class="color-swatch" style="background-color: {{ settings.header_background }}"></div>
+          <div>{{ settings.header_background }}</div>         
+          
+        <div>Cart Badge</div>
+        <div class="color-swatch" style="background-color: {{ settings.header_cart_badge_color }}"></div>
+          <div>{{ settings.header_cart_badge_color }}</div>          
+          
+        <div>Cart Background</div>
+        <div class="color-swatch" style="background-color: {{ settings.cart_background_color }}"></div>
+          <div>{{ settings.cart_background_color }}</div>          
+          
+        <div>Dropdown Background</div>
+        <div class="color-swatch" style="background-color: {{ settings.dropdown_background }}"></div>
+          <div>{{ settings.dropdown_background }}</div>
+          
+         <div>Footer Background</div>
+        <div class="color-swatch" style="background-color: {{ settings.footer_background }}"></div>
+          <div>{{ settings.footer_background }}</div>         
+          
+        <div>Footer Border</div>
+        <div class="color-swatch" style="background-color: {{ settings.footer_border }}"></div>
+          <div>{{ settings.footer_border }}</div>          
+          
+        <div>Borders</div>
+        <div class="color-swatch" style="background-color: {{ settings.border_color }}"></div>
+          <div>{{ settings.border_color }}</div>          
+          
+        <div>Borders</div>
+        <div class="color-swatch" style="background-color: {{ settings.border_color }}"></div>
+        <div>{{ settings.border_color }}</div>          
+          
+        </div>      
+
+        <h2 class="section-heading">Typography</h2>
+        
+        <p>{{ section.settings.typography }}</p>
+
+        <div class="typo-table">
+          <div>
+            <p>This is body text</p>
+          </div>
+          <div>
+            Font - {{ settings.regular__font.family }}
+            <br>Style - {{ settings.regular__font.style }}
+            <br>Weight - {{ settings.regular__font.weight }}
+            <br>Size - {{ settings.regular_font_size }}
+            <br>Color - {{ settings.regular_color }}
+          </div>
+        </div>
+        
+        <div class="heading-divider heading-divider--long"></div>
+        
+        <div class="typo-table">
+          <div>    
+            <div class="header">
+              <div class="header__menu is-justify-center">
+                <nav class="header__menu-items is-flex is-flex-wrap is-justify-center header__dropdown--below-parent" role="navigation" aria-label="main navigation"> 
+                  <div class="navbar-item header__item" data-navlink-handle="our-services"> 
+                    <label for="mega-our-services"> 
+                      <a href="#" class="navbar-link header__link  is-arrowless">Menu Item</a>
+                    </label>
+                  </div> 
+                </nav>  
+              </div>
+            </div>
+          </div>
+          <div>
+            Font - {{ settings.nav__font.family }}
+            <br>Style - {{ settings.nav__font.style }}
+            <br>Weight - {{ settings.nav__font.weight }}
+            <br>Size - {{ settings.nav_font_size }}
+            <br>Color - {{ settings.header_link_color }}
+          </div>
+        </div>     
+
+        <div class="heading-divider heading-divider--long"></div>
+
+        <div class="typo-table">
+          <div>
+      <div class="buttons is-center"> <a href="#" class="button button--primary ">Primary Button</a></div>
+            <div class="buttons is-center"> <a href="#" class="button button--secondary ">Secondary Button</a></div>
+            <button type="submit" name="add" class="button action_button button--add-to-cart action_button--primary" data-label="Add to cart" data-add-to-cart-trigger=""> 
+              <span class="text">Add to cart</span> </button>
+          </div>
+          <div>
+            Font - {{ settings.button__font.family }}
+            <br>Style - {{ settings.button__font.style }}
+            <br>Weight - {{ settings.button__font.weight }}
+            <br>Size - {{ settings.regular_font_size }}
+          </div>
+        </div>
+
+        <div class="heading-divider heading-divider--long"></div>
+
+        <div class="typo-table">
+          <div>
+            <p class="heading-section__preheading">Pre-Heading</p>
+          </div>
+          <div>
+            Font - {{ settings.preheading_font.family }}
+            <br>Style - {{ settings.preheading_font.style }}
+            <br>Weight - {{ settings.preheading_font.weight }}
+            <br>Size - {{ settings.preheading_size }}
+          </div>
+        </div>  
+        
+        <div class="heading-divider heading-divider--long"></div>
+
+        <div class="typo-table">
+          <div>
+        <h1>This is H1 text</h1>
+        <h2>This is H2 text</h2>
+        <h3>This is H3 text</h3>
+        <h4>This is H4 text</h4>
+        <h5>This is H5 text</h5>
+          </div>
+          <div>
+            Font - {{ settings.heading__font.family }}
+            <br>Style - {{ settings.heading__font.style }}
+            <br>Weight - {{ settings.heading__font.weight }}
+            <br>Size - {{ settings.heading_size }}
+                        <br>Color - {{ settings.heading_color }}
+          </div>
+        </div>    
+        
+        <div class="heading-divider heading-divider--long"></div>
+        
+        <div class="typo-table">
+          <div>
+            <p class="heading-section__subheading">Sub-Heading</p>
+          </div>
+          <div>
+            Font - {{ settings.subheading_font.family }}
+            <br>Style - {{ settings.subheading_font.style }}
+            <br>Weight - {{ settings.subheading_font.weight }}
+            <br>Size - {{ settings.subheading_size }}
+          </div>
+        </div>          
+        
+        <div class="heading-divider heading-divider--long"></div>
+        
+        <div class="typo-table">
+          <div>
+            <p class="banner__heading">Banner Heading</p>
+          </div>
+          <div>
+            Font - {{ settings.banner_heading__font.family }}
+            <br>Style - {{ settings.banner_heading__font.style }}
+            <br>Weight - {{ settings.banner_heading__font.weight }}
+            <br>Size - {{ settings.banner_heading_size }}
+                        <br>Color - {{ settings.banner_heading_color }}
+          </div>
+        </div>           
+        
+        <div class="heading-divider heading-divider--long"></div>
+        
+        <div class="typo-table">
+          <div>
+            <p class="banner__subheading">This is Banner Text</p>
+          </div>
+          <div>
+            Font - {{ settings.banner_text__font.family }}
+            <br>Style - {{ settings.banner_text__font.style }}
+            <br>Weight - {{ settings.banner_text__font.weight }}
+            <br>Size - {{ settings.banner_text_size }}
+          </div>
+        </div>   
+        
+        {% if section.settings.show-brand-imagery %}
+        <h2 class="section-heading">Brand Imagery</h2>
+        <p>{{ section.settings.brand-imagery }}</p>
+        {% if brand-blocks > 0 %}
+        {% for block in section.blocks %}
+        {% if block.type == 'brand-image' %}
+        {% assign image = block.settings.brand-image %}
+        {% render 'image-element', image: image, alt: 'Brand Image' %}  
+        {% endif %}
+        {% endfor %}
+        {% endif %}        
+        {% endif %}
+        
+        {% if section.settings.show-iconography %} 
+        <h2 class="section-heading">Iconography</h2>
+        <p>{{ section.settings.iconography }}</p>
+        <div class="icon-grid">
+        {% if icon-blocks > 0 %}
+        {% for block in section.blocks %}
+        {% if block.type == 'iconography-image' %}
+        {% assign image = block.settings.iconography-image %}
+          <div>
+        {% render 'image-element', image: image, alt: 'Iconography' %}  
+          </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}   
+        </div>
+        {% endif %}
+
+        {% if section.settings.show-pattern %}
+        <h2 class="section-heading">Pattern and Texture</h2>
+        <p>{{ section.settings.pattern }}</p>
+        {% if pattern-blocks > 0 %}
+          {% for block in section.blocks %}
+            {% if block.type == 'pattern-image' %}
+              {% assign image = block.settings.pattern-image %}
+              {% render 'image-element', image: image, alt: 'Pattern or Texture' %}  
+            {% endif %}
+          {% endfor %}
+        {% endif %}   
+        {% endif %}
+
+        {% if section.settings.show-shopify-brand-settings %}
+        <h2 class="section-heading">Shopify Brand Setttings</h2>
+        <h3>Brand Colors</h3>
+        <div class="color-array">
+          {% if shop.brand.colors.primary[0].background != blank %}
+            <div>
+            Primary Background - {{ shop.brand.colors.primary[0].background }}
+            <br><div class="color-swatch" style="background-color: {{ shop.brand.colors.primary[0].background }}">&nbsp;</div>
+            </div>
+          {% endif %}
+          {% if shop.brand.colors.primary[0].foreground != blank %}
+            <div>
+            Primary Foreground - {{ shop.brand.colors.primary[0].foreground }}
+            <br><div class="color-swatch" style="background-color: {{ shop.brand.colors.primary[0].foreground }}">&nbsp;</div>
+            </div>
+          {% endif %}
+          {% if shop.brand.colors.secondary[0].background != blank %}
+            <div>
+            Primary Background - {{ shop.brand.colors.secondary[0].background }}
+            <br><div class="color-swatch" style="background-color: {{ shop.brand.colors.secondary[0].background }}">&nbsp;</div>
+            </div>
+          {% endif %}
+          {% if shop.brand.colors.secondary[1].background != blank %}
+            <div>
+            Primary Background - {{ shop.brand.colors.secondary[1].background }}
+            <br><div class="color-swatch" style="background-color: {{ shop.brand.colors.secondary[1].background }}">&nbsp;</div>
+            </div>
+          {% endif %}
+          {% if shop.brand.colors.secondary[0].foreground != blank %}
+            <div>
+            Primary Background - {{ shop.brand.colors.secondary[0].foreground }}
+            <br><div class="color-swatch" style="background-color: {{ shop.brand.colors.secondary[0].foreground }}">&nbsp;</div>
+            </div>
+          {% endif %}
+        </div>
+        
+        <h3>Logos</h3>
+
+          {% if shop.brand.logo != blank %}
+          {%- assign image = shop.brand.logo -%}
+          <h4>Brand Logo </h4>
+          {% render 'image-element', image: image, alt: 'Color Logo' %}      
+          {% endif %}
+
+          {% if shop.brand.square_logo != blank %}
+          {%- assign image = shop.brand.square_logo -%}
+          <h4>Square Logo </h4>
+          {% render 'image-element', image: image, alt: 'Square Logo' %}      
+          {% endif %}
+
+          {%- assign image = page_image | img_url -%}
+          <h4>Social Logo </h4>
+        <img src="{{ page_image | img_url }}">
+        
+        <h3>Short Description</h3>
+        <p>{{ shop.brand.short_description }}</p>
+        <h3>Slogan</h3>
+        <p>{{ shop.brand.slogan }}</p>
+        {% endif %}   
+
+        {% if section.settings.show-mood-board %}
+        <h2 class="section-heading">Mood Board</h2>
+        <p>{{ section.settings.mood-board }}</p>
+        {% if mood-blocks > 0 %}
+        <div class="mood-board">
+        {% for block in section.blocks %}
+        {% if block.type == 'mood-image' %}
+        {% assign image = block.settings.mood-image %}
+          <div>
+        {% render 'image-element', image: image, alt: 'Mood Image' %}  
+          </div>
+        {% endif %}
+        {% endfor %}
+        </div>
+        {% endif %}       
+        {% endif %}
+        
+      </div>
+    </div>
+  </div>
+
+
+</section>
+
+
+{% schema %}
+{
+"name": "Brand guidelines",
+"class": "brand-guidelines-section overlaid-header-option",
+"settings": [
+{
+"type": "header",
+"content": "Section headings"
+},
+{
+"type": "color",
+"id": "heading-color",
+"label": "Text"
+},
+{
+"type": "color",
+"id": "heading-background-color",
+"label": "Background"
+},
+{
+"type": "header",
+"content": "Brand Framework"
+},
+{
+"type": "checkbox",
+"id": "show-framework",
+"label": "Show section",
+"default": false
+},
+{
+"type": "text",
+"id": "mission-statement",
+"label": "Mission Statement"
+},
+{
+"type": "text",
+"id": "vision-statement",
+"label": "Vision Statement"
+},
+{
+"type": "text",
+"id": "usp",
+"label": "Unique Selling Proposition (USP)"
+},
+{
+"type": "text",
+"id": "value-propostion",
+"label": "Value Proposition"
+},
+{
+"type": "header",
+"content": "Brand Story"
+},
+{
+"type": "checkbox",
+"id": "show-mission",
+"label": "Show section",
+"default": false
+},
+{
+"type": "textarea",
+"id": "about-brand",
+"label": "About the brand"
+},
+{
+"type": "textarea",
+"id": "about-product",
+"label": "About the product/service"
+},
+{
+"type": "textarea",
+"id": "product-why",
+"label": "Higher level benefit of product/service"
+},
+{
+"type": "textarea",
+"id": "about-differentiator",
+"label": "Brand differentiator"
+},
+{
+"type": "textarea",
+"id": "target-audience",
+"label": "Target Audience"
+},
+{
+"type": "textarea",
+"id": "mission",
+"label": "Mission"
+},
+{
+"type": "textarea",
+"id": "tone-personality",
+"label": "Tone / Personality"
+},
+{
+"type": "header",
+"content": "Shopify Brand Settings"
+},
+{
+"type": "checkbox",
+"id": "show-shopify-brand-settings",
+"label": "Show Shopify brand settings",
+"default": false
+},
+{
+"type": "header",
+"content": "Logos"
+},
+{
+"type": "checkbox",
+"id": "show-logos",
+"label": "Show section",
+"default": false
+},
+{
+"type": "text",
+"id": "logo-font",
+"label": "Logo font"
+},
+{
+"type": "image_picker",
+"id": "logo-color",
+"label": "Color Logo"
+},
+{
+"type": "image_picker",
+"id": "logo-monochrome",
+"label": "Monochrome Logo"
+},
+{
+"type": "image_picker",
+"id": "logo-small",
+"label": "Small Logo"
+},
+{
+"type": "image_picker",
+"id": "logo-vertical",
+"label": "Vertical Logo"
+},
+{
+"type": "image_picker",
+"id": "logo-inverse",
+"label": "Inverse Logo"
+},
+{
+"type": "image_picker",
+"id": "logo-icon",
+"label": "Icon Logo"
+},
+{
+"type": "header",
+"content": "Typography"
+},
+{
+"type": "textarea",
+"id": "typography",
+"label": "Explanation"
+},
+{
+"type": "header",
+"content": "Brand Imagery"
+},
+{
+"type": "checkbox",
+"id": "show-brand-imagery",
+"label": "Show section",
+"default": false
+},
+{
+"type": "textarea",
+"id": "brand-imagery",
+"label": "Explanation"
+},
+{
+"type": "header",
+"content": "Iconography"
+},
+{
+"type": "checkbox",
+"id": "show-iconography",
+"label": "Show section",
+"default": false
+},
+{
+"type": "textarea",
+"id": "iconography",
+"label": "Explanation"
+},
+{
+"type": "header",
+"content": "Mood Board"
+},
+{
+"type": "checkbox",
+"id": "show-mood-board",
+"label": "Show section",
+"default": false
+},
+{
+"type": "textarea",
+"id": "mood-board",
+"label": "Explanation"
+},
+{
+"type": "header",
+"content": "Pattern and Texture"
+},
+{
+"type": "checkbox",
+"id": "show-pattern",
+"label": "Show section",
+"default": false
+},
+{
+"type": "textarea",
+"id": "pattern",
+"label": "Explanation"
+},
+{
+"type": "header",
+"content": "Layout"
+},
+{
+"type": "select",
+"id": "width",
+"label": "Width",
+"default": "standard",
+"options": [
+{
+"value": "half",
+"label": "Half"
+},
+{
+"value": "standard",
+"label": "Standard"
+},
+{
+"value": "wide",
+"label": "Wide"
+}
+]
+},
+{
+"type": "range",
+"id": "padding_top",
+"label": "Top spacing",
+"min": 0,
+"max": 80,
+"default": 20,
+"unit": "px"
+},
+{
+"type": "range",
+"id": "padding_bottom",
+"label": "Bottom spacing",
+"min": 0,
+"max": 80,
+"default": 0,
+"unit": "px"
+},
+{
+"type": "range",
+"id": "padding_left",
+"label": "Left spacing",
+"min": 0,
+"max": 80,
+"default": 0,
+"unit": "px"
+},
+{
+"type": "range",
+"id": "padding_right",
+"label": "Right spacing",
+"default": 0,
+"min": 0,
+"max": 80,
+"unit": "px"
+},
+{
+"type": "select",
+"id": "animation",
+"label": "Animation",
+"default": "none",
+"options": [
+{
+"value": "none",
+"label": "None"
+},
+{
+"value": "fadeIn",
+"label": "Fade in"
+},
+{
+"value": "fadeInDown",
+"label": "Fade in down"
+},
+{
+"value": "fadeInLeft",
+"label": "Fade in left"
+},
+{
+"value": "fadeInRight",
+"label": "Fade in right"
+},
+{
+"value": "slideInLeft",
+"label": "Slide in left"
+},
+{
+"value": "slideInRight",
+"label": "Slide in right"
+},
+{
+"value": "zoomIn",
+"label": "Zoom in"
+}
+]
+},
+{
+"type": "header",
+"content": "Advanced",
+"info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+},
+{
+"type": "text",
+"id": "css_class",
+"label": "CSS Class"
+},
+{
+"type": "textarea",
+"id": "custom_css",
+"label": "Custom CSS"
+}
+],
+  "blocks": [
+    {
+      "type": "iconography-image",
+      "name": "Iconography",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "iconography-image",
+          "label": "Iconography"
+        }
+      ]
+    },
+    {
+      "type": "brand-image",
+      "name": "Brand Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "brand-image",
+          "label": "Brand Image"
+        }
+      ]
+    },
+    {
+      "type": "mood-image",
+      "name": "Mood Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "mood-image",
+          "label": "Mood Image"
+        }
+      ]
+    },
+    {
+      "type": "pattern-image",
+      "name": "Pattern Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "pattern-image",
+          "label": "Pattern Image"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "name": "Color",
+      "settings": [
+        {
+          "type": "color",
+          "id": "color-lightest",
+          "label": "Lightest"
+        },
+        {
+          "type": "color",
+          "id": "color-lighter",
+          "label": "Lighter"
+        },
+        {
+          "type": "color",
+          "id": "color",
+          "label": "Main Color"
+        },
+        {
+          "type": "color",
+          "id": "color-darker",
+          "label": "Darker"
+        },
+        {
+          "type": "color",
+          "id": "color-darkest",
+          "label": "Darkest"
+        }
+      ]
+    }
+  ],
+"presets": [{
+"name": "Brand guidelines",
+"category": "JadePuma"
+}]
+}
+
+{% endschema %}

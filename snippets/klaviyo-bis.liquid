@@ -1,0 +1,68 @@
+
+<script type="lazyload_js" data-src="https://a.klaviyo.com/media/js/onsite/onsite.js"></script>
+<script type="lazyload_js">
+    var klaviyo = klaviyo || [];
+    klaviyo.init({
+      account: "VSpAh6",
+      list: 'VSYQjs',
+      platform: "shopify"
+    });
+    klaviyo.enable("backinstock",{ 
+    trigger: {
+      product_page_text: "Notify Me When Available",
+      product_page_class: "button",
+      product_page_text_align: "center",
+      product_page_margin: "0px 0px",
+      replace_anchor: false
+    },
+    modal: {
+     headline: "{product_name}",
+     body_content: "Get an email when this item comes back in stock.",
+     email_field_label: "Email",
+     button_label: "NOTIFY ME WHEN AVAILABLE",
+     subscription_success_label: "You're in! We'll let you know when it's back.",
+     subscribe_checked: true,
+     footer_content: '',
+     additional_styles: "@import url('{{ 'klaviyo-bis-modal.css' | asset_url }}');",
+     drop_background_color: "#000",
+     background_color: "#fff",
+     text_color: "#222",
+     button_text_color: "#fff",
+     button_background_color: "#E56A55",
+     close_button_color: "#ccc",
+     error_background_color: "#fcd6d7",
+     error_text_color: "#C72E2F",
+     success_background_color: "#FEAF93",
+     success_text_color: "#000"
+    }
+  });
+</script>
+
+
+{% style %}
+
+.klaviyo-bis-trigger{
+  width: calc(50% - 12px) !important;
+  min-width: max-content !important;
+  height:unset !important;
+  padding:9px;
+  margin-top:15px !important;
+  background-color: {{ settings.button_cart_bg_color }};
+  color: {{ settings.button_cart_text_color }};
+  border-radius:5px;
+}
+
+.klaviyo-bis-trigger:hover{
+  background-color: {{ settings.button_cart_bg_color--highlight }};
+  color: {{ settings.button_cart_text_color--highlight }};
+  border-color: {{ settings.button_cart_border_color--highlight }};
+}
+
+
+@media only screen and (max-width: 798px) {
+  .klaviyo-bis-trigger{
+    width: 100% !important;
+  }
+}
+
+{% endstyle %}

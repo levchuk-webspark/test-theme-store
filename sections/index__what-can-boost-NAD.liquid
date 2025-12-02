@@ -1,0 +1,401 @@
+{% style %}
+.siruin-txts {
+    padding: 0px 0;
+    display: flex;
+    flex-flow: wrap;
+    align-items: center;
+}
+  .grid__item {
+    float: left;
+    padding-left: 30px;
+    width: 100%;
+}
+  .siruin-txts img {
+    max-width: 300px;
+    margin: 0 auto;
+    display: table;
+}
+  siruin-txts .full-img {
+    max-width: 100%;
+}
+  .grid:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+  .medium-up--one-third {
+    width: 33.33333%;
+  }
+  .medium-up--one-quarter {
+    width: 25%;
+}
+  
+  .medium-up--three-quarters {
+    width: 72.5%;
+  }
+  .btn-with-txt {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding:20px;
+    color:white;
+}
+
+  .custom-header-green {
+    background-color: #003b00;
+    border-radius: 90px;
+    text-align: center;
+    font-size: 30px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+  .btn-with-txt img {
+    max-width: 150px;
+}
+  .brown-box-nad {
+    background-color: #003b00;
+    display: flex;
+    padding: 20px;
+    margin: 10px 0;
+}
+  .brown-box-nad p {
+    color: #fff;
+    margin: 0;
+    padding: 17px;
+}
+  p:last-child {
+    margin-bottom: 0;
+}
+
+  .why-nad-box{
+   background-color: #003b00;
+  color:white;
+    display:flex;
+    flex-direction:column;
+        padding:30px 10px 30px 10px;
+    margin-bottom:30px;
+
+
+  }
+  .btn-with-txt p{
+    padding:0px 20px 0px 20px;
+    margin:0px 20px 00px 20px;
+  }
+  .brown-box-title{
+    padding:0px 20px 0px 20px;
+    margin:0px 20px 0px 20px;
+  }
+  .brown-box-title h3{
+    margin:0px;
+  }
+  .brown-box-container{
+    display:flex;
+    align-items:flex-end;
+  }
+
+
+
+
+{% endstyle %}
+    <section class="section sirtuins-section">
+    <div class="grid siruin-txts">
+      {% if section.settings.left_dec1 or section.settings.left_img1 != blank %} 
+      
+      <div class="grid__item medium-up--one-third">
+        <div>
+        {% if section.settings.left_dec1 != blank %} 
+        <div style=
+"padding-top:0px;" class="content has-padding"><p>{{ section.settings.left_dec1 }}</p></div>
+        {% endif %}
+        {% if section.settings.left_img1 != blank %} 
+        
+        <img src="{{ section.settings.left_img1 | img_url: 'master' }}">
+        {% endif %}
+        </div>
+      </div>
+      {% endif %}
+      {% if section.settings.center_img1 != blank %} 
+      <div class="grid__item medium-up--one-third">
+        <img src="{{ section.settings.center_img1 | img_url: 'master' }}">
+      </div>
+      {% endif %}
+
+      {% if section.settings.right_dec1 or section.settings.right_img1 != blank %} 
+      <div class="grid__item medium-up--one-third">
+        {% if section.settings.right_dec1 != blank %} 
+        <div class="content has-padding"><p>{{ section.settings.right_dec1 }}</p></div>
+        {% endif %}
+        {% if section.settings.right_img1 != blank %} 
+        <img class="full-img" src="{{ section.settings.right_img1 | img_url: 'master' }}">
+        {% endif %}
+      </div>
+
+    {% endif %}
+    </div>
+      {% if section.settings.custome_hader3 or  section.settings.right_img2 or section.settings.center_content or section.settings.center_right_img != blank %} 
+    <div class="grid brown-box-container">
+      <div class="grid__item medium-up--three-quarters">
+        <div class="why-nad-box">
+        <div class="btn-with-txt">
+          {% if section.settings.custome_hader3 != blank %} 
+          <div class="content brown-box-title"  ><h3 style="color:white;">{{ section.settings.custome_hader3 }}</h3> </div>
+          {% endif %}
+          {% if section.settings.right_img2 != blank %} 
+            <div  class="content has-padding-left has-padding-right has-margin-left has-margin-right">
+          <img src="{{ section.settings.right_img2 | img_url: 'master' }}">
+            </div>
+          {% endif %}
+        </div>
+        {% if section.settings.center_content != blank %} 
+        <div class="btn-with-txt flex-nad">
+          {{ section.settings.center_content }}
+        </div>
+        {% endif %}
+        </div>
+      </div>
+      {% if section.settings.center_right_img != blank %} 
+      <div class="grid__item medium-up--one-quarter">
+        <img src="{{ section.settings.center_right_img | img_url: 'master' }}">
+      </div>
+      {% endif %}
+    </div>
+    {% endif %}
+
+</section>
+    {% schema %}
+{
+  "name": "What Can Boost NAD",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Left-Right Images And Text"
+    },
+    {
+      "type":"text",
+      "id":"custome_hader2",
+      "label":"Title"
+    },
+    {
+      "type":"text",
+      "id":"left_dec1",
+      "label":"Left Discription"
+    },
+    {
+      "type":"image_picker",
+      "id":"left_img1",
+      "label":"Left Image"
+    },
+    {
+      "type":"image_picker",
+      "id":"center_img1",
+      "label":"Center Image"
+    },
+    {
+      "type":"text",
+      "id":"right_dec1",
+      "label":"Right Discription"
+    },
+    {
+      "type":"image_picker",
+      "id":"right_img1",
+      "label":"Right Image"
+    },
+    {
+      "type": "header",
+      "content": "Center Content "
+    },
+    {
+      "type":"text",
+      "id":"custome_hader3",
+      "label":"Title"
+    },
+    {
+      "type":"image_picker",
+      "id":"right_img2",
+      "label":"Right Image"
+    },
+    {
+      "type":"richtext",
+      "id":"center_content",
+      "label":"Discription"
+    },
+    {
+      "type":"image_picker",
+      "id":"center_right_img",
+      "label":"Right Image"
+    },
+    {
+      "type": "header",
+      "content": "Image And Text"
+    },
+    {
+      "type":"text",
+      "id":"custome_hader4",
+      "label":"Title"
+    },
+    {
+      "type":"richtext",
+      "id":"sirtuins_dec",
+      "label":"Discription"
+    },
+    {
+      "type":"image_picker",
+      "id":"sirtuins_left_img",
+      "label":"Left Image"
+    },
+    {
+      "type":"text",
+      "id":"center_text",
+      "label":"Center Text"
+    },
+    {
+      "type":"image_picker",
+      "id":"sirtuins_right_img",
+      "label":"Right Image"
+    },
+    {
+      "type":"richtext",
+      "id":"btm_dec",
+      "label":"Bottom Discription"
+    },
+    {
+      "type": "header",
+      "content": "Left Image and Right Text"
+    },
+    {
+      "type":"image_picker",
+      "id":"left_img11",
+      "label":"Left Image"
+    },
+    {
+      "type":"text",
+      "id":"right_title1",
+      "label":"Right Title"
+    },
+    {
+      "type":"richtext",
+      "id":"right_discription1",
+      "label":"Right Discription"
+    },
+    {
+      "type": "header",
+      "content": "Left Text and Right Image"
+    },
+    {
+      "type":"text",
+      "id":"left_title1",
+      "label":"Left Title"
+    },
+    {
+      "type":"richtext",
+      "id":"left_discription1",
+      "label":"Left Discription"
+    },
+    {
+      "type":"image_picker",
+      "id":"right_img11",
+      "label":"Right Image"
+    },
+    {
+      "type": "header",
+      "content": "Left Image and Right Text"
+    },
+    {
+      "type":"image_picker",
+      "id":"left_img2",
+      "label":"Left Image"
+    },
+    {
+      "type":"text",
+      "id":"right_title12",
+      "label":"Right Title"
+    },
+    {
+      "type":"richtext",
+      "id":"right_discription2",
+      "label":"Right Discription"
+    },
+    {
+      "type": "header",
+      "content": "Left Text and Right Image"
+    },
+    {
+      "type":"text",
+      "id":"left_title2",
+      "label":"Left Title"
+    },
+    {
+      "type":"richtext",
+      "id":"left_discription2",
+      "label":"Left Discription"
+    },
+    {
+      "type":"image_picker",
+      "id":"right_img22",
+      "label":"Right Image1"
+    },
+    {
+      "type":"image_picker",
+      "id":"right_img3",
+      "label":"Right Image2"
+    },
+    {
+      "type": "header",
+      "content": "Left Image and Right Text"
+    },
+    {
+      "type":"image_picker",
+      "id":"left_img3",
+      "label":"Left Image"
+    },
+    {
+      "type":"text",
+      "id":"right_title3",
+      "label":"Right Title"
+    },
+    {
+      "type":"richtext",
+      "id":"right_discription3",
+      "label":"Right Discription"
+    },
+    {
+      "type": "header",
+      "content": "Left Text and Right Image"
+    },
+    {
+      "type":"text",
+      "id":"left_title3",
+      "label":"Left Title"
+    },
+    {
+      "type":"richtext",
+      "id":"left_discription3",
+      "label":"Left Discription"
+    },
+    {
+      "type":"image_picker",
+      "id":"right_img32",
+      "label":"Right Image"
+    },
+    {
+      "type": "header",
+      "content": "Summary Title And Discription"
+    },
+    {
+      "type":"text",
+      "id":"summary_title",
+      "label":"Title"
+    },
+    {
+      "type":"richtext",
+      "id":"summary_description",
+      "label":"Discription"
+    }
+  ],
+  "presets":[
+    {"name":"What Can Boost NAD"}
+    
+  ]
+}
+{% endschema %}
+

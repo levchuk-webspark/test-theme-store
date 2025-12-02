@@ -1,0 +1,201 @@
+{% comment %}
+ 
+Code created by JadePuma
+Instructions - https://jadepuma.com/blogs/shopify-tutorials/add-a-cart-message-section-to-the-flex-theme
+Last editted - 14Sep22
+ 
+{% endcomment %}
+
+<script
+  type="application/json"
+  data-section-type="cart-message"
+  data-section-id="{{ section.id }}"
+>
+</script>
+
+{% comment %} Advanced {% endcomment %}
+{%- assign css_class = section.settings.css_class -%}
+{%- assign custom_css = section.settings.custom_css -%}
+
+{% comment %} Section specific CSS {% endcomment %}
+{% style %}
+
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    padding-left: {{ section.settings.padding_left }}px;
+    padding-right: {{ section.settings.padding_right }}px;
+    {% if section.settings.width == 'half' %}
+      width: 50%;
+    {% endif %}
+  }
+
+  {%
+    render 'css-loop',
+    css: custom_css,
+    id: id
+  %}
+
+.cart-message {
+  padding: 20px;
+  text-align: center;
+  margin: 0 auto;
+  max-width: {{ section.settings.max_width }}px;
+  border: 1px solid {{ section.settings.cart-border }};
+  border-radius: 8px;
+  background-color: {{ section.settings.cart-background }};
+}
+
+@media (max-width: 768px) {
+  .cart-message {
+  width: 90%;
+  }  
+}
+
+{% endstyle %}
+
+<section class="section {{ css_class }}
+                is-width-{{ section.settings.width }}">
+  <div class="container">
+    <div class="one-whole column content">
+
+<div class="cart-message">
+  <h3>{{ section.settings.cart-message-title }}</h3>
+      {{ section.settings.cart-message-text }}
+</div>
+
+          </div>
+        </div>
+        </section>
+      
+{% schema %}
+{
+  "name": "Cart message",
+  "class": "shopify-section--cart-message",
+  "settings": [
+      {
+        "type": "header",
+        "content": "Promotion Layout"
+      },
+      {
+        "type": "color",
+        "id": "cart-background",
+        "label": "Background Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "cart-border",
+        "label": "Border Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "range",
+        "id": "max_width",
+        "label": "Maximum width",
+        "min": 400,
+        "max": 1200,
+        "step": 10,
+        "default": 800,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Cart Message"
+      },
+      {
+        "type": "text",
+        "id": "cart-message-title",
+        "label": "Title"
+      },
+      {
+        "type": "richtext",
+        "id": "cart-message-text",
+        "label": "text",
+        "default": "<p><\/p>"
+      },
+      {
+        "type": "header",
+        "content": "Layout"
+      },
+      {
+        "type": "select",
+        "id": "width",
+        "label": "Width",
+        "default": "standard",
+        "options": [
+          {
+            "value": "half",
+            "label": "Half"
+          },
+          {
+            "value": "standard",
+            "label": "Standard"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Top spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Bottom spacing",
+        "min": 0,
+        "max": 80,
+        "default": 0,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_left",
+        "label": "Left spacing",
+        "min": 0,
+        "max": 80,
+        "default": 0,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_right",
+        "label": "Right spacing",
+        "default": 0,
+        "min": 0,
+        "max": 80,
+        "unit": "px"
+      },
+    {
+      "type": "header",
+      "content": "Advanced"
+    },
+    {
+      "type": "paragraph",
+      "content": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+    },
+    {
+      "type": "text",
+      "id": "css_class",
+      "label": "CSS Class"
+    },
+    {
+      "type": "textarea",
+      "id": "custom_css",
+      "label": "Custom CSS"
+    }
+  ],
+  "presets": [{
+    "name": "Cart message",
+    "category": "content"
+  }],
+  "templates": [
+    "cart"
+  ]
+}
+
+{% endschema %}

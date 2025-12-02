@@ -1,0 +1,701 @@
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.background_color }};
+  }
+
+   .helping-you-age__title {
+    font-size: 34px;
+    line-height: 1.1;
+    font-weight: normal;
+    margin-bottom: 60px;
+  }
+
+  #shopify-section-{{ section.id }} .helping-you-age__title {
+    color: {{ section.settings.title_color }};
+  }
+
+  .helping-you-age__cards-list {
+    display: flex;
+    align-items: stretch; 
+    justify-content: space-between;
+    /* position: relative; */
+  }
+
+  .helping-you-age__card__content__info_column {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+  }
+
+  .helping-you-age__card__content__info_column.right {
+    /* justify-content: end; */
+    
+    position: relative;
+  }
+
+  #shopify-section-{{ section.id }} .carousel-cell {
+    min-height:100%
+  }
+
+  #shopify-section-{{ section.id }} .flickity-ready .carousel-cell {
+  height: 100%;
+}
+
+  #shopify-section-{{ section.id }} .flickity-slider > div { 
+    min-height: 100%;  
+  }
+
+
+  #shopify-section-{{ section.id }} .carousel-cell {
+    min-height: 100%;
+}
+
+  .carousel-cell {
+    min-height: 100%;
+}
+
+  li.helping-you-age__card.carousel-cell.is-selected {
+    /* height: 100%; */
+  }
+
+  .helping-you-age__card {
+    width: 33.9%;
+    padding-right: 23px;
+   
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+
+  }
+
+  .helping-you-age__card:last-of-type {
+    padding-right: 0; 
+    width: calc(33.9% - 23px);
+  }
+
+  #shopify-section-{{ section.id }} .helping-you-age__card__content {
+    padding: {{ section.settings.card-padding }}px;
+  }
+
+  .helping-you-age__card__content {
+    border-radius: 10px;
+    min-height: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .helping-you-age__card__content__info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    column-gap: 16px;
+
+    margin-bottom: 16px;
+    height: 100%;
+  }
+
+  .helping-you-age__card__title.top {
+    margin-bottom: 38px;
+  }
+
+
+  #shopify-section-{{ section.id }} .helping-you-age__card__title {
+    width: 100%;
+    font-size: {{ section.settings.card-title-font-size }}px;
+    font-weight: bold;
+    line-height: 1;
+  }
+
+    #shopify-section-{{ section.id }} .helping-you-age__card__title.bottom {
+    font-size: {{ section.settings.card-title-font-size | plus: 2 }}px;
+    font-weight: normal;
+  }
+
+  #shopify-section-{{ section.id }} .helping-you-age__card__title.bottom sup {
+    font-size: 16px;
+  }
+
+  .helping-you-age__card__image-small {
+    width: 234px;
+    height: 234px;
+    
+    position: absolute;
+    top: 0;
+    right: {{ 0 | minus: section.settings.card-padding }}px;
+    z-index: 1;
+  }
+
+  .helping-you-age__card__image-small img {
+    object-fit: cover;
+  }
+
+
+  .helping-you-age__card__image-large {
+    height: 260px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+
+    margin-top: 195px;
+  }
+
+  .helping-you-age__card__image-icon {
+    width: 46px;
+    height: 46px;
+
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .helping-you-age__card__image-icon img {
+    object-fit: cover;
+  }
+
+  .helping-you-age__nav-buttons {
+    display: none;
+  }
+
+  
+  .helping-you-age .flickity-button {
+      display: none;
+    }
+
+  #shopify-section-{{ section.id }} .helping-you-age__card__description {
+    font-size: {{ section.settings.card-description-font-size }}px;
+    line-height: 1.1;
+  }
+
+   @media only screen and (max-width: 1440px) {
+     #shopify-section-{{ section.id }} .helping-you-age__card__title.bottom {
+      font-size: {{ section.settings.card-title-font-size | minus: 3 }}px;
+      font-weight: normal;
+    }
+
+     .helping-you-age__card__image-small {
+      width: 183px;
+      height: 200px;
+     }
+
+     .helping-you-age__card__image-large {
+       margin-top: 170px;
+       height: 300px;
+     }
+
+     .helping-you-age__card__title.top {
+      margin-bottom: 28px;
+    }
+
+    li.helping-you-age__card.carousel-cell.is-selected {
+      height: 100%;
+    }
+   }
+
+   @media only screen and (max-width: 1024px) {
+     .helping-you-age__card__image-small {
+        width: 130px;
+        height: 144px;
+     }
+
+     .helping-you-age__card__image-large {
+       margin-top: 170px;
+     }
+   }
+
+  @media only screen and (max-width: 798px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    .helping-you-age__title {
+      margin-bottom: 30px;
+      font-size: 28px;
+    }
+
+    #shopify-section-{{ section.id }} .helping-you-age__card__title {
+      width: 100%;
+      font-size: {{ section.settings.card-title-font-size-mobile }}px;
+    }
+
+     #shopify-section-{{ section.id }} .helping-you-age__card__title.bottom {
+      font-size: {{ section.settings.card-title-font-size-mobile | plus: 1 }}px;
+    }
+
+    #shopify-section-{{ section.id }} .helping-you-age__card__title.bottom sup {
+      font-size: 12px;
+    }
+
+    .helping-you-age__card__title.top {
+      margin-bottom: 22px;
+    }
+
+     #shopify-section-{{ section.id }} .helping-you-age__card__description {
+      font-size: {{ section.settings.card-description-font-size-mobile }}px;
+    }
+    
+    #shopify-section-{{ section.id }} .helping-you-age__card {
+      width: {{ section.settings.card-width-mobile }}px;
+
+    }
+
+    /* .helping-you-age__card {
+      opacity: 1;
+      transform: unset;
+      transition: unset;
+    } */
+
+  .helping-you-age__card {
+    padding-right: 20px; 
+  }
+
+    .helping-you-age__card:last-of-type {
+      padding-right: 20px; 
+    }
+    
+      .helping-you-age__card__image-large {
+        height: 178px;
+
+        margin-top: 124px;
+      }
+
+    .helping-you-age__card__image-small {
+      width: 132px;
+      height: 145px;
+    }
+
+    .helping-you-age__card__image-icon {
+      width: 25px;
+      height: 25px;
+    }
+
+    .helping-you-age__card__content__info {
+      column-gap: 10px;
+      margin-bottom: 10px;
+    }
+    
+    .helping-you-age__nav-buttons__prev,
+    .helping-you-age__nav-buttons__next {
+    border: none;
+    background: none;
+    padding: 0;
+  }
+
+  .helping-you-age__nav-buttons__prev .icon,
+  .helping-you-age__nav-buttons__next .icon {
+    width: 26px;
+    height: 26px;
+    color: #3F4444;
+  }
+
+  .helping-you-age__nav-buttons {
+    /* display: flex; */
+    justify-content: center;
+    gap: 6px;
+    margin-top: 30px;
+  }
+}
+
+  @media only screen and (min-width: 799px) {
+    .helping-you-age__card {
+    opacity: 0; 
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .helping-you-age__card.helping-you-age__show {
+    opacity: 1;
+     transform: translateY(0);
+  }
+
+.helping-you-age__card:nth-child(1) {
+  transition-delay: 0s;
+}
+
+.helping-you-age__card:nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+.helping-you-age__card:nth-child(3) {
+  transition-delay: 0.4s;
+}
+}
+
+{%
+  render 'css-loop',
+  css: section.settings.custom_css,
+  id: section.id,
+%}
+  
+{% endstyle %}
+
+
+<section
+  class="
+    section
+    helping-you-age
+    {{ section.settings.css_class }}
+  "
+>
+    {% if section.settings.title != blank %}
+        <h2 class="helping-you-age__title">{{ section.settings.title }}</h2>
+    {% endif %}
+
+    {% if section.blocks.size > 0 %}
+        <ul class="helping-you-age__cards-list carousel-{{ section.id }}">
+            {% for block in section.blocks %}        
+                {% if block.type == 'card' %} 
+                    {% style %}
+                      
+                      .block-{{ block.id }} .helping-you-age__card__content {
+                        background-color: {{ block.settings.background_color }};
+                      }
+
+                      .block-{{ block.id }} .helping-you-age__card__title {
+                        color: {{ block.settings.title_color }};
+                      }
+
+                      .block-{{ block.id }} .helping-you-age__card__description{
+                        color: {{ block.settings.description_color }};
+                      }
+                      
+                    {% endstyle %}
+                  
+                  <li class="helping-you-age__card block-{{ block.id }} carousel-cell">
+                    <div class="helping-you-age__card__content">
+                      <div class="helping-you-age__card__content__info">
+                        <div class="helping-you-age__card__content__info_column">
+                          <div class="helping-you-age__card__title top">{{ block.settings.title }}</div>
+                          <div class="helping-you-age__card__description">{{ block.settings.description }}</div>
+                        </div>
+                        <div class="helping-you-age__card__content__info_column right">
+                          {% if block.settings.image_small != nil %}
+                                {%
+                                  render 'image-element',
+                                  image: block.settings.image_small,
+                                  alt: block.settings.image_small.alt,
+                                  additional_wrapper_classes: 'helping-you-age__card__image-small',
+                                %}
+                              {% endif %}
+                          {% style %}
+                            .block-{{ block.id }}.helping-you-age__card__image-large {
+                               {% if block.settings.image != nil %}
+                                  background: url("{{block.settings.image | img_url: 'master'}}");
+                                  background-size:cover;
+                                  background-position:center;
+                              {% endif %}
+                            }
+                          {% endstyle %}
+                          {% if block.settings.image != nil %}
+                            <div class="helping-you-age__card__image-large block-{{ block.id }}">
+                              {% if block.settings.image_icon != nil %}
+                                {%
+                                  render 'image-element',
+                                  image: block.settings.image_icon,
+                                  alt: block.settings.image_icon.alt,
+                                  additional_wrapper_classes: 'helping-you-age__card__image-icon',
+                                %}
+                              {% endif %}
+                            </div>
+                          {% endif %}
+                        </div>
+                      </div>
+                      <div class="helping-you-age__card__title__bottom">
+                        <div class="helping-you-age__card__title bottom">{{ block.settings.title_bottom }}</div>
+                      </div>
+                    </div>
+                  </li>
+                {% endif %}        
+            {% endfor %}  
+        </ul>
+        <!-- <div class="helping-you-age__nav-buttons">
+          <button class="helping-you-age__nav-buttons__prev helping-you-age__nav-buttons__prev-{{ section.id }}">
+            {% render 'icon', name: 'slider-left-arrow' %}  
+          </button>
+          <button class="helping-you-age__nav-buttons__next helping-you-age__nav-buttons__next-{{ section.id }}">
+            {% render 'icon', name: 'slider-right-arrow' %} 
+          </button>
+        </div> -->
+    {% endif %}    
+
+</section>
+
+
+{% comment %}JavaScript{% endcomment %}
+
+<script>
+  window.addEventListener('load', function() {
+
+    const helpingYouAgeCarousel = document.querySelector('.carousel-{{ section.id }}');
+     
+        if (helpingYouAgeCarousel) {
+            const helpingYouAgeFlickity = new Flickity( helpingYouAgeCarousel, {
+                cellAlign: 'left',
+                contain: true,
+                groupCells: true,
+                wrapAround: true,
+                pageDots: false
+            });
+    
+          
+            const helpingYouAgePrevButton = document.querySelector('.helping-you-age__nav-buttons__prev-{{ section.id }}');
+            const helpingYouAgeNextButton = document.querySelector('.helping-you-age__nav-buttons__next-{{ section.id }}');
+        
+            if (helpingYouAgePrevButton) {
+              helpingYouAgePrevButton.addEventListener( 'click', function() {
+                helpingYouAgeFlickity.previous();
+              });
+            }
+        
+            if (helpingYouAgeNextButton) {
+             helpingYouAgeNextButton.addEventListener( 'click', function() {
+                helpingYouAgeFlickity.next( );
+              });
+            }
+        
+        }
+
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', function() {
+  const isMobileMedia = window.matchMedia("(max-width: 798px)");
+
+    if (!isMobileMedia.mathces) {
+      const optionsHelpingYouAge = {
+        threshold: 0.5,
+      };
+
+      const callbackHelpingYouAge = (entries, observer) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('helping-you-age__show');
+          }, index * 200); 
+            observer.unobserve(entry.target); 
+          }
+        });
+      };
+
+    const observerHelpingYouAge = new IntersectionObserver(callbackHelpingYouAge, optionsHelpingYouAge);
+       document.querySelectorAll('.helping-you-age__card').forEach(card => {
+        observerHelpingYouAge.observe(card);
+      });
+    }
+  });
+</script>
+
+
+{% schema %}
+  {
+    "name": "Helping you age",
+    "settings": [
+      {
+        "type": "html",
+        "id": "title",
+        "label": "Section title"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Top spacing",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "default": 90,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Bottom spacing",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "card-padding",
+        "label": "Card padding",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "card-title-font-size",
+        "label": "Card title font size",
+        "min": 0,
+        "max": 100,
+        "default": 30,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "card-description-font-size",
+        "label": "Card description font size",
+        "min": 0,
+        "max": 100,
+        "default": 30,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Colors"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Section background color",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "color",
+        "id": "title_color",
+        "label": "Section title color",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "header",
+        "content": "Mobile layout"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Mobile top spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Mobile bottom spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "card-width-mobile",
+        "label": "Card width mobile",
+        "min": 0,
+        "max": 500,
+        "step": 5,
+        "default": 200,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "card-title-font-size-mobile",
+        "label": "Card title font size mobile",
+        "min": 0,
+        "max": 100,
+        "default": 30,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "card-description-font-size-mobile",
+        "label": "Card description font size mobile",
+        "min": 0,
+        "max": 100,
+        "default": 30,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Advanced",
+        "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+      },
+      {
+        "type": "text",
+        "id": "css_class",
+        "label": "CSS Class"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_css",
+        "label": "Custom CSS"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "card",
+        "name": "Card",
+        "limit": 3,
+        "settings": [
+          {
+            "type": "html",
+            "id": "title",
+            "label": "Card title"
+          },
+          {
+            "type": "html",
+            "id": "title_bottom",
+            "label": "Card title bottom"
+          },
+          {
+            "type": "html",
+            "id": "description",
+            "label": "Card description"
+          },
+          {
+            "type": "header",
+            "content": "Colors"
+          },
+          {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background"
+          },
+          {
+            "type": "color",
+            "id": "title_color",
+            "label": "Title"
+          },
+          {
+            "type": "color",
+            "id": "description_color",
+            "label": "Description"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_icon",
+            "label": "Image icon"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_small",
+            "label": "Small image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Home: helping you age"
+      }
+    ]
+  }
+{% endschema %}

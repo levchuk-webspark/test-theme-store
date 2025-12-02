@@ -1,0 +1,749 @@
+{% liquid
+    assign settings = block.settings
+    assign meta_object = product.metafields.custom.buy_more_save_more.value
+%}
+
+{% style %}
+.product__buy-more_save-more {
+    display: none;
+    padding: 13px;
+    border-radius: 5px;
+    border: 1px solid;
+    border-color: #404544;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.product__buy-more_save-more.active {  
+    border-width: 1.5px;
+    border-color: #44693D;
+    {% if product.id == 7396104994889 %}
+        border-color: #61072D;
+    {% endif %}
+}
+
+.product__buy-more_save-more__top-block {
+    margin-bottom: 10px;
+}
+
+.product__buy-more_save-more__top-block__title {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 140%;
+}
+
+.product__buy-more_save-more__bottom-block__buy-items {
+    display: flex;
+    gap: 6px;
+}
+
+.product__buy-more_save-more__bottom-block {
+    display: flex;
+    justify-content: space-between;
+}
+
+.product__buy-more_save-more__top-block {
+    display: flex;
+    justify-content: space-between;
+}
+
+.product__buy-more_save-more__bottom-block__buy-item {
+    padding: 7px 10px;
+    border-radius: 5px;
+    background-color: {{ settings.buy_background_color_inactive }};
+    color: {{ settings.buy_text_color_inactive }};
+
+    font-size: 12px;
+    line-height: 110.00000000000001%;
+    text-align: center;
+    vertical-align: middle;
+    text-transform: capitalize;
+
+    display: flex;
+    align-items: center;
+
+    cursor: pointer;
+
+    height: 28px;
+}
+
+.product__buy-more_save-more__bottom-block__buy-item.active {
+    background-color: {{ settings.buy_background_color_active }};
+    color: {{ settings.buy_text_color_active }};
+    font-weight: 900;
+}
+
+.product__buy-more_save-more__bottom-block__discount {
+    padding: 7px;
+    border-radius: 5px;
+    background-color: {{ settings.discount_background_color_inactive }};
+    color: {{ settings.discount_text_color_inactive }};
+    
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 0;
+    text-align: center;
+    vertical-align: middle;
+
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+
+    height: 28px;
+}
+
+.product__buy-more_save-more__bottom-block__discount.active {
+     background-color: {{ settings.discount_background_color_active }};
+    color: {{ settings.discount_text_color_active }};
+}
+
+.product__buy-more_save-more__price-per-unit {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 100%;
+    text-align: right;
+
+    color: #6F726E;
+}
+
+.custom-after-style, .sealsubs-target-element .sls-option[type="radio"]:checked + .sls-custom-radio.custom-after-style:after {
+    width: 0;
+    height: 0;
+}
+
+{% endstyle %}
+
+{% if meta_object.quantity_1 != blank %}
+<div
+  class="
+    product__buy-more_save-more
+  "
+  id="product__buy-more_save-more"
+>
+    <div class="product__buy-more_save-more__top-block">
+        <div class="product__buy-more_save-more__top-block__title sls-selling-plan-group-name">Buy More, Save More</div>
+        <div class="product__buy-more_save-more__top-block__prices">
+            <div class="sls-selling-plan-group-price sls-total-price sls-price-container">
+                <div class="sls-original-price appco_bg">
+                    <span class="product__buy-more_save-more__original-price money conversion-bear-money seal-money ht-money"></span>
+                </div>
+                <div class="sls-price appco_bg">
+                    <span class="product__buy-more_save-more__price money conversion-bear-money seal-money ht-money"></span>
+                </div>
+            </div>
+            <div class="product__buy-more_save-more__top-block__price-per-unit">
+                <div class="product__buy-more_save-more__price-per-unit"></div>
+            </div>
+        </div>
+    </div>
+    <div class="product__buy-more_save-more__bottom-block">
+        <div class="product__buy-more_save-more__bottom-block__buy-items">
+            <div id="buy_{{ meta_object.quantity_1 }}" class="product__buy-more_save-more__bottom-block__buy-item" onclick="buyClick({{meta_object.quantity_1}}, {{ meta_object.discount_1 }})"
+                data-quantity="{{ meta_object.quantity_1 }}"
+                data-discount="{{ meta_object.discount_1 }}"
+            >
+                Buy {{ meta_object.quantity_1 }}
+            </div>
+            {% if meta_object.quantity_2 %}
+                <div id="buy_{{ meta_object.quantity_2 }}" class="product__buy-more_save-more__bottom-block__buy-item" onclick="buyClick({{meta_object.quantity_2}}, {{ meta_object.discount_2 }})"
+                    data-quantity="{{ meta_object.quantity_2 }}"
+                    data-discount="{{ meta_object.discount_2 }}"
+                >
+                    Buy {{ meta_object.quantity_2 }}
+                </div>
+            {% endif %}
+            {% if meta_object.quantity_3 %}
+                <div id="buy_{{ meta_object.quantity_3 }}" class="product__buy-more_save-more__bottom-block__buy-item" onclick="buyClick({{meta_object.quantity_3}}, {{ meta_object.discount_3 }})"
+                    data-quantity="{{ meta_object.quantity_3 }}"
+                    data-discount="{{ meta_object.discount_3 }}"
+                >
+                    Buy {{ meta_object.quantity_3 }}
+                </div>
+            {% endif %}
+        </div>
+        <div id="discount_label" class="product__buy-more_save-more__bottom-block__discount">
+            Save {% if meta_object.discount_3 != blank %} {{meta_object.discount_3}}{% elsif meta_object.discount_2 != blank  %}{{meta_object.discount_2}}{% elsif meta_object.discount_1 != blank  %}{{meta_object.discount_1}}{% endif %}%
+        </div>
+    </div>
+    
+</div>
+{% endif %}
+<script>
+    function updateSaveMoreBuyMore(currentQuantity, currentDiscount, selectedVariant) {
+        let currentPrice = selectedVariant.price / 100;
+        const originalPrice = currentPrice * currentQuantity;
+        const discount = originalPrice * (currentDiscount / 100);
+        const discountedPrice = originalPrice - discount;
+        const pricePerUnit = discountedPrice / currentQuantity;
+        const currency = '{{ cart.currency.symbol }}';
+
+    {% comment %} product__buy-more_save-more__original-price {% endcomment %}
+    const originalPriceElement = document.getElementsByClassName("product__buy-more_save-more__original-price");
+    if (originalPriceElement && originalPrice) {
+        originalPriceElement[0].innerText = currency + originalPrice.toFixed(2);
+    }
+
+    {% comment %} product__buy-more_save-more__price {% endcomment %}
+    const priceElement = document.getElementsByClassName("product__buy-more_save-more__price");
+    if (priceElement && discountedPrice) {
+        priceElement[0].innerText = currency + discountedPrice.toFixed(2);
+    }
+
+    {% comment %} £26.24/unit product__buy-more_save-more__price-per-unit {% endcomment %}
+    const pricePerUnitElement = document.getElementsByClassName("product__buy-more_save-more__price-per-unit");
+    if (pricePerUnitElement && pricePerUnit) {
+        pricePerUnitElement[0].innerText = currency + pricePerUnit.toFixed(2) + '/unit';
+    }
+
+    {% comment %} Update add to cart content for mobile layout {% endcomment %}
+    
+        const isMobileMedia = window.matchMedia("(max-width: 798px)");
+        if (isMobileMedia.matches) {
+            const purchaseDetailsInfo = document.getElementsByClassName("purchase-details-info");
+            if (purchaseDetailsInfo?.length) {
+                purchaseDetailsInfo[0].innerText = "Buy More, Save More";
+            }
+            const addToCartContainer = document.getElementsByClassName("mobile-purchase-details");
+            if (addToCartContainer?.length) {
+                const priceElementAddToCart = addToCartContainer[0].getElementsByClassName("money conversion-bear-money seal-money ht-money");
+                if (priceElementAddToCart?.length && discountedPrice) {
+                    priceElementAddToCart[0].innerText = currency + discountedPrice.toFixed(2);
+                }
+
+                
+
+                const buyMoreSavePricesBlock = document.getElementsByClassName("product__buy-more_save-more__top-block__prices");
+                                    if (buyMoreSavePricesBlock?.length) {
+                                        
+                                        const originalSavePrice = buyMoreSavePricesBlock[0].getElementsByClassName("sls-original-price");
+                                        const discountedSavePrice = buyMoreSavePricesBlock[0].getElementsByClassName("product__buy-more_save-more__price");
+                                        
+                                        if (originalSavePrice?.length) {
+                                            const newElement = originalSavePrice[0].cloneNode(true);
+                                            const newPriceElement = newElement.getElementsByClassName("product__buy-more_save-more__original-price");
+                                            if (newPriceElement?.length) {
+                                                
+                                                const pricePerUnitSaveMore = buyMoreSavePricesBlock[0].getElementsByClassName("product__buy-more_save-more__price-per-unit")
+                                                if (pricePerUnitSaveMore?.length) {
+                                                    newPriceElement[0].innerText = pricePerUnitSaveMore[0].innerText;
+                                                    const addTocartElementParent = addToCartContainer[0].getElementsByClassName("sls-one-time-price");
+                                                    if (addTocartElementParent?.length) {
+                                                        
+                                                        addTocartElementParent[0].querySelectorAll(".sls-original-price").forEach(element => element.remove());
+                                                        addTocartElementParent[0].insertBefore(newElement, addTocartElementParent[0].firstChild);
+                                                        addTocartElementParent[0].classList.add("sls-selling-plan-group-price");
+                                                        addTocartElementParent[0].classList.add("save-more_buy-more");
+
+                                                        const priceMobile = addTocartElementParent[0].querySelector(".sls-price").getElementsByClassName("money conversion-bear-money seal-money ht-money")
+                                                        
+                                                        if (priceMobile?.length && discountedSavePrice?.length) {
+                                                            
+                                                            if (priceMobile[0].innerText !== discountedSavePrice[0].innerText) {
+                                                                 priceMobile[0].innerText = discountedSavePrice[0].innerText;
+                                                            }
+                                                        }   
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+            }
+        }
+    }
+</script>
+
+{% comment %} Calculate initial state {% endcomment %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const selectedVariant = {{ selected_variant | json }};
+    const metaObject = {{ meta_object | json }};
+    
+    let currentQuantity = 0;
+    let currentDiscount = 0;
+    
+    if (metaObject?.quantity_3) {
+        currentQuantity = metaObject.quantity_3
+    } else if (metaObject?.quantity_2) {
+        currentQuantity = metaObject.quantity_2
+    } else if (metaObject?.quantity_1) {
+        currentQuantity = metaObject.quantity_1
+    }
+    if (metaObject?.discount_3) {
+        currentDiscount = metaObject.discount_3
+    } else if (metaObject?.discount_2) {
+        currentDiscount = metaObject.discount_2
+    } else if (metaObject?.discount_1) {
+        currentDiscount = metaObject.discount_1
+    }
+
+    updateSaveMoreBuyMore(currentQuantity, currentDiscount, selectedVariant)
+    
+})
+</script>
+
+{% comment %} Calculate after click {% endcomment %}
+<script>
+function buyClick(quantity, discount) {
+    const product_variants = {{ product.variants | json }};
+    {% comment %} Find product variant according query param value {% endcomment %}
+    const urlParams = new URLSearchParams(window.location.search);
+    const variantId = urlParams.get('variant');
+
+    {% comment %} if (variantId) { {% endcomment %}
+        let current_variant = product_variants[0]; 
+
+        if (variantId) {
+            current_variant = product_variants.find((variant) => (variant.id).toString() === variantId);
+        }
+
+        if (current_variant) {
+            
+            const allBuyItems = document.getElementsByClassName("product__buy-more_save-more__bottom-block__buy-item");
+            if (allBuyItems) {
+                allBuyItems.forEach((buyItem) => {
+                    buyItem.classList.remove('active');
+                })
+            }
+            const currentBuyItem = document.getElementById(`buy_${quantity}`);
+            if (currentBuyItem) {
+                currentBuyItem.classList.add('active');
+                const discountElement = document.getElementById("discount_label")
+                if (discountElement) {
+                    discountElement.innerText = "Save "+discount+"%";
+                    discountElement.classList.add('active');
+                }
+                {% comment %} Update quantity value {% endcomment %}
+                const input = document.querySelector('input[name="quantity"]');
+                if (input) {
+                    input.value = quantity;
+                } else {
+                    const isMobileMedia = window.matchMedia("(max-width: 798px)");
+                    if (isMobileMedia.matches) {
+                        const productId = '{{ product.id }}';
+                        const formElement = document.getElementById(`product_form_${productId}`);
+                    
+                        if (formElement) {
+                            quantityInput = document.createElement('input');
+                            quantityInput.type = 'hidden';
+                            quantityInput.name = 'quantity';
+                            formElement.appendChild(quantityInput);
+                            quantityInput.value = quantity;
+                        } 
+                    }
+                }
+                {% comment %} Update prices {% endcomment %}
+                 updateSaveMoreBuyMore(quantity, discount, current_variant)
+
+                 {% comment %} Set active state to Buy more Save more container {% endcomment %}
+                const parentElement = document.getElementsByClassName("product__buy-more_save-more");
+                if (parentElement) {
+                    parentElement[0].classList.add('active');
+
+                    {% comment %} Remove active state from Sealsub option {% endcomment %}
+                    const sealSubActiveOption = document.getElementsByClassName("sls-option-container sls-active")
+                    if (sealSubActiveOption) {
+                        sealSubActiveOption.forEach((option) => {
+                            option.classList.remove('sls-active');
+                        })
+                    }
+
+                    {% comment %} Unselect all radio buttons {% endcomment %}
+                         const checkedRadio = document.querySelector(
+                            '.sealsubs-target-element .sls-option[type="radio"]:checked + .sls-custom-radio'
+                        );
+                        if (checkedRadio) {
+                            checkedRadio.classList.add('custom-after-style');
+                        }
+                }
+            }
+
+            const onePurchaseOption = document.getElementsByClassName("sls-selling-plan-group-first-line")
+            if (onePurchaseOption[0]) {
+                const currentState = onePurchaseOption[0].getAttribute('aria-checked');
+                if (currentState === 'false') {
+                    {% comment %} Click to one time purchase option {% endcomment %}
+                    document.querySelector('div[data-one-time-option-radio]')?.click();
+        
+                    setTimeout(() => {
+                        {% comment %} Unselect all radio buttons {% endcomment %}
+                         const checkedRadio = document.querySelector(
+                            '.sealsubs-target-element .sls-option[type="radio"]:checked + .sls-custom-radio'
+                        );
+                        if (checkedRadio) {
+                            checkedRadio.classList.add('custom-after-style');
+                        }
+
+                        {% comment %} Update clicked button state {% endcomment %}
+                        const buyMoreSaveMoreBlock = document.getElementById("product__buy-more_save-more");
+                        if (buyMoreSaveMoreBlock) {
+                            buyMoreSaveMoreBlock.classList.add('active');
+                            {% comment %} Remove active state from sealsub option {% endcomment %}
+                            const activeSealSubOptions = document.getElementsByClassName('sls-option-container seal-table sls-active')
+                            if (activeSealSubOptions) {
+                                activeSealSubOptions.forEach((activeElement) => {
+                                    activeElement.classList.remove('sls-active');
+                                });
+                            }
+                        }
+
+                        const currentBuyItem = document.getElementById(`buy_${quantity}`);
+                        if (currentBuyItem) {
+                            currentBuyItem.classList.add('active');
+                        }
+                        const input = document.querySelector('input[name="quantity"]');
+                        if (input) {
+                            input.value = quantity;
+                        }
+                        const discountElement = document.getElementById("discount_label")
+                        if (discountElement) {
+                            discountElement.classList.add('active');
+                        }
+
+                        const isMobileMedia = window.matchMedia("(max-width: 798px)");
+                        if (isMobileMedia.matches) {
+                            const purchaseDetailsInfo = document.getElementsByClassName("purchase-details-info");
+                            if (purchaseDetailsInfo?.length) {
+                                purchaseDetailsInfo[0].innerText = "Buy More, Save More";
+                            }
+                            const addToCartContainer = document.getElementsByClassName("mobile-purchase-details");
+                            if (addToCartContainer?.length) {
+                                const unusedPrice = addToCartContainer[0].getElementsByClassName("compare-at-price-for-seal-sub");
+                                if (unusedPrice?.length) {
+                                    unusedPrice[0].remove();
+                                }
+                                {% comment %} find discounted price and per unit and clone these from buy more save more block {% endcomment %}
+                                const priceElementAddToCart = addToCartContainer[0].getElementsByClassName("money conversion-bear-money seal-money ht-money");
+                                if (priceElementAddToCart?.length) {
+                                    const discountedPriceSaveMore = document.getElementsByClassName("product__buy-more_save-more__price")
+                                    if (discountedPriceSaveMore?.length) {
+                                        const newdiscountedPriceElement = discountedPriceSaveMore[0].cloneNode(true);
+                                        priceElementAddToCart[0].innerText = newdiscountedPriceElement.innerText
+                                    }
+                                    const buyMoreSavePricesBlock = document.getElementsByClassName("product__buy-more_save-more__top-block__prices");
+                                    if (buyMoreSavePricesBlock?.length) {
+                                        const originalSavePrice = buyMoreSavePricesBlock[0].getElementsByClassName("sls-original-price");
+                                        if (originalSavePrice?.length) {
+                                            const newElement = originalSavePrice[0].cloneNode(true);
+                                            const newPriceElement = newElement.getElementsByClassName("product__buy-more_save-more__original-price");
+                                            if (newPriceElement?.length) {
+                                                const pricePerUnitSaveMore = buyMoreSavePricesBlock[0].getElementsByClassName("product__buy-more_save-more__price-per-unit")
+                                                if (pricePerUnitSaveMore?.length) {
+                                                    newPriceElement[0].innerText = pricePerUnitSaveMore[0].innerText;
+                                                    const addTocartElementParent = addToCartContainer[0].getElementsByClassName("sls-one-time-price");
+                                                    if (addTocartElementParent?.length) {
+                                                        addTocartElementParent[0].querySelectorAll(".sls-original-price").forEach(element => element.remove());
+                                                        addTocartElementParent[0].insertBefore(newElement, addTocartElementParent[0].firstChild);
+                                                        addTocartElementParent[0].classList.add("sls-selling-plan-group-price");
+                                                        addTocartElementParent[0].classList.add("save-more_buy-more");
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }, 500)
+                }
+            }
+        }
+    {% comment %} } {% endcomment %}
+    
+}
+</script>
+
+{% comment %} Reset BuyMoreSaveMore states after clicking on SealSub options {% endcomment %}
+<script>
+document.addEventListener('sealsubs:selling_plan_changed', resetBuyMoreSaveMore); 
+
+function resetBuyMoreSaveMore(e) {
+    const parentElement = document.getElementsByClassName("product__buy-more_save-more active");
+    if (parentElement?.length) {
+        parentElement[0].classList.remove('active');
+    } 
+
+    const activeBuyButton = document.getElementsByClassName("product__buy-more_save-more__bottom-block__buy-item active");
+    if (activeBuyButton?.length) {
+        activeBuyButton[0].classList.remove('active');
+    }
+
+    const discountElement = document.getElementsByClassName("product__buy-more_save-more__bottom-block__discount active");
+    if (discountElement?.length) {
+        discountElement[0].classList.remove('active');
+    }
+
+    const input = document.querySelector('input[name="quantity"]');
+    if (input) {
+        if (input.value > 1) {
+            input.value = 1;
+        }
+    } 
+
+    
+    {% comment %} const activeBuyButton = document.getElementsByClassName("product__buy-more_save-more__bottom-block__buy-item active") {% endcomment %}
+    if (activeBuyButton?.length <= 0) {
+        {% comment %} Remove unselected style class all radio buttons {% endcomment %}
+        const checkedRadio = document.querySelectorAll('.custom-after-style');
+        if (checkedRadio) {
+            checkedRadio.forEach((radio) => {
+                radio.classList.remove('custom-after-style');
+            });
+        }
+    }
+}
+</script>
+
+<script>
+document.addEventListener("sealsubs:subscription_widget_created", function() {
+
+    // Find container with options
+    const sealSubContainer = document.querySelector('.sls-purchase-options-container');
+    if (!sealSubContainer) {
+        return;
+    }
+
+    const onlyOneTimePurchaceElement = document.querySelectorAll('[data-only-one-option-overall="1"]');
+
+    // Run observer
+    const observer = new MutationObserver(() => {
+        const secondChild = sealSubContainer.children[1];
+        const BuyMoreSaveMoreBlock = document.getElementById("product__buy-more_save-more");
+
+        if (secondChild && BuyMoreSaveMoreBlock) {
+           {% comment %} Insert BuyMoreSaveMoreBlock after secondChild {% endcomment %}
+            {% comment %} if (onlyOneTimePurchaceElement?.length) { {% endcomment %}
+                {% comment %} console.log('Change place !!!') {% endcomment %}
+                {% comment %} const secondChildOnOneTimePurchaseOnly = onlyOneTimePurchaceElement[0].children[1];
+                secondChildOnOneTimePurchaseOnly.insertAdjacentElement('afterend', BuyMoreSaveMoreBlock); {% endcomment %}
+            {% comment %} } else { {% endcomment %}
+                secondChild.insertAdjacentElement('afterend', BuyMoreSaveMoreBlock);
+                BuyMoreSaveMoreBlock.style.display = 'block';
+            {% comment %} } {% endcomment %}
+
+            // Stop observer, do not paste again
+            observer.disconnect();
+        }
+    });
+
+    observer.observe(sealSubContainer, { childList: true, subtree: false });
+
+    // In case the elements were already ready at the time of the event
+    const secondChildNow = sealSubContainer.children[1];
+    const BuyMoreSaveMoreBlockNow = document.getElementById("product__buy-more_save-more");
+    if (secondChildNow && BuyMoreSaveMoreBlockNow) {
+        {% comment %} Elements are ready, paste immediately {% endcomment %}
+         {% comment %} if (onlyOneTimePurchaceElement?.length) { {% endcomment %}
+                {% comment %} console.log('Change place immediately !!!') {% endcomment %}
+                {% comment %} const secondChildOnOneTimePurchaseOnly = onlyOneTimePurchaceElement[0].children[1];
+                secondChildOnOneTimePurchaseOnly.insertAdjacentElement('afterend', BuyMoreSaveMoreBlockNow); {% endcomment %}
+            {% comment %} } else { {% endcomment %}
+                secondChildNow.insertAdjacentElement('afterend', BuyMoreSaveMoreBlockNow);
+                BuyMoreSaveMoreBlockNow.style.display = 'block';
+            {% comment %} } {% endcomment %}
+        observer.disconnect();
+    }
+});
+</script>
+
+
+{% comment %} Paste Buy more, Save more to the correct place (between seal sub options)
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener('sealsubs:subscription_widget_created', function(e) {
+            window.alert("sealsubs:subscription_widget_created PASTE CORRECT PLACE");
+                    alert("sealsubs:subscription_widget_created PASTE CORRECT PLACE");
+                   console.log('sealsubs:subscription_widget_created');
+            {% comment %} setTimeout(() => {                 {% endcomment %}
+                const observer = new MutationObserver(() => {
+                    const sealSubContainer = document.getElementsByClassName('sls-purchase-options-container');
+                    if (sealSubContainer) {
+                        const BuyMoreSaveMoreBlock = document.getElementById("product__buy-more_save-more");
+                        if (BuyMoreSaveMoreBlock) {
+                            const secondChild = sealSubContainer[0].children[1];
+                            {% comment %} Paste Save more Buy more block after One time purchase option {% endcomment %}
+                            if (secondChild) {
+                                secondChild.insertAdjacentElement('afterend', BuyMoreSaveMoreBlock);
+                                window.alert("secondChild", secondChild);
+                                alert("secondChild", secondChild);
+                                console.log("secondChild", secondChild);
+                            } else {
+                                sealSubContainer[0].appendChild(BuyMoreSaveMoreBlock);
+                                window.alert(" NO secondChild", secondChild);
+                                alert("NO secondChild", secondChild);
+                            }
+                            BuyMoreSaveMoreBlock.style.display = 'block';
+                            observer.disconnect();
+                        }
+                    }
+                });
+                observer.observe(document.body, { childList: true, subtree: true });
+            {% comment %} }, 0) {% endcomment %}
+        });
+    });
+</script> {% endcomment %}
+
+<script>
+document.addEventListener("sealsubs:subscription_widget_created", function() {
+    function bindOneTimeClick() {
+
+        const oneTimeOption = document.querySelector('.sls-option-container');
+        if (!oneTimeOption) {
+           {% comment %} One-time option not found yet, retrying... {% endcomment %}
+            return false;
+        }
+
+        // To avoid connecting twice
+        if (!oneTimeOption.dataset.bound) {
+            oneTimeOption.dataset.bound = "true";
+
+            oneTimeOption.addEventListener("click", function() {
+                {% comment %} One-time purchase CLICK {% endcomment %}
+                setTimeout(() => {
+                    const activeBuyButton = document.querySelector('.product__buy-more_save-more__bottom-block__buy-item.active');
+                    if (activeBuyButton) {
+                        // Reset buy button
+                        activeBuyButton.classList.remove('active');
+
+                        // Reset quantity
+                        const input = document.querySelector('input[name="quantity"]');
+                        if (input && input.value > 1) {
+                            input.value = 1;
+                        }
+
+                        // Reset discount
+                        const discountElement = document.querySelector(".product__buy-more_save-more__bottom-block__discount.active");
+                        if (discountElement) {
+                            discountElement.classList.remove('active');
+                        }
+
+                        // Remove unselected style class
+                        document.querySelectorAll('.custom-after-style').forEach(radio => {
+                            radio.classList.remove('custom-after-style');
+                        });
+
+                        // Remove active state from main block
+                        const buyMoreSaveMoreBlock = document.getElementById("product__buy-more_save-more");
+                        if (buyMoreSaveMoreBlock) {
+                            buyMoreSaveMoreBlock.classList.remove('active');
+                        }
+
+                        const buyButtons = document.querySelectorAll(".product__buy-more_save-more__bottom-block__buy-item");
+                        const hasActiveBuyButton = Array.from(buyButtons).every(button => 
+                            button.classList.contains("active")
+                        );
+                       
+                        if (!hasActiveBuyButton) {
+                            oneTimeOption.classList.add('sls-active')
+                        }
+                    
+
+                        // Mobile-specific changes
+                        const isMobileMedia = window.matchMedia("(max-width: 798px)");
+                        if (isMobileMedia.matches) {
+                            const purchaseDetailsInfo = document.querySelector(".purchase-details-info");
+                            if (purchaseDetailsInfo) {
+                                purchaseDetailsInfo.innerText = "One time purchase";
+                            }
+                            const originalOneTimePrice = document.querySelectorAll(".sls-one-time-price.sls-total-price.sls-price-container");
+                            if (originalOneTimePrice[0] && originalOneTimePrice[1]) {
+                                const duplicatedElement = originalOneTimePrice[0].cloneNode(true);
+                                originalOneTimePrice[1].innerHTML = "";
+                                originalOneTimePrice[1].appendChild(duplicatedElement.lastChild);
+                            }
+                        }
+                    }
+                }, 100);
+            });
+
+            {% comment %} One-time option click bound {% endcomment %}
+        }
+
+        return true;
+    }
+
+    // Let's try it right away
+    if (!bindOneTimeClick()) {
+        {% comment %} If you haven’t found it, we wait for it to appear. {% endcomment %}
+        const observer = new MutationObserver(() => {
+            if (bindOneTimeClick()) {
+                observer.disconnect();
+            }
+        });
+        observer.observe(document.body, { childList: true, subtree: true });
+    }
+});
+</script>
+
+
+{% comment %} <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener('sealsubs:subscription_widget_created', function(e) {
+            // Find "One-time purchase"
+            var oneTimeOption = document.querySelector('.sls-option-container');
+
+            if (oneTimeOption) {
+                oneTimeOption.addEventListener("click", function() {
+                    window.alert('Find "One-time purchase CLICK'); 
+                        alert('Find "One-time purchase CLICK');    
+                       alert('Find "One-time purchase CLICK'); 
+                    setTimeout(() => {              
+                           
+                        const activeBuyButton =  document.querySelector('.product__buy-more_save-more__bottom-block__buy-item.active');
+                        if (activeBuyButton) {
+                            {% comment %} Reset Buy button {% endcomment %}
+                            activeBuyButton.classList.remove('active');
+                            {% comment %} Reset quantity {% endcomment %}
+                            const input = document.querySelector('input[name="quantity"]');
+                            if (input) {
+                                if (input.value > 1) {
+                                    input.value = 1;
+                                }
+                            }
+                            {% comment %} Reset discount {% endcomment %}
+                            const discountElement = document.getElementsByClassName("product__buy-more_save-more__bottom-block__discount active");
+                            if (discountElement?.length) {
+                                discountElement[0].classList.remove('active');
+                            } 
+                            {% comment %} Remove unselected style class all radio buttons {% endcomment %}
+                            const checkedRadio = document.querySelectorAll('.custom-after-style');
+                            if (checkedRadio) {
+                                checkedRadio.forEach((radio) => {
+                                    radio.classList.remove('custom-after-style');
+                                });
+                            }
+                            {% comment %} Remove selected buy more save more state {% endcomment %}                             
+                            const buyMoreSaveMoreBlock = document.getElementById("product__buy-more_save-more");
+                            if (buyMoreSaveMoreBlock && buyMoreSaveMoreBlock.classList.contains('active')) {
+                                buyMoreSaveMoreBlock.classList.remove('active');
+                            }
+
+                            console.log('oneTimeOption', oneTimeOption);
+                            window.alert("oneTimeOption", oneTimeOption);
+                           alert("oneTimeOption", oneTimeOption);
+                            oneTimeOption.classList.add('sls-active');
+
+                            const isMobileMedia = window.matchMedia("(max-width: 798px)");
+                            if (isMobileMedia.matches) {
+                                {% comment %} Update Add to cart block on mobile view {% endcomment %}
+                                const purchaseDetailsInfo = document.getElementsByClassName("purchase-details-info");
+                                if (purchaseDetailsInfo?.length) {
+                                    purchaseDetailsInfo[0].innerText = "One time purchase";
+                                }
+                                const originalOneTimePrice = document.getElementsByClassName("sls-one-time-price sls-total-price sls-price-container");
+                                if (originalOneTimePrice[0]) {
+                                    const duplicatedElement = originalOneTimePrice[0].cloneNode(true);
+                                    if (originalOneTimePrice[1]) {
+                                        while (originalOneTimePrice[1].firstChild) {
+                                            originalOneTimePrice[1].removeChild(originalOneTimePrice[1].lastChild);
+                                        }
+                                        originalOneTimePrice[1].appendChild(duplicatedElement.lastChild);
+                                    }
+                                }
+                            }
+                        }                        
+                    }, 100)
+                });
+            }
+        });
+    });
+</script> {% endcomment %}

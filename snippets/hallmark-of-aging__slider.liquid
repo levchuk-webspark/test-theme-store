@@ -1,0 +1,523 @@
+{% assign ingredient = "ingredient" %}
+
+{% style %}
+  .hallmark-of-aging__modal-backdrop{
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(6, 32, 33, 0.5);
+  }
+
+  .hallmark-of-aging__modal-backdrop-is-open {
+    display: block;
+  }
+
+  .hallmark-of-aging__modal__content {
+    background-color: #ffffff;
+    color: #000000;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 40%;
+    padding: 30px 20px;
+    position: fixed;
+    z-index: 999999;
+    transform: translateX(100%);
+    transition: transform .3s ease, -webkit-transform .3s ease;
+  }
+
+  .hallmark-of-aging__modal__content.hallmark-of-aging__modal__content__is-open {
+    transform: translateX(0);
+  }
+
+  .hallmark-of-aging__modal__header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 40px;
+    line-height: 1.1;
+  }
+
+  .hallmark-of-aging__modal__title {
+    margin-right: 29px;
+  }
+
+  .hallmark-of-aging__modal__header br {
+    display: none;
+  }
+
+  .hallmark-of-aging__modal__close {
+    width: 29px;
+    height: 29px;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    z-index: 1;
+  }
+
+  .hallmark-of-aging__modal__cards-list {
+    width: 100%;
+    height: 100%;
+    display: flex;
+  }
+
+  .hallmark-of-aging__modal__cards-list__item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    height: 100vh;
+    overflow-y: auto;
+    display: flex;
+  }
+
+  .hallmark-of-aging__modal__cards-list__item__image {
+    width: 100%;
+    
+    height: auto;
+    min-height: 50%;
+    
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 30px;
+    margin-top: 30px;
+
+    max-width: 100%;
+  }
+
+  .hallmark-of-aging__modal__cards-list__item__image img {
+    object-fit: cover;
+
+    max-width: 100%;
+  }
+
+  .hallmark-of-aging__modal__cards-list__item__description {
+    font-size: 22px;
+    margin-top: 15px;
+  }
+
+  .hallmark-of-aging__modal__cards-list__item__text_under_image {
+    font-size: 16px;
+    line-height: 1.3;
+  }
+
+  .hallmark-of-aging__modal__cards-list__item__title_links_block {
+    font-size: 16px;
+    font-weight: 900;
+
+    margin-top: 30px;
+    margin-bottom: 22px;
+
+    width: 60%;
+  }
+
+  .hallmark-of-aging__modal__cards-list__item__buttons-container {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    column-gap: 20px;
+    row-gap: 15px;
+
+    margin-bottom: 30px;
+  }
+
+  .hallmark-of-aging__modal__cards-list__item__text_after_links_block {
+    font-size: 16px;
+    line-height: 1.3;
+
+    margin-top: 36px;
+    margin-bottom: 36px;
+  }
+
+  .hallmark-of-aging__modal__cards-list__item__footer {
+    margin-bottom: 40px;
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+
+    gap: 105px;
+  }
+
+  .hallmark-of-aging__modal__cards-list__item__footer-next {
+    text-align: end;
+    width: 50%;
+  }
+
+
+  .flickity-prev-next-button {
+    display: none;
+  }
+
+  .hallmark-of-aging__modal__cards-list__item__nav-buttons {
+    z-index: 1;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 15px;
+  }
+
+  .hallmark-of-aging__modal__cards-list__item__button-prev,
+  .hallmark-of-aging__modal__cards-list__item__button-next {
+    width: 30px;
+    height: 30px;
+    border: 1px solid {{ settings.regular_color}};
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFF;
+
+    cursor: pointer;
+  }
+
+  .hallmark-of-aging__modal__cards-list__item__arrow-prev,
+  .hallmark-of-aging__modal__cards-list__item__arrow-next {
+    width: 6px;
+    height: 6px;
+    border-top: 1px solid {{ settings.regular_color}};
+    border-right: 1px solid {{ settings.regular_color}};
+  }
+
+  .hallmark-of-aging__modal__cards-list__item__arrow-prev {
+    transform: rotate(-135deg);
+  }
+
+  .hallmark-of-aging__modal__cards-list__item__arrow-next {
+    transform: rotate(45deg);
+  }
+
+  @media only screen and (max-width: 1000px) {
+
+    .hallmark-of-aging__modal__content {
+      width: 100%;
+      padding: 25px 10px;
+    }
+
+
+    .hallmark-of-aging__modal__header {
+      font-size: 20px;
+    }
+
+    .hallmark-of-aging__modal__close {
+      width: 20px;
+      height: 20px;
+      top: 28px;
+    }
+
+    .hallmark-of-aging__modal__cards-list__item {
+      padding: 0 10px;
+
+      height: 100%;
+    }
+
+    .hallmark-of-aging__modal__cards-list__item__image {
+      margin-top: 9px;
+      margin-bottom: 16px;
+      max-height: unset;
+      height: 30%;
+    }
+
+    .hallmark-of-aging__modal__cards-list__item__description {
+      font-size: 12px;
+      margin-bottom: 9px;
+      margint-top: unset;
+    }
+
+    .hallmark-of-aging__modal__cards-list__item__text_under_image {
+      font-size: 12px;
+    }
+
+    .hallmark-of-aging__modal__cards-list__item__title_links_block {
+      font-size: 12px;
+      margin-top: 12px;
+      margin-bottom: 9px;
+    }
+
+    .hallmark-of-aging__modal__cards-list__item__buttons-container {
+      row-gap: 5px;
+
+      margin-bottom: 12px;
+    }
+
+    .hallmark-of-aging__modal__cards-list__item__text_after_links_block {
+      font-size: 12px;
+      margin-top: 16px;
+    }
+
+    .hallmark-of-aging__modal__cards-list__item__footer {
+      gap: 85px;
+      font-size: 10px;
+      margin-bottom: unset;
+    }
+
+    .hallmark-of-aging__modal__cards-list__item__footer-prev {
+      width: 50%;
+    }
+
+    .hallmark-of-aging__modal__cards-list__item__footer br {
+      display: block;
+    }
+
+    .hallmark-of-aging__modal__cards-list__item__nav-buttons {
+      bottom: 20px;
+      gap: 12px;
+    }
+
+    .hallmark-of-aging__modal__cards-list__item__button-prev,
+    .hallmark-of-aging__modal__cards-list__item__button-next {
+      width: 22px;
+      height: 22px;
+    }
+
+  }
+
+  @media only screen and (max-width: 500px) {
+    .hallmark-of-aging__modal__close {
+      width: 13px;
+      height: 13px;
+      top: 20px;
+    }
+
+    .hallmark-of-aging__modal__cards-list__item__buttons-container {
+      row-gap: unset;
+    }
+  }
+{% endstyle %}
+
+<div class="hallmark-of-aging__modal-backdrop"></div>
+<div class="hallmark-of-aging__modal__content">
+  <div class="hallmark-of-aging__modal__close">
+    <svg viewBox="0 0 30 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="29.3536" y1="0.353553" x2="1.35355" y2="28.3536" stroke="black"/>
+      <line y1="-0.5" x2="39.598" y2="-0.5" transform="matrix(0.707107 0.707107 0.707107 -0.707107 1 0)" stroke="black"/>
+    </svg>
+  </div>
+  <div class="hallmark-of-aging__modal__cards-list carousel-{{ section.id }}">
+    {% for block in cards %}
+      <div
+        class="
+          hallmark-of-aging__modal__cards-list__item
+          block-{{ block.id }}
+          carousel-cell
+        "
+        data-carousel-cell-id="{{ block.id }}"
+      >
+        <div class="hallmark-of-aging__modal__header">
+          <div class="hallmark-of-aging__modal__title">
+            {{ block.settings.title }}
+          </div>
+        </div>
+        {% if block.settings.description != blank %}
+          <div class="hallmark-of-aging__modal__cards-list__item__description">{{ block.settings.description }}</div>
+        {% endif %}
+
+        {% if block.settings.image != null %}
+          {% render 'image-element',
+            image: block.settings.image,
+            alt: block.settings.image.alt,
+            additional_wrapper_classes: 'hallmark-of-aging__modal__cards-list__item__image'
+          %}
+        {% endif %}
+
+        {% if block.settings.text_under_image != blank %}
+          <div class="hallmark-of-aging__modal__cards-list__item__text_under_image">
+            {{ block.settings.text_under_image }}
+          </div>
+        {% endif %}
+
+        {% if block.settings.title_links_block != blank %}
+          <div class="hallmark-of-aging__modal__cards-list__item__title_links_block">
+            {{ block.settings.title_links_block }}
+          </div>
+        {% endif %}
+
+        <div class="hallmark-of-aging__modal__cards-list__item__buttons-container">
+          {% style -%}
+            .block-{{ block.id }}.hallmark-of-aging__modal__cards-list__button a.button--link-style.button {
+              font-size: 16px !important;
+            }
+
+              .block-{{ block.id }}.hallmark-of-aging__modal__cards-list__button a.button--link-style.button,
+              .block-{{ block.id }}.hallmark-of-aging__modal__cards-list__button a.button--link-style.button:visited {
+                  color: {{ block.settings.link_custom_text_color }};
+                  border-bottom: 1px dashed;
+                  border-bottom-color: {{ block.settings.link_custom_border_color }};
+                  text-align: start;
+              }
+
+              .block-{{ block.id }}.hallmark-of-aging__modal__cards-list__button a.button--link-style.button:hover {
+                  color: {{ block.settings.link_custom_text_color--highlight }};
+                  border-bottom-color: {{ block.settings.link_custom_border_color--highlight }};
+              }
+
+            @media only screen and (max-width: 1000px) {
+                .block-{{ block.id }}.hallmark-of-aging__modal__cards-list__button a.button--link-style.button {
+                     font-size: 10px !important;
+                }
+            }
+          {% endstyle -%}
+           {% if block.settings.button_label_1 != blank %}
+             <div class="hallmark-of-aging__modal__cards-list__button block-{{ block.id }}">
+               {% assign cardId =  %}
+              <a 
+                href="{{ block.settings.connected_page_link }}?{{ ingredient }}={{ block.settings.button_label_1 | remove:" " | remove: ")" | remove: "("  | remove: "'" | remove: "’" | remove: ","}}#{{ block.settings.button_label_1 | remove:" " | remove: ")" | remove: "("  | remove: "'" | remove: "’" }}" 
+                class="button {{ block.settings.button_style }}"
+                target="_blank" rel="noopener noreferrer"
+              >
+                {{ block.settings.button_label_1 }}
+              </a>
+            </div>
+          {% endif %}
+
+          {% if block.settings.button_label_2 != blank %}
+             <div class="hallmark-of-aging__modal__cards-list__button block-{{ block.id }}">
+              <a 
+                href="{{ block.settings.connected_page_link }}?{{ ingredient }}={{ block.settings.button_label_2 | remove:" " | remove: ")" | remove: "("  | remove: "'" | remove: "’" | remove: ","}}#{{ block.settings.button_label_2 | remove:" " | remove: ")" | remove: "("  | remove: "'" | remove: "’" }}" 
+                class="button {{ block.settings.button_style }}"
+                target="_blank" rel="noopener noreferrer"
+              >
+                {{ block.settings.button_label_2 }}
+              </a>
+            </div>
+          {% endif %}
+
+           {% if block.settings.button_label_3 != blank %}
+             <div class="hallmark-of-aging__modal__cards-list__button block-{{ block.id }}">
+              <a 
+                href="{{ block.settings.connected_page_link }}?{{ ingredient }}={{ block.settings.button_label_3 | remove:" " | remove: ")" | remove: "("  | remove: "'" | remove: "’" | remove: ","}}#{{ block.settings.button_label_3 | remove:" " | remove: ")" | remove: "("  | remove: "'" | remove: "’"}}" 
+                class="button {{ block.settings.button_style }}"
+                target="_blank" rel="noopener noreferrer"
+              >
+                {{ block.settings.button_label_3 }}
+              </a>
+            </div>
+          {% endif %}
+
+          {% if block.settings.button_label_4 != blank %}
+             <div class="hallmark-of-aging__modal__cards-list__button block-{{ block.id }}">
+              <a 
+                href="{{ block.settings.connected_page_link }}?{{ ingredient }}={{ block.settings.button_label_4 | remove:" " | remove: ")" | remove: "("  | remove: "'" | remove: "’" | remove: ","}}#{{ block.settings.button_label_4 | remove:" " | remove: ")" | remove: "("  | remove: "'" | remove: "’" }}" 
+                class="button {{ block.settings.button_style }}"
+                target="_blank" rel="noopener noreferrer"
+              >
+                {{ block.settings.button_label_4 }}
+              </a>
+            </div>
+          {% endif %}
+
+          {% if block.settings.button_label_5 != blank %}
+             <div class="hallmark-of-aging__modal__cards-list__button block-{{ block.id }}">
+              <a 
+                href="{{ block.settings.connected_page_link }}?{{ ingredient }}={{ block.settings.button_label_5 | remove:" " | remove: ")" | remove: "("  | remove: "'" | remove: "’" | remove: ","}}#{{ block.settings.button_label_5 | remove:" " | remove: ")" | remove: "("  | remove: "'" | remove: "’" }}" 
+                class="button {{ block.settings.button_style }}"
+                target="_blank" rel="noopener noreferrer"
+                >
+                {{ block.settings.button_label_5 }}
+              </a>
+            </div>
+          {% endif %}
+
+          {% if block.settings.button_label_6 != blank %}
+             <div class="hallmark-of-aging__modal__cards-list__button block-{{ block.id }}">
+              <a 
+                href="{{ block.settings.connected_page_link }}?{{ ingredient }}={{ block.settings.button_label_6 | remove:" " | remove: ")" | remove: "("  | remove: "'" | remove: "’" | remove: ","}}#{{ block.settings.button_label_6 | remove:" " | remove: ")" | remove: "("  | remove: "'" | remove: "’" }}" 
+                class="button {{ block.settings.button_style }}"
+                target="_blank" rel="noopener noreferrer"
+              >
+                {{ block.settings.button_label_6 }}
+              </a>
+            </div>
+          {% endif %}
+
+          {% if block.settings.button_label_7 != blank %}
+             <div class="hallmark-of-aging__modal__cards-list__button block-{{ block.id }}">
+              <a 
+                href="{{ block.settings.connected_page_link }}?{{ ingredient }}={{ block.settings.button_label_7 | remove:" " | remove: ")" | remove: "("  | remove: "'" | remove: "’" | remove: ","}}#{{ block.settings.button_label_7 | remove:" " | remove: ")" | remove: "("  | remove: "'" | remove: "’" }}" 
+                class="button {{ block.settings.button_style }}"
+                target="_blank" rel="noopener noreferrer"
+              >
+                {{ block.settings.button_label_7 }}
+              </a>
+            </div>
+          {% endif %}
+
+            {% if block.settings.button_label_8 != blank %}
+             <div class="hallmark-of-aging__modal__cards-list__button block-{{ block.id }}">
+              <a 
+                href="{{ block.settings.connected_page_link }}?{{ ingredient }}={{ block.settings.button_label_8 | remove:" " | remove: ")" | remove: "("  | remove: "'" | remove: "’" | remove: ","}}#{{ block.settings.button_label_8 | remove:" " | remove: ")" | remove: "("  | remove: "'" | remove: "’" }}" 
+                class="button {{ block.settings.button_style }}"
+                target="_blank" rel="noopener noreferrer"
+              >
+                {{ block.settings.button_label_8 }}
+              </a>
+            </div>
+            {% endif %}
+
+              {% if block.settings.button_label_9 != blank %}
+             <div class="hallmark-of-aging__modal__cards-list__button block-{{ block.id }}">
+              <a 
+                href="{{ block.settings.connected_page_link }}?{{ ingredient }}={{ block.settings.button_label_9 | remove:" " | remove: ")" | remove: "("  | remove: "'" | remove: "’" | remove: ","}}#{{ block.settings.button_label_9 | remove:" " | remove: ")" | remove: "("  | remove: "'" | remove: "’" }}" 
+                class="button {{ block.settings.button_style }}"
+                target="_blank" rel="noopener noreferrer"
+              >
+                {{ block.settings.button_label_9 }}
+              </a>
+            </div>
+          {% endif %}
+
+          {% if block.settings.button_label_10 != blank %}
+             <div class="hallmark-of-aging__modal__cards-list__button block-{{ block.id }}">
+              <a 
+                href="{{ block.settings.connected_page_link }}?{{ ingredient }}={{ block.settings.button_label_10 | remove:" " | remove: ")" | remove: "("  | remove: "'" | remove: "’" | remove: ","}}#{{ block.settings.button_label_10 | remove:" " | remove: ")" | remove: "("  | remove: "'" | remove: "’" }}" 
+                class="button {{ block.settings.button_style }}"
+                target="_blank" rel="noopener noreferrer"
+              >
+                {{ block.settings.button_label_10 }}
+              </a>
+            </div>
+          {% endif %}
+        </div>
+
+
+        {% if block.settings.text_after_links_block != blank %}
+          <div class="hallmark-of-aging__modal__cards-list__item__text_after_links_block">
+            {{ block.settings.text_after_links_block }}
+          </div>
+        {% endif %}
+
+        {% assign previousIndex = forloop.index | minus: 2 %}
+        {% if forloop.index == cards.size %}
+          {% assign nextIndex = 0 %}
+        {% else %}
+          {% assign nextIndex = forloop.index %}
+        {% endif %}
+
+        <div class="hallmark-of-aging__modal__cards-list__item__footer">
+          <div class="hallmark-of-aging__modal__cards-list__item__footer-prev">{{ cards[previousIndex].settings.title }}</div>
+          <div class="hallmark-of-aging__modal__cards-list__item__footer-next">
+            {{ cards[nextIndex].settings.title }}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="hallmark-of-aging__modal__cards-list__item__nav-buttons">
+    <div class="hallmark-of-aging__modal__cards-list__item__button-prev hallmark-of-aging__modal__cards-list__item__button-prev-{{ section.id }}">
+      <div class="hallmark-of-aging__modal__cards-list__item__arrow-prev"></div>
+    </div>
+    <div class="hallmark-of-aging__modal__cards-list__item__button-next hallmark-of-aging__modal__cards-list__item__button-next-{{ section.id }}">
+      <div class="hallmark-of-aging__modal__cards-list__item__arrow-next"></div>
+    </div>
+  </div>
+</div>

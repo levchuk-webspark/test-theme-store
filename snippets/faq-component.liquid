@@ -1,0 +1,198 @@
+{% style %}
+
+
+  .accordion-item-{{ id }}{
+    padding: 20px;
+    border: 1px solid #3F4444;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .faq-component__icon-and-title {
+    display:flex;
+    font-size:25px;
+    padding: 0px;
+    border-bottom: 0px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  
+  .faq-component__icon-and-title:hover{
+    cursor:pointer;
+  }
+
+  .multiple_accordion_title-FAQ__circle-{{ id }} {
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    min-height: 28px;
+    background-color: #E56A54;
+    position: relative;
+     {% if template.name == 'product' and product.metafields.custom.action_color.value %}
+        background-color: {{ product.metafields.custom.action_color.value }};
+    {% endif %}
+  }
+
+  .multiple_accordion_title-FAQ__circle-{{ id }}::after {
+    content: " ";
+    position: absolute;
+    display: block;
+    height: 14px;
+    top: 7px;
+    left: 13px;
+    z-index: 1;
+    border-left: 2px solid #fff;
+  }
+  
+  .multiple_accordion_title-FAQ__circle-{{ id }}::before {
+    content: " ";
+    position: absolute;
+    display: block;
+    width: 14px;
+    top: 13px;
+    left: 7px;
+    z-index: 1;
+    border-bottom: 2px solid #fff;
+  }
+
+  .multiple_accordion_title-FAQ__circle-{{ id }}.open::after {
+    display: none;
+  }
+
+  .multiple_accordion_content-{{ id }} {
+    display:none;
+    line-height: 1.2;
+    padding-top: 10px;
+  }
+
+  .multiple_accordion_content-{{ id }}.open {
+    display: block;
+  }
+
+
+  .accordion-item-{{ id }} .faq-component__full_content-{{ id }}-{{ number }} {
+    display: none;
+  }
+
+  .accordion-item-{{ id }} .faq-component__read-more-{{ id }}-{{ number }} {
+    font-style: italic;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .accordion-item-{{ id }} .faq-component__read-less-{{ id }}-{{ number }} {
+    font-style: italic;
+    margin-top: 10px;
+    display: none;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .accordion-item-{{ id }} .faq-component__read-more-{{ id }}-{{ number }}:hover {
+    cursor: pointer;
+    color: {{ text_color }};
+  }
+
+  .accordion-item-{{ id }} .faq-component__read-less-{{ id }}-{{ number }}:hover {
+    cursor: pointer;
+    color: {{ text_color }} ;
+  }
+  
+  .faq-component__read-button {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .faq-component__read-more-icons,
+  .faq-component__read-less-icons {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .faq-component__read-more-icons .icon,
+  .faq-component__read-less-icons .icon {
+    width: 13px;
+    height: 13px;
+  }
+
+  .faq-component__read-more-icons .icon {
+    transform: rotate(180deg);
+  }
+
+  
+{% endstyle %}
+
+<div class="accordion-item-{{ id }}">    
+    <div class="faq-component__icon-and-title">
+      <span>{{ title }}</span>
+      <!-- {% if number == "1" %}open{% endif %} -->
+      <div class="multiple_accordion_title-FAQ__circle-{{ id }} "></div> 
+    </div>
+<!-- {% if number == "1" %}open{% endif %} -->
+    <div class="multiple_accordion_content-{{ id }} ">
+        <div class="faq-component__description content">
+
+          {% assign content_array = content  | split: '<!-- split -->' %}
+          {% assign truncated_content = content_array | first %}
+          
+           {% if content_array.size > 1 %}
+
+                 <div class="faq-component__truncated_content-{{ id }}-{{ number }} ">
+                   {{ truncated_content }}
+                  </div>
+    
+                  <div class="faq-component__full_content-{{ id }}-{{ number }}">
+                    {{ content }}
+                  </div>
+    
+    
+                  <div
+                    class="faq-component__read-more-{{ id }}-{{ number }} romie-regular-italic-text"
+                    href="#"
+                    onclick="toggleShowMoreInFAQComponent('{{ id }}-{{ number }}')">
+                    <div class="faq-component__read-button">
+                      Read more
+                      <span class="faq-component__read-more-icons">
+                        {% render 'icon', name: 'read-more-left-arrow' %}
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <div
+                    class="faq-component__read-less-{{ id }}-{{ number }} romie-regular-italic-text"
+                    href="#"
+                    onclick="toggleShowMoreInFAQComponent('{{ id }}-{{ number }}')">
+                    <div class="faq-component__read-button">
+                      Read less
+                      <span class="faq-component__read-less-icons">
+                        {% render 'icon', name: 'read-more-left-arrow' %}
+                      </span>
+                    </div>
+                  </div>
+    
+          {% else %}
+              <div class="faq-component__full_content">
+                    {{ content }}
+             </div>
+          {% endif %}
+
+
+          </div>
+    </div>
+</div>
+
+<script>
+  
+  function toggleShowMoreInFAQComponent(elNumber){
+      $(`.faq-component__truncated_content-${elNumber}`).toggle()
+      $(`.faq-component__full_content-${elNumber}`).toggle()
+      $(`.faq-component__read-more-${elNumber}`).toggle()
+      $(`.faq-component__read-less-${elNumber}`).toggle()                              
+  }
+  
+</script>

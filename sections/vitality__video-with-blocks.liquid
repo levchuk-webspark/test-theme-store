@@ -1,0 +1,578 @@
+{% style %}
+    #shopify-section-{{ section.id }} {
+      {% if section.settings.background_color  != blank %}
+          background-color: {{ section.settings.background_color }};
+      {% endif %}
+      display: flex;
+      justify-content: center;
+      min-height: {{ section.settings.section_height }}px;
+      color: {{ section.settings.text_color }};
+    }
+
+    .vitality__video-with-blocks {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .vitality__video-with-blocks__video__background {
+      position:absolute;
+      top:0;
+      left:0;
+      min-width:100%;
+      min-height:100%;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      z-index:-1;
+  }
+
+  .vitality__video-with-blocks__video__background__mobile {
+    display: none;
+  }
+
+    .vitality__video-with-blocks__content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+
+    #shopify-section-{{ section.id }} .vitality__video-with-blocks__content {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+
+    .vitality__video-with-blocks__image {
+      width: 323px;
+      height: 126px;
+      min-width: 323px;
+      min-height: 126px;
+    }
+
+  .vitality__video-with-blocks__blocks {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .vitality__video-with-blocks__blocks__left {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: fit-content;
+  }
+
+    #shopify-section-{{ section.id }} .vitality__video-with-blocks__blocks__block-1 {
+      border: 1px solid {{ section.settings.text_color }};
+    }
+
+    .vitality__video-with-blocks__blocks__block-1 {
+      padding: 30px;
+      display: flex;
+      gap: 35px;
+      justify-content: space-between;
+      font-size: 40px;
+    }
+
+    #shopify-section-{{ section.id }} .vitality__video-with-blocks__blocks__block-1,
+    #shopify-section-{{ section.id }} .vitality__video-with-blocks__blocks__block-2,
+    #shopify-section-{{ section.id }} .vitality__video-with-blocks__blocks__block-3,
+    #shopify-section-{{ section.id }} .vitality__video-with-blocks__blocks__block-4 {
+      border-radius: 5px;
+      border: 1px solid {{ section.settings.text_color }};
+      color: {{ section.settings.text_color }};
+    }
+
+   
+    .vitality__video-with-blocks__blocks__block-5 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .vitality__video-with-blocks__blocks__block-5 {
+      font-size: 14px;
+    }
+
+    .vitality__video-with-blocks__blocks__block-3,
+    .vitality__video-with-blocks__blocks__block-4 {
+      padding: 10px;
+    }
+
+    .vitality__video-with-blocks__blocks__block-2 {
+      width: 80%;
+      padding-top: 17px;
+      padding-bottom: 17px;
+    }
+
+    .vitality__video-with-blocks__blocks__3-and-4 {
+      display: flex;
+      gap: 10px;
+    }
+
+    .vitality__video-with-blocks__blocks__block-3 {
+      width: 40%;
+      height: 84px;
+    }
+
+    .vitality__video-with-blocks__blocks__block-4 {
+      width: 60%;
+      height: 84px;
+    }
+
+  .vitality__video-with-blocks__blocks__block-5 {
+    padding: 20px 16px;
+    border-radius: 5px;
+    /* width: 60%; */
+    width: 57.5%;
+    line-height: 1.1;
+  }
+
+  #shopify-section-{{ section.id }} .vitality__video-with-blocks__blocks__block-5 {
+    background-color: {{ section.settings.block_color_5}};
+    color: {{ section.settings.text_color }};
+  }
+
+  .vitality__video-with-blocks__blocks__block-1__arrow .icon {
+    width: 100px;
+    height: 100px;
+    min-width: 100px;
+    min-height: 100px;
+  }
+
+    .vitality__video-with-blocks__blocks__block-1__arrow {
+     height: 100px;
+   }
+
+  .vitality__video-with-blocks__blocks__block-2__title {
+    text-decoration: underline;
+  }
+
+  .vitality__video-with-blocks__blocks__block-3__title {
+    text-decoration: underline dashed;
+  }
+
+  #shopify-section-{{ section.id }} .vitality__video-with-blocks__blocks__block-2__title__arrow {
+    width: 4px;
+    height: 4px;
+    border-top: 1px solid {{ section.settings.text_color }};
+    border-right: 1px solid {{ section.settings.text_color }};
+    margin-left: 3px;
+    transform: rotate(45deg);
+  }
+
+  #shopify-section-{{ section.id }} .vitality__video-with-blocks__blocks__block-1__title > h1, #shopify-section-{{ section.id }} .vitality__video-with-blocks__blocks__block-1__title {
+    color: {{ section.settings.text_color }};
+    font-size: 42px;
+    line-height: 1.1;
+  }
+
+  .vitality__video-with-blocks__blocks__block-5__title > h1 {
+    font-family: Ambit, Merriweather Sans, sans-serif !important;
+    font-weight: unset;
+    color: unset;
+    line-height: unset;
+    font-size: 14px;
+  }
+
+  @media only screen and (max-width: 1440px) {
+    a.vitality__video-with-blocks__blocks__block-1 {
+      width: fit-content;
+    }
+  }
+  
+
+  
+
+   @media only screen and (max-width: 1024px) {
+    .vitality__video-with-blocks__blocks__left {
+        width: 100%;
+    }
+     .vitality__video-with-blocks__blocks__block-5 {
+       width: 47.2%;
+     }
+   }
+
+    @media only screen and (max-width: 900px) {
+
+    #shopify-section-{{ section.id }} {
+      min-height: {{ section.settings.section_height_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .vitality__video-with-blocks__content {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+      .vitality__video-with-blocks__content {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .vitality__video-with-blocks__image > svg {
+        width: 210px;
+        height: 82px;
+        min-width: 210px;
+        min-height: 82px;
+      }
+
+      .vitality__video-with-blocks__blocks {
+        grid-template-columns: 1fr;
+      }
+
+      .vitality__video-with-blocks__video__background__mobile {
+        display: block;
+      }
+
+      .vitality__video-with-blocks__video__background__desktop {
+        display: none;
+      }
+
+      .vitality__video-with-blocks__blocks__block-1__arrow .icon {
+        width: 62px;
+        height: 62px;
+        min-width: 62px;
+        min-height: 62px;
+      }
+
+      .vitality__video-with-blocks__blocks__left {
+        width: 60%;
+      }
+
+      .vitality__video-with-blocks__blocks__block-5 {
+        /* width: 60%; */
+        width: 51%;
+      }
+
+    a.vitality__video-with-blocks__blocks__block-1 {
+      padding: 10px;
+      gap: 22px;
+      font-size: 25px;      
+    }
+
+      .vitality__video-with-blocks__blocks__block-1__arrow {
+        height: 62px;
+      }
+
+    #shopify-section-{{ section.id }} .vitality__video-with-blocks__blocks__block-1__title > h1, #shopify-section-{{ section.id }} .vitality__video-with-blocks__blocks__block-1__title {
+      font-size: 25px;
+    }
+
+    .vitality__video-with-blocks__blocks__block-2 {
+      padding: 10px;
+      width: 70%;
+      font-size: 15px;
+    }
+
+      
+    }
+
+  @media only screen and (max-width: 798px) {
+    .vitality__video-with-blocks__blocks__block-5 {
+      width: 60%;
+    }
+  }
+
+  @media only screen and (max-width: 430px) {
+    .vitality__video-with-blocks__blocks__left {
+        /* width: 65%; */
+      width: 100%;
+    }
+
+    .vitality__video-with-blocks__blocks__block-5 {
+      /* width: 90%; */
+      width: 65%; 
+    }
+  }
+
+  @media only screen and (max-width: 375px) {
+    .vitality__video-with-blocks__blocks__left {
+      width: 80%;
+    }
+    
+    a.vitality__video-with-blocks__blocks__block-1 {
+        width: 92%;
+    }
+
+    .vitality__video-with-blocks__blocks__block-5 {
+      width: 92%;
+    }
+  }
+ @media only screen and (min-width: 1441px) {
+    a.vitality__video-with-blocks__blocks__block-1 {
+      width: fit-content;
+    }
+  }
+
+  {%
+    render 'css-loop',
+    css: section.settings.custom_css,
+    id: section.id,
+  %}
+{% endstyle %}
+
+<section
+  class="
+    section
+    {{ section.settings.css_class }}
+    is-width-wide
+    container
+    vitality__video-with-blocks
+  "
+>
+
+    {% if section.settings.video_link != blank and section.settings.video_link_mobile != blank %}
+        <video class="vitality__video-with-blocks__video__background vitality__video-with-blocks__video__background__desktop" loop autoplay muted playsinline>
+            <source src="{{ section.settings.video_link }}" type="video/mp4">      
+        </video>
+        <video class="vitality__video-with-blocks__video__background vitality__video-with-blocks__video__background__mobile" loop autoplay muted playsinline>
+            <source src="{{ section.settings.video_link_mobile }}" type="video/mp4">      
+        </video>
+    {% elsif section.settings.video_link != blank  %}
+        <video class="vitality__video-with-blocks__video__background vitality__video-with-blocks__video__background__desktop" loop autoplay muted playsinline>
+            <source src="{{ section.settings.video_link }}" type="video/mp4">      
+        </video>
+    {% endif %}
+
+
+  <div class="section vitality__video-with-blocks__content">
+    <div class="vitality__video-with-blocks__image">
+      <svg width="419" height="160" viewBox="0 0 419 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <mask id="mask0_2569_40" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="419" height="160">
+          <path d="M419 0H0V159.512H419V0Z" fill="white"/>
+        </mask>
+        <g mask="url(#mask0_2569_40)">
+          <path d="M163.961 47.789V98.8344L199.506 62.7908V159.513H244.149V0.0400391H203.405L163.961 47.789Z" fill="#F7F5F1"/>            
+          <path d="M80.5822 114.308L46.9276 0.0380859H0L50.3737 159.511H108.743L159.117 0.0380859H112.169L80.5822 114.308Z" fill="#F7F5F1"/>
+          <path d="M388.949 0L347.358 0.0394783H337.65L262.266 94.3136H262.208V94.3926L262.129 94.4914H262.208V134.562H350.331V94.3136H315.85L388.949 0Z" fill="#F7F5F1"/>
+          <path d="M419.001 94.3136H403.504V0L361.145 54.9538V134.562V159.512H403.504V134.562H419.001V94.3136Z" fill="#F7F5F1"/>
+          <path d="M408.266 5.07297C408.266 2.17131 410.491 0 413.464 0C416.439 0 418.605 2.19104 418.605 5.11244C418.605 8.03384 416.419 10.2249 413.464 10.2249C410.511 10.2249 408.266 8.0141 408.266 5.0927V5.07297ZM417.128 5.11244C417.128 2.94113 415.611 1.42122 413.464 1.42122C411.319 1.42122 409.743 2.94113 409.743 5.11244C409.743 7.28375 411.279 8.80366 413.464 8.80366C415.65 8.80366 417.128 7.28375 417.128 5.11244ZM411.319 7.50088V2.40817H413.642C414.962 2.40817 415.749 3.03983 415.749 4.00704C415.749 4.93479 415.237 5.36905 414.646 5.52696L414.844 5.7441C415.139 6.07966 415.336 6.15861 415.789 6.17835V7.48114C414.844 7.48114 414.154 7.32322 413.425 6.25731L413.189 5.902H412.736V7.48114H411.319V7.50088ZM412.736 4.77687H413.583C414.075 4.77687 414.351 4.55974 414.351 4.14522C414.351 3.78992 414.075 3.55304 413.583 3.55304H412.736V4.77687Z" fill="#F7F5F1"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="vitality__video-with-blocks__blocks">
+      <div class="vitality__video-with-blocks__blocks__left">
+        {% if section.settings.block_title_1 != blank %}
+          <a class="vitality__video-with-blocks__blocks__block-1" 
+            {% if section.settings.block_link_1 != blank %}
+              href="{{ section.settings.block_link_1 }}"
+            {% endif %}
+            >
+            <div class="vitality__video-with-blocks__blocks__block-1__arrow">
+              {% render 'icon', name: 'read-more-right-arrow' %}
+            </div>
+              <div class="vitality__video-with-blocks__blocks__block-1__title">
+                {% if section.settings.has_h1_block_title_1 == true %}
+                  <h1>{{ section.settings.block_title_1 }}</h1>
+                {% else %}
+                  {{ section.settings.block_title_1 }}
+                {% endif %}
+              </div>
+          </a>
+        {% endif %}
+        <div class="vitality__video-with-blocks__blocks__right">
+        {% if section.settings.block_title_2 != blank %}
+          <a class="vitality__video-with-blocks__blocks__block-5"
+            {% if section.settings.block_link_2 != blank %}
+              href="{{ section.settings.block_link_2 }}"
+            {% endif %}
+          >
+            <div class="vitality__video-with-blocks__blocks__block-5__title">
+              {% if section.settings.has_h1_block_title_2 == true %}
+                  <h1>{{ section.settings.block_title_2 }}</h1>
+                {% else %}
+                  {{ section.settings.block_title_2 }}
+                {% endif %}
+            </div>
+          </a>
+        {% endif %}
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var vitalityMenu = document.getElementById('vitality-menu');
+
+    if (vitalityMenu) {
+      const paddingTop = Number('{{ section.settings.padding_top }}');
+     const paddingTopMobile = Number('{{ section.settings.padding_top_mobile }}');
+    
+    const vitalityMenuHeight = vitalityMenu.clientHeight;
+    const newPadding = paddingTop + vitalityMenuHeight;
+    const newPaddingMobile = paddingTopMobile + vitalityMenuHeight;
+    
+    let currentSection = document.getElementsByClassName('vitality__video-with-blocks__content');
+    const isMobileMedia = window.matchMedia("(max-width: 900px)");
+
+    if (currentSection && newPadding && newPaddingMobile) {
+      currentSection.forEach((section) => {
+        section.style.paddingTop = (isMobileMedia.matches ? newPaddingMobile : newPadding) + 'px';
+      })
+    }
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Video with blocks",
+  "settings": [
+    {
+      "type": "url",
+      "id": "video_link",
+      "label": "Video link"
+    },
+    {
+      "type": "html",
+      "id": "block_title_1",
+      "label": "Block title 1"
+    },
+    {
+       "type": "checkbox",
+      "id": "has_h1_block_title_1",
+      "label": "Does Block title 1 have H1 tag",
+      "default": false
+    },
+    {
+      "type": "url",
+      "id": "block_link_1",
+      "label": "Block link 1"
+    },
+    {
+      "type": "html",
+      "id": "block_title_2",
+      "label": "Block title 2"
+    },
+    {
+       "type": "checkbox",
+      "id": "has_h1_block_title_2",
+      "label": "Does Block title 2 have H1 tag",
+      "default": false
+    },
+    {
+      "type": "url",
+      "id": "block_link_2",
+      "label": "Block link 2"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "section_height",
+      "label": "Section height",
+      "min": 0,
+      "max": 1000,
+      "default": 780,
+      "step": 10,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 500,
+      "default": 80,
+      "step": 10,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 500,
+      "default": 80,
+      "step": 10,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section background color",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "block_color_5",
+      "label": "Block color 5",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "header",
+      "content": "Mobile layout"
+    },
+    {
+      "type": "url",
+      "id": "video_link_mobile",
+      "label": "Video link mobile"
+    },
+    {
+      "type": "range",
+      "id": "section_height_mobile",
+      "label": "Section height mobile",
+      "min": 0,
+      "max": 1000,
+      "default": 540,
+      "step": 10,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile top spacing",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile bottom spacing",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Advanced",
+      "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+    },
+    {
+      "type": "text",
+      "id": "css_class",
+      "label": "CSS Class"
+    },
+    {
+      "type": "textarea",
+      "id": "custom_css",
+      "label": "Custom CSS"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vitality: video with blocks"
+    }
+  ]
+}
+{% endschema %}

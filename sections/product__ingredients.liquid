@@ -1,0 +1,603 @@
+{% assign half_size_ingredients = metaobject.product_ingredient.value | divided_by: 2 %}
+
+{% assign first_half_ingredients = metaobject.product_ingredient.value | slice: 0, half_size_ingredients %}
+{% assign second_half_ingredients = metaobject.product_ingredient.value | slice: half_size_ingredients, metaobject.product_ingredient.value.size %}
+
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    {% if template.name == 'product' and product.metafields.custom.product_ingredients.value.background_color %}
+        background-color: {{ product.metafields.custom.product_ingredients.value.background_color }};
+    {% else %}
+        background-color: {{ section.settings.background_color }};
+    {% endif %}
+  }
+   #shopify-section-{{ section.id }} .product_ingredients {
+     padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+   #shopify-section-{{ section.id }} .product_ingredients__title {
+    font-size: {{ section.settings.title-font-size }}px;
+    line-height: 1.1;
+     {% if template.name == 'product' and product.metafields.custom.product_ingredients.value.description != blank %}
+       margin-bottom: 40px;
+     {% endif %}
+    
+     {% if template.name == 'product' and product.metafields.custom.product_ingredients.value.text_color %}
+        color: {{ product.metafields.custom.product_ingredients.value.text_color }};
+    {% else %}
+        color: {{ section.settings.text_color }};
+    {% endif %}
+  }
+
+  #shopify-section-{{ section.id }} .product_ingredients__description {
+    font-size: {{ section.settings.description-font-size }}px;
+    line-height: 1.4;
+     {% if template.name == 'product' and product.metafields.custom.product_ingredients.value.text_color %}
+        color: {{ product.metafields.custom.product_ingredients.value.text_color }};
+    {% else %}
+        color: {{ section.settings.text_color }};
+    {% endif %}
+  }
+
+  .product_ingredients__container {
+    display: flex;
+    gap: 45px;
+
+    flex-direction: column;
+  }
+
+  .product_ingredients__info-container {
+      /* width: 40%; */
+    /* width: 60%; */
+    width: 100%;
+    }
+
+  .width-60 {
+    width: 60%;
+  }
+
+  .product_ingredients__ingredients-container {
+    /* width: 60%; */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 1fr);
+    /* grid-template-rows: repeat(2, 1fr); */
+    row-gap: 30px;
+    column-gap: 38px;
+  }
+
+  #shopify-section-{{ section.id }} .product_ingredients__card__title {
+    {% if template.name == 'product' and product.metafields.custom.product_ingredients.value.text_color %}
+        color: {{ product.metafields.custom.product_ingredients.value.text_color }};
+    {% else %}
+        color: {{ section.settings.text_color }};
+    {% endif %}
+    font-size: {{ section.settings.card-title-font-size }}px;
+    line-height: 1.1;
+    margin-top: 15px;
+  }
+
+  .product_ingredients__card {
+    border-radius: 10px;
+    height: 244px;
+  }
+
+  .product_ingredients__nav-buttons {
+      display: none;
+    }
+
+    .product_ingredients .flickity-button {
+      display: none;
+    }
+
+  .product_ingredients__card {
+    cursor: pointer;
+  }
+
+  @media only screen and (max-width: 768px) {
+    #shopify-section-{{ section.id }} .product_ingredients {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+     #shopify-section-{{ section.id }}.product_ingredients__title {
+      font-size: {{ section.settings.title-font-size_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .product_ingredients__description {
+      font-size: {{ section.settings.description-font-size_mobile }}px;
+    }
+
+    .product_ingredients__container {
+      flex-direction: column;
+      gap: unset;
+    }
+
+    .product_ingredients__info-container {
+      width: 100%;
+    }
+
+     #shopify-section-{{ section.id }} .product_ingredients__card__title {
+      font-size: {{ section.settings.card-title-font-size_mobile }}px;
+       margin-top: 13px;
+    }
+
+    .product_ingredients__card {
+      height: 206px;
+    }
+
+    .product_ingredients__ingredients-container {
+      display: flex;
+      align-items: stretch;
+      justify-content: space-between;
+      position: relative;
+      
+      width: unset;
+      row-gap: unset;
+      column-gap: unset;
+
+      margin-top: 45px;
+    }
+
+    .product_ingredients__card__wrapper {
+      padding-right: 26px;
+      width: 215px;
+    }
+    
+       .product_ingredients__nav-buttons__prev,
+      .product_ingredients__nav-buttons__next {
+        width: 30px;
+        height: 30px;
+        {% if template.name == 'product' and product.metafields.custom.product_ingredients.value.text_color %}
+          border: 1px solid{{ product.metafields.custom.product_ingredients.value.text_color }};
+        {% else %}
+          border: 1px solid {{ settings.text_color }};
+        {% endif %}
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+  
+        cursor: pointer;
+  }
+
+      .product_ingredients__nav-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 15px;
+      }
+
+        .product_ingredients__nav-buttons__arrow-prev,
+  .product_ingredients__nav-buttons__arrow-next {
+    width: 6px;
+    height: 6px;
+    {% if template.name == 'product' and product.metafields.custom.product_ingredients.value.text_color %}
+          border-top: 1px solid{{ product.metafields.custom.product_ingredients.value.text_color }};
+        {% else %}
+          border-top: 1px solid {{ settings.text_color }};
+        {% endif %}
+    {% if template.name == 'product' and product.metafields.custom.product_ingredients.value.text_color %}
+          border-right: 1px solid{{ product.metafields.custom.product_ingredients.value.text_color }};
+        {% else %}
+          border-right: 1px solid {{ settings.text_color }};
+        {% endif %}
+  }
+
+    .product_ingredients__nav-buttons__arrow-prev {
+      transform: rotate(-135deg);
+    }
+
+    .product_ingredients__nav-buttons__arrow-next {
+      transform: rotate(45deg);
+    }
+
+    .product_ingredients__carousel-cell.is-hidden-desktop-only {
+        row-gap: 26px;
+        display: grid;
+        /* height: 100%; */
+      /* height: inherit; */
+        align-content: space-between;
+    }
+
+    .product_ingredients__carousel-cell.is-hidden-desktop-only.is-selected {
+      /* height: 100%; */
+    }
+  }
+   @media only screen and (min-width: 799px) {
+     .product_ingredients__card__wrapper {
+      transition: flex 0.3s ease, transform 0.3s ease;
+      overflow: hidden;
+      flex-shrink: 1; 
+    }
+
+  .product_ingredients__card__wrapper:hover {
+    transform: scale(1.05);
+  }
+  
+  .product_ingredients__ingredients-container:hover .product_ingredients__card__wrapper {
+    transform: scale(0.95);
+   }
+
+  .product_ingredients__ingredients-container .product_ingredients__card__wrapper:hover {
+     transform: scale(1.05); 
+  } 
+}
+{%
+    render 'css-loop',
+    css: section.settings.custom_css,
+    id: section.id,
+  %}
+{% endstyle %}
+{% if product.metafields.custom.product_ingredients %}
+  {% assign metaobject = product.metafields.custom.product_ingredients.value %}  
+  <section
+      class="
+        section
+        {{ section.settings.css_class }}
+        product_ingredients
+      "
+    >
+    {% render 'product__ingredients__slider',
+      ingredients: metaobject,
+    %}
+    
+    <div class="product_ingredients__container">
+      <div class="product_ingredients__info-container">
+      {% if metaobject.title != blank %}
+        <h2 class="product_ingredients__title">{{ metaobject.title }}</h2>
+      {% endif %}
+      {% if metaobject.description != blank %}
+        <div class="product_ingredients__description">{{ metaobject.description }}</div>
+      {% endif %}
+      </div>
+      <ul class="product_ingredients__ingredients-container carousel-{{ section.id }}">
+        {% for ingredient in metaobject.product_ingredient.value %}
+          {% if ingredient.image != nil %}
+            <li class="product_ingredients__card__wrapper product_ingredients__carousel-cell is-hidden-mobile-only">
+              {% style _%}
+              .block-{{ forloop.index }}.product_ingredients__card {
+                background: url("{{ ingredient.image  | img_url: 'master' }}");
+                background-size:cover;
+                background-position:center;
+                background-repeat:norepeat;
+              }
+              {% endstyle _%}
+              <div class="block-{{ forloop.index }} product_ingredients__card" data-selected-card-index={{ forloop.index }}></div>
+              {% if ingredient.title != blank %}
+                <div class="product_ingredients__card__title">{{ ingredient.title }}</div>
+              {% endif %}
+            </li>
+          {% endif %}
+        {% endfor %}
+
+        {% for ingredient_mobile in metaobject.product_ingredient.value %}
+          <div class="product_ingredients__carousel-cell is-hidden-desktop-only mobile-cell">
+            {% if forloop.index < 7 %}
+              <li class="product_ingredients__card__wrapper first-row ">
+                {% style _%}
+                  .block-{{ forloop.index }}.product_ingredients__card {
+                    background: url("{{ ingredient_mobile.image  | img_url: 'master' }}");
+                    background-size:cover;
+                    background-position:center;
+                    background-repeat:norepeat;
+                  }
+                {% endstyle _%}
+                <div class="block-{{ forloop.index }} product_ingredients__card" data-selected-card-index={{ forloop.index }}></div>
+                {% if ingredient_mobile.title != blank %}
+                  <div class="product_ingredients__card__title">{{ ingredient_mobile.title }}</div>
+                {% endif %}
+              </li>
+            {% endif %}
+          {% assign second_row_ingredient_index = forloop.index | plus: 6 %}           
+              {% for ingredient_mobile_second_row in metaobject.product_ingredient.value %}                
+                {% if forloop.index == second_row_ingredient_index %}
+                    <li class="product_ingredients__card__wrapper  ">
+                      {% style _%}
+                        .block-{{ second_row_ingredient_index }}.product_ingredients__card {
+                          background: url("{{ ingredient_mobile_second_row.image  | img_url: 'master' }}");
+                          background-size:cover;
+                          background-position:center;
+                          background-repeat:norepeat;
+                        }
+                      {% endstyle _%}
+                      <div class="block-{{ second_row_ingredient_index }} product_ingredients__card" data-selected-card-index={{ second_row_ingredient_index }}></div>
+                      {% if ingredient_mobile_second_row.title != blank %}
+                        <div class="product_ingredients__card__title">{{ ingredient_mobile_second_row.title }}</div>
+                      {% endif %}
+                    </li>
+                  {% endif %}
+                {% endfor %}          
+          </div>
+            
+        {% endfor %}
+      </ul>
+      <div class="product_ingredients__nav-buttons">
+    <div class="product_ingredients__nav-buttons__prev product_ingredients__nav-buttons__prev-{{ section.id }}">
+      <div class="product_ingredients__nav-buttons__arrow-prev"></div>
+    </div>
+    <div class="product_ingredients__nav-buttons__next product_ingredients__nav-buttons__next-{{ section.id }}">
+      <div class="product_ingredients__nav-buttons__arrow-next"></div>
+    </div>
+    </div>
+    </div>
+    
+  </section>
+{% endif %}
+<script>
+     document.addEventListener('DOMContentLoaded', function() {
+       const isMobileMedia = window.matchMedia("(max-width: 768px)");
+        document.querySelectorAll(".product_ingredients__ingredients-container").forEach(ingredient => {
+          if (isMobileMedia.matches) {
+            ingredient.classList.remove('width-60');
+          }
+        })
+
+        if (isMobileMedia.matches) {
+         const firstRowCells = document.getElementsByClassName("first-row");
+         let heightCells = [];
+         firstRowCells.forEach((firstRow, index) => {
+             heightCells.push(firstRow.offsetHeight)
+         })
+         let maxHeight = heightCells.reduce((a, b) => Math.max(a, b), -Infinity);
+         firstRowCells.forEach((firstRow, index) => {
+             firstRow.style.height = maxHeight+'px';
+         })
+       }
+     })
+</script>
+<script>
+  window.addEventListener('load', function() {
+    const isMobileMedia = window.matchMedia("(max-width: 768px)");
+     if (isMobileMedia.matches) {
+       const productIngredientsCarousel = document.querySelector('.carousel-{{ section.id }}');
+
+        if (productIngredientsCarousel) {
+            const productIngredientsFlickity = new Flickity( productIngredientsCarousel, {
+                cellAlign: 'left',
+                contain: true,
+                groupCells: true,
+                wrapAround: true,
+                pageDots: false,
+              autoHeight: true
+            });
+
+
+            const productIngredientsPrevButton = document.querySelector('.product_ingredients__nav-buttons__prev-{{ section.id }}');
+            const productIngredientsNextButton = document.querySelector('.product_ingredients__nav-buttons__next-{{ section.id }}');
+
+            if (productIngredientsPrevButton) {
+              productIngredientsPrevButton.addEventListener( 'click', function() {
+                productIngredientsFlickity.previous();
+              });
+            }
+
+            if (productIngredientsNextButton) {
+              productIngredientsNextButton.addEventListener( 'click', function() {
+                productIngredientsFlickity.next();
+              });
+            }
+        }
+     }
+  });
+</script>
+<script>
+    window.addEventListener('DOMContentLoaded', function() {
+
+    const productIngredientsSliderCardslist = document.querySelectorAll(".product_ingredients__card");
+    const productIngredientsSliderModalBackdrop = document.querySelector('.product__ingredients__slider__modal-backdrop');
+    const productIngredientsSliderModalContent = document.querySelector(".product__ingredients__slider__modal__content");
+    const productIngredientsSliderModalClose = document.querySelector(".product__ingredients__slider__modal__close");
+
+    const productIngredientsRemoveSelectedClassFromCards = () => {
+      for (const card of productIngredientsSliderCardslist) {
+            card.classList.remove("is-selected-card");
+        };
+    };
+
+    for (const card of productIngredientsSliderCardslist) { 
+      card.addEventListener("click", () => {
+          productIngredientsRemoveSelectedClassFromCards();
+          card.classList.add("is-selected-card"); 
+      
+          if(productIngredientsSliderModalContent && productIngredientsSliderModalBackdrop) {
+
+              productIngredientsSliderModalContent.classList.add("product__ingredients__slider__modal__content__is-open");
+              productIngredientsSliderModalBackdrop.classList.add("product__ingredients__slider__modal-backdrop-is-open");
+
+              const productIngredientsSliderCarousel = document.querySelector(".carousel-{{ section.id }}-product__ingredients__slider");
+            
+              const productIngredientsSliderCarouselFlickity = new Flickity( productIngredientsSliderCarousel, {
+                    cellAlign: 'left',
+                    contain: true,
+                    groupCells: true,
+                    wrapAround: true,
+                    pageDots: true,
+                    initialIndex: card.dataset.selectedCardIndex - 1
+                });
+    
+              productIngredientsSliderCarouselFlickity.resize();
+
+              const productIngredientsSliderCarouselPrevButton = document.querySelector('.product__ingredients__slider__modal__cards-list__item__button-prev-{{ section.id }}');
+              const productIngredientsSliderCarouselNextButton = document.querySelector('.product__ingredients__slider__modal__cards-list__item__button-next-{{ section.id }}');
+
+              if (productIngredientsSliderCarouselPrevButton) {
+                productIngredientsSliderCarouselPrevButton.addEventListener( 'click', function() {
+                  productIngredientsSliderCarouselFlickity.previous();
+                });
+              }
+          
+              if (productIngredientsSliderCarouselNextButton) {
+                productIngredientsSliderCarouselNextButton.addEventListener( 'click', function() {
+                  productIngredientsSliderCarouselFlickity.next( );
+                });
+              }
+    
+
+        
+              productIngredientsSliderModalBackdrop.onclick = function(event) {
+                  productIngredientsSliderModalContent.classList.remove("product__ingredients__slider__modal__content__is-open");
+                  productIngredientsSliderModalBackdrop.classList.remove("product__ingredients__slider__modal-backdrop-is-open");
+                  productIngredientsRemoveSelectedClassFromCards();
+                  productIngredientsSliderCarouselFlickity.destroy();
+              }
+
+              productIngredientsSliderModalClose.onclick = function() {
+                  productIngredientsSliderModalContent.classList.remove("product__ingredients__slider__modal__content__is-open");
+                  productIngredientsSliderModalBackdrop.classList.remove("product__ingredients__slider__modal-backdrop-is-open");
+                  productIngredientsRemoveSelectedClassFromCards();
+                  productIngredientsSliderCarouselFlickity.destroy();
+              }
+
+ 
+              productIngredientsSliderModalContent.onclick = function(e) {
+                  e.stopPropagation();
+              }
+          
+          }
+
+
+    });
+
+  };
+
+  });
+  
+</script>
+{% schema %}
+  {
+    "name": "Product ingredients",
+    "settings": [
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Top spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Bottom spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+      "type": "range",
+      "id": "title-font-size",
+      "label": "Title font size",
+      "min": 0,
+      "max": 100,
+      "default": 34,
+      "unit": "px"
+    },
+      {
+      "type": "range",
+      "id": "description-font-size",
+      "label": "Description font size",
+      "min": 0,
+      "max": 100,
+      "default": 20,
+      "unit": "px"
+    },
+      {
+      "type": "range",
+      "id": "card-title-font-size",
+      "label": "Card title font size",
+      "min": 0,
+      "max": 100,
+      "default": 16,
+      "unit": "px"
+    },
+      {
+      "type": "header",
+      "content": "Colors"
+    },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Section background color",
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Section text color",
+      },
+      {
+        "type": "header",
+        "content": "Mobile layout"
+      },
+       {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Mobile top spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Mobile bottom spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+      "type": "range",
+      "id": "title-font-size_mobile",
+      "label": "Title font size",
+      "min": 0,
+      "max": 100,
+      "default": 34,
+      "unit": "px"
+    },
+      {
+      "type": "range",
+      "id": "card-title-font-size_mobile",
+      "label": "Card title font size",
+      "min": 0,
+      "max": 100,
+      "default": 16,
+      "unit": "px"
+    },
+      {
+      "type": "range",
+      "id": "description-font-size_mobile",
+      "label": "Description font size",
+      "min": 0,
+      "max": 100,
+      "default": 20,
+      "unit": "px"
+    },
+       {
+        "type": "header",
+        "content": "Advanced",
+        "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+      },
+      {
+        "type": "text",
+        "id": "css_class",
+        "label": "CSS Class"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_css",
+        "label": "Custom CSS"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Product ingredients"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,344 @@
+{% style %}
+  #shopify-section-{{ section.id }} .column-with-items {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      background-color: {{ section.settings.background_color }};
+    }
+  
+  .column-with-items__column-list {
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+      gap: 20px;
+    }
+  .column-with-items__column {
+    border-radius: 10px;
+    padding: 38px 32px;
+  }
+  #shopify-section-{{ section.id }} .column-with-items__column__title {
+    font-size: {{section.settings.title_font_size}}px;
+    font-weight: 900;
+    margin-bottom: 30px;
+    line-height: 1.4;
+  }
+  #shopify-section-{{ section.id }} .column-with-items__column__item {
+    font-size: {{section.settings.item_font_size}}px;
+  }
+  #shopify-section-{{ section.id }} .column-with-items__column__icon {
+    width: {{section.settings.icon_size}}px;
+    height: {{section.settings.icon_size}}px;
+    min-width: {{section.settings.icon_size}}px;
+    min-height: {{section.settings.icon_size}}px;
+    margin-right: 18px;
+    margin-left: 0;
+  }
+   #shopify-section-{{ section.id }} .column-with-items__column__icon > img {
+    width: {{section.settings.icon_size}}px;
+    height: {{section.settings.icon_size}}px;
+   }
+  .column-with-items__column__item-block {
+    display: flex;
+    margin-bottom: {{section.settings.item_font_size}}px;
+  }
+   @media only screen and (max-width: 798px) {
+      #shopify-section-{{ section.id }} .vitality-title-with-2-columns {
+        padding-top: {{ section.settings.padding_top_mobile }}px;
+        padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      }
+     #shopify-section-{{ section.id }} .column-with-items__column__title {
+      font-size: {{section.settings.title_font_size_mobile}}px;
+      font-weight: 900;
+    }
+     #shopify-section-{{ section.id }} .column-with-items__column__item {
+      font-size: {{section.settings.item_font_size_mobile}}px;
+    }
+     .column-with-items__column {
+      padding: 38px 19px;
+    }
+   }
+    {%
+    render 'css-loop',
+    css: section.settings.custom_css,
+    id: section.id,
+    %}
+{% endstyle %}
+<section
+  class="
+    section
+    {{ section.settings.css_class }}
+    column-with-items
+  "
+>
+  {% if section.blocks.size > 0 %}
+    {% style %}
+      .column-with-items__column-list {
+        display: grid;
+        grid-template-columns: repeat({{section.blocks.size}}, 1fr);
+      }
+      @media only screen and (max-width: 798px) {
+        .column-with-items__column-list {
+         gap: 16px;
+         display: flex;
+         flex-direction: column;
+       }
+      }
+    {% endstyle %}
+    <div class="column-with-items__column-list">
+      {% for block in section.blocks %}
+        {% if block.type == 'column' %}
+          <div class="column-with-items__column block-{{ block.id }}">
+            {% style %}
+              .column-with-items__column.block-{{ block.id }} {
+                background-color: {{block.settings.background_color}};
+                color: {{block.settings.text_color}}
+              }
+            {% endstyle %}
+            {% if block.settings.title != blank %}
+              <h3 class="column-with-items__column__title">{{ block.settings.title }}</h3>
+            {% endif %}
+            {% if block.settings.item_1 != blank %}
+              <div class="column-with-items__column__item-block">
+                {% if block.settings.icon != blank %}
+                  {% 
+                    render 'image-element',
+                    image: block.settings.icon,
+                    alt: block.settings.icon.alt,
+                    stretch_width: true,
+                    additional_wrapper_classes: "column-with-items__column__icon"
+                  %}
+                {% endif %}
+                <div class="column-with-items__column__item">{{ block.settings.item_1 }}</div>                
+              </div>
+            {% endif %}
+            {% if block.settings.item_2 != blank %}
+              <div class="column-with-items__column__item-block">
+                {% if block.settings.icon != blank %}
+                  {% 
+                    render 'image-element',
+                    image: block.settings.icon,
+                    alt: block.settings.icon.alt,
+                    stretch_width: true,
+                    additional_wrapper_classes: "column-with-items__column__icon"
+                  %}
+                {% endif %}
+                <div class="column-with-items__column__item">{{ block.settings.item_2 }}</div>                
+              </div>
+            {% endif %}
+            {% if block.settings.item_3 != blank %}
+              <div class="column-with-items__column__item-block">
+                {% if block.settings.icon != blank %}
+                  {% 
+                    render 'image-element',
+                    image: block.settings.icon,
+                    alt: block.settings.icon.alt,
+                    stretch_width: true,
+                    additional_wrapper_classes: "column-with-items__column__icon"
+                  %}
+                {% endif %}
+                <div class="column-with-items__column__item">{{ block.settings.item_3 }}</div>                
+              </div>
+            {% endif %}
+            {% if block.settings.item_4 != blank %}
+              <div class="column-with-items__column__item-block">
+                {% if block.settings.icon != blank %}
+                  {% 
+                    render 'image-element',
+                    image: block.settings.icon,
+                    alt: block.settings.icon.alt,
+                    stretch_width: true,
+                    additional_wrapper_classes: "column-with-items__column__icon"
+                  %}
+                {% endif %}
+                <div class="column-with-items__column__item">{{ block.settings.item_4 }}</div>                
+              </div>
+            {% endif %}
+            {% if block.settings.item_5 != blank %}
+              <div class="column-with-items__column__item-block">
+                {% if block.settings.icon != blank %}
+                  {% 
+                    render 'image-element',
+                    image: block.settings.icon,
+                    alt: block.settings.icon.alt,
+                    stretch_width: true,
+                    additional_wrapper_classes: "column-with-items__column__icon"
+                  %}
+                {% endif %}
+                <div class="column-with-items__column__item">{{ block.settings.item_5 }}</div>                
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+</section>
+{% schema %}
+  {
+    "name": "Column with items",
+    "settings": [
+      {
+      "type": "range",
+      "id": "title_font_size",
+      "label": "Title font size",
+      "min": 0,
+      "max": 80,
+      "default": 0,
+      "unit": "px"
+    },
+       {
+      "type": "range",
+      "id": "item_font_size",
+      "label": "Item font size",
+      "min": 0,
+      "max": 80,
+      "default": 0,
+      "unit": "px"
+    },
+      {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Icon size",
+      "min": 0,
+      "max": 100,
+      "default": 0,
+      "unit": "px"
+    },
+      {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 80,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "default": 0,
+      "min": 0,
+      "max": 80,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section background color",
+      },
+    {
+      "type": "header",
+      "content": "Mobile layout"
+    },
+      {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "label": "Title font size mobile",
+      "min": 0,
+      "max": 80,
+      "default": 0,
+      "unit": "px"
+    },
+       {
+      "type": "range",
+      "id": "item_font_size_mobile",
+      "label": "Item font size",
+      "min": 0,
+      "max": 80,
+      "default": 0,
+      "unit": "px"
+    },
+      {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile top spacing",
+      "min": 0,
+      "max": 80,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile bottom spacing",
+      "min": 0,
+      "max": 80,
+      "default": 0,
+      "unit": "px"
+    },
+      {
+      "type": "header",
+      "content": "Advanced",
+      "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+    },
+    {
+      "type": "text",
+      "id": "css_class",
+      "label": "CSS Class"
+    },
+    {
+      "type": "textarea",
+      "id": "custom_css",
+      "label": "Custom CSS"
+    }
+    ],
+    "blocks": [
+    {
+      "type": "column",
+      "name": "Column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+         {
+        "type": "image_picker",
+        "id": "icon",
+        "label": "Item icon"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background color",
+      },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color",
+      },
+        {
+          "type": "html",
+          "id": "item_1",
+          "label": "Item 1"
+        },
+         {
+          "type": "html",
+          "id": "item_2",
+          "label": "Item 2"
+        },
+         {
+          "type": "html",
+          "id": "item_3",
+          "label": "Item 3"
+        },
+         {
+          "type": "html",
+          "id": "item_4",
+          "label": "Item 4"
+        },
+         {
+          "type": "html",
+          "id": "item_5",
+          "label": "Item 5"
+        },
+      ]
+    }
+  ],
+    "presets": [
+      {
+        "name": "Column with items",
+      }
+    ]
+  }
+{% endschema %}

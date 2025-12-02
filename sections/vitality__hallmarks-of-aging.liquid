@@ -1,0 +1,1055 @@
+{% assign cards = section.blocks | where: 'type', 'card' %}
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    {% if section.settings.image != blank %}
+        background:
+         linear-gradient(rgba(0, 0, 0, 0.2), transparent),
+         url("{{section.settings.image | img_url: 'master'}}");
+        background-size:cover;
+        background-position:center;
+        background-repeat:norepeat;
+    {% else %}
+        background-color: {{ section.settings.background_color }};
+    {% endif %}
+  }
+
+  .hallmark-of-aging__title {
+    width: 61%;
+    line-height: 1.1;
+    font-weight: normal;
+    margin-bottom: 40px;
+    font-family: Ambit, Merriweather Sans, sans-serif !important;
+  }
+
+  #shopify-section-{{ section.id }} .hallmark-of-aging__title {
+    font-size: {{ section.settings.title-font-size }}px;
+    color: {{ section.settings.title_color }};
+  }
+
+  .hallmark-of-aging__description {
+    width: 48%;
+    margin-bottom: 30px;
+  }
+
+  #shopify-section-{{ section.id }} .hallmark-of-aging__description {
+    font-size: {{ section.settings.description-font-size }}px;
+    color: {{ section.settings.description_color }};
+  }
+
+  .hallmark-of-aging__buttons-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .hallmark-of-aging__cards-container-wrapper {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+
+    height: auto;
+  }
+
+  .hallmark-of-aging__cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 60px;
+
+    width: 33.3%;
+
+        height: auto;
+
+  }
+
+  .hallmark-of-aging__cards-container-mobile {
+    display: none;
+  }
+
+   .hallmark-of-aging__cards-container > .hallmark-of-aging__card {
+     padding: {{ section.settings.card-padding }}px;
+  }
+
+  #shopify-section-{{ section.id }} .hallmark-of-aging__card__title {
+    font-size: {{ section.settings.card-title-font-size }}px;
+  }
+
+  #shopify-section-{{ section.id }}  .hallmark-of-aging__card__title-mobile {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .hallmark-of-aging__card__description {
+    font-size: {{ section.settings.card-description-font-size }}px;
+    margin-top: 20px;
+  }
+
+  #shopify-section-{{ section.id }}  .hallmark-of-aging__card__title {
+    color: {{ section.settings.card_title_color }};
+    font-size: {{ section.settings.card-title-font-size }}px;
+    line-height: 1.1;
+  }
+
+  #shopify-section-{{ section.id }} .hallmark-of-aging__card__description {
+    color: {{ section.settings.card_description_color }};
+    font-size: {{ section.settings.card-description-font-size }}px;
+    line-height: 1.1;
+  }
+
+  #shopify-section-{{ section.id }} .hallmark-of-aging__card__number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: {{ section.settings.card-number-font-size }}px;
+      font-weight: 900;
+      width: {{ section.settings.card-number-block-size }}px;
+      height: {{ section.settings.card-number-block-size }}px;
+      border-radius: 50%;
+
+      color: {{ section.settings.card_number_color }};
+      background-color: {{ section.settings.card_number_background_color }};
+    }
+
+  @media only screen and (max-width: 1000px) {
+     #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .hallmark-of-aging__title {
+      font-size: {{ section.settings.title-font-size-mobile }}px;
+    }
+
+     #shopify-section-{{ section.id }} .hallmark-of-aging__description {
+      font-size: {{ section.settings.description-font-size-mobile }}px;
+    }
+
+    .hallmark-of-aging__title {
+      width: 100%;
+      margin-bottom: 27px;
+    }
+
+    .hallmark-of-aging__description {
+     width: 48%;
+     margin-bottom: 27px;
+    }
+
+      .hallmark-of-aging__cards-container {
+        display: none;
+      }
+
+      .hallmark-of-aging__cards-container-mobile {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 27px;
+        width: 50%;
+      }
+
+      #shopify-section-{{ section.id }} .hallmark-of-aging__card__number {
+        font-size: {{ section.settings.card-number-font-size-mobile }}px;
+        width: {{ section.settings.card-number-block-size-mobile }}px;
+        height: {{ section.settings.card-number-block-size-mobile  }}px;
+      }
+
+     #shopify-section-{{ section.id }}  .hallmark-of-aging__card__title {
+       display: none;
+     }
+
+     #shopify-section-{{ section.id }}  .hallmark-of-aging__card__title-mobile {
+       display: block;
+       color: {{ section.settings.card_title_color }};
+      line-height: 1.1;
+      font-size: {{ section.settings.card-title-font-size-mobile }}px;
+       margin-top: 17px;
+    }
+  
+
+  .hallmark-of-aging__cards-container-mobile > .hallmark-of-aging__card {
+     padding: {{ section.settings.card-padding-mobile }}px;
+  }
+
+   #shopify-section-{{ section.id }} .hallmark-of-aging__card__description {
+    margin-top: 10px;
+  }
+
+  }
+
+  @media only screen and (max-width: 768px) {
+    .hallmark-of-aging__description {
+     width: 100%;
+    }
+  }
+
+  @media only screen and (max-width: 320px) {
+     #shopify-section-{{ section.id }}  .hallmark-of-aging__card__title-mobile {
+        margin-top: 10px;
+       font-size: 17px;
+     }
+  }
+
+  {%
+    render 'css-loop',
+    css: section.settings.custom_css,
+    id: section.id,
+  %}
+{% endstyle %}
+
+<section
+  class="
+    section
+    {{ section.settings.css_class }}
+    hallmark-of-aging
+  "
+>
+  {% if section.settings.title != blank %}
+    <h1 class="hallmark-of-aging__title">{{ section.settings.title }}</h1>
+  {% endif %}
+  {% if section.settings.description != blank %}
+    <div class="hallmark-of-aging__description">{{ section.settings.description }}</div>
+  {% endif %}
+  <div class="hallmark-of-aging__buttons-container">
+    {% for block in section.blocks %}
+      {% if block.type == 'button-block' %}
+        {% if block.settings.button_label != blank %}
+          {% style -%}
+              .block-{{ block.id }}.hallmark-of-aging__button .button--custom {
+                border: 1px solid;
+                overflow-wrap: normal;
+                padding: 19px 42px;
+                font-size: 14px !important;
+              }
+
+              .block-{{ block.id }}.hallmark-of-aging__button .button--custom,
+              .block-{{ block.id }}.hallmark-of-aging__button a.button--primary.button,
+              .block-{{ block.id }}.hallmark-of-aging__button a.button--secondary.button  {
+                border-radius: {{ block.settings.button_custom_border_radius | append: 'px' }};
+              }
+
+              .block-{{ block.id }}.hallmark-of-aging__button a.button--custom.button,
+              .block-{{ block.id }}.hallmark-of-aging__button a.button--custom.button:link,
+              .block-{{ block.id }}.hallmark-of-aging__button a.button--custom.button:visited {
+                background-color: {{ block.settings.button_custom_bg_color }};
+                color: {{ block.settings.button_custom_text_color }};
+                border-color: {{ block.settings.button_custom_border_color }};
+              }
+
+              .block-{{ block.id }}.hallmark-of-aging__button a.button--custom.button:hover,
+              .block-{{ block.id }}.hallmark-of-aging__button a.button--custom.button.is-hovered {
+                color: {{ block.settings.button_custom_text_color--highlight }};
+                border-color: {{ block.settings.button_custom_border_color--highlight }};
+                background-color: {{ block.settings.button_custom_bg_color--highlight }};
+              }
+
+            .block-{{ block.id }}.hallmark-of-aging__button a.button--link-style.button {
+              font-size: 13px !important;
+            }
+
+              .block-{{ block.id }}.hallmark-of-aging__button a.button--link-style.button,
+              .block-{{ block.id }}.hallmark-of-aging__button a.button--link-style.button:visited {
+                  color: {{ block.settings.button_custom_text_color }};
+                  border-bottom: 1px dashed;
+                  border-bottom-color: {{ block.settings.button_custom_border_color }};
+              }
+
+              .block-{{ block.id }}.hallmark-of-aging__button a.button--link-style.button:hover {
+                  color: {{ block.settings.button_custom_text_color--highlight }};
+                  border-bottom-color: {{ block.settings.button_custom_border_color--highlight }};
+              }
+          {% endstyle -%}
+
+          <div class="hallmark-of-aging__button block-{{ block.id }}">
+            <a href="{{ block.settings.button_link }}" class="button {{ block.settings.button_style }}">
+              {{ block.settings.button_label }}
+            </a>
+          </div>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  {% render 'hallmark-of-aging__slider', cards: cards %}
+
+  <div class="hallmark-of-aging__cards-container-wrapper">
+    <div class="hallmark-of-aging__cards-container">
+      {% assign column_first = 1 %}
+
+      {% for block in cards %}
+        {% if block.settings.title != blank %}
+          {% if forloop.index == column_first %}
+            {% assign column_first = column_first | plus: 3 %}
+            {% render 'hallmark-of-aging__card', block: block, index: forloop.index %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <div class="hallmark-of-aging__cards-container">
+      {% assign column_second = 2 %}
+
+      {% for block in cards %}
+        {% if block.settings.title != blank %}
+          {% if forloop.index == column_second %}
+            {% assign column_second = column_second | plus: 3 %}
+            {% render 'hallmark-of-aging__card', block: block, index: forloop.index %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <div class="hallmark-of-aging__cards-container">
+      {% assign column_third = 3 %}
+
+      {% for block in cards %}
+        {% if block.settings.title != blank %}
+          {% if forloop.index == column_third %}
+            {% assign column_third = column_third | plus: 3 %}
+            {% render 'hallmark-of-aging__card', block: block, index: forloop.index %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <div class="hallmark-of-aging__cards-container-mobile">
+      {% assign column_first_mobile = 1 %}
+
+      {% for block in cards %}
+        {% if block.settings.title != blank %}
+          {% if forloop.index == column_first_mobile %}
+            {% assign column_first_mobile = column_first_mobile | plus: 2 %}
+            {% render 'hallmark-of-aging__card', block: block, index: forloop.index %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <div class="hallmark-of-aging__cards-container-mobile">
+      {% assign column_second_mobile = 2 %}
+
+      {% for block in cards %}
+        {% if block.settings.title != blank %}
+          {% if forloop.index == column_second_mobile %}
+            {% assign column_second_mobile = column_second_mobile | plus: 2 %}
+            {% render 'hallmark-of-aging__card', block: block, index: forloop.index %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var vitalityMenu = document.getElementById('vitality-menu');
+    if (vitalityMenu) {
+      const paddingTop = Number('{{ section.settings.padding_top }}');
+     const paddingTopMobile = Number('{{ section.settings.padding_top_mobile }}');
+    
+    const vitalityMenuHeight = vitalityMenu.clientHeight;
+    const newPadding = paddingTop + vitalityMenuHeight;
+    const newPaddingMobile = paddingTopMobile + vitalityMenuHeight;
+    
+    let currentSection = document.getElementById('shopify-section-{{ section.id }}');
+    const isMobileMedia = window.matchMedia("(max-width: 1000px)");
+
+    if (currentSection && newPadding && newPaddingMobile) {
+      currentSection.style.paddingTop = (isMobileMedia.matches ? newPaddingMobile : newPadding) + 'px';
+    }
+    }
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.hallmark-of-aging__card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+    document.querySelectorAll('.hallmark-of-aging__card').forEach(otherCard => {
+        if (otherCard !== card) {
+        otherCard.classList.add('shrink');
+      }
+    });
+    card.classList.add('enlarge');
+  });
+
+  card.addEventListener('mouseleave', () => {
+    document.querySelectorAll('.hallmark-of-aging__card').forEach(otherCard => {
+      otherCard.classList.remove('shrink', 'enlarge');
+    });
+  });
+});
+  })
+  
+    window.addEventListener('load', function() {
+
+    const hallmarkOfAgingCardslist = document.querySelectorAll(".hallmark-of-aging__card");
+    const hallmarkOfAgingModalBackdrop = document.querySelector('.hallmark-of-aging__modal-backdrop');
+    const hallmarkOfAgingModalContent = document.querySelector(".hallmark-of-aging__modal__content");
+    const hallmarkOfAgingModalClose = document.querySelector(".hallmark-of-aging__modal__close");
+
+    const hallmarkOfAgingSearchParams = new URLSearchParams(window.location.search);
+    const hallmark = "hallmark";
+
+    const removeSelectedCardNamePropertyFromUrl = () => {
+      const hallmarkOfAgingCard = hallmarkOfAgingSearchParams.get(hallmark)
+
+      if (hallmarkOfAgingCard) {
+        hallmarkOfAgingSearchParams.delete(hallmark);
+      }
+    };
+
+    const removeSelectedClassFromCards = () => {
+      for (const card of hallmarkOfAgingCardslist) {
+            card.classList.remove("is-selected-card");
+        };
+    };
+
+    for (const card of hallmarkOfAgingCardslist) {
+      card.addEventListener("click", () => {
+          removeSelectedClassFromCards();
+          removeSelectedCardNamePropertyFromUrl();
+          card.classList.add("is-selected-card");
+
+          if(hallmarkOfAgingModalContent && hallmarkOfAgingModalBackdrop) {
+
+              hallmarkOfAgingModalContent.classList.add("hallmark-of-aging__modal__content__is-open");
+              hallmarkOfAgingModalBackdrop.classList.add("hallmark-of-aging__modal-backdrop-is-open");
+
+              const hallmarkOfAgingCarousel = document.querySelector(".carousel-{{ section.id }}");
+
+              const hallmarkOfAgingCarouselFlickity = new Flickity( hallmarkOfAgingCarousel, {
+                    cellAlign: 'left',
+                    contain: true,
+                    groupCells: true,
+                    wrapAround: true,
+                    pageDots: true,
+                    initialIndex: card.dataset.selectedCardIndex - 1
+                });
+
+              hallmarkOfAgingCarouselFlickity.resize();
+
+              const hallmarkOfAgingCarouselPrevButton = document.querySelector('.hallmark-of-aging__modal__cards-list__item__button-prev-{{ section.id }}');
+              const hallmarkOfAgingCarouselNextButton = document.querySelector('.hallmark-of-aging__modal__cards-list__item__button-next-{{ section.id }}');
+
+              if (hallmarkOfAgingCarouselPrevButton) {
+                hallmarkOfAgingCarouselPrevButton.addEventListener( 'click', function() {
+                  hallmarkOfAgingCarouselFlickity.previous();
+                });
+              }
+
+              if (hallmarkOfAgingCarouselNextButton) {
+                hallmarkOfAgingCarouselNextButton.addEventListener( 'click', function() {
+                  hallmarkOfAgingCarouselFlickity.next( );
+                });
+              }
+
+
+
+              hallmarkOfAgingModalBackdrop.onclick = function(event) {
+                  hallmarkOfAgingModalContent.classList.remove("hallmark-of-aging__modal__content__is-open");
+                  hallmarkOfAgingModalBackdrop.classList.remove("hallmark-of-aging__modal-backdrop-is-open");
+                  removeSelectedClassFromCards();
+                  removeSelectedCardNamePropertyFromUrl();
+                  hallmarkOfAgingCarouselFlickity.destroy();
+              }
+
+              hallmarkOfAgingModalClose.onclick = function() {
+                  hallmarkOfAgingModalContent.classList.remove("hallmark-of-aging__modal__content__is-open");
+                  hallmarkOfAgingModalBackdrop.classList.remove("hallmark-of-aging__modal-backdrop-is-open");
+                  removeSelectedClassFromCards();
+                  removeSelectedCardNamePropertyFromUrl();
+                  hallmarkOfAgingCarouselFlickity.destroy();
+              }
+
+
+              hallmarkOfAgingModalContent.onclick = function(e) {
+                  e.stopPropagation();
+              }
+
+          }
+
+
+    });
+
+  };
+      
+      const hallmarkOfAgingCard = hallmarkOfAgingSearchParams.get(hallmark)
+      
+      if (hallmarkOfAgingCard) {
+        const hallmarkOfAgingSelectedCard = document.querySelector(`.${hallmarkOfAgingCard}`);
+
+        if (hallmarkOfAgingSelectedCard) {
+          removeSelectedClassFromCards();
+          
+           if(hallmarkOfAgingModalContent && hallmarkOfAgingModalBackdrop) {
+              hallmarkOfAgingSelectedCard.classList.add("is-selected-card");
+              hallmarkOfAgingModalContent.classList.add("hallmark-of-aging__modal__content__is-open");
+              hallmarkOfAgingModalBackdrop.classList.add("hallmark-of-aging__modal-backdrop-is-open");
+
+              const selectedCardHallmarkOfAgingCarousel = document.querySelector(".carousel-{{ section.id }}");
+
+              const selectedCardHallmarkOfAgingCarouselFlickity = new Flickity( selectedCardHallmarkOfAgingCarousel, {
+                    cellAlign: 'left',
+                    contain: true,
+                    groupCells: true,
+                    wrapAround: true,
+                    pageDots: true,
+                    initialIndex: hallmarkOfAgingSelectedCard.dataset.selectedCardIndex - 1
+                });
+
+              selectedCardHallmarkOfAgingCarouselFlickity.resize();
+
+             const selectedCardHallmarkOfAgingCarouselPrevButton = document.querySelector('.hallmark-of-aging__modal__cards-list__item__button-prev-{{ section.id }}');
+              const selectedCardHallmarkOfAgingCarouselNextButton = document.querySelector('.hallmark-of-aging__modal__cards-list__item__button-next-{{ section.id }}');
+
+              if (selectedCardHallmarkOfAgingCarouselPrevButton) {
+                selectedCardHallmarkOfAgingCarouselPrevButton.addEventListener( 'click', function() {
+                  selectedCardHallmarkOfAgingCarouselFlickity.previous();
+                });
+              }
+
+              if (selectedCardHallmarkOfAgingCarouselNextButton) {
+                selectedCardHallmarkOfAgingCarouselNextButton.addEventListener( 'click', function() {
+                  selectedCardHallmarkOfAgingCarouselFlickity.next( );
+                });
+              }
+
+
+
+              hallmarkOfAgingModalBackdrop.onclick = function(event) {
+                  hallmarkOfAgingModalContent.classList.remove("hallmark-of-aging__modal__content__is-open");
+                  hallmarkOfAgingModalBackdrop.classList.remove("hallmark-of-aging__modal-backdrop-is-open");
+                  removeSelectedClassFromCards();
+                  removeSelectedCardNamePropertyFromUrl();
+                  selectedCardHallmarkOfAgingCarouselFlickity.destroy();
+              }
+
+              hallmarkOfAgingModalClose.onclick = function() {
+                  hallmarkOfAgingModalContent.classList.remove("hallmark-of-aging__modal__content__is-open");
+                  hallmarkOfAgingModalBackdrop.classList.remove("hallmark-of-aging__modal-backdrop-is-open");
+                  removeSelectedClassFromCards();
+                  removeSelectedCardNamePropertyFromUrl();
+                  selectedCardHallmarkOfAgingCarouselFlickity.destroy();
+              }
+
+
+              hallmarkOfAgingModalContent.onclick = function(e) {
+                  e.stopPropagation();
+              }
+           }
+        }
+      }
+
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Hallmarks of ageing",
+  "settings": [
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "html",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 64,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "card-padding",
+      "label": "Card padding",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 30,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "title-font-size",
+      "label": "Title font size",
+      "min": 0,
+      "max": 100,
+      "default": 65,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "description-font-size",
+      "label": "Description font size",
+      "min": 0,
+      "max": 100,
+      "default": 22,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "card-title-font-size",
+      "label": "Card title font size",
+      "min": 0,
+      "max": 100,
+      "default": 30,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "card-description-font-size",
+      "label": "Card description font size",
+      "min": 0,
+      "max": 100,
+      "default": 14,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "card-number-block-size",
+      "label": "Card number block size",
+      "min": 0,
+      "max": 100,
+      "default": 60,
+      "unit": "px"
+    },
+     {
+      "type": "range",
+      "id": "card-number-font-size",
+      "label": "Card number font size",
+      "min": 0,
+      "max": 100,
+      "default": 30,
+      "unit": "px"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background image"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section background color",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Section title color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Section description color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "card_title_color",
+      "label": "Card title color",
+      "default": "#F7F5F1"
+    },
+    {
+      "type": "color",
+      "id": "card_description_color",
+      "label": "Card description color",
+      "default": "#F7F5F1"
+    },
+    {
+      "type": "color",
+      "id": "card_number_color",
+      "label": "Card number color",
+      "default": "#45001F"
+    },
+    {
+      "type": "color",
+      "id": "card_number_background_color",
+      "label": "Card number background color",
+      "default": "#F7F5F1"
+    },
+    {
+      "type": "header",
+      "content": "Mobile layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile top spacing",
+      "min": 0,
+      "max": 80,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile bottom spacing",
+      "min": 0,
+      "max": 80,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "title-font-size-mobile",
+      "label": "Title font size mobile",
+      "min": 0,
+      "max": 100,
+      "default": 45,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "description-font-size-mobile",
+      "label": "Description font size mobile",
+      "min": 0,
+      "max": 100,
+      "default": 15,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "card-title-font-size-mobile",
+      "label": "Card title font size mobile",
+      "min": 0,
+      "max": 100,
+      "default": 18,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "card-number-block-size-mobile",
+      "label": "Card number block size mobile",
+      "min": 0,
+      "max": 100,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "card-number-font-size-mobile",
+      "label": "Card number font size mobile",
+      "min": 0,
+      "max": 100,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "card-padding-mobile",
+      "label": "Card padding mobile",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 12,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Advanced",
+      "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+    },
+    {
+      "type": "text",
+      "id": "css_class",
+      "label": "CSS Class"
+    },
+    {
+      "type": "textarea",
+      "id": "custom_css",
+      "label": "Custom CSS"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "button-block",
+      "name": "Button block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "Button style",
+          "options": [
+            {
+              "value": "button--primary",
+              "label": "Primary"
+            },
+            {
+              "value": "button--secondary",
+              "label": "Secondary"
+            },
+            {
+              "value": "button--link-style",
+              "label": "Link style"
+            },
+            {
+              "value": "button--custom",
+              "label": "Custom"
+            }
+          ],
+          "default": "button--primary"
+        },
+        {
+          "type": "header",
+          "content": "Custom button style"
+        },
+        {
+          "type": "range",
+          "id": "button_custom_border_radius",
+          "label": "Border radius",
+          "min": 0,
+          "max": 50,
+          "default": 8,
+          "unit": "px"
+        },
+        {
+          "type": "color",
+          "id": "button_custom_bg_color",
+          "label": "Background"
+        },
+        {
+          "type": "color",
+          "id": "button_custom_border_color",
+          "label": "Border"
+        },
+        {
+          "type": "color",
+          "id": "button_custom_text_color",
+          "label": "Text"
+        },
+        {
+          "type": "color",
+          "id": "button_custom_bg_color--highlight",
+          "label": "Background hover"
+        },
+        {
+          "type": "color",
+          "id": "button_custom_border_color--highlight",
+          "label": "Border hover"
+        },
+        {
+          "type": "color",
+          "id": "button_custom_text_color--highlight",
+          "label": "Text hover"
+        }
+      ]
+    },
+    {
+    "type": "card",
+    "name": "Card",
+    "settings": [
+      {
+        "type": "html",
+        "id": "number",
+        "label": "Card number"
+      },
+      {
+        "type": "html",
+        "id": "title",
+        "label": "Card title"
+      },
+      {
+        "type": "html",
+        "id": "description",
+        "label": "Card description"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+      "type": "range",
+      "id": "card-height",
+      "label": "Card height",
+      "min": 0,
+      "max": 700,
+      "step": 7,
+      "default": 336,
+      "unit": "px"
+    },
+      {
+        "type": "header",
+        "content": "Modal content"
+      },
+      {
+        "type": "html",
+        "id": "text_under_image",
+        "label": "Text under image"
+      },
+      {
+        "type": "html",
+        "id": "title_links_block",
+        "label": "Title for links block"
+      },
+      {
+        "type": "html",
+        "id": "text_after_links_block",
+        "label": "Text after links block"
+      },
+       {
+          "type": "url",
+          "id": "connected_page_link",
+          "label": "Link to connected page",
+          "info": "The link labels should match the card titles on the connected page"
+        },
+       {
+          "type": "text",
+          "id": "button_label_1",
+          "label": "Link label 1"
+        },
+      {
+          "type": "text",
+          "id": "button_label_2",
+          "label": "Link label 2"
+        },
+      {
+          "type": "text",
+          "id": "button_label_3",
+          "label": "Link label 3"
+        },
+      {
+          "type": "text",
+          "id": "button_label_4",
+          "label": "Link label 4"
+        },
+      {
+          "type": "text",
+          "id": "button_label_5",
+          "label": "Link label 5"
+        },
+      {
+          "type": "text",
+          "id": "button_label_6",
+          "label": "Link label 6"
+        },
+      {
+          "type": "text",
+          "id": "button_label_7",
+          "label": "Link label 7"
+        },
+      {
+          "type": "text",
+          "id": "button_label_8",
+          "label": "Link label 8"
+        },
+        {
+          "type": "text",
+          "id": "button_label_9",
+          "label": "Link label 9"
+        },
+      {
+          "type": "text",
+          "id": "button_label_10",
+          "label": "Link label 10"
+        },
+      {
+        "type": "header",
+        "content": "Colors"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background color",
+      },
+      {
+        "type": "color",
+        "id": "border_color",
+        "label": "Border color",
+      },
+      {
+          "type": "select",
+          "id": "button_style",
+          "label": "Link style",
+          "options": [
+            {
+              "value": "button--link-style",
+              "label": "Link style"
+            },
+          ],
+          "default": "button--link-style"
+        },
+      {
+          "type": "header",
+          "content": "Link style"
+        },
+        {
+          "type": "color",
+          "id": "link_custom_border_color",
+          "label": "Border"
+        },
+        {
+          "type": "color",
+          "id": "link_custom_text_color",
+          "label": "Text"
+        },
+        {
+          "type": "color",
+          "id": "link_custom_border_color--highlight",
+          "label": "Border hover"
+        },
+        {
+          "type": "color",
+          "id": "link_custom_text_color--highlight",
+          "label": "Text hover"
+        },
+      {
+        "type": "header",
+        "content": "Mobile"
+      },
+      {
+      "type": "range",
+      "id": "card-height-mobile",
+      "label": "Card height mobile",
+      "min": 0,
+      "max": 700,
+      "step": 7,
+      "default": 231,
+      "unit": "px"
+    },
+    ]
+  }
+  ],
+   "presets": [
+    {
+      "name": "Vitality: Hallmarks of ageing"
+    }
+  ]
+}
+{% endschema %}

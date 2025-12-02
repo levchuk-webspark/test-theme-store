@@ -1,0 +1,347 @@
+{% assign border_color = settings.border_color %}
+  {% assign accordion_icon_color = section.settings.accordion_icon_color %}
+  {% assign metafield_page_handle = product.metafields.jadepuma.size_chart_page_title | handleize %}
+  {% assign metafield_page = pages[metafield_page_handle] %}
+  {% assign auto_close = true %}
+
+
+  {% assign include_size_chart = product.metafields.jadepuma.include_size_chart | metafield_text %}
+
+  {% style %}
+
+    .multiple_accordion_container-FAQ{
+        padding: 0px 0px;
+        margin:30px auto;
+    }
+
+    .product-FAQ_accordian .multiple_accordion_item {
+      border-bottom:1px solid {{border_color}};
+      padding: 20px 0px
+    }
+
+    
+    .multiple_accordion_heading-FAQ{
+      margin-bottom: 15px;
+      font-size:30px;
+      font-weight:400;
+      color:{{section.settings.heading_color}};
+    }
+    .product-FAQ_accordian .multiple_accordion_title-FAQ{
+      display:flex;
+      font-size:25px;
+      padding: 0px;
+      border-bottom: 0px;
+      color:{{section.settings.tab_heading_color}};
+      max-width: 1200px;
+      width: 95%;
+      margin: 0 auto;
+      align-items: center
+    }
+
+    .product-FAQ_image {
+      height: 40px;
+      width: 40px;
+      object-fit: cover;
+      margin-right: 20px
+    }
+    
+    .product-FAQ_accordian .multiple_accordion_content-FAQ{
+      text-align:left;
+      display:none;
+      max-width: 1200px;
+      width: 95%;
+      margin: 0 auto;
+      padding: 0px;
+      margin-top: 15px;
+      font-size: 18px
+    }
+
+    .accordian_content_heading-FAQ{
+        margin-top:30px;
+    }
+
+    .multiple_accordion_title-FAQ:hover{
+      cursor:pointer;
+      background-color:{{section.settings.tab_hover_color}};
+    }
+    .accordion_expand-FAQ{
+        margin:0px 5px;
+        transform:translateY(2px);
+    }
+
+    .accordion_collapse-FAQ{
+        margin:0px 5px;
+        transform:translateY(2px);
+    }
+    
+
+    .accordion_expand-FAQ .icon svg{
+     height:60%;
+     width:60%;
+    }
+
+    .accordion_collapse-FAQ .icon svg{
+     height:60%;
+     width:60%;
+    }
+
+    .product-FAQ_accordian-inner {
+      max-width: 1200px;
+      width: 95%;
+      margin: 0 auto 
+    }
+
+   .product-FAQ_title-container {
+     display:flex
+   }
+
+    .faq-title {
+      max-width: 1200px;
+      width: 95%;
+      margin: auto
+    }
+
+    @media only screen and (max-width: 600px) {
+    .multiple_accordion_content-FAQ{
+      text-align:left;
+      display:none;
+      padding:20px 10px;
+
+    }
+
+    }
+  {% endstyle %}
+  
+    <div class="multiple_accordion_container-FAQ content product-FAQ_accordian">
+
+
+     {% assign metaobject = product.metafields.jadepuma.product_faq.value %}
+
+          <h2 class='faq-title'>{{ metaobject.title }}</h2>
+
+          {% if metaobject.question_1 and metaobject.answer_1 %}
+              <div class="multiple_accordion_item item-FAQ" style="border-top:1px solid {{border_color}}">
+                  <div class="multiple_accordion_title-FAQ">
+                      {% if product.metafields.product-FAQ.image_1 %}
+                              <img class='product-FAQ_image' src="{{ product.metafields.product-FAQ.image_1 | file_url }}" alt="Image 1" style="width: 40px; height: 40px;">
+                      {% endif %}
+                      {{ metaobject.question_1 }}
+                  </div>
+          
+                  <div class="multiple_accordion_content-FAQ open" style="display: block;">
+                      {{ metaobject.answer_1 }}
+                  </div>
+              </div>
+          {% endif %}
+          
+          {% if metaobject.question_2 and metaobject.answer_2 %}
+              <div class="multiple_accordion_item item-FAQ">
+                  <div class="multiple_accordion_title-FAQ">
+                      {% if product.metafields.product-FAQ.image_2 %}
+                              <img class='product-FAQ_image' src="{{ product.metafields.product-FAQ.image_2 | file_url }}" alt="Image 2" style="width: 40px; height: 40px;">
+                      {% endif %}
+                      {{ metaobject.question_2 }}
+                  </div>
+                  <div class="multiple_accordion_content-FAQ">
+                      {{ metaobject.answer_2 }}
+                  </div>
+              </div>
+          {% endif %}
+
+          {% if metaobject.question_3 and metaobject.answer_3 %}
+              <div class="multiple_accordion_item item-FAQ">
+                  <div class="multiple_accordion_title-FAQ">
+                      {% if product.metafields.product-FAQ.image_2 %}
+                              <img class='product-FAQ_image' src="{{ product.metafields.product-FAQ.image_2 | file_url }}" alt="Image 2" style="width: 40px; height: 40px;">
+                      {% endif %}
+                      {{ metaobject.question_3 }}
+                  </div>
+                  <div class="multiple_accordion_content-FAQ">
+                      {{ metaobject.answer_3 }}
+                  </div>
+              </div>
+          {% endif %}
+
+          {% if metaobject.question_4 and metaobject.answer_4 %}
+              <div class="multiple_accordion_item item-FAQ">
+                  <div class="multiple_accordion_title-FAQ">
+                      {% if product.metafields.product-FAQ.image_2 %}
+                              <img class='product-FAQ_image' src="{{ product.metafields.product-FAQ.image_2 | file_url }}" alt="Image 2" style="width: 40px; height: 40px;">
+                      {% endif %}
+                      {{ metaobject.question_4 }}
+                  </div>
+                  <div class="multiple_accordion_content-FAQ">
+                      {{ metaobject.answer_4 }}
+                  </div>
+              </div>
+          {% endif %}
+
+          {% if metaobject.question_5 and metaobject.answer_5 %}
+              <div class="multiple_accordion_item item-FAQ">
+                  <div class="multiple_accordion_title-FAQ">
+                      {% if product.metafields.product-FAQ.image_2 %}
+                              <img class='product-FAQ_image' src="{{ product.metafields.product-FAQ.image_2 | file_url }}" alt="Image 2" style="width: 40px; height: 40px;">
+                      {% endif %}
+                      {{ metaobject.question_5 }}
+                  </div>
+                  <div class="multiple_accordion_content-FAQ">
+                      {{ metaobject.answer_5 }}
+                  </div>
+              </div>
+          {% endif %}
+
+
+          {% if metaobject.question_6 and metaobject.answer_6 %}
+              <div class="multiple_accordion_item item-FAQ">
+                  <div class="multiple_accordion_title-FAQ">
+                      {% if product.metafields.product-FAQ.image_2 %}
+                              <img class='product-FAQ_image' src="{{ product.metafields.product-FAQ.image_2 | file_url }}" alt="Image 2" style="width: 40px; height: 40px;">
+                      {% endif %}
+                      {{ metaobject.question_6 }}
+                  </div>
+                  <div class="multiple_accordion_content-FAQ">
+                      {{ metaobject.answer_6 }}
+                  </div>
+              </div>
+          {% endif %}
+
+          {% if metaobject.question_7 and metaobject.answer_7%}
+              <div class="multiple_accordion_item item-FAQ">
+                  <div class="multiple_accordion_title-FAQ">
+                      {% if product.metafields.product-FAQ.image_2 %}
+                              <img class='product-FAQ_image' src="{{ product.metafields.product-FAQ.image_2 | file_url }}" alt="Image 2" style="width: 40px; height: 40px;">
+                      {% endif %}
+                      {{ metaobject.question_7 }}
+                  </div>
+                  <div class="multiple_accordion_content-FAQ">
+                      {{ metaobject.answer_7 }}
+                  </div>
+              </div>
+          {% endif %}
+
+            {% if metaobject.question_8 and metaobject.answer_8%}
+              <div class="multiple_accordion_item item-FAQ">
+                  <div class="multiple_accordion_title-FAQ">
+                      {% if product.metafields.product-FAQ.image_2 %}
+                              <img class='product-FAQ_image' src="{{ product.metafields.product-FAQ.image_2 | file_url }}" alt="Image 2" style="width: 40px; height: 40px;">
+                      {% endif %}
+                      {{ metaobject.question_8 }}
+                  </div>
+                  <div class="multiple_accordion_content-FAQ">
+                      {{ metaobject.answer_8 }}
+                  </div>
+              </div>
+          {% endif %}
+
+
+          {% if metaobject.question_9 and metaobject.answer_9 %}
+              <div class="multiple_accordion_item item-FAQ">
+                  <div class="multiple_accordion_title-FAQ">
+                      {% if product.metafields.product-FAQ.image_2 %}
+                              <img class='product-FAQ_image' src="{{ product.metafields.product-FAQ.image_2 | file_url }}" alt="Image 2" style="width: 40px; height: 40px;">
+                      {% endif %}
+                      {{ metaobject.question_9 }}
+                  </div>
+                  <div class="multiple_accordion_content-FAQ">
+                      {{ metaobject.answer_9 }}
+                  </div>
+              </div>
+          {% endif %}
+
+          {% if metaobject.question_10 and metaobject.answer_10%}
+              <div class="multiple_accordion_item item-FAQ">
+                  <div class="multiple_accordion_title-FAQ">
+                      {% if product.metafields.product-FAQ.image_2 %}
+                              <img class='product-FAQ_image' src="{{ product.metafields.product-FAQ.image_2 | file_url }}" alt="Image 2" style="width: 40px; height: 40px;">
+                      {% endif %}
+                      {{ metaobject.question_10 }}
+                  </div>
+                  <div class="multiple_accordion_content-FAQ">
+                      {{ metaobject.answer_10 }}
+                  </div>
+              </div>
+          {% endif %}
+
+        
+
+
+          
+
+      
+    </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <script>
+      $('.item-FAQ').click(function(){
+      //get the clicked item
+      $clickedItem = $('.multiple_accordion_content-FAQ',this);
+      $clickedItemIconExpand = $('.accordion_expand-FAQ',this);
+      $clickedItemIconCollapse = $('.accordion_collapse-FAQ',this);
+      // is the clicked item already open?
+      if(($clickedItem.hasClass('open'))){
+         //remove the class, slide it up and return early
+
+          $clickedItem.removeClass('open').slideUp(300);
+          $clickedItemIconCollapse.toggle();
+          $clickedItemIconExpand.toggle();
+
+          return;
+      }
+
+
+    {% if auto_close  %}
+
+
+
+      $('.multiple_accordion_content-FAQ').removeClass('open').slideUp(300);
+      /*document.querySelectorAll('.multiple_accordion_content-FAQ').forEach((el, index)=>{
+        if (el.classList.contains("open")) {
+          document.querySelectorAll('.accordion_expand-FAQ')[index].style.display = "none";
+          document.querySelectorAll('.accordion_collapse-FAQ')[index].style.display = "inline-block";
+        }
+        else{
+          document.querySelectorAll('.accordion_expand-FAQ')[index].style.display = "inline-block";
+          document.querySelectorAll('.accordion_collapse-FAQ')[index].style.display = "none";
+        }
+      })*/
+
+      
+    {% else %}
+
+
+    {% endif %}
+
+
+      //slide down the clicked item and add the open class
+      $clickedItem.slideDown(300).addClass('open');
+      $clickedItemIconCollapse.toggle();
+      $clickedItemIconExpand.toggle();
+    });
+
+    //limit clickable aread to the accordion title
+    $( '.multiple_accordion_content-FAQ' ).click(function() {
+      event.stopImmediatePropagation()
+    });
+  </script>
+
+
+
+
+{% schema %}
+  {
+    "name": "Product FAQ",
+    "presets": [
+    {
+      "name": "Product FAQ",
+      "category": "Custom"
+    }
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,690 @@
+{% comment %}
+** Icon with text column **
+{% endcomment %}
+{% comment %} Content setttings {% endcomment %}
+{%- assign blocks = section.blocks -%}
+{% comment %} End content settings {% endcomment %}
+
+{% comment %} Is the color set to transparent? {% endcomment %}
+{%- assign text_alpha = section.settings.text_color | color_extract: 'alpha' -%}
+{%- assign icon_alpha = section.settings.icon_color | color_extract: 'alpha' -%}
+{%- assign background_alpha = section.settings.background | color_extract: 'alpha' -%}
+{%- assign gradient_alpha = section.settings.gradient | color_extract: 'alpha' -%}
+
+
+
+{% comment %} Section specific CSS {% endcomment %}
+{% capture section_css -%}
+
+{%- endcapture -%}
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    padding-left: {{ section.settings.padding_left }}px;
+    padding-right: {{ section.settings.padding_right }}px;
+    {% if section.settings.width == 'wide' %}
+      width: 100%;
+    {% elsif section.settings.width == 'half' %}
+      width: 50%;
+    {% endif %}
+  }
+  {% render 'css-loop',
+          css: section_css,
+          id: section.id
+  %}
+  {% render 'css-loop',
+          css: section.settings.custom_css,
+          id: section.id
+  %}
+
+  .icon-with-text-color-block{
+    background-size:cover;
+    border-radius: {{section.settings.border_radius}}px;
+    min-height: {{section.settings.min_block_height}}px;
+  }
+
+
+.icon-with-text-color-block{
+  padding:15px;
+}
+
+.color-block-content{
+  height:100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.color-block-content p{
+  font-size:{{section.settings.font_size}}px;
+  line-height:1.5;
+}
+
+.color-block-content h3{
+  font-size:{{section.settings.heading_font_size}}px;
+  line-height:1.5;
+}
+
+  @media only screen and (max-width: 798px) {
+    .color-blocks-container{
+      gap:10px !important;
+      flex-wrap:nowrap !important;
+      overflow:auto;
+      flext-start:left;
+      width:1400px;
+    }
+
+    .color-blocks-section{
+      overflow:auto;
+    }
+
+}
+
+{% endstyle %}
+
+
+{% if section.settings.heading != blank %}
+<div class="section">
+<h2 style="padding:10px; font-size: 34px; font-weight: normal;">{{section.settings.heading}}</h2>
+</div>
+{% endif %}
+
+<div class="section
+color-blocks-section
+                {{ section.settings.css_class }}
+                is-width-{{ section.settings.width }}
+                {% if section.settings.show_gutter == false %}
+                  has-no-side-gutter
+                  has-background
+                {% else %}
+                  has-gutter-enabled
+                {% endif %}
+                {% if blocks.size > section.settings.icons_per_row %}
+                  has-multirow-blocks
+                {% endif %}
+                {% if section.settings.width == 'wide' %}
+                  equal-columns--outside-trim
+                {% endif %}"
+                {% if section.settings.animation != "none" %}
+                  data-scroll-class="{{ section.settings.animation }}"
+                {% endif %}>
+
+
+  <div class="container is-justify-center color-blocks-container">
+    {% for block in blocks %}
+
+      {% comment %} Content settings {% endcomment %}
+
+        {% if block.settings.metafield_text != blank %}
+          {%- assign text = block.settings.metafield_text -%}        
+        {% else %}  
+          {%- assign text = block.settings.text -%}
+        {% endif %}
+
+
+      {% comment %} End content settings {% endcomment %}
+
+      <div class="icon-with-text-column__column
+                  icon-with-text-color-block
+                  icon-with-text-color-block--{{block.id}}
+                  {% if section.settings.show_gutter %}
+                    has-gutter
+                  {% endif %}
+                  column
+                  {% render 'column-width', value: section.settings.icons_per_row %}
+                  text-align-{{ section.settings.align_text }}
+                  medium-down--one-whole"  
+                  >
+
+                {%- assign background_alpha = section.settings.background | color_extract: 'alpha' -%}
+                {%- assign block_background_alpha = block.settings.background | color_extract: 'alpha' -%}
+
+                {%- assign block_text_alpha = block.settings.text_color | color_extract: 'alpha' -%}
+                {% if block.settings.text_color == blank %}   
+                {%- assign block_text_alpha = 0.0 -%}
+                {% endif %}
+
+                  {% style %}
+
+                  .icon-with-text-color-block--{{block.id}}{
+
+
+                    {% if block.settings.background_image != blank %}
+                      background-image:url('{{ block.settings.background_image | img_url: 'master' }}');
+                    {% elsif block_background_alpha > 0 %}
+                      background-color:{{ block.settings.background }};
+                    {% else %}
+                     background-color:{{ section.settings.background }};
+                    {% endif %};
+                    clip-path: polygon({{block.settings.angle_left}}% 0, {{100 | minus: block.settings.angle_right}}% 0, 100% 100%, 0% 100%);
+                    position:relative;
+                    
+                  }
+
+                  .color-block-content--{{block.id}}{
+
+                    padding:0 {{block.settings.angle_right}}% 0 {{block.settings.angle_left}}%;
+
+                  }
+
+                  {% if block.settings.angle_left > 0 %}
+
+                  .color-block-content--{{block.id}}::before {
+                    content: "";
+                    position: absolute;
+                    top:-5px;
+                    left: calc({{ block.settings.angle_left }}% - 5px);
+                    width: 10px;
+                    height: 10px;
+                    background: radial-gradient(circle at bottom right, transparent {{ section.settings.border_radius }}px, #fff {{ section.settings.border_radius }}px); /* Creates an outward curve */    }
+
+                  {% endif %}
+
+
+                  {% if block_text_alpha != 0 %}
+                    .icon-with-text-color-block--{{block.id}} .icon-column__title {
+                      color: {{ block.settings.text_color }}
+                    }
+                  {% else %}
+                  .icon-with-text-color-block--{{block.id}} .icon-column__title {
+                    color: {%- if text_alpha != 0 -%}{{ section.settings.text_color }}{%- endif -%};
+                  }
+                  {% endif %}
+
+
+                  {% if block_text_alpha != 0 %}
+                    .icon-with-text-color-block--{{block.id}} .icon{
+                     fill: {{ block.settings.text_color }}; 
+                    } 
+                  {% else %}
+                  .icon-with-text-color-block--{{block.id}} .icon {
+                    fill: {%- if icon_alpha != 0 -%}{{ section.settings.icon_color }}{%- endif -%};
+                  }
+                  {% endif %}
+
+                  {% if block_text_alpha != 0 %}
+                  .icon-with-text-color-block--{{block.id}} .icon-column__text{
+                   color:{{ block.settings.text_color }}; 
+                  }
+                  {% else %}
+                  .icon-with-text-color-block--{{block.id}} .icon-column__text {
+                    color: {%- if text_alpha != 0 -%}{{ section.settings.text_color }}{%- endif -%};
+                  }
+                  {% endif %}
+
+
+
+
+                  {% endstyle %}
+
+        <div class="color-block-content color-block-content--{{block.id}}">
+
+        {%- capture icon_size -%}
+          is-{{ section.settings.icon_size }}
+        {%- endcapture -%}
+
+        {%- assign icon = block.settings.icon_label | downcase -%}
+
+        {% if section.settings.graphic_type == 'icon' %}
+          {% render 'icon',
+                  name: icon,
+                  icon_class: icon_size
+          %}
+        {% else %}
+          {% if block.settings.image == blank  %}
+            {% assign image_url = "https://placehold.co/600x400" %}
+          {% else %}
+            {% assign image_url = block.settings.image %}
+          {% endif %}
+            {% assign img_size = '100%' %}
+          {% if section.settings.icon_size == 'large' %}
+            {% assign img_size = '100%' %}
+          {% elsif section.settings.icon_size == 'medium' %}
+            {% assign img_size = '66%' %}
+          {% else %}
+            {% assign img_size = '110px' %}
+          {% endif %}
+            <img style="width:{{img_size}}; margin-bottom:10px;" src= "{{ image_url | img_url: 'large'}}">
+          {% endif %}
+
+        {% if block.settings.title != blank or text != blank %}
+          <div class="icon-column__text">
+            <h3 class="icon-column__title title">{{ block.settings.title }}</h3> 
+            {{ text }}
+          </div>
+        {% endif %}
+
+        {% if block.settings.button_label != blank %}
+          <div class="icon-column__action has-padding-top">
+            {% render 'button',
+                    label: block.settings.button_label,
+                    href: block.settings.link,
+                    style: section.settings.button_style,
+                    type: "link"
+            %}
+          </div>
+        {% endif %}
+
+        </div>
+
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Color blocks - Product",
+  "class": "icon-with-text-column",
+  "max_blocks": 20,
+  "settings": [
+
+    {
+      "type": "html",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "range",
+      "id": "icons_per_row",
+      "label": "Items per row",
+      "min": 1,
+      "max": 8,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "min_block_height",
+      "label": "Min block height",
+      "min": 0,
+      "max": 500,
+      "step": 10,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "graphic_type",
+      "label": "Graphic type",
+      "options": [
+        {
+          "value": "icon",
+          "label": "Icons"
+        },
+        {
+          "value": "image",
+          "label": "Images"
+        }
+      ],
+      "default": "image"
+    },
+    {
+      "type": "select",
+      "id": "icon_size",
+      "label": "Image/Icon size",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "select",
+      "id": "align_text",
+      "label": "Alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button style",
+      "options": [
+        {
+          "value": "button--primary",
+          "label": "Primary"
+        },
+        {
+          "value": "button--secondary",
+          "label": "Secondary"
+        },
+        {
+          "value": "button--link-style",
+          "label": "Link style"
+        }
+      ],
+      "default": "button--primary"
+    },
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+    "type": "range",
+    "id": "heading_font_size",
+    "label": "Heading size",
+    "min": 10,
+    "max": 75,
+    "default": 25,
+    "unit": "px"
+    },
+    {
+    "type": "range",
+    "id": "font_size",
+    "label": "Text size",
+    "min": 10,
+    "max": 75,
+    "default": 15,
+    "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icons",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background",
+      "default": "#CCCCCC"
+    },
+    {
+      "type": "color",
+      "id": "gradient",
+      "label": "Gradient",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "range",
+      "id": "gradient_rotation",
+      "label": "Gradient rotation",
+      "min": 0,
+      "max": 180,
+      "step": 10,
+      "default": 0,
+      "unit": "deg"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Width",
+      "default": "standard",
+      "options": [
+        {
+          "value": "half",
+          "label": "Half"
+        },
+        {
+          "value": "standard",
+          "label": "Standard"
+        },
+        {
+          "value": "wide",
+          "label": "Wide"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "show_gutter",
+      "label": "Show gutter",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 80,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 80,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "label": "Left spacing",
+      "min": 0,
+      "max": 80,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "label": "Right spacing",
+      "min": 0,
+      "max": 80,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "animation",
+      "label": "Animation",
+      "default": "none",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "fadeIn",
+          "label": "Fade in"
+        },
+        {
+          "value": "fadeInDown",
+          "label": "Fade in down"
+        },
+        {
+          "value": "fadeInLeft",
+          "label": "Fade in left"
+        },
+        {
+          "value": "fadeInRight",
+          "label": "Fade in right"
+        },
+        {
+          "value": "slideInLeft",
+          "label": "Slide in left"
+        },
+        {
+          "value": "slideInRight",
+          "label": "Slide in right"
+        },
+        {
+          "value": "zoomIn",
+          "label": "Zoom in"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Advanced",
+      "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+    },
+    {
+      "type": "text",
+      "id": "css_class",
+      "label": "CSS Class"
+    },
+    {
+      "type": "textarea",
+      "id": "custom_css",
+      "label": "Custom CSS"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "color-block",
+      "name": "Color block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon_label",
+          "label": "Icon",
+          "placeholder": "Enter icon name",
+          "info": "[Icon list](https://help.outofthesandbox.com/hc/en-us/articles/360021570294)",
+          "default": "truck"
+        },
+        {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Describe the feature, service or product information here</p>",
+          "info": "This input will be used  only when the metafield text input is blank."
+        },
+        {
+          "type": "richtext",
+          "id": "metafield_text",
+          "label": "Metafield Text"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "color",
+          "id": "background",
+          "label": "Background",
+          "default": "#CCCCCC"
+        },
+        {
+          "type": "image_picker",
+          "id": "background_image",
+          "label": "Background image"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color"
+        },
+        {
+        "type": "range",
+        "id": "angle_left",
+        "label": "Angle left",
+        "min": 0,
+        "max": 100,
+        "default": 0,
+        "unit": "%"
+        },
+        {
+        "type": "range",
+        "id": "angle_right",
+        "label": "Angle right",
+        "min": 0,
+        "max": 100,
+        "default": 0,
+        "unit": "%"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Color blocks - Product",
+      "category": "Product",
+      "blocks": [
+        {
+          "type": "color-block",
+          "settings": {
+            "icon_label": "truck"
+          }
+        },
+        {
+          "type": "color-block",
+          "settings": {
+            "icon_label": "bag"
+          }
+        },
+        {
+          "type": "color-block",
+          "settings": {
+            "icon_label": "tag"
+          }
+        },
+        {
+          "type": "color-block",
+          "settings": {
+            "icon_label": "star"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

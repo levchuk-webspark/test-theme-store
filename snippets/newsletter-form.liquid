@@ -1,0 +1,285 @@
+{% comment %}
+  Optional values
+  newsletter_class: <string>
+{% endcomment %}
+
+{% comment %} Assign object as block or section {% endcomment %}
+{%- liquid
+  if type == 'block'
+    assign object = block
+  else
+    assign object = section
+  endif
+
+  if settings.form_button_style contains 'primary'
+    assign field_input_size = settings.button_primary_padding
+    assign field_input_style = 'primary-btn-style'
+  elsif settings.form_button_style contains 'secondary'
+    assign field_input_size = settings.button_secondary_padding
+    assign field_input_style = 'secondary-btn-style'
+  else
+    assign field_input_size = settings.button_link_padding
+  endif
+
+  if id == nil
+    assign form_id = 'contact_form'
+  else
+    assign form_id = id | append: '_contact_form'
+  endif
+  assign form_action = '/contact#' | append: form_id
+-%}
+
+{% style %}
+
+  #shopify-section-{{ object.id }} .newsletter-form__wrapper {
+    {% if width == 'half' %}
+      max-width: 100%;
+    {% endif %}
+  }
+
+  #shopify-section-{{ section.id }} .newsletter-input {
+    margin-bottom: 10px;
+    background-color: transparent;
+    border-color: transparent;
+    border-radius: 0;
+    border-bottom-color: {{ settings.footer_text_color }};
+    color: #F7F5F1;
+    font-weight: bold;
+    padding-left: 0;
+    max-width: 414px;
+  }
+
+  #shopify-section-{{ section.id }} .newsletter-input:active,
+  #shopify-section-{{ section.id }} .newsletter-input:focus {
+    box-shadow: none;
+  }
+
+   #shopify-section-{{ section.id }} .footer-submit-button {
+    color: {{ settings.footer_background }};
+    background: {{ button_background_color }};
+  }
+
+  #shopify-section-{{ section.id }} .footer-submit-button:hover {
+    background: {{ button_background_hover_color }};
+  }
+
+  #shopify-section-{{ section.id }} .newsletter__button-block {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  #shopify-section-{{ section.id }} .newsletter__button-block__icons {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    color: {{ newsletter_icons_color }};
+  }
+
+  #shopify-section-{{ section.id }} .newsletter__button-block__icons .icon{
+    width: 41px;
+    height: 41px;
+    transform: rotate(180deg);
+  }
+
+  .field.is-default-width.is-align-self-end.newsletter__button-block {
+    margin-bottom: 30px;
+  }
+
+
+  {% render 'css-loop',
+          css: custom_css,
+          id: object.id
+%}
+  .first_last_box {
+    display: flex;
+  }
+  .first_name,
+  .last_name {
+    flex: 1;
+  }
+  .first_last_box,
+  .email_submit_box {
+    width: 100%
+  }
+  .email_submit_box {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .is-within-form {
+    min-height: 40px;
+  }
+  .offer-valid {
+    font-size: 14px; 
+    font-weight: 400;
+  }
+
+  .letter_logo_box {
+    width: 100%;
+    margin-top: 25px;
+  }
+
+  .letter_logo_box__wrapper {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  @media only screen and (max-width: 798px) {
+    {% if display_first_name and display_last_name %}
+      .first_name {
+        margin-right: 5px;
+      }
+      .last_name {
+        margin-left: 5px;
+      }
+    {% endif %}
+
+    .email {
+      margin-right: 5px;
+    }
+
+    #shopify-section-{{ section.id }} .newsletter__button-block__icons .icon:nth-child(5){
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .label.newsletter__text {
+      font-size: 15px;
+    }
+
+    .offer-valid {
+        font-size: 10px;
+        line-height: 1;
+    }
+
+    .field.is-default-width.is-align-self-end.newsletter__button-block {
+      margin-bottom: 25px;
+    }
+
+     .letter_logo_box { 
+      margin-top: 10px;
+     }
+  }
+
+  @media only screen and (max-width: 389px) {
+    .newsletter__button-block__icons .icon:nth-child(4){
+      display: none;
+    }
+  }
+
+{% endstyle %}
+
+{% comment %} HTML markup {% endcomment %}
+<div class="newsletter-form__wrapper {{ newsletter_class }}">
+  <div class="form__success-message text-align-{{ text_alignment }}"></div>
+
+  {%
+    form 'customer'
+    , class: 'contact-form newsletter-form--newsletter-section'
+    , action: form_action
+    , id: form_id
+  %}
+    {% if form.posted_successfully? %}
+      <p class="quote">{{ 'general.newsletter_form.success_text' | t }}</p>
+    {% elsif form.errors %}
+      <div class="one-whole column contact-form__form-errors">
+        {% for field in form.errors %}
+          <p class="form__error">{{ field | capitalize }} - {{ form.errors.messages[field] }}</p>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% comment %} Hidden fields {% endcomment %}
+    <input
+      type="hidden"
+      name="contact[tags]"
+      value="prospect,newsletter" />
+    <input
+      type="hidden"
+      name="challenge"
+      value="false" />
+
+    <div class="newsletter-form form is-responsive">
+      <div class="first_last_box">
+        {% if display_first_name %}
+          {% comment %} First name {% endcomment %}
+
+          <div class="field first_name">
+            <div class="control">
+              <input
+                class="input is-{{ field_input_style }} is-{{ field_input_size }} newsletter-input"
+                type="text"
+                name="contact[first_name]"
+                placeholder="{% if settings.use_placeholders %}{{ 'general.newsletter_form.subscriber_first_name' | t }}{% endif %}">
+            </div>
+            <label class="label newsletter__text {% if settings.use_placeholders %}is-sr-only{% endif %}">
+              {{ 'general.newsletter_form.subscriber_first_name' | t | upcase }}
+            </label>
+          </div>
+        {% endif %}
+
+        {% if display_last_name %}
+          {% comment %} Last name {% endcomment %}
+          <div class="field last_name">
+            <div class="control">
+              <input
+                class="input is-{{ field_input_style }} is-{{ field_input_size }} newsletter-input"
+                type="text"
+                name="contact[last_name]"
+                placeholder="{% if settings.use_placeholders %}{{ 'general.newsletter_form.subscriber_last_name' | t }}{% endif%}">
+            </div>
+              <label class="label newsletter__text {% if settings.use_placeholders %}is-sr-only{% endif %}">
+              {{ 'general.newsletter_form.subscriber_last_name' | t | upcase }}
+            </label>
+          </div>
+        {% endif %}
+
+        {% comment %} Email {% endcomment %}
+        <div class="field email">
+          <div class="control {% if settings.show_form_icons %} has-icons-left has-icons-left--responsive-form{% endif %}">
+            <input
+              class="input is-{{ field_input_style }} is-{{ field_input_size }} newsletter-input"
+              type="email"
+              name="contact[email]"
+              placeholder="{% if settings.use_placeholders %}{{ 'general.newsletter_form.email' | t }}*{% endif %}"
+              required>
+            {% if settings.show_form_icons %}
+              {% render 'icon'
+                , name: 'email' %}
+            {% endif %}
+          </div>
+          <label class="label newsletter__text {% if settings.use_placeholders %}is-sr-only{% endif %}">
+            {{ 'general.newsletter_form.email' | t | upcase }}<span class="required">*</span>
+          </label>
+        </div>
+
+        {% comment %} Submit button {% endcomment %}
+        <div class="field is-default-width is-align-self-end newsletter__button-block">
+          <div class="control">
+            {%- assign button_label = 'general.newsletter_form.submit' | t -%}
+            {% render 'button'
+              , label: button_label
+              , type: "submit"
+              , style: settings.form_button_style
+              , class: 'is-within-form footer-submit-button'
+            %}
+          </div>
+        </div>
+      </div>
+      
+      
+      <div class="letter_logo_box">
+        {% if newsletter_logo != blank %}
+          {%
+            render 'image-element',
+            image: newsletter_logo,
+            alt: newsletter_logo.alt,
+            class: "",
+            stretch_width: true,
+            additional_wrapper_classes: "letter_logo_box__wrapper",
+            focal_point: newsletter_logo.presentation.focal_point,
+          %}
+        {% endif %}
+      </div>
+  {% endform %}
+</div>

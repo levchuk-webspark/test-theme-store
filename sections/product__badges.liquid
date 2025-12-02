@@ -1,0 +1,171 @@
+{% if product.metafields.custom.product_badges %}  
+
+  {%  assign colors = product.metafields.custom.product_badges_background_and_title_color | replace: "[", "" | replace: "]", "" | replace: '"', "" | split: "," %} 
+  
+    {% style %}
+
+    #shopify-section-{{ section.id }} {
+      {% if colors[0] %}
+        background-color: {{ colors[0] }};
+      {% endif %}
+    }
+    
+    #shopify-section-{{ section.id }} .product__badges {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+    
+    .product__badges__title {
+      font-size: 30px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: {{ section.settings.title_alignment}};
+      {% if colors[1] %}
+        color: {{ colors[1] }};
+      {% endif %}
+    }
+     
+    .product__badges__list {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+    
+    .product__badges__list__item {
+      min-width: fit-content;
+    }
+    
+    #shopify-section-{{ section.id }} .product__badges__list__item__image {
+      height: {{ section.settings.image_height }}px;
+      width: 100%;
+      min-width: 100%;
+    }
+    
+    @media only screen and (max-width: 798px) {
+      #shopify-section-{{ section.id }} .product__badges {
+        padding-top: {{ section.settings.padding_top_mobile }}px;
+        padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      }
+    }
+    
+    {%
+      render 'css-loop',
+      css: section.settings.custom_css,
+      id: section.id,
+    %}
+    {% endstyle %}
+
+    <div class="section product__badges">
+
+        {% if section.settings.title != blank %}
+            <h2 class="product__badges__title">{{section.settings.title}}</h2>
+        {% endif %}
+
+        <ul class="product__badges__list">
+            {% for image in product.metafields.custom.product_badges.value %}
+               <li class="product__badges__list__item">
+                 <img src="{{ image | img_url }}" alt="Product Badge Image" class="product__badges__list__item__image">
+               </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Product badges",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Top spacing",
+        "min": 0,
+        "max": 200,
+        "default": 20,
+        "step": 10,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Bottom spacing",
+        "min": 0,
+        "max": 200,
+        "default": 20,
+        "step": 10,
+        "unit": "px"
+      },
+      {
+        "type": "select",
+        "id": "title_alignment",
+        "label": "Title alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          }
+        ],
+        "default": "left"
+      },
+      {
+        "type": "range",
+        "id": "image_height",
+        "label": "Image height",
+        "min": 0,
+        "max": 200,
+        "default": 80,
+        "step": 10,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Mobile layout"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Mobile top spacing",
+        "min": 0,
+        "max": 200,
+        "default": 20,
+        "step": 10,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Mobile bottom spacing",
+        "min": 0,
+        "max": 200,
+        "default": 20,
+        "step": 10,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Advanced",
+        "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_css",
+        "label": "Custom CSS"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Product: badges YE"
+      }
+    ]
+  }
+{% endschema %}

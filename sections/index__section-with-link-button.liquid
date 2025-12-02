@@ -1,0 +1,337 @@
+{% style %}
+  #shopify-section-{{ section.id }} {
+    background-color: {{ section.settings.background_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  #shopify-section-{{ section.id }} .section-with-link-button {
+
+  }
+
+  .section-with-link-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    border: 1px solid {{ section.settings.text_color }};
+    border-radius: 8px;
+    /* padding: 35px; */
+    padding: 21px;
+    {% if template.name == 'product' and product.metafields.custom.action_color.value %}
+        border: 1px solid {{ product.metafields.custom.action_color.value }};
+    {% endif %}
+  }
+
+  .section-with-link-button__title {
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  .section-with-link-button__description {
+    font-size: 25px;
+    max-width: 280px;
+  }
+
+  #shopify-section-{{ section.id }} .section-with-link-button__title,
+  #shopify-section-{{ section.id }} .section-with-link-button__description {
+    color: {{ section.settings.text_color }};
+    {% if template.name == 'product' and product.metafields.custom.action_color.value %}
+        color: {{ product.metafields.custom.action_color.value }};
+    {% endif %}
+  }
+
+  #shopify-section-{{ section.id }} .section-with-link-button__description {
+    color: {{ section.settings.text_color }};
+    {% if product.id == 7396104798281 %}
+     color: {{ settings.regular_color }};
+    {% elsif template.name == 'product' and product.metafields.custom.action_color.value %}
+        color: {{ product.metafields.custom.action_color.value }};
+    {% endif %}
+  }
+
+  .section-with-link-button__icons {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .section-with-link-button__icons .icon{
+    width: 41px;
+    height: 41px;
+    transform: rotate(180deg);
+  }
+
+  #shopify-section-{{ section.id }} .section-with-link-button__icons .icon {
+    color: {{ section.settings.text_color }};
+    {% if template.name == 'product' and product.metafields.custom.action_color.value %}
+        color: {{ product.metafields.custom.action_color.value }};
+    {% endif %}
+  }
+
+  .section-with-link-button .button--primary, a.button--primary.button {
+    white-space: nowrap;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 8px;
+    font-size: 22px;
+  }
+
+  .section-with-link-button a.button--primary.button {
+    {% if template.name == 'product' and product.metafields.custom.action_color.value %}
+        background-color: {{ product.metafields.custom.action_color.value }};
+    {% endif %}
+  }
+
+  .section-with-link-button a.button--primary.button:hover {
+    {% if template.name == 'product' and product.metafields.custom.action_color.value %}
+        background-color: {{ product.metafields.custom.action_color.value | color_modify: 'alpha', 0.7 }};
+    {% endif %}
+  }
+
+  @media only screen and (max-width: 1440px) {
+    .section-with-link-button__icons .icon:nth-of-type(1n+5) {
+      display: none;
+    }
+  }
+
+  @media only screen and (max-width: 1200px) {
+    #shopify-section-{{ section.id }} .section-with-link-button {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+    .section-with-link-button {
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .section-with-link-button__title,
+    .section-with-link-button__description {
+      text-align: center;
+    }
+
+    .section-with-link-button__icons {
+      flex-direction: column;
+    }
+    
+    .section-with-link-button__icons .icon{
+      transform: rotate(-90deg);
+    }
+
+    .section-with-link-button__icons .icon:nth-of-type(1n+4) {
+      display: none;
+    }
+
+    
+    .section-with-link-button .button--primary, a.button--primary.button {
+      width: 230px;
+    }
+
+  }
+
+  @media only screen and (max-width: 798px) {
+    .section-with-link-button__icons .icon:nth-of-type(1n+2) {
+      display: none;
+    }
+  }
+
+    @media only screen and (max-width: 480px) {
+        .section-with-link-button .button--primary, a.button--primary.button {
+          padding-top: 15px;
+          padding-bottom: 15px;
+          font-size: 20px;
+        }
+    }
+
+  {%
+    render 'css-loop',
+    css: section.settings.custom_css,
+    id: section.id,
+  %}
+  
+{% endstyle %}
+
+<section
+  class="
+    section
+    {{ section.settings.css_class }}
+    section-with-link-button
+  "
+>
+
+  {% if section.settings.title != blank %}
+      <p class="section-with-link-button__title">
+        {{ section.settings.title }}
+      </p>
+  {% endif %}
+
+  
+  <div class="section-with-link-button__icons">
+    {% render 'icon', name: 'read-more-left-arrow' %}
+    {% render 'icon', name: 'read-more-left-arrow' %}
+    {% render 'icon', name: 'read-more-left-arrow' %}
+    {% render 'icon', name: 'read-more-left-arrow' %}
+    {% render 'icon', name: 'read-more-left-arrow' %}
+    {% render 'icon', name: 'read-more-left-arrow' %}
+    {% render 'icon', name: 'read-more-left-arrow' %}
+  </div>
+
+
+  {% if section.settings.description != blank %}
+      <p class="section-with-link-button__description">
+        {{ section.settings.description }}
+      </p>
+  {% endif %}
+
+  {% for block in section.blocks %}
+        {% if block.type == 'button-block' %}
+
+            {% if block.settings.button_label != blank %}
+              <div class="buttons section-with-link-button__link-button">
+                {% render 'button',
+                  label: block.settings.button_label,
+                  href: block.settings.button_link,
+                  style: block.settings.button_style,
+                  type: "link"
+                %}
+              </div>
+            {% endif %}
+          
+        {% endif %}
+  {% endfor %}
+  
+</section>
+
+{% schema %}
+  {
+    "name": "Section with link button",
+    "settings": [
+      {
+        "type": "html",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "html",
+        "id": "description",
+        "label": "Description"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Top spacing",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "default": 90,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Bottom spacing",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Colors"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background color"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text color"
+      },
+      {
+        "type": "header",
+        "content": "Mobile layout"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Mobile top spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Mobile bottom spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Advanced",
+        "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+      },
+      {
+        "type": "text",
+        "id": "css_class",
+        "label": "CSS Class"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_css",
+        "label": "Custom CSS"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "button-block",
+        "name": "Button block",
+        "settings": [
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button label",
+            "default": "Take Our Diagnostic"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+          },
+          {
+            "type": "select",
+            "id": "button_style",
+            "label": "Button style",
+            "options": [
+              {
+                "value": "button--primary",
+                "label": "Primary"
+              },
+              {
+                "value": "button--secondary",
+                "label": "Secondary"
+              },
+              {
+                "value": "button--link-style",
+                "label": "Link style"
+              }
+            ],
+            "default": "button--primary"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Setion with link button"
+      }
+    ]
+  }
+{% endschema %}

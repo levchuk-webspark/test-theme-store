@@ -1,0 +1,243 @@
+{% style %}
+
+#shopify-section-{{ section.id }} .product__quote {
+  padding-top: {{ section.settings.padding_top }}px;
+  padding-bottom: {{ section.settings.padding_bottom }}px;
+  display: flex;
+  justify-content: center;
+}
+
+.product__quote__content {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+}
+
+.product__quote__quote-text {
+  text-align: center;
+  font-style: italic;
+}
+
+#shopify-section-{{ section.id }} .product__quote__title {
+  font-size: {{ section.settings.section-title-font-size }}px;
+}
+
+#shopify-section-{{ section.id }} .product__quote__quote-text {
+  font-size:{{ section.settings.quote-font-size }}px;
+}
+
+.product__quote__author {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.product__quote__author__photo {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.product__quote__author__info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+}
+
+.product__quote__author__info__name {
+  text-transform: uppercase;
+}
+
+@media only screen and (max-width: 1200px) {
+  #shopify-section-{{ section.id }} .product__quote {
+    width: 100%;
+  }
+}
+ 
+@media only screen and (max-width: 798px) {
+  #shopify-section-{{ section.id }} .product__quote {
+    padding: {{ section.settings.padding_top_mobile }}px 16px {{ section.settings.padding_bottom_mobile }}px;
+    justify-content: start;
+  }
+
+  .product__quote__quote-text {
+    text-align: left;
+    padding-left: 20px;
+    border-left: 2px solid #000;
+  }
+
+  .product__quote__content {
+    align-items: start;
+  }
+}
+  
+
+{% render 'css-loop',
+        css: section.settings.custom_css,
+        id: section.id
+%}
+  
+{% endstyle %}
+
+
+{% if product.metafields.custom.product_quote %}
+  {% assign metaobject = product.metafields.custom.product_quote.value %}
+
+  <section class="section
+                  {{ section.settings.css_class }}
+                  is-width-{{ section.settings.width }}
+                  container
+                  product__quote
+                  "
+  >
+    {% style %}
+
+      #shopify-section-{{ section.id }} .product__quote {
+          {% if metaobject.section_background %}
+            background-color: {{ metaobject.section_background }};
+          {% endif %}
+          {% if metaobject.section_text_color %}
+            color: {{ metaobject.section_text_color }};
+          {% endif %}
+      }
+
+      {% if metaobject.section_text_color %}
+        
+          @media only screen and (max-width: 798px) {
+            .product__quote__quote-text {          
+              border-left: 2px solid {{ metaobject.section_text_color }}
+            }
+          }
+
+      {% endif %}
+
+    {% endstyle %}
+   
+    <div class="product__quote__content">
+      {% if metaobject.section_title != blank %}
+          <p class="product__quote__title">{{ metaobject.section_title }}</p>
+      {% endif %}
+      {% if metaobject.quote != blank %}
+          <div class="product__quote__quote-text">{{ metaobject.quote | metafield_tag }}</div>
+      {% endif %}
+
+      <div class="product__quote__author">
+        {% if metaobject.photo %}
+           <div class="product__quote__author__photo">
+             <img src="{{ metaobject.photo | img_url: '100x' }}"  />
+           </div>
+        {% endif %}
+        <div class="product__quote__author__info">
+          {% if metaobject.name %}
+             <span class="product__quote__author__info__name">{{ metaobject.name }}</span>
+          {% endif %}
+          {% if metaobject.title %}
+             <span class="product__quote__author__info__title">{{ metaobject.title }}</span>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+  </section>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Product quote",
+    "settings": [
+      {
+        "type": "range",
+        "id": "section-title-font-size",
+        "label": "Section title font size",
+        "min": 0,
+        "max": 100,
+        "default": 12,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "quote-font-size",
+        "label": "Quote font size",
+        "min": 0,
+        "max": 100,
+        "default": 24,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Layout"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Top spacing",
+        "min": 0,
+        "max": 500,
+        "default": 80,
+        "step": 10,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Bottom spacing",
+        "min": 0,
+        "max": 500,
+        "default": 80,
+        "step": 10,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Mobile layout"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Mobile top spacing",
+        "min": 0,
+        "max": 200,
+        "step": 10,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Mobile bottom spacing",
+        "min": 0,
+        "max": 200,
+        "step": 10,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Advanced",
+        "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+      },
+      {
+        "type": "text",
+        "id": "css_class",
+        "label": "CSS Class"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_css",
+        "label": "Custom CSS"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Product quote YE"
+      }
+    ]
+  }
+{% endschema %}

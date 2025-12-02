@@ -1,0 +1,1654 @@
+{% assign antioxidant_id = 'antioxidants' %}
+{% assign vitamin_id = 'vitamins' %}
+{% assign longevity_id = 'longevity' %}
+
+{% assign cards = section.blocks | where: 'type', 'card' %}
+{% assign antioxidants = section.blocks | where: 'type', 'antioxidant' %}
+{% assign vitamins = section.blocks | where: 'type', 'vitamin' %}
+
+{% assign border_alpha = 0.3 %}
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    {% if section.settings.image != blank %}
+        background:
+         linear-gradient(rgba(0, 0, 0, 0.2), transparent),
+         url("{{section.settings.image | img_url: 'master'}}");
+        background-size:cover;
+        background-position:center;
+        background-repeat:norepeat;
+    {% else %}
+        background-color: {{ section.settings.background_color }};
+    {% endif %}
+  }
+
+  .vitality-ingredients__title {
+    width: 35%;
+    line-height: 1.1;
+    font-weight: normal;
+    margin-bottom: 30px;
+    font-family: Ambit, Merriweather Sans, sans-serif !important;
+  }
+
+  #shopify-section-{{ section.id }} .vitality-ingredients__title {
+    font-size: {{ section.settings.title-font-size }}px;
+    color: {{ section.settings.title_color }};
+  }
+
+  .vitality-ingredients__description {
+    width: 60%;
+    margin-bottom: 40px;
+  }
+
+  #shopify-section-{{ section.id }} .vitality-ingredients__description {
+    font-size: {{ section.settings.description-font-size }}px;
+    color: {{ section.settings.description_color }};
+  }
+
+  .vitality-ingredients__buttons-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .vitality-ingredients__longevity-container {
+    margin-top: 50px;
+
+    display: flex;
+  }
+
+  .vitality-ingredients__title-block {
+      width: 50%;
+  }
+
+  #shopify-section-{{ section.id }} .vitality-ingredients__title-block {
+    font-size: {{ section.settings.block-title-font-size }}px;
+    color: {{ section.settings.block-title_color }};
+  }
+
+    #shopify-section-{{ section.id }} .vitality-ingredients__link > a.button--link-style.button {
+      font-size: {{ section.settings.link-label-font-size }}px !important;
+
+      width: 69%;
+      text-align: start;
+      line-height: 1.1;
+    }
+
+    #shopify-section-{{ section.id }} .vitality-ingredients__link > a.button--link-style.button,
+    #shopify-section-{{ section.id }} .vitality-ingredients__link > a.button--link-style.button:visited {
+      color: {{ section.settings.link-label_color }};
+      border-bottom: 1px dashed;
+      border-bottom-color: {{ section.settings.link-label_color }};
+    }
+
+    #shopify-section-{{ section.id }} .vitality-ingredients__link > a.button--link-style.button:hover {
+      color: {{ section.settings.link-label_color--highlight }};
+      border-bottom-color: {{ section.settings.link-label_color--highlight }};
+    }
+
+  .vitality-ingredients__link-container {
+    display: flex;
+    gap: 63px;
+  }
+
+  .vitality-ingredients__cards-container {
+    margin-top: 30px;
+
+    display: grid;
+    gap: 10px;
+    row-gap: 30px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+   .vitality-ingredients__card__title {
+    color: {{ section.settings.card_title_color }};
+    font-size: {{ section.settings.card-title-font-size }}px;
+    line-height: 1.1;
+     margin-top: 10px;
+    }
+
+  .vitality-ingredients__card__number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: {{ section.settings.card-number-font-size }}px;
+      font-weight: 900;
+      width: {{ section.settings.card-number-block-size }}px;
+      height: {{ section.settings.card-number-block-size }}px;
+      border-radius: 50%;
+
+      color: {{ section.settings.card_number_color }};
+      background-color: {{ section.settings.card_number_background_color }};
+    }
+
+  .vitality-ingredients__antioxidants-container {
+    display: flex;
+    
+    margin-top: 50px;
+  }
+
+  .vitality-ingredients__antioxidants-container__vitamins {    
+    margin-top: 65px;
+  }
+
+  .vitality-ingredients__table-container {
+    color: {{ section.settings.ingredients-text-table_color }};
+
+    margin-top: 30px;
+    border-top: 1px solid {{ section.settings.ingredients-text-table_color | color_modify: 'alpha', border_alpha }}
+  }
+
+  .vitality-ingredients__table-row {
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    border-bottom: 1px solid {{ section.settings.ingredients-text-table_color | color_modify: 'alpha', border_alpha }};
+
+    display: flex;
+    align-items: center;
+  }
+
+  .anchor-ingredients {
+      scroll-margin-top:150px;
+  }
+
+  .vitality-ingredients__table-cell-info-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+    margin-right: 20px;
+  }
+
+  .vitality-ingredients__table-cell-name-wrapper {
+    display: flex;
+  }
+
+  .vitality-ingredients__table-cell-name {
+    font-size: {{ section.settings.name-ingredient-font-size }}px;
+  }
+
+  .vitality-ingredients__table-cell-name.cell-number {
+    margin-right:  26px;
+  }
+
+  .vitality-ingredients__table-cell-image {
+    border-radius: 10px;
+    width: 150px;
+    height: 80px;
+    margin-right: 20px;
+  }
+
+  .vitality-ingredients__table-cell-image > img {
+    object-fit: cover;
+  }
+
+  .vitality-ingredients__table-cell-support-container {
+    display: flex;
+    align-items: center;
+    width: 60%;
+  }
+
+  .vitality-ingredients__table-cell-support-title {
+    font-size: {{ section.settings.support-ingredient-font-size }}px;
+    font-weight: 900;
+    margin-right: 10px;
+  }
+
+  .vitality-ingredients__table-cell-support {
+    font-size: {{ section.settings.support-ingredient-font-size }}px;
+  }
+
+  .vitality-ingredients__table-cell-support-info-container {
+    display: flex;
+  }
+
+   .vitality-ingredients__open-all-container, .vitality-ingredients__hide-all-container {
+      display: none;
+    }
+
+  .vitality-ingredients__disclaimer {
+    display: flex;
+    margin-top: 40px;
+
+    border-radius: 5px;
+    padding: 50px 35px;
+    
+    color: {{ section.settings.disclaimer_color }};
+    border: 1px solid {{ section.settings.disclaimer_color }};
+    font-size: {{ section.settings.disclaimer-font-size }}px;
+  }
+
+   .vitality-ingredients__card__wrapper {
+       transition: flex 0.3s ease, transform 0.3s ease;
+     overflow: hidden;
+     flex-shrink: 1; 
+  }
+
+.vitality-ingredients__card__wrapper:hover {
+  transform: scale(1.05);
+}
+  /* DONE */
+  .vitality-ingredients__cards-container:hover .vitality-ingredients__card__wrapper {
+    transform: scale(0.95);
+ }
+
+  .vitality-ingredients__cards-container .vitality-ingredients__card__wrapper:hover {
+     transform: scale(1.05); 
+  } 
+  
+  @media only screen and (max-width: 1000px) {
+     #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .vitality-ingredients__title {
+      font-size: {{ section.settings.title-font-size-mobile }}px;
+    }
+
+     #shopify-section-{{ section.id }} .vitality-ingredients__description {
+      font-size: {{ section.settings.description-font-size-mobile }}px;
+    }
+
+    .vitality-ingredients__title {
+      width: 50%;
+      margin-bottom: 27px;
+    }
+
+    .vitality-ingredients__description {
+     width: 100%;
+     margin-bottom: 27px;
+    }
+
+    .vitality-ingredients__longevity-container {
+      margin-top: 42px;
+      flex-direction: column;
+    }
+
+    .vitality-ingredients__title-block {
+      width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .vitality-ingredients__title-block {
+      font-size: {{ section.settings.block-title-font-size-mobile }}px;
+    }
+
+    .vitality-ingredients__link-container {
+      margin-top: 27px;
+      gap: 40px;
+    }
+
+     .vitality-ingredients__card__number {
+        font-size: {{ section.settings.card-number-font-size-mobile }}px;
+        width: {{ section.settings.card-number-block-size-mobile }}px;
+        height: {{ section.settings.card-number-block-size-mobile  }}px;
+    }
+
+    .vitality-ingredients__card__title {
+      font-size: {{ section.settings.card-title-font-size-mobile }}px;
+    }
+
+    .vitality-ingredients__cards-container {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .vitality-ingredients__antioxidants-container {
+      flex-direction: column;
+      
+      margin-top: 70px;
+    }
+
+  .vitality-ingredients__table-container {
+    margin-top: 24px;
+  }
+
+  .vitality-ingredients__table-row {
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    flex-direction: column;
+  }
+
+  .antioxidants-ingredients > .vitality-ingredients__table-row:nth-of-type(6n) {
+    filter: blur(4px);
+  }
+
+  .antioxidants-ingredients > .vitality-ingredients__table-row:nth-of-type(1n+7) {
+    display: none;
+  }
+
+    .vitality-ingredients__table-cell-info-container {
+      width: 100%;
+
+      margin-bottom: 20px;
+      margin-right: unset;
+    }
+
+    .vitality-ingredients__table-cell-name.cell-number {
+      margin-right: 12px;
+    }
+
+    .vitality-ingredients__table-cell-support-container {
+      width: 100%;
+      align-items: flex-start;
+    }
+
+    .vitality-ingredients__table-cell-name {
+      font-size: {{ section.settings.name-ingredient-font-size-mobile }}px;
+    }
+
+    .vitality-ingredients__table-cell-support-title {
+      font-size: {{ section.settings.support-ingredient-font-size-mobile }}px;
+      font-weight: 900;
+    }
+
+    .vitality-ingredients__table-cell-support {
+      font-size: {{ section.settings.support-ingredient-font-size-mobile }}px;
+    }
+
+    .vitality-ingredients__open-all-container, .vitality-ingredients__hide-all-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      align-self: center;
+
+      cursor: pointer;
+
+      color: #657078;
+      font-size: 16px;
+      font-weight: 900;
+
+      padding-top: 50px;
+    }
+
+    .vitality-ingredients__hide-all-container {
+      display: none;
+    }
+
+    .vitality-ingredients__open-icon > .icon, .vitality-ingredients__hide-icon > .icon {
+      height: 8px;
+      width: 8px;
+      fill: #657078;
+      margin-left: 8px;
+    }
+
+    .vitality-ingredients__hide-icon > .icon {
+      transform: rotate(180deg);
+    }
+
+     .anchor-ingredients {
+      scroll-margin-top: 175px;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+     .anchor-ingredients {
+      scroll-margin-top: 116px;
+    }
+  }
+
+  @media only screen and (max-width: 500px) {
+    .vitality-ingredients__title {
+      width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .vitality-ingredients__link > a.button--link-style.button {
+        width: 60%;
+      }
+
+    .vitality-ingredients__link-container {
+      gap: unset;
+    }
+
+    .vitality-ingredients__cards-container {
+      gap: 5px;
+      row-gap: 30px;
+    }
+
+    .vitality-ingredients__table-cell-image {
+      margin-right: 16px;
+    }
+
+    .vitality-ingredients__table-cell-support-info-container {
+        flex-direction: column;
+      }
+
+  }
+
+   @media only screen and (max-width: 400px) {
+      #shopify-section-{{ section.id }} .vitality-ingredients__link > a.button--link-style.button {
+        width: 90%;
+      }
+
+      .vitality-ingredients__link-container {
+        gap: 10px;
+      }
+    }
+  
+    {%
+    render 'css-loop',
+    css: section.settings.custom_css,
+    id: section.id,
+  %}
+{% endstyle %}
+
+<section
+  class="
+    section
+    {{ section.settings.css_class }}
+    vitality-ingredients
+  "
+>
+  {% if section.settings.title != blank %}
+    <h1 class="vitality-ingredients__title">{{ section.settings.title }}</h1>
+  {% endif %}
+  {% if section.settings.description != blank %}
+    <div class="vitality-ingredients__description">{{ section.settings.description }}</div>
+  {% endif %}
+
+  <div class="vitality-ingredients__buttons-container">
+    {% for block in section.blocks %}
+      {% if block.type == 'button-block' %}
+        {% if block.settings.button_label != blank %}
+          {% style -%}
+              .block-{{ block.id }}.vitality-ingredients__button .button--custom {
+                border: 1px solid;
+                overflow-wrap: normal;
+                padding: 19px 42px;
+                font-size: 14px !important;
+              }
+
+              .block-{{ block.id }}.vitality-ingredients__button .button--custom,
+              .block-{{ block.id }}.vitality-ingredients__button a.button--primary.button,
+              .block-{{ block.id }}.vitality-ingredients__button a.button--secondary.button  {
+                border-radius: {{ block.settings.button_custom_border_radius | append: 'px' }};
+              }
+
+              .block-{{ block.id }}.vitality-ingredients__button a.button--custom.button,
+              .block-{{ block.id }}.vitality-ingredients__button a.button--custom.button:link,
+              .block-{{ block.id }}.vitality-ingredients__button a.button--custom.button:visited {
+                background-color: {{ block.settings.button_custom_bg_color }};
+                color: {{ block.settings.button_custom_text_color }};
+                border-color: {{ block.settings.button_custom_border_color }};
+              }
+
+              .block-{{ block.id }}.vitality-ingredients__button a.button--custom.button:hover,
+              .block-{{ block.id }}.vitality-ingredients__button a.button--custom.button.is-hovered {
+                color: {{ block.settings.button_custom_text_color--highlight }};
+                border-color: {{ block.settings.button_custom_border_color--highlight }};
+                background-color: {{ block.settings.button_custom_bg_color--highlight }};
+              }
+
+            .block-{{ block.id }}.vitality-ingredients__button a.button--link-style.button {
+              font-size: 13px !important;
+            }
+
+              .block-{{ block.id }}.vitality-ingredients__button a.button--link-style.button,
+              .block-{{ block.id }}.vitality-ingredients__button a.button--link-style.button:visited {
+                  color: {{ block.settings.button_custom_text_color }};
+                  border-bottom: 1px dashed;
+                  border-bottom-color: {{ block.settings.button_custom_border_color }};
+              }
+
+              .block-{{ block.id }}.vitality-ingredients__button a.button--link-style.button:hover {
+                  color: {{ block.settings.button_custom_text_color--highlight }};
+                  border-bottom-color: {{ block.settings.button_custom_border_color--highlight }};
+              }
+          {% endstyle -%}
+
+          <div class="vitality-ingredients__button block-{{ block.id }}">
+            <a href="{{ block.settings.button_link }}" class="button {{ block.settings.button_style }}">
+              {{ block.settings.button_label }}
+            </a>
+          </div>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </div>
+  
+  <div id="{{ longevity_id }}" class="vitality-ingredients__longevity-container">
+    {% if section.settings.title != blank %}
+      <h2 class="vitality-ingredients__title-block">{{ section.settings.longevity_title }}</h2>
+      <div class="vitality-ingredients__link-container">
+        {% if section.settings.antioxidant_link_label != blank %}
+          <div class="vitality-ingredients__link">
+            <a href="{{ page.url }}#{{ antioxidant_id }}" class="button button--link-style">
+              {{ section.settings.antioxidant_link_label }}
+            </a>
+          </div>
+        {% endif %}
+        {% if section.settings.vitamin_link_label != blank %}
+          <div class="vitality-ingredients__link">
+            <a href="{{ page.url }}#{{ vitamin_id }}" class="button button--link-style">
+              {{ section.settings.vitamin_link_label }}
+            </a>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+
+  {% render 'vitality-ingredients__slider', 
+    cards: cards 
+  %}
+
+  <div class="vitality-ingredients__cards-container">
+      {% for block in cards %}
+        {% if block.settings.title != blank %}
+            {% style -%}
+                .block-{{ block.id }}.vitality-ingredients__card {
+                cursor: pointer;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                border-radius: 10px;
+                overflow: hidden;
+
+                height: 444px;
+                padding: 20px;
+
+                {% if block.settings.image != nil %}
+                  background: url("{{block.settings.image | img_url: 'master'}}");
+                  background-size:cover;
+                  background-position:center;
+                  background-repeat:norepeat;
+                {% else %}
+                  background-color: {{ block.settings.background_color }};
+                {% endif %}
+              }
+              
+                @media only screen and (max-width: 1000px) {
+                    .block-{{ block.id }}.vitality-ingredients__card {
+                      height: 235px;
+                      padding: 10px;
+                    }
+                }
+              {% endstyle -%}
+              <div class="vitality-ingredients__card__wrapper">
+                <div
+                  class="vitality-ingredients__card block-{{ block.id }} {{ block.settings.title | remove: " " | remove: "(" | remove: ")" | remove: "'" | remove: "’" | remove: ","}}"
+                  data-selected-card="{{ block.id }}"
+                  data-selected-card-index="{{ forloop.index }}"
+                >
+                  <div class="vitality-ingredients__card__number">{{ block.settings.number }}</div>
+                </div>
+                <div class="vitality-ingredients__card__title">{{ block.settings.title }}</div>
+              </div> 
+          {% endif %}
+      {% endfor %}
+  </div>
+
+  <div id="{{ antioxidant_id }}" class="vitality-ingredients__antioxidants-container">
+    {% if section.settings.antioxidant_link_label != blank %}
+      <h2 class="vitality-ingredients__title-block">{{ section.settings.antioxidant_link_label }}</h2>
+      <div class="vitality-ingredients__link-container">
+        {% if section.settings.longevity_link_label != blank %}
+          <div class="vitality-ingredients__link">
+            <a href="{{ page.url }}#{{ longevity_id }}" class="button button--link-style">
+              {{ section.settings.longevity_link_label }}
+            </a>
+          </div>
+        {% endif %}
+        {% if section.settings.vitamin_link_label != blank %}
+          <div class="vitality-ingredients__link">
+            <a href="{{ page.url }}#{{ vitamin_id }}" class="button button--link-style">
+              {{ section.settings.vitamin_link_label }}
+            </a>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="vitality-ingredients__table-container antioxidants-ingredients">
+    {% for block in antioxidants %}
+      {% if block.settings.name != blank %}
+        <div class="vitality-ingredients__table-row anchor-ingredients" id={{ block.settings.name | remove: " " | remove: "(" | remove: ")" | remove: "'" | remove: "’"  }}>
+          <div class="vitality-ingredients__table-cell-info-container">
+            <div class="vitality-ingredients__table-cell-name-wrapper">
+              <div class="vitality-ingredients__table-cell-name cell-number">{{ forloop.index }}.</div>
+              <div class="vitality-ingredients__table-cell-name">{{ block.settings.name }}</div>
+            </div>
+          </div>
+          <div class="vitality-ingredients__table-cell-support-container">
+            <div class="vitality-ingredients__table-cell-image">
+              {% if block.settings.image != nil %} 
+                          {%
+                            render 'image-element',
+                            image: block.settings.image,
+                            alt: block.settings.image.alt,
+                            additional_wrapper_classes: 'vitality-ingredients__table-cell-image'
+                          %}
+              {% endif %}
+            </div>
+
+            {% if block.settings.supports != blank %}
+              <div class="vitality-ingredients__table-cell-support-info-container">
+                <div class="vitality-ingredients__table-cell-support-title">Supports:</div>
+                <div class="vitality-ingredients__table-cell-support">{{ block.settings.supports }}</div>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+
+         {% if forloop.index == antioxidants.size %}
+          <div id="antioxidant-open-all" class="vitality-ingredients__open-all-container">
+            Open all 
+            <span class="vitality-ingredients__open-icon">
+                    {%
+                      render 'icon',
+                      name: 'down-caret',
+                      icon_class: 'icon--rotate',
+                    %}
+           </span>
+          </div>
+
+           <div id="antioxidant-hide-all" class="vitality-ingredients__hide-all-container">
+            Hide all 
+            <span class="vitality-ingredients__hide-icon">
+                    {%
+                      render 'icon',
+                      name: 'down-caret',
+                      icon_class: 'icon--rotate',
+                    %}
+           </span>
+          </div>
+         {% endif %}
+      {% endif %}
+    {% endfor %}
+  </div>
+  
+  <div id="{{ vitamin_id }}" class="vitality-ingredients__antioxidants-container vitality-ingredients__antioxidants-container__vitamins">
+    {% if section.settings.vitamin_link_label != blank %}
+      <h2 class="vitality-ingredients__title-block">{{ section.settings.vitamin_link_label }}</h2>
+      <div class="vitality-ingredients__link-container">
+        {% if section.settings.longevity_link_label != blank %}
+          <div class="vitality-ingredients__link">
+            <a href="{{ page.url }}#{{ longevity_id }}" class="button button--link-style">
+              {{ section.settings.longevity_link_label }}
+            </a>
+          </div>
+        {% endif %}
+        {% if section.settings.antioxidant_link_label != blank %}
+          <div class="vitality-ingredients__link">
+            <a href="{{ page.url }}#{{ antioxidant_id }}" class="button button--link-style">
+              {{ section.settings.antioxidant_link_label }}
+            </a>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+
+  {% if vitamins.size > 0 %}
+    <div class="vitality-ingredients__table-container">
+    {% for block in vitamins %}
+      {% if block.settings.name != blank %}
+        <div class="vitality-ingredients__table-row anchor-ingredients" id={{ block.settings.name | remove: " " | remove: "(" | remove: ")" | remove: "'" | remove: "’"  }}>
+          <div class="vitality-ingredients__table-cell-info-container">
+            <div class="vitality-ingredients__table-cell-name-wrapper">
+              <div class="vitality-ingredients__table-cell-name cell-number">{{ forloop.index }}.</div>
+              <div class="vitality-ingredients__table-cell-name">{{ block.settings.name }}</div>
+            </div>
+          </div>
+          <div class="vitality-ingredients__table-cell-support-container">
+            <div class="vitality-ingredients__table-cell-image">
+              {% if block.settings.image != nil %} 
+                          {%
+                            render 'image-element',
+                            image: block.settings.image,
+                            alt: block.settings.image.alt,
+                            additional_wrapper_classes: 'vitality-ingredients__table-cell-image'
+                          %}
+              {% endif %}
+            </div>
+
+            {% if block.settings.supports != blank %}
+              <div class="vitality-ingredients__table-cell-support-info-container">
+                <div class="vitality-ingredients__table-cell-support-title">Supports:</div>
+                <div class="vitality-ingredients__table-cell-support">{{ block.settings.supports }}</div>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if section.settings.disclaimer != blank %}
+    <div class="vitality-ingredients__disclaimer">
+      {{ section.settings.disclaimer }}
+    </div>
+  {% endif %}
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var vitalityMenu = document.getElementById('vitality-menu');
+
+    if (vitalityMenu) {
+      const paddingTop = Number('{{ section.settings.padding_top }}');
+     const paddingTopMobile = Number('{{ section.settings.padding_top_mobile }}');
+    
+    const vitalityMenuHeight = vitalityMenu.clientHeight;
+    const newPadding = paddingTop + vitalityMenuHeight;
+    const newPaddingMobile = paddingTopMobile + vitalityMenuHeight;
+    
+    let currentSection = document.getElementById('shopify-section-{{ section.id }}');
+    const isMobileMedia = window.matchMedia("(max-width: 1000px)");
+
+    if (currentSection && newPadding && newPaddingMobile) {
+      currentSection.style.paddingTop = (isMobileMedia.matches ? newPaddingMobile : newPadding) + 'px';
+    }
+    }
+  });
+</script>
+
+<script>
+    window.addEventListener('load', function() {
+
+    const vitalityIngredientsCardslist = document.querySelectorAll(".vitality-ingredients__card");
+    const vitalityIngredientsModalBackdrop = document.querySelector('.vitality-ingredients__modal-backdrop');
+    const vitalityIngredientsModalContent = document.querySelector(".vitality-ingredients__modal__content");
+    const vitalityIngredientsModalClose = document.querySelector(".vitality-ingredients__modal__close");
+
+    const vitalityIngredientsSearchParams = new URLSearchParams(window.location.search);
+    const vitalityIngredient = "ingredient";
+
+      const removeSelectedCardNamePropertyFromUrl = () => {
+      const vitalityIngredientsCard = vitalityIngredientsSearchParams.get(vitalityIngredient)
+
+      if (vitalityIngredientsCard) {
+        vitalityIngredientsSearchParams.delete(vitalityIngredient);
+      }
+    };
+
+    const removeSelectedClassFromCards = () => {
+      for (const card of vitalityIngredientsCardslist) {
+            card.classList.remove("is-selected-card");
+        };
+    };
+
+    for (const card of vitalityIngredientsCardslist) { 
+      card.addEventListener("click", () => {
+          removeSelectedClassFromCards();
+          card.classList.add("is-selected-card"); 
+      
+          if(vitalityIngredientsModalContent && vitalityIngredientsModalBackdrop) {
+
+              vitalityIngredientsModalContent.classList.add("vitality-ingredients__modal__content__is-open");
+              vitalityIngredientsModalBackdrop.classList.add("vitality-ingredients__modal-backdrop-is-open");
+
+              const vitalityIngredientsCarousel = document.querySelector(".carousel-{{ section.id }}");
+            
+              const vitalityIngredientsCarouselFlickity = new Flickity( vitalityIngredientsCarousel, {
+                    cellAlign: 'left',
+                    contain: true,
+                    groupCells: true,
+                    wrapAround: true,
+                    pageDots: true,
+                    initialIndex: card.dataset.selectedCardIndex - 1
+                });
+    
+              vitalityIngredientsCarouselFlickity.resize();
+
+              const vitalityIngredientsCarouselPrevButton = document.querySelector('.vitality-ingredients__modal__cards-list__item__button-prev-{{ section.id }}');
+              const vitalityIngredientsCarouselNextButton = document.querySelector('.vitality-ingredients__modal__cards-list__item__button-next-{{ section.id }}');
+
+              if (vitalityIngredientsCarouselPrevButton) {
+                vitalityIngredientsCarouselPrevButton.addEventListener( 'click', function() {
+                  vitalityIngredientsCarouselFlickity.previous();
+                });
+              }
+          
+              if (vitalityIngredientsCarouselNextButton) {
+                vitalityIngredientsCarouselNextButton.addEventListener( 'click', function() {
+                  vitalityIngredientsCarouselFlickity.next( );
+                });
+              }
+    
+
+        
+              vitalityIngredientsModalBackdrop.onclick = function(event) {
+                  vitalityIngredientsModalContent.classList.remove("vitality-ingredients__modal__content__is-open");
+                  vitalityIngredientsModalBackdrop.classList.remove("vitality-ingredients__modal-backdrop-is-open");
+                  removeSelectedClassFromCards();
+                  removeSelectedCardNamePropertyFromUrl();
+                  vitalityIngredientsCarouselFlickity.destroy();
+              }
+
+              vitalityIngredientsModalClose.onclick = function() {
+                  vitalityIngredientsModalContent.classList.remove("vitality-ingredients__modal__content__is-open");
+                  vitalityIngredientsModalBackdrop.classList.remove("vitality-ingredients__modal-backdrop-is-open");
+                  removeSelectedClassFromCards();
+                  removeSelectedCardNamePropertyFromUrl();
+                  vitalityIngredientsCarouselFlickity.destroy();
+              }
+
+ 
+              vitalityIngredientsModalContent.onclick = function(e) {
+                  e.stopPropagation();
+              }
+          
+          }
+
+
+    });
+
+  };
+
+  const  vitalityIngredientsCard =  vitalityIngredientsSearchParams.get(vitalityIngredient);
+
+  if (vitalityIngredientsCard) {
+    const vitalityIngredientsSelectedCard = document.querySelector(`.${vitalityIngredientsCard}`);
+
+    if (vitalityIngredientsSelectedCard) {
+          removeSelectedClassFromCards();
+      if(vitalityIngredientsModalContent && vitalityIngredientsModalBackdrop) {
+        vitalityIngredientsSelectedCard.classList.add("is-selected-card"); 
+
+         vitalityIngredientsModalContent.classList.add("vitality-ingredients__modal__content__is-open");
+         vitalityIngredientsModalBackdrop.classList.add("vitality-ingredients__modal-backdrop-is-open");
+
+         const selectedCardVitalityIngredientsCarousel = document.querySelector(".carousel-{{ section.id }}");
+
+        const selectedCardVitalityIngredientsCarouselFlickity = new Flickity( selectedCardVitalityIngredientsCarousel, {
+                    cellAlign: 'left',
+                    contain: true,
+                    groupCells: true,
+                    wrapAround: true,
+                    pageDots: true,
+                    initialIndex: vitalityIngredientsSelectedCard.dataset.selectedCardIndex - 1
+                });
+    
+              selectedCardVitalityIngredientsCarouselFlickity.resize();
+
+        const selectedCardVitalityIngredientsCarouselPrevButton = document.querySelector('.vitality-ingredients__modal__cards-list__item__button-prev-{{ section.id }}');
+        const selectedCardVitalityIngredientsCarouselNextButton = document.querySelector('.vitality-ingredients__modal__cards-list__item__button-next-{{ section.id }}');
+
+              if (selectedCardVitalityIngredientsCarouselPrevButton) {
+                selectedCardVitalityIngredientsCarouselPrevButton.addEventListener( 'click', function() {
+                  selectedCardVitalityIngredientsCarouselFlickity.previous();
+                });
+              }
+          
+              if (selectedCardVitalityIngredientsCarouselNextButton) {
+                selectedCardVitalityIngredientsCarouselNextButton.addEventListener( 'click', function() {
+                  selectedCardVitalityIngredientsCarouselFlickity.next( );
+                });
+              }
+
+        vitalityIngredientsModalBackdrop.onclick = function(event) {
+                  vitalityIngredientsModalContent.classList.remove("vitality-ingredients__modal__content__is-open");
+                  vitalityIngredientsModalBackdrop.classList.remove("vitality-ingredients__modal-backdrop-is-open");
+                  removeSelectedClassFromCards();
+                  removeSelectedCardNamePropertyFromUrl();
+                  selectedCardVitalityIngredientsCarouselFlickity.destroy();
+              }
+
+              vitalityIngredientsModalClose.onclick = function() {
+                  vitalityIngredientsModalContent.classList.remove("vitality-ingredients__modal__content__is-open");
+                  vitalityIngredientsModalBackdrop.classList.remove("vitality-ingredients__modal-backdrop-is-open");
+                  removeSelectedClassFromCards();
+                  removeSelectedCardNamePropertyFromUrl();
+                  selectedCardVitalityIngredientsCarouselFlickity.destroy();
+              }
+
+ 
+              vitalityIngredientsModalContent.onclick = function(e) {
+                  e.stopPropagation();
+              }
+      }
+    }
+  }
+
+
+      const antioxidantOpenAll = document.getElementById("antioxidant-open-all");
+      const antioxidantHideAll = document.getElementById("antioxidant-hide-all");
+      
+      const antioxidantsElements = document.querySelector(".antioxidants-ingredients");
+      
+      antioxidantOpenAll.addEventListener("click", () => {
+        for (const child of antioxidantsElements.children) {
+          child.style.display = "flex";
+          child.style.filter = "unset";
+          antioxidantOpenAll.style.display = "none";
+        }
+        antioxidantHideAll.style.display = "flex";
+      });
+
+      antioxidantHideAll.addEventListener("click", () => {
+        let i = 0;
+        for (const child of antioxidantsElements.children) {
+          if (i > 5) {
+            child.style.display = "none";
+          }
+          if (i == 5) {
+            child.style.filter = "blur(4px)";
+          }
+          antioxidantHideAll.style.display = "none";
+          i++;
+        }
+        antioxidantOpenAll.style.display = "flex";
+      });
+
+  });
+  
+</script>
+
+{% schema %}
+  {
+    "name": "Vitality Ingredients",
+    "settings": [
+      {
+      "type": "html",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "html",
+      "id": "description",
+      "label": "Description"
+    },
+      {
+      "type": "html",
+      "id": "longevity_title",
+      "label": "Longevities block title"
+    },
+      {
+      "type": "html",
+      "id": "longevity_link_label",
+      "label": "Longevities link label"
+    },
+      {
+      "type": "html",
+      "id": "antioxidant_link_label",
+      "label": "Antioxidants link label"
+    },
+      {
+      "type": "html",
+      "id": "vitamin_link_label",
+      "label": "Vitamins link label"
+    },
+      {
+      "type": "html",
+      "id": "disclaimer",
+      "label": "Disclaimer"
+    },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Top spacing",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "default": 64,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Bottom spacing",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background image"
+    },
+      {
+      "type": "range",
+      "id": "title-font-size",
+      "label": "Title font size",
+      "min": 0,
+      "max": 100,
+      "default": 65,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "description-font-size",
+      "label": "Description font size",
+      "min": 0,
+      "max": 100,
+      "default": 22,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "block-title-font-size",
+      "label": "Block title  font size",
+      "min": 0,
+      "max": 100,
+      "default": 30,
+      "unit": "px"
+    },
+      {
+      "type": "range",
+      "id": "link-label-font-size",
+      "label": "Link labels  font size",
+      "min": 0,
+      "max": 100,
+      "default": 20,
+      "unit": "px"
+    },
+      {
+      "type": "range",
+      "id": "card-number-block-size",
+      "label": "Card number block size",
+      "min": 0,
+      "max": 100,
+      "default": 40,
+      "unit": "px"
+    },
+     {
+      "type": "range",
+      "id": "card-number-font-size",
+      "label": "Card number font size",
+      "min": 0,
+      "max": 100,
+      "default": 20,
+      "unit": "px"
+    },
+      {
+      "type": "range",
+      "id": "card-title-font-size",
+      "label": "Card title font size",
+      "min": 0,
+      "max": 100,
+      "default": 16,
+      "unit": "px"
+    },
+       {
+      "type": "range",
+      "id": "disclaimer-font-size",
+      "label": "Disclaimer font size",
+      "min": 0,
+      "max": 100,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Ingredients table"
+    },
+    {
+      "type": "range",
+      "id": "name-ingredient-font-size",
+      "label": "Name ingredient font size",
+      "min": 0,
+      "max": 100,
+      "default": 30,
+      "unit": "px"
+    },
+      {
+      "type": "range",
+      "id": "support-ingredient-font-size",
+      "label": "Support ingredient font size",
+      "min": 0,
+      "max": 100,
+      "default": 16,
+      "unit": "px"
+    },
+      {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section background color",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Section title color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Section description color",
+      "default": "#000000"
+    },
+      {
+      "type": "color",
+      "id": "block-title_color",
+      "label": "Block title color",
+      "default": "#000000",
+    },
+      {
+      "type": "color",
+      "id": "link-label_color",
+      "label": "Link labels color",
+      "default": "#60012C",
+    },
+      {
+          "type": "color",
+          "id": "link-label_color--highlight",
+          "label": "Link labels hover color"
+        },
+      {
+      "type": "color",
+      "id": "card_title_color",
+      "label": "Card title color",
+      "default": "#000000"
+    },
+      {
+      "type": "color",
+      "id": "card_number_color",
+      "label": "Card number color",
+      "default": "#F7F5F1"
+    },
+    {
+      "type": "color",
+      "id": "card_number_background_color",
+      "label": "Card number background color",
+      "default": "#45001F"
+    },
+       {
+      "type": "color",
+      "id": "ingredients-text-table_color",
+      "label": "Ingredients text table color",
+      "default": "#000000"
+    },
+      {
+      "type": "color",
+      "id": "disclaimer_color",
+      "label": "Disclaimer color",
+      "default": "#CC9305"
+    },
+      
+      {
+      "type": "header",
+      "content": "Mobile layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile top spacing",
+      "min": 0,
+      "max": 80,
+      "default": 21,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile bottom spacing",
+      "min": 0,
+      "max": 80,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "title-font-size-mobile",
+      "label": "Title font size mobile",
+      "min": 0,
+      "max": 100,
+      "default": 45,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "description-font-size-mobile",
+      "label": "Description font size mobile",
+      "min": 0,
+      "max": 100,
+      "default": 15,
+      "unit": "px"
+    },
+      {
+      "type": "range",
+      "id": "block-title-font-size-mobile",
+      "label": "Block title  font size mobile",
+      "min": 0,
+      "max": 100,
+      "default": 30,
+      "unit": "px"
+    },
+      {
+      "type": "range",
+      "id": "link-label-font-size-mobile",
+      "label": "Link labels  font size mobile",
+      "min": 0,
+      "max": 100,
+      "default": 20,
+      "unit": "px"
+    },
+      {
+      "type": "range",
+      "id": "card-number-block-size-mobile",
+      "label": "Card number block size mobile",
+      "min": 0,
+      "max": 100,
+      "default": 20,
+      "unit": "px"
+    },
+     {
+      "type": "range",
+      "id": "card-number-font-size-mobile",
+      "label": "Card number font size mobile",
+      "min": 0,
+      "max": 100,
+      "default": 10,
+      "unit": "px"
+    },
+      {
+      "type": "range",
+      "id": "card-title-font-size-mobile",
+      "label": "Card title font size mobile",
+      "min": 0,
+      "max": 100,
+      "default": 16,
+      "unit": "px"
+    },
+      {
+      "type": "header",
+      "content": "Ingredients table"
+    },
+    {
+      "type": "range",
+      "id": "name-ingredient-font-size-mobile",
+      "label": "Name ingredient font size",
+      "min": 0,
+      "max": 100,
+      "default": 15,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "support-ingredient-font-size-mobile",
+      "label": "Support ingredient font size",
+      "min": 0,
+      "max": 100,
+      "default": 13,
+      "unit": "px"
+    },
+      {
+        "type": "header",
+        "content": "Advanced",
+        "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+      },
+      {
+        "type": "text",
+        "id": "css_class",
+        "label": "CSS Class"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_css",
+        "label": "Custom CSS"
+      }
+    ],
+    "blocks": [
+      {
+      "type": "button-block",
+      "name": "Button block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "Button style",
+          "options": [
+            {
+              "value": "button--primary",
+              "label": "Primary"
+            },
+            {
+              "value": "button--secondary",
+              "label": "Secondary"
+            },
+            {
+              "value": "button--link-style",
+              "label": "Link style"
+            },
+            {
+              "value": "button--custom",
+              "label": "Custom"
+            }
+          ],
+          "default": "button--primary"
+        },
+        {
+          "type": "header",
+          "content": "Custom button style"
+        },
+        {
+          "type": "range",
+          "id": "button_custom_border_radius",
+          "label": "Border radius",
+          "min": 0,
+          "max": 50,
+          "default": 8,
+          "unit": "px"
+        },
+        {
+          "type": "color",
+          "id": "button_custom_bg_color",
+          "label": "Background"
+        },
+        {
+          "type": "color",
+          "id": "button_custom_border_color",
+          "label": "Border"
+        },
+        {
+          "type": "color",
+          "id": "button_custom_text_color",
+          "label": "Text"
+        },
+        {
+          "type": "color",
+          "id": "button_custom_bg_color--highlight",
+          "label": "Background hover"
+        },
+        {
+          "type": "color",
+          "id": "button_custom_border_color--highlight",
+          "label": "Border hover"
+        },
+        {
+          "type": "color",
+          "id": "button_custom_text_color--highlight",
+          "label": "Text hover"
+        }
+      ]
+    },
+      {
+        "type": "card",
+        "name": "Card",
+        "settings": [
+          {
+            "type": "html",
+            "id": "number",
+            "label": "Card number"
+          },
+          {
+            "type": "html",
+            "id": "title",
+            "label": "Card title"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "header",
+            "content": "Modal content"
+          },
+          {
+            "type": "html",
+            "id": "description",
+            "label": "Description"
+          },
+          {
+            "type": "html",
+            "id": "title_links_block",
+            "label": "Title for links block"
+          },
+           {
+          "type": "url",
+          "id": "connected_page_link",
+          "label": "Link to connected page",
+          "info": "The link labels should match the card titles on the connected page"
+        },
+          {
+          "type": "text",
+          "id": "button_label_1",
+          "label": "Link label 1"
+        },
+      {
+          "type": "text",
+          "id": "button_label_2",
+          "label": "Link label 2"
+        },
+      {
+          "type": "text",
+          "id": "button_label_3",
+          "label": "Link label 3"
+        },
+      {
+          "type": "text",
+          "id": "button_label_4",
+          "label": "Link label 4"
+        },
+      {
+          "type": "text",
+          "id": "button_label_5",
+          "label": "Link label 5"
+        },
+      {
+          "type": "text",
+          "id": "button_label_6",
+          "label": "Link label 6"
+        },
+      {
+          "type": "text",
+          "id": "button_label_7",
+          "label": "Link label 7"
+        },
+      {
+          "type": "text",
+          "id": "button_label_8",
+          "label": "Link label 8"
+        },
+        {
+          "type": "text",
+          "id": "button_label_9",
+          "label": "Link label 9"
+        },
+          {
+          "type": "text",
+          "id": "button_label_10",
+          "label": "Link label 10"
+        },
+          {
+            "type": "html",
+            "id": "info_label_1",
+            "label": "Information label 1"
+          },
+          {
+            "type": "html",
+            "id": "info_text_1",
+            "label": "Information text 1"
+          },
+          {
+            "type": "html",
+            "id": "info_label_2",
+            "label": "Information label 2"
+          },
+          {
+            "type": "html",
+            "id": "info_text_2",
+            "label": "Information text 2"
+          },
+          {
+            "type": "html",
+            "id": "info_label_3",
+            "label": "Information label 3"
+          },
+          {
+            "type": "html",
+            "id": "info_text_3",
+            "label": "Information text 3"
+          },
+          {
+            "type": "html",
+            "id": "info_label_4",
+            "label": "Information label 4"
+          },
+          {
+            "type": "html",
+            "id": "info_text_4",
+            "label": "Information text 4"
+          },
+          {
+            "type": "html",
+            "id": "links_title_block",
+            "label": "Links title block"
+          },
+          {
+          "type": "text",
+          "id": "label_link_1",
+          "label": "Document label 1"
+          },
+          {
+          "type": "url",
+          "id": "url_link_1",
+          "label": "Document link 1"
+          },
+          {
+          "type": "text",
+          "id": "label_link_2",
+          "label": "Document label 2"
+          },
+          {
+          "type": "url",
+          "id": "url_link_2",
+          "label": "Document link 2"
+          },
+          {
+          "type": "text",
+          "id": "label_link_3",
+          "label": "Document label 3"
+          },
+          {
+          "type": "url",
+          "id": "url_link_3",
+          "label": "Document link 3"
+          },
+          {
+          "type": "text",
+          "id": "label_link_4",
+          "label": "Document label 4"
+          },
+          {
+          "type": "url",
+          "id": "url_link_4",
+          "label": "Document link 4"
+          },
+          {
+            "type": "header",
+            "content": "Colors"
+          },
+          {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background color",
+          },
+          {
+            "type": "color",
+            "id": "border_color",
+            "label": "Border color",
+          },
+          {
+          "type": "select",
+          "id": "button_style",
+          "label": "Link style",
+          "options": [
+            {
+              "value": "button--link-style",
+              "label": "Link style"
+            },
+          ],
+          "default": "button--link-style"
+        },
+      {
+          "type": "header",
+          "content": "Link style"
+        },
+        {
+          "type": "color",
+          "id": "link_custom_border_color",
+          "label": "Border"
+        },
+        {
+          "type": "color",
+          "id": "link_custom_text_color",
+          "label": "Text"
+        },
+        {
+          "type": "color",
+          "id": "link_custom_border_color--highlight",
+          "label": "Border hover"
+        },
+        {
+          "type": "color",
+          "id": "link_custom_text_color--highlight",
+          "label": "Text hover"
+        },
+        ]
+      },
+      {
+        "type": "antioxidant",
+        "name": "Antioxidant",
+        "settings": [
+          {
+            "type": "html",
+            "id": "name",
+            "label": "Name"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "html",
+            "id": "supports",
+            "label": "Supports"
+          },
+        ]
+      },
+      {
+        "type": "vitamin",
+        "name": "Vitamin",
+        "settings": [
+          {
+            "type": "html",
+            "id": "name",
+            "label": "Name"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "html",
+            "id": "supports",
+            "label": "Supports"
+          },
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Vitality: Ingredients"
+      }
+    ]
+  }
+{% endschema %}

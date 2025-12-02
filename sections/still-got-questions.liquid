@@ -1,0 +1,755 @@
+{% assign slides = section.blocks | where: 'type', 'slide' %}
+
+{% style %}
+     #shopify-section-{{ section.id }} {
+       /* background-color: {{ section.settings.background_color }}; */
+       padding-top: {{ section.settings.padding_top }}px;
+       padding-bottom: {{ section.settings.padding_bottom }}px;
+       /* position: relative; */
+     }
+
+     .still-got-questions {
+       /* display: flex;
+       align-items: center;
+       justify-content: space-between;
+       gap: 20px; */
+     }
+
+     .still-got-questions__title {
+       font-size: 35px;
+       font-weight: bold;
+     }
+
+     #shopify-section-{{ section.id }} .still-got-questions__title {
+       color: {{ section.settings.title_color }};
+     }
+
+     .still-got-questions__left-image {
+       display: flex;
+       justify-content: flex-start;
+     }
+
+     .still-got-questions__right-container {
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+       flex-grow: 1;
+       gap: 40px;
+       min-width: fit-content;
+     }
+
+     .still-got-questions__buttons {
+       display: flex;
+       flex-direction: column;
+       gap: 18px;
+       margin-top: 35px;
+      width: max-content;
+     }
+
+    .still-got-questions__button {
+      width: 100%;
+    }
+
+     .carousel-{{ section.id }}-mobile {
+       display: none;
+     }
+
+     #shopify-section-{{ section.id }} .carousel-{{ section.id }},
+     /* #shopify-section-{{ section.id }} .carousel-{{ section.id }} .carousel-cell, */
+     #shopify-section-{{ section.id }} .carousel-{{ section.id }} .flickity-resize,
+     #shopify-section-{{ section.id }} .carousel-{{ section.id }} .flickity-resize .flickity-viewport,
+     #shopify-section-{{ section.id }} .carousel-{{ section.id }} .flickity-resize .flickity-viewport .flickity-slider {
+        height: 100% !important;
+        width: 100%;
+      }
+
+     #shopify-section-{{ section.id }} .carousel-{{ section.id }}-mobile,
+     #shopify-section-{{ section.id }} .carousel-{{ section.id }}-mobile .flickity-resize,
+     #shopify-section-{{ section.id }} .carousel-{{ section.id }}-mobile .flickity-resize .flickity-viewport,
+     #shopify-section-{{ section.id }} .carousel-{{ section.id }}-mobile .flickity-resize .flickity-viewport .flickity-slider,
+     #shopify-section-{{ section.id }} .carousel-{{ section.id }}-mobile .flickity-resize .flickity-viewport .flickity-slider .carousel-cell{
+        height: 100% !important;
+        width: 100%;
+      }
+
+     #shopify-section-{{ section.id }} .carousel-{{ section.id }}-mobile .carousel-cell {
+       height: 356px;
+       width: 100%;
+     }
+
+    #shopify-section-{{ section.id }} .carousel-{{ section.id }} .carousel-cell {
+       height: 525px;
+       width: 100%;
+     }
+
+     #shopify-section-{{ section.id }} .carousel-{{ section.id }}-mobile img,
+     #shopify-section-{{ section.id }} .carousel-{{ section.id }} img {
+        object-fit: cover;
+         height: 100%;
+         width: 100%;
+         margin-left: auto;
+         margin-right: auto;
+         display: block;
+      }
+
+     #shopify-section-{{ section.id }} .carousel-{{ section.id }}-mobile video,
+    #shopify-section-{{ section.id }} .carousel-{{ section.id }} video {
+       object-fit: cover;
+         height: 100% !important;
+         width: 100%;
+         margin-left: auto;
+         margin-right: auto;
+         display: block;
+     }
+
+     #shopify-section-{{ section.id }} .flickity-page-dots {
+    counter-reset: a;
+       background-image: unset;
+        display: flex;
+     }
+
+     #shopify-section-{{ section.id }} .flickity-page-dots .dot {
+       width: 19px;
+       height: 19px;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       border-radius: 50%;
+       border: 1px solid #f7f5f1;;
+       transform: rotate(-45deg);
+       color: #f7f5f1;
+     }
+
+     #shopify-section-{{ section.id }} .flickity-page-dots .dot.is-selected {
+       border: 1px solid {{ section.settings.active_dot_color }};
+       border-bottom-color: transparent;
+       color: {{ section.settings.active_dot_color }};
+     }
+
+      #shopify-section-{{ section.id }} .flickity-page-dots .dot::after {
+     	content: counter(a);
+     	counter-increment: a;
+       font-size: 12px;
+       font-weight: bold;
+       transform: rotate(45deg);
+     }
+
+      .still-got-questions .caption {
+      top: 100px;
+      transform: translateY(0);
+      max-width: {{ settings.section-max-width-large-screen | append: 'px' }};
+      margin-left: auto;
+      margin-right: auto;
+      left: 0px;
+      right: 0px;
+      box-sizing: content-box;
+  }
+
+    .still-got-questions .caption {
+      position: absolute;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 35px;
+
+      height: 65%;
+    }
+
+  .caption-image, .still-got-questions__right-image {
+    display: flex;
+    align-items: end;
+    justify-content: end;
+  }
+
+  .still-got-questions__right-image {
+    width: 265px;
+    height: 265px;
+  }
+
+    @media only screen and (max-width: 1440px) {
+      .still-got-questions .caption,
+      .still-got-questions .flickity-page-dots {
+        max-width: 1200px;
+        width: 95%;
+    }
+
+     @media only screen and (max-width: 1200px) {
+       #shopify-section-{{ section.id }} .still-got-questions {
+         padding-top: {{ section.settings.padding_top_mobile }}px;
+         padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+       }
+
+         .still-got-questions__left-image {
+           display: none;
+         }
+
+         .still-got-questions__left-image {
+           max-width: 700px !important;
+         }
+     }
+
+     @media only screen and (max-width: 798px) {
+       .carousel-{{ section.id }}-mobile {
+         display: block;
+       }
+
+       .carousel-{{ section.id }} {
+         display: none;
+       }
+
+       .still-got-questions .caption {
+         top: 30px;
+         height: 75%;
+       }
+
+       .still-got-questions__buttons {
+         margin-top: 25px;
+         gap: 13px;
+       }
+
+       .still-got-questions__right-image {
+         width: 126px;
+         height: 126px;
+         margin-left: unset;
+         margin-right: unset;
+       }
+
+       .still-got-questions__title {
+         font-size: 20px;
+         line-height: 1.1;
+       }
+
+       .caption-info, .caption-image {
+         width: 50%;
+       }
+
+       .caption-image {
+         display: flex;
+         align-items: end;
+         justify-content: end;
+       }
+     }
+
+      @media only screen and (max-width: 390px) {
+        .still-got-questions__buttons {
+         width: unset;
+       }
+
+       .still-got-questions__button {
+         width: unset;
+       }
+      }
+
+     {%
+       render 'css-loop',
+       css: section.settings.custom_css,
+       id: section.id,
+     %}
+{% endstyle %}
+
+<section
+  class="
+    section
+    is-width-wide
+    {{ section.settings.css_class }}
+    still-got-questions
+  "
+>
+  <div class="carousel-{{ section.id }}-mobile">
+    {% if slides.size %}
+      {% for slide in slides %}
+        {% if slide.settings.mobile_image != blank %}
+          <div class="carousel-cell is-hidden-desktop-only">
+            <img
+              src="{{ slide.settings.mobile_image | img_url: 'master' }}"
+              alt="{{ slide.settings.mobile_image.alt }}"
+            />
+            <div class="caption section is-width-standard">
+              <div class="caption-info">
+                {% if section.settings.title != blank %}
+                  <span class="still-got-questions__title">
+                    {{ section.settings.title }}
+                  </span>
+                  <div class="still-got-questions__buttons">
+                    {% for block in section.blocks %}
+                      {% if block.type == 'button-block' %}
+                        {% if block.settings.button_label != blank %}
+                          {% style -%}
+                            .still-got-questions__button .button--custom {
+                              border-radius: {{ block.settings.button_custom_border_radius | append: 'px' }};
+                              border: 1px solid;
+                              width: 100%;
+                              max-width: 100%;
+                              white-space: normal;
+                              overflow-wrap: normal;
+                              padding-top: unset;
+                              padding-bottom: unset;
+                            }
+
+                            .still-got-questions__button a.button--custom.button,
+                            .still-got-questions__button a.button--custom.button:link,
+                            .still-got-questions__button a.button--custom.button:visited {
+                              background-color: {{ block.settings.button_custom_bg_color }};
+                              color: {{ block.settings.button_custom_text_color }};
+                              border-color: {{ block.settings.button_custom_border_color }};
+                            }
+
+                            .still-got-questions__button a.button--custom.button:hover,
+                            .still-got-questions__button a.button--custom.button.is-hovered {
+                              color: {{ block.settings.button_custom_text_color--highlight }};
+                              border-color: {{ block.settings.button_custom_border_color--highlight }};
+                              background-color: {{ block.settings.button_custom_bg_color--highlight }};
+                            }
+
+                            @media only screen and (max-width: 798px) {
+                              .still-got-questions__button .button--custom {
+                                font-size: 13px !important;
+                              }
+                            }
+
+                            @media only screen and (max-width: 389px) {
+                              .still-got-questions__button .button--custom {
+                                width: 230px;
+                              }
+                            }
+                          {% endstyle -%}
+
+                          <div class="still-got-questions__button">
+                            <a href="{{ block.settings.button_link }}" class="button {{ block.settings.button_style }}">
+                              {{ block.settings.button_label }}
+                            </a>
+                          </div>
+                        {% endif %}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+              <div class="caption-image">
+                {% if section.settings['right-image'] != null %}
+                  {% render 'image-element',
+                    image: section.settings['right-image'],
+                    alt: section.settings['right-image'].alt,
+                    additional_wrapper_classes: 'still-got-questions__right-image'
+                  %}
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  </div>
+
+  <div class="carousel-{{ section.id }}">
+    {% if slides.size %}
+      {% for slide in slides %}
+        {% if slide.settings.video_link != blank %}
+          <div class="carousel-cell is-hidden-mobile-only">
+            <video loop autoplay muted playsinline>
+              <source src="{{ slide.settings.video_link }}" type="video/webm">
+              <source src="{{ slide.settings.video_link }}" type="video/mp4">
+            </video>
+            <div class="caption section is-width-standard">
+              <div class="caption-info">
+                {% if section.settings.title != blank %}
+                  <span class="still-got-questions__title">
+                    {{ section.settings.title }}
+                  </span>
+                  <div class="still-got-questions__buttons">
+                    {% for block in section.blocks %}
+                      {% if block.type == 'button-block' %}
+                        {% if block.settings.button_label != blank %}
+                          {% style -%}
+                            .still-got-questions__button .button--custom {
+                              border-radius: {{ block.settings.button_custom_border_radius | append: 'px' }};
+                              border: 1px solid;
+                              width: 100%;
+                              max-width: 100%;
+                              white-space: normal;
+                              overflow-wrap: normal;
+                              padding-top: unset;
+                              padding-bottom: unset;
+                            }
+
+                            .still-got-questions__button a.button--custom.button,
+                            .still-got-questions__button a.button--custom.button:link,
+                            .still-got-questions__button a.button--custom.button:visited {
+                              background-color: {{ block.settings.button_custom_bg_color }};
+                              color: {{ block.settings.button_custom_text_color }};
+                              border-color: {{ block.settings.button_custom_border_color }};
+                            }
+
+                            .still-got-questions__button a.button--custom.button:hover,
+                            .still-got-questions__button a.button--custom.button.is-hovered {
+                              color: {{ block.settings.button_custom_text_color--highlight }};
+                              border-color: {{ block.settings.button_custom_border_color--highlight }};
+                              background-color: {{ block.settings.button_custom_bg_color--highlight }};
+                            }
+
+                            @media only screen and (max-width: 389px) {
+                              .still-got-questions__button .button--custom {
+                                width: 230px;
+                              }
+                            }
+                          {% endstyle -%}
+
+                          <div class="still-got-questions__button">
+                            <a href="{{ block.settings.button_link }}" class="button {{ block.settings.button_style }}">
+                              {{ block.settings.button_label }}
+                            </a>
+                          </div>
+                        {% endif %}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+              <div class="caption-image">
+                {% if section.settings['right-image'] != null %}
+                  {% render 'image-element',
+                    image: section.settings['right-image'],
+                    alt: section.settings['right-image'].alt,
+                    additional_wrapper_classes: 'still-got-questions__right-image'
+                  %}
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% else %}
+          <div class="carousel-cell is-hidden-mobile-only">
+            <img src="{{ slide.settings.image | img_url: 'master' }}" alt="{{ slide.settings.image.alt }}">
+            <div class="caption section is-width-standard">
+              <div class="caption-info">
+                {% if section.settings.title != blank %}
+                  <span class="still-got-questions__title">
+                    {{ section.settings.title }}
+                  </span>
+                  <div class="still-got-questions__buttons">
+                    {% for block in section.blocks %}
+                      {% if block.type == 'button-block' %}
+                        {% if block.settings.button_label != blank %}
+                          {% style -%}
+                            .still-got-questions__button .button--custom {
+                              border-radius: {{ block.settings.button_custom_border_radius | append: 'px' }};
+                              border: 1px solid;
+                              width: 100%;
+                              max-width: 100%;
+                              white-space: normal;
+                              overflow-wrap: normal;
+                              padding-top: unset;
+                              padding-bottom: unset;
+                            }
+
+                            .still-got-questions__button a.button--custom.button,
+                            .still-got-questions__button a.button--custom.button:link,
+                            .still-got-questions__button a.button--custom.button:visited {
+                              background-color: {{ block.settings.button_custom_bg_color }};
+                              color: {{ block.settings.button_custom_text_color }};
+                              border-color: {{ block.settings.button_custom_border_color }};
+                            }
+
+                            .still-got-questions__button a.button--custom.button:hover,
+                            .still-got-questions__button a.button--custom.button.is-hovered {
+                              color: {{ block.settings.button_custom_text_color--highlight }};
+                              border-color: {{ block.settings.button_custom_border_color--highlight }};
+                              background-color: {{ block.settings.button_custom_bg_color--highlight }};
+                            }
+
+                            @media only screen and (max-width: 389px) {
+                              .still-got-questions__button .button--custom {
+                                width: 230px;
+                              }
+                            }
+                          {% endstyle -%}
+
+                          <div class="still-got-questions__button">
+                            <a href="{{ block.settings.button_link }}" class="button {{ block.settings.button_style }}">
+                              {{ block.settings.button_label }}
+                            </a>
+                          </div>
+                        {% endif %}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+              <div class="caption-image">
+                {% if section.settings['right-image'] != null %}
+                  {% render 'image-element',
+                    image: section.settings['right-image'],
+                    alt: section.settings['right-image'].alt,
+                    additional_wrapper_classes: 'still-got-questions__right-image'
+                  %}
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const isMobileMedia = window.matchMedia("(max-width: 798px)");
+     if (isMobileMedia.matches) {
+       var elemStillGotQuestionsMobile = document.querySelector('.carousel-{{ section.id }}-mobile');
+
+       var flktyStillGotQuestionsMobile = new Flickity(elemStillGotQuestionsMobile, {
+         imagesLoaded: true,
+          lazyLoad: true,
+
+        cellAlign: 'left',
+        contain: true,
+        groupCells: true,
+        wrapAround: true,
+        adaptiveHeight: false,
+        prevNextButtons: false,
+        pageDots: true,
+        draggable: true,
+        imagesLoaded: true,
+        fade: true,
+        autoPlay: 3 * 1000,
+      });
+     }
+     if (!isMobileMedia.matches) {
+        var elemStillGotQuestionsImage = document.querySelector('.carousel-{{ section.id }}');
+
+        var flktyStillGotQuestionsImage = new Flickity( elemStillGotQuestionsImage, {
+          imagesLoaded: true,
+          lazyLoad: true,
+
+        cellAlign: 'left',
+        contain: true,
+        groupCells: true,
+        wrapAround: true,
+        adaptiveHeight: false,
+        prevNextButtons: false,
+        pageDots: true,
+        draggable: true,
+        imagesLoaded: true,
+        fade: true,
+        autoPlay: 3 * 1000,
+      });
+     }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Still got questions",
+  "settings": [
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Section title"
+    },
+    {
+      "type": "image_picker",
+      "id": "left-image",
+      "label": "Left image"
+    },
+    {
+      "type": "image_picker",
+      "id": "right-image",
+      "label": "Right image"
+    },
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 100,
+      "default": 60,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 100,
+      "default": 60,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section background color",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Section title color",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "active_dot_color",
+      "label": "Active navigation color",
+      "default": "#78BE20"
+    },
+    {
+      "type": "header",
+      "content": "Mobile layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile top spacing",
+      "min": 0,
+      "max": 100,
+      "default": 30,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile bottom spacing",
+      "min": 0,
+      "max": 100,
+      "default": 30,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Advanced",
+      "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+    },
+    {
+      "type": "text",
+      "id": "css_class",
+      "label": "CSS Class"
+    },
+    {
+      "type": "textarea",
+      "id": "custom_css",
+      "label": "Custom CSS"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "button-block",
+      "name": "Button block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "Button style",
+          "options": [
+            {
+              "value": "button--primary",
+              "label": "Primary"
+            },
+            {
+              "value": "button--secondary",
+              "label": "Secondary"
+            },
+            {
+              "value": "button--link-style",
+              "label": "Link style"
+            },
+            {
+              "value": "button--custom",
+              "label": "Custom"
+            }
+          ],
+          "default": "button--primary"
+        },
+        {
+          "type": "header",
+          "content": "Custom button style"
+        },
+        {
+          "type": "range",
+          "id": "button_custom_border_radius",
+          "label": "Border radius",
+          "min": 0,
+          "max": 50,
+          "default": 8,
+          "unit": "px"
+        },
+        {
+          "type": "color",
+          "id": "button_custom_bg_color",
+          "label": "Background"
+        },
+        {
+          "type": "color",
+          "id": "button_custom_border_color",
+          "label": "Border"
+        },
+        {
+          "type": "color",
+          "id": "button_custom_text_color",
+          "label": "Text"
+        },
+        {
+          "type": "color",
+          "id": "button_custom_bg_color--highlight",
+          "label": "Background hover"
+        },
+        {
+          "type": "color",
+          "id": "button_custom_border_color--highlight",
+          "label": "Border hover"
+        },
+        {
+          "type": "color",
+          "id": "button_custom_text_color--highlight",
+          "label": "Text hover"
+        }
+      ]
+    },
+    {
+        "type": "slide",
+        "name": "Slide",
+        "limit": 4,
+        "settings": [
+          {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile Image",
+        },
+        {
+          "type": "url",
+          "id": "video_link",
+          "label": "Video link",
+        },
+        {
+          "type": "url",
+          "id": "video_link_mobile",
+          "label": "Video link mobile",
+        },
+        ]
+      }
+  ],
+  "presets": [
+    {
+      "name": "Still got questions"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,244 @@
+
+  {% assign border_color = settings.border_color %}
+  {% assign accordion_icon_color = section.settings.accordion_icon_color %}
+  {% assign metafield_page_handle = product.metafields.jadepuma.size_chart_page_title | handleize %}
+  {% assign metafield_page = pages[metafield_page_handle] %}
+  {% assign auto_close = true %}
+
+
+  {% assign include_size_chart = product.metafields.jadepuma.include_size_chart | metafield_text %}
+
+  {% style %}
+
+    .multiple_accordion_container-1235{
+        padding: 0px 0px;
+        margin:30px auto;
+    }
+
+    .product-details_accordian .multiple_accordion_item {
+      border-bottom:1px solid {{border_color}};
+      padding: 20px 0px
+    }
+
+    
+    .multiple_accordion_heading-1235{
+      margin-bottom: 15px;
+      font-size:30px;
+      font-weight:400;
+      color:{{section.settings.heading_color}};
+    }
+    .product-details_accordian .multiple_accordion_title-1235{
+      display:flex;
+      font-size:25px;
+      padding: 0px;
+      border-bottom: 0px;
+      color:{{section.settings.tab_heading_color}};
+      width: 95%;
+      margin: 0 auto;
+      align-items: center
+    }
+
+    .product-details_image {
+      height: 40px;
+      width: 40px;
+      object-fit: cover;
+      margin-right: 20px
+    }
+    
+    .product-details_accordian .multiple_accordion_content-1235{
+      text-align:left;
+      display:none;
+      width: 95%;
+      max-width: unset;
+      margin: 0 auto;
+      padding: 0px;
+      margin-top: 15px;
+      font-size: 18px
+    }
+
+    .accordian_content_heading-1235{
+        margin-top:30px;
+    }
+
+    .multiple_accordion_title-1235:hover{
+      cursor:pointer;
+      background-color:{{section.settings.tab_hover_color}};
+    }
+    .accordion_expand-1235{
+        margin:0px 5px;
+        transform:translateY(2px);
+    }
+
+    .accordion_collapse-1235{
+        margin:0px 5px;
+        transform:translateY(2px);
+    }
+    
+
+    .accordion_expand-1235 .icon svg{
+     height:60%;
+     width:60%;
+    }
+
+    .accordion_collapse-1235 .icon svg{
+     height:60%;
+     width:60%;
+    }
+
+    .product-details_accordian-inner {
+      max-width: 1200px;
+      width: 95%;
+      margin: 0 auto 
+    }
+
+   .product-details_title-container {
+     display:flex
+   }
+
+    @media only screen and (max-width: 600px) {
+    .multiple_accordion_content-1235{
+      text-align:left;
+      display:none;
+      padding:20px 10px;
+
+    }
+
+    }
+  {% endstyle %}
+    
+  
+    <div class="multiple_accordion_container-1235 content product-details_accordian section">
+        {% if section.settings.heading != blank %}
+          <div class="section">
+          <h2 style="padding:10px; font-size: 34px; font-weight: normal;">{{section.settings.heading}}</h2>
+          </div>
+        {% endif %}
+    
+          {% if product.metafields.product-details.title_1 or product.metafields.product-details.image_1%}
+              <div class="multiple_accordion_item item-1235" style="border-top:1px solid {{border_color}}">
+                  <div class="multiple_accordion_title-1235">
+                      {% if product.metafields.product-details.image_1 %}
+                              <img class='product-details_image' src="{{ product.metafields.product-details.image_1 | file_url }}" alt="Image 1" style="width: 40px; height: 40px;">
+                      {% endif %}
+                      {{ product.metafields.product-details.title_1 }}
+                  </div>
+          
+                  <div class="multiple_accordion_content-1235 open" style="display: block;">
+                      {{ product.metafields.product-details.text_1 }}
+                  </div>
+              </div>
+          {% endif %}
+          
+          {% if product.metafields.product-details.title_2 or product.metafields.product-details.image_2%}
+              <div class="multiple_accordion_item item-1235">
+                  <div class="multiple_accordion_title-1235">
+                      {% if product.metafields.product-details.image_2 %}
+                              <img class='product-details_image' src="{{ product.metafields.product-details.image_2 | file_url }}" alt="Image 2" style="width: 40px; height: 40px;">
+                      {% endif %}
+                      {{ product.metafields.product-details.title_2 }}
+                  </div>
+                  <div class="multiple_accordion_content-1235">
+                      {{ product.metafields.product-details.text_2 }}
+                  </div>
+              </div>
+          {% endif %}
+          
+          {% if product.metafields.product-details.title_3 or product.metafields.product-details.image_3%}
+              <div class="multiple_accordion_item item-1235">
+                  <div class="multiple_accordion_title-1235">
+                      {% if product.metafields.product-details.image_3 %}
+                              <img class='product-details_image' src="{{ product.metafields.product-details.image_3 | file_url }}" alt="Image 3" style="width: 40px; height: 40px;">
+                      {% endif %}
+                      {{ product.metafields.product-details.title_3 }}
+                  </div>
+                  <div class="multiple_accordion_content-1235">
+                      {{ product.metafields.product-details.text_3 }}
+                  </div>
+              </div>
+          {% endif %}
+
+      
+    </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <script>
+      $('.item-1235').click(function(){
+      //get the clicked item
+      $clickedItem = $('.multiple_accordion_content-1235',this);
+      $clickedItemIconExpand = $('.accordion_expand-1235',this);
+      $clickedItemIconCollapse = $('.accordion_collapse-1235',this);
+      // is the clicked item already open?
+      if(($clickedItem.hasClass('open'))){
+         //remove the class, slide it up and return early
+
+          $clickedItem.removeClass('open').slideUp(300);
+          $clickedItemIconCollapse.toggle();
+          $clickedItemIconExpand.toggle();
+
+          return;
+      }
+
+
+    {% if auto_close  %}
+
+
+
+      $('.multiple_accordion_content-1235').removeClass('open').slideUp(300);
+      /*document.querySelectorAll('.multiple_accordion_content-1235').forEach((el, index)=>{
+        if (el.classList.contains("open")) {
+          document.querySelectorAll('.accordion_expand-1235')[index].style.display = "none";
+          document.querySelectorAll('.accordion_collapse-1235')[index].style.display = "inline-block";
+        }
+        else{
+          document.querySelectorAll('.accordion_expand-1235')[index].style.display = "inline-block";
+          document.querySelectorAll('.accordion_collapse-1235')[index].style.display = "none";
+        }
+      })*/
+
+      
+    {% else %}
+
+
+    {% endif %}
+
+
+      //slide down the clicked item and add the open class
+      $clickedItem.slideDown(300).addClass('open');
+      $clickedItemIconCollapse.toggle();
+      $clickedItemIconExpand.toggle();
+    });
+
+    //limit clickable aread to the accordion title
+    $( '.multiple_accordion_content-1235' ).click(function() {
+      event.stopImmediatePropagation()
+    });
+  </script>
+
+
+
+
+{% schema %}
+  {
+    "name": "Product Details",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading"      
+      }
+    ],
+    "presets": [
+    {
+      "name": "Product Details",
+      "category": "Custom"
+    }
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

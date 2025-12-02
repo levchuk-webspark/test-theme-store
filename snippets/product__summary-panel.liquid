@@ -1,0 +1,817 @@
+{% assign formatArray = product.metafields.jadepuma.format_options | split: ',' %}
+{% assign buy_more_save_more_meta_object = product.metafields.custom.buy_more_save_more.value %}
+
+{% style %}
+
+  .summary-panel .icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .product__summary-panel__format-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .product__summary-panel__format-icon svg {
+    height: 15px;
+    min-height: 15px;
+    width: auto;
+  }
+
+  .summary-panel .icons:empty {
+    display: none;
+  }
+
+  .variants-block {
+    display: flex;
+    gap: 2px;
+  }
+
+  .sizeSwatch { 
+    color: #F7F5F1;
+  }
+{% endstyle %}
+{% if product.id != 8845549011157 %}
+  <div class="content1">
+    {% assign productsArray = product.metafields.jadepuma.format_options.value %}
+
+    <div class="summary-panel format">
+      <div class="panel-cell format-box">
+        <div class="text">Type:
+
+          <div class="format-icon-container">
+            {% for p in productsArray %}
+
+
+              {% if p.id == product.id %}
+                {% assign format-icon-class = "selected-icon" %}
+              {% else %}
+                {% assign format-icon-class = "format-icon" %}
+              {% endif %}
+
+              {% assign title = p.title | downcase %}
+
+              {% if title contains 'powder' %}
+                <a
+                  href="{{ p.url }}"
+                  class="{{format-icon-class}} {% if p.available == false %} format_unavailable {% endif %}"
+                  title="Powder">
+                  {% render 'format-icons'
+                    , format: 'powder' %}
+                </a>
+              {% elsif title contains 'ml' %}
+                <a
+                  href="{{ p.url }}"
+                  class="{{format-icon-class}} {% if p.available == false %} format_unavailable {% endif %}"
+                  title="Liquid">
+                  {% render 'format-icons'
+                    , format: 'liquid' %}
+                </a>
+              {% elsif title contains 'capsule' %}
+                <a
+                  href="{{ p.url }}"
+                  class="{{format-icon-class}} {% if p.available == false %} format_unavailable {% endif %}"
+                  title="Capsules">
+                  {% render 'format-icons'
+                    , format: 'capsules' %}
+                </a>
+              {% elsif title contains 'soft' %}
+                <a
+                  href="{{ p.url }}"
+                  class="{{format-icon-class}} {% if p.available == false %} format_unavailable {% endif %}"
+                  title="Soft gel">
+                  {% render 'format-icons'
+                    , format: 'softgel' %}
+                </a>
+                {% elsif title contains 'face mask' %}
+                <a
+                  href="{{ p.url }}"
+                  class="{{format-icon-class}} {% if p.available == false %} format_unavailable {% endif %}"
+                  title="Skincare">
+                  {% render 'format-icons'
+                    , format: 'skincare' %}
+                </a>
+              {% endif %}
+
+            {% endfor %}
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    {% assign productFormat = product.metafields.jadepuma.format | downcase %}
+
+    {% assign productFormat = "" %}
+
+    <div class="summary-panel size">
+      <div class="panel-cell size-box">
+        {% if product.has_only_default_variant %}
+          <div class="text">Size: {{ product.metafields.jadepuma.contents_size }} {{ productFormat }}</div>
+        {% else %}
+
+
+          {% style %}
+
+        
+
+
+          {% endstyle %}
+
+
+
+
+          {% assign option_name = "Size" %}
+          {% if product.options.size == 1 %}
+            {% for option in product.options %}
+              {% assign option_name = option %}
+            {%- endfor %}
+          {%- endif %}
+
+          <script>
+
+            let variantInfo  = []
+
+            {% assign google_discount_value = 100 | minus: settings.google_discount_percentage | times: 0.01 %}
+      
+
+            {% for variant in product.variants %}
+               
+                  variantInfo.push({"index": {{forloop.index}},
+                                    "servingSize": "{{variant.metafields.jadepuma.serving_size}}",
+                                    "nrv" : `{{variant.metafields.jadepuma.nrv}}`,
+                                    "price" : "{{variant.price | money}}",
+                                    "comparePrice" : "{{variant.compare_at_price | money}}",
+                                    "subscriptionPrice" : "{{variant.price | times: 0.75 |  money}}",
+                                    "googleShoppingDiscountPrice" : "{{variant.price | times: google_discount_value |  money}}",
+                                    "variantID" : {{variant.id}}
+                                    })
+
+
+            {% endfor %}
+
+          </script>
+
+
+          <div class="text">
+            <div class="text_name">{{ option_name }}:</div>
+            <div class="variants-block">
+              {% for variant in product.variants %}
+
+
+              {% assign variantIndex = forloop.index | minus: 1 %}
+
+              {% if variant.available == false %}
+
+              {% endif %}
+
+              <div
+                class="sizeSwatch {% if forloop.index == 1 %}size-swatch-selected{% endif %} 
+                {% if variant.title.size > 14 and product.variants.size >= 2 %} sizeSwatchSmall {% endif %}
+                "
+                onclick="selectVariantClick({{variantIndex}})"
+                {% if variant.available == false %}
+                style="color:grey !important;"
+                {% endif %}>
+                <span>
+                  {{ variant.title }}
+                {% unless productFormat == 'powder' %}
+                  {{ productFormat }}{% endunless %}
+                </span>
+              </div>
+            {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+
+  {% style %}
+
+    .sizeSwatch {
+      margin-left: 2px;
+      margin-bottom: 2px;
+      display: inline-block;
+      background-size: 5px 1px;
+      /* Width and height of the dot */
+
+      width: fit-content;
+      /* max-width: 140px; */
+      
+      background-image: none;
+
+      border-radius: 5px;
+      background-color: #EBE9E5;
+      color: #949992;
+      font-size: 12px;
+      line-height: 110.00000000000001%;
+      text-align: center;
+      padding: 12px;
+      font-weight: 900;
+
+      display: flex;
+      align-items: center;
+    }
+
+    .sizeSwatchSmall {
+      font-size: 10px;
+      max-width: 140px;
+    }
+
+    .text_name {
+      margin-right: 18px;
+    }
+
+    @media only screen and (max-width: 798px) {
+      .sizeSwatch {
+        margin-left: 2px;
+        margin: unset;
+        /* margin-bottom: 2px; */
+        /* display: inline-block; */
+        background-size: 5px 1px;
+        /* Width and height of the dot */
+        line-height: 16px;
+
+        width: fit-content;
+
+         background-image: none;
+      }
+
+      .sizeSwatchSmall {
+        max-width: 95px;
+      }
+    }
+
+    .sizeSwatch > span {
+      /* border-bottom: 1px dashed; */
+      line-height: 1;
+    }
+
+    .sizeSwatch.size-swatch-selected > span {
+      border-bottom: none;
+    }
+
+    .sizeSwatch:hover {
+      cursor: pointer;
+    }
+
+
+    .option-title{
+      visibility:hidden;
+    }
+
+    .variant-selection {
+      display:none;
+    }
+
+    .size-swatch-selected {
+      background-color: #44693D;
+      color: #F7F5F1;
+    {% if template.name == 'product' and product.metafields.custom.action_color.value %}
+       background-color: {{  product.metafields.custom.action_color.value }} ;
+      color: #F7F5F1;
+    {% endif %}
+    {% if product.id == 8667575910613 %}
+        color: #F7F5F1;
+      {% endif %}
+    {% if product.id == 7396104994889 %}
+      background-color: #45001F;
+      color: #F7F5F1;
+    {% endif %}
+      background-image: none !important;
+    }
+
+    .black{
+      color:#3F4444 !important;
+    }
+
+
+    .tooltip{
+      display:none !important;
+    }
+
+    .subscription-compare-at-price{
+      color: #fc4301 !important;
+    }
+
+  {% endstyle %}
+
+
+  {% if product.variants.size > 1 %}
+
+    <script>
+
+
+      var clickEvent = new MouseEvent('click', {
+        'view': window,
+        'bubbles': true,
+        'cancelable': true
+      });
+
+
+    {% comment %} $('.sizeSwatch').addClass('black') {% endcomment %}
+
+    setTimeout(()=>{
+
+
+     $('.product-gallery__thumbnail').css("display","none");
+      // Get all the radio inputs inside the div with the class 'swatch__options'
+      var swatch_radios = document.querySelectorAll('.swatch__options input[type="radio"]');
+
+      // Find the checked radio input and get its index
+      var checkedIndex = -1; // Default to -1 if none is checked
+      swatch_radios.forEach((radio, index) => {
+        if (radio.checked) {
+          checkedIndex = index;
+        }
+      });
+
+      selectVariantClick(checkedIndex)
+      {% comment %} $('.sizeSwatch').removeClass('black') {% endcomment %}
+
+      },1500)
+
+      function calculateSaveMoreBuyMore(selectedVariant) {
+        const metaObject = {{ buy_more_save_more_meta_object | json }};
+
+        if (metaObject?.quantity_1) {
+          const onlyOneTimePurchaceElement = document.querySelectorAll('[data-only-one-option-overall="1"]');
+          const activeBuyButton = document.getElementsByClassName("product__buy-more_save-more__bottom-block__buy-item active");
+          let currentQuantity = 0;
+          let currentDiscount = 0;
+
+          if (activeBuyButton?.length) {
+            {% comment %} Get quantity and discount from active buy button {% endcomment %}
+            if (activeBuyButton[0]) {
+              currentQuantity = activeBuyButton[0].dataset.quantity;
+              currentDiscount = activeBuyButton[0].dataset.discount;
+              {% comment %} Remove selected state from Sealsub {% endcomment %}
+              setTimeout(() => {
+                const activeSealSubOptions = document.getElementsByClassName('sls-option-container seal-table sls-active');
+                if (activeSealSubOptions) {
+                  activeSealSubOptions.forEach((activeElement) => {
+                    activeElement.classList.remove('sls-active');
+                  });
+                }
+              }, 350)
+            }
+          } else {
+            {% comment %} Use default quantity and discount from meta_object {% endcomment %}
+            if (metaObject?.quantity_3) {
+              currentQuantity = metaObject.quantity_3
+            } else if (metaObject?.quantity_2) {
+              currentQuantity = metaObject.quantity_2
+            } else if (metaObject?.quantity_1) {
+              currentQuantity = metaObject.quantity_1
+            }
+
+            if (metaObject?.discount_3) {
+              currentDiscount = metaObject.discount_3
+            } else if (metaObject?.discount_2) {
+              currentDiscount = metaObject.discount_2
+            } else if (metaObject?.discount_1) {
+              currentDiscount = metaObject.discount_1
+            }
+          }
+
+          let currentPrice = selectedVariant.price / 100;
+          const originalPrice = currentPrice * currentQuantity;
+          const discount = originalPrice * (currentDiscount / 100);
+          const discountedPrice = originalPrice - discount;
+          const pricePerUnit = discountedPrice / currentQuantity;
+          const currency = '{{ cart.currency.symbol }}';
+
+          {% comment %} product__buy-more_save-more__original-price {% endcomment %}
+          const originalPriceElement = document.getElementsByClassName("product__buy-more_save-more__original-price");
+          if (originalPriceElement && originalPrice) {
+            originalPriceElement[0].innerText = currency + originalPrice.toFixed(2);
+          }
+
+          {% comment %} product__buy-more_save-more__price {% endcomment %}
+          const priceElement = document.getElementsByClassName("product__buy-more_save-more__price");
+          if (priceElement && discountedPrice) {
+            priceElement[0].innerText = currency + discountedPrice.toFixed(2);
+          }
+
+          {% comment %} £26.24/unit product__buy-more_save-more__price-per-unit {% endcomment %}
+          const pricePerUnitElement = document.getElementsByClassName("product__buy-more_save-more__price-per-unit");
+          if (pricePerUnitElement && pricePerUnit) {
+            pricePerUnitElement[0].innerText = currency + pricePerUnit.toFixed(2) + '/unit';
+          }
+        }
+      }
+
+      function selectVariantClick(index){
+
+        if(document.querySelectorAll('.bsub-widget__group-header')[0]){
+          document.querySelectorAll('.bsub-widget__group-header')[0].click()   
+        }
+
+        if(variantInfo[index].servingSize != ""){
+          $('.serving-size-variant').text(variantInfo[index].servingSize)
+        }
+
+        if(variantInfo[index].nrv != ""){
+          $('.nrv-variant').text(variantInfo[index].nrv)
+        }
+
+        let variantPrice = variantInfo[index].price;
+        let variantComparePrice = variantInfo[index].comparePrice;
+        let googleShoppingDiscountPrice = variantInfo[index].googleShoppingDiscountPrice;
+        //let variantSubscriptionPrice = variantInfo[index].subscriptionPrice;
+
+        document.querySelector('.no-subscription-price').innerHTML = variantPrice;
+        document.querySelector('.no-subscription-compare-at-price').innerHTML = variantComparePrice;
+
+
+        //updating the google shopping discounted prices when changing variant
+        document.querySelector('.no-subscription-price_google-shopping-discount-applied').innerHTML = googleShoppingDiscountPrice;
+        document.querySelector('.no-subscription-compare-at-price_google-shopping').innerHTML = variantPrice;
+
+        const product_variants = {{ product.variants | json }};
+        const current_product_variant = product_variants[index];
+        calculateSaveMoreBuyMore(current_product_variant)
+
+        const isMobileMedia = window.matchMedia("(max-width: 798px)");
+        if (isMobileMedia.matches) {
+          const purchaseContainers = document.querySelectorAll(".purchase-details");
+          const currentPrices = document.querySelectorAll(".no-subscription-price-display-prices");
+          const activeSls = document.querySelectorAll(".sls-active");
+          const variants = document.querySelectorAll(".variants-block")[0];
+          const selectedVariant = variants.children[index]?.children[0];
+          
+          if ((!purchaseContainers.length || !currentPrices.length) && activeSls.length) return;
+          for (let i = 0; i < purchaseContainers.length; i++) {
+            const container = purchaseContainers[i];
+            container.classList.add("mobile-purchase-details");
+            const selectorsToRemove = [
+              ".purchase-details__quantity",
+              ".no-subscription-price-display-prices",
+              ".purchase-details-info-unsab"
+            ];
+            selectorsToRemove.forEach(selector => {
+              container.querySelectorAll(selector).forEach(element => element.remove());
+            });
+
+            const price = currentPrices[0];
+            
+            if (price) {
+              const priceBlock = price.cloneNode(true);
+              
+              const infoPay = document.createElement("div");
+              infoPay.classList.add("purchase-details-info-unsab");
+              infoPay.innerText = selectedVariant.innerText;
+
+              const payWithInfo = document.createElement("div");
+              payWithInfo.appendChild(priceBlock);
+              payWithInfo.appendChild(infoPay);
+                  
+              container.prepend(payWithInfo);
+            }
+          }
+
+          if (activeSls.length) {
+            const purchaseContainersMobile = document.querySelectorAll(".mobile-purchase-details");
+            const noSubMobile = purchaseContainersMobile[0]?.querySelectorAll(".no-subscription-price-display-prices");
+            const detailsInfoMobile = purchaseContainersMobile[0]?.querySelectorAll(".purchase-details-info-unsab");
+            if (noSubMobile) {
+                 noSubMobile.forEach(element => element.remove());
+            }  
+            if (detailsInfoMobile) {
+                 detailsInfoMobile.forEach(element => element.remove());
+            } 
+            
+             for (let i = 0; i < purchaseContainers.length; i++) {
+               const noSub = purchaseContainers[index]?.querySelectorAll(".no-subscription-price-display-prices");
+               const detailsInfo = purchaseContainers[index]?.querySelectorAll(".purchase-details-info-unsab");
+               if (noSub) {
+                 noSub.forEach(element => element.remove());
+               }  
+                if (detailsInfo) {
+                 detailsInfo.forEach(element => element.remove());
+               } 
+             }
+          }
+        }
+        
+
+            if(document.querySelector('.subscription-product-price')){
+
+              let googleShoppingDiscount = false;
+            
+              if (typeof googleShoppingDiscountApplied === 'undefined') {
+
+                googleShoppingDiscount = false;
+              
+              } else {
+
+                console.log(googleShoppingDiscountApplied);
+              
+                googleShoppingDiscount = googleShoppingDiscountApplied;
+              
+              }
+
+              //changing subscription price with variants in subscription box
+          
+              setTimeout(()=>{
+
+              if(googleShoppingDiscount){
+                document.querySelectorAll('.subscription-product-price')[0].innerHTML = googleShoppingDiscountPrice;
+                document.querySelectorAll('.subscription-compare-at-price')[0].innerHTML = variantPrice;
+              }else{
+                document.querySelectorAll('.subscription-product-price')[1].innerHTML = variantPrice;
+                document.querySelectorAll('.subscription-compare-at-price')[1].innerHTML = variantComparePrice;
+
+              }
+
+                document.querySelectorAll('.bsub-widget__group-header')[1].click();
+                
+                let customSubPrice = document.querySelectorAll('[data-bsub-per-delivery-price]')[0].textContent
+                
+                document.querySelectorAll('.bsub-widget__group-header')[0].click();
+
+                // Added as per task OD-3837 as default should be subscription option. Delete if default should be one-time purchase.
+                if(window.BOLD.BsubWidget.blockSettings.default_subscribe) {
+                    document.querySelectorAll('.bsub-widget__group-header')[1].click();
+                }
+                
+                document.querySelector('.custom_display_sub_price').textContent = customSubPrice
+
+
+              },0)
+
+
+            }
+
+          let radios = document.querySelectorAll('input[type=radio][name=option-0]');
+          const uniqueVariantsImagesQuantity = radios.length * 2;
+         var productForPreviewImageId = '{{product.id}}';
+
+
+          if (index == 0){
+            variantThumbnail_1 = 0;
+            variantThumbnail_2 = 1;
+            // variantThumbnail_3 =  document.querySelectorAll('.product-gallery__thumbnail').length - 1;
+          }else{
+            variantThumbnail_1 =  (index * 2);
+            variantThumbnail_2 =  (index * 2) + 1;
+            // variantThumbnail_3 =  document.querySelectorAll('.product-gallery__thumbnail').length - 1;
+            
+          }
+
+          // var thumbnailsShow = [variantThumbnail_1, variantThumbnail_2,variantThumbnail_3 ]
+
+           const thumbnailsShow = [
+             variantThumbnail_1, 
+             variantThumbnail_2, 
+             uniqueVariantsImagesQuantity,
+             uniqueVariantsImagesQuantity + 1,
+             uniqueVariantsImagesQuantity + 2,
+             uniqueVariantsImagesQuantity + 3,
+             uniqueVariantsImagesQuantity + 4,
+             uniqueVariantsImagesQuantity + 5,
+             uniqueVariantsImagesQuantity + 6,
+             uniqueVariantsImagesQuantity + 7
+           ]
+
+          setTimeout(()=>{
+            const notChangedImageVariants = ["Sachets", "Pack", "Box"];
+            const variantText = document.querySelectorAll('.size-swatch-selected')[0].innerText
+            const isNotChangedVariant = notChangedImageVariants.some(keyword => variantText.includes(keyword));
+            
+            if(document.querySelectorAll('.product-gallery__thumbnail')[variantThumbnail_1]){
+              if (!isNotChangedVariant) {
+                document.querySelectorAll('.product-gallery__thumbnail')[variantThumbnail_1].click()
+              }
+            } else {
+              if (index == (radios.length - 1)) {
+                if (!isNotChangedVariant) { 
+                  const lastIndex = Number(document.querySelectorAll('.product-gallery__thumbnail').length) - 1;
+                  document.querySelectorAll('.product-gallery__thumbnail')[lastIndex].click()
+                 }
+              }
+            }
+            
+             if (productForPreviewImageId == 8174336213205 || productForPreviewImageId == 8174339653845) {
+              $('.product-gallery__thumbnail').css("display","none");
+            
+            document.querySelectorAll('.product-gallery__thumbnail').forEach((thumbnail,index)=>{
+              if(thumbnailsShow.includes(index)){
+
+                thumbnail.style.display = 'block';
+              }
+            })
+            } else {
+              $('.product-gallery__thumbnail').css("display","block");
+            }
+
+          },0)
+
+            radios[index].click();
+            radios[index].checked = true;
+
+            document.querySelectorAll('.sizeSwatch').forEach((item)=>{
+              item.classList.remove('size-swatch-selected')
+            })
+
+            document.querySelectorAll('.sizeSwatch')[index].classList.add('size-swatch-selected')
+  
+      }
+
+
+    </script>
+
+  {% endif %}
+
+  {% style %}
+
+
+    {% if  formatArray.size > 0 %}
+
+      .panel-cell.size-box {
+        border-radius: 5px;
+      }
+      .panel-cell.format-box {
+        border-radius: 5px;
+        height: 52px;
+      }
+
+    {% else %}
+
+    .panel-cell.size-box {
+      border-radius: 5px;
+      border-top: 1px solid #3F4444;
+      height: fix-content;
+    }
+    .panel-cell.size-box > .text {
+
+        display: flex;
+        
+        /* margin-top: 10px;
+        margin-bottom: 10px; */
+      }
+
+    .panel-cell .text {
+      margin-left: 0 !important;
+    }
+      
+      .variants-block {
+        display: flex;
+        gap: 2px;
+        /* display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 20px;
+        row-gap: 10px;
+        margin-left: 20px; */
+      }
+
+      @media only screen and (max-width: 798px) {
+        .variants-block {
+          flex-wrap: wrap;
+          /* grid-template-columns: repeat(2, 1fr); */
+        }
+      }
+      
+      .variants-block > .sizeSwatch {
+        margin-left: unset;
+      }
+    .summary-panel.format {
+      display: none;
+    }
+
+  {% endif %}
+
+    .panel-cell .size .text,  .panel-cell.size-box > .text  {
+        display: flex;
+        align-items: center;
+      }
+
+  .format-icon-svg path, .format-icon path {
+    stroke: #949992;
+  }
+
+  .format-icon-svg circle, .format-icon circle {
+    stroke: #949992;
+  }
+
+
+  .selected-icon path {
+    stroke: #44693D;
+  }
+
+  .selected-icon circle {
+    stroke: #44693D;
+  }
+
+  .format-icon:hover path,
+  .format-icon:active path {
+    stroke: #44693D;
+  }
+
+  .format-icon:hover circle,
+  .format-icon:active circle {
+    stroke: #44693D;
+  }
+
+
+  .panel-cell.format-box {
+    position: relative;
+  }
+
+  .format-icon-container {
+    position: absolute;
+    left: 68px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: middle;
+  }
+
+  .format-icon-container a {
+    display: flex;
+    align-items: middle;
+    margin-right: 8px;
+
+  }
+ 
+  .summary-panel {
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
+    min-width: 495px;
+    height: 42px;
+    margin-top: 15px;
+    {% if product.id == 8845549011157 %}
+      margin-top: 0px;
+    {% endif %}
+  }
+
+    .summary-panel.format {
+      margin-bottom: 25px;
+    }
+
+  .panel-cell {
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    border: #3F4444 1px solid;
+    flex: 1 0 0;
+    padding: 6.5px 12px;
+  }
+
+  .panel-cell.format {
+    border-radius: 8px 0 0 8px;
+  }
+  .panel-cell.food {
+    border-radius: 0 8px 8px 0;
+  }
+  .panel-cell.time {
+    border-right: none;
+    border-left: none;
+  }
+
+  .icons img {
+    height: 30px;
+    width: 30px;
+  }
+
+
+  @media (max-width: 495px) {
+    .summary-panel {
+      min-width: 90%;
+    }
+  }
+
+
+  .format_unavailable path {
+    stroke: grey;
+  }
+
+  .format_unavailable circle {
+    stroke: grey;
+  }
+
+
+  .format_unavailable:hover path,
+  .format_unavailable:active path {
+    stroke: grey;
+  }
+
+  .format_unavailable:hover circle,
+  .format_unavailable:active circle {
+    stroke: grey;
+  }
+
+
+  {% endstyle %}
+

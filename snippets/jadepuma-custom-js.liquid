@@ -1,0 +1,26 @@
+<script>
+
+{% if template contains 'product' %}
+
+const thumbnails = document.querySelectorAll('.product-gallery__thumbnail');
+const firstThumbnail = document.querySelectorAll('.product-gallery__thumbnail')[0];
+ 
+firstThumbnail.classList.add('is-nav-selected');
+
+// Step 2: Add an event listener for the click event on each of these elements.
+thumbnails.forEach(thumbnail => {
+    thumbnail.addEventListener('click', function() {
+
+        // Step 3: Loop through all the 'product-gallery__thumbnail' elements and remove the 'is-nav-selected' class.
+        thumbnails.forEach(innerThumbnail => {
+            innerThumbnail.classList.remove('is-nav-selected');
+        });
+
+        // Step 4: Add the 'is-nav-selected' class to the clicked element.
+        this.classList.add('is-nav-selected');
+    });
+});
+
+{% endif %}
+
+</script>

@@ -1,0 +1,95 @@
+{% style %}
+
+.product__why-subscribe {
+  border: 1px solid #000000;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.product__why-subscribe__block-title {
+  font-size: 25px;
+  margin-bottom: 22px;
+}
+
+.product__why-subscribe__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+  
+.product__why-subscribe__list__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 17px;
+}
+
+.product__why-subscribe__list__image {
+  width: 66px;
+  height: 66px;
+}
+  
+.product__why-subscribe__list__title {
+  color: #5A5552;
+  font-size: 12px;
+  text-align: center;
+}
+
+@media only screen and (max-width: 798px) {
+  .product__why-subscribe__block-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .product__why-subscribe__list {
+    gap: 12px;
+  }
+
+  .product__why-subscribe__list__item {
+    gap: 14px;
+  }
+
+  .product__why-subscribe__list__image {
+    width: 50px;
+    height: 50px;
+  }
+}
+  
+{% endstyle %}
+
+<div class="product__why-subscribe">
+  
+    {% if block.settings.why-subscribe-block-title != blank%}
+        <div class="product__why-subscribe__block-title">
+          {{ block.settings.why-subscribe-block-title }}
+        </div>
+    {% endif %}
+
+    <ul class="product__why-subscribe__list">
+        <li class="product__why-subscribe__list__item">
+          {% if block.settings.why-subscribe-1-image %}
+              <img class="product__why-subscribe__list__image" src="{{ block.settings.why-subscribe-1-image | img_url }}" alt="Unique selling point 1 image" >
+          {% endif %}
+          {% if block.settings.why-subscribe-1-title != blank %}
+            <span class="product__why-subscribe__list__title">{{ block.settings.why-subscribe-1-title }}</span>
+          {% endif %}
+        </li>
+        <li class="product__why-subscribe__list__item">
+          {% if block.settings.why-subscribe-2-image %}
+              <img class="product__why-subscribe__list__image" src="{{ block.settings.why-subscribe-2-image | img_url }}" alt="Unique selling point 1 image" >
+          {% endif %}
+          {% if block.settings.why-subscribe-2-title != blank %}
+            <span class="product__why-subscribe__list__title">{{ block.settings.why-subscribe-2-title }}</span>
+          {% endif %}
+        </li>
+        <li class="product__why-subscribe__list__item">
+          {% if block.settings.why-subscribe-3-image %}
+              <img class="product__why-subscribe__list__image" src="{{ block.settings.why-subscribe-3-image | img_url }}" alt="Unique selling point 1 image" >
+          {% endif %}
+          {% if block.settings.why-subscribe-3-title != blank %}
+            <span class="product__why-subscribe__list__title">{{ block.settings.why-subscribe-3-title }}</span>
+          {% endif %}
+        </li>
+    </ul>
+</div>

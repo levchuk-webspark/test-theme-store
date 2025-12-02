@@ -1,0 +1,252 @@
+{% style %}
+    #shopify-section-{{ section.id }} .vitality-title-with-2-columns {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      background-color: {{ section.settings.background_color }};
+    }
+
+    .vitality-title-with-2-columns__title {
+      font-weight: normal;
+      margin-bottom: 45px;
+    }
+
+    #shopify-section-{{ section.id }} .vitality-title-with-2-columns__title {
+      color: {{ section.settings.title_color }};
+    }
+
+    #shopify-section-{{ section.id }} .vitality-title-with-2-columns__title {
+      font-size: {{ section.settings.title-font-size }}px;
+    }
+
+    .vitality-title-with-2-columns__column-list {
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+      gap: 95px;
+    }
+
+    .vitality-title-with-2-columns__column {
+      font-height: 1.1;
+    }
+
+    #shopify-section-{{ section.id }} .vitality-title-with-2-columns__column {
+      color: {{ section.settings.column_color }};
+    }
+
+    #shopify-section-{{ section.id }} .vitality-title-with-2-columns__column {
+      font-size: {{ section.settings.column-font-size }}px;
+    }
+
+    .vitality-title-with-2-columns__column:last-of-type {
+       margin-right: 0;
+    }
+
+    @media only screen and (max-width: 798px) {
+      #shopify-section-{{ section.id }} .vitality-title-with-2-columns {
+        padding-top: {{ section.settings.padding_top_mobile }}px;
+        padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      #shopify-section-{{ section.id }} .vitality-title-with-2-columns__title {
+      font-size: {{ section.settings.title-font-size-mobile }}px;
+    }
+
+      #shopify-section-{{ section.id }} .vitality-title-with-2-columns__column {
+      font-size: {{ section.settings.column-font-size-mobile }}px;
+    }
+
+      .vitality-title-with-2-columns__column-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .vitality-title-with-2-columns__column {
+        margin-right: 0;
+        margin-bottom: 45px;
+      }
+
+      .vitality-title-with-2-columns__column:last-of-type {
+        margin-right: 0;
+        margin-bottom: 0;
+      }
+    }
+  
+    {%
+    render 'css-loop',
+    css: section.settings.custom_css,
+    id: section.id,
+    %}
+{% endstyle %}
+
+<section
+  class="
+    section
+    {{ section.settings.css_class }}
+    vitality-title-with-2-columns
+  "
+>
+  {% if section.settings.title != blank %}
+    <h3 class="vitality-title-with-2-columns__title">{{ section.settings.title }}</h3>
+  {% endif %}
+
+  {% if section.blocks.size > 0 %}
+    <ul class="vitality-title-with-2-columns__column-list">
+      {% for block in section.blocks %}
+        {% if block.type == 'column' %}
+          <li class="vitality-title-with-2-columns__column block-{{ block.id }}">
+            {% if block.settings.column != blank %}
+              {{ block.settings.column }}
+            {% endif %}
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Title with 2 columns",
+  "settings": [
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Section title"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 100,
+      "default": 79,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 100,
+      "default": 47,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "title-font-size",
+      "label": "Title font size",
+      "min": 0,
+      "max": 100,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "column-font-size",
+      "label": "Column font size",
+      "min": 0,
+      "max": 100,
+      "default": 22,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "column_color",
+      "label": "Column color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Mobile layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile top spacing",
+      "min": 0,
+      "max": 100,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile bottom spacing",
+      "min": 0,
+      "max": 100,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "title-font-size-mobile",
+      "label": "Mobile Title font size",
+      "min": 0,
+      "max": 100,
+      "default": 45,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "column-font-size-mobile",
+      "label": "Mobile Column font size",
+      "min": 0,
+      "max": 100,
+      "default": 15,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Advanced",
+      "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+    },
+    {
+      "type": "text",
+      "id": "css_class",
+      "label": "CSS Class"
+    },
+    {
+      "type": "textarea",
+      "id": "custom_css",
+      "label": "Custom CSS"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Column",
+      "settings": [
+        {
+          "type": "html",
+          "id": "column",
+          "label": "Column description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vitality: Title with 2 columns"
+    }
+  ]
+}
+{% endschema %}

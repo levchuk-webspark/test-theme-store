@@ -1,0 +1,373 @@
+{% assign list_text = section.blocks | where: 'type', 'scrolling-text' %}
+{% assign time = section.settings.scrolling_speed_time %}
+
+{% style %}
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      background-color: {{ section.settings.background_color }};
+      border-top: 1px solid {{ section.settings.border_color }};
+      border-bottom: 1px solid {{ section.settings.border_color }};
+    }
+
+  .vitality__scrolling-text {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .vitality__scrolling-text__container {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+
+    position: relative;
+    width: 100%;
+  }
+  .vitality__scrolling-text__row {
+    display: flex;
+    flex-direction: row;
+    
+    gap: 24px;
+    width: 100%;
+  }
+
+  .vitality__scrolling-text__row-item {
+    white-space: nowrap;
+    text-transform: uppercase;
+    font-size: {{ section.settings.text_font_size }}px;
+  }
+  
+  .vitality__scrolling-text__scroll-container {
+    position: relative;
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+  }
+
+    .vitality__scrolling-text__caurosel-primary {
+    white-space: nowrap;
+    animation: scroll-top {{ time }}s linear infinite;
+    animation-delay: {{ time | times: -1 }}s;
+  }
+
+  .vitality__scrolling-text__caurosel-secondary {
+    animation: scroll2-top {{ time }}s linear infinite;
+    animation-delay: {{ time | divided_by: -2}}s;
+  }
+  
+  .vitality__scrolling-text__caurosel-primary-bottom {
+    white-space: nowrap;
+    animation: scroll-bottom {{ time }}s linear infinite;
+    animation-delay: {{ time | times: -1 }}s;
+}
+
+  .vitality__scrolling-text__caurosel-secondary-bottom {
+    animation: scroll2-bottom {{ time }}s linear infinite;
+    animation-delay: {{ time | divided_by: -2}}s;
+}
+
+  .vitality__scrolling-text__caurosel-primary, .vitality__scrolling-text__caurosel-secondary, 
+  .vitality__scrolling-text__caurosel-primary-bottom, .vitality__scrolling-text__caurosel-secondary-bottom {
+    display: flex;
+    gap: 24px;
+  }
+
+  @keyframes scroll-top {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+  }
+
+  @keyframes scroll2-top {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-200%);
+    }
+  }
+
+  @keyframes scroll-bottom {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+  }
+
+  @keyframes scroll2-bottom {
+    0% {
+        transform: translateX(-200%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+  }
+
+  .vitality__scrolling-text__caurosel-primary div, .vitality__scrolling-text__caurosel-secondary div,
+  .vitality__scrolling-text__caurosel-primary-bottom div, .vitality__scrolling-text__caurosel-secondary-bottom div {
+    padding-left: 24px;
+  }
+
+  @media only screen and (max-width: 1024px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+    .vitality__scrolling-text__caurosel-primary div, .vitality__scrolling-text__caurosel-secondary div,
+    .vitality__scrolling-text__caurosel-primary-bottom div, .vitality__scrolling-text__caurosel-secondary-bottom div {
+      padding-left: 12px;
+    }
+
+    .vitality__scrolling-text__row-item {
+      font-size: {{ section.settings.text_font_size_mobile }}px;
+    }
+  }
+  
+  {%
+    render 'css-loop',
+    css: section.settings.custom_css,
+    id: section.id,
+  %}
+{% endstyle %}
+
+<section
+  class="
+    section
+    {{ section.settings.css_class }}
+    vitality__scrolling-text
+  "
+>
+  <div 
+      class="vitality__scrolling-text__scroll-container"
+    >
+      <div class="vitality__scrolling-text__caurosel-primary">
+        {% for block in list_text %}
+          {% if block.settings.is_first_row == 'yes' %}
+            {% if block.settings.text != blank %}
+              {% style -%}
+                .block-{{ block.id }}.vitality__scrolling-text__row-item {
+                  color: {{ block.settings.text_color }};
+                }
+              {% endstyle -%}
+              <div class="block-{{ block.id }} vitality__scrolling-text__row-item">{{ block.settings.text }}</div>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+      
+      <div class="vitality__scrolling-text__caurosel-secondary">
+        {% for block in list_text %}
+          {% if block.settings.is_first_row == 'yes' %}
+            {% if block.settings.text != blank %}
+              {% style -%}
+                .block-{{ block.id }}.vitality__scrolling-text__row-item {
+                  color: {{ block.settings.text_color }};
+                }
+              {% endstyle -%}
+              <div class="block-{{ block.id }} vitality__scrolling-text__row-item">{{ block.settings.text }}</div>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+  </div>
+
+  <div 
+      class="vitality__scrolling-text__scroll-container"
+    >
+      <div class="vitality__scrolling-text__caurosel-primary-bottom">
+        {% for block in list_text %}
+          {% if block.settings.is_first_row == 'no' %}
+            {% if block.settings.text != blank %}
+              {% style -%}
+                .block-{{ block.id }}.vitality__scrolling-text__row-item {
+                  color: {{ block.settings.text_color }};
+                }
+              {% endstyle -%}
+              <div class="block-{{ block.id }} vitality__scrolling-text__row-item">{{ block.settings.text }}</div>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+      
+      <div class="vitality__scrolling-text__caurosel-secondary-bottom">
+        {% for block in list_text %}
+          {% if block.settings.is_first_row == 'no' %}
+            {% if block.settings.text != blank %}
+              {% style -%}
+                .block-{{ block.id }}.vitality__scrolling-text__row-item {
+                  color: {{ block.settings.text_color }};
+                }
+              {% endstyle -%}
+              <div class="block-{{ block.id }} vitality__scrolling-text__row-item">{{ block.settings.text }}</div>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Scrolling Text",
+  "settings": [
+    {
+  "type": "range",
+  "id": "scrolling_speed_time",
+  "label": "Scrolling speed time",
+  "min": 0,
+  "max": 1000,
+  "default": 280,
+  "step": 10,
+  "unit": "s"
+},
+{
+  "type": "range",
+  "id": "padding_top",
+  "label": "Top spacing",
+  "min": 0,
+  "max": 500,
+  "default": 20,
+  "step": 10,
+  "unit": "px"
+},
+{
+  "type": "range",
+  "id": "padding_bottom",
+  "label": "Bottom spacing",
+  "min": 0,
+  "max": 500,
+  "default": 20,
+  "step": 10,
+  "unit": "px"
+},
+     {
+  "type": "range",
+  "id": "text_font_size",
+  "label": "Text font size",
+  "min": 0,
+  "max": 100,
+  "default": 44,
+  "unit": "px"
+},
+     {
+  "type": "header",
+  "content": "Colors"
+},
+{
+  "type": "color",
+  "id": "background_color",
+  "label": "Section background color",
+  "default": "rgba(0,0,0,0)"
+},
+    {
+  "type": "color",
+  "id": "border_color",
+  "label": "Border color",
+  "default": "rgba(0,0,0,0)"
+},
+    {
+  "type": "header",
+  "content": "Mobile layout"
+},
+    {
+  "type": "range",
+  "id": "padding_top_mobile",
+  "label": "Mobile top spacing",
+  "min": 0,
+  "max": 200,
+  "step": 5,
+  "default": 10,
+  "unit": "px"
+},
+{
+  "type": "range",
+  "id": "padding_bottom_mobile",
+  "label": "Mobile bottom spacing",
+  "min": 0,
+  "max": 200,
+  "step": 5,
+  "default": 10,
+  "unit": "px"
+},
+{
+  "type": "range",
+  "id": "text_font_size_mobile",
+  "label": "Text font size",
+  "min": 0,
+  "max": 100,
+  "default": 16,
+  "unit": "px"
+},
+{
+    "type": "header",
+    "content": "Advanced",
+    "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+  },
+  {
+    "type": "text",
+    "id": "css_class",
+    "label": "CSS Class"
+  },
+  {
+    "type": "textarea",
+    "id": "custom_css",
+    "label": "Custom CSS"
+  },
+  ],
+  "blocks": [
+     {
+    "type": "scrolling-text",
+    "name": "Text",
+    "settings": [
+      {
+        "type": "html",
+        "id": "text",
+        "label": "Text"
+      },
+      {
+    	"type": "radio",
+    	"id": "is_first_row",
+    	"label": "Is first row?",
+    	"options": [
+        	{
+            	"value": "yes",
+            	"label": "Yes"
+        	},
+        	{
+            	"value": "no",
+            	"label": "No"
+        	}
+    	],
+    	"default": "yes"
+      },
+      {
+            "type": "header",
+            "content": "Colors"
+          },
+          {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text color",
+          },
+    ],
+     }
+     ],
+    "presets": [
+  {
+    "name": "Vitality: Scrolling Text"
+  }
+]
+}
+{% endschema %}

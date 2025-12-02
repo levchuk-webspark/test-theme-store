@@ -1,0 +1,60 @@
+{% style -%}
+    .block-{{ block.id }}.hallmark-of-aging__card {
+      cursor: pointer;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-radius: 10px;
+      overflow: hidden;
+
+      border: 1px solid {{ block.settings.border_color }};
+      height: {{ block.settings.card-height }}px;
+
+      {% if block.settings.image != nil %}
+        background: url("{{block.settings.image | img_url: 'master'}}");
+        background-size:cover;
+        background-position:center;
+        background-repeat:norepeat;
+      {% else %}
+        background-color: {{ block.settings.background_color }};
+      {% endif %}
+
+      transition: transform 0.3s ease, flex-grow 0.3s ease;
+    } 
+
+  .hallmark-of-aging__card:hover {
+      transform: scale(1.05);
+    }
+
+  
+.hallmark-of-aging__card.shrink {
+  transform: scale(0.95);
+}
+
+.hallmark-of-aging__card.enlarge {
+  transform: scale(1.05);
+}
+
+    @media only screen and (max-width: 1000px) {
+      .block-{{ block.id }}.hallmark-of-aging__card {
+        height: {{ block.settings.card-height-mobile }}px;
+      }
+    }
+{% endstyle -%}
+<div
+  class="block-{{ block.id }} hallmark-of-aging__card {{ block.settings.title | remove:" " | remove: ")" | remove: "(" | remove: "'" | remove: "’" }}"
+  data-selected-card="{{ block.id }}"
+  data-selected-card-index="{{ index }}"
+>
+  <div>
+    <div class="hallmark-of-aging__card__number">{{ block.settings.number }}</div>
+    <div class="hallmark-of-aging__card__title-mobile">{{ block.settings.title }}</div>
+  </div>
+  <div>
+    <div class="hallmark-of-aging__card__title">{{ block.settings.title }}</div>
+    {% if block.settings.description != blank %}
+      <div class="hallmark-of-aging__card__description">{{ block.settings.description }}</div>
+    {% endif %}
+  </div>
+</div>

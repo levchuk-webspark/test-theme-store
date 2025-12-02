@@ -1,0 +1,225 @@
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.background_color }};
+    {% if section.settings.show_content_border != blank %}
+        border-top: 1px solid {{ section.settings.border_color }};
+        border-bottom: 1px solid {{ section.settings.border_color }};
+    {% endif %}
+  }
+
+  .title-with-text {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+     gap: 20px;
+  }
+
+   .title-with-text__title {
+    font-weight: normal;
+    line-height: 1;
+  }
+
+  #shopify-section-{{ section.id }} .title-with-text__title {
+    font-size: {{ section.settings.title_size }}px;
+    color: {{ section.settings.title_color }};
+    max-width: {{ section.settings.title_width }}px;
+  }
+
+  .title-with-text__text {
+    margin-top: 15px;
+  }
+
+  .title-with-text__text {
+    font-size: {{ section.settings.text_size }}px;
+    color: {{ section.settings.text_color }};
+  }
+
+  @media only screen and (max-width: 798px) {
+    
+  .title-with-text {
+    display: grid;
+    grid-template-columns: 1fr;
+     gap: 42px;
+  }
+
+  #shopify-section-{{ section.id }} .title-with-text__title {
+    font-size: 45px;
+  }
+
+  .title-with-text__text {
+    margin-top: unset;
+  }
+
+  .title-with-text__text {
+    font-size: 22px;
+  }
+  }
+
+{%
+  render 'css-loop',
+  css: section.settings.custom_css,
+  id: section.id,
+%}
+  
+{% endstyle %}
+
+<section
+  class="
+    section
+    title-with-text
+    {{ section.settings.css_class }}
+  "
+>
+    {% if section.settings.title != blank %}
+        <h2 class="title-with-text__title">{{ section.settings.title }}</h2>
+    {% endif %}
+
+    {% if section.settings.text != blank %}
+        <h2 class="title-with-text__text">{{ section.settings.text }}</h2>
+    {% endif %}
+  
+</section>
+
+
+{% schema %}
+  {
+    "name": "Title with text",
+    "settings": [
+      {
+        "type": "html",
+        "id": "title",
+        "label": "Section title"
+      },
+      {
+        "type": "range",
+        "id": "title_size",
+        "label": "Title font size",
+        "min": 0,
+        "max": 100,
+        "default": 65,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "title_width",
+        "label": "Title width",
+        "min": 0,
+        "max": 1000,
+        "step": 10,
+        "default": 620,
+        "unit": "px"
+      },
+    {
+        "type": "html",
+        "id": "text",
+        "label": "Section text"
+      },
+      {
+        "type": "range",
+        "id": "text_size",
+        "label": "Text font size",
+        "min": 0,
+        "max": 100,
+        "default": 22,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Top spacing",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "default": 90,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Bottom spacing",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+      "type": "checkbox",
+       "id": "show_content_border",
+      "label": "Show content border",
+      "default": true
+      },
+      {
+        "type": "header",
+        "content": "Colors"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Section background color",
+        "default": "rgba(0,0,0,0)"
+      },
+       {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "color",
+        "id": "title_color",
+        "label": "Section title color",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Section text color",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "header",
+        "content": "Mobile layout"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Mobile top spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Mobile bottom spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Advanced",
+        "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+      },
+      {
+        "type": "text",
+        "id": "css_class",
+        "label": "CSS Class"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_css",
+        "label": "Custom CSS"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Title with text"
+      }
+    ]
+  }
+{% endschema %}

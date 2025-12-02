@@ -1,0 +1,158 @@
+{% style %}
+  #shopify-section-{{ section.id }} .product__image {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    width: 100%;
+    margin: 0;
+  }
+  .custom-image-element__wrap.image-element__wrap.product__image__wrapper {
+    margin: 0;
+  }
+  .product__image__wrapper > img {
+    margin: 0;
+    transition: all .3s ease;
+    height: {{ section.settings.image_height }}px;
+    object-fit: cover;
+  }
+  .product__image__wrapper:hover > img {
+    transform: scale(1.1);
+  }
+   @media only screen and (max-width: 768px) {
+     #shopify-section-{{ section.id }} .product__image {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+    .product__image__wrapper > img {
+      height: {{ section.settings.image_height_mobile }}px;
+    }
+   }
+  {%
+    render 'css-loop',
+    css: section.settings.custom_css,
+    id: section.id,
+  %}
+{% endstyle %}
+{% if product.metafields.custom.product_image or product.metafields.custom.product_image_2 != nil %}
+  {% assign metaobject = product.metafields.custom.product_image.value %}
+   {% assign metaobject_2 = product.metafields.custom.product_image_2.value %}
+  <div
+      class="
+        
+        {{ section.settings.css_class }}
+        product__image
+      "
+    >
+    {% if section.settings.is_second_image  %}
+        {% if metaobject_2.image != nil %}
+          {%
+            render 'image-element',
+            image: metaobject_2.image,
+            alt: metaobject_2.image.alt,
+            additional_wrapper_classes: "product__image__wrapper"
+          %}
+        {% endif %}
+      {% else %}
+           {% if  metaobject.image != nil %}
+             {%
+              render 'image-element',
+              image: metaobject.image,
+              alt: metaobject.image.alt,
+              additional_wrapper_classes: "product__image__wrapper"
+            %}
+          {% endif %}
+    {% endif %}
+  </div>
+{% endif %}
+{% schema %}
+  {
+    "name": "Product image",
+    "settings": [
+       {
+        "type": "checkbox",
+        "id": "is_second_image",
+        "label": "Is second image",
+        "default": false,
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Top spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Bottom spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "image_height",
+        "label": "Image height",
+        "min": 0,
+        "max": 1000,
+        "step": 10,
+        "default": 730,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Mobile layout"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Mobile top spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Mobile bottom spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "image_height_mobile",
+        "label": "Mobile image height",
+        "min": 0,
+        "max": 1000,
+        "step": 10,
+        "default": 530,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Advanced",
+        "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+      },
+      {
+        "type": "text",
+        "id": "css_class",
+        "label": "CSS Class"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_css",
+        "label": "Custom CSS"
+      }
+    ],
+     "presets": [
+      {
+        "name": "Product: Image"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,57 @@
+{% style %}
+
+.product__benefits-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.product__benefits-list__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  line-height: 110.00000000000001%;
+}
+
+.product__benefits-list__item__image {
+  width: 25px;
+  height: 25px;
+}
+
+@media only screen and (max-width: 798px) {
+  .product__benefits-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    /* gap: 12px; */
+  }
+  .product__benefits-list__item {
+    gap: 7px;
+    font-size: 13px;
+  }
+  
+  .product__benefits-list__item__image {
+    /* width: 15px;
+    height: 15px; */
+  }
+}
+  
+{% endstyle %}
+  
+
+{% if product.metafields.custom.benefits %}
+  <ul class="product__benefits-list">
+    {% for benefit in product.metafields.custom.benefits.value %}
+      <li class="product__benefits-list__item">
+        {% if product.metafields.custom.product_benefits_image %}
+            <img class="product__benefits-list__item__image" src="{{ product.metafields.custom.product_benefits_image | file_url }}" alt="Benefit image" >
+        {% endif %}
+        <span>{{ benefit }}</span>
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+
+  

@@ -1,0 +1,576 @@
+{% assign time = 60 %}
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+        background-color: {{ section.settings.background_color }};
+        color: {{ section.settings.text_color }};
+  }
+
+  #shopify-section-{{ section.id }} .vitality__scrolling-badges {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  #shopify-section-{{ section.id }} .vitality__scrolling-badges__title {
+    color: {{ section.settings.text_color }};
+  }
+
+  .vitality__scrolling-badges__title__block {
+     margin-right: 57px;
+  }
+
+  .vitality__scrolling-badges__title {
+    font-size: 34px;
+    white-space: nowrap;
+    display: inline-block;
+  }
+
+  #shopify-section-{{ section.id }} .vitality__scrolling-badges__list__item {
+    background: {{ section.settings.text_color }};
+  }
+
+  .vitality__scrolling-badges__list__item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    border-radius: 16px;
+    padding: 10px;
+    margin-right: 16px;
+}
+
+  #shopify-section-{{ section.id }} .vitality__scrolling-badges__list__item__text {
+    color: {{ section.settings.background_color }};
+    white-space: nowrap;
+  }
+
+  .vitality__scrolling-badges__list__item__image {
+    width: 45px;
+    height: 45px;
+    min-width: 45px;
+    min-height: 45px;
+  }
+
+  .vitality__scrolling-badges__list__item__text {
+    font-size: 28px;
+  }
+
+  .vitality__scrolling-badges__content {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .vitality__scrolling-badges__list {
+    display: flex;
+    
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+
+    /* -webkit-mask-image: linear-gradient(90deg, transparent, #fff 20%, #fff 80%, transparent); */
+
+  }
+
+  .vitality__scrolling-badges_caurosel-primary, .vitality__scrolling-badges_caurosel-secondary {
+    display: flex;
+  }
+
+   .vitality__scrolling-badges_caurosel-primary {
+    white-space: nowrap;
+    animation: scrolling-badges_scroll {{ time }}s linear infinite;
+    animation-delay: {{ time | times: -1 }}s;
+  }
+
+  .vitality__scrolling-badges_caurosel-secondary {
+    animation: scrolling-badges_scroll2 {{ time }}s linear infinite;
+    animation-delay: {{ time | divided_by: -2}}s;
+  }
+
+  /* .vitality__scrolling-badges_caurosel-primary > div, .vitality__scrolling-badges_caurosel-secondary > div {
+    padding-left: 10px;
+  } */
+
+
+   @keyframes scrolling-badges_scroll {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+  }
+
+  @keyframes scrolling-badges_scroll2 {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-200%);
+    }
+  }
+
+@media only screen and (max-width: 1200px) {
+   .vitality__scrolling-badges__title {
+     white-space: wrap;
+   }
+
+  .vitality__scrolling-badges__content {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .vitality__scrolling-badges__title {
+    margin-right: unset;
+  }
+}
+
+  @media only screen and (max-width: 798px) {
+  .vitality__scrolling-badges__list__item__image {
+    width: 27px;
+    height: 27px;
+    min-width: 27px;
+    min-height: 27px;
+  }
+
+  .vitality__scrolling-badges__list__item__text {
+    font-size: 18px;
+  }
+}
+
+ {%
+    render 'css-loop',
+    css: section.settings.custom_css,
+    id: section.id,
+  %}
+{% endstyle %}
+
+{% if section.settings.image_1 != nil %}
+
+<section
+  class="
+    section
+    {{ section.settings.css_class }}
+    vitality__scrolling-badges
+  "
+>
+  <div class="vitality__scrolling-badges__content">
+     {% if section.settings.title != blank %}
+        <div class="vitality__scrolling-badges__title__block">
+          <span class="vitality__scrolling-badges__title">
+            {{ section.settings.title }}
+          </span>
+        </div>
+      {% endif %}
+
+    <div class="vitality__scrolling-badges__list">
+        <div class="vitality__scrolling-badges_caurosel-primary">
+          {% if section.settings.image_1 != nil %}
+                  <div class="vitality__scrolling-badges__list__item"> 
+                    {%
+                      render 'image-element',
+                      image: section.settings.image_1,
+                      alt: section.settings.image_1.alt,
+                      additional_wrapper_classes: 'vitality__scrolling-badges__list__item__image',
+                    %}
+                    {% if section.settings.text_1 != blank %}
+                        <span class="vitality__scrolling-badges__list__item__text">{{ section.settings.text_1 }}</span>
+                    {% endif %}
+                </div>   
+          {% endif %}
+
+          {% if section.settings.image_2 != nil %}
+                  <div class="vitality__scrolling-badges__list__item"> 
+                    {%
+                      render 'image-element',
+                      image: section.settings.image_2,
+                      alt: section.settings.image_2.alt,
+                      additional_wrapper_classes: 'vitality__scrolling-badges__list__item__image',
+                    %}
+                    {% if section.settings.text_2 != blank %}
+                        <span class="vitality__scrolling-badges__list__item__text">{{ section.settings.text_2 }}</span>
+                    {% endif %}
+                </div>   
+          {% endif %}
+
+          {% if section.settings.image_3 != nil %}
+                  <div class="vitality__scrolling-badges__list__item"> 
+                    {%
+                      render 'image-element',
+                      image: section.settings.image_3,
+                      alt: section.settings.image_3.alt,
+                      additional_wrapper_classes: 'vitality__scrolling-badges__list__item__image',
+                    %}
+                    {% if section.settings.text_3 != blank %}
+                        <span class="vitality__scrolling-badges__list__item__text">{{ section.settings.text_3 }}</span>
+                    {% endif %}
+                </div>   
+          {% endif %}
+
+          {% if section.settings.image_4 != nil %}
+                  <div class="vitality__scrolling-badges__list__item"> 
+                    {%
+                      render 'image-element',
+                      image: section.settings.image_4,
+                      alt: section.settings.image_4.alt,
+                      additional_wrapper_classes: 'vitality__scrolling-badges__list__item__image',
+                    %}
+                    {% if section.settings.text_4 != blank %}
+                        <span class="vitality__scrolling-badges__list__item__text">{{ section.settings.text_4 }}</span>
+                    {% endif %}
+                </div>   
+          {% endif %}
+
+          {% if section.settings.image_5 != nil %}
+                  <div class="vitality__scrolling-badges__list__item"> 
+                    {%
+                      render 'image-element',
+                      image: section.settings.image_5,
+                      alt: section.settings.image_5.alt,
+                      additional_wrapper_classes: 'vitality__scrolling-badges__list__item__image',
+                    %}
+                    {% if section.settings.text_5 != blank %}
+                        <span class="vitality__scrolling-badges__list__item__text">{{ section.settings.text_5 }}</span>
+                    {% endif %}
+                </div>   
+          {% endif %}
+
+           {% if section.settings.image_6 != nil %}
+                  <div class="vitality__scrolling-badges__list__item"> 
+                    {%
+                      render 'image-element',
+                      image: section.settings.image_6,
+                      alt: section.settings.image_6.alt,
+                      additional_wrapper_classes: 'vitality__scrolling-badges__list__item__image',
+                    %}
+                    {% if section.settings.text_6 != blank %}
+                        <span class="vitality__scrolling-badges__list__item__text">{{ section.settings.text_6 }}</span>
+                    {% endif %}
+                </div>   
+          {% endif %}
+          
+          {% if section.settings.image_7 != nil %}
+                  <div class="vitality__scrolling-badges__list__item"> 
+                    {%
+                      render 'image-element',
+                      image: section.settings.image_7,
+                      alt: section.settings.image_7.alt,
+                      additional_wrapper_classes: 'vitality__scrolling-badges__list__item__image',
+                    %}
+                    {% if section.settings.text_7 != blank %}
+                        <span class="vitality__scrolling-badges__list__item__text">{{ section.settings.text_7 }}</span>
+                    {% endif %}
+                </div>   
+          {% endif %}
+
+          {% if section.settings.image_8 != nil %}
+                  <div class="vitality__scrolling-badges__list__item"> 
+                    {%
+                      render 'image-element',
+                      image: section.settings.image_8,
+                      alt: section.settings.image_8.alt,
+                      additional_wrapper_classes: 'vitality__scrolling-badges__list__item__image',
+                    %}
+                    {% if section.settings.text_8 != blank %}
+                        <span class="vitality__scrolling-badges__list__item__text">{{ section.settings.text_8 }}</span>
+                    {% endif %}
+                </div>   
+          {% endif %}
+         
+        </div>
+      
+         <div class="vitality__scrolling-badges_caurosel-secondary">
+          {% if section.settings.image_1 != nil %}
+                  <div class="vitality__scrolling-badges__list__item"> 
+                    {%
+                      render 'image-element',
+                      image: section.settings.image_1,
+                      alt: section.settings.image_1.alt,
+                      additional_wrapper_classes: 'vitality__scrolling-badges__list__item__image',
+                    %}
+                    {% if section.settings.text_1 != blank %}
+                        <span class="vitality__scrolling-badges__list__item__text">{{ section.settings.text_1 }}</span>
+                    {% endif %}
+                </div>   
+          {% endif %}
+
+          {% if section.settings.image_2 != nil %}
+                  <div class="vitality__scrolling-badges__list__item"> 
+                    {%
+                      render 'image-element',
+                      image: section.settings.image_2,
+                      alt: section.settings.image_2.alt,
+                      additional_wrapper_classes: 'vitality__scrolling-badges__list__item__image',
+                    %}
+                    {% if section.settings.text_2 != blank %}
+                        <span class="vitality__scrolling-badges__list__item__text">{{ section.settings.text_2 }}</span>
+                    {% endif %}
+                </div>   
+          {% endif %}
+
+          {% if section.settings.image_3 != nil %}
+                  <div class="vitality__scrolling-badges__list__item"> 
+                    {%
+                      render 'image-element',
+                      image: section.settings.image_3,
+                      alt: section.settings.image_3.alt,
+                      additional_wrapper_classes: 'vitality__scrolling-badges__list__item__image',
+                    %}
+                    {% if section.settings.text_3 != blank %}
+                        <span class="vitality__scrolling-badges__list__item__text">{{ section.settings.text_3 }}</span>
+                    {% endif %}
+                </div>   
+          {% endif %}
+
+          {% if section.settings.image_4 != nil %}
+                  <div class="vitality__scrolling-badges__list__item"> 
+                    {%
+                      render 'image-element',
+                      image: section.settings.image_4,
+                      alt: section.settings.image_4.alt,
+                      additional_wrapper_classes: 'vitality__scrolling-badges__list__item__image',
+                    %}
+                    {% if section.settings.text_4 != blank %}
+                        <span class="vitality__scrolling-badges__list__item__text">{{ section.settings.text_4 }}</span>
+                    {% endif %}
+                </div>   
+          {% endif %}
+
+          {% if section.settings.image_5 != nil %}
+                  <div class="vitality__scrolling-badges__list__item"> 
+                    {%
+                      render 'image-element',
+                      image: section.settings.image_5,
+                      alt: section.settings.image_5.alt,
+                      additional_wrapper_classes: 'vitality__scrolling-badges__list__item__image',
+                    %}
+                    {% if section.settings.text_5 != blank %}
+                        <span class="vitality__scrolling-badges__list__item__text">{{ section.settings.text_5 }}</span>
+                    {% endif %}
+                </div>   
+          {% endif %}
+
+           {% if section.settings.image_6 != nil %}
+                  <div class="vitality__scrolling-badges__list__item"> 
+                    {%
+                      render 'image-element',
+                      image: section.settings.image_6,
+                      alt: section.settings.image_6.alt,
+                      additional_wrapper_classes: 'vitality__scrolling-badges__list__item__image',
+                    %}
+                    {% if section.settings.text_6 != blank %}
+                        <span class="vitality__scrolling-badges__list__item__text">{{ section.settings.text_6 }}</span>
+                    {% endif %}
+                </div>   
+          {% endif %}
+          
+          {% if section.settings.image_7 != nil %}
+                  <div class="vitality__scrolling-badges__list__item"> 
+                    {%
+                      render 'image-element',
+                      image: section.settings.image_7,
+                      alt: section.settings.image_7.alt,
+                      additional_wrapper_classes: 'vitality__scrolling-badges__list__item__image',
+                    %}
+                    {% if section.settings.text_7 != blank %}
+                        <span class="vitality__scrolling-badges__list__item__text">{{ section.settings.text_7 }}</span>
+                    {% endif %}
+                </div>   
+          {% endif %}
+
+          {% if section.settings.image_8 != nil %}
+                  <div class="vitality__scrolling-badges__list__item"> 
+                    {%
+                      render 'image-element',
+                      image: section.settings.image_8,
+                      alt: section.settings.image_8.alt,
+                      additional_wrapper_classes: 'vitality__scrolling-badges__list__item__image',
+                    %}
+                    {% if section.settings.text_8 != blank %}
+                        <span class="vitality__scrolling-badges__list__item__text">{{ section.settings.text_8 }}</span>
+                    {% endif %}
+                </div>   
+          {% endif %}
+        </div>
+      </div>
+  </div>
+</section>
+{% endif %}
+
+          
+{% schema %}
+  {
+    "name": "V14 - Scrolling badges",
+    "settings": [
+            {
+        "type": "html",
+        "id": "title",
+        "label": "Section title"
+      },
+      {
+        "type": "header",
+        "content": "Section"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Top spacing",
+        "min": 0,
+        "max": 100,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Bottom spacing",
+        "min": 0,
+        "max": 100,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Section background color"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Section text color"
+      },
+      {
+        "type": "header",
+        "content": "Mobile layout"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Mobile top spacing",
+        "min": 0,
+        "max": 100,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Mobile bottom spacing",
+        "min": 0,
+        "max": 100,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Badges"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_1",
+        "label": "Image 1"
+      },
+      {
+        "type": "text",
+        "id": "text_1",
+        "label": "Text 1"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_2",
+        "label": "Image 2"
+      },
+      {
+        "type": "text",
+        "id": "text_2",
+        "label": "Text 2"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_3",
+        "label": "Image 3"
+      },
+      {
+        "type": "text",
+        "id": "text_3",
+        "label": "Text 3"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_4",
+        "label": "Image 4"
+      },
+     {
+        "type": "text",
+        "id": "text_4",
+        "label": "Text 4"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_5",
+        "label": "Image 5"
+      },
+      {
+        "type": "text",
+        "id": "text_5",
+        "label": "Text 5"
+      },
+       {
+        "type": "image_picker",
+        "id": "image_6",
+        "label": "Image 6"
+      },
+     {
+        "type": "text",
+        "id": "text_6",
+        "label": "Text 6"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_7",
+        "label": "Image 7"
+      },
+      {
+        "type": "text",
+        "id": "text_7",
+        "label": "Text 7"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_8",
+        "label": "Image 8"
+      },
+      {
+        "type": "text",
+        "id": "text_8",
+        "label": "Text 8"
+      },
+      {
+        "type": "header",
+        "content": "Advanced",
+        "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+      },
+      {
+        "type": "text",
+        "id": "css_class",
+        "label": "CSS Class"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_css",
+        "label": "Custom CSS"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Vitality: scrolling badges"
+      }
+    ]
+  }
+{% endschema %}

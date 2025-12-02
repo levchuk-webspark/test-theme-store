@@ -1,0 +1,55 @@
+<script id="reload-chat-widget">
+  (function () {
+  function getChatUtmParams() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const utmParams = [];
+
+    urlParams.forEach((value, key) => {
+      if (key.startsWith("utm_")) {
+        utmParams.push({ key: `chat_${key}`, value });
+      }
+    });
+
+    // Always add chat_utm_content = "chatbot"
+    utmParams.push({ key: "chat_utm_content", value: "chatbot" });
+
+    return utmParams;
+  }
+
+  function reloadChatWidgetScript() {
+    const oldScript = document.getElementById("chat-widget");
+    if (!oldScript) return;
+
+    const utmParams = getChatUtmParams();
+
+    // Create a new script element
+    const newScript = document.createElement("script");
+
+    // Copy all existing attributes
+    for (let i = 0; i < oldScript.attributes.length; i++) {
+      const attr = oldScript.attributes[i];
+      newScript.setAttribute(attr.name, attr.value);
+    }
+
+    // Now override or add the utm-params
+    newScript.setAttribute("data-utm-params", JSON.stringify(utmParams));
+
+    // // Set the src manually again to trigger loading
+    newScript.src = oldScript.src;
+
+    // // Replace old script with new script
+    oldScript.parentNode.replaceChild(newScript, oldScript);
+  }
+
+  // Wait until DOM is ready
+  if (
+    document.readyState === "complete" ||
+    document.readyState === "interactive"
+  ) {
+    reloadChatWidgetScript();
+  } else {
+    document.addEventListener("DOMContentLoaded", reloadChatWidgetScript);
+  }
+})();
+</script>
+                      

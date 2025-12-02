@@ -1,0 +1,119 @@
+{% style %}
+
+  .testimonials-ye__card.card-{{ card_id }} .testimonials-ye__card__descripion {
+    {% if image != blank %}
+      max-width: 230px;
+    {% endif %}
+    flex-grow: 1;
+  }
+
+  .testimonials-ye__card.card-{{ card_id }} .testimonials-ye__card__report-button {
+      font-size: 16px;
+      margin-top: 8px;
+      padding: 13px 0;
+      width: 100%;
+      text-align: center;
+      border-radius: 8px;
+      text-transform: uppercase;
+      cursor: pointer;
+      /* {% if template.name == 'product' and product.metafields.custom.product_testimonials.value.text_color %}
+        background-color: {{ product.metafields.custom.product_testimonials.value.text_color }};
+      {% else %}
+        background-color: {{ section.settings.card_text }};
+      {% endif %}
+       {% if template.name == 'product' and product.metafields.custom.product_testimonials.value.background_color %}
+        color: {{ product.metafields.custom.product_testimonials.value.background_color }};
+      {% else %}
+        color: {{ section.settings.background_color }};
+      {% endif %} */
+      background-color: {{ button_background }};
+      color: {{ button_text }};
+    }
+
+  .testimonials-ye__card.card-{{ card_id }} .testimonials-ye__card__report-button:hover {
+    /* {% if template.name == 'product' and product.metafields.custom.product_testimonials.value.text_color %}
+        color: {{ product.metafields.custom.product_testimonials.value.text_color }};
+      {% else %}
+        color: {{ section.settings.card_text }};
+      {% endif %}
+      {% if template.name == 'product' and product.metafields.custom.product_testimonials.value.background_color %}
+         background-color: {{ product.metafields.custom.product_testimonials.value.background_color }};
+      {% else %}
+         background-color: {{ section.settings.background_color }};
+      {% endif %}
+      {% if template.name == 'product' and product.metafields.custom.product_testimonials.value.text_color %}
+        border: 1px solid {{ product.metafields.custom.product_testimonials.value.text_color }};
+      {% else %}
+        border: 1px solid {{ section.settings.card_text }};
+      {% endif %} */
+    color: {{ button_text_hover }};
+    background-color: {{ button_background_hover }};
+  }
+
+   @media only screen and (max-width: 1440px) {
+    .testimonials-ye__card.card-{{ card_id }} .testimonials-ye__card__descripion {
+      {% if image != blank %}
+        max-width: 170px;
+      {% endif %}
+    }
+  }
+
+  @media only screen and (max-width: 798px) {
+    .testimonials-ye__card.card-{{ card_id }} .testimonials-ye__card__descripion {
+      {% if image != blank %}
+        max-width: 130px;
+      {% endif %}
+    }
+
+     .testimonials-ye__card.card-{{ card_id }} .testimonials-ye__card__report-button {
+      font-size: 12px; 
+       padding: 6px 0;
+     }
+  }
+
+  
+{% endstyle %}
+
+<div class="testimonials-ye__card card-{{ card_id }}">
+  <div class="testimonials-ye__card__descripion">
+     {{ description }}
+  </div>
+  <div class="testimonials-ye__card__author">
+    {% if name != blank %}
+      <span class="testimonials-ye__card__author__name">{{ name }}{% if title != blank %},{% endif %}</span>
+    {% endif %}
+    {% if title != blank %}
+      <span class="testimonials-ye__card__author__title">{{ title }}{% if info != blank %},{% endif %}</span>
+    {% endif %}
+    {% if info != blank %}
+      <span class="testimonials-ye__card__author__info">{{ info }}</span>
+    {% endif %}
+  </div>
+    {% if image != blank %}
+        {% if show_certificates == true  %}
+          <div class="testimonials-ye__card__image__wrapper">
+            <div class="testimonials-ye__card__image">
+              {%
+                render 'image-element',
+                image: image,
+                alt: image.alt,
+              %}
+            </div>
+            {% if certificate_link != blank %}
+              <div id="lab-report-button" class="testimonials-ye__card__report-button">
+                Lab report{% if certificate_link_2 != blank %}s{% endif %}
+              </div>
+            {% endif %}
+          </div>
+          
+        {% else %}
+          <div class="testimonials-ye__card__image">
+            {%
+              render 'image-element',
+              image: image,
+              alt: image.alt,
+            %}
+          </div>
+        {% endif %}
+    {% endif %}
+</div>

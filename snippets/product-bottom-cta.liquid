@@ -1,0 +1,120 @@
+{% if settings.enable_sticky_atc %}
+
+{% comment %}
+
+Code created by JadePuma
+Instructions - https://jadepuma.com/blogs/shopify-tutorials/dynamic-call-to-action-button-for-product-pages-in-the-flex-theme
+Last editted - Nov23
+ 
+{% endcomment %}
+
+<div class="product_bottom_cta" style="opacity:0; transform:translateY(100%);">
+  <button class="product-cta-button" onclick="document.querySelector('.button--add-to-cart').click()">
+   ADD TO CART 
+   <!--<svg aria-hidden="true" focusable="false" role="presentation" class="icon icon--wide icon-chevron-up arrow_up" 
+   viewBox="0 0 498.98 284.49"><defs><style>.cls-1{fill:#fff;} 
+   </style></defs>
+   <path class="cls-1" d="M579.91 486.24A35 35 0 0 1 520.16 511L330.42 321.25 140.68 511a35 35 0 1 1-49.5-49.5L305.67 247a35 35 0 0 1 49.5 0l214.49 214.5a34.89 34.89 0 0 1 10.25 24.74z"
+   transform="translate(-80.93 -236.76)">
+   </path>
+   </svg>-->
+  </button>
+</div>
+
+{% style %}
+
+.product_bottom_cta{
+    position:fixed;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    bottom:0;
+    width:100%;
+    height:auto;
+    background-color:{{settings.sticky_atc_background}};
+    box-shadow: 5px 5px 8px 0 #000;
+    transition: all ease .5s;
+    padding:6px;
+    z-index:101;
+}
+
+.product-cta-button {
+    padding: 0.6rem 1.5rem;
+	font-size: 1rem;
+    font-family: 'Ambit Black', 'Merriweather Sans', sans-serif !important;
+    background-color: #fc4301;
+    color:#fff;
+    border:none;
+    border-radius: 3px;
+
+  }
+
+.product-cta-button:hover {
+    transform: scale(1);
+    cursor:pointer;
+    background-color: #cc3600;
+  }
+
+  @media only screen and (max-width: 798px) {
+
+.product-cta-button {
+    padding: 0.4rem 1.2rem;
+	  font-size: 0.9rem;
+    background-color: #fc4301;
+    color:#fff;
+    border:none;
+    border-radius: 3px;
+  }
+
+.product_bottom_cta{
+    padding:4px;
+    max-width:100vw;;
+}
+
+}
+
+.arrow_up{
+  margin-left:5px; 
+  max-height:12px; 
+  padding-bottom:4px;
+}
+
+{% endstyle %}
+
+
+<script>
+
+
+var product_bottom_cta = document.querySelector('.product_bottom_cta')
+
+window.addEventListener('scroll', function() {
+    // Check if the scroll position is greater than or equal to the threshold
+ 
+    let el = document.querySelector('.product_form')
+    if(isElementInViewport(el)){
+        product_bottom_cta.style.opacity = 0;
+        product_bottom_cta.style.transform = "translateY(100%)";
+    }else{
+        if(window.scrollY > 1000){
+          product_bottom_cta.style.opacity = 1;
+          product_bottom_cta.style.transform = "translateY(0)";
+        }
+    }
+});
+
+
+function isElementInViewport(el) {
+    var rect = el.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}
+
+
+</script>
+
+
+{% endif %}

@@ -1,0 +1,456 @@
+{% style %}
+  #shopify-section-{{ section.id }} .vitality__links-cards {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      background-color: {{ section.settings.background_color }};
+    }
+
+  .vitality__links-cards__cards-list {
+      display: flex;
+      align-items: stretch;
+      justify-content: space-between;
+      position: relative;
+    
+    }
+
+  .vitality__links-cards__cards-list > .flickity-viewport  {
+    overflow: unset;
+  }
+
+  .vitality-how-it-works__card__icon {
+    width: {{ section.settings.icon-size }}px;
+    height: {{ section.settings.icon-size }}px;
+  }
+
+  .vitality__links-cards__card {
+       border-radius: 10px;
+       
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      width: 32.5%;
+      /* padding-right: 10px; */
+      min-height: {{ section.settings.card-height }}px;
+
+     margin-right: 10px;
+    cursor: pointer;
+    }
+
+  .vitality__links-cards__card:last-of-type {
+    /* padding-right: 0px; */
+    margin-right: 0px;
+  }
+
+  .vitality__links-cards__card__content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+     min-height: {{ section.settings.card-height }}px;
+  }
+
+  .vitality__links-cards__card__icon {
+    display: flex;
+    align-self: start;
+    padding: 30px;
+  }
+
+  .vitality__links-cards__card__title {
+    line-height: 1.1;
+    padding: 30px;
+    font-size: {{ section.settings.card-title-font-size }}px;
+  }
+   .vitality__links-cards__nav-buttons {
+      display: none;
+    }
+
+    .vitality__links-cards .flickity-button {
+      display: none;
+    }
+
+  .vitality__links-cards__card {
+     transition: flex 0.3s ease, transform 0.3s ease;
+     overflow: hidden;
+     flex-shrink: 1; 
+  }
+
+  .vitality__links-cards__card:hover {
+  transform: scale(1.02);
+    z-index: 1;
+    border-radius: 10px;
+}
+
+  .vitality__links-cards__cards-list:hover .vitality__links-cards__card {
+    transform: scale(0.98);
+ }
+
+  .vitality__links-cards__cards-list .vitality__links-cards__card:hover {
+     transform: scale(1.02);
+     z-index: 1;
+    border-radius: 10px;
+  } 
+
+  @media only screen and (max-width: 900px) {
+     .vitality__links-cards__cards-list > .flickity-viewport  {
+      overflow: hidden;
+    }
+    .vitality__links-cards__card { 
+      width: 300px;
+      min-height: {{ section.settings.card-height-mobile }}px;
+    }
+    .vitality__links-cards__card__content {
+     min-height: {{ section.settings.card-height-mobile }}px;
+    }
+    .vitality__links-cards__card:last-of-type{
+       margin-right: 10px;
+    }
+    .vitality__links-cards__card__icon {
+      padding: 20px;
+    }
+
+  .vitality__links-cards__card__title {
+    padding: 20px;
+    font-size: {{ section.settings.card-title-font-size-mobile}}px;
+  }
+    .vitality-how-it-works__card__icon {
+      width: {{ section.settings.icon-size-mobile }}px;
+      height: {{ section.settings.icon-size-mobile }}px;
+    }
+    /* .vitality__links-cards__nav-buttons__prev,
+    .vitality__links-cards__nav-buttons__next {
+          border: none;
+          background: none;
+          padding: 0;
+      } */
+
+      /* .vitality__links-cards__nav-buttons__prev .icon,
+      .vitality__links-cards__nav-buttons__next .icon {
+        width: 26px;
+        height: 26px;
+        color: #3F4444;
+      } */
+
+      .vitality__links-cards__nav-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        margin-top: 30px;
+      }
+
+    .vitality__links-cards__nav-buttons__prev,
+  .vitality__links-cards__nav-buttons__next {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #3F4444;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+  }
+
+  .vitality__links-cards__cards-list__item__arrow-prev,
+  .vitality__links-cards__cards-list__item__arrow-next {
+    width: 6px;
+    height: 6px;
+    border-top: 1px solid #3F4444;
+    border-right: 1px solid #3F4444;
+  }
+
+  .vitality__links-cards__cards-list__item__arrow-prev {
+    transform: rotate(-135deg);
+  }
+
+  .vitality__links-cards__cards-list__item__arrow-next {
+    transform: rotate(45deg);
+  }
+  }
+
+  {%
+    render 'css-loop',
+    css: section.settings.custom_css,
+    id: section.id,
+  %}
+{% endstyle %}
+<section
+  class="
+    section
+    {{ section.settings.css_class }}
+    vitality__links-cards
+  "
+>
+  {% if section.blocks.size > 0 %}
+    <ul class="vitality__links-cards__cards-list carousel-{{ section.id }}">
+      {% for block in section.blocks %}
+        {% if block.type == 'card' %}
+          {% style %}
+            .block-{{ block.id }}.vitality__links-cards__card {
+              {% if block.settings.image != nil %}
+                  background: url("{{block.settings.image | img_url: 'master'}}");
+                  background-size:cover;
+                  /* background-position:center; */
+               {% else %}
+                  background-color: {{ block.settings.card_background_color }};
+               {% endif %}
+                  border: 1px solid {{ block.settings.card_border_color }};
+            }
+
+            
+            .block-{{ block.id }} .vitality__links-cards__card__title {
+              color: {{ block.settings.card_title_color }};
+            }
+
+          {% endstyle %}
+
+          <li class="vitality__links-cards__card block-{{ block.id }} carousel-cell">
+            <a href={{ block.settings.link }} class="vitality__links-cards__card__content">
+                {% if block.settings.icon != nil %}
+                  <div class="vitality__links-cards__card__icon">
+                    {% render 'image-element',
+                      image: block.settings.icon,
+                      alt: block.settings.icon.alt,
+                      additional_wrapper_classes: 'vitality-how-it-works__card__icon',
+                      object_fit: true
+                    %}
+                  </div>
+                {% endif %}
+              <div class="vitality__links-cards__card__title">{{ block.settings.card_title }}</div>
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+     <div class="vitality__links-cards__nav-buttons">
+      <button class="vitality__links-cards__nav-buttons__prev vitality__links-cards__nav-buttons__prev-{{ section.id }}">
+        <div class="vitality__links-cards__cards-list__item__arrow-prev"></div>
+      </button>
+      <button class="vitality__links-cards__nav-buttons__next vitality__links-cards__nav-buttons__next-{{ section.id }}">
+        <div class="vitality__links-cards__cards-list__item__arrow-next"></div>
+      </button>
+    </div>
+  {% endif %}
+</section>
+{% comment %}JavaScript{% endcomment %}
+
+<script>
+  window.addEventListener('load', function() {
+
+    const vitalityLinksCardsCarousel = document.querySelector('.carousel-{{ section.id }}');
+
+        if (vitalityLinksCardsCarousel) {
+            const vitalityLinksCardsFlickity = new Flickity( vitalityLinksCardsCarousel, {
+                cellAlign: 'left',
+                contain: true,
+                groupCells: true,
+                wrapAround: true,
+                pageDots: false
+            });
+
+
+            const vitalityLinksCardsPrevButton = document.querySelector('.vitality__links-cards__nav-buttons__prev-{{ section.id }}');
+            const vitalityLinksCardsNextButton = document.querySelector('.vitality__links-cards__nav-buttons__next-{{ section.id }}');
+
+            if (vitalityLinksCardsPrevButton) {
+              vitalityLinksCardsPrevButton.addEventListener( 'click', function() {
+                vitalityLinksCardsFlickity.previous();
+              });
+            }
+
+            if (vitalityLinksCardsNextButton) {
+              vitalityLinksCardsNextButton.addEventListener( 'click', function() {
+                vitalityLinksCardsFlickity.next();
+              });
+            }
+
+        }
+
+  });
+</script>
+{% schema %}
+  {
+    "name": "Links cards",
+    "settings": [
+      {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 100,
+      "default": 10,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 10,
+      "unit": "px"
+    },
+      {
+      "type": "range",
+      "id": "card-title-font-size",
+      "label": "Card title font size",
+      "min": 0,
+      "max": 100,
+      "default": 40,
+      "unit": "px"
+    },
+      {
+      "type": "range",
+      "id": "card-height",
+      "label": "Card height",
+      "min": 0,
+      "max": 700,
+      "step": 7,
+      "default": 455,
+      "unit": "px"
+    },
+      {
+      "type": "range",
+      "id": "icon-size",
+      "label": "Icon size",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 80,
+      "unit": "px"
+    },
+      {
+      "type": "header",
+      "content": "Colors"
+    },
+     {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "rgba(0,0,0,0)"
+    },
+      {
+      "type": "header",
+      "content": "Mobile layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile top spacing",
+      "min": 0,
+      "max": 100,
+      "default": 10,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile bottom spacing",
+      "min": 0,
+      "max": 100,
+      "default": 10,
+      "unit": "px"
+    },
+       {
+      "type": "range",
+      "id": "card-title-font-size-mobile",
+      "label": "Card title font size",
+      "min": 0,
+      "max": 100,
+      "default": 40,
+      "unit": "px"
+    },
+      {
+      "type": "range",
+      "id": "card-height-mobile",
+      "label": "Card height",
+      "min": 0,
+      "max": 700,
+      "step": 7,
+      "default": 308,
+      "unit": "px"
+    },
+      {
+      "type": "range",
+      "id": "icon-size-mobile",
+      "label": "Icon size",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 54,
+      "unit": "px"
+    },
+      {
+      "type": "header",
+      "content": "Advanced",
+      "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+    },
+    {
+      "type": "text",
+      "id": "css_class",
+      "label": "CSS Class"
+    },
+    {
+      "type": "textarea",
+      "id": "custom_css",
+      "label": "Custom CSS"
+    }
+    ],
+    "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "html",
+          "id": "card_title",
+          "label": "Card title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "color",
+          "id": "card_title_color",
+          "label": "Card title color",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "card_background_color",
+          "label": "Background olor",
+          "default": "#F7F5F1"
+        },
+        {
+          "type": "color",
+          "id": "card_border_color",
+          "label": "Card border color",
+          "default": "#F7F5F1"
+        }
+      ]
+    }
+  ],
+     "presets": [
+    {
+      "name": "Vitality: links cards"
+    }
+  ]
+  }
+{% endschema %}

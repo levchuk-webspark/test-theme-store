@@ -1,0 +1,321 @@
+{% assign product-scrolling-time = 60 %}
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+        background-color: {{ section.settings.background_color }};
+        color: {{ section.settings.text_color }};
+  }
+
+   #shopify-section-{{ section.id }} .product__scrolling-text {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+   .product__scrolling-text__list {
+    display: flex;
+    
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+  }
+
+  .product__scrolling-text__list__item {
+    margin-right: 44px;
+    white-space: nowrap;
+    font-size: {{ section.settings.text_size }}px;
+  }
+
+   .product__scrolling-text_caurosel-primary, .product__scrolling-text_caurosel-secondary {
+    display: flex;
+  }
+
+   .product__scrolling-text_caurosel-primary {
+    white-space: nowrap;
+    animation: product_text_scroll {{ product-scrolling-time }}s linear infinite;
+    animation-delay: {{ product-scrolling-time | times: -1 }}s;
+  }
+
+  .product__scrolling-text_caurosel-secondary {
+    animation: product_text_scroll2 {{ product-scrolling-time }}s linear infinite;
+    animation-delay: {{ product-scrolling-time | divided_by: -2}}s;
+  }
+
+  @keyframes product_text_scroll {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+  }
+
+  @keyframes product_text_scroll2 {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-200%);
+    }
+  }
+
+    @media only screen and (max-width: 798px) {
+       .product__scrolling-text__list__item {
+        margin-right: 12px;
+        font-size: {{ section.settings.text_size_mobile }}px;
+      }
+    }
+{% endstyle %}
+
+{% if product.metafields.custom.product_scrolling_text %}
+  {% assign metaobject = product.metafields.custom.product_scrolling_text.value %}
+   <section class="section
+                  {{ section.settings.css_class }}
+                  product__scrolling-text
+                  "
+  >
+    {% style %}
+      #shopify-section-{{ section.id }} .product__scrolling-text {
+        color: {{ metaobject.text_color }};
+        background-color: {{ metaobject.background_color }};
+      }
+      
+      #shopify-section-{{ section.id }} .product__video__subheading {
+        color: {{ metaobject.section_subheading_color }};
+      }
+    {% endstyle %}
+
+     <div class="product__scrolling-text__list">
+       <div class="product__scrolling-text_caurosel-primary">
+          {% if metaobject.text_1 != blank %}
+            <div class="product__scrolling-text__list__item"> 
+              {{ metaobject.text_1 }}
+           </div>
+          {% endif %}
+         {% if metaobject.text_2 != blank %}
+            <div class="product__scrolling-text__list__item"> 
+              {{ metaobject.text_2 }}
+           </div>
+          {% endif %}
+         {% if metaobject.text_3 != blank %}
+            <div class="product__scrolling-text__list__item"> 
+              {{ metaobject.text_3 }}
+           </div>
+          {% endif %}
+         {% if metaobject.text_4 != blank %}
+            <div class="product__scrolling-text__list__item"> 
+              {{ metaobject.text_4 }}
+           </div>
+          {% endif %}
+         {% if metaobject.text_5 != blank %}
+            <div class="product__scrolling-text__list__item"> 
+              {{ metaobject.text_5 }}
+           </div>
+          {% endif %}
+         {% if metaobject.text_6 != blank %}
+            <div class="product__scrolling-text__list__item"> 
+              {{ metaobject.text_6 }}
+           </div>
+          {% endif %}
+         {% if metaobject.text_7 != blank %}
+            <div class="product__scrolling-text__list__item"> 
+              {{ metaobject.text_7 }}
+           </div>
+          {% endif %}
+         {% if metaobject.text_8 != blank %}
+            <div class="product__scrolling-text__list__item"> 
+              {{ metaobject.text_8 }}
+           </div>
+          {% endif %}
+       </div>
+
+       <div class="product__scrolling-text_caurosel-secondary">
+         {% if metaobject.text_1 != blank %}
+            <div class="product__scrolling-text__list__item"> 
+              {{ metaobject.text_1 }}
+           </div>
+          {% endif %}
+         {% if metaobject.text_2 != blank %}
+            <div class="product__scrolling-text__list__item"> 
+              {{ metaobject.text_2 }}
+           </div>
+          {% endif %}
+         {% if metaobject.text_3 != blank %}
+            <div class="product__scrolling-text__list__item"> 
+              {{ metaobject.text_3 }}
+           </div>
+          {% endif %}
+         {% if metaobject.text_4 != blank %}
+            <div class="product__scrolling-text__list__item"> 
+              {{ metaobject.text_4 }}
+           </div>
+          {% endif %}
+         {% if metaobject.text_5 != blank %}
+            <div class="product__scrolling-text__list__item"> 
+              {{ metaobject.text_5 }}
+           </div>
+          {% endif %}
+         {% if metaobject.text_6 != blank %}
+            <div class="product__scrolling-text__list__item"> 
+              {{ metaobject.text_6 }}
+           </div>
+          {% endif %}
+         {% if metaobject.text_7 != blank %}
+            <div class="product__scrolling-text__list__item"> 
+              {{ metaobject.text_7 }}
+           </div>
+          {% endif %}
+         {% if metaobject.text_8 != blank %}
+            <div class="product__scrolling-text__list__item"> 
+              {{ metaobject.text_8 }}
+           </div>
+          {% endif %}
+       </div>
+     </div>
+   </section>
+{% endif %}
+{% schema %}
+  {
+    "name": "Product scrolling text",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Top spacing",
+        "min": 0,
+        "max": 100,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Bottom spacing",
+        "min": 0,
+        "max": 100,
+        "default": 20,
+        "unit": "px"
+      },
+       {
+        "type": "range",
+        "id": "text_size",
+        "label": "Text size",
+        "min": 0,
+        "max": 100,
+        "default": 18,
+        "unit": "px"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Section background color"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Section text color"
+      },
+      {
+        "type": "header",
+        "content": "Mobile layout"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Mobile top spacing",
+        "min": 0,
+        "max": 100,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Mobile bottom spacing",
+        "min": 0,
+        "max": 100,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "text_size_mobile",
+        "label": "Text size",
+        "min": 0,
+        "max": 100,
+        "default": 18,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Badges"
+      },
+      {
+        "type": "text",
+        "id": "text_1",
+        "label": "Text 1"
+      },
+      {
+        "type": "text",
+        "id": "text_2",
+        "label": "Text 2"
+      },
+      {
+        "type": "text",
+        "id": "text_3",
+        "label": "Text 3"
+      },
+     {
+        "type": "text",
+        "id": "text_4",
+        "label": "Text 4"
+      },
+      {
+        "type": "text",
+        "id": "text_5",
+        "label": "Text 5"
+      },
+     {
+        "type": "text",
+        "id": "text_6",
+        "label": "Text 6"
+      },
+      {
+        "type": "text",
+        "id": "text_7",
+        "label": "Text 7"
+      },
+      {
+        "type": "text",
+        "id": "text_8",
+        "label": "Text 8"
+      },
+      {
+        "type": "header",
+        "content": "Advanced",
+        "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+      },
+      {
+        "type": "text",
+        "id": "css_class",
+        "label": "CSS Class"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_css",
+        "label": "Custom CSS"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Product scrolling text"
+      }
+    ]
+  }
+{% endschema %}

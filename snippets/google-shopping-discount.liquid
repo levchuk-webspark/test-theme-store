@@ -1,0 +1,418 @@
+{% style %}
+
+
+.google_shopping_discount_applied{
+  display:none;
+}
+
+.product-thumbnail__price_google-discount{
+  display:none;
+}
+
+.google_discount_cart_price{
+  display:none;
+  width: 20%;
+  text-align: center;
+}
+
+.google_discount_line_item_total{
+  display:none;
+  width: 20%;
+  text-align: center;
+}
+
+
+.google_discount_cart_subtotal{
+  display:none;
+}
+
+
+.google_discount_price_display_product_page{
+  display:none;
+}
+
+.google_discount_cart_subtotal{
+  display:none;
+}
+
+.google_discount_cart_subtotal p{
+  font-weight:bold;
+}
+
+.total_savings_google_discount{
+  display:none;
+}
+
+.total_savings_google_discount p{
+  color: #003b00;
+}
+
+
+
+
+{% endstyle %}
+
+{% if settings.enable_GS_discount == true and settings.toggle_promo_discount_message == false %}
+
+{% style %}
+
+
+.google_shopping_discount_pricing{
+  width:100%;
+  text-align:left;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-size:17px;
+  width:max-content;
+  padding:5px;
+}
+
+.google_shopping_discount_price{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+}
+
+.google_shopping_discount_price span{
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-right:5px;
+}
+
+.google_shopping_original_price{
+  text-decoration:line-through;
+  color:red;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.google_shopping_original_price span{
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-right:5px;
+}
+
+@media only screen and (max-width: 749px){
+
+  .google_shopping_original_price span{
+    font-size: .93333em;
+  }
+  .google_shopping_discount_pricing span{
+    font-size: .93333em;
+  }
+
+}
+
+.coupon_applied{
+  text-align:left;
+  margin:15px 0;
+  margin-top:20px;
+}
+
+.coupon_applied span{
+  background-color:;
+  border:1px solid #000;
+  border-radius:5px;
+  padding:6px 18px;
+  color:#000;
+  width:max-content;
+  font-size:0.8em;
+  font-weight:bold;
+}
+
+.google_shopping_discount_applied{
+    margin:20px 0;
+    width:max-content;
+    padding:10px 15px;
+    border-radius:5px;
+    text-align: {{ settings.google_discount_promo_text_alignment }};
+    font-size: {{ settings.google_discount_promo_font_size }}px;
+    color:{{ settings.google_discount_promo_text_color }};
+    background:{%- render 'color_to_rgba', color:settings.google_discount_promo_bg_color, opacity:settings.google_discount_promo_bg_color_transparency -%};
+}
+
+.product-wrap .google_shopping_discount_applied{
+    margin:8px 0;
+}
+
+.google_shopping_discount_applied_collection{
+    width:100%;
+    margin:8px 0;
+  }
+
+{% endstyle %}
+
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script>
+
+  var googleShoppingDiscountApplied = false;
+
+  var googleShoppingDiscount = "{{settings.google_shopping_discount_code}}";
+
+  if(location.href.toLowerCase().includes("google") && location.href.toLowerCase().includes("shopping") && location.href.toLowerCase().includes("de/")){  
+    {% if request.page_type == "product" %};
+    var url_ = "/de"+"{{product.selected_or_first_available_variant.url}}"
+     //alert(`Applying disocunt: ${googleShoppingDiscount}`)
+    location.href= `/discount/${googleShoppingDiscount}?redirect=${url_}`;
+    {% endif %}
+  }
+
+  else if(location.href.toLowerCase().includes("awc=") && location.href.toLowerCase().includes("de/")){  
+    {% if request.page_type == "product" %};
+    var url_ ="/de"+"{{product.selected_or_first_available_variant.url}}"
+      //alert(`Applying disocunt: ${googleShoppingDiscount}`)
+    location.href= `/discount/${googleShoppingDiscount}?redirect=${url_}`;
+    {% endif %}
+  }
+
+  else if(location.href.toLowerCase().includes("bing") && location.href.toLowerCase().includes("de/")){  
+    {% if request.page_type == "product" %};
+    var url_ = "/de"+"{{product.selected_or_first_available_variant.url}}"
+      //alert(`Applying disocunt: ${googleShoppingDiscount}`)
+    location.href= `/discount/${googleShoppingDiscount}?redirect=${url_}`;
+    {% endif %}
+  }
+    
+  else if(location.href.toLowerCase().includes("google") && location.href.toLowerCase().includes("shopping") && location.href.toLowerCase().includes("fr/")){  
+    {% if request.page_type == "product" %};
+    var url_ = "/fr"+"{{product.selected_or_first_available_variant.url}}"
+     //alert(`Applying disocunt: ${googleShoppingDiscount}`)
+    location.href= `/discount/${googleShoppingDiscount}?redirect=${url_}`;
+    {% endif %}
+  }
+
+  else if(location.href.toLowerCase().includes("awc=") && location.href.toLowerCase().includes("fr/")){  
+    {% if request.page_type == "product" %};
+    var url_ ="/fr"+"{{product.selected_or_first_available_variant.url}}"
+      //alert(`Applying disocunt: ${googleShoppingDiscount}`)
+    location.href= `/discount/${googleShoppingDiscount}?redirect=${url_}`;
+    {% endif %}
+  }
+
+  else if(location.href.toLowerCase().includes("bing") && location.href.toLowerCase().includes("fr/")){  
+    {% if request.page_type == "product" %};
+    var url_ = "/fr"+"{{product.selected_or_first_available_variant.url}}"
+      //alert(`Applying disocunt: ${googleShoppingDiscount}`)
+    location.href= `/discount/${googleShoppingDiscount}?redirect=${url_}`;
+    {% endif %}
+  }  
+    
+  else if(location.href.toLowerCase().includes("google") && location.href.toLowerCase().includes("shopping") && location.href.toLowerCase().includes("it/")){  
+    {% if request.page_type == "product" %};
+    var url_ = "/it"+"{{product.selected_or_first_available_variant.url}}"
+     //alert(`Applying disocunt: ${googleShoppingDiscount}`)
+    location.href= `/discount/${googleShoppingDiscount}?redirect=${url_}`;
+    {% endif %}
+  }
+
+  else if(location.href.toLowerCase().includes("awc=") && location.href.toLowerCase().includes("it/")){  
+    {% if request.page_type == "product" %};
+    var url_ ="/it"+"{{product.selected_or_first_available_variant.url}}"
+      //alert(`Applying disocunt: ${googleShoppingDiscount}`)
+    location.href= `/discount/${googleShoppingDiscount}?redirect=${url_}`;
+    {% endif %}
+  }
+
+  else if(location.href.toLowerCase().includes("bing") && location.href.toLowerCase().includes("it/")){  
+    {% if request.page_type == "product" %};
+    var url_ = "/it"+"{{product.selected_or_first_available_variant.url}}"
+      //alert(`Applying disocunt: ${googleShoppingDiscount}`)
+    location.href= `/discount/${googleShoppingDiscount}?redirect=${url_}`;
+    {% endif %}
+  }
+
+  else if(location.href.toLowerCase().includes("google") && location.href.toLowerCase().includes("shopping") && location.href.toLowerCase().includes("es/")){  
+    {% if request.page_type == "product" %};
+    var url_ = "/es"+"{{product.selected_or_first_available_variant.url}}"
+     //alert(`Applying disocunt: ${googleShoppingDiscount}`)
+    location.href= `/discount/${googleShoppingDiscount}?redirect=${url_}`;
+    {% endif %}
+  }
+
+  else if(location.href.toLowerCase().includes("awc=") && location.href.toLowerCase().includes("es/")){  
+    {% if request.page_type == "product" %};
+    var url_ ="/es"+"{{product.selected_or_first_available_variant.url}}"
+      //alert(`Applying disocunt: ${googleShoppingDiscount}`)
+    location.href= `/discount/${googleShoppingDiscount}?redirect=${url_}`;
+    {% endif %}
+  }
+
+  else if(location.href.toLowerCase().includes("bing") && location.href.toLowerCase().includes("es/")){  
+    {% if request.page_type == "product" %};
+    var url_ = "/es"+"{{product.selected_or_first_available_variant.url}}"
+      //alert(`Applying disocunt: ${googleShoppingDiscount}`)
+    location.href= `/discount/${googleShoppingDiscount}?redirect=${url_}`;
+    {% endif %}
+  }
+
+  else if(location.href.toLowerCase().includes("google") && location.href.toLowerCase().includes("shopping") && location.href.toLowerCase().includes("ar/")){  
+    {% if request.page_type == "product" %};
+    var url_ = "/ar"+"{{product.selected_or_first_available_variant.url}}"
+     //alert(`Applying disocunt: ${googleShoppingDiscount}`)
+    location.href= `/discount/${googleShoppingDiscount}?redirect=${url_}`;
+    {% endif %}
+  }
+
+  else if(location.href.toLowerCase().includes("awc=") && location.href.toLowerCase().includes("ar/")){  
+    {% if request.page_type == "product" %};
+    var url_ ="/ar"+"{{product.selected_or_first_available_variant.url}}"
+      //alert(`Applying disocunt: ${googleShoppingDiscount}`)
+    location.href= `/discount/${googleShoppingDiscount}?redirect=${url_}`;
+    {% endif %}
+  }
+
+  else if(location.href.toLowerCase().includes("bing") && location.href.toLowerCase().includes("ar/")){  
+    {% if request.page_type == "product" %};
+    var url_ = "/ar"+"{{product.selected_or_first_available_variant.url}}"
+      //alert(`Applying disocunt: ${googleShoppingDiscount}`)
+    location.href= `/discount/${googleShoppingDiscount}?redirect=${url_}`;
+    {% endif %}
+  }
+    
+  else if(location.href.toLowerCase().includes("google") && location.href.toLowerCase().includes("shopping")){  
+    {% if request.page_type == "product" %};
+    var url_ = "{{product.selected_or_first_available_variant.url}}"
+     //alert(`Applying disocunt: ${googleShoppingDiscount}`)
+    location.href= `/discount/${googleShoppingDiscount}?redirect=${url_}`;
+    {% endif %}
+  }
+
+  else if(location.href.toLowerCase().includes("awc=")){  
+    {% if request.page_type == "product" %};
+    var url_ = "{{product.selected_or_first_available_variant.url}}"
+      //alert(`Applying disocunt: ${googleShoppingDiscount}`)
+    location.href= `/discount/${googleShoppingDiscount}?redirect=${url_}`;
+    {% endif %}
+  }
+
+  else if(location.href.toLowerCase().includes("bing")){  
+    {% if request.page_type == "product" %};
+    var url_ = "{{product.selected_or_first_available_variant.url}}"
+      //alert(`Applying disocunt: ${googleShoppingDiscount}`)
+    location.href= `/discount/${googleShoppingDiscount}?redirect=${url_}`;
+    {% endif %}
+  }
+
+</script>
+
+
+{% if settings.enable_GS_discount %}
+
+
+<script type="text/javascript">
+
+  var codeCookieValue;
+  var getCookie = function(name) {
+    var value = "; " + document.cookie;
+    var parts = value.split('; '+name+'=');
+    if (parts.length == 2) return parts.pop().split(";").shift();
+  };
+  codeCookieValue = getCookie('discount_code');
+
+  console.log(codeCookieValue)
+  console.log(googleShoppingDiscount)
+
+  if(!codeCookieValue){
+
+    setTimeout(()=>{
+    console.log("No Discount Code");
+    $('.google_shopping_discount_applied').hide()
+  
+    },1000)
+
+  }
+  
+  if(codeCookieValue && codeCookieValue == googleShoppingDiscount){
+    
+    setTimeout(()=>{
+
+    googleShoppingDiscountApplied = true;
+
+
+    //product page price update 
+    {% if template contains "product" %}
+
+    $('.google_shopping_discount_applied').show()
+    $('.no_discount_price_element').hide()
+
+    if(!document.querySelectorAll('.bsub-widget__group-header')[0]){
+      $('.google_discount_price_element').show()
+    }
+
+    setTimeout(()=>{
+      $('.google_discount_price_display_product_page').show()
+      $('.standard_price_display_product_page').hide()
+    },1250)
+
+
+    setTimeout(()=>{
+      $('.product-thumbnail__price').hide()
+      $('.product-thumbnail__price_google-discount').show()
+    },1750)
+
+
+
+   // related/featured product section on product page 
+
+
+    //cart price update
+    {% elsif template contains "cart" %}
+
+      $('.standard_cart_price').hide()
+      $('.standard_line_item_total').hide()
+      $('.cart_subtotal_standard').hide()
+      $('.total_savings_standard').hide()
+
+      $('.google_discount_cart_price').show()
+      $('.google_discount_line_item_total').show()
+      $('.google_discount_cart_subtotal').show()
+      $('.total_savings_google_discount').show()
+      
+      $('.google_shopping_discount_applied').show()
+
+    {% else %}
+
+    //homepage/collection/other page price update 
+    $('.google_shopping_discount_applied').show()
+    $('.product-thumbnail__price').hide()
+    $('.product-thumbnail__price_google-discount').show()
+
+    setTimeout(()=>{
+      $('.google_shopping_discount_applied').show()
+      $('.product-thumbnail__price').hide()
+      $('.product-thumbnail__price_google-discount').show()
+    },750)
+
+
+    {% endif %}
+
+
+    },500)
+    
+  }
+
+
+
+
+  </script>
+
+
+{% endif %}
+
+
+{% endif %}
+
+

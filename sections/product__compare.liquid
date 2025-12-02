@@ -1,0 +1,971 @@
+{% style %}
+    #shopify-section-{{ section.id }} .product__compare {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      {% if template.name == 'product' and product.metafields.custom.compare_product.value.background_color %}
+        background-color: {{ product.metafields.custom.compare_product.value.background_color }};
+    {% else %}
+        background-color: {{ section.settings.background_color }};
+    {% endif %}
+    }
+
+  .product__compare__title {
+      font-weight: normal;
+    }
+
+    #shopify-section-{{ section.id }} .product__compare__title {
+      {% if template.name == 'product' and product.metafields.custom.compare_product.value.text_color %}
+        color: {{ product.metafields.custom.compare_product.value.text_color }};
+    {% else %}
+        color: {{ section.settings.text_color }};
+    {% endif %}
+      
+    }
+
+    #shopify-section-{{ section.id }} .product__compare__title {
+      font-size: {{ section.settings.title-font-size }}px;
+    }
+
+  .product__compare__container {
+    display: flex;
+    gap: 25px;
+  }
+
+  .product__compare__product-container, .product__compare__other-brand-container, .product__compare__our-brand-container {
+    width: 33%;
+    border-radius: 10px;
+    padding: 30px;
+  }
+
+  .product__compare__logo-container {
+    height: 350px;
+    display: flex;
+    align-items: center;
+  }
+
+  .product__compare__logo > img {
+    object-fit: cover;
+  }
+
+  .product__compare__other-brand-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    width: 100%;
+    height: 100%;
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  .product__compare__our-logo {
+    width: 192px;
+    height: 71px;
+  }
+
+  .product__compare__our-brand-container {
+    {% if template.name == 'product' and product.metafields.custom.compare_product.value.our_brand_background_color %}
+        background-color: {{ product.metafields.custom.compare_product.value.our_brand_background_color }};
+    {% endif %}
+  }
+
+  .product__compare__other-brand-container {
+    border: 1px solid;
+    border-color: {{ '#3F4444' | color_modify: 'alpha', 0.2  }}
+  }
+
+  .product__compare__item-icon {
+    width: 26px;
+    height: 26px;
+    margin-right: 35px; 
+  }
+
+  .product__compare__item-icon-img {
+    width: 26px;
+    height: 26px;
+  }
+
+  .product__compare__item-text {
+    font-size: 20px;
+  }
+
+  .product__compare__item {
+    display: flex;
+    padding: 18px 30px;
+    flex: 1;
+  }
+
+  .product__compare__item__bottom-border {
+    border-bottom: 1px solid;
+    border-color: {{ '#3F4444' | color_modify: 'alpha', 0.3  }};
+  }
+
+  .product__compare__has-icon, .product__compare__has-icon > img {
+    width: 31px;
+    height: 31px;
+  }
+
+  .product__compare__item-text-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 798px) {
+    #shopify-section-{{ section.id }} .product__compare {
+        padding-top: {{ section.settings.padding_top_mobile }}px;
+        padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .product__compare__title {
+        font-size: {{ section.settings.title-font-size-mobile }}px;
+      }
+
+    .product__compare__container {
+      flex-direction: column;
+    }
+
+    .product__compare__product-container, .product__compare__other-brand-container, .product__compare__our-brand-container {
+      width: 100%;
+    }
+
+    .product__compare__logo-container {
+      height: 305px;
+    }
+
+    .product__compare__product-container .product__compare__items-container {
+      display: none;
+    }
+
+    .product__compare__other-brand-container .product__compare__logo-container, .product__compare__our-brand-container .product__compare__logo-container{
+      height: fit-content;
+    }
+
+     .product__compare__item-text-mobile {
+      display: flex;
+    }
+
+    .product__compare__item {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .product__compare__has-icon {
+      margin: 0;
+      width: 28px;
+      height: 28px;
+    }
+
+    .product__compare__has-icon > img {
+      width: 28px;
+      height: 28px;
+    }
+
+    .product__compare__our-logo {
+      width: 128px;
+      height: 47px;
+    }
+
+    .product__compare__item {
+      padding: 18px 0;
+    }
+
+    .product__compare__our-brand-container .product__compare__item .product__compare__item-text-mobile {
+      {% if template.name == 'product' and product.metafields.custom.compare_product.value.our_brand_text_color %}
+        color: {{ product.metafields.custom.compare_product.value.our_brand_text_color }};
+    {% elsif  template.name == 'product' and product.metafields.custom.compare_product.value.text_color %}
+        color: {{ product.metafields.custom.compare_product.value.text_color }};
+     {% else %}   
+        color: {{ section.settings.text_color }};
+    {% endif %}
+    }
+  }
+
+  {%
+    render 'css-loop',
+    css: section.settings.custom_css,
+    id: section.id,
+  %}
+{% endstyle %}
+{% if product.metafields.custom.compare_product %}
+  {% assign metaobject = product.metafields.custom.compare_product.value %}
+  <section
+      class="
+        section
+        {{ section.settings.css_class }}
+        product__compare
+      "
+    >
+    {% if metaobject.title != blank %}
+      <h2 class="product__compare__title">{{ metaobject.title }}</h2>
+    {% endif %}
+    <div class="product__compare__container">
+      <div class="product__compare__product-container">
+        <div class="product__compare__logo-container">
+          {% if metaobject.product_image != nil %}
+            {%
+                    render 'image-element',
+                    image: metaobject.product_image,
+                    alt: metaobject.product_image.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__logo"
+                  %}
+          {% endif %}
+        </div>
+        <div class="product__compare__items-container">
+          {% if metaobject.item_1 != blank %}
+          <div class="item_1 product__compare__item {% if metaobject.item_2 != blank %} product__compare__item__bottom-border {% endif %}">
+            <div class="product__compare__item-icon">
+              {% if metaobject.item_icon !=nil %}
+                {%
+                    render 'image-element',
+                    image: metaobject.item_icon,
+                    alt: metaobject.item_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__item-icon-img"
+                  %}
+              {% endif %}
+            </div>
+            <div class="product__compare__item-text">{{ metaobject.item_1 }}</div>
+          </div>
+          {% endif %}
+
+          {% if metaobject.item_2 != blank %}
+          <div class="item_2 product__compare__item {% if metaobject.item_3 != blank %} product__compare__item__bottom-border {% endif %}">
+            <div class="product__compare__item-icon">
+              {% if metaobject.item_icon !=nil %}
+                {%
+                    render 'image-element',
+                    image: metaobject.item_icon,
+                    alt: metaobject.item_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__item-icon-img"
+                  %}
+              {% endif %}
+            </div>
+            <div class="product__compare__item-text">{{ metaobject.item_2 }}</div>
+          </div>
+          {% endif %}
+
+          {% if metaobject.item_3 != blank %}
+          <div class="item_3 product__compare__item {% if metaobject.item_4 != blank %} product__compare__item__bottom-border {% endif %}">
+            <div class="product__compare__item-icon">
+              {% if metaobject.item_icon !=nil %}
+                {%
+                    render 'image-element',
+                    image: metaobject.item_icon,
+                    alt: metaobject.item_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__item-icon-img"
+                  %}
+              {% endif %}
+            </div>
+            <div class="product__compare__item-text">{{ metaobject.item_3 }}</div>
+          </div>
+          {% endif %}
+
+          {% if metaobject.item_4 != blank %}
+          <div class="item_4 product__compare__item {% if metaobject.item_5 != blank %} product__compare__item__bottom-border {% endif %}">
+            <div class="product__compare__item-icon">
+              {% if metaobject.item_icon !=nil %}
+                {%
+                    render 'image-element',
+                    image: metaobject.item_icon,
+                    alt: metaobject.item_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__item-icon-img"
+                  %}
+              {% endif %}
+            </div>
+            <div class="product__compare__item-text">{{ metaobject.item_4 }}</div>
+          </div>
+          {% endif %}
+
+          {% if metaobject.item_5 != blank %}
+          <div class="item_5 product__compare__item {% if metaobject.item_6 != blank %} product__compare__item__bottom-border {% endif %}">
+            <div class="product__compare__item-icon">
+              {% if metaobject.item_icon !=nil %}
+                {%
+                    render 'image-element',
+                    image: metaobject.item_icon,
+                    alt: metaobject.item_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__item-icon-img"
+                  %}
+              {% endif %}
+            </div>
+            <div class="product__compare__item-text">{{ metaobject.item_5 }}</div>
+          </div>
+          {% endif %}
+
+          {% if metaobject.item_6 != blank %}
+          <div class="item_6 product__compare__item {% if metaobject.item_7 != blank %} product__compare__item__bottom-border {% endif %}">
+            <div class="product__compare__item-icon">
+              {% if metaobject.item_icon !=nil %}
+                {%
+                    render 'image-element',
+                    image: metaobject.item_icon,
+                    alt: metaobject.item_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__item-icon-img"
+                  %}
+              {% endif %}
+            </div>
+            <div class="product__compare__item-text">{{ metaobject.item_6 }}</div>
+          </div>
+          {% endif %}
+
+          {% if metaobject.item_7 != blank %}
+          <div class="item_7 product__compare__item {% if metaobject.item_8 != blank %} product__compare__item__bottom-border {% endif %}">
+            <div class="product__compare__item-icon">
+              {% if metaobject.item_icon !=nil %}
+                {%
+                    render 'image-element',
+                    image: metaobject.item_icon,
+                    alt: metaobject.item_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__item-icon-img"
+                  %}
+              {% endif %}
+            </div>
+            <div class="product__compare__item-text">{{ metaobject.item_7 }}</div>
+          </div>
+          {% endif %}
+
+          {% if metaobject.item_8 != blank %}
+          <div class="item_8 product__compare__item {% if metaobject.item_9 != blank %} product__compare__item__bottom-border {% endif %}">
+            <div class="product__compare__item-icon">
+              {% if metaobject.item_icon !=nil %}
+                {%
+                    render 'image-element',
+                    image: metaobject.item_icon,
+                    alt: metaobject.item_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__item-icon-img"
+                  %}
+              {% endif %}
+            </div>
+            <div class="product__compare__item-text">{{ metaobject.item_8 }}</div>
+          </div>
+          {% endif %}
+
+          {% if metaobject.item_9 != blank %}
+          <div class="item_9 product__compare__item">
+            <div class="product__compare__item-icon">
+              {% if metaobject.item_icon !=nil %}
+                {%
+                    render 'image-element',
+                    image: metaobject.item_icon,
+                    alt: metaobject.item_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__item-icon-img"
+                  %}
+              {% endif %}
+            </div>
+            <div class="product__compare__item-text">{{ metaobject.item_9 }}</div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      <div class="product__compare__other-brand-container">
+        <div class="product__compare__logo-container">
+          {% if metaobject.other_brand_name != blank %}
+            <div class="product__compare__other-brand-name">{{ metaobject.other_brand_name }}</div>
+          {% endif %}
+        </div>
+        <div class="product__compare__items-container">
+          {% if metaobject.item_1 != blank %}
+            <div class="item_1 product__compare__item {% if metaobject.item_2 != blank %} product__compare__item__bottom-border {% endif %}">
+              <div class="product__compare__item-text-mobile">{{ metaobject.item_1 }}</div> 
+              {% if metaobject.other_brand_has_item_1 == true %}
+                {%
+                    render 'image-element',
+                    image: metaobject.yes_icon,
+                    alt: metaobject.yes_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__has-icon"
+                  %}
+              {% else %}
+                {%
+                    render 'image-element',
+                    image: metaobject.no_icon,
+                    alt: metaobject.no_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__has-icon"
+                  %}
+              {% endif %}
+            </div>
+          {% endif %}
+
+          {% if metaobject.item_2 != blank %}
+            <div class="item_2 product__compare__item {% if metaobject.item_3 != blank %} product__compare__item__bottom-border {% endif %}">
+              <div class="product__compare__item-text-mobile">{{ metaobject.item_2 }}</div> 
+              {% if metaobject.other_brand_has_item_2 == true %}
+                {%
+                    render 'image-element',
+                    image: metaobject.yes_icon,
+                    alt: metaobject.yes_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__has-icon"
+                  %}
+              {% else %}
+                {%
+                    render 'image-element',
+                    image: metaobject.no_icon,
+                    alt: metaobject.no_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__has-icon"
+                  %}
+              {% endif %}
+            </div>
+          {% endif %}
+
+          {% if metaobject.item_3 != blank %}
+            <div class="item_3 product__compare__item {% if metaobject.item_4 != blank %} product__compare__item__bottom-border {% endif %}">
+              <div class="product__compare__item-text-mobile">{{ metaobject.item_3 }}</div> 
+              {% if metaobject.other_brand_has_item_3 == true %}
+                {%
+                    render 'image-element',
+                    image: metaobject.yes_icon,
+                    alt: metaobject.yes_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__has-icon"
+                  %}
+              {% else %}
+                {%
+                    render 'image-element',
+                    image: metaobject.no_icon,
+                    alt: metaobject.no_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__has-icon"
+                  %}
+              {% endif %}
+            </div>
+          {% endif %}
+
+          {% if metaobject.item_4 != blank %}
+            <div class="item_4 product__compare__item {% if metaobject.item_5 != blank %} product__compare__item__bottom-border {% endif %}">
+              <div class="product__compare__item-text-mobile">{{ metaobject.item_4 }}</div> 
+              {% if metaobject.other_brand_has_item_4 == true %}
+                {%
+                    render 'image-element',
+                    image: metaobject.yes_icon,
+                    alt: metaobject.yes_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__has-icon"
+                  %}
+              {% else %}
+                {%
+                    render 'image-element',
+                    image: metaobject.no_icon,
+                    alt: metaobject.no_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__has-icon"
+                  %}
+              {% endif %}
+            </div>
+          {% endif %}
+
+          {% if metaobject.item_5 != blank %}
+            <div class="item_5 product__compare__item {% if metaobject.item_6 != blank %} product__compare__item__bottom-border {% endif %}">
+              <div class="product__compare__item-text-mobile">{{ metaobject.item_5 }}</div> 
+              {% if metaobject.other_brand_has_item_5 == true %}
+                {%
+                    render 'image-element',
+                    image: metaobject.yes_icon,
+                    alt: metaobject.yes_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__has-icon"
+                  %}
+              {% else %}
+                {%
+                    render 'image-element',
+                    image: metaobject.no_icon,
+                    alt: metaobject.no_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__has-icon"
+                  %}
+              {% endif %}
+            </div>
+          {% endif %}
+
+          {% if metaobject.item_6 != blank %}
+            <div class="item_6 product__compare__item {% if metaobject.item_7 != blank %} product__compare__item__bottom-border {% endif %}">
+              <div class="product__compare__item-text-mobile">{{ metaobject.item_6 }}</div> 
+              {% if metaobject.other_brand_has_item_6 == true %}
+                {%
+                    render 'image-element',
+                    image: metaobject.yes_icon,
+                    alt: metaobject.yes_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__has-icon"
+                  %}
+              {% else %}
+                {%
+                    render 'image-element',
+                    image: metaobject.no_icon,
+                    alt: metaobject.no_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__has-icon"
+                  %}
+              {% endif %}
+            </div>
+          {% endif %}
+
+          {% if metaobject.item_7 != blank %}
+            <div class="item_7 product__compare__item {% if metaobject.item_8 != blank %} product__compare__item__bottom-border {% endif %}">
+              <div class="product__compare__item-text-mobile">{{ metaobject.item_7 }}</div> 
+              {% if metaobject.other_brand_has_item_7 == true %}
+                {%
+                    render 'image-element',
+                    image: metaobject.yes_icon,
+                    alt: metaobject.yes_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__has-icon"
+                  %}
+              {% else %}
+                {%
+                    render 'image-element',
+                    image: metaobject.no_icon,
+                    alt: metaobject.no_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__has-icon"
+                  %}
+              {% endif %}
+            </div>
+          {% endif %}
+
+          {% if metaobject.item_8 != blank %}
+            <div class="item_8 product__compare__item {% if metaobject.item_9 != blank %} product__compare__item__bottom-border {% endif %}">
+              <div class="product__compare__item-text-mobile">{{ metaobject.item_8 }}</div> 
+              {% if metaobject.other_brand_has_item_8 == true %}
+                {%
+                    render 'image-element',
+                    image: metaobject.yes_icon,
+                    alt: metaobject.yes_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__has-icon"
+                  %}
+              {% else %}
+                {%
+                    render 'image-element',
+                    image: metaobject.no_icon,
+                    alt: metaobject.no_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__has-icon"
+                  %}
+              {% endif %}
+            </div>
+          {% endif %}
+
+          {% if metaobject.item_9 != blank %}
+            <div class="item_9 product__compare__item ">
+              <div class="product__compare__item-text-mobile">{{ metaobject.item_9 }}</div> 
+              {% if metaobject.other_brand_has_item_9 == true %}
+                {%
+                    render 'image-element',
+                    image: metaobject.yes_icon,
+                    alt: metaobject.yes_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__has-icon"
+                  %}
+              {% else %}
+                {%
+                    render 'image-element',
+                    image: metaobject.no_icon,
+                    alt: metaobject.no_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__has-icon"
+                  %}
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+      <div class="product__compare__our-brand-container">
+        <div class="product__compare__logo-container">
+          {% if metaobject.our_brand_logo !=nil %}
+            {%
+                    render 'image-element',
+                    image: metaobject.our_brand_logo,
+                    alt: metaobject.our_brand_logo.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__our-logo"
+                  %}
+          {% endif %}
+        </div>
+        <div class="product__compare__items-container">
+          {% if metaobject.item_1 != blank %}
+            <div class="item_1 product__compare__item {% if metaobject.item_2 != blank %} product__compare__item__bottom-border {% endif %}">
+              <div class="product__compare__item-text-mobile">{{ metaobject.item_1 }}</div> 
+              {% if metaobject.our_brand_has_item_1 == true %}
+                {%
+                    render 'image-element',
+                    image: metaobject.yes_icon,
+                    alt: metaobject.yes_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__has-icon"
+                  %}
+              {% else %}
+                {%
+                    render 'image-element',
+                    image: metaobject.no_icon,
+                    alt: metaobject.no_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__has-icon"
+                  %}
+              {% endif %}
+            </div>
+          {% endif %}
+
+          {% if metaobject.item_2 != blank %}
+            <div class="item_2 product__compare__item {% if metaobject.item_3 != blank %} product__compare__item__bottom-border {% endif %}">
+              <div class="product__compare__item-text-mobile">{{ metaobject.item_2 }}</div> 
+              {% if metaobject.our_brand_has_item_2 == true %}
+                {%
+                    render 'image-element',
+                    image: metaobject.yes_icon,
+                    alt: metaobject.yes_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__has-icon"
+                  %}
+              {% else %}
+                {%
+                    render 'image-element',
+                    image: metaobject.no_icon,
+                    alt: metaobject.no_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__has-icon"
+                  %}
+              {% endif %}
+            </div>
+          {% endif %}
+
+          {% if metaobject.item_3 != blank %}
+            <div class="item_3 product__compare__item {% if metaobject.item_4 != blank %} product__compare__item__bottom-border {% endif %}">
+              <div class="product__compare__item-text-mobile">{{ metaobject.item_3 }}</div> 
+              {% if metaobject.our_brand_has_item_3 == true %}
+                {%
+                    render 'image-element',
+                    image: metaobject.yes_icon,
+                    alt: metaobject.yes_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__has-icon"
+                  %}
+              {% else %}
+                {%
+                    render 'image-element',
+                    image: metaobject.no_icon,
+                    alt: metaobject.no_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__has-icon"
+                  %}
+              {% endif %}
+            </div>
+          {% endif %}
+
+          {% if metaobject.item_4 != blank %}
+            <div class="item_4 product__compare__item {% if metaobject.item_5 != blank %} product__compare__item__bottom-border {% endif %}">
+              <div class="product__compare__item-text-mobile">{{ metaobject.item_4 }}</div> 
+              {% if metaobject.our_brand_has_item_4 == true %}
+                {%
+                    render 'image-element',
+                    image: metaobject.yes_icon,
+                    alt: metaobject.yes_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__has-icon"
+                  %}
+              {% else %}
+                {%
+                    render 'image-element',
+                    image: metaobject.no_icon,
+                    alt: metaobject.no_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__has-icon"
+                  %}
+              {% endif %}
+            </div>
+          {% endif %}
+
+          {% if metaobject.item_5 != blank %}
+            <div class="item_5 product__compare__item {% if metaobject.item_6 != blank %} product__compare__item__bottom-border {% endif %}">
+              <div class="product__compare__item-text-mobile">{{ metaobject.item_5 }}</div> 
+              {% if metaobject.our_brand_has_item_5 == true %}
+                {%
+                    render 'image-element',
+                    image: metaobject.yes_icon,
+                    alt: metaobject.yes_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__has-icon"
+                  %}
+              {% else %}
+                {%
+                    render 'image-element',
+                    image: metaobject.no_icon,
+                    alt: metaobject.no_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__has-icon"
+                  %}
+              {% endif %}
+            </div>
+          {% endif %}
+
+          {% if metaobject.item_6 != blank %}
+            <div class="item_6 product__compare__item {% if metaobject.item_7 != blank %} product__compare__item__bottom-border {% endif %}">
+              <div class="product__compare__item-text-mobile">{{ metaobject.item_6 }}</div> 
+              {% if metaobject.our_brand_has_item_6 == true %}
+                {%
+                    render 'image-element',
+                    image: metaobject.yes_icon,
+                    alt: metaobject.yes_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__has-icon"
+                  %}
+              {% else %}
+                {%
+                    render 'image-element',
+                    image: metaobject.no_icon,
+                    alt: metaobject.no_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__has-icon"
+                  %}
+              {% endif %}
+            </div>
+          {% endif %}
+
+          {% if metaobject.item_7 != blank %}
+            <div class="item_7 product__compare__item {% if metaobject.item_8 != blank %} product__compare__item__bottom-border {% endif %}">
+              <div class="product__compare__item-text-mobile">{{ metaobject.item_7 }}</div> 
+              {% if metaobject.our_brand_has_item_7 == true %}
+                {%
+                    render 'image-element',
+                    image: metaobject.yes_icon,
+                    alt: metaobject.yes_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__has-icon"
+                  %}
+              {% else %}
+                {%
+                    render 'image-element',
+                    image: metaobject.no_icon,
+                    alt: metaobject.no_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__has-icon"
+                  %}
+              {% endif %}
+            </div>
+          {% endif %}
+
+          {% if metaobject.item_8 != blank %}
+            <div class="item_8 product__compare__item {% if metaobject.item_9 != blank %} product__compare__item__bottom-border {% endif %}">
+              <div class="product__compare__item-text-mobile">{{ metaobject.item_8 }}</div> 
+              {% if metaobject.our_brand_has_item_8 == true %}
+                {%
+                    render 'image-element',
+                    image: metaobject.yes_icon,
+                    alt: metaobject.yes_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__has-icon"
+                  %}
+              {% else %}
+                {%
+                    render 'image-element',
+                    image: metaobject.no_icon,
+                    alt: metaobject.no_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__has-icon"
+                  %}
+              {% endif %}
+            </div>
+          {% endif %}
+
+          {% if metaobject.item_9 != blank %}
+            <div class="item_8 product__compare__item">
+              <div class="product__compare__item-text-mobile">{{ metaobject.item_9 }}</div> 
+              {% if metaobject.our_brand_has_item_9 == true %}
+                {%
+                    render 'image-element',
+                    image: metaobject.yes_icon,
+                    alt: metaobject.yes_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__has-icon"
+                  %}
+              {% else %}
+                {%
+                    render 'image-element',
+                    image: metaobject.no_icon,
+                    alt: metaobject.no_icon.alt,
+                    object_fit: true,
+                    additional_wrapper_classes: "product__compare__has-icon"
+                  %}
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endif %}
+<script>
+  function matchHeight() {
+    var item_1 = document.getElementsByClassName('item_1');
+    var height_1 = item_1[0].offsetHeight;
+    item_1.forEach((item) => {
+      item.style.height = height_1 + 'px';
+    })
+
+    var item_2 = document.getElementsByClassName('item_2');
+    var height_2 = item_2[0].offsetHeight;
+    item_2.forEach((item) => {
+      item.style.height = height_2 + 'px';
+    })
+
+    var item_3 = document.getElementsByClassName('item_3');
+    var height_3 = item_3[0].offsetHeight;
+    item_3.forEach((item) => {
+      item.style.height = height_3 + 'px';
+    })
+
+    var item_4 = document.getElementsByClassName('item_4');
+    var height_4 = item_4[0].offsetHeight;
+    item_4.forEach((item) => {
+      item.style.height = height_4 + 'px';
+    })
+
+    var item_5 = document.getElementsByClassName('item_5');
+    var height_5 = item_5[0].offsetHeight;
+    item_5.forEach((item) => {
+      item.style.height = height_5 + 'px';
+    })
+
+    var item_6 = document.getElementsByClassName('item_6');
+    var height_6 = item_6[0].offsetHeight;
+    item_6.forEach((item) => {
+      item.style.height = height_6 + 'px';
+    })
+
+    var item_7 = document.getElementsByClassName('item_7');
+    var height_7 = item_7[0].offsetHeight;
+    item_7.forEach((item) => {
+      item.style.height = height_7 + 'px';
+    })
+
+    var item_8 = document.getElementsByClassName('item_8');
+    var height_8 = item_8[0].offsetHeight;
+    item_8.forEach((item) => {
+      item.style.height = height_8 + 'px';
+    })
+
+    var item_9 = document.getElementsByClassName('item_9');
+    var height_9 = item_9[0].offsetHeight;
+    item_9.forEach((item) => {
+      item.style.height = height_9 + 'px';
+    })
+}
+
+window.addEventListener('DOMContentLoaded', function() {
+  const isMobileMedia = window.matchMedia("(max-width: 798px)");
+  if (!isMobileMedia.matches) {
+    matchHeight();
+  }
+})
+</script>
+{% schema %}
+  {
+    "name": "Product compare",
+    "settings": [
+      {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 100,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 20,
+      "unit": "px"
+    },
+      {
+      "type": "range",
+      "id": "title-font-size",
+      "label": "Title font size",
+      "min": 0,
+      "max": 100,
+      "default": 34,
+      "unit": "px"
+    },
+      {
+      "type": "header",
+      "content": "Colors"
+    },
+     {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+    },
+      {
+      "type": "header",
+      "content": "Mobile layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile top spacing",
+      "min": 0,
+      "max": 100,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile bottom spacing",
+      "min": 0,
+      "max": 100,
+      "default": 20,
+      "unit": "px"
+    },
+      {
+      "type": "range",
+      "id": "title-font-size-mobile",
+      "label": "Mobile title font size",
+      "min": 0,
+      "max": 100,
+      "default": 34,
+      "unit": "px"
+    },
+       {
+      "type": "header",
+      "content": "Advanced",
+      "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+    },
+    {
+      "type": "text",
+      "id": "css_class",
+      "label": "CSS Class"
+    },
+    {
+      "type": "textarea",
+      "id": "custom_css",
+      "label": "Custom CSS"
+    }
+    ],
+    "presets": [
+      {
+        "name": "Product compare"
+      }
+    ]
+  }
+{% endschema %}

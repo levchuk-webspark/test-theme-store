@@ -1,0 +1,248 @@
+{% style %}
+  #shopify-section-{{ section.id }} {
+    background-color: {{ section.settings.background_color }};
+  }
+
+  #shopify-section-{{ section.id }} .color-blocks-mobile-column {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  .color-blocks-mobile-column {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .color-blocks-mobile-column__title {
+    font-size: 65px;
+  }
+
+  #shopify-section-{{ section.id }} .text-with-buttons__text {
+    color: {{ section.settings.title_color }};
+  }
+
+  .color-blocks-mobile-column__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 26px;
+  }
+
+  .color-blocks-mobile-column__list__item {
+    border-radius: 8px;
+    min-height: 425px;
+    height: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .color-blocks-mobile-column__list__item__number {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 90px;
+    font-weight: 900;
+  }
+
+   .color-blocks-mobile-column__list__item__title {
+     font-size: 34px;
+     line-height: 1.1;
+   }
+
+
+  .color-blocks-mobile-column__list__item__text {
+     font-size: 25px;
+   }
+
+   @media only screen and (max-width: 798px) {
+
+     
+      .color-blocks-mobile-column__list {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+     
+      .color-blocks-mobile-column__list__item {
+          gap: 40px;
+      }
+   }
+
+  
+{%
+  render 'css-loop',
+  css: section.settings.custom_css,
+  id: section.id,
+%}
+  
+{% endstyle %}
+
+<section
+  class="
+    section
+    {{ section.settings.css_class }}
+    color-blocks-mobile-column
+  "
+>
+    {% if section.settings.title != blank %}
+        <h2 class="color-blocks-mobile-column__title">
+          {{ section.settings.title }}
+        </h2>
+    {% endif %}
+
+    <ul class="color-blocks-mobile-column__list">
+        {% for block in section.blocks %}
+            {% if block.type == 'block' %}
+              {% style -%}
+
+                .color-blocks-mobile-column__list__item.block-{{ block.id }} {
+                  background-color: {{ block.settings.background_color }};
+                  color: {{ block.settings.text_color }};
+                }
+
+                .color-blocks-mobile-column__list__item.block-{{ block.id }} .color-blocks-mobile-column__list__item__number {
+                  color: {{ block.settings.background_color }};
+                  background-color: {{ block.settings.text_color }};
+                }
+                
+              {%- endstyle -%}
+    
+              <div class="color-blocks-mobile-column__list__item block-{{ block.id }}">
+                  <div class="color-blocks-mobile-column__list__item__number">{{ forloop.index }}</div>
+                  {% if block.settings.title != blank %}
+                    <div class="color-blocks-mobile-column__list__item__title">{{ block.settings.title }}</div>
+                  {% endif %}
+                  {% if block.settings.text != blank %}
+                    <div class="color-blocks-mobile-column__list__item__text">{{ block.settings.text }}</div>
+                  {% endif %}
+              </div>
+
+            {% endif %}
+       {% endfor %}
+    </ul>
+  
+</section>
+
+
+{% schema %}
+  {
+    "name": "Color blocks column",
+    "settings": [
+      {
+        "type": "html",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "header",
+        "content": "Section"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Top spacing",
+        "min": 0,
+        "max": 100,
+        "default": 60,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Bottom spacing",
+        "min": 0,
+        "max": 100,
+        "default": 60,
+        "unit": "px"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "color",
+        "id": "title_color",
+        "label": "Title",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "header",
+        "content": "Mobile layout"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Mobile top spacing",
+        "min": 0,
+        "max": 100,
+        "default": 30,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Mobile bottom spacing",
+        "min": 0,
+        "max": 100,
+        "default": 30,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Advanced",
+        "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+      },
+      {
+        "type": "text",
+        "id": "css_class",
+        "label": "CSS Class"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_css",
+        "label": "Custom CSS"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "block",
+        "name": "Block",
+        "settings": [
+          {
+            "type": "html",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "html",
+            "id": "text",
+            "label": "Text"
+          },
+          {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background",
+            "default": "rgba(0,0,0,0)"
+          },
+          {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text",
+            "default": "rgba(0,0,0,0)"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Color blocks mobile column"
+      }
+    ]
+  }
+{% endschema %}

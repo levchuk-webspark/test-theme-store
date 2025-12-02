@@ -1,0 +1,239 @@
+{% style %}
+  #shopify-section-{{ section.id }} {
+    background-color: {{ section.settings.background_color }};
+    color: {{ section.settings.text_color }};
+  }
+
+  #shopify-section-{{ section.id }} .product-videos-with-content {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  .product-videos-with-content__content-container {
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .flickity-viewport {
+    transition: height 0.3s ease-in-out;
+  }
+
+  .product-videos-with-content__title__section {
+    width: 50%;
+    line-height: 1.1;
+    font-weight: normal;
+    margin-bottom: 50px;
+    font-family: Ambit, Merriweather Sans, sans-serif !important;
+  }
+
+  #shopify-section-{{ section.id }} .product-videos-with-content__title__section {
+    font-size: {{ section.settings.title-font-size }}px;
+    color: {{ section.settings.title_color }};
+  }
+
+  .product-videos-with-content__description__section {
+    width: 60%;
+    margin-bottom: 40px;
+  }
+
+  #shopify-section-{{ section.id }} .product-videos-with-content__description__section {
+    font-size: {{ section.settings.description-font-size }}px;
+    color: {{ section.settings.description_color }};
+  }
+
+  @media only screen and (max-width: 798px) {
+    #shopify-section-{{ section.id }} .product-videos-with-content {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .product-videos-with-content__title__section {
+      font-size: {{ section.settings.title-font-size_mobile }}px;
+      margin-bottom: 34px;
+    }
+
+    #shopify-section-{{ section.id }} .product-videos-with-content__description__section {
+      font-size: {{ section.settings.description-font-size_mobile }}px;
+    }
+  }
+
+  {%
+    render 'css-loop',
+    css: section.settings.custom_css,
+    id: section.id,
+  %}
+{% endstyle %}
+{% if product.metafields.custom.product_videos_with_content.value %}
+    {% assign metaobject_with_list = product.metafields.custom.product_videos_with_content.value %} 
+    <section
+      class="
+        section
+        {{ section.settings.css_class }}
+        product-videos-with-content
+      "
+    >
+      {% if section.settings.title != blank %}
+        <p class="product-videos-with-content__title__section">{{ section.settings.title }}</p>
+      {% endif %}
+      {% if section.settings.description != blank %}
+        <div class="product-videos-with-content__description__section">{{ section.settings.description }}</div>
+      {% endif %}
+      <div class="product-videos-with-content__content-container carousel-{{ section.id }}">
+        {% for content in metaobject_with_list.videos_with_content.value %}
+          {% render 'product__video-with-content',
+              content: content,
+              index: forloop.index 
+          %}
+        {% endfor %}
+      </div>
+    </section>
+{% endif %}
+<script>
+  window.addEventListener('DOMContentLoaded', function() {
+      const videosWithContentCarousel = document.querySelector('.carousel-{{ section.id }}');
+        if (videosWithContentCarousel) {
+            const videosWithContentFlickity = new Flickity( videosWithContentCarousel, {
+                cellAlign: 'left',
+                contain: true,
+                groupCells: true,
+                wrapAround: true,
+            });
+        }
+  });
+</script>
+{% schema %}
+  {
+    "name": "Videos with content",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section"
+      },
+      {
+      "type": "html",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "html",
+      "id": "description",
+      "label": "Description"
+    },
+      {
+      "type": "range",
+      "id": "title-font-size",
+      "label": "Title font size",
+      "min": 0,
+      "max": 100,
+      "default": 34,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "description-font-size",
+      "label": "Description font size",
+      "min": 0,
+      "max": 100,
+      "default": 20,
+      "unit": "px"
+    },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Top spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Bottom spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Section background color",
+      },
+      {
+      "type": "color",
+      "id": "title_color",
+      "label": "Section title color",
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Section description color",
+    },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Section text color",
+      },
+      {
+        "type": "header",
+        "content": "Mobile layout"
+      },
+      {
+      "type": "range",
+      "id": "title-font-size_mobile",
+      "label": "Title font size",
+      "min": 0,
+      "max": 100,
+      "default": 34,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "description-font-size_mobile",
+      "label": "Description font size",
+      "min": 0,
+      "max": 100,
+      "default": 18,
+      "unit": "px"
+    },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Mobile top spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Mobile bottom spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Advanced",
+        "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+      },
+      {
+        "type": "text",
+        "id": "css_class",
+        "label": "CSS Class"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_css",
+        "label": "Custom CSS"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Product: videos with content"
+      }
+    ]
+  }
+{% endschema %}

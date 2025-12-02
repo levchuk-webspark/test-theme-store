@@ -1,0 +1,165 @@
+{% assign mobile_img_1 = section.settings.column_2 | img_url: 'large' %}
+
+
+{% javascript %}
+/* Any necessary JavaScript can go here */
+{% endjavascript %}
+
+
+<section class="section">
+    <!-- Header Row -->
+    <div class="grid-container header-row">
+        <div></div>
+        <div><img class="responsive-table-img" src="{{ section.settings.column_2 | img_url: 'large' }}"></div>
+        <div><img class="responsive-table-img" src="{{ section.settings.column_3 | img_url: 'large' }}"></div>
+        <div><img class="responsive-table-img" src="{{ section.settings.column_4 | img_url: 'large' }}"></div>
+        <div></div>
+    </div>
+
+    <!-- Data Rows -->
+    {% for block in section.blocks %}
+    <div class="grid-container">
+        <div>{{ block.settings.data_1 }}</div>
+        <div>{{ block.settings.data_2 }}</div>
+        <div>{{ block.settings.data_3 }}</div>
+        <div>{{ block.settings.data_4 }}</div>
+        <div></div>
+    </div>
+    {% endfor %}
+</section>
+
+{% style %}
+/* Basic styles for the grid table */
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 35% 15% 15% 15% 20%;
+    align-items: center;
+    border-top: 1px solid #000;
+    font-size: 18px;
+    padding: 18px 12px;
+    gap: 10px; /* Gap between each cell */
+}
+
+.header-row{
+  border-top:none !important;
+}
+
+
+.responsive-table-img {
+    height: 100px;
+    max-width: 100%;
+    display: block;
+    margin: 0 0 auto;
+    margin-bottom: 10px; /* Adding margin to the images */
+}
+
+@media (max-width: 798px) {
+    .grid-container {
+        grid-template-columns: repeat(5, 1fr); /* Equal width for each cell on mobile */
+       margin:0px 15px;
+    }
+    .responsive-table-img {
+        max-width: 100%; /* ensures the image does not overflow the container */
+        width:100px;
+        height: auto; /* maintains aspect ratio */
+        display: block;
+        margin: 0 auto;
+    }
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 28% 24% 24% 24% 0%;
+    align-items: center;
+    justify-content:center;
+    border-top: 1px solid #000;
+    font-size: 14px;
+    padding: 0px 0px;
+    gap: 0px; /* Gap between each cell */
+}
+
+.grid-container div{
+        height:100%;
+        padding: 5px 12px;
+}
+
+    .grid-container > div:nth-child(even) {
+        background-color: #eeeeee;
+    }
+
+    .header-row > div:nth-child(even) {
+        background-color: transparent;
+    }
+
+    .header-row > div{
+        padding: 5px 0px !important;
+    }
+
+
+
+}
+{% endstyle %}
+
+
+
+{% schema %}
+{
+  "name": "Loyalty rewards table",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "column_2",
+      "label": "Image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "column_3",
+      "label": "Image 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "column_4",
+      "label": "Image 3"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Table Row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "data_1",
+          "label": "Data 1",
+          "default": "Data 1"
+        },
+        {
+          "type": "text",
+          "id": "data_2",
+          "label": "Data 2",
+          "default": "Data 2"
+        },
+        {
+          "type": "text",
+          "id": "data_3",
+          "label": "Data 3",
+          "default": "Data 3"
+        },
+        {
+          "type": "text",
+          "id": "data_4",
+          "label": "Data 4",
+          "default": "Data 4"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Loyalty rewards table",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

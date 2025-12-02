@@ -1,0 +1,327 @@
+{% style %}
+
+.product__unique-selling-points {
+  background-color: {{ block.settings.unique-selling-point-background_color }};
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  /* gap: 24px; */
+  column-gap: 24px;
+  /* row-gap: 4px; */
+  padding: 16px 0;
+  {% if template.name == 'product' and product.metafields.custom.product_unique_selling_points.value.background_color %}
+    background-color: {{ product.metafields.custom.product_unique_selling_points.value.background_color }};
+  {% endif %}
+}
+
+  
+.product__unique-selling-points__item {
+  display: flex;
+  /* align-items: start; */
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+
+  cursor: pointer;
+  min-height: 46px;
+  margin-bottom: 4px;
+}
+
+.product__unique-selling-points__item__image-container {
+  width: 18px;
+  min-width: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product__unique-selling-points__item__image {
+  height: 18px;
+  width: auto;
+}
+
+.product__unique-selling-points__item__text-block {
+  display: flex;
+  flex-direction: column;
+  font-size: {{ block.settings.unique-selling-point-font-size }}px;
+
+  width: 100%;
+
+  line-height: 140%;
+}
+
+.product__unique-selling-points__item__text-block__title {  
+  font-weight: bold;
+  color: {{ block.settings.unique-selling-point-title_color }};
+  {% if template.name == 'product' and product.metafields.custom.product_unique_selling_points.value.title_color %}
+    color: {{ product.metafields.custom.product_unique_selling_points.value.title_color }};
+  {% endif %}
+}
+
+.product__unique-selling-points__item__text-block__description {
+  color: {{ block.settings.unique-selling-point-description_color }};
+  background-color: {{ block.settings.unique-selling-point-description_background_color }};
+  {% if template.name == 'product' and product.metafields.custom.product_unique_selling_points.value.description_color %}
+    color: {{ product.metafields.custom.product_unique_selling_points.value.description_color }};
+  {% endif %}
+
+  border-radius: 5px;
+  padding: 6px;
+  min-height: 38px;
+ 
+}
+
+.fade-block {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+
+  .fade-block.hidden {
+    opacity: 0;
+  }
+
+
+
+@media only screen and (max-width: 1200px) {
+  .product__unique-selling-points {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    /* margin-top: 20px; */
+  }
+
+}
+
+@media only screen and (max-width: 798px) {
+  .product__unique-selling-points__item__image-container {
+    width: 15px;
+    min-width: 15px;
+  }
+
+  .product__unique-selling-points__item__image {
+    height: 15px;
+    width: auto;
+  }
+
+  .product__unique-selling-points__item {
+    gap: 3px;
+    font-size: 9px;
+
+
+    min-height: 34px;
+    margin-bottom: 3px;
+  }
+
+  .product__unique-selling-points__item__text-block {
+    font-size: {{ block.settings.unique-selling-point-font-size__mobile }}px;
+  }
+
+  .product__unique-selling-points {
+    gap: unset;
+    column-gap: 9px;
+  }
+
+  .product__unique-selling-points__item__text-block__description {
+    padding: 3px 4px;
+
+    min-height: 30px;
+  }
+}
+
+{% endstyle %}
+
+<ul class="product__unique-selling-points">
+    <li class="product__unique-selling-points__item">
+      {% if block.settings.unique-selling-point-1-image %}
+          <div class="product__unique-selling-points__item__image-container">
+            <img class="product__unique-selling-points__item__image" 
+              {% if template.name == 'product' and product.metafields.custom.product_unique_selling_points.value.image_1 %}
+                src="{{ product.metafields.custom.product_unique_selling_points.value.image_1 | image_url }}" 
+              {% else %}
+                src="{{ block.settings.unique-selling-point-1-image | image_url }}" 
+              {% endif %}
+              alt="Unique selling point 1 image" 
+              >
+          </div>
+      {% endif %}
+      <div class="product__unique-selling-points__item__text-block">
+          {% if block.settings.unique-selling-point-1-title != blank %}
+            <span class="product__unique-selling-points__item__text-block__title">{{ block.settings.unique-selling-point-1-title }}</span>
+          {% endif %}
+          {% if block.settings.unique-selling-point-1-description != blank %}
+            <span class="product__unique-selling-points__item__text-block__description">{{ block.settings.unique-selling-point-1-description }}</span>
+          {% endif %}
+      </div>
+    </li>
+
+    <li class="product__unique-selling-points__item">
+      {% if block.settings.unique-selling-point-2-image %}
+          <div class="product__unique-selling-points__item__image-container">
+            <img class="product__unique-selling-points__item__image" 
+              {% if template.name == 'product' and product.metafields.custom.product_unique_selling_points.value.image_2 %}
+                src="{{ product.metafields.custom.product_unique_selling_points.value.image_2 | image_url }}" 
+              {% else %}
+                src="{{ block.settings.unique-selling-point-2-image | image_url }}" 
+              {% endif %}
+              alt="Unique selling point 2 image" 
+              >
+          </div>
+      {% endif %}
+      <div class="product__unique-selling-points__item__text-block">
+          {% if block.settings.unique-selling-point-2-title != blank %}
+            <span class="product__unique-selling-points__item__text-block__title">{{ block.settings.unique-selling-point-2-title }}</span>
+          {% endif %}
+          {% if block.settings.unique-selling-point-2-description != blank %}
+            <span class="product__unique-selling-points__item__text-block__description">{{ block.settings.unique-selling-point-2-description }}</span>
+          {% endif %}
+      </div>
+    </li>
+
+      <li class="product__unique-selling-points__item">
+      {% if block.settings.unique-selling-point-3-image %}
+          <div class="product__unique-selling-points__item__image-container">
+            <img class="product__unique-selling-points__item__image" 
+             {% if template.name == 'product' and product.metafields.custom.product_unique_selling_points.value.image_3 %}
+                src="{{ product.metafields.custom.product_unique_selling_points.value.image_3 | image_url }}" 
+              {% else %}
+                src="{{ block.settings.unique-selling-point-3-image | image_url }}" 
+              {% endif %}
+              alt="Unique selling point 2 image" 
+              >
+          </div>
+      {% endif %}
+      <div class="product__unique-selling-points__item__text-block">
+          {% if block.settings.unique-selling-point-3-title != blank %}
+            <span class="product__unique-selling-points__item__text-block__title">{{ block.settings.unique-selling-point-3-title }}</span>
+          {% endif %}
+          {% if block.settings.unique-selling-point-3-description != blank %}
+            <span class="product__unique-selling-points__item__text-block__description">{{ block.settings.unique-selling-point-3-description }}</span>
+          {% endif %}
+      </div>
+    </li>
+
+      <li class="product__unique-selling-points__item">
+      {% if block.settings.unique-selling-point-4-image %}
+          <div class="product__unique-selling-points__item__image-container">
+            <img class="product__unique-selling-points__item__image" 
+              {% if template.name == 'product' and product.metafields.custom.product_unique_selling_points.value.image_4 %}
+                src="{{ product.metafields.custom.product_unique_selling_points.value.image_4 | image_url }}" 
+              {% else %}
+               src="{{ block.settings.unique-selling-point-4-image | image_url }}" 
+              {% endif %}
+              alt="Unique selling point 2 image" 
+              >
+          </div>
+      {% endif %}
+      <div class="product__unique-selling-points__item__text-block">
+          {% if block.settings.unique-selling-point-4-title != blank %}
+            <span class="product__unique-selling-points__item__text-block__title">{{ block.settings.unique-selling-point-4-title }}</span>
+          {% endif %}
+          {% if block.settings.unique-selling-point-4-description != blank %}
+            <span class="product__unique-selling-points__item__text-block__description">
+              {% if product.id == 8667575910613 %}
+                We deliver our supplements directly to you.
+              {% else %}
+               {{ block.settings.unique-selling-point-4-description }}
+              {% endif %}
+            </span>
+          {% endif %}
+      </div>
+    </li>
+
+      <li class="product__unique-selling-points__item">
+      {% if block.settings.unique-selling-point-5-image %}
+          <div class="product__unique-selling-points__item__image-container">
+            <img 
+              class="product__unique-selling-points__item__image" 
+              {% if template.name == 'product' and product.metafields.custom.product_unique_selling_points.value.image_5 %}
+                src="{{ product.metafields.custom.product_unique_selling_points.value.image_5 | image_url }}" 
+              {% else %}
+                src="{{ block.settings.unique-selling-point-5-image | image_url }}" 
+              {% endif %}
+              alt="Unique selling point 2 image" >
+          </div>
+      {% endif %}
+      <div class="product__unique-selling-points__item__text-block">
+          {% if block.settings.unique-selling-point-5-title != blank %}
+            <span class="product__unique-selling-points__item__text-block__title">{{ block.settings.unique-selling-point-5-title }}</span>
+          {% endif %}
+          {% if block.settings.unique-selling-point-5-description != blank %}
+            <span class="product__unique-selling-points__item__text-block__description">{{ block.settings.unique-selling-point-5-description }}</span>
+          {% endif %}
+      </div>
+    </li>
+
+      <li class="product__unique-selling-points__item">
+      {% if block.settings.unique-selling-point-6-image %}
+          <div class="product__unique-selling-points__item__image-container">
+            <img 
+              class="product__unique-selling-points__item__image" 
+              {% if template.name == 'product' and product.metafields.custom.product_unique_selling_points.value.image_6 %}
+                src="{{ product.metafields.custom.product_unique_selling_points.value.image_6 | image_url }}" 
+              {% else %}
+                src="{{ block.settings.unique-selling-point-6-image | image_url }}" 
+              {% endif %}
+              alt="Unique selling point 2 image" 
+              >
+          </div>
+      {% endif %}
+      <div class="product__unique-selling-points__item__text-block">
+          {% if block.settings.unique-selling-point-6-title != blank %}
+            <span class="product__unique-selling-points__item__text-block__title">{{ block.settings.unique-selling-point-6-title }}</span>
+          {% endif %}
+          {% if block.settings.unique-selling-point-6-description != blank %}
+            <span class="product__unique-selling-points__item__text-block__description">{{ block.settings.unique-selling-point-6-description }}</span>
+          {% endif %}
+      </div>
+    </li>
+</ul>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const items = document.querySelectorAll('.product__unique-selling-points__item');
+
+    items.forEach((item, index) => {   
+      const title = item.querySelector('.product__unique-selling-points__item__text-block__title');
+      const description = item.querySelector('.product__unique-selling-points__item__text-block__description');
+
+      if (!title || !description) return;
+
+      // Hide description in the begining
+      {% comment %} description.style.display = "none"; {% endcomment %}
+      title.classList.add("fade-block");
+      description.classList.add("fade-block", "hidden");
+
+      const isMobileMedia = window.matchMedia("(max-width: 798px)");
+      if (isMobileMedia.matches) {
+        item.addEventListener("click", () => {
+
+          if (description.classList.contains("hidden")) {
+          {% comment %} description.style.display = "inline";
+          title.style.display = "none"; {% endcomment %}
+            title.classList.add("hidden");
+            description.classList.remove("hidden");
+          } else {
+          {% comment %} description.style.display = "none";
+          title.style.display = "inline"; {% endcomment %}
+            description.classList.add("hidden");
+           title.classList.remove("hidden");
+          }
+        });
+      } else {       
+        item.addEventListener("mouseenter", () => {
+          {% comment %} description.style.display = "inline";
+          title.style.display = "none"; {% endcomment %}
+          title.classList.add("hidden");
+          description.classList.remove("hidden");
+        });
+
+        item.addEventListener("mouseleave", () => {
+          {% comment %} description.style.display = "none";
+          title.style.display = "inline"; {% endcomment %}
+          description.classList.add("hidden");
+          title.classList.remove("hidden");
+        });
+      }
+    });
+  });
+</script>

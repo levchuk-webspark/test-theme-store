@@ -1,0 +1,342 @@
+{% style %}
+  #shopify-section-{{ section.id }} {
+
+    {% if template.name == 'product' and product.metafields.custom.product_badges_with_text.value.background_color %}
+        background-color: {{ product.metafields.custom.product_badges_with_text.value.background_color }};
+    {% else %}
+        background-color: {{ section.settings.background_color }};
+    {% endif %}
+    {% if template.name == 'product' and product.metafields.custom.product_badges_with_text.value.text_color %}
+        color: {{ product.metafields.custom.product_badges_with_text.value.text_color }};
+    {% else %}
+        color: {{ section.settings.text_color }};
+    {% endif %}
+
+  }
+
+  #shopify-section-{{ section.id }} .badges-with-text {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  #shopify-section-{{ section.id }} .badges-with-text__title {
+    {% if template.name == 'product' and product.metafields.custom.product_badges_with_text.value.text_color %}
+        color: {{ product.metafields.custom.product_badges_with_text.value.text_color }};
+    {% else %}
+        color: {{ section.settings.text_color }};
+    {% endif %}
+  }
+
+  .badges-with-text__title {
+    font-size: 34px;
+    white-space: nowrap;
+    display: inline-block;
+    margin-right: 57px;
+  }
+
+  .badges-with-text__content {
+    display: flex;
+    align-items: center;
+  }
+
+  .badges-with-text__list {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;   
+    gap: 20px;
+  }
+
+  .badges-with-text__list__item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+
+  .badges-with-text__list__item__image {
+    width: 67px;
+    height: 67px;
+    min-width: 67px;
+    min-height: 67px;
+  }
+
+  .badges-with-text__list__item__text {
+    font-size: 28px;
+  }
+
+@media only screen and (max-width: 1440px) {
+  span.badges-with-text__list__item__text {
+    white-space: nowrap;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+   .badges-with-text__title {
+     white-space: wrap;
+   }
+
+  .badges-with-text__content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .badges-with-text__title {
+    margin-right: unset;
+  }
+
+  .badges-with-text__list {
+    flex-wrap: wrap;
+    justify-content: center;     
+  }
+}
+
+@media only screen and (max-width: 798px) {
+  .badges-with-text__list__item__image {
+    width: 27px;
+    height: 27px;
+    min-width: 27px;
+    min-height: 27px;
+  }
+
+  .badges-with-text__list__item {
+    gap: 10px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .badges-with-text__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: start;
+    
+  }
+
+  .custom-image-element__wrap.image-element__wrap.badges-with-text__list__item__image {
+    margin: 0;
+  }
+
+  .badges-with-text__list__item__text {
+    font-size: 18px;
+  }
+
+  .badges-with-text__content {
+    align-items: flex-start;
+  }
+  
+}
+
+ {%
+    render 'css-loop',
+    css: section.settings.custom_css,
+    id: section.id,
+  %}
+{% endstyle %}
+
+{% if section.settings.image_1 != nil %}
+
+<section
+  class="
+    section
+    {{ section.settings.css_class }}
+    badges-with-text
+  "
+>
+  <div class="badges-with-text__content">
+      {% if section.settings.title != blank %}
+          <span class="badges-with-text__title">
+            {{ section.settings.title }}
+          </span>
+      {% endif %}
+
+      <ul class="badges-with-text__list">
+          {% if section.settings.image_1 != nil %}
+                <li class="badges-with-text__list__item"> 
+                    {%
+                      render 'image-element',
+                      image: section.settings.image_1,
+                      alt: section.settings.image_1.alt,
+                      additional_wrapper_classes: 'badges-with-text__list__item__image',
+                    %}
+                    {% if section.settings.text_1 != blank %}
+                        <span class="badges-with-text__list__item__text">{{ section.settings.text_1 }}</span>
+                    {% endif %}
+                </li>  
+          {% endif %}
+          {% if section.settings.image_2 != nil %}
+                <li class="badges-with-text__list__item"> 
+                    {%
+                      render 'image-element',
+                      image: section.settings.image_2,
+                      alt: section.settings.image_2.alt,
+                      additional_wrapper_classes: 'badges-with-text__list__item__image',
+                    %}
+                    {% if section.settings.text_2 != blank %}
+                        <span class="badges-with-text__list__item__text">{{ section.settings.text_2 }}</span>
+                    {% endif %}
+                </li>  
+          {% endif %}
+          {% if section.settings.image_3 != nil %}
+                <li class="badges-with-text__list__item"> 
+                    {%
+                      render 'image-element',
+                      image: section.settings.image_3,
+                      alt: section.settings.image_3.alt,
+                      additional_wrapper_classes: 'badges-with-text__list__item__image',
+                    %}
+                    {% if section.settings.text_3 != blank %}
+                        <span class="badges-with-text__list__item__text">{{ section.settings.text_3 }}</span>
+                    {% endif %}
+                </li>  
+          {% endif %}
+          {% if section.settings.image_4 != nil %}
+                <li class="badges-with-text__list__item"> 
+                    {%
+                      render 'image-element',
+                      image: section.settings.image_4,
+                      alt: section.settings.image_4.alt,
+                      additional_wrapper_classes: 'badges-with-text__list__item__image',
+                    %}
+                    {% if section.settings.text_4 != blank %}
+                        <span class="badges-with-text__list__item__text">{{ section.settings.text_4 }}</span>
+                    {% endif %}
+                </li>  
+          {% endif %}
+      </ul>
+
+  </div>
+
+</section>
+{% endif %}
+
+          
+{% schema %}
+  {
+    "name": "Badges with text",
+    "settings": [
+            {
+        "type": "html",
+        "id": "title",
+        "label": "Section title"
+      },
+      {
+        "type": "header",
+        "content": "Section"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Top spacing",
+        "min": 0,
+        "max": 100,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Bottom spacing",
+        "min": 0,
+        "max": 100,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Section background color"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Section text color"
+      },
+      {
+        "type": "header",
+        "content": "Mobile layout"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Mobile top spacing",
+        "min": 0,
+        "max": 100,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Mobile bottom spacing",
+        "min": 0,
+        "max": 100,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Badges"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_1",
+        "label": "Image 1"
+      },
+      {
+        "type": "text",
+        "id": "text_1",
+        "label": "Text 1"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_2",
+        "label": "Image 2"
+      },
+      {
+        "type": "text",
+        "id": "text_2",
+        "label": "Text 2"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_3",
+        "label": "Image 3"
+      },
+      {
+        "type": "text",
+        "id": "text_3",
+        "label": "Text 3"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_4",
+        "label": "Image 4"
+      },
+      {
+        "type": "text",
+        "id": "text_4",
+        "label": "Text 4"
+      },
+      {
+        "type": "header",
+        "content": "Advanced",
+        "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+      },
+      {
+        "type": "text",
+        "id": "css_class",
+        "label": "CSS Class"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_css",
+        "label": "Custom CSS"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Badges with text"
+      }
+    ]
+  }
+{% endschema %}

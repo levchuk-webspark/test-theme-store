@@ -1,0 +1,310 @@
+{% comment %}
+
+Custom section created by JadePuma
+Instructions - https://jadepuma.com/blogs/shopify-tutorials/a-link-list-section-for-the-flex-theme-on-shopify
+Last editted - 20Oct22
+
+{% endcomment %}
+
+{%- assign id = section.id -%}
+
+{% comment %} Section specific CSS {% endcomment %}
+{%- capture section_css -%}
+
+.section-heading {
+text-align: center;
+color: {{ section.settings.heading-color }}; 
+background-color: {{ section.settings.heading-background-color }};
+margin: 20px 0;
+}
+
+.brand-guidelines .heading-divider { margin: 10px 0 30px; }
+
+.banner__heading, .banner__subheading { background-color: #888888; padding: 10px; }
+
+.brand-guidelines { margin-bottom: 25px; }
+
+.brand-guidelines img { padding: 10px; }
+
+{%- endcapture -%}
+
+{% style %}
+#shopify-section-{{ id }} {
+padding-top: {{ section.settings.padding_top }}px;
+padding-bottom: {{ section.settings.padding_bottom }}px;
+padding-left: {{ section.settings.padding_left }}px;
+padding-right: {{ section.settings.padding_right }}px;
+{% if section.settings.width == 'wide' %}
+width: 100%;
+{% elsif section.settings.width == 'half' %}
+width: 50%;
+{% endif %}
+}
+
+{%
+    render 'css-loop',
+css: section_css,
+id: id
+%}
+
+{%
+    render 'css-loop',
+css: section.settings.custom_css,
+id: id
+%}
+
+{% endstyle %}
+
+{% assign icon-blocks = 0 %}
+{% assign brand-blocks = 0 %}
+{% assign mood-blocks = 0 %}
+{% assign pattern-blocks = 0 %}
+{% assign color-blocks = 0 %}
+{% assign tool-blocks = 0 %}
+{% assign tutorial-blocks = 0 %}
+
+{% if section.blocks.size > 0 %}
+  {% for block in section.blocks %}
+    {% if block.type == 'iconography-image' %}
+      {% assign icon-blocks = icon-blocks | plus: 1 %}
+      {% elsif block.type == "brand-image" %}
+      {% assign brand-blocks = brand-blocks | plus: 1 %}
+      {% elsif block.type == "mood-image" %}
+      {% assign mood-blocks = mood-blocks | plus: 1 %}
+      {% elsif block.type == "pattern-image" %}
+      {% assign pattern-blocks = pattern-blocks | plus: 1 %}
+      {% elsif block.type == "tool-link" %}
+      {% assign tool-blocks = tool-blocks | plus: 1 %}
+      {% elsif block.type == "tutorial-link" %}
+      {% assign tutorial-blocks = tutorial-blocks | plus: 1 %}
+      {% elsif block.type == "color" %}
+      {% assign color-blocks = color-blocks | plus: 1 %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% comment %} HTML markup {% endcomment %}
+<section class="featured-video
+                section
+                {{ section.settings.css_class }}
+                is-width-{{ section.settings.width }}
+                {% if section.settings.mobile_text_below_video == true %}
+                mobile-text--below-media
+                {% else %}
+                mobile-text--over-media
+                {% endif %}
+                {% if video_exists %} has-video-added {% endif %}
+                video-controls-enabled--{{ section.settings.controls }}"
+         {% if section.settings.animation != "none" %}
+         data-scroll-class="{{ section.settings.animation }}"
+         {% endif %}>
+  <div class="container
+              video__container
+              {% if section.settings.width == 'wide' or section.settings.width == 'half' %}
+              equal-columns--outside-trim
+              {% endif %}">
+    <div class="one-whole column content">
+
+      <div class="brand-guidelines">
+
+        <h2 class="section-heading">{{ section.settings.section-title }}</h2>
+        <p>{{ section.settings.tools }}</p>
+        {% for block in section.blocks %}
+        {% if block.type == 'tool-header' %}
+          <h3>{{ block.settings.header }}</h3>
+        {% endif %}
+        {% if block.type == 'tool-link' %}
+          <p>&nbsp;&nbsp;&nbsp;{{ block.settings.link_title }} - <a href="{{ block.settings.tool_link }}">{{ block.settings.tool_link }}</a></p>
+        {% endif %}
+        {% endfor %}
+        
+      </div>
+    </div>
+  </div>
+
+
+</section>
+
+
+{% schema %}
+{
+"name": "Link List",
+"class": "brand-guidelines-section overlaid-header-option",
+"settings": [
+{
+"type": "header",
+"content": "Section headings"
+},
+{
+"type": "color",
+"id": "heading-color",
+"label": "Text"
+},
+{
+"type": "color",
+"id": "heading-background-color",
+"label": "Background"
+},
+{
+"type": "text",
+"id": "section-title",
+"label": "Section Title"
+},
+{
+"type": "textarea",
+"id": "tools",
+"label": "Explanation"
+},
+{
+"type": "header",
+"content": "Layout"
+},
+{
+"type": "select",
+"id": "width",
+"label": "Width",
+"default": "wide",
+"options": [
+{
+"value": "half",
+"label": "Half"
+},
+{
+"value": "standard",
+"label": "Standard"
+},
+{
+"value": "wide",
+"label": "Wide"
+}
+]
+},
+{
+"type": "range",
+"id": "padding_top",
+"label": "Top spacing",
+"min": 0,
+"max": 80,
+"default": 20,
+"unit": "px"
+},
+{
+"type": "range",
+"id": "padding_bottom",
+"label": "Bottom spacing",
+"min": 0,
+"max": 80,
+"default": 0,
+"unit": "px"
+},
+{
+"type": "range",
+"id": "padding_left",
+"label": "Left spacing",
+"min": 0,
+"max": 80,
+"default": 0,
+"unit": "px"
+},
+{
+"type": "range",
+"id": "padding_right",
+"label": "Right spacing",
+"default": 0,
+"min": 0,
+"max": 80,
+"unit": "px"
+},
+{
+"type": "select",
+"id": "animation",
+"label": "Animation",
+"default": "none",
+"options": [
+{
+"value": "none",
+"label": "None"
+},
+{
+"value": "fadeIn",
+"label": "Fade in"
+},
+{
+"value": "fadeInDown",
+"label": "Fade in down"
+},
+{
+"value": "fadeInLeft",
+"label": "Fade in left"
+},
+{
+"value": "fadeInRight",
+"label": "Fade in right"
+},
+{
+"value": "slideInLeft",
+"label": "Slide in left"
+},
+{
+"value": "slideInRight",
+"label": "Slide in right"
+},
+{
+"value": "zoomIn",
+"label": "Zoom in"
+}
+]
+},
+{
+"type": "header",
+"content": "Advanced",
+"info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+},
+{
+"type": "text",
+"id": "css_class",
+"label": "CSS Class"
+},
+{
+"type": "textarea",
+"id": "custom_css",
+"label": "Custom CSS"
+}
+],
+  "blocks": [
+    {
+      "type": "tool-header",
+      "name": "Link Header",
+      "settings": [
+        {
+          "type": "text",
+          "id": "header",
+          "label": "Header"
+        }
+      ]
+    },
+    {
+      "type": "tool-link",
+      "name": "Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "link_title",
+          "label": "Title",
+          "default": "Tool Link"
+        },
+        {
+          "type": "url",
+          "id": "tool_link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+"presets": [{
+"name": "Link List",
+"category": "JadePuma"
+}]
+}
+
+{% endschema %}

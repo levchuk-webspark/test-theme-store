@@ -1,0 +1,308 @@
+{% stylesheet %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    {% if section.settings.width == 'wide' -%}
+      width: 100%;
+    {%- endif %}
+  }
+
+  {% render 'css-loop',
+          css: section.settings.custom_css,
+          id: section.id
+  %}
+{% endstylesheet %}
+
+{% style %}
+  .feature-row {
+      display: grid;
+      grid-template-columns: repeat({{ section.settings.boxes_per_row }}, 1fr);
+      gap: 20px;
+      margin-bottom: 20px;
+    justify-items:{{section.settings.box_alignment}};
+    }
+
+
+
+  .feature-box {
+    position: relative;
+
+
+    margin: 10px;
+    padding: 50px;
+    border-radius: 20px 20px 10px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background-color: {{ section.settings.background_color }};
+    text-align: {{ section.settings.text_alignment }};
+
+  }
+
+  .feature-excerpt{
+    position:relative;
+  }
+  
+
+  .feature-box:hover {
+    background-color:  {{ sections.settings.background_color }};
+    transform: scale(1.05);
+  }
+
+  .feature-heading, .feature-excerpt {
+    text-align: left;
+    transition: opacity 0.3s ease;
+  }
+  .feature-heading{
+    position:absolute;
+      font-size: 30px;
+    left: 75px;
+  }
+
+  .feature-box .feature-excerpt {
+    opacity: 0;
+  }
+
+  .feature-box:hover .feature-excerpt {
+    opacity: 1;
+  }
+
+  .feature-box:hover .feature-heading {
+    opacity: 0;
+  }
+    .feature-svg{
+    position:absolute;
+      opacity:.1;
+      width:80%;
+    }
+
+    .feature-box.new-row {
+    width: 100%;
+    order: -1;
+    margin-bottom: 20px;
+    height: 0;
+    overflow: hidden;
+  }
+
+  @media (max-width: 480px) {
+    .feature-row {
+      grid-template-columns:1fr;
+    }
+    .feature-box.tapped .feature-excerpt{
+      opacity:1;
+
+    }
+    .feature-box.tapped .feature-excerpt{
+      opacity:0;
+    }
+    .feature-box{
+      width:100%;
+      flex-direction:column;
+    }
+    .feature-box .image-element__wrap{
+      height:auto;
+    }
+
+
+  }
+{% endstyle %}
+
+{% javascript %}
+    document.addEventListener('DOMContentLoaded', () => {
+    if(window.innerWidth <= 798) {
+      document.querySelectorAll('.feature-box').forEach(box => {
+        box.addEventListener('click', () => {
+          box.classList.toggle('tapped');
+        });
+      });
+    }
+  });
+{% endjavascript %}
+
+<section
+  class="
+    section
+    {{ section.settings.css_class }}
+    is-width-{{ section.settings.width }}
+  "
+  {% if section.settings.animation != 'none' %}
+    data-scroll-class="{{ section.settings.animation }}"
+  {% endif %}
+>
+  <div>
+    {% assign boxes_per_row = section.settings.boxes_per_row %}
+    {% assign counter = 1 %}
+    <div class="feature-row">
+      {% for block in section.blocks %}
+        <div class="feature-box {% if counter == 0 %}new-row{% endif %}">
+          {% assign link_text = block.settings.icon_link %}
+        <h2 class="feature-heading">{{ block.settings.headline_text }}</h2>
+
+          <div class="feature-excerpt content">
+            <span>{{ block.settings.inside_text }}</span> <br>
+            <br>
+            {% if block.settings.image != blank %}
+              {% render 'image-element', image: block.settings.image %}
+            {% endif %}
+          </div>
+                    {% if link_text != blank %}
+            <img src="{{ block.settings.icon_link }}" class="feature-svg" alt="{{ block.settings.headline_text }}">
+          {% endif %}
+
+        </div>
+        {% assign counter = counter | plus: 1 %}
+        {% if counter == boxes_per_row %}
+          {% assign counter = 0 %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% comment %}
+  Have non block settings set general styles
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "Hover Infographic",
+  "settings": [
+    {
+      "type":"select",
+      "id":"boxes_per_row",
+      "label":"Boxes Per Row",
+      "options":[
+        {"value":"1", "label":"1"},
+        {"value":"2", "label":"2"},
+        {"value":"3", "label":"3"},
+        {"value":"4", "label":"4"}
+      ]
+    },
+    
+            {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background",
+          "default": "#eeeeee"
+        },
+
+        {
+    "type": "range",
+    "id": "padding_top",
+    "label": "Top spacing",
+    "min": 0,
+    "max": 80,
+    "default": 20,
+    "unit": "px"
+  },
+  {
+    "type": "range",
+    "id": "padding_bottom",
+    "label": "Bottom spacing",
+    "default": 0,
+    "min": 0,
+    "max": 80,
+    "unit": "px"
+  },
+  {
+    "type": "select",
+    "id": "animation",
+    "label": "Animation",
+    "default": "none",
+    "options": [
+      {
+        "value": "none",
+        "label": "None"
+      },
+      {
+        "value": "fadeIn",
+        "label": "Fade in"
+      },
+      {
+        "value": "fadeInDown",
+        "label": "Fade in down"
+      },
+      {
+        "value": "fadeInLeft",
+        "label": "Fade in left"
+      },
+      {
+        "value": "fadeInRight",
+        "label": "Fade in right"
+      },
+      {
+        "value": "slideInLeft",
+        "label": "Slide in left"
+      },
+      {
+        "value": "slideInRight",
+        "label": "Slide in right"
+      }
+    ]
+  },
+  {
+    "type": "header",
+    "content": "Advanced",
+    "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+  },
+  {
+    "type": "text",
+    "id": "css_class",
+    "label": "CSS Class"
+  },
+  {
+    "type": "textarea",
+    "id": "custom_css",
+    "label": "Custom CSS"
+  },
+    {
+       "type": "select",
+  "id": "box_alignment",
+  "label": "Box Alignment",
+  "options": [
+    {"value": "start", "label": "Left"},
+    {"value": "center", "label": "Center"},
+    {"value": "end", "label": "Right"}
+  ],
+  "default": "center"
+    }
+  ],
+  "blocks":[
+    {
+      "type":"url",
+      "name":"Information Block",
+      "settings":[
+        {
+      "type":"url",
+      "id":"icon_link",
+      "label":"Source of icon image"
+
+    },
+    {
+      "type":"text",
+      "id":"headline_text",
+      "label":"Headline Text",
+      "default":"Headline"
+    },
+    {
+      "type":"richtext",
+      "id":"inside_text",
+      "label":"Inside excerpt"
+    }
+      ]
+    }
+
+
+  ],
+"presets": [
+  {
+    "name": "Hover Infographic"
+  }
+]
+
+
+
+}
+{% endschema %}

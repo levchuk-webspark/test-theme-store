@@ -1,0 +1,698 @@
+{% assign hallmark = "hallmark" %}
+
+{% style %}
+  .vitality-ingredients__modal-backdrop {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(6, 32, 33, 0.5);
+  }
+
+  .vitality-ingredients__modal-backdrop-is-open {
+    display: block;
+  }
+
+  .vitality-ingredients__modal__content {
+    background-color: #ffffff;
+    color: #000000;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 40%;
+    padding: 30px 20px;
+    position: fixed;
+    z-index: 999999;
+    transform: translateX(100%);
+    transition: transform .3s ease, -webkit-transform .3s ease;
+  }
+
+  .vitality-ingredients__modal__content.vitality-ingredients__modal__content__is-open {
+    transform: translateX(0);
+  }
+
+  .vitality-ingredients__modal__header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 40px;
+    line-height: 1.1;
+  }
+
+  .vitality-ingredients__modal__title {
+    margin-right: 29px;
+  }
+
+  .vitality-ingredients__modal__header br {
+    display: none;
+  }
+
+  .vitality-ingredients__modal__close {
+    width: 29px;
+    height: 29px;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    z-index: 1;
+  }
+
+  .vitality-ingredients__modal__cards-list {
+    width: 100%;
+    height: 100%;
+    display: flex;
+  }
+
+  .vitality-ingredients__modal__cards-list__item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    height: 100vh;
+    overflow-y: auto;
+    display: flex;
+  }
+
+  .vitality-ingredients__modal__cards-list__item__image {
+    width: 100%;
+    
+    height: auto;
+    min-height: 50%;
+    
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 30px;
+
+    max-width: 100%;
+  }
+
+  .vitality-ingredients__modal__cards-list__item__image img {
+    object-fit: cover;
+
+    max-width: 100%;
+  }
+
+  .vitality-ingredients__modal__cards-list__item__description {
+    font-size: 16px;
+    margin-top: 30px;
+    line-height: 1.3;
+  }
+
+  .vitality-ingredients__modal__cards-list__item__title_links_block {
+    font-size: 16px;
+    font-weight: 900;
+
+    margin-top: 40px;
+    margin-bottom: 20px;
+
+    width: 60%;
+  }
+
+   .vitality-ingredients__modal__cards-list__item__buttons-container {
+      display: flex;
+      flex-direction: column;
+    }
+  
+  .vitality-ingredients__modal__cards-list__item__information-container {
+    margin-top: 30px;
+    margin-bottom: 28px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .vitality-ingredients__modal__cards-list__item__information-block {
+    display: flex;
+
+    gap: 28px;
+  }
+
+  .vitality-ingredients__modal__cards-list__item__information-item {
+    display: flex;
+    flex-direction: column;
+
+    width: 50%;
+  }
+
+  .vitality-ingredients__modal__cards-list__item__information-item-label {
+    font-size: 16px;
+    font-weight: 900;
+    margin-bottom: 10px;
+  }
+
+  .vitality-ingredients__modal__cards-list__item__information-item-text {
+    font-size: 16px;
+  }
+
+  .vitality-ingredients__modal__cards-list__item__links-container {
+    margin-bottom: 50px;
+  }
+
+  .vitality-ingredients__modal__cards-list__item__url {
+    text-decoration: underline;
+    font-size: 16px;
+    color: {{ block.settings.link_custom_text_color }};
+  }
+
+  .vitality-ingredients__modal__cards-list__item__url:hover {
+    color: {{ block.settings.link_custom_text_color--highlight }};
+  }
+  
+  .vitality-ingredients__modal__cards-list__item__footer {
+    margin-bottom: 40px;
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+
+    gap: 105px;
+  }
+
+  .vitality-ingredients__modal__cards-list__item__footer-next {
+    text-align: end;
+    width: 50%;
+  }
+
+
+  .flickity-prev-next-button {
+    display: none;
+  }
+
+  .vitality-ingredients__modal__cards-list__item__nav-buttons {
+    z-index: 1;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 15px;
+  }
+
+  .vitality-ingredients__modal__cards-list__item__button-prev,
+  .vitality-ingredients__modal__cards-list__item__button-next {
+    width: 30px;
+    height: 30px;
+    border: 1px solid {{ settings.regular_color}};
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFF;
+
+    cursor: pointer;
+  }
+
+  .vitality-ingredients__modal__cards-list__item__arrow-prev,
+  .vitality-ingredients__modal__cards-list__item__arrow-next {
+    width: 6px;
+    height: 6px;
+    border-top: 1px solid {{ settings.regular_color}};
+    border-right: 1px solid {{ settings.regular_color}};
+  }
+
+  .vitality-ingredients__modal__cards-list__item__arrow-prev {
+    transform: rotate(-135deg);
+  }
+
+  .vitality-ingredients__modal__cards-list__item__arrow-next {
+    transform: rotate(45deg);
+  }
+
+  @media only screen and (max-width: 1000px) {
+
+    .vitality-ingredients__modal__content {
+      width: 100%;
+      padding: 25px 10px;
+    }
+
+
+    .vitality-ingredients__modal__header {
+      font-size: 20px;
+    }
+
+    .vitality-ingredients__modal__close {
+      width: 20px;
+      height: 20px;
+      top: 28px;
+    }
+
+    .vitality-ingredients__modal__cards-list__item {
+      padding: 0 10px;
+
+      height: 100%;
+    }
+
+    .vitality-ingredients__modal__cards-list__item__image {
+      margin-top: 9px;
+      max-height: unset;
+      height: 30%;
+    }
+
+    .vitality-ingredients__modal__cards-list__item__description {
+      font-size: 12px;
+      margin-top: 16px;
+    }
+
+    .vitality-ingredients__modal__cards-list__item__title_links_block {
+      font-size: 12px;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    .vitality-ingredients__modal__cards-list__item__information-container {
+      margin-top: 14px;
+      margin-bottom: 12px;
+
+      gap: unset;
+    }
+
+    .vitality-ingredients__modal__cards-list__item__information-block {
+      flex-direction: column;
+
+      gap: unset;
+    }
+
+    .vitality-ingredients__modal__cards-list__item__information-item {
+      margin-bottom: 12px;
+
+      width: 100%;
+    }
+
+    .vitality-ingredients__modal__cards-list__item__information-item-label {
+      font-size: 12px;
+      margin-bottom: 5px;
+    }
+
+  .vitality-ingredients__modal__cards-list__item__information-item-text {
+    font-size: 10px;
+  }
+
+    .vitality-ingredients__modal__cards-list__item__url {
+     font-size: 10px;
+    }
+
+    .vitality-ingredients__modal__cards-list__item__footer {
+      gap: 85px;
+      font-size: 10px;
+      margin-bottom: unset;
+    }
+
+    .vitality-ingredients__modal__cards-list__item__footer-prev {
+      width: 50%;
+    }
+
+    .vitality-ingredients__modal__cards-list__item__footer br {
+      display: block;
+    }
+
+    .vitality-ingredients__modal__cards-list__item__nav-buttons {
+      bottom: 20px;
+      gap: 12px;
+    }
+
+    .vitality-ingredients__modal__cards-list__item__button-prev,
+    .vitality-ingredients__modal__cards-list__item__button-next {
+      width: 22px;
+      height: 22px;
+    }
+
+  }
+
+  @media only screen and (max-width: 500px) {
+    .vitality-ingredients__modal__close {
+      width: 13px;
+      height: 13px;
+      top: 20px;
+    }
+  }
+{% endstyle %}
+
+<div class="vitality-ingredients__modal-backdrop"></div>
+<div class="vitality-ingredients__modal__content">
+  <div class="vitality-ingredients__modal__close">
+    <svg viewBox="0 0 30 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="29.3536" y1="0.353553" x2="1.35355" y2="28.3536" stroke="black"/>
+      <line y1="-0.5" x2="39.598" y2="-0.5" transform="matrix(0.707107 0.707107 0.707107 -0.707107 1 0)" stroke="black"/>
+    </svg>
+  </div>
+  <div class="vitality-ingredients__modal__cards-list carousel-{{ section.id }}">
+    {% for block in cards %}
+      <div
+        class="
+          vitality-ingredients__modal__cards-list__item
+          block-{{ block.id }}
+          carousel-cell
+        "
+        data-carousel-cell-id="{{ block.id }}"
+      >
+        <div class="vitality-ingredients__modal__header">
+          <div class="vitality-ingredients__modal__title">
+            {{ block.settings.title }}
+          </div>
+        </div>
+
+        {% if block.settings.image != null %}
+          {% render 'image-element',
+            image: block.settings.image,
+            alt: block.settings.image.alt,
+            additional_wrapper_classes: 'vitality-ingredients__modal__cards-list__item__image'
+          %}
+        {% endif %}
+
+        {% if block.settings.description != blank %}
+          <div class="vitality-ingredients__modal__cards-list__item__description">{{ block.settings.description }}</div>
+        {% endif %}
+
+        {% if block.settings.title_links_block != blank %}
+          <div class="vitality-ingredients__modal__cards-list__item__title_links_block">
+            {{ block.settings.title_links_block }}
+          </div>
+        {% endif %}
+
+       <div class="vitality-ingredients__modal__cards-list__item__buttons-container">
+          {% style -%}
+            .block-{{ block.id }}.vitality-ingredients__modal__cards-list__button a.button--link-style.button {
+              font-size: 16px !important;
+              margin-bottom: 16px;
+            }
+
+              .block-{{ block.id }}.vitality-ingredients__modal__cards-list__button a.button--link-style.button,
+              .block-{{ block.id }}.vitality-ingredients__modal__cards-list__button a.button--link-style.button:visited {
+                  color: {{ block.settings.link_custom_text_color }};
+                  border-bottom: 1px dashed;
+                  border-bottom-color: {{ block.settings.link_custom_border_color }};
+                text-align: start;
+              }
+
+              .block-{{ block.id }}.vitality-ingredients__modal__cards-list__button a.button--link-style.button:hover {
+                  color: {{ block.settings.link_custom_text_color--highlight }};
+                  border-bottom-color: {{ block.settings.link_custom_border_color--highlight }};
+              }
+
+            @media only screen and (max-width: 1000px) {
+                .block-{{ block.id }}.vitality-ingredients__modal__cards-list__button a.button--link-style.button {
+                     font-size: 10px !important;
+                    margin-bottom: 8px;
+                }
+            }
+          {% endstyle -%}
+           {% if block.settings.button_label_1 != blank %}
+             <div class="vitality-ingredients__modal__cards-list__button block-{{ block.id }}">
+              <a 
+                href="{{ block.settings.connected_page_link }}?{{ hallmark }}={{ block.settings.button_label_1 | remove:" " | remove: ")" | remove: "("}}" 
+                class="button {{ block.settings.button_style }}"
+                target="_blank" rel="noopener noreferrer"
+              >
+                {{ block.settings.button_label_1 }}
+              </a>
+            </div>
+          {% endif %}
+
+          {% if block.settings.button_label_2 != blank %}
+             <div class="vitality-ingredients__modal__cards-list__button block-{{ block.id }}">
+              <a 
+                href="{{ block.settings.connected_page_link }}?{{ hallmark }}={{ block.settings.button_label_2 | remove:" "| remove: ")" | remove: "("}}" 
+                class="button {{ block.settings.button_style }}"
+                target="_blank" rel="noopener noreferrer"
+              >
+                {{ block.settings.button_label_2 }}
+              </a>
+            </div>
+          {% endif %}
+
+           {% if block.settings.button_label_3 != blank %}
+             <div class="vitality-ingredients__modal__cards-list__button block-{{ block.id }}">
+              <a 
+                href="{{ block.settings.connected_page_link }}?{{ hallmark }}={{ block.settings.button_label_3 | remove:" " | remove: ")" | remove: "("}}" 
+                class="button {{ block.settings.button_style }}"
+                target="_blank" rel="noopener noreferrer"
+              >
+                {{ block.settings.button_label_3 }}
+              </a>
+            </div>
+          {% endif %}
+
+          {% if block.settings.button_label_4 != blank %}
+             <div class="vitality-ingredients__modal__cards-list__button block-{{ block.id }}">
+              <a 
+                href="{{ block.settings.connected_page_link }}?{{ hallmark }}={{ block.settings.button_label_4 | remove:" " | remove: ")" | remove: "("}}" 
+                class="button {{ block.settings.button_style }}"
+                target="_blank" rel="noopener noreferrer"
+              >
+                {{ block.settings.button_label_4 }}
+              </a>
+            </div>
+          {% endif %}
+
+          {% if block.settings.button_label_5 != blank %}
+             <div class="vitality-ingredients__modal__cards-list__button block-{{ block.id }}">
+              <a 
+                href="{{ block.settings.connected_page_link }}?{{ hallmark }}={{ block.settings.button_label_5 | remove:" " | remove: ")" | remove: "("}}" 
+                class="button {{ block.settings.button_style }}"
+                target="_blank" rel="noopener noreferrer"
+              >
+                {{ block.settings.button_label_5 }}
+              </a>
+            </div>
+          {% endif %}
+
+          {% if block.settings.button_label_6 != blank %}
+             <div class="vitality-ingredients__modal__cards-list__button block-{{ block.id }}">
+              <a 
+                href="{{ block.settings.connected_page_link }}?{{ hallmark }}={{ block.settings.button_label_6 | remove:" " | remove: ")" | remove: "("}}" 
+                class="button {{ block.settings.button_style }}"
+                target="_blank" rel="noopener noreferrer"
+                >
+                {{ block.settings.button_label_6 }}
+              </a>
+            </div>
+          {% endif %}
+
+          {% if block.settings.button_label_7 != blank %}
+             <div class="vitality-ingredients__modal__cards-list__button block-{{ block.id }}">
+              <a 
+                href="{{ block.settings.connected_page_link }}?{{ hallmark }}={{ block.settings.button_label_7 | remove:" " | remove: ")" | remove: "("}}" 
+                class="button {{ block.settings.button_style }}"
+                target="_blank" rel="noopener noreferrer"
+              >
+                {{ block.settings.button_label_7 }}
+              </a>
+            </div>
+          {% endif %}
+
+            {% if block.settings.button_label_8 != blank %}
+             <div class="vitality-ingredients__modal__cards-list__button block-{{ block.id }}">
+              <a 
+                href="{{ block.settings.connected_page_link }}?{{ hallmark }}={{ block.settings.button_label_8 | remove:" " | remove: ")" | remove: "("}}" 
+                class="button {{ block.settings.button_style }}"
+                target="_blank" rel="noopener noreferrer"
+              >
+                {{ block.settings.button_label_8 }}
+              </a>
+            </div>
+            {% endif %}
+
+              {% if block.settings.button_label_9 != blank %}
+             <div class="vitality-ingredients__modal__cards-list__button block-{{ block.id }}">
+              <a 
+                href="{{ block.settings.connected_page_link }}?{{ hallmark }}={{ block.settings.button_label_9 | remove:" " | remove: ")" | remove: "("}}" 
+                class="button {{ block.settings.button_style }}"
+                target="_blank" rel="noopener noreferrer"
+              >
+                {{ block.settings.button_label_9 }}
+              </a>
+            </div>
+          {% endif %}
+
+         {% if block.settings.button_label_10 != blank %}
+             <div class="vitality-ingredients__modal__cards-list__button block-{{ block.id }}">
+              <a 
+                href="{{ block.settings.connected_page_link }}?{{ hallmark }}={{ block.settings.button_label_10 | remove:" " | remove: ")" | remove: "("}}" 
+                class="button {{ block.settings.button_style }}"
+                target="_blank" rel="noopener noreferrer"
+              >
+                {{ block.settings.button_label_10 }}
+              </a>
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="vitality-ingredients__modal__cards-list__item__information-container">
+          <div class="vitality-ingredients__modal__cards-list__item__information-block">
+            {% if block.settings.info_label_1 != blank %}
+              <div class="vitality-ingredients__modal__cards-list__item__information-item">
+                <div class="vitality-ingredients__modal__cards-list__item__information-item-label">{{ block.settings.info_label_1 }}</div>
+                <div class="vitality-ingredients__modal__cards-list__item__information-item-text">{{ block.settings.info_text_1  }}</div>
+              </div>
+            {% endif %}
+
+            {% if block.settings.info_label_2 != blank %}
+              <div class="vitality-ingredients__modal__cards-list__item__information-item">
+                <div class="vitality-ingredients__modal__cards-list__item__information-item-label">{{ block.settings.info_label_2 }}</div>
+                <div class="vitality-ingredients__modal__cards-list__item__information-item-text">{{ block.settings.info_text_2  }}</div>
+              </div>
+            {% endif %}
+          </div>
+          <div class="vitality-ingredients__modal__cards-list__item__information-block">
+            {% if block.settings.info_label_3 != blank %}
+              <div class="vitality-ingredients__modal__cards-list__item__information-item">
+                <div class="vitality-ingredients__modal__cards-list__item__information-item-label">{{ block.settings.info_label_3 }}</div>
+                <div class="vitality-ingredients__modal__cards-list__item__information-item-text">{{ block.settings.info_text_3  }}</div>
+              </div>
+            {% endif %}
+
+            {% if block.settings.info_label_4 != blank %}
+              <div class="vitality-ingredients__modal__cards-list__item__information-item">
+                <div class="vitality-ingredients__modal__cards-list__item__information-item-label">{{ block.settings.info_label_4 }}</div>
+                <div class="vitality-ingredients__modal__cards-list__item__information-item-text">{{ block.settings.info_text_4  }}</div>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+
+        {% if block.settings.links_title_block != blank and block.settings.url_link_1 != blank %}
+          <div class="vitality-ingredients__modal__cards-list__item__links-container">
+            <div class="vitality-ingredients__modal__cards-list__item__information-item-label">{{ block.settings.links_title_block }}</div>
+            {% style %}
+              .vitality-ingredients__modal__cards-list__item__url {
+                color: {{ block.settings.link_custom_text_color }};
+              }
+
+              .vitality-ingredients__modal__cards-list__item__url:hover, vitality-ingredients__modal__cards-list__item__url:visited {
+                color: {{ block.settings.link_custom_text_color--highlight }}
+              }
+
+              .vitality-ingredients__modal__cards-list__item__url-icon {
+                width: 12px;
+                height: 12px;
+              }
+
+              .vitality-ingredients__modal__cards-list__item__url-icon > svg {
+                fill: {{ block.settings.link_custom_text_color }};
+                width: 12px;
+                height: 12px;
+              }
+
+              .vitality-ingredients__modal__cards-list__item__url-icon > svg:hover {
+                fill: {{ block.settings.link_custom_text_color--highlight }};
+              }
+
+              @media only screen and (max-width: 1000px) { 
+                .vitality-ingredients__modal__cards-list__item__url-icon {
+                  width: 8px;
+                  height: 8px;
+                }
+                .vitality-ingredients__modal__cards-list__item__url-icon > svg {
+                  width: 8px;
+                  height: 8px;
+                }
+              }
+            {% endstyle %}
+            {% if block.settings.url_link_1 != blank %}
+              {% assign split_url = block.settings.url_link_1 | split: "/" %}
+                    {% assign file_with_extension = split_url[-1] | split: "?" | first %}
+                    {% assign file_title = file_with_extension | split: "." | first %}
+                    {% assign title_with_spaces = file_title | replace: "_", " " %}
+                    <span class='vitality-ingredients__modal__cards-list__item__url-icon'>
+                      <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12.5 0.648438C12.5 0.372296 12.2761 0.148439 12 0.148438L7.5 0.148438C7.22386 0.148438 7 0.372296 7 0.648438C7 0.92458 7.22386 1.14844 7.5 1.14844L11.5 1.14844L11.5 5.14844C11.5 5.42458 11.7239 5.64844 12 5.64844C12.2761 5.64844 12.5 5.42458 12.5 5.14844L12.5 0.648438ZM1.35355 12.002L12.3536 1.00199L11.6464 0.294885L0.646447 11.2949L1.35355 12.002Z" fill="#60012C"/>
+                      </svg>
+                    </span>
+                    <a class='vitality-ingredients__modal__cards-list__item__url' href="{{ block.settings.url_link_1 }}" target="_blank">
+                      {% if block.settings.label_link_1 != blank %}
+                        {{ block.settings.label_link_1 }}
+                      {% else %}
+                        {{ title_with_spaces }}
+                      {% endif %}
+                    </a><br>
+            {% endif %}
+            {% if block.settings.url_link_2 != blank %}
+              {% assign split_url_2 = block.settings.url_link_2 | split: "/" %}
+                    {% assign file_with_extension_2 = split_url_2[-1] | split: "?" | first %}
+                    {% assign file_title_2 = file_with_extension_2 | split: "." | first %}
+                    {% assign title_with_spaces_2 = file_title_2| replace: "_", " " %}
+                    <span class='vitality-ingredients__modal__cards-list__item__url-icon'>
+                      <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12.5 0.648438C12.5 0.372296 12.2761 0.148439 12 0.148438L7.5 0.148438C7.22386 0.148438 7 0.372296 7 0.648438C7 0.92458 7.22386 1.14844 7.5 1.14844L11.5 1.14844L11.5 5.14844C11.5 5.42458 11.7239 5.64844 12 5.64844C12.2761 5.64844 12.5 5.42458 12.5 5.14844L12.5 0.648438ZM1.35355 12.002L12.3536 1.00199L11.6464 0.294885L0.646447 11.2949L1.35355 12.002Z" fill="#60012C"/>
+                      </svg>
+                    </span>
+                    <a class='vitality-ingredients__modal__cards-list__item__url' href="{{ block.settings.url_link_2 }}" target="_blank">
+                      {% if block.settings.label_link_2 != blank %}
+                        {{ block.settings.label_link_2 }}
+                      {% else %}
+                        {{ title_with_spaces_2 }}
+                      {% endif %}
+                    </a><br>
+            {% endif %}
+            {% if block.settings.url_link_3 != blank %}
+              {% assign split_url_3 = block.settings.url_link_3 | split: "/" %}
+                    {% assign file_with_extension_3 = split_url_3[-1] | split: "?" | first %}
+                    {% assign file_title_3 = file_with_extension_3 | split: "." | first %}
+                    {% assign title_with_spaces_3 = file_title_3 | replace: "_", " " %}
+                    <span class='vitality-ingredients__modal__cards-list__item__url-icon'>
+                      <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12.5 0.648438C12.5 0.372296 12.2761 0.148439 12 0.148438L7.5 0.148438C7.22386 0.148438 7 0.372296 7 0.648438C7 0.92458 7.22386 1.14844 7.5 1.14844L11.5 1.14844L11.5 5.14844C11.5 5.42458 11.7239 5.64844 12 5.64844C12.2761 5.64844 12.5 5.42458 12.5 5.14844L12.5 0.648438ZM1.35355 12.002L12.3536 1.00199L11.6464 0.294885L0.646447 11.2949L1.35355 12.002Z" fill="#60012C"/>
+                      </svg>
+                    </span>
+                    <a class='vitality-ingredients__modal__cards-list__item__url' href="{{ block.settings.url_link_3 }}" target="_blank">
+                      {% if block.settings.label_link_3 != blank %}
+                        {{ block.settings.label_link_3 }}
+                      {% else %}
+                        {{ title_with_spaces_3 }}
+                      {% endif %}
+                    </a><br>
+            {% endif %}
+            {% if block.settings.url_link_4 != blank %}
+              {% assign split_url_4 = block.settings.url_link_4 | split: "/" %}
+                    {% assign file_with_extension_4 = split_url_4[-1] | split: "?" | first %}
+                    {% assign file_title_4 = file_with_extension_4 | split: "." | first %}
+                    {% assign title_with_spaces_4 = file_title_4 | replace: "_", " " %}
+                    <span class='vitality-ingredients__modal__cards-list__item__url-icon'>
+                      <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12.5 0.648438C12.5 0.372296 12.2761 0.148439 12 0.148438L7.5 0.148438C7.22386 0.148438 7 0.372296 7 0.648438C7 0.92458 7.22386 1.14844 7.5 1.14844L11.5 1.14844L11.5 5.14844C11.5 5.42458 11.7239 5.64844 12 5.64844C12.2761 5.64844 12.5 5.42458 12.5 5.14844L12.5 0.648438ZM1.35355 12.002L12.3536 1.00199L11.6464 0.294885L0.646447 11.2949L1.35355 12.002Z" fill="#60012C"/>
+                      </svg>
+                    </span>
+                    <a class='vitality-ingredients__modal__cards-list__item__url' href="{{ block.settings.url_link_4 }}" target="_blank">
+                      {% if block.settings.label_link_4 != blank %}
+                        {{ block.settings.label_link_4 }}
+                      {% else %}
+                        {{ title_with_spaces_4 }}
+                      {% endif %}
+                    </a><br>
+            {% endif %}
+         </div>
+        {% endif %}
+
+        {% assign previousIndex = forloop.index | minus: 2 %}
+        {% if forloop.index == cards.size %}
+          {% assign nextIndex = 0 %}
+        {% else %}
+          {% assign nextIndex = forloop.index %}
+        {% endif %}
+
+        <div class="vitality-ingredients__modal__cards-list__item__footer">
+          <div class="vitality-ingredients__modal__cards-list__item__footer-prev">{{ cards[previousIndex].settings.title }}</div>
+          <div class="vitality-ingredients__modal__cards-list__item__footer-next">
+            {{ cards[nextIndex].settings.title }}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="vitality-ingredients__modal__cards-list__item__nav-buttons">
+    <div class="vitality-ingredients__modal__cards-list__item__button-prev vitality-ingredients__modal__cards-list__item__button-prev-{{ section.id }}">
+      <div class="vitality-ingredients__modal__cards-list__item__arrow-prev"></div>
+    </div>
+    <div class="vitality-ingredients__modal__cards-list__item__button-next vitality-ingredients__modal__cards-list__item__button-next-{{ section.id }}">
+      <div class="vitality-ingredients__modal__cards-list__item__arrow-next"></div>
+    </div>
+  </div>
+</div>

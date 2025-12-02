@@ -1,0 +1,482 @@
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.background_color }};
+  }
+
+   .why-buy-from-us__title {
+    font-size: 34px;
+    line-height: 1;
+    font-weight: normal;
+    margin-bottom: 70px;
+  }
+
+  #shopify-section-{{ section.id }} .why-buy-from-us__title {
+    color: {{ section.settings.title_color }};
+  }
+
+  .why-buy-from-us__cards-list {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+  }
+
+  .why-buy-from-us__card {
+    border-radius: 10px;
+    width: 30%;
+    margin-right: 5%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  #shopify-section-{{ section.id }} .why-buy-from-us__card {
+    padding: {{ section.settings.card-padding }}px;
+  }
+
+   .why-buy-from-us__card:last-of-type {
+     margin-right: 0;
+   }
+
+  .why-buy-from-us__card__title-and-image {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  #shopify-section-{{ section.id }}  .why-buy-from-us__card__title-and-image {
+    margin-bottom: {{ section.settings.card-title-bottom-margin }}px;
+  }
+
+  #shopify-section-{{ section.id }} .why-buy-from-us__card__title {
+    width: 100%;
+    font-size: {{ section.settings.card-title-font-size }}px;
+    line-height: 1;
+    font-weight: bold;
+  }
+
+  .why-buy-from-us__card__image {
+    width: 150px;
+    height: 97px;
+    min-width: 150px;
+    min-height: 97px;
+  }
+
+  .why-buy-from-us__card__image img {
+    object-fit: cover;
+  }
+
+  .why-buy-from-us__nav-buttons {
+    display: none;
+  }
+
+  
+  .why-buy-from-us .flickity-button {
+      display: none;
+    }
+
+  #shopify-section-{{ section.id }} .why-buy-from-us__card__description {
+    font-size: {{ section.settings.card-description-font-size }}px;
+    line-height: 1.2;
+  }
+
+
+@media only screen and (max-width: 1200px) {
+  
+  .why-buy-from-us__card__title-and-image {
+    flex-wrap: wrap;
+  }
+}
+  
+@media only screen and (max-width: 798px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    .why-buy-from-us__title {
+      margin-bottom: 40px;
+      font-size: 28px;
+    }
+
+  .why-buy-from-us__cards-list {
+    display: flex;
+    align-items: stretch;
+  }
+
+  #shopify-section-{{ section.id }} .why-buy-from-us__card {
+    padding: 14px;
+    width: {{ section.settings.card-width-mobile }}px;
+    margin-right: 19px;
+  }
+
+  .why-buy-from-us__card:last-of-type {
+     margin-right: 19px;
+   }
+
+  .why-buy-from-us__card__title-and-image {
+    flex-wrap: nowrap;
+  }
+
+  #shopify-section-{{ section.id }}  .why-buy-from-us__card__title-and-image {
+    margin-bottom: {{ section.settings.card-title-bottom-margin-mobile }}px;
+  }
+
+  #shopify-section-{{ section.id }} .why-buy-from-us__card__title {
+    width: 100%;
+    font-size: {{ section.settings.card-title-font-size-mobile }}px;
+  }
+
+  .why-buy-from-us__card__image {
+    width: 84px;
+    height: 54px;
+    min-width: 84px;
+    min-height: 54px;
+  }
+
+  #shopify-section-{{ section.id }} .why-buy-from-us__card__description {
+    font-size: {{ section.settings.card-description-font-size-mobile }}px;
+  }
+
+  .why-buy-from-us__nav-buttons__prev,
+  .why-buy-from-us__nav-buttons__next {
+    border: none;
+    background: none;
+    padding: 0;
+  }
+
+  .why-buy-from-us__nav-buttons__prev .icon,
+  .why-buy-from-us__nav-buttons__next .icon {
+    width: 26px;
+    height: 26px;
+    color: #3F4444;
+  }
+
+  .why-buy-from-us__nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 30px;
+  }
+}
+
+{%
+  render 'css-loop',
+  css: section.settings.custom_css,
+  id: section.id,
+%}
+  
+{% endstyle %}
+
+
+<section
+  class="
+    section
+    {{ section.settings.css_class }}
+    why-buy-from-us
+  "
+>
+    {% if section.settings.title != blank %}
+        <h2 class="why-buy-from-us__title">{{ section.settings.title }}</h2>
+    {% endif %}
+
+    {% if section.blocks.size > 0 %}
+        <ul class="why-buy-from-us__cards-list carousel-{{ section.id }}">
+            {% for block in section.blocks %}        
+                {% if block.type == 'card' %} 
+                    {% style %}
+                      
+                      .block-{{ block.id }}.why-buy-from-us__card {
+                        background-color: {{ block.settings.background_color }};
+                      }
+
+                      .block-{{ block.id }} .why-buy-from-us__card__title {
+                        color: {{ block.settings.title_color }};
+                      }
+
+                      .block-{{ block.id }} .why-buy-from-us__card__description {
+                        color: {{ block.settings.description_color }};
+                      }
+                      
+                    {% endstyle %}
+                  
+                  <li class="why-buy-from-us__card block-{{ block.id }} carousel-cell">
+                    <div class="why-buy-from-us__card__title-and-image">
+                      <div class="why-buy-from-us__card__title">{{ block.settings.title }}</div>
+                          {% if block.settings.image != nil %}
+                            {%
+                              render 'image-element',
+                              image: block.settings.image,
+                              alt: block.settings.image.alt,
+                              additional_wrapper_classes: 'why-buy-from-us__card__image',
+                            %}
+                          {% endif %}
+                    </div>
+                    <div class="why-buy-from-us__card__description">{{ block.settings.description }}</div>
+                  </li>
+                {% endif %}        
+            {% endfor %}  
+        </ul>
+        <div class="why-buy-from-us__nav-buttons">
+          <button class="why-buy-from-us__nav-buttons__prev why-buy-from-us__nav-buttons__prev-{{ section.id }}">
+            {% render 'icon', name: 'slider-left-arrow' %}  
+          </button>
+          <button class="why-buy-from-us__nav-buttons__next why-buy-from-us__nav-buttons__next-{{ section.id }}">
+            {% render 'icon', name: 'slider-right-arrow' %} 
+          </button>
+        </div>
+    {% endif %}    
+
+</section>
+
+
+{% comment %}JavaScript{% endcomment %}
+
+<script>
+  window.addEventListener('load', function() {
+
+    const whyBuyFromUsCarousel = document.querySelector('.carousel-{{ section.id }}');
+     
+        if (whyBuyFromUsCarousel) {
+            const whyBuyFromUsFlickity = new Flickity( whyBuyFromUsCarousel, {
+                cellAlign: 'left',
+                contain: true,
+                groupCells: true,
+                wrapAround: true,
+                pageDots: false
+            });
+    
+          
+            const whyBuyFromUsPrevButton = document.querySelector('.why-buy-from-us__nav-buttons__prev-{{ section.id }}');
+            const whyBuyFromUsNextButton = document.querySelector('.why-buy-from-us__nav-buttons__next-{{ section.id }}');
+        
+            if (whyBuyFromUsPrevButton) {
+              whyBuyFromUsPrevButton.addEventListener( 'click', function() {
+                whyBuyFromUsFlickity.previous();
+              });
+            }
+        
+            if (whyBuyFromUsNextButton) {
+              whyBuyFromUsNextButton.addEventListener( 'click', function() {
+                whyBuyFromUsFlickity.next( );
+              });
+            }
+        
+        }
+
+  });
+</script>
+
+
+{% schema %}
+  {
+    "name": "Why buy from us",
+    "settings": [
+      {
+        "type": "html",
+        "id": "title",
+        "label": "Section title"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Top spacing",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "default": 90,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Bottom spacing",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "card-padding",
+        "label": "Card padding",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "card-title-bottom-margin",
+        "label": "Card title bottom margin",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "default": 30,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "card-title-font-size",
+        "label": "Card title font size",
+        "min": 0,
+        "max": 100,
+        "default": 30,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "card-description-font-size",
+        "label": "Card description font size",
+        "min": 0,
+        "max": 100,
+        "default": 30,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Colors"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Section background color",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "color",
+        "id": "title_color",
+        "label": "Section title color",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "header",
+        "content": "Mobile layout"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Mobile top spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Mobile bottom spacing",
+        "min": 0,
+        "max": 80,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "card-title-bottom-margin-mobile",
+        "label": "Card mobile title bottom margin",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "card-width-mobile",
+        "label": "Card width mobile",
+        "min": 0,
+        "max": 500,
+        "step": 5,
+        "default": 200,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "card-title-font-size-mobile",
+        "label": "Card title font size mobile",
+        "min": 0,
+        "max": 100,
+        "default": 30,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "card-description-font-size-mobile",
+        "label": "Card description font size mobile",
+        "min": 0,
+        "max": 100,
+        "default": 30,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Advanced",
+        "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+      },
+      {
+        "type": "text",
+        "id": "css_class",
+        "label": "CSS Class"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_css",
+        "label": "Custom CSS"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "card",
+        "name": "Card",
+        "settings": [
+          {
+            "type": "html",
+            "id": "title",
+            "label": "Card title"
+          },
+          {
+            "type": "html",
+            "id": "description",
+            "label": "Card description"
+          },
+          {
+            "type": "header",
+            "content": "Colors"
+          },
+          {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background"
+          },
+          {
+            "type": "color",
+            "id": "title_color",
+            "label": "Title"
+          },
+          {
+            "type": "color",
+            "id": "description_color",
+            "label": "Description"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Why buy from us"
+      }
+    ]
+  }
+{% endschema %}

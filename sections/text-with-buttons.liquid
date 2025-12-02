@@ -1,0 +1,318 @@
+{% style %}
+  #shopify-section-{{ section.id }} {
+    background-color: {{ section.settings.background_color }};
+  }
+
+  #shopify-section-{{ section.id }} .text-with-buttons {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  .text-with-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .text-with-buttons__text {
+    font-size: 20px;
+    width: 100%;
+    max-width: 700px;
+  }
+
+  #shopify-section-{{ section.id }} .text-with-buttons__text {
+    color: {{ section.settings.text_color }};
+  }
+
+  .text-with-buttons__buttons-container {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+  }
+
+  
+  .text-with-buttons__button .button,
+  .text-with-buttons__button a.button--primary.button,
+  .text-with-buttons__button a.button--secondary.button {
+    height: 74px;
+    width: 212px;
+    font-size: 26px;
+    font-weight: 900;
+  }
+
+ @media only screen and (max-width: 798px) {
+
+  .text-with-buttons__text {
+    max-width: unset;
+  }
+
+   
+    .text-with-buttons {
+      flex-direction: column;
+      gap: 38px;
+    }
+
+  .text-with-buttons__buttons-container {
+    gap: 18px;
+    width: 100%;
+  }
+
+  .text-with-buttons__button {
+    width: 100%;
+  }
+
+  .text-with-buttons__button .button,
+  .text-with-buttons__button a.button--primary.button,
+  .text-with-buttons__button a.button--secondary.button {
+    height: 60px;
+    width: 100%;
+    font-size: 22px;
+  }
+   
+}
+
+
+{%
+  render 'css-loop',
+  css: section.settings.custom_css,
+  id: section.id,
+%}
+  
+{% endstyle %}
+
+
+<section
+  class="
+    section
+    {{ section.settings.css_class }}
+    text-with-buttons
+  "
+>
+    {% if section.settings.text != blank %}
+        <div class="text-with-buttons__text">
+          {{ section.settings.text }}
+        </div>
+    {% endif %}
+
+  <div class="text-with-buttons__buttons-container">
+        {% for block in section.blocks %}
+            {% if block.type == 'button-block' %}
+    
+                {% if block.settings.button_label != blank %}
+                    {% style -%}
+                        
+                        .text-with-buttons__button .button--custom {
+                          border: 1px solid;
+                          white-space: normal;
+                          overflow-wrap: normal;
+                        }
+
+                        .text-with-buttons__button .button--custom,
+                        .text-with-buttons__button a.button--primary.button,
+                        .text-with-buttons__button a.button--secondary.button  {
+                          border-radius: {{ block.settings.button_custom_border_radius | append: 'px' }};
+                        }
+              
+                        .text-with-buttons__button a.button--custom.button,
+                        .text-with-buttons__button a.button--custom.button:link,
+                        .text-with-buttons__button a.button--custom.button:visited {
+                          background-color: {{ block.settings.button_custom_bg_color }};
+                          color: {{ block.settings.button_custom_text_color }};
+                          border-color: {{ block.settings.button_custom_border_color }};
+                        }
+              
+                        .text-with-buttons__button a.button--custom.button:hover,
+                        .text-with-buttons__button a.button--custom.button.is-hovered {
+                          color: {{ block.settings.button_custom_text_color--highlight }};
+                          border-color: {{ block.settings.button_custom_border_color--highlight }};
+                          background-color: {{ block.settings.button_custom_bg_color--highlight }};
+                        }
+
+                    {%- endstyle -%}
+                    
+                      <div class="text-with-buttons__button">
+                        <a href="{{ block.settings.button_link }}" class="button {{ block.settings.button_style }}">
+                          {{ block.settings.button_label }}
+                        </a>
+                      </div>
+                {% endif %}
+              
+            {% endif %}
+      {% endfor %}   
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Text with buttons",
+    "settings": [
+      {
+        "type": "html",
+        "id": "text",
+        "label": "Text"
+      },
+      {
+        "type": "header",
+        "content": "Section"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Top spacing",
+        "min": 0,
+        "max": 100,
+        "default": 60,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Bottom spacing",
+        "min": 0,
+        "max": 100,
+        "default": 60,
+        "unit": "px"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "header",
+        "content": "Mobile layout"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Mobile top spacing",
+        "min": 0,
+        "max": 100,
+        "default": 30,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Mobile bottom spacing",
+        "min": 0,
+        "max": 100,
+        "default": 30,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Advanced",
+        "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+      },
+      {
+        "type": "text",
+        "id": "css_class",
+        "label": "CSS Class"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_css",
+        "label": "Custom CSS"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "button-block",
+        "name": "Button block",
+        "settings": [
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button label"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+          },
+          {
+            "type": "select",
+            "id": "button_style",
+            "label": "Button style",
+            "options": [
+              {
+                "value": "button--primary",
+                "label": "Primary"
+              },
+              {
+                "value": "button--secondary",
+                "label": "Secondary"
+              },
+              {
+                "value": "button--link-style",
+                "label": "Link style"
+              },
+              {
+                "value": "button--custom",
+                "label": "Custom"
+              }
+            ],
+            "default": "button--primary"
+          },
+          {
+            "type": "header",
+            "content": "Custom button style"
+          },
+          {
+            "type": "range",
+            "id": "button_custom_border_radius",
+            "label": "Border radius",
+            "min": 0,
+            "max": 50,
+            "default": 8,
+            "unit": "px"
+          },
+          {
+            "type": "color",
+            "id": "button_custom_bg_color",
+            "label": "Background"
+          },      
+          {
+            "type": "color",
+            "id": "button_custom_border_color",
+            "label": "Border"
+          },
+          {
+            "type": "color",
+            "id": "button_custom_text_color",
+            "label": "Text"
+          },
+          {
+            "type": "color",
+            "id": "button_custom_bg_color--highlight",
+            "label": "Background hover"
+          },
+          {
+            "type": "color",
+            "id": "button_custom_border_color--highlight",
+            "label": "Border hover"
+          },
+          {
+            "type": "color",
+            "id": "button_custom_text_color--highlight",
+            "label": "Text hover"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Text with buttons"
+      }
+    ]
+  }
+{% endschema %}

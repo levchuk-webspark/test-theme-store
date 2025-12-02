@@ -1,0 +1,1113 @@
+<section
+  class="
+    section
+    {{ section.settings.css_class }}
+    is-width-{{ section.settings.width }}
+  "
+>
+
+<div class="outer_container">
+    <div class="inner_container_left">
+        <div class="inner_container_left_top">
+            
+              <div class="inner_container_left_top_left">
+                  {% if section.settings.text_1 != blank or section.settings.image_1 != nil%}
+                    <a class="inner_container_left_top_left__link" {% if section.settings.link_1 != blank %}href="{{section.settings.link_1 }}"{% endif %}>
+                          {% if section.settings.icon_1 != nil %}
+                            <div class="inner_container_left_top_left__link__icon">
+                              {%
+                                render 'image-element',
+                                image: section.settings.icon_1,
+                                alt: section.settings.icon_1.alt
+                              %}
+                            </div>
+                          {% endif %}
+                          {% if section.settings.text_1 != blank %}
+                            <span class="inner_container_left_top_left__link__text">{{section.settings.text_1 }}</span>
+                          {% endif %}
+                    </a>
+                  {% endif %}
+              </div>  
+            <div class="inner_container_left_top_right">
+                <div class="inner_container_left_top_right_top">
+                  {% if section.settings.text_2 != blank or section.settings.image_2 != nil%}
+                    <a class="inner_container_left_top_right_top__link" {% if section.settings.link_2 != blank %}href="{{section.settings.link_2}}"{% endif %}>
+                          {% if section.settings.icon_2 != nil %}
+                            <div class="inner_container_left_top_right_top__link__icon">
+                              {%
+                                render 'image-element',
+                                image: section.settings.icon_2,
+                                alt: section.settings.icon_2.alt
+                              %}
+                            </div>
+                          {% endif %}
+                          {% if section.settings.text_2 != blank %}
+                            <span class="inner_container_left_top_right_top__link__text">{{section.settings.text_2}}</span>
+                          {% endif %}
+                    </a>
+                  {% endif %}
+                </div>
+                <div class="inner_container_left_top_right_bottom">
+                  {% if section.settings.text_3 != blank or section.settings.image_3 != nil %}
+                    <a class="inner_container_left_top_right_bottom__link" {% if section.settings.link_3 != blank %}href="{{section.settings.link_3}}"{% endif %}>
+                          {% if section.settings.icon_3 != nil %}
+                            <div class="inner_container_left_top_right_bottom__link__icon">
+                              {%
+                                render 'image-element',
+                                image: section.settings.icon_3,
+                                alt: section.settings.icon_3.alt
+                              %}
+                            </div>
+                          {% endif %}
+                      {% if section.settings.text_3 != blank %}
+                        <span class="inner_container_left_top_right_bottom__link__text">{{section.settings.text_3}}</span>
+                      {% endif %}
+                    </a>
+                  {% endif %}
+                </div>
+            </div>          
+        </div>
+        <div class="inner_container_left_bottom">
+            <div class="inner_container_left_bottom_left">
+            {{section.settings.text}}
+            {% if section.settings.button_label != blank %}
+              <a href="{{section.settings.link}}" class="inner_container_left_bottom_left__button-container">
+                <button class="button button--secondary inner_container_left_bottom_left__button">
+                  {{section.settings.button_label}}
+                </button>
+              </a>
+            {% endif %}
+            </div>
+            <div class="inner_container_left_bottom_right">
+                <div class="inner_container_left_bottom_right_top">
+                  {% if section.settings.image_4 != blank %}
+                    <a {% if section.settings.link_4 != blank %}href="{{section.settings.link_4}}"{% endif %}>
+                        {%
+                          render 'image-element',
+                          image: section.settings.image_4,
+                          alt: section.settings.image_4.alt
+                        %}
+                    </a>
+                  {% endif %}               
+                </div> 
+                <div class="inner_container_left_bottom_right_bottom">
+                  <div class="inner_container_left_bottom_right_bottom_left">
+                    {% if section.settings.image_5 != blank %}
+                          <a {% if section.settings.link_5 != blank %}href="{{section.settings.link_5}}"{% endif %}>
+                              {%
+                                render 'image-element',
+                                image: section.settings.image_5,
+                                alt: section.settings.image_5.alt
+                              %}
+                          </a>
+                    {% endif %}  
+                  </div>
+                  <div class="inner_container_left_bottom_right_bottom_right">
+                      {% if section.settings.text_6 != blank or section.settings.image_6 != nil%}
+                          <a class="inner_container_left_bottom_right_bottom_right__link" {% if section.settings.link_6 != blank %}href="{{section.settings.link_6}}"{% endif %}>
+                                {% if section.settings.icon_6 != nil %}
+                                  <div class="inner_container_left_bottom_right_bottom_right__link__icon">
+                                    {%
+                                      render 'image-element',
+                                      image: section.settings.icon_6,
+                                      alt: section.settings.icon_6.alt
+                                    %}
+                                  </div>
+                                {% endif %}
+                                {% if section.settings.text_6 != blank %}
+                                  <span class="inner_container_left_bottom_right_bottom_right__link__text">{{section.settings.text_6}}</span>
+                                {% endif %}
+                          </a>
+                        {% endif %}
+                  </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+    <div class="inner_container_right">
+       <div class="inner_container_right_top__wrapper">
+          <div class="inner_container_right_top">
+              {% if section.settings.text_7 != blank or section.settings.image_7 != nil%}
+                  <a class="inner_container_right_top__link" {% if section.settings.link_7 != blank %}href="{{ section.settings.link_7 }}"{% endif %}>
+                        {% if section.settings.icon_7 != nil %}
+                          <div class="inner_container_right_top__link__icon">
+                            {%
+                              render 'image-element',
+                              image: section.settings.icon_7,
+                              alt: section.settings.icon_7.alt
+                            %}
+                          </div>
+                        {% endif %}
+                        {% if section.settings.text_7 != blank %}
+                          <span class="inner_container_right_top__link__text">{{ section.settings.text_7 }}</span>
+                        {% endif %}
+                  </a>
+              {% endif %}           
+          </div>
+    
+          <div class="inner_container_right_top-mobile-only">
+            <div class="inner_container_left_bottom_right_bottom_left">
+              {% if section.settings.image_5 != blank %}
+                    <a {% if section.settings.link_5 != blank %}href="{{section.settings.link_5}}"{% endif %}>
+                        {%
+                          render 'image-element',
+                          image: section.settings.image_5,
+                          alt: section.settings.image_5.alt
+                        %}
+                    </a>
+              {% endif %}  
+            </div>
+            <div class="inner_container_left_bottom_right_bottom_right">
+              {% if section.settings.text_6 != blank or section.settings.image_6 != nil%}
+                <a class="inner_container_left_bottom_right_bottom_right__link" {% if section.settings.link_6 != blank %}href="{{section.settings.link_6}}"{% endif %}>
+                      {% if section.settings.icon_6 != nil %}
+                        <div class="inner_container_left_bottom_right_bottom_right__link__icon">
+                          {%
+                            render 'image-element',
+                            image: section.settings.icon_6,
+                            alt: section.settings.icon_6.alt
+                          %}
+                        </div>
+                      {% endif %}
+                      {% if section.settings.text_6 != blank %}
+                        <span class="inner_container_left_bottom_right_bottom_right__link__text">{{section.settings.text_6}}</span>
+                      {% endif %}
+                </a>
+              {% endif %}
+            </div>
+
+          </div>
+
+       </div>
+       <div class="inner_container_right_middle">
+         {% if section.settings.text_8 != blank or section.settings.image_8 != nil%}
+              <a class="inner_container_right_middle__link" {% if section.settings.link_8 != blank %}href="{{ section.settings.link_8 }}"{% endif %}>
+                    {% if section.settings.icon_8 != nil %}
+                      <div class="inner_container_right_middle__link__icon">
+                        {%
+                          render 'image-element',
+                          image: section.settings.icon_8,
+                          alt: section.settings.icon_8.alt
+                        %}
+                      </div>
+                    {% endif %}
+                    {% if section.settings.text_8 != blank %}
+                      <span class="inner_container_right_middle__link__text">{{ section.settings.text_8 }}</span>
+                    {% endif %}
+              </a>
+          {% endif %} 
+       </div>
+       <div class="inner_container_right_bottom">
+          {% if section.settings.image_9 != blank %}
+            <a class="inner_container_right_bottom__link" {% if section.settings.link_9 != blank %}href="{{section.settings.link_9}}{% endif %}">
+                {% if section.settings.image_9 != nil %}
+                  <div class="inner_container_right_bottom__link__image">
+                    {%
+                      render 'image-element',
+                      image: section.settings.image_9,
+                      alt: section.settings.image_9.alt
+                    %}
+                  </div>
+                {% endif %}
+                {% if section.settings.text_9 != blank %}
+                  <div class="inner_container_right_bottom__link__text-container">
+                    <div class="inner_container_right_bottom__link__text-container_main-text">{{ section.settings.text_9 }}</div>
+                    {% if section.settings.text_9_add != blank %}
+                        <div class="inner_container_right_bottom__link__text-container_additional-text__container">
+                          <div class="inner_container_right_bottom__link__text-container_additional-text">{{ section.settings.text_9_add }}</div>
+                          <div class="inner_container_right_bottom__link__text-container_additional-text__arrow"></div>
+                        </div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+            </a>  
+          {% endif %}      
+       </div>
+    </div>
+</div>
+
+</section>
+
+
+{% style %}
+
+.outer_container{
+    display:grid;
+    grid-template-columns: 60% auto;
+    margin:20px 0px;
+    grid-gap:15px;
+    min-height:1200px;
+}
+
+
+.outer_container p {
+  font-size: 18px;
+}
+
+.inner_container_left{
+  display:grid;
+  grid-template-rows: 20% auto;
+  grid-gap:25px;
+}
+.inner_container_right{
+  display:grid;
+  grid-template-rows: 35% 8.3% 35% auto;
+  grid-gap:15px;
+}
+.inner_container_left_top{
+    display:grid;
+    grid-template-columns: 82% auto;
+    grid-gap:10px;
+    height: 100%;
+}
+
+.inner_container_left_top_left {
+  {% if section.settings.image_1 != nil %}
+    background-image: url("{{section.settings.image_1 | img_url: 'master'}}");
+    background-size: 100% 100%;
+  {% else %}
+    background-color: {{ section.settings.background_color_1 }};
+    color: {{ section.settings.text_color_1 }};
+  {% endif %}
+}
+
+.inner_container_left_top_left__link {
+    display: block;
+}
+
+.inner_container_left_top_left__link__text {
+  color: {{ section.settings.text_color_1 }};
+  font-weight: bold;
+  line-height: 1.1;
+}
+
+.inner_container_left_top_left__link__text span:nth-child(1),
+.inner_container_left_top_left__link__text span:nth-child(2) {
+  font-size: 140px;
+}
+
+.inner_container_left_top_left__link__text span:nth-child(3),
+.inner_container_left_top_left__link__text span:nth-child(4) {
+  font-size: 88px;
+}
+
+.inner_container_left_top_left__link__text span:nth-child(4) {
+  font-size: 88px;
+  margin-left: 10px;
+}
+
+.inner_container_left_top_left__link__text span {
+  line-height: 1.1;
+}
+
+.inner_container_left_bottom_left__button-container {
+  display: block;
+  margin-top: 30px;
+  margin-bottom: 27px;
+}
+  
+.inner_container_left_bottom_left__button {
+  padding: 19px 22px;
+}
+
+.inner_container_left_top_right{
+    display:grid;
+    grid-template-rows: 56.5% 43.5%;
+    grid-gap:5px;
+}
+
+.inner_container_left_top_right_top {
+    {% if section.settings.image_2 != nil %}
+      background-image: url("{{section.settings.image_2 | img_url: 'master'}}");
+      background-size: 100% 100%;
+      background-position:right;
+      background-repeat:no-repeat;
+    {% else %}
+      background-color: {{ section.settings.background_color_2 }};
+      color: {{ section.settings.text_color_2 }};
+      border-radius: 8px;
+      padding: 15px;
+    {% endif %}
+}
+
+.inner_container_left_top_right_top__link,
+.inner_container_left_top_right_bottom__link {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+.inner_container_left_top_right_top__link__text {
+  color: {{ section.settings.text_color_2 }};
+  font-size: 20px;
+}
+
+.inner_container_left_top_right_top__link__icon,
+.inner_container_left_top_right_bottom__link__icon {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 9px;
+}
+
+.inner_container_left_top_right_bottom{
+    {% if section.settings.image_3 != nil %}
+      background-image: url("{{section.settings.image_3 | img_url: 'master'}}");
+      background-size: 100% 100%;
+      background-position:right;
+      background-repeat:no-repeat;
+    {% else %}
+      background-color: {{ section.settings.background_color_3 }};
+      border-radius: 8px;
+      padding: 15px;
+    {% endif %}
+}
+
+.inner_container_left_top_right_bottom__link__text {
+  color: {{ section.settings.text_color_3 }};
+  font-size: 20px;
+}
+
+.inner_container_left_bottom{
+    display:grid;
+    grid-template-columns: 40% auto;
+  grid-gap:15px;
+}
+
+.inner_container_left_bottom_right{
+    display:grid;
+    grid-template-rows: 60% auto;
+  grid-gap:15px;
+}
+
+.inner_container_left_bottom_right_top,
+.inner_container_left_bottom_right_bottom_left,
+.inner_container_right_bottom__link__image {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+  .inner_container_left_bottom_right_top img,
+.inner_container_left_bottom_right_bottom_left img,
+.inner_container_right_bottom__link__image img {
+  border-radius: 8px;
+}
+
+  .inner_container_left_bottom_right_top img,
+  .inner_container_left_bottom_right_bottom_left img,
+  .inner_container_right_bottom__link__image img {
+    transition: flex 0.3s ease, transform 0.3s ease;
+  }
+
+  .inner_container_left_bottom_right_top:hover img,
+  .inner_container_left_bottom_right_bottom_left:hover img,
+  .inner_container_right_bottom__link__image:hover img{
+    transform: scale(1.05);
+    border-radius: 8px;
+  }
+
+.inner_container_left_bottom_right_top img {
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+  .inner_container_left_bottom_right_top > a > .custom-image-element__wrap.image-element__wrap,
+  .inner_container_left_bottom_right_bottom_left > a > .custom-image-element__wrap.image-element__wrap,
+  .inner_container_right_bottom__link__image > a > .custom-image-element__wrap.image-element__wrap{
+    border-radius: 8px;
+  }
+
+.inner_container_left_bottom_right_bottom{
+    display:grid;
+    grid-template-columns: 68% auto;
+    grid-gap:15px;
+}
+
+.inner_container_left_bottom_right_bottom_left img{
+    object-fit: cover;
+  border-radius: 8px;
+}
+
+.inner_container_left_bottom_right_bottom_right{
+    {% if section.settings.image_6 != nil %}
+      background-image: url("{{section.settings.image_6 | img_url: 'master'}}");
+      background-size:100% auto;
+      background-position:top;
+      background-repeat:no-repeat;
+    {% else %}
+      background-color: {{ section.settings.background_color_6 }};
+      border-radius: 8px;
+      padding: 10px;
+      border: 1px solid {{ section.settings.text_color_6 }};
+      height: fit-content;
+    {% endif %}
+}
+
+.inner_container_left_bottom_right_bottom_right__link__text {
+  color: {{ section.settings.text_color_6 }};
+  font-size: 16px;
+}
+
+.inner_container_left_bottom_right_bottom_right__link__icon {
+  width: 80px;
+  height: 80px;
+  min-width: 80px;
+  min-height: 80px;
+  margin-bottom: 33px;
+}
+
+.inner_container_right_top {
+    {% if section.settings.image_7 != nil %}
+      background-image: url("{{section.settings.image_7 | img_url: 'master'}}");
+      background-size:auto 100%;
+      background-position:left;
+      background-repeat:no-repeat;
+    {% else %}
+      background-color: {{ section.settings.background_color_7 }};
+      border-radius: 8px;
+      padding: 6px;
+      width: 60%;
+      height: 100%;
+    {% endif %}
+}
+
+.inner_container_right_top__link {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid {{ section.settings.text_color_7 }};
+  height: 100%;
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.inner_container_right_top__link__text {
+  color: {{ section.settings.text_color_7 }};
+  font-size: 27px;
+}
+
+.inner_container_right_top__link__icon {
+  width: 100px;
+  height: 100px;
+  transform: rotate(180deg);
+}
+
+
+.inner_container_right_middle{
+  {% if section.settings.image_8 != nil %}
+    background-image: url("{{section.settings.image_8 | img_url: 'master'}}");
+    background-size:auto 100%;
+    background-position:left;
+    background-repeat:no-repeat;
+  {% else %}
+      background-color: {{ section.settings.background_color_8 }};
+      border-radius: 8px;
+      padding: 9px 17px;
+      width: 60%;
+      border: 1px solid {{ section.settings.text_color_8 }};
+      height: fit-content;
+  {% endif %}
+}
+
+.inner_container_right_middle__link {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  height: fit-content;
+}
+
+.inner_container_right_middle__link__text {
+  color: {{ section.settings.text_color_8 }};
+  font-size: 20px;
+}
+
+.inner_container_right_middle__link__icon {
+  width: 75px;
+  height: 75px;
+  min-width: 75px;
+  min-height: 75px;
+}
+
+.inner_container_right_bottom__link {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.inner_container_right_bottom__link__image {
+  width: 100%;
+}
+
+.inner_container_right_bottom__link__image .custom-image-element__wrap {
+  max-width: 100% !important
+}
+
+.inner_container_right_bottom__link__text-container {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  background-color: {{ section.settings.background_color_9 }};
+  color: {{ section.settings.text_color_9 }};
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: calc(100% - 20px);
+  border-radius: 8px;
+}
+
+.inner_container_right_bottom__link__text-container_additional-text__arrow {
+  width: 4px;
+  height: 4px;
+  border-top: 1px solid;
+  border-right: 1px solid;
+  border-color: {{ section.settings.text_color_9 }};
+  transform: rotate(45deg);
+}
+
+.inner_container_right_bottom__link__text-container_additional-text__container {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+}
+
+.inner_container_right_top-mobile-only {
+  display: none;
+}
+
+@media only screen and (max-width: 1440px) {
+  .inner_container_left_top {
+    grid-template-columns: 70% auto;
+  }
+  
+  .inner_container_left_top_left__link__text span:nth-child(1),
+  .inner_container_left_top_left__link__text span:nth-child(2) {
+    font-size: 100px;
+  }
+  
+  .inner_container_left_top_left__link__text span:nth-child(3),
+  .inner_container_left_top_left__link__text span:nth-child(4) {
+    font-size: 60px;
+  }
+}
+
+ @media only screen and (max-width: 1210px) {
+  .inner_container_left_top {
+    grid-template-columns: 70% auto;
+  }
+  
+  .inner_container_left_top_left__link__text span:nth-child(1),
+  .inner_container_left_top_left__link__text span:nth-child(2) {
+    font-size: 90px;
+  }
+  
+  .inner_container_left_top_left__link__text span:nth-child(3),
+  .inner_container_left_top_left__link__text span:nth-child(4) {
+    font-size: 60px;
+  }
+   
+}
+    
+@media only screen and (max-width: 1100px) {
+
+.outer_container{
+    display:block;
+    min-height:unset;
+    padding:10px;
+    padding-bottom:50px;
+}
+
+.inner_container_left{
+  display:block;
+}
+
+.inner_container_left_top{
+  grid-template-columns:50% 50%;
+  padding-bottom:20px;
+
+}
+
+.inner_container_left_top_left{
+    background-size: 100% 30%;
+    background-repeat:no-repeat;
+}
+
+.inner_container_left_bottom{
+  display:block;
+  padding-bottom:15px;
+}
+
+.inner_container_right{
+  display: flex;
+  flex-direction: column;
+}
+
+.inner_container_right_middle {
+    width: 100%;
+}
+
+
+.outer_container p {
+  font-size: 15px;
+  padding-bottom:10px;
+}
+
+  
+ .inner_container_left_bottom_right_bottom {
+   display: none;
+ }
+
+ .inner_container_right_top-mobile-only {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 15px;
+ }
+
+ .inner_container_right_top__wrapper {
+   display: grid;
+   grid-template-columns: 65% 30%;
+   gap: 5%;
+ }
+
+  .inner_container_right_top {
+    width: 100%;
+  }
+
+  .inner_container_right_top {
+    height: fit-content;
+  }
+
+  .inner_container_left_bottom_right {
+      grid-template-rows: 100% auto;
+  }
+
+}
+
+@media only screen and (max-width: 1000px) {
+  .inner_container_left_top_left__link__text span:nth-child(1),
+  .inner_container_left_top_left__link__text span:nth-child(2) {
+    font-size: 75px;
+  }
+  
+  .inner_container_left_top_left__link__text span:nth-child(3),
+  .inner_container_left_top_left__link__text span:nth-child(4) {
+    font-size: 51px;
+  }
+}
+
+@media only screen and (max-width: 798px) {
+  .inner_container_left_top {
+    grid-template-columns: 70% auto;
+  }
+
+  .inner_container_right_top__link__icon,
+  .inner_container_left_bottom_right_bottom_right__link__icon {
+    width: 70px;
+    height: 70px;
+    min-width: 70px;
+    min-height: 70px;
+  }
+
+  .inner_container_left_bottom_right_bottom_right__link__icon {
+    margin-bottom: 20px;
+  }
+
+  .inner_container_right_top__link__text {
+    font-size: 22px;
+    margin-top: 50px;
+  }
+ 
+}
+
+  @media only screen and (max-width: 565px) {
+  .inner_container_left_top {
+    grid-template-columns: 50% auto;
+  }
+
+    .inner_container_left_top_right_top__link__icon {
+      margin-bottom: 26px;
+    }
+  
+  .inner_container_left_top_left__link__text span:nth-child(1) {
+    display: block;
+    font-size: 55px;
+  }
+
+  .inner_container_left_top_left__link__text span:nth-child(2),
+  .inner_container_left_top_left__link__text span:nth-child(3) {
+    font-size: 32px;
+  }
+  
+  .inner_container_left_top_left__link__text span:nth-child(4) {
+    display: block;
+    margin-left: 0;
+    font-size: 41px;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+    .inner_container_right_top__wrapper {
+       grid-template-columns: 1fr;
+        gap: 20px;
+     }
+
+  .inner_container_left_top {
+    grid-template-columns: 60% auto;
+  }
+
+  .inner_container_right_top {
+    width: 100%;
+  }
+
+  .inner_container_right_top-mobile-only {
+    display: block;
+  }
+
+  .inner_container_left_bottom_right_bottom_left {
+    margin-bottom: 20px;
+  }
+
+
+  .inner_container_left_bottom_right_bottom_right__link {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    height: fit-content;
+  }
+
+  .inner_container_left_bottom_right_bottom_right__link__icon {
+    margin-bottom: 0;
+  }
+
+  .inner_container_left_bottom_right_bottom_right__link__text {    
+    font-size: 20px;
+  }
+  
+}
+
+
+  
+
+{% endstyle %}
+
+
+{% schema %}
+  {
+    "name": "Custom grid",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Image 1"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_1",
+        "label": "Image 1"
+      },
+      {
+        "type": "url",
+        "id": "link_1",
+        "label": "Link"
+      },
+      {
+        "type": "html",
+        "id": "text_1",
+        "label": "Text"
+      },
+      {
+        "type": "color",
+        "id": "background_color_1",
+        "label": "Background"
+      },
+      {
+        "type": "color",
+        "id": "text_color_1",
+        "label": "Text"
+      },
+      {
+        "type": "header",
+        "content": "Image 2"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_2",
+        "label": "Image 2",
+        "info": "Recommended size: 800 x 640px"
+      },
+      {
+        "type": "url",
+        "id": "link_2",
+        "label": "Link"
+      },
+      {
+        "type": "html",
+        "id": "text_2",
+        "label": "Text"
+      },
+      {
+        "type": "image_picker",
+        "id": "icon_2",
+        "label": "Icon"
+      },
+      {
+        "type": "color",
+        "id": "background_color_2",
+        "label": "Background"
+      },
+      {
+        "type": "color",
+        "id": "text_color_2",
+        "label": "Text"
+      },
+      {
+        "type": "header",
+        "content": "Image 3"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_3",
+        "label": "Image 3",
+        "info": "Recommeded size: 800 x 490px"
+      },
+      {
+        "type": "url",
+        "id": "link_3",
+        "label": "Link"
+      },
+            {
+        "type": "html",
+        "id": "text_3",
+        "label": "Text"
+      },
+      {
+        "type": "image_picker",
+        "id": "icon_3",
+        "label": "Icon"
+      },
+      {
+        "type": "color",
+        "id": "background_color_3",
+        "label": "Background"
+      },
+      {
+        "type": "color",
+        "id": "text_color_3",
+        "label": "Text"
+      },
+      {
+        "type": "header",
+        "content": "Image 4"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_4",
+        "label": "Image 4",
+        "info": "Recommeded size: 1200 x 1300px"
+      },
+      {
+        "type": "url",
+        "id": "link_4",
+        "label": "Link"
+      },
+      {
+        "type": "header",
+        "content": "Image 5"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_5",
+        "label": "Image 5",
+        "info": "Recommended size: 1200 x 1300px"
+      },
+      {
+        "type": "url",
+        "id": "link_5",
+        "label": "Link"
+      },
+      {
+        "type": "header",
+        "content": "Image 6"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_6",
+        "label": "Image 6",
+        "info": "Recommended size: 1200 x 1300px"
+      },
+      {
+        "type": "url",
+        "id": "link_6",
+        "label": "Link"
+      },
+      {
+        "type": "html",
+        "id": "text_6",
+        "label": "Text"
+      },
+      {
+        "type": "image_picker",
+        "id": "icon_6",
+        "label": "Icon"
+      },
+      {
+        "type": "color",
+        "id": "background_color_6",
+        "label": "Background"
+      },
+      {
+        "type": "color",
+        "id": "text_color_6",
+        "label": "Text"
+      },
+      {
+        "type": "header",
+        "content": "Image 7"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_7",
+        "label": "Image 7",
+        "info": "Recommended size: 1200 x 1400px"
+      },
+      {
+        "type": "url",
+        "id": "link_7",
+        "label": "Link"
+      },
+      {
+        "type": "html",
+        "id": "text_7",
+        "label": "Text"
+      },
+      {
+        "type": "image_picker",
+        "id": "icon_7",
+        "label": "Icon"
+      },
+      {
+        "type": "color",
+        "id": "background_color_7",
+        "label": "Background"
+      },
+      {
+        "type": "color",
+        "id": "text_color_7",
+        "label": "Text"
+      },
+      {
+        "type": "header",
+        "content": "Image 8"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_8",
+        "label": "Image 8",
+        "info": "Recommended size: 1200 x 1400px"
+      },
+      {
+        "type": "url",
+        "id": "link_8",
+        "label": "Link"
+      },
+      {
+        "type": "html",
+        "id": "text_8",
+        "label": "Text"
+      },
+      {
+        "type": "image_picker",
+        "id": "icon_8",
+        "label": "Icon"
+      },
+      {
+        "type": "color",
+        "id": "background_color_8",
+        "label": "Background"
+      },
+      {
+        "type": "color",
+        "id": "text_color_8",
+        "label": "Text"
+      },
+      {
+        "type": "header",
+        "content": "Image 9"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_9",
+        "label": "Image 9",
+        "info": "Recommended size: 800 x 800px"
+      },
+      {
+        "type": "url",
+        "id": "link_9",
+        "label": "Link"
+      },
+      {
+        "type": "html",
+        "id": "text_9",
+        "label": "Text"
+      },
+      {
+        "type": "html",
+        "id": "text_9_add",
+        "label": "Additional text"
+      },
+      {
+        "type": "color",
+        "id": "background_color_9",
+        "label": "Background"
+      },
+      {
+        "type": "color",
+        "id": "text_color_9",
+        "label": "Text"
+      },
+      {
+        "type": "html",
+        "id": "text",
+        "label": "Text",
+        "default": "<p>Use this section to create some callout text on your page, or add more details about your shop, services, promotions, etc.</p>"
+      },
+      {
+        "type": "text",
+        "id": "button_label",
+        "label": "Button label",
+        "default": "Shop productrs"
+       
+      },
+      {
+        "type": "url",
+        "id": "link",
+        "label": "Button link"
+      },
+
+          {
+      "type": "select",
+      "id": "width",
+      "label": "Width",
+      "default": "wide",
+      "options": [
+        {
+          "value": "standard",
+          "label": "Standard"
+        },
+        {
+          "value": "wide",
+          "label": "Wide"
+        }
+      ]
+    }
+    ],
+    "presets": [
+      {
+        "name": "Custom grid",
+        "category": "Content"
+      }
+    ]
+  }
+{% endschema %}
+
+

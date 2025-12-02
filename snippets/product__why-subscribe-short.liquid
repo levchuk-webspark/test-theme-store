@@ -1,0 +1,37 @@
+{% style %}
+
+.product__why-subscribe-short {
+  border: 1px solid #3F4444;
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.product__why-subscribe-short__title {
+  font-size: 22px;
+}
+
+.product__why-subscribe-short__description {
+  font-size: 16px;
+}
+  
+  
+{% endstyle %}
+  
+  
+<div class="product__why-subscribe-short">
+  
+    {% if block.settings.title != blank%}
+        <div class="product__why-subscribe-short__title">
+          {{ block.settings.title }}
+        </div>
+    {% endif %}
+
+    {% if block.settings.description != blank%}
+        <div class="product__why-subscribe-short__description">
+          {{ block.settings.description }}
+        </div>
+    {% endif %}
+    
+</div>
