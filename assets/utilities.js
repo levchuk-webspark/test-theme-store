@@ -1858,9 +1858,6 @@ function appendStyleToShadowDOMstars() {
   .reviews-count { color: black !important; font-size: 10px;}
   .feefo-rating-stars {display: flex !important;}
   .feefo-rating-stars svg { width: 12px; height: 12px;}
-  .feefowidget-rating-stars > svg { fill: #78BE20!important; }
-  .feefowidget-rating-stars > svg > g > path { fill: #78BE20!important; }
-  .feefo-rating-stars > svg > g > path { fill: #78BE20!important; }
   `;
 
   const widgets = document.querySelectorAll('.feefo-product-stars-widget');
