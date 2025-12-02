@@ -6527,6 +6527,8 @@ class Product {
     // Define variables
     const $productGallery = selector;
     const $thumbnailProductGallery = $productGallery.closest('.product-gallery').find('.product-gallery__thumbnails');
+    const isRedesign = document.body.classList.contains('product-product-redesign');
+    const isScreenLarge = window.isScreenSizeLarge() && !isRedesign;
 
     const $slides = $productGallery.find('.product-gallery__image');
     const $thumbnails = $thumbnailProductGallery.find('.product-gallery__thumbnail');
@@ -6643,7 +6645,7 @@ class Product {
             break;
           case 'model':
             if ($(slide).hasClass('is-selected')) { // When active slide
-              if (mediaType === 'model' && window.isScreenSizeLarge()) {
+              if (mediaType === 'model' && isScreenLarge) {
                 $(slide).on('mouseenter', () => $productGallery.flickity('unbindDrag'));
                 $(slide).on('mouseleave', () => $productGallery.flickity('bindDrag'));
               }
@@ -6674,10 +6676,10 @@ class Product {
 
     $productGallery.flickity({
       wrapAround: true,
-      adaptiveHeight: true,
+      adaptiveHeight: !isRedesign,
       dragThreshold: 10,
       imagesLoaded: true,
-      pageDots: false,
+      pageDots: isRedesign,
       prevNextButtons: $productGallery.data('media-count') > 1 || $slides.length > 1,
       autoPlay: slideshowSpeed * 1000,
       fade: slideshowTransition === 'fade',
@@ -6700,7 +6702,7 @@ class Product {
               * Pause all model slides when hidden
               */
 
-              if (window.isScreenSizeLarge()) {
+              if (isScreenLarge) {
                 // On mouseenter event, unbind flickity
                 $(slide).on('mouseenter', () => $productGallery.flickity('unbindDrag'));
 
@@ -6746,7 +6748,7 @@ class Product {
     // Autoplay logic only happens on desktop, autoplay set to off for mobile
     const $sliderArrows = $productGallery.find('.flickity-prev-next-button');
 
-    if (($sliderArrows || $thumbnails) && window.isScreenSizeLarge()) {
+    if (($sliderArrows || $thumbnails) && isScreenLarge) {
       $sliderArrows.on('click', () => {
         $productGallery.on('settle.flickity', () => {
           // Find out media type of featured media slide
@@ -6890,7 +6892,7 @@ class Product {
 
     if (thumbnailsEnabled === true && thumbnailsSliderEnabled === true && $slides.length > 1) {
       // If desktop determine which slider we build
-      if (window.isScreenSizeLarge()) {
+      if (isScreenLarge) {
         if (thumbnailsPosition === 'right-thumbnails' || thumbnailsPosition === 'left-thumbnails') {
           $thumbnailProductGallery.addClass('vertical-slider-enabled');
 
@@ -6943,7 +6945,7 @@ class Product {
             imagesLoaded: true,
             pageDots: false,
             prevNextButtons: $thumbnails.length > 5 ? arrowsEnabled : false,
-            asNavFor: this._data.template === 'image-scroll' && window.isScreenSizeLarge() ? '' : $productGallery[0],
+            asNavFor: this._data.template === 'image-scroll' && isScreenLarge ? '' : $productGallery[0],
             arrowShape: window.arrowShape,
           });
 
@@ -6960,7 +6962,7 @@ class Product {
           imagesLoaded: true,
           pageDots: false,
           prevNextButtons: $thumbnails.length > 5,
-          asNavFor: this._data.template === 'image-scroll' && window.isScreenSizeLarge() ? '' : $productGallery[0],
+          asNavFor: this._data.template === 'image-scroll' && isScreenLarge ? '' : $productGallery[0],
           arrowShape: window.arrowShape,
         });
       }

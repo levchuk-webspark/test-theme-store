@@ -7,7 +7,7 @@ window.PXUTheme.jsPopup = {
     window.PXUTheme.jsPopup = $.extend(this, window.PXUTheme.getSectionData($section));
 
     const cookieValue = Cookies.get('popup');
-    const cookieEnabled = this.popup_days_to_hide != 0 ? true : false;
+    const cookieEnabled = this._shouldPersist();
 
     if (cookieEnabled && cookieValue == 'opened') {
       return false;
@@ -16,11 +16,6 @@ window.PXUTheme.jsPopup = {
         this.open();
       }, this.popup_delay * 1000);
     }
-
-    if (cookieEnabled) {
-      Cookies.set('popup', 'opened', { expires: parseInt(this.popup_days_to_hide) });
-    }
-
   },
   open: function() {
     $.fancybox.open({
@@ -49,6 +44,9 @@ window.PXUTheme.jsPopup = {
         beforeClose: () => {
           // Prevent duplicate triggers for close icon click
           $('.popup__close').off();
+        },
+        afterClose: () => {
+          this._persistDismissal();
         }
       }
     });
@@ -68,6 +66,14 @@ window.PXUTheme.jsPopup = {
     $.fancybox.destroy();
     $('.popup-modal .fancybox-slide').empty();
     $('.popup__close').off();
+  },
+  _shouldPersist() {
+    return this.popup_days_to_hide != 0;
+  },
+  _persistDismissal() {
+    if (this._shouldPersist()) {
+      Cookies.set('popup', 'opened', { expires: parseInt(this.popup_days_to_hide) });
+    }
   }
 }
 
