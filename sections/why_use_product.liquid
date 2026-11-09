@@ -171,7 +171,7 @@
       {% endif %}
       <div class="why-use-product__benefit_container">
         {% if metaobject.image_1 != nil %}
-          {% style _%}
+          {% style %}
             .block-1.why-use-product__benefit_card {
                   background: url("{{ metaobject.image_1 | img_url: 'master' }}");
                   background-size: cover;
@@ -212,7 +212,7 @@
         </div>
         {% endif %} 
         {% if metaobject.image_2 != nil %}
-          {% style _%}
+          {% style %}
             .block-2.why-use-product__benefit_card {
                   background: url("{{ metaobject.image_2 | img_url: 'master' }}");
                   background-size: cover;
@@ -253,7 +253,7 @@
         </div>
         {% endif %} 
         {% if metaobject.image_3 != nil %}
-          {% style _%}
+          {% style %}
             .block-3.why-use-product__benefit_card {
                   background: url("{{ metaobject.image_3 | img_url: 'master' }}");
                   background-size: cover;
@@ -294,7 +294,7 @@
         </div>
         {% endif %} 
         {% if metaobject.image_4 != nil %}
-          {% style _%}
+          {% style %}
             .block-4.why-use-product__benefit_card {
                   background: url("{{ metaobject.image_4 | img_url: 'master' }}");
                   background-size: cover;
@@ -335,7 +335,7 @@
         </div>
         {% endif %} 
         {% if metaobject.image_5 != nil %}
-          {% style _%}
+          {% style %}
             .block-5.why-use-product__benefit_card {
                   background: url("{{ metaobject.image_5 | img_url: 'master' }}");
                   background-size: cover;
@@ -376,7 +376,7 @@
         </div>
         {% endif %} 
         {% if metaobject.image_6 != nil %}
-            {% style _%}
+            {% style %}
               .block-6.why-use-product__benefit_card {
                   background: url("{{ metaobject.image_6 | img_url: 'master' }}");
                   background-size: cover;
@@ -624,4 +624,28 @@
       }
     ]
   }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% style _%}"
+  to: "{% style %}"
+  position: 4614..4625
+- from: "{% style _%}"
+  to: "{% style %}"
+  position: 6435..6446
+- from: "{% style _%}"
+  to: "{% style %}"
+  position: 8256..8267
+- from: "{% style _%}"
+  to: "{% style %}"
+  position: 10077..10088
+- from: "{% style _%}"
+  to: "{% style %}"
+  position: 11898..11909
+- from: "{% style _%}"
+  to: "{% style %}"
+  position: 13721..13732
+{%- endcomment -%}

@@ -1654,7 +1654,7 @@ var list = [
 	"^yandex",
 	"^zdm/\\d",
 	"^zoom marketplace/",
-	"^{{.*}}$",
+	"^{{ nil }}$",
 	"adbeat\\.com",
 	"appinsights",
 	"archive",
@@ -4028,4 +4028,13 @@ if (window.PXUTheme.theme_settings.icon_style == 'icon_solid') {
 })();
 
 /******/ })()
-;
+;{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{{.*}}"
+  to: "{{ nil }}"
+  position: 57055..57064
+{%- endcomment -%}

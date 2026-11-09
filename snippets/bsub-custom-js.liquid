@@ -50,7 +50,7 @@
 
 {% assign subscription_compare_price = "" %}
 {% if product.compare_at_price > product.price %}
-    {% assign subscription_compare_price = {{product.compare_at_price | money}} %}
+    {% assign subscription_compare_price = product.compare_at_price | money %}
 {% endif %}
 
 <script>
@@ -166,4 +166,14 @@ if(element2) {
 
 </script>
 
-{% endif %}
+{% endif %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% assign subscription_compare_price = {{product.compare_at_price | money}}
+    %}"
+  to: "{% assign subscription_compare_price = product.compare_at_price | money %}"
+  position: 943..1017
+{%- endcomment -%}

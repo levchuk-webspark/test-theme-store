@@ -358,7 +358,7 @@
                 ">
                   
                   <div class="mega-menu__content__product">
-                    {% style _%}
+                    {% style %}
                   .block__{{ images[0].id }}.mega-menu__content__product-image-wrapper {
                     position: relative;
                     overflow: hidden;
@@ -423,7 +423,7 @@
                   block__image
                 ">
                   <div class="mega-menu__content__product">
-                    {% style _%}
+                    {% style %}
                   .block__{{ images[1].id }}.mega-menu__content__product-image-wrapper {
                     position: relative;
                     overflow: hidden;
@@ -471,7 +471,7 @@
             {% if block.settings.image_link != blank %}
               <a href="{{ block.settings.image_link }}">
             {% endif %}
-            {% style _%}
+            {% style %}
                   .block__{{ block.id }}.mega-menu__image {
                     position: relative;
                     border-radius: 10px;
@@ -495,7 +495,7 @@
                   block__{{ block.type | replace: '_', '-' }}
                 ">
                   <div class="mega-menu__content__product">
-                    {% style _%}
+                    {% style %}
                   .block__{{ block.id }}.mega-menu__content__product-image-wrapper {
                     position: relative;
                     overflow: hidden;
@@ -986,3 +986,22 @@
 
 </div>
 
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% style _%}"
+  to: "{% style %}"
+  position: 8781..8792
+- from: "{% style _%}"
+  to: "{% style %}"
+  position: 11653..11664
+- from: "{% style _%}"
+  to: "{% style %}"
+  position: 13849..13860
+- from: "{% style _%}"
+  to: "{% style %}"
+  position: 14942..14953
+{% endcomment %}

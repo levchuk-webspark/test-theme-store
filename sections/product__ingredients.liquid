@@ -257,7 +257,7 @@
         {% for ingredient in metaobject.product_ingredient.value %}
           {% if ingredient.image != nil %}
             <li class="product_ingredients__card__wrapper product_ingredients__carousel-cell is-hidden-mobile-only">
-              {% style _%}
+              {% style %}
               .block-{{ forloop.index }}.product_ingredients__card {
                 background: url("{{ ingredient.image  | img_url: 'master' }}");
                 background-size:cover;
@@ -277,7 +277,7 @@
           <div class="product_ingredients__carousel-cell is-hidden-desktop-only mobile-cell">
             {% if forloop.index < 7 %}
               <li class="product_ingredients__card__wrapper first-row ">
-                {% style _%}
+                {% style %}
                   .block-{{ forloop.index }}.product_ingredients__card {
                     background: url("{{ ingredient_mobile.image  | img_url: 'master' }}");
                     background-size:cover;
@@ -295,7 +295,7 @@
               {% for ingredient_mobile_second_row in metaobject.product_ingredient.value %}                
                 {% if forloop.index == second_row_ingredient_index %}
                     <li class="product_ingredients__card__wrapper  ">
-                      {% style _%}
+                      {% style %}
                         .block-{{ second_row_ingredient_index }}.product_ingredients__card {
                           background: url("{{ ingredient_mobile_second_row.image  | img_url: 'master' }}");
                           background-size:cover;
@@ -600,4 +600,19 @@
       }
     ]
   }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% style _%}"
+  to: "{% style %}"
+  position: 8215..8226
+- from: "{% style _%}"
+  to: "{% style %}"
+  position: 9205..9216
+- from: "{% style _%}"
+  to: "{% style %}"
+  position: 10293..10304
+{%- endcomment -%}

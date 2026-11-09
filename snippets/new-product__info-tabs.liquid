@@ -128,7 +128,7 @@
 
         {% if output_size < truncate_limit %}
           <div class="_full_description">
-            {% style _%}
+            {% style %}
               {% if output_size < truncate_limit %}
                 .full_description {
                   display: flex;
@@ -194,3 +194,13 @@
     });
   }));
 </script>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% style _%}"
+  to: "{% style %}"
+  position: 3726..3737
+{% endcomment %}

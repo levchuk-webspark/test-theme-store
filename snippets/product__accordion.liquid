@@ -167,7 +167,7 @@
                       {% if outputSize < truncate_limit %}
       
                         <div class="full_description">
-                          {% style _%}
+                          {% style %}
                             {% if outputSize < truncate_limit %}
                               .full_description {
                                 display: flex;
@@ -757,3 +757,13 @@
 
   </script>
 
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% style _%}"
+  to: "{% style %}"
+  position: 5774..5785
+{% endcomment %}

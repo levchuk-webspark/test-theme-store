@@ -425,19 +425,7 @@
         {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg placeholder-svg--product' }}
       </div>
     {% else %}
-      {% render 'product__images'
-        , product: product
-        , display_thumbnails: display_thumbnails
-        , thumbnail_position: thumbnail_position
-        , enable_thumbnail_slider: enable_thumbnail_slider
-        , product_height: product_height
-        , set_product_height: set_product_height
-        , video_looping: video_looping gallery_arrows: gallery_arrows
-        , slideshow_transition: slideshow_transition
-        , enable_product_lightbox: enable_product_lightbox
-        , enable_zoom: enable_zoom,
-        , is_v14: block.settings.is_v14
-      %}
+      {% render 'product__images', product: product, display_thumbnails: display_thumbnails, thumbnail_position: thumbnail_position, enable_thumbnail_slider: enable_thumbnail_slider, product_height: product_height, set_product_height: set_product_height, video_looping: video_looping, gallery_arrows: gallery_arrows, slideshow_transition: slideshow_transition, enable_product_lightbox: enable_product_lightbox, enable_zoom: enable_zoom, is_v14: block.settings.is_v14 %}
     {% endif %}
 
   </div>
@@ -962,3 +950,31 @@
   }
 })();
 </script>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'product__images'
+            , product: product
+            , display_thumbnails: display_thumbnails
+            , thumbnail_position: thumbnail_position
+            , enable_thumbnail_slider: enable_thumbnail_slider
+            , product_height: product_height
+            , set_product_height: set_product_height
+            , video_looping: video_looping gallery_arrows: gallery_arrows
+            , slideshow_transition: slideshow_transition
+            , enable_product_lightbox: enable_product_lightbox
+            , enable_zoom: enable_zoom,
+            , is_v14: block.settings.is_v14
+          %}
+  to: "{% render 'product__images', product: product, display_thumbnails: display_thumbnails,
+    thumbnail_position: thumbnail_position, enable_thumbnail_slider: enable_thumbnail_slider,
+    product_height: product_height, set_product_height: set_product_height, video_looping:
+    video_looping, gallery_arrows: gallery_arrows, slideshow_transition: slideshow_transition,
+    enable_product_lightbox: enable_product_lightbox, enable_zoom: enable_zoom, is_v14:
+    block.settings.is_v14 %}"
+  position: 12026..12489
+{% endcomment %}

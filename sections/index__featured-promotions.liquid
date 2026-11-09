@@ -234,10 +234,7 @@
             {% endif %}
               <div class="featured-promotions__overlay {% if section.settings.show_border %}has-border{% endif %}">
                 {% if block.settings.icon_label != blank %}
-                  {%
-                    render 'icon',
-                    name: block.settings.icon_label | downcase
-                  %}
+                  {% render 'icon', name: block.settings.icon_label %}
                 {% endif %}
 
                 {% if block.settings.title != blank %}
@@ -551,3 +548,17 @@
     }
   }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {%
+                        render 'icon',
+                        name: block.settings.icon_label | downcase
+                      %}
+  to: "{% render 'icon', name: block.settings.icon_label %}"
+  position: 7905..7957
+{% endcomment %}
